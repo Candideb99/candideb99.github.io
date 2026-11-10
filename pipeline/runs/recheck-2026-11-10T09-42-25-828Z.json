@@ -1,0 +1,58 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-10T09:42:25.828Z",
+  "durationSec": 61,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "china-trade-surplus-tops-trillion-again-e535d2",
+      "title": "فائض الصين التجاري يتجاوز تريليون دولار للمرة الثانية في تاريخه",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 35,
+        "checked": 35,
+        "supported": 29,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 1,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 9580,
+    "completionTokens": 7573,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2281,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 9580,
+        "read": 0,
+        "out": 7573,
+        "usd": 0.2281
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:42:26] second look: 1 to read now (1 published pieces not yet read; 232 read clean before publication and left out of the audit sample)",
+    "[09:42:27] china-trade-surplus-tops-trillion-again-e535d2:   source https://www.nytimes.com/2026/11/09/business/china-trade-surplus-trillion.html: http-403; read from the copy saved at publication (fetched then)",
+    "[09:42:27] china-trade-surplus-tops-trillion-again-e535d2:   source https://www.bloomberg.com/news/articles/2026-11-10/chinese-trade-surplus-surpass: http-403; read from the copy saved at publication (fetched then)",
+    "[09:43:26] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2628 in=9580 read=0 out=7573 attempt=1 ms=58273",
+    "[09:43:26] china-trade-surplus-tops-trillion-again-e535d2: 35 of 35 sentences checked · 29 supported · 2 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

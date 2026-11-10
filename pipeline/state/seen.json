@@ -1,60 +1,6 @@
 {
   "version": 1,
   "items": {
-    "f24ca322445aaf7a": {
-      "at": "2026-10-20T08:49:18.555Z",
-      "decision": "published",
-      "slug": "morocco-government-targets-five-percent-growth-757c81",
-      "title": "الحكومة المغربية الجديدة تستهدف نموا 5% بين 2027 و2031"
-    },
-    "9aabc3f5085942b3": {
-      "at": "2026-10-20T08:49:18.555Z",
-      "decision": "published",
-      "slug": "morocco-government-targets-five-percent-growth-757c81",
-      "title": "الحكومة المغربية تعرض خطتها على البرلمان وتتعهد تحسين الأوضاع الاجتماعية"
-    },
-    "6ac26f993e2593f8": {
-      "at": "2026-10-20T08:49:18.555Z",
-      "decision": "published",
-      "slug": "morocco-government-targets-five-percent-growth-757c81",
-      "title": "الحكومة تستهدف نموا بـ5% وتضخما بـ2% وتقليص الدين العمومي"
-    },
-    "1ba6063136f50994": {
-      "at": "2026-10-20T09:01:47.116Z",
-      "decision": "published",
-      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
-      "title": "نخلة: إقبال أكثر من 40 صندوقًا دوليًا من 10 دول على طرح “إم إن تي حالًا”"
-    },
-    "eba7ab66685e4b5f": {
-      "at": "2026-10-20T09:01:47.116Z",
-      "decision": "published",
-      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
-      "title": "سهم إم إن تي تيك يقفز 13% أول 5 دقائق من التداول ويسجل 27.90 جنيه.. فيديو"
-    },
-    "20048608feb68aac": {
-      "at": "2026-10-20T09:01:47.116Z",
-      "decision": "published",
-      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
-      "title": "منير نخلة: إقبال أكثر من 40 صندوقا دوليا على إم إن تى حالا يعزز الثقة بسوق المال"
-    },
-    "06b1ea37e7728f44": {
-      "at": "2026-10-20T09:01:47.116Z",
-      "decision": "published",
-      "slug": "mnt-tech-shares-jump-egyptian-exchange-debut-3df070",
-      "title": "ساعة الصفر للتكنولوجيا المالية.. دق جرس التداول لأسهم إم إن تي تيك.. فيديو"
-    },
-    "faa41489b3c1ce3d": {
-      "at": "2026-10-20T09:15:27.859Z",
-      "decision": "published",
-      "slug": "arada-enters-saudi-riyadh-project-a96a6a",
-      "title": "UAE developer Arada enters Saudi market with Riyadh project"
-    },
-    "6f0e292042d2f9f6": {
-      "at": "2026-10-20T09:15:27.859Z",
-      "decision": "published",
-      "slug": "arada-enters-saudi-riyadh-project-a96a6a",
-      "title": "Arada enters Saudi Arabia with $3.8bn Riyadh project"
-    },
     "40342bc313fda006": {
       "at": "2026-10-20T14:23:25.551Z",
       "decision": "rejected",
@@ -6129,6 +6075,66 @@
       "decision": "published",
       "slug": "adnoc-drilling-wins-kuwait-offshore-rig-contracts-5cc9a7",
       "title": "«أدنوك للحفر» تتلقى خطابي ترسية عقدين في الكويت بقيمة 1.15 مليار درهم"
+    },
+    "9e74e9c1e14abf28": {
+      "at": "2026-11-10T09:56:22.639Z",
+      "decision": "published",
+      "slug": "fed-waller-december-hike-half-point-3a01d9",
+      "title": "Fed’s Waller Backs December Rate Hike, Says Open to Larger Move"
+    },
+    "f44148bc41280d76": {
+      "at": "2026-11-10T09:56:22.639Z",
+      "decision": "published",
+      "slug": "fed-waller-december-hike-half-point-3a01d9",
+      "title": "Waller'den Aralık'ta faiz artışına destek"
+    },
+    "79239226f8cb1e2f": {
+      "at": "2026-11-10T09:56:22.639Z",
+      "decision": "published",
+      "slug": "fed-waller-december-hike-half-point-3a01d9",
+      "title": "Fed Governor Waller sees December hike likely, opens door to possible half-point increase"
+    },
+    "ed3dc80d8ccc857b": {
+      "at": "2026-11-10T10:08:57.326Z",
+      "decision": "published",
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "أرباح \"أدنوك للغاز\" تتجاوز التوقعات رغم اضطرابات هرمز"
+    },
+    "5a0ddfb2b5178974": {
+      "at": "2026-11-10T10:08:57.326Z",
+      "decision": "published",
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "ADNOC Gas Posts Stunning Profit Recovery as Energy Exports Rebound"
+    },
+    "4ae9b1f915e3dd38": {
+      "at": "2026-11-10T10:08:57.326Z",
+      "decision": "published",
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "4.92 مليارات درهم أرباح «أدنوك للغاز» خلال الربع الثالث"
+    },
+    "31748a951952655b": {
+      "at": "2026-11-10T10:08:57.326Z",
+      "decision": "published",
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "ADNOC Gas net income doubles to $1.34 billion in Q3 as stronger sales support earnings"
+    },
+    "bada3e36abe0a0d3": {
+      "at": "2026-11-10T10:08:57.326Z",
+      "decision": "published",
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "Adnoc Gas expects 2026 net income to hit at least $4bn as Q3 profit improves on previous quarter"
+    },
+    "b98fab1755bef8db": {
+      "at": "2026-11-10T10:20:03.606Z",
+      "decision": "published",
+      "slug": "saudi-industrial-production-rises-september-mining-8795ed",
+      "title": "الإنتاج الصناعي السعودي يقلص وتيرة انكماشه رغم تواصل الاعتداءات الحوثية"
+    },
+    "9e6629b33b89b59a": {
+      "at": "2026-11-10T10:20:03.606Z",
+      "decision": "published",
+      "slug": "saudi-industrial-production-rises-september-mining-8795ed",
+      "title": "Saudi industrial production rebounds 15.6% in September: GASTAT"
     }
   }
 }

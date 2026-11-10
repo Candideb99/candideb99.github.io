@@ -14442,6 +14442,149 @@
           "noted": []
         }
       ]
+    },
+    "fed-waller-december-hike-half-point-3a01d9": {
+      "at": "2026-11-10T09:56:22.613Z",
+      "title": "عضو بمجلس محافظي الفيدرالي يطرح رفع الفائدة نصف نقطة إذا بقي التضخم مرتفعاً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v62",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 22,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 14,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "أما إذا جاءت مشابهة لقراءتي الشهرين السابقين، أي إذا بلغ التضخم الأساسي لأسعار المستهلكين نحو 0.3% أو أكثر على أساس شهري، فيرى أن الموقف يتطلب خطوة أقوى هي الزيادة بخمسين نقطة أساس.",
+              "quote": "Wallwer “Ancak bugün ilerleyen saatlerde açıklanacak Ekim ayı TÜFE enflasyon verileri, son iki aylık rakamlara benzer olursa, yani çekirdek TÜFE yüzde 0,3 civarında veya daha yüksek çıkarsa, o zaman daha güçlü bir politika hamlesi gerekebilir. Bu durumda, Aralık toplantısında politika faiz oranında 50 baz puanlık bir artışın değerlendirilmesi gerektiğini düşünüyorum” dedi.",
+              "source": "Bloomberg HT",
+              "sourceN": 2,
+              "correction": "Waller said a stronger policy move may be needed in that case and that a 50 bp hike should be considered, not that the situation requires it."
+            }
+          ],
+          "noted": [
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "في الأولى يميل إلى رفع سعر الفائدة الرئيسي 25 نقطة أساس حتى لو جاءت بيانات أكتوبر أهدأ من المتوقع.",
+              "quote": "Waller Londra’da yaptığı konuşmada, “Beklediğim gibi, Ekim ayında aylık enflasyon oranı yükselirse, politika faiz oranımızın 25 baz puan artırılmasını destekleme eğilimindeyim” dedi.",
+              "source": "Bloomberg HT",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "في الأولى يميل إلى رفع سعر الفائدة الرئيسي 25 نقطة أساس حتى لو جاءت بيانات أكتوبر أهدأ من المتوقع.",
+              "quote": "Waller Londra’da yaptığı konuşmada, “Beklediğim gibi, Ekim ayında aylık enflasyon oranı yükselirse, politika faiz oranımızın 25 baz puan artırılmasını destekleme eğilimindeyim” dedi.",
+              "source": "Bloomberg HT",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "adnoc-gas-q3-profit-doubles-guidance-beff04": {
+      "at": "2026-11-10T10:08:57.301Z",
+      "title": "أرباح «أدنوك للغاز» تتضاعف فصلياً إلى 1.34 مليار دولار في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v62",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 28,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-industrial-production-rises-september-mining-8795ed": {
+      "at": "2026-11-10T10:20:03.596Z",
+      "title": "الإنتاج الصناعي السعودي يرتفع 15.6% عن أغسطس بقيادة التعدين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 21,
+            "weak": 9,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
