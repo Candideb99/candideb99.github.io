@@ -12,6 +12,9 @@ const latest = (await getArticles()).slice(0, 3);
       <p class="page-intro">ربما تغيّر العنوان أو حُذفت المادة. ابدأ من <a href="/">الصفحة الرئيسية</a> أو <a href="/search/">ابحث</a> عمّا تريد.</p>
     </header>
     {latest.length > 0 && (
+      <h2 class="module__head">أحدث ما نشرنا</h2>
+    )}
+    {latest.length > 0 && (
       <div class="cols" style="--n:3">
         {latest.map((a) => (
           <StoryCard article={a} variant="card" />

@@ -18,7 +18,7 @@ import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
 import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
-import { cardSizes } from "@lib/wikimedia";
+import { cardSizes, thumbnailUrl } from "@lib/wikimedia";
 import { safeHref } from "@lib/safe-url.mjs";
 import { placeLessonParts } from "@lib/lesson-layout.mjs";
 import site from "@data/site.json";
@@ -127,7 +127,9 @@ const jsonLd = [articleLd, breadcrumbLd];
     <script is:inline define:vars={{ key: TEXT_SIZE_KEY, min: TEXT_SIZE_MIN, max: TEXT_SIZE_MAX }}>
       try { var px = Number(localStorage.getItem(key)); if (px >= min && px <= max) document.documentElement.style.setProperty("--reader-size", px + "px"); } catch (e) {}
     </script>
-    <header class:list={["article__head", { "article__head--kind": kindHead }]}>
+    {/* A search result shows the story's photograph as a thumbnail (search.astro): a small copy, named for Pagefind here
+        because the figure itself stays out of the search text. */}
+    <header class:list={["article__head", { "article__head--kind": kindHead }]} data-pagefind-meta={d.image ? "image[data-thumb]" : undefined} data-thumb={d.image ? thumbnailUrl(d.image.url, d.image.width) : undefined}>
       {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
           (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
           خازندار نُشر الجمعة 11 سبتمبر 2026 م.» before the story's first words (2026-10-19). */}
@@ -376,7 +378,14 @@ const jsonLd = [articleLd, breadcrumbLd];
   .corrections__item { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.8; color: var(--ink-2); }
   .corrections__item time { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); margin-inline-end: 0.5rem; }
 
-  .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: grid; gap: 2rem; align-content: start; align-self: stretch; }
+  .article__side { border-inline-start: 1px solid var(--rule); padding-inline-start: clamp(1.5rem, 3vw, 2.5rem); display: flex; flex-direction: column; gap: 2rem; align-self: stretch; }
+  /* The related stories stay beside the text as it scrolls, under the pinned bar: the rail had stood empty beside most of
+     a long story (the critique of 2026-11-09). Only that short list stays, and only where it fits the screen; the figures
+     above it scroll away with the lede they belong to. (A column, not a grid: a grid item can only stick inside its own
+     row.) */
+  @media (min-width: 1024px) and (min-height: 640px) {
+    .side-related { position: sticky; top: 4.5rem; }
+  }
   .side-related__list { display: grid; }
   .side-related__list > :global(.card--text) { border-top: 1px solid var(--rule); padding-block: 0.7rem; }
   .side-related__list > :global(.card--text:first-child) { border-top: 0; padding-top: 0; }
@@ -387,6 +396,14 @@ const jsonLd = [articleLd, breadcrumbLd];
     .article__side { border-inline-start: 0; padding-inline-start: 0; margin-top: 2rem; }
   }
   @media (max-width: 719px) {
+    /* On a phone the photograph follows the meta lines and the share row and the text size come under it: above it they
+       pushed the photograph to 600px of an 844px screen (the critique of 2026-11-09). The head gives up its box so its
+       parts and the figure can be ordered together; reading order is unchanged. */
+    .article { display: flex; flex-direction: column; padding-top: clamp(1.5rem, 3.5vw, 2.5rem); }
+    .article__head { display: contents; }
+    .article__head--kind > .article__kind { margin-top: 0; padding-top: 0.75rem; border-top: 3px solid var(--ink); }
+    .article__tools { order: 1; }
+    .article__layout { order: 2; }
     .article__figure :global(.article__photo) { aspect-ratio: 3 / 2 !important; }
     /* In a 343px column a bold lede a size above the text justified with word gaps nearly four
        spaces wide; at the text's size it keeps the column even. Even so the phone's column still opened

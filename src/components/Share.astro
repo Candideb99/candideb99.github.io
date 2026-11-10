@@ -82,5 +82,7 @@ const targets = [
     transition: border-color 0.15s var(--ease-out), color 0.15s var(--ease-out);
   }
   .share__link:hover, .share__link:focus-visible { border-color: var(--green); color: var(--green); }
+  /* On a touch screen each button is a finger's height (it was 31px). */
+  @media (pointer: coarse) { .share__link { display: inline-flex; align-items: center; min-height: var(--tap); } }
   .share--native .share__more { display: none; }
 </style>

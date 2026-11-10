@@ -129,6 +129,11 @@
   --n-body: clamp(1.12rem, 1.02rem + 0.35vw, 1.25rem); /* a story's text; its lede is the same size in bold */
   --n-lead: 1.12rem;    /* the cover's and a lead's summary, a page's introduction */
   --n-text: 1rem;       /* summaries and excerpts, لماذا يهمّ, notes, the footer; in bold the ticker, the files row, menus */
+  --n-bar: 0.92rem;     /* the phone's section bar (Masthead.astro), a step under the text so more names fit */
+  --n-search: 1.3rem;   /* the search input (search.astro) */
+  /* A finger's target: 44px, Apple's and WCAG's enhanced size (the critique of 2026-11-09 counted 94 of the phone
+     front's 159 targets under it). */
+  --tap: 2.75rem;
 }
 @media (max-width: 719px) {
   :root { --fs-xs: 0.8125rem; --fs-sm: 0.875rem; }
@@ -309,6 +314,8 @@ bdi:has(> .mark-dir) { white-space: nowrap; }
   transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
 }
 .pill:hover, .pill:focus-visible { border-color: var(--ink); color: var(--ink); }
+/* On a touch screen a chip is a finger's height (it was 29px). */
+@media (pointer: coarse) { .pill { min-height: var(--tap); } }
 
 /* ----- Section heading rows: the section name as a tab on a hairline, the section link opposite ----- */
 .section-head {

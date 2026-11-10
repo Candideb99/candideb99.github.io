@@ -60,10 +60,15 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 </article>
 
 <style>
-  .card { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+  .card { position: relative; display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
   .card__photo { display: block; text-decoration: none; }
   .card__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .card__title a { text-decoration: none; }
+  /* The headline is the story's one link for a screen reader and the keyboard, and its hit area covers the whole card,
+     as the digest's does: a one-line headline was a 24-28px target on a phone (the critique of 2026-11-09). The kicker
+     and the section link sit above it and keep their own pages. */
+  .card__title a::after { content: ""; position: absolute; inset: 0; }
+  .card__body :is(.kicker a, .card__meta a) { position: relative; z-index: 1; }
   .card__title a:hover { color: var(--green); }
   .card__summary { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.65; color: var(--ink-2); margin-top: 0.25rem; }
   .card__meta { margin-top: 0.3rem; font-size: var(--fs-xs); }

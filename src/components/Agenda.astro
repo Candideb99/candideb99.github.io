@@ -37,11 +37,13 @@ const events = upcoming(limit);
 
 <style>
   .agenda__list { display: grid; }
-  .agenda__item { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
+  .agenda__item { position: relative; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
   .agenda__item:first-child { border-top: 0; padding-top: 0; }
   .agenda__day { font-size: var(--fs-sm); font-weight: 700; color: var(--green); line-height: 1.5; white-space: nowrap; }
   .agenda__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; color: var(--ink); }
-  .agenda__title:hover { color: var(--green); }
+  .agenda__title:hover, .agenda__item:hover .agenda__title { color: var(--green); }
+  /* Every event opens the calendar, so the whole row is its target, the day included (it was a 24px line of text). */
+  .agenda__title::after { content: ""; position: absolute; inset: 0; }
   .agenda__foot { margin-top: 0.5rem; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink-3); }
   /* A finger-sized target (24px and more) that keeps its place in the line, as .meta links do. */
   .agenda__foot a { font-weight: 700; color: var(--ink-2); text-decoration: none; padding-block: 0.35rem; }

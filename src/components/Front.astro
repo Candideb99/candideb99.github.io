@@ -153,11 +153,14 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .figures__item a:hover .figures__story { color: var(--green); }
 
   .picks { display: grid; }
-  .picks__item { padding-block: 0.55rem; border-top: 1px solid var(--rule); }
+  .picks__item { position: relative; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
   .picks__item:first-child { border-top: 0; }
   .picks__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; display: block; }
-  .picks__title:hover { color: var(--green); }
+  .picks__title:hover, .picks__item:hover .picks__title { color: var(--green); }
+  /* The headline's hit area covers the item, as the digest's does (a one-line headline was a 24px target on a phone). */
+  .picks__title::after { content: ""; position: absolute; inset: 0; }
   .picks .meta { margin-top: 0.1rem; font-size: var(--fs-xs); }
+  .picks .meta a { position: relative; z-index: 1; }
 
   @media (max-width: 1023px) {
     .front { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }

@@ -1,8 +1,18 @@
 ---
 import Base from "@layouts/Base.astro";
 import { RUN_PATTERN } from "@lib/bidi";
+import { getArticles } from "@lib/articles";
+import { TOPICS, topicArticles, topicHref } from "@lib/topics";
 // The site's own pattern for figures and Latin runs, handed to the page's plain script (src/lib/bidi.ts).
 const runSource = RUN_PATTERN.source;
+// A way in when there is nothing to show yet or nothing was found: the standing subjects we write about most (the
+// critique of 2026-11-09: an empty search offered nothing to try next).
+const articles = await getArticles();
+const browse = Object.entries(TOPICS)
+  .flatMap(([section, list]) => list.map((t) => ({ name: t.name, href: topicHref(section, t.id), count: topicArticles(articles, section, t).length })))
+  .filter((x) => x.count >= 3)
+  .sort((a, b) => b.count - a.count)
+  .slice(0, 10);
 ---
 
 <Base title="بحث" description="ابحث في أرشيف خازندار" path="/search/" noindex>
@@ -13,9 +23,16 @@ const runSource = RUN_PATTERN.source;
     </header>
     <form class="search__form" role="search" action="/search/" method="get">
       <label class="visually-hidden" for="q">عبارة البحث</label>
-      <input id="q" class="search__input" type="search" name="q" placeholder="مثال: التضخم في منطقة اليورو" autocomplete="off" autofocus />
-      {/* The house's own clear control, a word in the furniture face: the browser's was a blue × (2026-10-19). */}
-      <button type="button" class="search__clear" hidden>مسح</button>
+      <div class="search__field">
+        <input id="q" class="search__input" type="search" name="q" placeholder="مثال: التضخم في منطقة اليورو" autocomplete="off" autofocus />
+        {/* The house's own clear control, a word in the furniture face: the browser's was a blue × (2026-10-19). */}
+        <button type="button" class="search__clear" hidden>مسح</button>
+      </div>
+      {/* Results come as the reader types; the button is there for a reader who looks for one (2026-11-10). */}
+      <button type="submit" class="search__go">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+        <span>ابحث</span>
+      </button>
     </form>
     <div class="search__results">
       <div class="search__bar">
@@ -33,6 +50,14 @@ const runSource = RUN_PATTERN.source;
       {/* Twenty at a time, and the rest a tap away: «110 نتائج، تُعرض أول 20» had no way to the other ninety. */}
       <button type="button" class="search__more" hidden>المزيد من النتائج</button>
     </div>
+    {browse.length > 0 && (
+      <nav class="search__browse" aria-labelledby="browse-head">
+        <h2 id="browse-head" class="module__head">أو تصفّح المواضيع</h2>
+        <ul class="search__browse-list">
+          {browse.map((x) => <li><a href={x.href}>{x.name}</a> <bdi class="ui">{x.count}</bdi></li>)}
+        </ul>
+      </nav>
+    )}
   </section>
 </Base>
 
@@ -52,6 +77,11 @@ const runSource = RUN_PATTERN.source;
     var sort = document.querySelector(".search__sort");
     var list = document.querySelector(".search__list");
     var more = document.querySelector(".search__more");
+    var browse = document.querySelector(".search__browse");
+    // The subjects show while there is nothing to list: before a search, and when one finds nothing.
+    function offer(show) {
+      if (browse) browse.hidden = !show;
+    }
     var pagefind = null;
     var timer;
     // Every search gets a number, and an answer that arrives after a newer search has started is dropped.
@@ -155,12 +185,16 @@ const runSource = RUN_PATTERN.source;
     }
     function item(d) {
       var meta = d.meta || {};
+      // The story's photograph as a thumbnail, as /latest/ lists them (the small copy the article names for the index).
+      var thumb = /^(https:\/\/|\/)/.test(meta.image || "") ? meta.image : "";
       return (
-        '<li class="search__item" data-section="' + escape(meta.section) + '">' +
+        '<li class="search__item' + (thumb ? " search__item--photo" : "") + '" data-section="' + escape(meta.section) + '">' +
+        (thumb ? '<img class="search__thumb" src="' + escape(thumb) + '" alt="" width="88" height="88" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' : "") +
+        '<div class="search__body">' +
         '<a class="search__title" href="' + escape(d.url) + '">' + isolate(meta.title) + "</a>" +
         (meta.summary ? '<p class="search__excerpt">' + isolate(meta.summary) + "</p>" : "") +
         '<p class="meta">' + (meta.sectionName ? '<a href="/' + escape(meta.section) + '/">' + escape(meta.sectionName) + "</a>" : "") + (meta.date ? "<time>" + escape(meta.date) + "</time>" : "") + "</p>" +
-        "</li>"
+        "</div></li>"
       );
     }
     function tally() {
@@ -209,6 +243,7 @@ const runSource = RUN_PATTERN.source;
       if (!q) {
         reset();
         say("");
+        offer(true);
         return;
       }
       load().then(function (pf) {
@@ -218,8 +253,10 @@ const runSource = RUN_PATTERN.source;
           reset();
           if (!search.results.length) {
             say("لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.");
+            offer(true);
             return;
           }
+          offer(false);
           entries = search.results.map(function (r) { return { r: r, passing: order === "date" && r.words.length < PASSING }; });
           sort.hidden = entries.length < 2;
           if (order === "date") {
@@ -271,11 +308,12 @@ const runSource = RUN_PATTERN.source;
 </script>
 
 <style>
-  .search__form { position: relative; max-width: 40rem; }
+  .search__form { display: flex; align-items: stretch; max-width: 40rem; }
+  .search__field { position: relative; flex: 1 1 auto; min-width: 0; }
   .search__input {
     width: 100%;
     font-family: var(--font-body);
-    font-size: 1.3rem;
+    font-size: var(--n-search);
     padding: 0.6rem 0.2rem;
     padding-inline-end: 3.5rem;
     border: 0;
@@ -304,6 +342,21 @@ const runSource = RUN_PATTERN.source;
   }
   .search__clear:hover { color: var(--green); }
   .search__clear[hidden] { display: none; }
+  /* The button continues the input's rule, and turns green with it while the field has focus. */
+  .search__go { flex: none; display: inline-flex; align-items: center; gap: 0.35rem; min-height: var(--tap); padding-inline: 0.8rem 0.3rem; font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--ink); background: none; border: 0; border-bottom: 2px solid var(--ink); cursor: pointer; }
+  .search__go:hover { color: var(--green); }
+  .search__form:focus-within .search__go { border-bottom: 3px solid var(--green); }
+  .search__browse { margin-top: 2.5rem; max-width: 46rem; }
+  .search__browse[hidden] { display: none; }
+  .search__browse-list { display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; }
+  .search__browse-list li { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+  .search__browse-list a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); color: var(--ink-2); text-decoration: none; }
+  .search__browse-list a:hover { color: var(--green); text-decoration: underline; }
+  .search__browse-list bdi { font-size: var(--fs-xs); color: var(--ink-3); }
+  @media (pointer: coarse) {
+    .search__browse-list { row-gap: 0; }
+    .search__browse-list a { display: inline-flex; align-items: center; min-height: var(--tap); }
+  }
   .search__results { margin-top: 1.5rem; max-width: 46rem; }
   .search__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 1rem; }
   .search__status { font-size: var(--fs-sm); color: var(--ink-3); }
@@ -318,9 +371,18 @@ const runSource = RUN_PATTERN.source;
   .search__sort button:hover { color: var(--ink); }
   .search__sort button[aria-pressed="true"] { color: var(--green); font-weight: 700; }
   .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.5rem; }
-  .search :global(.search__item) { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+  .search :global(.search__item) { position: relative; border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; text-decoration: none; }
-  .search :global(.search__title:hover) { color: var(--green); }
+  .search :global(.search__title:hover), .search :global(.search__item:hover .search__title) { color: var(--green); }
+  /* The whole result is the story's target, as a card is; its section link sits above. */
+  .search :global(.search__title::after) { content: ""; position: absolute; inset: 0; }
+  .search :global(.search__item .meta a) { position: relative; z-index: 1; }
+  /* A result with a photograph shows it as a square at the start, as the list cards do. */
+  .search :global(.search__item--photo) { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: 0.9rem; align-items: start; }
+  .search :global(.search__thumb) { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; background: var(--paper-2); }
+  @media (max-width: 719px) {
+    .search :global(.search__item--photo) { grid-template-columns: 4.5rem minmax(0, 1fr); column-gap: 0.75rem; }
+  }
   .search :global(.search__excerpt) { font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); margin-top: 0.3rem; }
   /* The passing mentions open under a label in the furniture face, on a 1px ink rule like the corrections' (the 3px
      ink rule is kept for page heads and the close of the cover). */

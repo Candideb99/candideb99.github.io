@@ -56,6 +56,7 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
   .textsize__glyph--small { font-size: var(--fs-xs); }
   .textsize__glyph--large { font-size: var(--t-module); }
   /* The house colour fills the native track and thumb; the range runs right to left with the page, larger to the left. */
-  .textsize__range { inline-size: 7.5rem; accent-color: var(--green); margin: 0; cursor: pointer; }
+  /* 44px tall, the track drawn in its middle: a 16px slider was too small a target for a finger (2026-11-10). */
+  .textsize__range { inline-size: 7.5rem; block-size: var(--tap); accent-color: var(--green); margin: 0; cursor: pointer; }
   .textsize__value { min-inline-size: 1.6em; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); text-align: end; }
 </style>

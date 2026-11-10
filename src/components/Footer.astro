@@ -75,6 +75,11 @@ const year = new Date().getUTCFullYear();
   .footer__col li { margin-block: 0.25rem; }
   .footer__col a { font-family: var(--font-body); font-size: var(--n-text); text-decoration: none; color: var(--ink-2); }
   .footer__col a:hover { color: var(--green); text-decoration: underline; }
+  /* On a touch screen each link is a finger's height (a 27px line of text, 2026-11-10). */
+  @media (pointer: coarse) {
+    .footer__col li { margin-block: 0; }
+    .footer__col li > a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: var(--tap); }
+  }
   .footer__rss { display: inline-flex; align-items: center; gap: 0.35rem; }
   .footer__bottom { border-top: 1px solid var(--rule); padding-top: 0.9rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); display: grid; gap: 0.2rem; }
   @media (max-width: 1023px) {

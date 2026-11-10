@@ -400,11 +400,12 @@ for (const s of sections) {
     /* …and is already in its pinned state, so nothing arrives when the hidden header is reported off screen. */
     .masthead--compact + .masthead__nav .bar__brand, .masthead--compact + .masthead__nav .bar__search { animation: none; }
     .nav::before, .nav::after { display: none; }
-    .nav__link { padding: 0.55rem 0.8rem 0.42rem; font-size: 0.92rem; }
-    .bar__brand { padding-inline: 0 0.6rem; }
+    /* A finger's height (it was 39px), a step under the text so more names fit. */
+    .nav__link { min-height: var(--tap); padding: 0.7rem 0.8rem 0.55rem; font-size: var(--n-bar); }
+    .bar__brand { min-height: var(--tap); padding-inline: 0 0.6rem; }
     .bar__brand img { height: 26px; }
-    .bar__search { display: flex; min-width: 40px; }
+    .bar__search { display: flex; min-width: var(--tap); }
     .menu { display: block; }
-    .menu__button { display: flex; min-width: 40px; }
+    .menu__button { display: flex; min-width: var(--tap); }
   }
 </style>

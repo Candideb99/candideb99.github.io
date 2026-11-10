@@ -4,7 +4,8 @@
  * reference numbers (STRIP_IDS), still, in the furniture face, each as its move on the day (the level is the
  * tooltip; a yield prints its level, which is the number that matters). Every item links to the board.
  */
-import { board, quotes, STRIP_IDS, formatPrice, formatMove, direction, DIRECTION_LABEL } from "@lib/markets";
+import { board, quotes, STRIP_IDS, formatPrice, formatMove, direction, whenLabel, DIRECTION_LABEL } from "@lib/markets";
+import site from "@data/site.json";
 import { timeAgo } from "@lib/format";
 interface Props {
   /** Instruments the page prints itself (a subject's own prices, the full board): one price line per page. */
@@ -19,13 +20,15 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
 {items.length > 0 && (
   <div class="markets-wrap">
     <div class="wrap markets ui" role="region" aria-label="الأسواق">
-      <a class="markets__label" href="/markets/data/">الأسواق</a>
+      {/* On a phone, where the update time at the strip's end is hidden, the label carries it: a strip reading برنت −5.5%
+          beside a headline saying «يهبط 7.4%» did not say the two were taken hours apart (the critique of 2026-11-09). */}
+      <a class="markets__label" href="/markets/data/">الأسواق{board.updatedAt && <span class="markets__label-time"> <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}</a>
       <ul class="markets__list">
         {items.map((q) => {
           const dir = direction(q);
           return (
             <li class="markets__item" data-id={q.id}>
-              <a class={q.stale ? "q q--stale" : "q"} href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}`}>
+              <a class={q.stale ? "q q--stale" : "q"} href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}، التغير عن إغلاق الجلسة السابقة، ${whenLabel(q)} ${site.timeZoneLabel}`}>
                 <span class="q__name">{q.short}</span>
                 {(q.changeMode === "abs" || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
                 {dir !== "none" && (
@@ -73,9 +76,13 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
   .q--stale .q__move, .q--stale .q__price { color: var(--ink-3); }
   .markets__time { flex: none; font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; padding-inline-start: 0.75rem; border-inline-start: 1px solid var(--rule); }
   .markets__time time { color: inherit; }
+  .markets__label-time { display: none; }
   @media (max-width: 719px) {
     .markets { gap: 0.6rem; min-height: 2rem; }
     .markets__time { display: none; }
+    .markets__label { display: grid; line-height: 1.25; padding-block: 0.3rem; }
+    .markets__label-time { display: block; font-weight: 500; color: var(--ink-3); white-space: nowrap; }
+    .markets__label-time time { color: inherit; }
   }
   /* The eight fit one line from 1366px. Below it the Nasdaq gives way (the S&P 500 stays) so the rest and the update
      time fit: measured 2026-11-09 at 1240px with the time reading «منذ 5 ساعات», the last item ran 20px past the list's

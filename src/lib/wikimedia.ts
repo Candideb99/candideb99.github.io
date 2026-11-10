@@ -78,6 +78,22 @@ function otherLibrary(url: string, naturalWidth?: number | null): ResponsiveImag
   return null;
 }
 
+/**
+ * One copy for a small thumbnail (a search result's 88px square, 2026-11-10): the smallest the library offers at or above
+ * `want` pixels, else its largest; a photograph kept on the site (a handout) is its own address.
+ */
+export function thumbnailUrl(url: string, naturalWidth?: number | null, want = 250): string {
+  const { src, srcset } = responsiveImage(url, naturalWidth);
+  if (!srcset) return src;
+  const offered = srcset
+    .split(", ")
+    .map((c) => /^(\S+) (\d+)w$/.exec(c))
+    .filter((m): m is RegExpExecArray => Boolean(m))
+    .map((m) => ({ url: m[1], width: Number(m[2]) }))
+    .sort((a, b) => a.width - b.width);
+  return (offered.find((o) => o.width >= want) ?? offered[offered.length - 1])?.url ?? src;
+}
+
 /** `sizes` for a picture card in a row of `n` across the 1240px wrap (two on tablets, a 120px thumbnail on phones). */
 export function cardSizes(n: number): string {
   const cols = Math.max(1, Math.min(4, n));

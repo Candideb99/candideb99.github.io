@@ -16,7 +16,18 @@ import { formatShortDate, timeAgo, countLabel as countWord } from "@lib/format";
 import { headline } from "@lib/bidi";
 
 const articles = await getArticles();
-const topics = dossiers(articles, { min: 2, max: 200 });
+const topics = dossiers(articles, { min: 2, max: 400 });
+// The largest and freshest files lead as cells, each with its newest story that no cell before it has printed; the rest
+// follow as an index, name and count in alphabetical order. Every file as a cell made a wall of 12 screens of identical
+// cells, the same headline under neighbouring files (the critique of 2026-11-09).
+const LEAD_FILES = 9;
+const printed = new Set<string>();
+const leading = topics.slice(0, LEAD_FILES).map((t) => {
+  const story = t.items.find((a) => !printed.has(a.id));
+  if (story) printed.add(story.id);
+  return { ...t, story };
+});
+const others = topics.slice(LEAD_FILES).sort((x, y) => x.tag.localeCompare(y.tag, "ar"));
 // The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world.
 // Counted as the desk's page gathers them ([tag].astro): its regions, and the stories tagged with its name (158 here
 // against 159 on the Gulf's page, 2026-10-31).
@@ -32,26 +43,42 @@ const subjects = Object.entries(TOPICS)
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الملفات والمناطق</h1>
-      <p class="page-intro">كل قصة جارية وكل شركة أو مؤسسة كتبنا عنها أكثر من مرة، من الأكبر والأحدث إلى الأقدم؛ ثم المواضيع الثابتة والمناطق.</p>
+      <p class="page-intro">كل قصة جارية وكل شركة أو مؤسسة كتبنا عنها أكثر من مرة: أكبرها وأحدثها أولاً، ثم سائرها مرتبةً أبجدياً، ثم المواضيع الثابتة والمناطق.</p>
     </header>
 
     {topics.length > 0 ? (
-      <div class="files-index" style={`--n:${Math.min(3, topics.length)}`}>
-        {topics.map((t) => (
+      <div class="files-index" style={`--n:${Math.min(3, leading.length)}`}>
+        {leading.map((t) => (
           <article class="files-index__item">
             <h2 class="files-index__name"><a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a></h2>
             <p class="files-index__count ui">
               <bdi>{countWord(t.items.length)}</bdi> · آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
             </p>
-            <p class="files-index__latest">
-              <a href={articleHref(t.latest)} set:html={headline(t.latest.data.title)} />
-              <time class="ui" datetime={t.latest.data.publishedAt}>{formatShortDate(t.latest.data.publishedAt)}</time>
-            </p>
+            {t.story && (
+              <p class="files-index__latest">
+                <a href={articleHref(t.story)} set:html={headline(t.story.data.title)} />
+                <time class="ui" datetime={t.story.data.publishedAt}>{formatShortDate(t.story.data.publishedAt)}</time>
+              </p>
+            )}
           </article>
         ))}
       </div>
     ) : (
       <p class="files-index__empty">لا ملفات بعد؛ يتكوّن الملف حين تتناول مادتان الموضوع نفسه.</p>
+    )}
+
+    {others.length > 0 && (
+      <section class="files-all" aria-labelledby="files-all-head">
+        <h2 id="files-all-head" class="module__head">سائر الملفات، أبجدياً</h2>
+        <ul class="files-all__list">
+          {others.map((t) => (
+            <li>
+              <a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a>
+              <bdi class="ui">{t.items.length}</bdi>
+            </li>
+          ))}
+        </ul>
+      </section>
     )}
 
     {subjects.length > 0 && (
@@ -97,6 +124,19 @@ const subjects = Object.entries(TOPICS)
   .files-index__latest time { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
   .files-index__empty { font-family: var(--font-ui); color: var(--ink-3); }
 
+  /* The index: each file's name in the reading face's bold, as a section page lists its subjects, with its count in the
+     furniture face, in ruled newspaper columns that balance themselves. */
+  .files-all { margin-top: clamp(2.25rem, 4.5vw, 3.75rem); }
+  .files-all__list { columns: 4 13rem; column-gap: var(--col-gap); column-rule: 1px solid var(--rule); }
+  .files-all__list li { break-inside: avoid; display: flex; align-items: baseline; gap: 0.45rem; padding-block: 0.28rem; }
+  .files-all__list a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink-2); text-decoration: none; }
+  .files-all__list a:hover { color: var(--green); text-decoration: underline; }
+  .files-all__list bdi { font-size: var(--fs-xs); color: var(--ink-3); }
+  @media (pointer: coarse) {
+    .files-all__list li { padding-block: 0; }
+    .files-all__list a { display: inline-flex; align-items: center; min-height: var(--tap); }
+  }
+
   /* Full width, so its head's rule runs as far as the files' rules above it (it stopped at 56rem). */
   .regions { margin-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   .regions__list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
@@ -107,4 +147,8 @@ const subjects = Object.entries(TOPICS)
 
   @media (max-width: 1023px) { .files-index { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 599px) { .files-index { grid-template-columns: 1fr; } }
+  @media (pointer: coarse) {
+    .regions__list { row-gap: 0; }
+    .regions__list a { display: inline-flex; align-items: center; min-height: var(--tap); }
+  }
 </style>
