@@ -137,9 +137,11 @@ const rows = sectionPools
     const fresh = pool.filter((a) => hoursOld(a) < FRESH_HOURS);
     const week = pool.filter((a) => hoursOld(a) >= FRESH_HOURS && hoursOld(a) < LINE_HOURS);
     const items = [...fresh, ...week].slice(0, 4);
-    const lead = items.find((a) => a.data.image && hoursOld(a) < FRESH_HOURS) ?? items[0];
+    const lead = items.find((a) => a.data.image && hoursOld(a) < FRESH_HOURS);
     return { section, items: lead ? [lead, ...items.filter((a) => a.id !== lead.id)] : [], newest: fresh[0] };
   })
+  // A block needs a photographed story of the last three days to lead it: الشركات, whose one fresh story had no
+  // photograph, opened on a headline over 500px of blank paper the hour the one shape went live (2026-11-10).
   .filter((r) => r.newest && r.items.length >= 3)
   .sort((x, y) => Date.parse(y.newest!.data.publishedAt) - Date.parse(x.newest!.data.publishedAt));
 rows.forEach((r) => place(r.items));
