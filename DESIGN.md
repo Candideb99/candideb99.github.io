@@ -200,8 +200,9 @@ Flat paper. No `box-shadow`, no gradient (the ticker scrolls horizontally with a
 
 ## Motion
 **Things settle; nothing travels.** The owner, 2026-09-27, after comparing 22 news sites: "i like annahar effects" (annahar.com fades every story block in over about a second as it enters the screen; of the 17 sites whose code could be read it was the only one). He chose the demo version of it, which is what is built:
-- Below the first screen, a photograph develops out of the `--paper-2` ground once it has arrived and the reader reaches it: opacity 0→1 over 0.95s and a settle from 1.025 scale over 1.4s.
-- Below the first screen, each story unit settles in once as the reader reaches it: cards, digest, picks, figures and agenda items, section lines, desks, section and module heads; opacity only, 0.85s, units side by side following one another by 90 ms (three steps at most).
+- Below the first screen, a photograph develops out of the `--paper-2` ground once it has arrived and the reader reaches it: opacity 0.45→1 over 0.7s and a settle from 1.025 scale over 1.2s.
+- Nothing waits blank (the owner's yes, 2026-11-10: after a fast scroll whole columns stood empty for about a second). A waiting story or photograph is already readable at `--settle-from` (0.45) and only comes up to full strength; it was 0→1 over 0.85s and 0.95s until then.
+- Below the first screen, each story unit settles in once as the reader reaches it: cards, digest, picks, figures and agenda items, section lines, desks, section and module heads; opacity only, 0.6s, units side by side following one another by 90 ms (three steps at most).
 - A chart's bars rise from the baseline (bars under zero hang from it), 0.8s staggered 55 ms, and its line draws itself over 1.2s (`pathLength="1"`); points and value labels fade in after.
 - On a pointer that hovers, a story's photograph leans in to 1.03 over 0.6s.
 - All on `--ease-out: cubic-bezier(0.16, 1, 0.3, 1)`. Colour and border transitions stay 0.15–0.2s. The cover's 0.4s fade between slides is unchanged.

@@ -445,11 +445,14 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
    The owner, 2026-09-27, after annahar.com's stories fading in on scroll: "i like annahar effects". Below the first
    screen a photograph develops out of the paper tone and a story settles in, once, when the reader reaches it; a
    chart's bars rise from their baseline and its line draws itself. Base.astro's script sets it up and adds
-   .has-motion only for a reader who has not asked for reduced motion; without the script nothing is ever hidden. */
-.has-motion .photo img.will-settle { opacity: 0; transform: scale(1.025); }
-.has-motion .photo img.is-settling { transition: opacity 0.95s var(--ease-out), transform 1.4s var(--ease-out); }
-.has-motion .settle.will-settle { opacity: 0; }
-.has-motion .settle.is-settling { transition: opacity 0.85s var(--ease-out); }
+   .has-motion only for a reader who has not asked for reduced motion; without the script nothing is ever hidden.
+   Nothing waits blank (the owner's yes, 2026-11-10): after a fast scroll whole columns stood empty for a second, so a
+   waiting story or photograph is already readable (--settle-from) and only comes up to full strength, and faster. */
+:root { --settle-from: 0.45; }
+.has-motion .photo img.will-settle { opacity: var(--settle-from); transform: scale(1.025); }
+.has-motion .photo img.is-settling { transition: opacity 0.7s var(--ease-out), transform 1.2s var(--ease-out); }
+.has-motion .settle.will-settle { opacity: var(--settle-from); }
+.has-motion .settle.is-settling { transition: opacity 0.6s var(--ease-out); }
 .has-motion .chart__mark rect { transform-box: fill-box; transform-origin: 50% 100%; }
 .has-motion .chart__mark rect.is-below { transform-origin: 50% 0; }
 .has-motion .chart.will-settle .chart__mark rect { transform: scaleY(0); }
