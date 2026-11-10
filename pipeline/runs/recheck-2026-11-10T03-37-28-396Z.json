@@ -1,0 +1,149 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-10T03:37:28.396Z",
+  "durationSec": 180,
+  "read": 4,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "germany-trade-surplus-shrinks-september-imports-271dbf",
+      "title": "الفائض التجاري الألماني يتقلص إلى 15.6 مليار يورو مع تسارع الواردات",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 14,
+        "weak": 3,
+        "noEvidence": 8,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-ports-suez-hormuz-red-sea-shift-234b6e",
+      "title": "مكاسب الموانئ السعودية من تحويل الشحن مرتبطة باستمرار تعطل هرمز",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 44,
+        "checked": 44,
+        "supported": 35,
+        "weak": 6,
+        "noEvidence": 0,
+        "notFound": 3,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "brent-falls-ten-week-low-trump-iran-377a7a",
+      "title": "برنت يهبط 7.4% إلى أدنى مستوى في عشرة أسابيع",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 20,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "term",
+          "sentence": "وأخذت الأسعار تتراجع من تلك الذروة مع انحسار المخاوف من تصعيد واسع للحرب عقب مكاسب الديمقراطيين في انتخابات التجديد النصفي الأمريكية، وهي نتيجة وصفتها «فايننشال تايمز» بأنها هزيمة قاسية للجمهوريين.",
+          "quote": "Brent crude extended last week’s losses that followed Republicans’ historic midterms defeat",
+          "source": "Financial Times",
+          "correction": "The Financial Times described the Republicans' midterms defeat as 'historic', not 'harsh'."
+        }
+      ]
+    },
+    {
+      "slug": "saudi-east-west-pipeline-attacked-operations-continue-b5b8fe",
+      "title": "الطاقة السعودية: خط شرق-غرب يعمل رغم استهدافه في منطقة المدينة المنورة",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 11,
+        "checked": 11,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 5,
+    "failures": 0,
+    "promptTokens": 42972,
+    "completionTokens": 33337,
+    "cacheReadTokens": 0,
+    "costUsd": 1.0105,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 5
+    },
+    "byRole": {
+      "checker": {
+        "calls": 5,
+        "in": 42972,
+        "read": 0,
+        "out": 33337,
+        "usd": 1.0105
+      }
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[03:37:28] second look: 4 to read now (4 published pieces not yet read; 230 read clean before publication and left out of the audit sample)",
+    "[03:38:13] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1425 in=8921 read=0 out=5761 attempt=1 ms=41978",
+    "[03:38:13] germany-trade-surplus-shrinks-september-imports-271dbf: 25 of 25 sentences checked · 14 supported · 8 without a source · 0 confirmed error(s)",
+    "[03:38:13] brent-falls-ten-week-low-trump-iran-377a7a:   source https://www.nytimes.com/2026/11/09/business/energy-environment/oil-price-iran-tr: http-403; read from the copy saved at publication (fetched then)",
+    "[03:38:13] brent-falls-ten-week-low-trump-iran-377a7a:   source https://www.ft.com/content/1b818c16-5197-45f4-857a-49f99a10252f?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[03:38:52] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2934 in=14392 read=0 out=11315 attempt=1 ms=83511",
+    "[03:38:52] saudi-ports-suez-hormuz-red-sea-shift-234b6e: 44 of 44 sentences checked · 35 supported · 3 without a source · 0 confirmed error(s)",
+    "[03:38:52] saudi-east-west-pipeline-attacked-operations-continue-b5b8fe:   source https://www.ft.com/content/45dce79e-2758-43f2-a06c-3c56db392f39?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[03:39:11] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2513 in=7037 read=0 out=6901 attempt=1 ms=53248",
+    "[03:39:11] brent-falls-ten-week-low-trump-iran-377a7a: 22 of 22 sentences checked · 20 supported · 0 without a source · 1 confirmed error(s)",
+    "[03:39:11]   ✗ [term] وأخذت الأسعار تتراجع من تلك الذروة مع انحسار المخاوف من تصعيد واسع للحرب عقب مكاسب الديمقراطيين في انتخابات ال — The Financial Times described the Republicans' midterms defeat as 'historic', not 'harsh'.",
+    "[03:39:20] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1262 in=5587 read=0 out=3535 attempt=1 ms=26038",
+    "[03:39:20] saudi-east-west-pipeline-attacked-operations-continue-b5b8fe: 11 of 11 sentences checked · 11 supported · 0 without a source · 0 confirmed error(s)",
+    "[03:39:20] corrections: 1 story to the corrections editor",
+    "[03:39:20] [correct] brent-falls-ten-week-low-trump-iran-377a7a: fetching 5 source(s)",
+    "[03:39:20] [correct]   source https://www.nytimes.com/2026/11/09/business/energy-environment/oil-pri: http-403; read from the copy saved at publication",
+    "[03:39:20] [correct]   source https://www.ft.com/content/1b818c16-5197-45f4-857a-49f99a10252f?syn-25: http-403; read from the copy saved at publication",
+    "[03:39:41] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=145 in=23857 read=0 out=2360 attempt=1 ms=16908",
+    "[03:39:41] [correct] brent-falls-ten-week-low-trump-iran-377a7a: corrected; fields body",
+    "[03:39:41]     note: ذكرت نسخة سابقة من هذا الخبر أن صحيفة «فايننشال تايمز» وصفت خسارة الجمهوريين في انتخابات التجديد النصفي الأمريكية بأنها «هزيمة قاسية»، والصحيح أنها وصفتها بأنها «هزيمة تاريخية».",
+    "[03:39:41] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-10T03-39-20-132Z.json",
+    "[03:39:42] brent-falls-ten-week-low-trump-iran-377a7a:   source https://www.nytimes.com/2026/11/09/business/energy-environment/oil-price-iran-tr: http-403; read from the copy saved at publication (fetched then)",
+    "[03:39:42] brent-falls-ten-week-low-trump-iran-377a7a:   source https://www.ft.com/content/1b818c16-5197-45f4-857a-49f99a10252f?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[03:40:28] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1589 in=7035 read=0 out=5825 attempt=1 ms=43760",
+    "[03:40:28] brent-falls-ten-week-low-trump-iran-377a7a: the correction reads clean where it wrote"
+  ]
+}

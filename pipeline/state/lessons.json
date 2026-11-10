@@ -246,10 +246,14 @@
     "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
     "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70",
     "gold-erases-friday-losses-oil-falls-2282bb:9500b357",
-    "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c"
+    "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c",
+    "germany-trade-surplus-shrinks-september-imports-271dbf:162901e2",
+    "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671",
+    "saudi-ports-suez-hormuz-red-sea-shift-234b6e:da01db17",
+    "brent-falls-ten-week-low-trump-iran-377a7a:afb98acf"
   ],
-  "version": 61,
-  "updatedAt": "2026-11-09T19:55:21.076Z",
+  "version": 62,
+  "updatedAt": "2026-11-10T03:40:28.773Z",
   "lessons": [
     {
       "id": "L1",
@@ -421,11 +425,12 @@
         "saudi-east-west-pipeline-flows-resume-411ecd:a01587d2",
         "google-finland-13-billion-ai-nuclear-54b058:60c19b40",
         "google-finland-13-billion-ai-nuclear-54b058:6bb512b5",
-        "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807"
+        "egypt-sisi-orders-strategic-stockpile-study-c53757:16a38807",
+        "brent-falls-ten-week-low-trump-iran-377a7a:afb98acf"
       ],
-      "seen": 23,
+      "seen": 24,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-08T10:30:05.684Z",
+      "lastSeen": "2026-11-10T03:40:28.773Z",
       "status": "active",
       "previous": [
         "Translate financial terms and tenors exactly. The 10-year Treasury is سندات الخزانة لأجل 10 سنوات, not 'more than ten years'. A nominal yield is not 'actual'. Open interest is العقود/المراكز المفتوحة, not interest. Add no descriptor the source lacks."
@@ -479,11 +484,12 @@
         "france-secures-gulf-diesel-supplies-a5bb1f:ede0a439",
         "saudi-utility-tariffs-monthly-support-2027-748f63:07d9ec5d",
         "saudi-utility-tariffs-monthly-support-2027-748f63:29472625",
-        "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74"
+        "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74",
+        "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671"
       ],
-      "seen": 37,
+      "seen": 38,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-10-27T07:48:05.689Z",
+      "lastSeen": "2026-11-10T03:40:28.773Z",
       "status": "active",
       "previous": [
         "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
@@ -570,11 +576,12 @@
         "french-bond-yields-jump-after-protests-1b64ee:1cdf42b9",
         "boj-holds-rate-inflation-hits-target-728e78:91475147",
         "gulf-states-sign-railway-link-agreement-36de9b:069419b4",
-        "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c"
+        "china-extends-us-tariff-suspension-two-months-ec7ccf:96e1b26c",
+        "germany-trade-surplus-shrinks-september-imports-271dbf:162901e2"
       ],
-      "seen": 34,
+      "seen": 35,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-09T19:55:21.076Z",
+      "lastSeen": "2026-11-10T03:40:28.773Z",
       "status": "active",
       "previous": [
         "Take each event's day from the source's sentence about that event: 'this weekend' is not 'this week', and the event's day is not the report's publication date. Convert a weekday by counting back from publication. Keep announcements, remarks and replies on their own days.",
@@ -653,11 +660,12 @@
         "alphabet-shares-fall-after-earnings-miss-7ca1aa:02d23766",
         "binance-freezes-3-billion-potential-hack-647d53:2997c61e",
         "binance-freezes-3-billion-potential-hack-647d53:3630c5b4",
-        "brent-rebounds-us-strike-qeshm-island-382dd6:331de844"
+        "brent-rebounds-us-strike-qeshm-island-382dd6:331de844",
+        "saudi-ports-suez-hormuz-red-sea-shift-234b6e:da01db17"
       ],
-      "seen": 24,
+      "seen": 25,
       "createdAt": "2026-09-25T12:04:58.585Z",
-      "lastSeen": "2026-11-03T17:11:12.184Z",
+      "lastSeen": "2026-11-10T03:40:28.773Z",
       "status": "active",
       "previous": [
         "Copy every number and ranking with its own qualifier. 500 is not 'more than 500', 'nearly 4,000' is not 4,000, and 'one of the most important' is not 'the most important'. Never move a qualifier from one figure onto its neighbour.",
@@ -781,17 +789,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T07:42:29.972Z",
-      "mistakes": 22,
-      "applied": [
-        "sharpen L2 (+9)",
-        "sharpen L6 (+5)",
-        "sharpen L1 (+3)",
-        "add L7 [other] from 3 mistake(s)",
-        "reinforce L3 (+2)"
-      ]
-    },
     {
       "at": "2026-09-25T08:25:25.678Z",
       "mistakes": 15,
@@ -1290,6 +1287,16 @@
       "mistakes": 1,
       "applied": [
         "reinforce L6 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-10T03:40:28.773Z",
+      "mistakes": 4,
+      "applied": [
+        "reinforce L6 (+1; reworded at most once a week)",
+        "reinforce L4 (+1; reworded at most once a week)",
+        "reinforce L8 (+1; reworded at most once a week)",
+        "reinforce L3 (+1; reworded at most once a week)"
       ]
     }
   ],

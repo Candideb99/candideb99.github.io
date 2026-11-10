@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-10T03:39:20.251Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "brent-falls-ten-week-low-trump-iran-377a7a",
+      "issue": "The body says «وأخذت الأسعار تتراجع من تلك الذروة مع انحسار المخاوف من تصعيد واسع للحرب عقب مكاسب الديمقراطيين في انتخابات التجديد النصفي الأمريكية، وهي نتيجة وصفتها «فايننشال تايمز» بأنها هزيمة قاسية للجمهوريين.» (Prices declined from the peak as fears of broad escalation eased after Democratic gains in the US midterms, a result the Financial Times described as a 'harsh' defeat for Republicans.). Source Financial Times says: \"Brent crude extended last week’s losses that followed Republicans’ historic midterms defeat\". The Financial Times described the Republicans' midterms defeat as 'historic', not 'harsh'.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن صحيفة «فايننشال تايمز» وصفت خسارة الجمهوريين في انتخابات التجديد النصفي الأمريكية بأنها «هزيمة قاسية»، والصحيح أنها وصفتها بأنها «هزيمة تاريخية».",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "وأخذت الأسعار تتراجع من تلك الذروة مع انحسار المخاوف من تصعيد واسع للحرب عقب مكاسب الديمقراطيين في انتخابات التجديد النصفي الأمريكية، وهي نتيجة وصفتها «فايننشال تايمز» بأنها هزيمة قاسية للجمهوريين."
+      ],
+      "newSentences": [
+        "وأخذت الأسعار تتراجع من تلك الذروة مع انحسار المخاوف من تصعيد واسع للحرب عقب مكاسب الديمقراطيين في انتخابات التجديد النصفي الأمريكية، وهي نتيجة وصفتها «فايننشال تايمز» بأنها هزيمة تاريخية للجمهوريين."
+      ]
+    }
+  ]
+}

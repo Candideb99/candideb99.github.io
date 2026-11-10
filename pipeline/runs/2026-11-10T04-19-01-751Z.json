@@ -1,0 +1,528 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-10T03:40:53.232Z",
+  "durationSec": 2289,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "فائض الصين التجاري يتجاوز تريليون دولار للعام الثاني مع قفزة الصادرات 35%",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/11/09/business/china-trade-surplus-trillion.html",
+        "https://www.bloomberg.com/news/articles/2026-11-10/chinese-trade-surplus-surpasses-1-trillion-for-second-time-ever",
+        "https://www.snabusiness.com/article/1903699-%D9%81%D8%A7%D8%A6%D8%B6-%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A-%D9%8A%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D8%AA%D8%B1%D9%8A%D9%84%D9%8A%D9%88%D9%86-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%84%D9%84%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A",
+        "https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التالي يحددان البلد (الصين) والحدث: فائض عشرة أشهر يتجاوز تريليون دولار للمرة الثانية، مع تقلص فائض أكتوبر إلى أدنى مستوى منذ أبريل. لا تناقض بين الاثنين، لأن المتن يشرح أن قفزة الواردات قلّصت الفائض الشهري بينما بقي التراكمي فوق التريليون.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "توفر المصادر ثلاثة تفسيرات، والمسودة تحمل اثنين منها كاملين. السبب حاضر: الطلب على الرقائق ومعدات الذكاء الاصطناعي (SOURCE 4)، والعوامل الهيكلية بحسب هيريرو (SOURCE 3). التوقعات حاضرة: 33.5% للصادرات و32% للواردات بحسب استطلاع رويترز، وفائض دون التوقعات. ردود الفعل والعواقب ناقصة: يغيب حكم هيريرو «غير قابل للاستمرار» وتحذيرات شيا والمخاطر المرتبطة بالذكاء الاصطناعي التي يقوم عليها استنتاج «لماذا يهمّ». الاستنتاج نفسه محدود ومشروط بـ«إذا فتر الطلب الخارجي»، ومقدماته مسنودة من SOURCE 4، لكنه يفتقد في المتن التمهيد المصدري لهذا الخطر.",
+              "repair": "أضيفوا خطر تباطؤ الذكاء الاصطناعي (SOURCE 4) وتحذيرات شيا (SOURCE 3) قرب فقرة الرقائق، وأضيفوا حكم هيريرو إلى فقرتها."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان الجديد هو تجاوز التريليون للمرة الثانية وأسرع من العام الماضي. يطوّره المتن مباشرة بعد المقدمة: الرقم القياسي لعام 2025، ثم قفزة الواردات وأثرها في الفائض الشهري، ثم محركات الصادرات وأسبابها الهيكلية، ثم ضعف الاستهلاك والطلبيات، ثم القيود الأوروبية والهدنة الأمريكية والقمة المقبلة. الفقرات مجمّعة حسب وظيفتها، والعناوين الفرعية تطابق مضمون فقراتها.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والفترات وقواعد المقارنة مطابقة للمصادر: 35.2% و41.6% على أساس سنوي، و105.3 مليار دولار مقابل 133.5 مليار، و1.04 تريليون من يناير إلى أكتوبر، وسقف 350 ألف سيارة سنوياً. لكن عبارة «هدنة... تشمل إعفاءات» تدمج إجراءات منفصلة في SOURCE 4، وعبارة «تحمي دول عدة صناعاتها» تحوّل «تسعى إلى حماية» إلى فعل منجز (SOURCE 3).",
+              "repair": "«...تمديد هدنة تجارية أوسع لشهرين حتى يناير، إلى جانب إجراءات أخرى منها إعفاءات...»، و«في وقت تسعى فيه دول عدة إلى حماية صناعاتها»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يوضح العنوان والدك البلد والحدث: فائض تراكمي فوق التريليون، وفائض شهري تقلص بفعل قفزة الواردات. والتمييز بين الفائض التراكمي والفائض الشهري واضح. لكن «في 10 أشهر للمرة الثانية» يغيّر نطاق الإنجاز، فالمرة الثانية تخص تجاوز التريليون في سنة، وبلوغه في عشرة أشهر جديد هذا العام (SOURCE 1).",
+              "repair": "«يتجاوز تريليون دولار للعام الثاني وبأسرع وتيرة»، مع تعديل المقدمة لتقول إن هذا العام بلغه قبل موعد العام الماضي بشهر."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحضر التفسيرات الثلاثة. السبب: الطلب على الرقائق ومعدات الذكاء الاصطناعي (SOURCE 4)، والعوامل الهيكلية بحسب هيريرو (SOURCE 3). التوقعات: 33.5% للصادرات و32% للواردات وفائض دون التوقعات (SOURCE 4). ردود الفعل والعواقب: حكم هيريرو، وتحذيرات شيا، وقيود الاتحاد الأوروبي مع تقدير سيتسر. ويقوم «لماذا يهمّ» على مقدمات مسنودة، هي الاعتماد على الرقائق وفتور الطلبيات ومبيعات تجزئة 1.1% والدعم المعتدل، ويستنتج منها استنتاجاً محدوداً مشروطاً بـ«إذا فتر الطلب الخارجي»: انتقال عبء النمو إلى الاستهلاك وإلى دعم أوسع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "ما يقول العنوان إنه جديد، أي تجاوز التريليون، تطوره الفقرتان التاليتان للمقدمة مباشرة: الرقم القياسي لعام 2025، ثم قفزة الواردات وانكماش الفائض الشهري. بعدهما تتجمع الكتل حول أسئلتها: الصادرات ومخاطرها، ثم ضعف الاستهلاك، ثم القيود الخارجية والهدنة. وأقوال شيا موزعة بحسب ما تفسره. ولا يكرر الصندوق ما في المتن، بل يضيف انتقال العبء.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "النسب والقواعد صحيحة: 35.2% و41.6% على أساس سنوي، و105.3 مقابل 133.5 مليار دولار، و1.04 تريليون من يناير إلى أكتوبر، وسقف 350 ألف سيارة مقابل 300 ألف و800 ألف. وفُصلت الإعفاءات عن الهدنة، وحُفظت صيغة «تعتزم» في قيود الاتحاد الأوروبي. يبقى أن «للمرة الثانية» في العنوان والمقدمة ملحقة بفترة العشرة أشهر لا بالسنة.",
+              "repair": "ربط «للمرة الثانية» بالعام لا بالأشهر العشرة، كما في الإصلاح المقترح."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "خطأ في العنوان والمقدمة: «يتجاوز تريليون دولار في 10 أشهر للمرة الثانية» و«تجاوز الفائض... تريليون دولار في الأشهر العشرة الأولى من العام، للمرة الثانية في تاريخها» يوحيان بأن الصين بلغت هذا الحاجز في عشرة أشهر مرتين. لكن SOURCE 1 تقول إن الصين بلغته هذا العام قبل موعده في العام الماضي بشهر، أي أنها بلغته العام الماضي في أحد عشر شهراً. وما تصفه SOURCE 2 وSOURCE 3 بالمرة الثانية هو تجاوز التريليون في سنة واحدة، لا في عشرة أشهر. والجملة الثانية في المقدمة («قبل شهر كامل من موعد بلوغه في العام الماضي») تناقض الأولى. الإصلاح المقترح للعنوان: «فائض الصين التجاري يتجاوز تريليون دولار للعام الثاني وبأسرع وتيرة». والمقترح للمقدمة: «تجاوز الفائض التجاري للصين تريليون دولار للعام الثاني على التوالي، إذ بلغ 1.04 تريليون دولار من يناير إلى أكتوبر، أي قبل شهر من موعد بلوغه في العام الماضي».",
+        "أُصلحت الملاحظات السبع على المسودة السابقة. أُضيف خطر الذكاء الاصطناعي منسوباً إلى SOURCE 4، وأُضيف تحذيرا شيا عبر أسوشيتد برس (SOURCE 3). ودخل حكم هيريرو «غير قابل للاستمرار على المدى الطويل» إلى فقرتها، وصار فعلها «تسعى... إلى حماية». وخرج من صندوق الأرقام رقما مبيعات التجزئة وفائض 2025. وصارت الإعفاءات «إلى جانب إجراءات أخرى» منفصلة عن الهدنة. لا يبقى من الملاحظات السابقة شيء.",
+        "يوضح العنوان والدك البلد والحدث: فائض تراكمي فوق التريليون، وفائض شهري تقلص بفعل قفزة الواردات. والتمييز بين الفائض التراكمي والفائض الشهري واضح. لكن «في 10 أشهر للمرة الثانية» يغيّر نطاق الإنجاز، فالمرة الثانية تخص تجاوز التريليون في سنة، وبلوغه في عشرة أشهر جديد هذا العام (SOURCE 1). — «يتجاوز تريليون دولار للعام الثاني وبأسرع وتيرة»، مع تعديل المقدمة لتقول إن هذا العام بلغه قبل موعد العام الماضي بشهر.",
+        "النسب والقواعد صحيحة: 35.2% و41.6% على أساس سنوي، و105.3 مقابل 133.5 مليار دولار، و1.04 تريليون من يناير إلى أكتوبر، وسقف 350 ألف سيارة مقابل 300 ألف و800 ألف. وفُصلت الإعفاءات عن الهدنة، وحُفظت صيغة «تعتزم» في قيود الاتحاد الأوروبي. يبقى أن «للمرة الثانية» في العنوان والمقدمة ملحقة بفترة العشرة أشهر لا بالسنة. — ربط «للمرة الثانية» بالعام لا بالأشهر العشرة، كما في الإصلاح المقترح."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "جزء كبير من قفزة الصادرات يعكس طلباً قوياً على الرقائق الصينية ومعدات الذكاء الاصطناعي، وأي تباطؤ في التوسع العالمي في الذكاء الاصطناعي قد يضعف الزخم",
+          "source": 4
+        },
+        {
+          "fact": "حذّر ديف شيا من أن تباطؤاً أو تصحيحاً حاداً في استثمارات الذكاء الاصطناعي قد يوجّه ضربة قوية للصادرات الصينية",
+          "source": 3
+        },
+        {
+          "fact": "تباطأت الطلبيات الجديدة المحلية والخارجية وانكمش النشاط الصناعي على نحو غير متوقع في أكتوبر مع فتور الطلبيات الخارجية",
+          "source": 4
+        },
+        {
+          "fact": "سمحت قوة الصادرات لصانعي السياسات بالاكتفاء بدعم معتدل لبلوغ مستهدف النمو البالغ 4.5% إلى 5%",
+          "source": 4
+        }
+      ],
+      "slug": "china-trade-surplus-tops-trillion-again-e535d2",
+      "title": "فائض الصين التجاري يتجاوز تريليون دولار للمرة الثانية في تاريخه",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "ملخص بنك اليابان يرجح رفع الفائدة في ديسمبر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-10/boj-summary-suggests-good-chance-of-near-term-interest-rate-hike",
+        "http://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi261030.pdf"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان بنك اليابان واجتماع أكتوبر، والمقدمة تنقل قراءة بلومبرغ لاحتمال الرفع في ديسمبر مع نسبتها. غير أن «وعضوين يريان» يقدم عدداً من الأعضاء لا يثبته الملخص غير المنسوب.",
+              "repair": "«ورأيين يريان أن إبقاء الفائدة كان مناسباً» في العنوان الفرعي والمتن."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الدافع موجود: التضخم الأساسي المتسق مع هدف 2% والأوضاع التيسيرية وصلابة الشركات. والقيود موجودة أيضاً: الأثر التراكمي للرفع وضعف الاستهلاك والشرق الأوسط. لكن «لماذا يهمّ» يبني استدلاله على أن النفط يرفع «التضخم الذي يستند إليه الداعون»، في حين يستندون إلى التضخم الأساسي الذي يقول المصدر 2 إن انتقال صدمة النفط إليه محدود.",
+              "repair": "صياغة الاستدلال بشرط الانتقال إلى الأجور والتضخم الأساسي، كما في البند الخامس."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، أي ضرورة الرفع قريباً، يتطور مباشرة بعد فقرة توضح طريقة قراءة الملخص، وهذا مقبول. لكن «فقد دخل الارتفاع…» تفرض رابطاً سببياً غير مسند، و«يبقى سوق العمل ركيزة الداعين إلى الرفع» تنسب حجة الأجور إلى معسكر بعينه.",
+              "repair": "حذف «فقد»، وافتتاح فقرة الأجور بتباين الآراء من دون نسبتها إلى الداعين إلى الرفع."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التوقيت صحيح: 8:50 صباح الثلاثاء 10 نوفمبر بتوقيت اليابان، وكذلك أرقام 2–3% و3% والسنتان الماليتان 2026 و2027. أما «في مقدمة ما يستدعي المتابعة» فتعمم رأياً واحداً على الملخص، و«عضوان» تثبت عدداً غير منسوب.",
+              "repair": "«ورأى رأي أن نتائج مفاوضات الأجور الربيعية… تستدعي المتابعة في الوقت الراهن»، و«رأيان» بدل «عضوان»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان بنك اليابان واجتماع أكتوبر، والمقدمة تنسب احتمال الرفع في ديسمبر إلى قراءة بلومبرغ (المصدر 1). والرأيان المؤيدان للإبقاء صارا «رأيين» لا «عضوين».",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل الدافع (التضخم الأساسي والأوضاع التيسيرية وصلابة الشركات) والقيود (الأثر التراكمي وضعف الاستهلاك والشرق الأوسط). لكن جملة «يُستدل على ميزان المجلس من عدد الآراء» تقدم للقارئ مفتاح قراءة غير مسند. وصندوق «لماذا يهمّ» استدلال مشروط مقبول: الطاقة تضغط على النمو، وحجة الرفع مشروطة بانتقال الصعود إلى الأجور والتضخم الأساسي.",
+              "repair": "حذف جملة الاستدلال بعدد الآراء. وفي الصندوق تُستبدل «يتوقع الملخص» بصيغة الرأي أو بصيغة «تتوقع آراء في الملخص»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (ضرورة الرفع قريباً) يتطور بعد فقرة المنهج مباشرة، وهذا جيد. غير أن قسم «حجج تسريع الرفع» يضم رأي النفط والجولة الثانية المحدودة وتوقع 3%، وليست حججاً للرفع. وفقرة الأجور مبنية على تعارض غير موجود، والختام جملة معزولة.",
+              "repair": "فصل آراء التضخم في قسم خاص، وإعادة كتابة فقرة الأجور من دون «تباينت/مخالفاً»، وضم جملة المفاوضات الربيعية إليها."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "التوقيت (صباح الثلاثاء 10 نوفمبر بتوقيت طوكيو) ونطاق 2–3% وتوقع أكثر من 3% والسنتان الماليتان 2026 و2027 صحيحة. لكن «تنطلق الآراء الداعية…» تعمم رأياً واحداً وتسقط شرطه («تبعاً لتطورات النشاط والأسعار والأوضاع المالية»)، و«ويصف الملخص» تنسب رأياً واحداً إلى الملخص كله.",
+              "repair": "«ورأى أحد الآراء… تبعاً لتطورات النشاط والأسعار والأوضاع المالية»، و«ورأى رأي أن الاقتصاد تعافى باعتدال…»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "تباين مخترع في الأجور: «تباينت الآراء في الأجور… لكن رأياً مخالفاً رجّح ألا يرتفع نمو الأجور كثيراً عن هذا العام». المصدر 2 لا يورد أي تعارض بين الرأيين. رأي الشركات يتوقع زيادة «بمعدل مماثل لمعدل هذا العام»، والرأي الآخر يقول إن النمو «لن يرتفع كثيراً عن هذا العام»، وكلاهما يتوقع وتيرة قريبة من وتيرة هذا العام. الفرق بينهما في الاستنتاج فقط: الأول يرى «احتمالاً كافياً» لاستمرار أجور متسقة مع هدف 2%، والثاني يرى أن خطر الجولة الثانية على الأجور ليس مرتفعاً. الإصلاح: حذف «تباينت» و«لكن رأياً مخالفاً»، وكتابة: «ورجّح رأي ثالث ألا يرتفع نمو الأجور كثيراً عن هذا العام، فخطر انتقال الغلاء الحالي إلى الأجور في نظره ليس مرتفعاً، ودعا إلى مراقبة أثر تراجع الأسعار الناجم عن إجراءات الحكومة في مفاوضات الأجور المقبلة»، وإضافة خلاصة الرأي الثاني: «ورأى أن هناك احتمالاً كافياً لاستمرار نمو أجور متسق مع هدف 2%» (المصدر 2).",
+        "استدلال منهجي غير مسند: «ولذلك يُستدل على ميزان المجلس من عدد الآراء ومضمونها». المصدر 2 لا يقول ذلك. والجملة تناقض ما قبلها مباشرة: ما دامت الآراء غير منسوبة، فقد يكتب العضو الواحد أكثر من رأي، ولا يدل عددها على ميزان المجلس. وهذا ما نبّه إليه التقرير السابق بشأن «عضوين». الإصلاح: حذف الجملة، والاكتفاء بشرح طريقة إعداد الملخص، ثم الانتقال إلى الآراء.",
+        "عنوان فرعي لا يطابق فقرتيه: تحت «حجج تسريع الرفع» تقع فقرة «وعزا رأي صعود التضخم مؤخراً إلى ارتفاع أسعار النفط الخام… بدا محدوداً حتى الآن»، وتوقع تجاوز 3% قرب نهاية السنة المالية. المصدر 2 لا يضعهما في معسكر الرفع. الرأي الأول يخلص إلى «مراقبة دقيقة» لثبات التضخم الأساسي، والثاني توقع مجرد. وهذا خطأ النسبة إلى معسكر نفسه الذي صُحح في فقرة الأجور. الإصلاح: نقل الفقرتين إلى قسم مستقل عن مسار التضخم، مثل «التضخم بين النفط والأساس»، يجمع نطاق 2–3% وتوقع 3% وأثر النفط والجولة الثانية المحدودة وضعف الترسيخ مقارنة بأوروبا وأمريكا.",
+        "تعميم رأي واحد: «تنطلق الآراء الداعية إلى الرفع من أن التضخم الأساسي يتسق عموماً مع هدف… والأوضاع المالية ما زالت تيسيرية، فيكون من المناسب أن يواصل البنك رفع الفائدة». هذا رأي واحد في المصدر 2، وقد سقط منه شرطه: «تبعاً لتطورات النشاط والأسعار والأوضاع المالية». الإصلاح: «ورأى أحد الآراء أن التضخم الأساسي يتسق عموماً مع هدف 2% وأن الأوضاع المالية تيسيرية، فمن المناسب أن يواصل البنك رفع الفائدة تبعاً لتطورات النشاط والأسعار والأوضاع المالية». ويسري التنبيه نفسه على «ويصف الملخص اقتصاداً تعافى…» و«يتوقع الملخص» في «لماذا يهمّ»، فهو رأي واحد: «ورأى رأي أن الاقتصاد تعافى باعتدال…».",
+        "عربية متعثرة وفقرة ختامية معزولة: «ودعا رأي إلى متابعة نتائج مفاوضات الأجور الربيعية السنوية بين الإدارات والعمال في العام المقبل في الوقت الراهن». الظرفان «في العام المقبل في الوقت الراهن» متتاليان، والجملة فقرة من سطر واحد. وكذلك «أما الرأي القائل إن التضخم الأساسي بلغ 2% بالفعل» بأداة التعريف لرأي لم يُذكر من قبل. الإصلاح: ضم الجملة إلى فقرة الأجور: «ورأى رأي أن نتائج مفاوضات الأجور الربيعية للعام المقبل هي ما يستحق المتابعة في الأجل القريب»، وتنكير الثانية: «ورأى رأي آخر أن التضخم الأساسي بلغ 2% بالفعل، فطالب…».",
+        "المسودة تحمل الدافع (التضخم الأساسي والأوضاع التيسيرية وصلابة الشركات) والقيود (الأثر التراكمي وضعف الاستهلاك والشرق الأوسط). لكن جملة «يُستدل على ميزان المجلس من عدد الآراء» تقدم للقارئ مفتاح قراءة غير مسند. وصندوق «لماذا يهمّ» استدلال مشروط مقبول: الطاقة تضغط على النمو، وحجة الرفع مشروطة بانتقال الصعود إلى الأجور والتضخم الأساسي. — حذف جملة الاستدلال بعدد الآراء. وفي الصندوق تُستبدل «يتوقع الملخص» بصيغة الرأي أو بصيغة «تتوقع آراء في الملخص».",
+        "عنصر العنوان (ضرورة الرفع قريباً) يتطور بعد فقرة المنهج مباشرة، وهذا جيد. غير أن قسم «حجج تسريع الرفع» يضم رأي النفط والجولة الثانية المحدودة وتوقع 3%، وليست حججاً للرفع. وفقرة الأجور مبنية على تعارض غير موجود، والختام جملة معزولة. — فصل آراء التضخم في قسم خاص، وإعادة كتابة فقرة الأجور من دون «تباينت/مخالفاً»، وضم جملة المفاوضات الربيعية إليها.",
+        "التوقيت (صباح الثلاثاء 10 نوفمبر بتوقيت طوكيو) ونطاق 2–3% وتوقع أكثر من 3% والسنتان الماليتان 2026 و2027 صحيحة. لكن «تنطلق الآراء الداعية…» تعمم رأياً واحداً وتسقط شرطه («تبعاً لتطورات النشاط والأسعار والأوضاع المالية»)، و«ويصف الملخص» تنسب رأياً واحداً إلى الملخص كله. — «ورأى أحد الآراء… تبعاً لتطورات النشاط والأسعار والأوضاع المالية»، و«ورأى رأي أن الاقتصاد تعافى باعتدال…»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ذكر رأي في الملخص أن التضخم ارتفع مؤخراً على خلفية صعود أسعار النفط الخام، لكن آثار الجولة الثانية لهذه الزيادات بدت محدودة حتى الآن.",
+          "source": 2
+        },
+        {
+          "fact": "رأى أحد الآراء أن التضخم الأساسي يتسق عموماً مع هدف 2% وأن الأوضاع المالية تيسيرية، فمن المناسب مواصلة رفع الفائدة تبعاً لتطورات النشاط والأسعار والأوضاع المالية.",
+          "source": 2
+        },
+        {
+          "fact": "توقع رأي في الملخص أن يضغط ارتفاع أسعار الطاقة والمواد الخام على النشاط في السنة المالية 2026 مع تباطؤ النمو.",
+          "source": 2
+        },
+        {
+          "fact": "رأى رأيان في الملخص أن إبقاء الفائدة كان مناسباً، أحدهما لتقييم الأثر التراكمي للزيادات السابقة مع ظهور ضعف في أجزاء من الاقتصاد.",
+          "source": 2
+        }
+      ],
+      "slug": "boj-summary-december-rate-hike-chance-79a45b",
+      "title": "أعضاء في مجلس بنك اليابان يرون ضرورة رفع الفائدة قريباً",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أدنوك للحفر تفوز بعقدين لحفارتين بحريتين في الكويت بقيمة 315 مليون دولار",
+      "section": "companies",
+      "importance": 6,
+      "sources": [
+        "https://www.agbi.com/oil-and-gas/2026/11/adnoc-drilling-expands-in-kuwait-with-315m-rig-deal/",
+        "https://www.snabusiness.com/article/1903696-%D8%A3%D8%AF%D9%86%D9%88%D9%83-%D9%84%D9%84%D8%AD%D9%81%D8%B1-%D8%AA%D9%81%D9%88%D8%B2-%D8%A8%D8%B9%D9%82%D8%AF%D9%8A%D9%86-%D9%84%D8%AA%D8%B4%D8%BA%D9%8A%D9%84-%D8%AD%D9%81%D8%A7%D8%B1%D8%AA%D9%8A%D9%86-%D8%A8%D8%AD%D8%B1%D9%8A%D8%AA%D9%8A%D9%86",
+        "https://www.albayan.ae/economy/1563944"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (الكويت) وهوية الشركة («الشركة الإماراتية»)، والقيمة القصوى (313.6 مليون دولار) بصيغة «تصل إلى». ويوضح السطر التمهيدي أن العقدين أول دخول للشركة إلى الحفر البحري خارج الإمارات. أما شرط استيفاء الإجراءات فقد جاء في الختام.",
+              "repair": "يمكن تقوية العنوان بذكر موضوع العقدين: «… تفوز بعقدين لتشغيل حفارتين بحريتين في الكويت بقيمة تصل إلى 313.6 مليون دولار»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة عناصر سياق: أدنى سعر في المناقصة (SOURCE 1 عن «الراي»)، وخطة الكويت لرفع طاقتها من 2.6 إلى 3.5 مليون برميل يومياً بحلول 2035 (SOURCE 1)، وصفقة «إم بي بتروليوم سيرفيسز» العاملة في الكويت (SOURCE 1). المسودة تحمل الثلاثة، لكنها تزاحمها بفقرة استراتيجية الشركة وكلام الرئيس التنفيذي العام. صندوق «لماذا يهمّ» يستند إلى مقدمات صحيحة: أدنى عرض، ومساهمة كاملة في 2028، وأول عمليات بحرية خارج الإمارات، وخطة الكويت. واستنتاجه المشروط («إذا مضت الكويت في خطتها») متناسب مع الوقائع.",
+              "repair": "تحذف فقرة الاستراتيجية والتصريح العام أو تختصر إلى جملة تربط الصفقة بخطة التوسع في دول الخليج الست، وتنقل إلى جانب فقرة «إم بي بتروليوم سيرفيسز»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "خبر العنوان (عقدان بقيمة 313.6 مليون دولار) تطوره الفقرة الأولى والثانية بتفاصيل الترسية والمدة والقيمة. لكن الفقرة الأولى تعيد جملة «الراي» الواردة في المقدمة، والفقرة الرابعة («أما «أدنوك للحفر» فتربط العقدين باستراتيجيتها…») تقطع التسلسل بين خطة الكويت وخلفية توسع الشركة.",
+              "repair": "تحذف الجملة المكررة من الفقرة الأولى. وتجمع فقرة خطة الكويت مع فقرة توسع الشركة الخليجي وصفقة «إم بي بتروليوم سيرفيسز» في كتلة خلفية واحدة. ثم يختم التقرير بفقرة التوقيت والمساهمة المالية والشروط."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "القيم الثلاث (96.55 مليون دينار، و313.6 مليون دولار، و1.15 مليار درهم) والمدة (أربع سنوات مع سنة تمديد خارج القيمة القصوى) مطابقة لـ SOURCE 2 وSOURCE 3. غير أن «لن يبدأ العمل… قبل الربع الرابع من 2027» تحوّل التوقع المعلن إلى نفي قاطع.",
+              "repair": "«وتتوقع الشركة بدء العمليات في الربع الرابع من 2027»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد (الكويت) والقيمة القصوى. ويعرّف العنوان الفرعي الشركة بأنها إماراتية ويحدد نشاطها (الحفر البحري)، ويوضح ما تغيّر: أولى عملياتها البحرية خارج الإمارات. ويرد شرط استكمال الإجراءات التعاقدية في الفقرة الثالثة، وصيغة «تفوز» تطابق إعلان الشركة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تقدم المصادر ثلاثة عناصر سياق، والمسودة تحملها كلها: أدنى سعر في المناقصة بحسب «الراي» عن AGBI (SOURCE 1)، وخطة الكويت لرفع طاقتها من 2.6 إلى 3.5 مليون برميل يومياً بحلول 2035 (SOURCE 1)، وصفقة «إم بي بتروليوم سيرفيسز» العاملة في الكويت (SOURCE 1). وتعرض المسودة خطة الكويت دون أن تجعلها سبباً للعقد. أما صندوق «لماذا يهمّ» فيستند إلى مقدمات صحيحة، واستنتاجه المشروط («إذا مضت الكويت في خطتها») متناسب مع الوقائع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "تطور الفقرات الثلاث الأولى خبر العنوان: الترسية، ثم المدة والقيمة، ثم التوقيت والشروط. بعدها تأتي الفقرة الرابعة («وتضع «أدنوك للحفر» العقدين ضمن استراتيجيتها… وقال رئيسها التنفيذي… يفتح مرحلة جديدة») بوصف ذاتي وتصريح يكرر العنوان الفرعي، فتفصل بين الأرقام وكتلة الخلفية.",
+              "repair": "تُختصر الفقرة الرابعة إلى سطر الاستراتيجية وحده، ويُضم إلى كتلة الخلفية مع خطة الكويت وتوسع الشركة الخليجي وصفقة «إم بي بتروليوم سيرفيسز»، ويُحذف التصريح المكرر."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "القيم (96.55 مليون دينار، و313.6 مليون دولار، و1.15 مليار درهم)، والمدة (أربع سنوات مع سنة تمديد خارج القيمة القصوى)، وموعد بدء العمليات المتوقع، والشروط، كلها مطابقة لـSOURCE 2 وSOURCE 3. لكن «حصيلة العقدين كاملة» في «لماذا يهمّ» تخلط بين مساهمة أول عام مالي كامل وكامل عائد العقدين.",
+              "repair": "«لن تظهر مساهمة العقدين عن عام كامل في نتائج «أدنوك للحفر» قبل 2028»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "حشو (بقية الملاحظة 3 السابقة، حُلّت جزئياً): حُذفت «أما»، لكن الفقرة الرابعة ما زالت وصف الشركة لاستراتيجيتها، ولا تحمل قراراً أو رقماً أو موعداً: «ومن ركائز هذه الاستراتيجية التوسع الإقليمي وتوسيع قاعدة العملاء وتنويع مصادر الإيرادات» (SOURCE 2). الإصلاح: تُحذف قائمة الركائز. ويبقى منها سطر واحد ينقل إلى كتلة الخلفية قبل فقرة «إم بي بتروليوم سيرفيسز» أو بعدها: «وتضع الشركة العقدين ضمن استراتيجيتها «من الحفر إلى التشغيل» لتوسيع خدماتها عبر مراحل دورة حياة البئر». بذلك تجتمع الخلفية في موضع واحد، ولا تفصل هذه الفقرة بين فقرة التوقيت والشروط وفقرة خطة الكويت.",
+        "التكرار (يُروى مرة واحدة): تصريح الرئيس التنفيذي «إن دخول سوق الحفر البحري في الكويت يفتح مرحلة جديدة تعزز حضور الشركة الإقليمي وتوسع عملياتها دولياً» يعيد بكلمات أخرى ما قاله العنوان الفرعي: «تدخل بالعقدين سوق الحفر البحري في الكويت» (SOURCE 2). الإصلاح: يُحذف التصريح، أو يُدمج في جملة الاستراتيجية بإسناده إلى «عبدالله عطية المصعبي، الرئيس التنفيذي للشركة» من دون إعادة واقعة الدخول. ويُحافَظ على طول التقرير من الوقائع الموثقة وحدها، من دون إضافة حشو بديل.",
+        "الدقة في «لماذا يهمّ»: عبارة «لا تتوقع «أدنوك للحفر» أن تظهر حصيلة العقدين كاملة في نتائجها قبل 2028» توحي بأن كامل عائد العقدين يظهر في 2028. لكن المصدر يقول إن 2028 «أول عام مالي كامل تنعكس على نتائجه مساهمة العقدين»، والعقدان يمتدان أربع سنوات (SOURCE 2). الإصلاح: «لن تظهر مساهمة العقدين عن عام كامل في نتائج «أدنوك للحفر» قبل 2028، فمكسبها الأقرب موطئ قدم…».",
+        "صياغة: «على منح الشركة العقدين منفصلين» تركيب متعثر، وحال «منفصلين» معلّقة. الإصلاح: «وافقت لجنة الشراء العليا في مؤسسة البترول الكويتية على ترسية عقدين منفصلين على الشركة ضمن المناقصة رقم RFP-2151011، أحدهما للحفارة 1 والآخر للحفارة 2، وكلتاهما بحرية عالية المواصفات» (SOURCE 2).",
+        "تطور الفقرات الثلاث الأولى خبر العنوان: الترسية، ثم المدة والقيمة، ثم التوقيت والشروط. بعدها تأتي الفقرة الرابعة («وتضع «أدنوك للحفر» العقدين ضمن استراتيجيتها… وقال رئيسها التنفيذي… يفتح مرحلة جديدة») بوصف ذاتي وتصريح يكرر العنوان الفرعي، فتفصل بين الأرقام وكتلة الخلفية. — تُختصر الفقرة الرابعة إلى سطر الاستراتيجية وحده، ويُضم إلى كتلة الخلفية مع خطة الكويت وتوسع الشركة الخليجي وصفقة «إم بي بتروليوم سيرفيسز»، ويُحذف التصريح المكرر.",
+        "القيم (96.55 مليون دينار، و313.6 مليون دولار، و1.15 مليار درهم)، والمدة (أربع سنوات مع سنة تمديد خارج القيمة القصوى)، وموعد بدء العمليات المتوقع، والشروط، كلها مطابقة لـSOURCE 2 وSOURCE 3. لكن «حصيلة العقدين كاملة» في «لماذا يهمّ» تخلط بين مساهمة أول عام مالي كامل وكامل عائد العقدين. — «لن تظهر مساهمة العقدين عن عام كامل في نتائج «أدنوك للحفر» قبل 2028»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قدمت أدنوك للحفر أدنى سعر في مناقصة شركة نفط الكويت، بحسب «الراي» التي نقل عنها AGBI",
+          "source": 1
+        },
+        {
+          "fact": "تتوقع الشركة بدء العمليات في الربع الرابع من 2027 وأن يكون 2028 أول عام مالي كامل تظهر فيه مساهمة العقدين",
+          "source": 2
+        },
+        {
+          "fact": "العقدان أولى عمليات الشركة البحرية خارج الإمارات ودخولها سوق الحفر البحري في الكويت",
+          "source": 2
+        },
+        {
+          "fact": "تسعى الكويت إلى رفع طاقتها الإنتاجية من 2.6 مليون إلى 3.5 مليون برميل يومياً بحلول 2035",
+          "source": 1
+        }
+      ],
+      "slug": "adnoc-drilling-wins-kuwait-offshore-rig-contracts-5cc9a7",
+      "title": "«أدنوك للحفر» الإماراتية تفوز بعقدين في الكويت بقيمة تصل إلى 313.6 مليون دولار",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "قطر للطاقة تستحوذ على 25% من رقعة نفطية بحرية لشيفرون في ناميبيا",
+      "section": "energy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 79,
+    "failures": 0,
+    "promptTokens": 1203503,
+    "completionTokens": 250022,
+    "cacheReadTokens": 326116,
+    "costUsd": 12.0841,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 79
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 86383,
+        "read": 0,
+        "out": 2181,
+        "usd": 0.7347
+      },
+      "desk": {
+        "calls": 15,
+        "in": 106019,
+        "read": 129540,
+        "out": 79506,
+        "usd": 2.464
+      },
+      "writer": {
+        "calls": 16,
+        "in": 184142,
+        "read": 155916,
+        "out": 69844,
+        "usd": 2.9011
+      },
+      "critic": {
+        "calls": 17,
+        "in": 191336,
+        "read": 40660,
+        "out": 45563,
+        "usd": 2.45
+      },
+      "checker": {
+        "calls": 5,
+        "in": 38333,
+        "read": 0,
+        "out": 33261,
+        "usd": 0.9719
+      },
+      "vision": {
+        "calls": 25,
+        "in": 271174,
+        "read": 0,
+        "out": 19667,
+        "usd": 2.5624
+      }
+    }
+  },
+  "log": [
+    "[04:14:05] image: dropped \"Kuwait DS oil fires burning - USACE-p15141coll5-10686.jpeg\" — dated 1991, an archival picture",
+    "[04:14:05] image: dropped \"Kuwait oil field as seen from shuttle bus on street, Kuwait City, Febr\" — dated 2004, an archival picture",
+    "[04:14:05] image: dropped \"Kuwait DS oil fire near border - USACE-p15141coll5-10659.jpeg\" — dated 1991, an archival picture",
+    "[04:14:05] image: dropped \"Amir Sheikh Ahmad Al-Jaber Al-Sabah turns the silver wheel to official\" — dated 1946, an archival picture",
+    "[04:14:05] image: dropped \"Kuwait Oil Company\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"Various modern construction cranes located near harbor during shipbuil\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] image: dropped \"KOC, Kuwait Oil Company quarterly magazine in the 70's when I was livi\" — names too little of rig",
+    "[04:14:05] commons \"jack-up rig\": 4 usable of 24",
+    "[04:14:05] image: dropped \"Maersk Convincer 4.jpg\" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Live Audio Streaming Second Life\" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Coastal construction platform with crane in misty Barcelona harbor.\" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Norway Trip 2012\" — names too little of jack-up, rig",
+    "[04:14:05] image: dropped \"Drilling rig and a digger at a construction site in Tuntorp.jpg\" — taken in Sweden, which the story does not name",
+    "[04:14:05] image: dropped \"Rig, West Virginia 2020.jpg\" — taken in United States, which the story does not name",
+    "[04:14:05] image: dropped \"Deepwater Horizon offshore drilling unit on fire 2010.jpg\" — taken in Mexico, which the story does not name",
+    "[04:14:05] image: dropped \"Off Shore Drilling Rig, Santa Barbara, CA, 6 December, 2011.JPG\" — taken in United States, which the story does not name",
+    "[04:14:05] image: dropped \"Dramatic view of a large oil platform in Norway's North Sea, symbolizi\" — taken in Norway, which the story does not name",
+    "[04:14:05] image: dropped \"Jack-up-rig-in-the-caspian-sea.JPG\" — taken in Iran, which the story does not name",
+    "[04:14:05] image: thumbnail HTTP 403 for https://live.staticflickr.com/8633/16170410872_d3cc826ce7_n.jpg",
+    "[04:14:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=789 in=11270 read=0 out=1071 attempt=1 ms=11571",
+    "[04:14:17] image: \"Offshore oil platform in urban harbor, showcasing industrial\" names the story's topic without saying its point (A jack-up offshore rig shown clearly, large and whole, with no clue to its location. It is the right sector object for a story about ADNOC Drilling supplying an); checked now and kept in reserve while the desk looks further",
+    "[04:14:31] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1036 in=8929 read=0 out=1134 attempt=1 ms=13279",
+    "[04:14:31] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Offshore oil platform in urban harbor, showcasing industrial\": A sharp, anonymous offshore jack-up rig, the story's own sector object, is recognisable at a glance with no watermark or",
+    "[04:14:31] image: thumbnail HTTP 403 for https://live.staticflickr.com/2510/4123991356_c3fe81ab1a_n.jpg",
+    "[04:14:31] image: thumbnail HTTP 403 for https://live.staticflickr.com/4125/5005405587_7c583cb4dd_n.jpg",
+    "[04:14:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1323 in=10393 read=0 out=1550 attempt=1 ms=17135",
+    "[04:14:49] image: \"Yme platform\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[04:14:49] image: the company's own brand (ADNOC Drilling / ADNOC): ADNOC Drilling rig | ADNOC Drilling jack-up | ADNOC Drilling | ADNOC Drilling headquarters",
+    "[04:14:49] openverse \"ADNOC Drilling\": 1 usable of 1",
+    "[04:14:49] pexels \"ADNOC Drilling rig\": 8 usable",
+    "[04:14:49] pexels \"ADNOC Drilling\": 8 usable",
+    "[04:14:49] commons \"ADNOC Drilling rig 2026\": 0 usable of 0",
+    "[04:14:49] pexels \"ADNOC Drilling headquarters\": 8 usable",
+    "[04:14:49] openverse \"ADNOC Drilling rig\": 0 usable of 0",
+    "[04:14:49] openverse \"ADNOC Drilling headquarters\": 0 usable of 0",
+    "[04:14:49] openverse \"ADNOC Drilling jack-up\": 0 usable of 0",
+    "[04:14:49] openverse \"ADNOC Drilling\": 1 usable of 1",
+    "[04:14:49] openverse \"ADNOC Drilling\": 1 usable of 1",
+    "[04:14:49] openverse \"ADNOC Drilling\": 1 usable of 1",
+    "[04:14:49] commons \"ADNOC Drilling rig\": 0 usable of 0",
+    "[04:14:49] image: dropped \"Oil chief and 'Climate Realist' Sultan Al Jaber on fossil fuels “It is\" — names too little of rig",
+    "[04:14:49] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of rig",
+    "[04:14:49] image: dropped \"Offshore oil platform in urban harbor, showcasing industrial scenery a\" — names too little of rig",
+    "[04:14:49] image: dropped \"A heavy drilling machine in use on a rugged outdoor construction site.\" — names too little of rig",
+    "[04:14:49] image: dropped \"Offshore oil platform with cranes in Palermo harbor, capturing industr\" — names too little of rig",
+    "[04:14:50] pexels \"ADNOC Drilling jack-up\": 8 usable",
+    "[04:14:50] commons \"ADNOC Drilling jack-up 2026\": 0 usable of 0",
+    "[04:14:50] commons \"ADNOC Drilling jack-up\": 0 usable of 0",
+    "[04:14:50] image: dropped \"Oil chief and 'Climate Realist' Sultan Al Jaber on fossil fuels “It is\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"Offshore oil platform in urban harbor, showcasing industrial scenery a\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"High angle view of offshore oil platforms in Ras Laffan, Qatar under c\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of jack-up",
+    "[04:14:50] image: dropped \"Oil pump jack in a dry landscape with shrubs and clear sky in Bakú, Az\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"Bati Raman oil pump jack in Batman, Turkey. Industrial landscape with \" — names too little of jack-up",
+    "[04:14:50] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of jack-up",
+    "[04:14:50] image: dropped \"A vibrant offshore oil rig with large cranes at a busy sea port during\" — names too little of jack-up",
+    "[04:14:50] commons \"ADNOC Drilling 2026\": 0 usable of 0",
+    "[04:14:50] commons \"ADNOC Drilling\": 0 usable of 0",
+    "[04:14:50] image: dropped \"Oil chief and 'Climate Realist' Sultan Al Jaber on fossil fuels “It is\" — shows al, not the story's people",
+    "[04:14:50] image: dropped \"High-angle view of an offshore oil platform with helipad surrounded by\" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"Stunning view of Abu Dhabi's skyline with skyscrapers and traffic at s\" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"Oil platform silhouetted against a vibrant sunset in Huntington Beach,\" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"Workers on an offshore platform demonstrate teamwork using water hoses\" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"A detailed view of different drill bits used in industrial machining a\" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of adnoc, drilling",
+    "[04:14:50] image: dropped \"A serene view of an offshore oil rig during sunset in the Pacific Ocea\" — names too little of adnoc, drilling",
+    "[04:14:51] commons \"ADNOC Drilling headquarters 2026\": 0 usable of 0",
+    "[04:14:51] commons \"ADNOC Drilling headquarters\": 0 usable of 0",
+    "[04:14:51] image: dropped \"Capture of Abu Dhabi skyline with modern skyscrapers reflecting on cal\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Stunning view of Abu Dhabi's skyline with skyscrapers and traffic at s\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Minimalist shot of a modern high-rise building with clear blue sky bac\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Iconic skyscraper with a unique design set against a clear blue sky, c\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Modern office building with palm trees under a clear sky.\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"A modern high-rise office building with a distinctive glass facade und\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Tall modern skyscraper with unique design against a clear blue sky.\" — names too little of headquarters",
+    "[04:14:51] image: dropped \"Close-up of a modern office building facade in Utrecht, Netherlands.\" — names too little of headquarters",
+    "[04:14:51] image: 4 file(s) dropped for not naming ADNOC Drilling or ADNOC",
+    "[04:14:51] image: no photograph of ADNOC Drilling's brand",
+    "[04:14:51] image: the story's people first: Abdulrahman Abdulla Al Seiari 2026 | Abdulrahman Abdulla Al Seiari | عبدالرحمن عبدالله الصيعري | عبدالرحمن الصيعري",
+    "[04:14:51] commons \"Abdulrahman Abdulla Al Seiari 2026\": 0 usable of 0",
+    "[04:14:53] commons \"Abdulrahman Abdulla\": 4 usable of 20",
+    "[04:14:53] image: dropped \"Abdulla Abdulrahman Al Batattat 2011 1.jpg\" — names none of the story's people",
+    "[04:14:53] image: dropped \"King Abdullah Street, Jeddah.jpg\" — shows abdullah, not the story's people",
+    "[04:14:53] image: dropped \"HE Shk. Rana I. Alkhalifa (08010550) (40597460410).jpg\" — names too little of abdulrahman, abdulla",
+    "[04:14:53] image: dropped \"CPF Signing Bahrain (08010555) (27534894767).jpg\" — names too little of abdulrahman, abdulla",
+    "[04:14:53] commons \"Abdulrahman Abdulla Al Seiari\": 0 usable of 0",
+    "[04:14:53] commons \"Abdulrahman Abdulla\": 4 usable of 20",
+    "[04:14:53] image: dropped \"HE Shk. Rana I. Alkhalifa (08010550) (40597460410).jpg\" — names too little of abdulrahman, abdulla",
+    "[04:14:53] image: dropped \"CPF Signing Bahrain (08010555) (27534894767).jpg\" — names too little of abdulrahman, abdulla",
+    "[04:14:53] commons \"عبدالرحمن عبدالله الصيعري\": 0 usable of 0",
+    "[04:14:54] commons \"عبدالرحمن عبدالله\": 4 usable of 20",
+    "[04:14:54] image: dropped \"عبدالله عبدالرحمن الخليل الخفاجي.jpg\" — names none of the story's people",
+    "[04:14:54] image: dropped \"تخطيط الصحابي عبدالرحمن بن عبدالله البلوي.jpg\" — names none of the story's people",
+    "[04:14:54] image: dropped \"المخرج عبدالرحمن الغربللي مع الاعلامي عبدالله بوفتين.jpg\" — names none of the story's people",
+    "[04:14:54] image: dropped \"عبدالرحمن عليمات.jpg\" — names none of the story's people",
+    "[04:14:54] commons \"عبدالرحمن الصيعري\": 0 usable of 0",
+    "[04:14:54] image: no photograph of the story's people",
+    "[04:14:54] image: an illustration of the story's own subject, to set beside the photograph held: offshore jack-up rig | offshore rig | jack-up rig | offshore drilling rig",
+    "[04:14:54] openverse \"jack-up rig\": 7 usable of 20",
+    "[04:14:55] pexels \"jack-up rig\": 8 usable",
+    "[04:14:55] pexels \"offshore drilling rig\": 8 usable",
+    "[04:14:55] commons \"offshore jack-up rig\": 1 usable of 6",
+    "[04:14:55] pexels \"offshore jack-up rig\": 8 usable",
+    "[04:14:55] pexels \"offshore rig\": 8 usable",
+    "[04:14:55] openverse \"offshore jack-up rig\": 0 usable of 4",
+    "[04:14:55] openverse \"offshore jack-up\": 10 usable of 16",
+    "[04:14:55] image: dropped \"Coastal construction platform with crane in misty Barcelona harbor.\" — names too little of offshore, jack-up, rig",
+    "[04:14:55] image: dropped \"Vol au Vent / Jan de Nul\" — names too little of offshore, jack-up, rig",
+    "[04:14:55] image: dropped \"Kiss Ibiza '97\" — names too little of offshore, jack-up, rig",
+    "[04:14:55] image: dropped \"Dominion Energy: Charybdis Tour\" — names too little of offshore, jack-up, rig",
+    "[04:14:55] image: dropped \"Dominion Energy: Charybdis Tour\" — names too little of offshore, jack-up, rig",
+    "[04:14:55] openverse \"offshore drilling rig\": 10 usable of 20",
+    "[04:14:55] openverse \"offshore rig\": 10 usable of 20",
+    "[04:14:56] commons \"offshore rig\": 13 usable of 24",
+    "[04:14:56] image: dropped \"Oil platform P-51 (Brazil).jpg\" — names too little of offshore, rig",
+    "[04:14:56] image: dropped \"00 3783 Oil and gas platform in Norway.jpg\" — names too little of offshore, rig",
+    "[04:14:56] image: dropped \"An oil rig offshore Vungtau.jpg\" — dated 2004, an archival picture",
+    "[04:14:56] commons \"jack-up rig\": 4 usable of 24",
+    "[04:14:56] image: dropped \"Maersk Convincer 4.jpg\" — names too little of jack-up, rig",
+    "[04:14:56] image: dropped \"Live Audio Streaming Second Life\" — names too little of jack-up, rig",
+    "[04:14:56] image: dropped \"Coastal construction platform with crane in misty Barcelona harbor.\" — names too little of jack-up, rig",
+    "[04:14:56] image: dropped \"Dramatic silhouette of an oil pump jack against a vibrant sunset sky, \" — names too little of jack-up, rig",
+    "[04:14:56] image: dropped \"Oil pump jack and equipment at remote industrial site under cloudy sky\" — names too little of jack-up, rig",
+    "[04:14:56] image: dropped \"Norway Trip 2012\" — names too little of jack-up, rig",
+    "[04:14:56] commons \"offshore drilling rig\": 15 usable of 24",
+    "[04:14:56] image: dropped \"Oil platform P-51 (Brazil).jpg\" — names too little of offshore, drilling, rig",
+    "[04:14:56] image: dropped \"00 3783 Oil and gas platform in Norway.jpg\" — names too little of offshore, drilling, rig",
+    "[04:14:56] image: thumbnail HTTP 403 for https://live.staticflickr.com/2187/2142654130_42b1040166_n.jpg",
+    "[04:15:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1508 in=11318 read=0 out=1760 attempt=1 ms=19188",
+    "[04:15:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1262 in=10153 read=0 out=1484 attempt=1 ms=16340",
+    "[04:15:41] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Offshore oil platform in urban harbor, showcasing industrial\"",
+    "[04:15:41] published \"«أدنوك للحفر» الإماراتية تفوز بعقدين في الكويت بقيمة تصل إلى 313.6 مليون دولار\" -> adnoc-drilling-wins-kuwait-offshore-rig-contracts-5cc9a7",
+    "[04:16:39] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3477 in=7136 read=0 out=7564 attempt=1 ms=57462",
+    "[04:17:24] desk notes: 5 of 25 facts dropped (not in their source or copied from it)",
+    "[04:17:24] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2573 in=7992 read=0 out=5451 attempt=1 ms=44853",
+    "[04:18:15] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3568 in=7489 read=17324 out=5928 attempt=1 ms=51669",
+    "[04:19:01] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1921 in=7047 read=0 out=6027 attempt=1 ms=46017",
+    "[04:19:01] evidence pair \"«أدنوك للحفر» الإماراتية تفوز بعقدين في الكويت بقيمة تصل إلى 313.6 مليون دولار\": 0 proved error(s) live (v62), 1 with the kept lessons (v0); the private drafts are not published",
+    "[04:19:01] run budget of 35 minutes spent; \"قطر للطاقة تستحوذ على 25% من رقعة نفطية بحرية لشيفرون في ناميبيا\" waits for the next run"
+  ]
+}

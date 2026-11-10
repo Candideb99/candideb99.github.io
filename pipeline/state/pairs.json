@@ -2345,6 +2345,54 @@
         ],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-10T04:15:41.687Z",
+      "slug": "adnoc-drilling-wins-kuwait-offshore-rig-contracts-5cc9a7",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v62",
+      "lessonsHash": "a6c6134ebe",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 6,
+        "checked": 22,
+        "words": 339,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 17,
+        "notFound": 5,
+        "checked": 23,
+        "words": 328,
+        "keyFacts": 5,
+        "classes": [
+          "period"
+        ],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 17,
+        "notFound": 5,
+        "checked": 23,
+        "words": 328,
+        "keyFacts": 5,
+        "classes": [
+          "period"
+        ],
+        "programmatic": 2
+      }
     }
   ]
 }
