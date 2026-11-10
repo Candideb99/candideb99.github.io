@@ -8,8 +8,13 @@ import site from "@data/site.json";
 /** The lede goes into the item's HTML as text: a «<» or «&» in it is a character, never markup (2026-10-29). */
 const asText = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+/**
+ * Empty while the site is private (2026-11-10, the owner: "should not that rss.xml be hidden?"): feed readers and
+ * aggregators ignore robots.txt and noindex, so a full feed would hand out the pre-launch stories, which are deleted at
+ * launch. The footer link and the page head's feed link are hidden too; all three return when `private` is false.
+ */
 export async function GET(context: APIContext) {
-  const articles = (await getArticles()).slice(0, 50);
+  const articles = site.private ? [] : (await getArticles()).slice(0, 50);
   return rss({
     title: site.name,
     description: site.description,

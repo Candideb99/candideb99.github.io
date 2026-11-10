@@ -67,7 +67,7 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
+    {!site.private && <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />}
     {!site.private && <link rel="sitemap" href="/sitemap-index.xml" />}
     <!-- The faces every page sets from the first line: the Arabic and Latin halves of the headline and body
          faces arrive together (a headline's figures arriving after its letters re-wrapped it and moved the

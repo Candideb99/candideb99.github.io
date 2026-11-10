@@ -34,12 +34,15 @@ const year = new Date().getUTCFullYear();
           <li><a href="/calendar/">الأجندة الاقتصادية</a></li>
           <li><a href="/tags/">الملفات والمناطق</a></li>
           <li><a href="/search/">بحث</a></li>
-          <li>
-            <a href="/rss.xml" class="footer__rss">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="19" r="2.4" /><path d="M3 10.5a10.5 10.5 0 0 1 10.5 10.5h-3A7.5 7.5 0 0 0 3 13.5zM3 3.5A17.5 17.5 0 0 1 20.5 21h-3A14.5 14.5 0 0 0 3 6.5z" /></svg>
-              خلاصة RSS
-            </a>
-          </li>
+          {/* The feed is offered only once the site is launched (site.json `private`), as the sitemaps are. */}
+          {!site.private && (
+            <li>
+              <a href="/rss.xml" class="footer__rss">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="19" r="2.4" /><path d="M3 10.5a10.5 10.5 0 0 1 10.5 10.5h-3A7.5 7.5 0 0 0 3 13.5zM3 3.5A17.5 17.5 0 0 1 20.5 21h-3A14.5 14.5 0 0 0 3 6.5z" /></svg>
+                خلاصة RSS
+              </a>
+            </li>
+          )}
         </ul>
       </nav>
       <nav class="footer__col" aria-label="عن الموقع">
