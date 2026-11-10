@@ -251,10 +251,13 @@
     "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671",
     "saudi-ports-suez-hormuz-red-sea-shift-234b6e:da01db17",
     "brent-falls-ten-week-low-trump-iran-377a7a:afb98acf",
-    "fed-waller-december-hike-half-point-3a01d9:2c946d3a"
+    "fed-waller-december-hike-half-point-3a01d9:2c946d3a",
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2:0c258fdb",
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01",
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612"
   ],
-  "version": 63,
-  "updatedAt": "2026-11-10T15:00:46.875Z",
+  "version": 64,
+  "updatedAt": "2026-11-10T21:26:41.320Z",
   "lessons": [
     {
       "id": "L1",
@@ -381,11 +384,12 @@
         "egypt-first-locally-assembled-electric-car-f79ba4:463d16b5",
         "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
         "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522",
-        "gold-erases-friday-losses-oil-falls-2282bb:9500b357"
+        "gold-erases-friday-losses-oil-falls-2282bb:9500b357",
+        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612"
       ],
-      "seen": 56,
+      "seen": 57,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-09T09:44:01.007Z",
+      "lastSeen": "2026-11-10T21:26:41.320Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -759,7 +763,7 @@
     {
       "id": "L12",
       "class": "internal",
-      "rule": "Recompute each percentage change from the base the story gives, headlines and data lines included (5.30 to 5.6 is 5.7%, not 7%); no total falls more than its parts, no shares exceed 100%. If figures clash, keep each, drop the link, flag the desk.",
+      "rule": "Recompute every percentage, ratio and coverage multiple from the story's own figures in every line, even one the source states (3.82/2.82 is 1.4 times, not 1.3); no total falls more than its parts. If figures clash, keep both, drop the link, flag the desk.",
       "example": {
         "wrong": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
         "quote": "وتراجعت الإيرادات التشغيلية للمجموعة 8.1% إلى 292.2 مليون ريال، وانخفضت الإيرادات المرتبطة بأنشطة التداول 14.6%؛ فقد خسر قطاع أسواق المال، المسؤول عن الإدراج والتداول، 12.5% من إيراداته، وخسر قطاع خدمات ما بعد التداول، من مقاصة وتسوية وحفظ، 7.2%.",
@@ -776,33 +780,24 @@
         "egypt-urban-inflation-slows-nine-month-low-e8bbed:cb900c51",
         "ihc-third-quarter-profit-falls-third-0a92ce:180b81b3",
         "fao-food-price-index-october-2026-86a80b:f5ff02c7",
-        "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70"
+        "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70",
+        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:0c258fdb",
+        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01"
       ],
-      "seen": 10,
+      "seen": 12,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-08T22:15:57.702Z",
+      "lastSeen": "2026-11-10T21:26:41.320Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z",
       "previous": [
-        "Before linking figures with 'because', 'as' or فقد, check the arithmetic: a total cannot fall more than all its parts, nor shares exceed 100%. If the source's numbers clash, keep every figure but drop the explanatory link and flag the clash to the desk."
+        "Before linking figures with 'because', 'as' or فقد, check the arithmetic: a total cannot fall more than all its parts, nor shares exceed 100%. If the source's numbers clash, keep every figure but drop the explanatory link and flag the clash to the desk.",
+        "Recompute each percentage change from the base the story gives, headlines and data lines included (5.30 to 5.6 is 5.7%, not 7%); no total falls more than its parts, no shares exceed 100%. If figures clash, keep each, drop the link, flag the desk."
       ],
-      "sharpenedAt": "2026-11-02T11:20:21.952Z"
+      "sharpenedAt": "2026-11-10T21:26:41.320Z"
     }
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T12:04:58.585Z",
-      "mistakes": 13,
-      "applied": [
-        "sharpen L2 (+6)",
-        "sharpen L5 (+2)",
-        "sharpen L4 (+1)",
-        "sharpen L6 (+1)",
-        "add L8 [figure] from 2 mistake(s)",
-        "reinforce L3 (+1)"
-      ]
-    },
     {
       "at": "2026-09-25T16:38:55.969Z",
       "mistakes": 5,
@@ -1294,6 +1289,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L1 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-10T21:26:41.320Z",
+      "mistakes": 3,
+      "applied": [
+        "sharpen L12 (+2)",
+        "reinforce L2 (+1; reworded at most once a week)"
       ]
     }
   ],

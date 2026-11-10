@@ -14819,6 +14819,135 @@
           "noted": []
         }
       ]
+    },
+    "us-two-year-yield-biggest-jump-since-2024-552557": {
+      "at": "2026-11-10T21:38:43.266Z",
+      "title": "عائد السندات الأمريكية لأجل عامين يسجل أكبر قفزة منذ 2024 بعد بيانات التضخم",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v64",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "brent-briefly-below-90-iran-hopes-264c75": {
+      "at": "2026-11-10T21:52:23.608Z",
+      "title": "برنت يهبط لفترة وجيزة دون 90 دولاراً للمرة الأولى منذ أغسطس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v64",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 38,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c": {
+      "at": "2026-11-10T22:14:09.414Z",
+      "title": "السعودية وتركيا توقعان مذكرة لدفع مشاريع رياح «أكوا باور» بقدرة 3 آلاف ميغاواط",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v64",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 18,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وقال بيرقدار إن هذه الاتفاقية حددت إطار مشروعات «أكوا باور» في تركيا بقدرة إجمالية 5 آلاف ميغاواط موزعة على مرحلتين، تستأثر الثانية منهما بثلاثة أخماسها، وتنص على أن تنفذ الشركة المشروعات بمرحلتيها بصفتها المستثمر الذي سمّته السعودية.",
+              "quote": "وتنص الاتفاقية على تطوير مشروعات للطاقة المتجددة بقدرة إجمالية تبلغ 5,000 ميجاواط، تُنفّذ على مرحلتين من خلال شركة أكوا باور، بصفتها الشركة المستثمرة التي حددتها السعودية.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 2,
+              "correction": "The detail that ACWA Power acts as the investor designated by Saudi Arabia comes from Al Eqtisadiah's own reporting, not from Bayraktar's statement."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "ولم يكشف الوزير كلفة هذه الاستثمارات ولا موعد تشغيلها.",
+                "reason": "withheld"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []

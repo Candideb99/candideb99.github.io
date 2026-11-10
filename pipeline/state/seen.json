@@ -1,42 +1,6 @@
 {
   "version": 1,
   "items": {
-    "c9d917e969e67c7e": {
-      "at": "2026-10-20T19:34:25.364Z",
-      "decision": "published",
-      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
-      "title": "Egypt targets regional gas integration and reveals $6.1 bn debt clearance at Mediterranean Offshore Conference"
-    },
-    "7f865526c085b740": {
-      "at": "2026-10-20T19:34:25.364Z",
-      "decision": "published",
-      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
-      "title": "وزير البترول: تكامل البنية التحتية المصرية يفتح آفاقًا لتنمية غاز شرق المتوسط"
-    },
-    "44261addf6572bb0": {
-      "at": "2026-10-20T19:34:25.364Z",
-      "decision": "published",
-      "slug": "egypt-clears-6-1-billion-oil-gas-arrears-b3bdd9",
-      "title": "وزير البترول: وضع 591 بئرًا على خريطة الإنتاج وتحقيق 113 كشفًا جديدًا خلال عامين"
-    },
-    "319cac76d45a83b3": {
-      "at": "2026-10-20T19:34:26.061Z",
-      "decision": "rejected",
-      "title": "As Macron visits Gulf, can France forge its own energy-for-security future?",
-      "strikes": 1
-    },
-    "cf353aa934f51052": {
-      "at": "2026-10-20T19:34:26.061Z",
-      "decision": "rejected",
-      "title": "Macron lines up more Gulf diesel as France battles soaring fuel prices",
-      "strikes": 1
-    },
-    "e119a1c90be11c88": {
-      "at": "2026-10-20T19:38:55.823Z",
-      "decision": "rejected",
-      "title": "Erzeugerpreise im September 2026: +6,7 % gegenüber September 2025",
-      "strikes": 1
-    },
     "9dabda8095fb9cae": {
       "at": "2026-10-21T00:08:08.211Z",
       "decision": "published",
@@ -6141,6 +6105,114 @@
       "decision": "published",
       "slug": "us-tariffs-cheaper-chinese-goods-elsewhere-3f1f9d",
       "title": "IFDP Paper: Trade Deflection: The Spillover Effects of U.S. Tariffs on Import Prices in Bystander Countries"
+    },
+    "2f867b096a3ea139": {
+      "at": "2026-11-10T21:38:43.275Z",
+      "decision": "published",
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "Treasuries slide as ‘hot’ inflation sparks bets on Fed rate rise"
+    },
+    "f10e3ea537e6fee6": {
+      "at": "2026-11-10T21:38:43.275Z",
+      "decision": "published",
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "آژیر خطر در بازار بدهی آمریکا"
+    },
+    "c245ce08b8ad2738": {
+      "at": "2026-11-10T21:38:43.275Z",
+      "decision": "published",
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "US stocks, bonds fall as CPI data fuel Fed-hike bets"
+    },
+    "adf029086527d49f": {
+      "at": "2026-11-10T21:38:43.275Z",
+      "decision": "published",
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "US stocks open lower as inflation fuels rate hike concerns"
+    },
+    "96ffc73b18d09a78": {
+      "at": "2026-11-10T21:38:43.275Z",
+      "decision": "published",
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "US Treasury yields jump after stronger-than-expected inflation, Fed rate hike signals"
+    },
+    "5c52533207235a3e": {
+      "at": "2026-11-10T21:52:23.625Z",
+      "decision": "published",
+      "slug": "brent-briefly-below-90-iran-hopes-264c75",
+      "title": "Oil falls below $90 as Trump pulls back from threat to strike Iran"
+    },
+    "ce843df648327943": {
+      "at": "2026-11-10T21:52:23.625Z",
+      "decision": "published",
+      "slug": "brent-briefly-below-90-iran-hopes-264c75",
+      "title": "Brent crude briefly dips below $90 for first time since August on Iran hopes"
+    },
+    "d39bc7adda537a20": {
+      "at": "2026-11-10T21:52:23.625Z",
+      "decision": "published",
+      "slug": "brent-briefly-below-90-iran-hopes-264c75",
+      "title": "Oil Falls to Lowest Level Since August"
+    },
+    "39ac46cdd2a06a19": {
+      "at": "2026-11-10T21:52:23.625Z",
+      "decision": "published",
+      "slug": "brent-briefly-below-90-iran-hopes-264c75",
+      "title": "Oil prices fall below $90 as Middle East peace hopes grow"
+    },
+    "fcf4af79068b0f1c": {
+      "at": "2026-11-10T21:52:23.625Z",
+      "decision": "published",
+      "slug": "brent-briefly-below-90-iran-hopes-264c75",
+      "title": "نفط برنت يهبط 2.6 بالمئة إلى 90 دولارا للبرميل"
+    },
+    "692a59def28cf52a": {
+      "at": "2026-11-10T21:56:10.891Z",
+      "decision": "rejected",
+      "title": "وزير التجارة السعودي: نظام حماية المستهلك يكفل الحقوق ويعزز العدالة",
+      "strikes": 1
+    },
+    "b0813146eaef3e52": {
+      "at": "2026-11-10T21:56:10.891Z",
+      "decision": "rejected",
+      "title": "السعودية تقرّ نظاماً موحداً لحماية المستهلك... وغرامات تصل إلى 2.1 مليون دولار",
+      "strikes": 1
+    },
+    "cb21b60c27af0a6e": {
+      "at": "2026-11-10T21:56:10.891Z",
+      "decision": "rejected",
+      "title": "Saudi Cabinet approves consumer protection system, customs exemptions for electric public transport vehicles",
+      "strikes": 1
+    },
+    "386a56153aa73a8f": {
+      "at": "2026-11-10T21:56:10.891Z",
+      "decision": "rejected",
+      "title": "السعودية تقر نظام حماية المستهلك وغرامات بـ 8 ملايين ريال للمخالفين",
+      "strikes": 1
+    },
+    "bbe2fc0b2b5a9e9f": {
+      "at": "2026-11-10T22:14:09.434Z",
+      "decision": "published",
+      "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
+      "title": "إردوغان يشهد توقيع اتفاق سعودي - تركي لمشاريع طاقة متجددة بقدرة 5 آلاف ميغاواط"
+    },
+    "cbe70310de419609": {
+      "at": "2026-11-10T22:14:09.434Z",
+      "decision": "published",
+      "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
+      "title": "توقيع مذكرة تفاهم بين السعودية وتركيا للتعاون في مشروعات الكهرباء"
+    },
+    "eb8292a41a41e936": {
+      "at": "2026-11-10T22:14:09.434Z",
+      "decision": "published",
+      "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
+      "title": "Bayraktar duyurdu: Suudi Arabistan ile 5 bin megavatlık enerji anlaşması"
+    },
+    "7fa74e2f54f9d3d5": {
+      "at": "2026-11-10T22:14:09.434Z",
+      "decision": "published",
+      "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
+      "title": "Türkiye ile Suudi Arabistan arasında 5 bin megavatlık enerji işbirliği"
     }
   }
 }
