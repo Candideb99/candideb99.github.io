@@ -36,12 +36,28 @@ function asArray(value) {
 const AR_MONTHS = { يناير: 1, فبراير: 2, مارس: 3, أبريل: 4, ابريل: 4, إبريل: 4, مايو: 5, يونيو: 6, يوليو: 7, أغسطس: 8, اغسطس: 8, سبتمبر: 9, أكتوبر: 10, اكتوبر: 10, نوفمبر: 11, ديسمبر: 12 };
 
 /**
+ * A date that names no zone, given the publisher's own (`zone` on its source, «+05:30»), else UTC. JavaScript reads
+ * such a date in the reading machine's own time: the Reserve Bank of India prints «Mon, 09 Nov 2026 18:55:00», which
+ * GitHub's runners read five and a half hours newer than it was and the owner's laptop otherwise again (2026-11-10;
+ * of 87 feeds read that day it was the only one).
+ */
+const RFC_NO_ZONE = /^(?:[A-Za-z]{3},\s*)?\d{1,2}\s+[A-Za-z]{3}\s+\d{4}\s+\d{1,2}:\d{2}(?::\d{2})?$/;
+const ISO_NO_ZONE = /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?$/;
+export function zonedDate(value, zone = "+00:00") {
+  const s = String(value ?? "").trim();
+  if (RFC_NO_ZONE.test(s)) return `${s} ${zone.replace(":", "")}`;
+  if (ISO_NO_ZONE.test(s)) return `${s.replace(" ", "T")}${zone}`;
+  return s;
+}
+const isoDate = (value, zone) => safeIsoDate(value ? zonedDate(value, zone) : value);
+
+/**
  * A feed date, in the standard forms or in Arabic as اليوم السابع writes it («الخميس، 24 سبتمبر 2026 12:00 ص»),
  * read at +03:00 (the Gulf, and Cairo in summer); an hour either way does not move an item across the 36-hour
  * freshness line. Undated items are dropped by the reader, so a date it cannot read costs the whole feed.
  */
-function feedDate(value) {
-  const standard = safeIsoDate(value);
+function feedDate(value, zone) {
+  const standard = isoDate(value, zone);
   if (standard || !value) return standard;
   const m = String(value).match(/(\d{1,2})\s+([^\s\d،,]+)\s+(\d{4})(?:\s+(\d{1,2}):(\d{2})\s*([صم])?)?/);
   const month = m && AR_MONTHS[m[2]];
@@ -64,13 +80,13 @@ const decoded = (url) => {
 /** A link as some feeds print it: «>http://www.alriyadh.com/2207847» (الرياض, 2026-09-24), with the tag's «>» doubled. */
 const cleanLink = (url) => String(url ?? "").trim().replace(/^[>\s]+/, "");
 
-function normalizeItems(doc) {
+function normalizeItems(doc, zone) {
   if (doc?.rss?.channel) {
     return asArray(doc.rss.channel.item).map((item) => ({
       title: stripHtml(textOf(item.title)),
       url: cleanLink(textOf(item.link) || textOf(item.guid)),
       summary: stripHtml(textOf(item["content:encoded"]) || textOf(item.description)),
-      publishedAt: feedDate(textOf(item.pubDate) || textOf(item["dc:date"])),
+      publishedAt: feedDate(textOf(item.pubDate) || textOf(item["dc:date"]), zone),
       categories: asArray(item.category).map(textOf).filter(Boolean),
     }));
   }
@@ -79,7 +95,7 @@ function normalizeItems(doc) {
       title: stripHtml(textOf(entry.title)),
       url: atomLink(entry),
       summary: stripHtml(textOf(entry.summary) || textOf(entry.content)),
-      publishedAt: safeIsoDate(textOf(entry.published) || textOf(entry.updated)),
+      publishedAt: isoDate(textOf(entry.published) || textOf(entry.updated), zone),
       categories: asArray(entry.category).map((c) => c?.["@_term"] ?? textOf(c)).filter(Boolean),
       // A paper's authors as its repository records them (2026-10-24: the page text kept only the first author's
       // credit block, and a reading of a two-author paper named one).
@@ -95,7 +111,7 @@ function normalizeItems(doc) {
         title: stripHtml(textOf(entry["news:news"]["news:title"])),
         url: textOf(entry.loc),
         summary: "",
-        publishedAt: safeIsoDate(textOf(entry["news:news"]["news:publication_date"])),
+        publishedAt: isoDate(textOf(entry["news:news"]["news:publication_date"]), zone),
         categories: [],
       }));
   }
@@ -105,7 +121,7 @@ function normalizeItems(doc) {
       title: stripHtml(textOf(item.title)),
       url: textOf(item.link) || item["@_rdf:about"],
       summary: stripHtml(textOf(item.description)),
-      publishedAt: safeIsoDate(textOf(item["dc:date"])),
+      publishedAt: isoDate(textOf(item["dc:date"]), zone),
       categories: [],
     }));
   }
@@ -156,7 +172,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     // is filtered by its titles.
     const excludeTitle = source.excludeTitle ? new RegExp(source.excludeTitle, "i") : null;
     const limitHours = source.maxAgeHours ?? maxAgeHours;
-    const kept = normalizeItems(doc)
+    const kept = normalizeItems(doc, source.zone)
       .filter((item) => item.title && item.url && /^https?:\/\//i.test(item.url))
       .map((item) => ({
         ...item,
@@ -174,8 +190,10 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     // A date days ahead is a typo or a scheduled post, never "new"; a few hours ahead is local time labelled GMT.
     const dated = kept.map((item) => Date.parse(item.publishedAt ?? "")).filter((t) => Number.isFinite(t) && t <= Date.now() + 6 * 3_600_000);
     onRead?.({ newestAt: dated.length ? new Date(Math.max(...dated)).toISOString() : null, items: kept.length });
-    // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity).
-    const items = kept.filter((item) => hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
+    // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity). A feed that lists
+    // only its newest items and dates none keeps them (`undatedFresh`): NBER's working papers, every one of which had been
+    // dropped since the feed was added on 2026-09-12 (2026-11-10).
+    const items = kept.filter((item) => (source.undatedFresh && !item.publishedAt) || hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
     log(`feed ${source.id}: ${items.length} fresh items`);
     return items;
   } catch (error) {

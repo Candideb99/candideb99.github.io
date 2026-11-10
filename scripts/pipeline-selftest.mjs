@@ -15,7 +15,7 @@ import os from "node:os";
 import path from "node:path";
 import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.mjs";
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
-import { fetchFeed } from "../pipeline/lib/feeds.mjs";
+import { fetchFeed, zonedDate } from "../pipeline/lib/feeds.mjs";
 import { lessonRuleOk, loadLessons } from "../pipeline/lib/lessons.mjs";
 import { fetchPublic, privateAddress, refersBack, restoredFigures, sentenceUnits, sourceNumbers, ungroundedNumbers, writeJsonAtomic } from "../pipeline/lib/util.mjs";
 import { loadSnapshot, saveSnapshot } from "../pipeline/lib/snapshots.mjs";
@@ -440,6 +440,25 @@ check(
   check("a feed's routine notices are left out by their titles", items.map((i) => i.title), ["Resolution of the Monetary Policy Committee"]);
 }
 
+// 2a'''. A date that names no zone is read in the publisher's own time (`zone`), else UTC, never the reading machine's
+// (2026-11-10: the Reserve Bank of India's «Mon, 09 Nov 2026 18:55:00» read five and a half hours newer on GitHub's
+// runners); a feed that lists only its newest items and dates none keeps them (`undatedFresh`: NBER's working papers,
+// every one dropped as undated since 2026-09-12).
+{
+  const rss = (date) => `<?xml version="1.0"?><rss version="2.0"><channel><title>x</title><item><title>Resolution</title><link>https://www.example.com/r</link>${date ? `<pubDate>${date}</pubDate>` : ""}</item></channel></rss>`;
+  const read = (source, date) => fetchFeed({ id: "z", url: `data:text/xml;charset=utf-8,${encodeURIComponent(rss(date))}`, ...source }, { maxAgeHours: 24 * 365 * 50 });
+  const [india] = await read({ zone: "+05:30" }, "Mon, 09 Nov 2026 18:55:00");
+  const [plain] = await read({}, "Mon, 09 Nov 2026 18:55:00");
+  const [named] = await read({ zone: "+05:30" }, "Mon, 09 Nov 2026 18:55:00 +0900");
+  const undated = await read({ undatedFresh: true }, "");
+  const dropped = await read({}, "");
+  check(
+    "a date with no zone is read in the publisher's time, else UTC; a feed of only its newest items, undated, keeps them",
+    [india?.publishedAt, plain?.publishedAt, named?.publishedAt, undated.length, dropped.length, zonedDate("2026-11-09T18:55:00", "+05:30"), zonedDate("2026-11-09", "+05:30")],
+    ["2026-11-09T13:25:00.000Z", "2026-11-09T18:55:00.000Z", "2026-11-09T09:55:00.000Z", 1, 0, "2026-11-09T18:55:00+05:30", "2026-11-09"],
+  );
+}
+
 // 2b. The last cut (2026-10-22): a sentence carrying a figure no source has, or a stitched second event, goes; the story stays.
 {
   const sources = [{ title: "Houthi attack", text: "Drones struck the Dammam airport and an Aramco facility on Wednesday, killing 3 people and injuring 10. Brent rose to 111.2 dollars." }];
@@ -756,6 +775,17 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const withoutFigures = lessonDraft();
   programmaticChecks(withoutFigures, [{ title: "احتياطي", text: "Reserves rose to a record 57.5 billion dollars." }], { minWords: 0, explainer: true });
   check("the worked example and the flows stay with the stories' figures and are dropped without them", [Boolean(withFigures.worked), Boolean(withFigures.diagram), withoutFigures.worked, withoutFigures.diagram], [true, true, null, null]);
+  // A base effect's sum (2026-11-10): the explainer on Saudi industrial output cut its own answer, «a 23.5% fall needs a
+  // 30.7% rise», to «more than 23.5%», since its base (100 less the fall) is printed by no story. A recovery takes the
+  // fall alone, computes the rise in code, and the text may then say it.
+  const recovery = normalizeWorked({ title: "الصعود اللازم لتعويض الهبوط", formula: "الصعود اللازم = نسبة الهبوط ÷ (100 − نسبة الهبوط) × 100", op: "recovery", terms: [{ label: "انكماش المؤشر عن العام الماضي", value: 23.5, unit: "%" }], result: { label: "الصعود اللازم للتعويض" } });
+  const baseEffect = { title: "الإنتاج الصناعي السعودي قفز 15.6% في شهر، فهل هو نمو حقيقي؟", subtitle: "", lede: "قفز المؤشر 15.6% في سبتمبر.", body: "وليعود المؤشر إلى مستواه قبل عام كان عليه أن يصعد 30.7%، وقفزة سبتمبر البالغة 15.6% دون ذلك.", keyFacts: [], tags: [], regions: [], whyItMatters: "", chart: null, table: null, worked: recovery, diagram: null };
+  const baseChecked = programmaticChecks(baseEffect, [{ title: "الإنتاج الصناعي", text: "ارتفع مؤشر الإنتاج الصناعي 15.6% في سبتمبر بعد انكماشه 23.5% على أساس سنوي في أغسطس." }], { minWords: 0, explainer: true });
+  check(
+    "a recovery computes the rise that undoes a fall, stays with the story's figure, and lets the text say its result",
+    [recovery?.result.value, recovery?.result.unit, Boolean(baseEffect.worked), baseChecked.issues.some((i) => i.includes("30.7")), normalizeWorked({ title: "t", formula: "f", op: "recovery", terms: [{ label: "a", value: 120 }], result: { label: "r" } })],
+    [30.7, "%", true, false, null],
+  );
   // A part's printed words are held as a chart's labels are (the third test lesson of 2026-11-08 computed a residual,
   // 2.1, into its figure), while what code computed, here 0.7, may be printed and said once in the text.
   const reservesText = [{ title: "احتياطي", text: "Net inflows of 23.2 billion dollars covered a current-account deficit of 22.5 billion dollars." }];
@@ -1460,6 +1490,15 @@ if (spawnSync("git", ["--version"]).status === 0) {
     samples.map(() => true),
   );
   check("the search page is handed the site's pattern and isolates titles and standfirsts", [/define:vars=\{\{ runSource \}\}/.test(page), /isolate\(meta\.title\)/.test(page), /isolate\(meta\.summary\)/.test(page)], [true, true, true]);
+  // The site check reads an Arabic source's title to its own end: its first «</span>» could be a held word's inside an
+  // isolation («10-year»), and the isolated figure read as bare (a review of 2026-11-10).
+  const { bareFigures } = await import("./site-furniture.mjs");
+  const sourceLine = (title) => `<li class="sources__item"><span class="sources__name ui">رويترز</span> <span class="sources__title"><bdi lang="ar">${title}</bdi></span> <span class="sources__host ui"><bdi dir="ltr">reuters.com</bdi></span></li>`;
+  check(
+    "the site check passes an isolated figure in a source's title and still finds a bare one",
+    [bareFigures(sourceLine(isolateNumbers("عائد سندات 10-year الأمريكية يرتفع إلى 4.2%"))).length, bareFigures(`<a class="sources__title" href="https://x.test/"><bdi>${isolateNumbers("أرباح 9.5 مليارات")}</bdi></a> <span class="sources__host ui"></span>`).length, bareFigures(sourceLine("عائد 10 سنوات")).length],
+    [0, 0, 1],
+  );
 }
 
 {
@@ -1665,6 +1704,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
   held.forEach((release) => release());
   await settle();
   check("a tap on «المزيد» while a new search loads lists nothing of the old one", [first, items.length, status.innerHTML], [20, 2, "نتيجتان"]);
+  // A result's thumbnail is the story's own (`thumb`), never Pagefind's `image`, which Pagefind fills with the page's
+  // first picture when the page names none: 88 of the 96 stories without a photograph showed another story's, and 8 the
+  // site's logo (2026-11-10).
+  input.value = "البنوك";
+  form.fire("submit");
+  await settle();
+  const pictured = (n, meta) => ({ words: [1, 2, 3, 4], data: () => Promise.resolve({ url: `/x/p${n}/`, meta: { title: `p${n}`, ...meta } }) });
+  searches[2].resolve({ results: [pictured(1, { image: "/logo.svg" }), pictured(2, { image: "/logo.svg", thumb: "https://upload.wikimedia.org/a.jpg" })] });
+  await settle();
+  check("a search result's thumbnail is the story's own photograph, never the page's first picture", items.map((item) => item.classList.contains("search__item--photo")), [false, true]);
 }
 
 // A field Yahoo leaves empty is no price (a review of 2026-11-01: `regularMarketPrice: null` was read as 0 and reached

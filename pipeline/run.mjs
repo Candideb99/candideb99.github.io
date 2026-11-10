@@ -899,6 +899,9 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const flags = { [kind]: true, newsTitles };
   let checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
   log(`checks ${kind} "${draft.title}": ${checks.metrics.words} words, ${checks.issues.length} issues, ${checks.warnings.length} warnings`);
+  // A lesson part dropped for its figures is said by name: two explainers of 9 and 10 November ran without their worked
+  // example, and the log's count of warnings could not say whether one had been written (2026-11-10).
+  for (const warning of checks.warnings.filter((w) => / dropped: /.test(w))) log(`  · ${String(warning).slice(0, 160)}`);
   const review = await critique({ draft, sources: checkSources, ...flags, log });
   log(`critic ${kind}: ${review.verdict} score=${review.score} issues=${review.issues.length}`);
   for (const issue of [...checks.issues, ...review.issues].slice(0, 4)) log(`  · ${String(issue).slice(0, 160)}`);
@@ -1179,7 +1182,10 @@ async function gatherPapers(sources, state, existing) {
     seenTitles.add(titleKey);
     candidates.push(item);
   }
-  candidates.sort((a, b) => hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
+  // An undated paper reaches here only from a feed that lists its newest alone (`undatedFresh`, NBER's): it is among the
+  // newest, never last, where the cap of 120 would cut it (134 candidates on 2026-11-10).
+  const age = (c) => (c.publishedAt ? hoursSince(c.publishedAt) : 0);
+  candidates.sort((a, b) => age(a) - age(b));
   const capped = candidates.slice(0, 120);
   capped.forEach((c, i) => {
     c.id = `p${i + 1}`;

@@ -14,6 +14,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
+import { bareFigures } from "./site-furniture.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -100,19 +101,8 @@ for (const page of pages) {
     const explainer = /data-section=["']explainers["']/.test(tag);
     if (!explainer && (!/id=["']sources-title["']/.test(html) || !/class=["'][^"']*sources__item/.test(html))) fault(page, "a story without its sources section");
     // Every figure of the box's labels, a chart's legend, categories and table, and an Arabic source title is isolated as
-    // the text's own figures are (isolateNumbers() in src/lib/bidi.ts): printed bare, «2026-2031» drew «2031-2026»,
-    // «(15-30 م³)» «30-15» and «12.7%» «%12.7» (2026-11-09).
-    const furniture = [
-      ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),
-      ...html.matchAll(/<ul class="chart__legend[^"]*"[^>]*>([\s\S]*?)<\/ul>/g),
-      ...html.matchAll(/<ol class="chart__cats"[^>]*>([\s\S]*?)<\/ol>/g),
-      ...html.matchAll(/<details class="chart__data"[^>]*>([\s\S]*?)<\/details>/g),
-      ...[...html.matchAll(/<(?:a|span) class="sources__title"[^>]*>([\s\S]*?)<\/(?:a|span)>/g)].filter((m) => /[؀-ۿ]/.test(m[1])),
-    ];
-    for (const m of furniture) {
-      const bare = m[1].replace(/<bdi dir="ltr"[^>]*>[\s\S]*?<\/bdi>/g, "").replace(/<[^>]+>/g, "").replace(/&[a-z#0-9]+;/gi, " ");
-      if (/\d/.test(bare)) fault(page, `a figure printed outside its isolation, which reverses a range: «${m[1].replace(/<[^>]+>/g, "").trim().slice(0, 60)}»`);
-    }
+    // the text's own figures are (bareFigures(), scripts/site-furniture.mjs).
+    for (const snippet of bareFigures(html)) fault(page, `a figure printed outside its isolation, which reverses a range: «${snippet}»`);
     // Under «الأرقام» a figure, never a place, a name or a date (the owner, 2026-09-27; pipeline/lib/keyfacts.mjs). The
     // side and inline boxes print the same facts, so the first is read; an explainer's glossary (facts--terms) is not.
     const box = html.match(/<aside class="facts\b[^"]*"[\s\S]*?<\/aside>/)?.[0] ?? "";

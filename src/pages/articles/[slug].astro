@@ -129,7 +129,7 @@ const jsonLd = [articleLd, breadcrumbLd];
     </script>
     {/* A search result shows the story's photograph as a thumbnail (search.astro): a small copy, named for Pagefind here
         because the figure itself stays out of the search text. */}
-    <header class:list={["article__head", { "article__head--kind": kindHead }]} data-pagefind-meta={d.image ? "image[data-thumb]" : undefined} data-thumb={d.image ? thumbnailUrl(d.image.url, d.image.width) : undefined}>
+    <header class:list={["article__head", { "article__head--kind": kindHead }]} data-pagefind-meta={d.image ? "thumb[data-thumb]" : undefined} data-thumb={d.image ? thumbnailUrl(d.image.url, d.image.width) : undefined}>
       {/* The kicker, the meta lines, the share row and the photo credit are furniture and stay out of the search text
           (data-pagefind-ignore; the meta values inside are still read): a result's excerpt read «الطاقة › أوبك+
           خازندار نُشر الجمعة 11 سبتمبر 2026 م.» before the story's first words (2026-10-19). */}

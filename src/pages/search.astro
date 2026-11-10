@@ -186,7 +186,10 @@ const browse = Object.entries(TOPICS)
     function item(d) {
       var meta = d.meta || {};
       // The story's photograph as a thumbnail, as /latest/ lists them (the small copy the article names for the index).
-      var thumb = /^(https:\/\/|\/)/.test(meta.image || "") ? meta.image : "";
+      // Its own field, never Pagefind's `image`, which Pagefind fills with the page's first picture when the page names
+      // none: 88 of the 96 stories without a photograph showed another story's (Binance's four hack stories, Nvidia's
+      // chief executive) and the other 8 the site's logo (2026-11-10).
+      var thumb = /^(https:\/\/|\/)/.test(meta.thumb || "") ? meta.thumb : "";
       return (
         '<li class="search__item' + (thumb ? " search__item--photo" : "") + '" data-section="' + escape(meta.section) + '">' +
         (thumb ? '<img class="search__thumb" src="' + escape(thumb) + '" alt="" width="88" height="88" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' : "") +

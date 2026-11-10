@@ -661,12 +661,15 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     const kurdistan = { ...developers, title: "كردستان العراق تفقد بين 2500 و2800 ميغاواط بعد هجوم على حقل كورمور للغاز", subtitle: "الوزارة تعتزم تشغيل محطتي دوكان ودربنديخان الكهرومائيتين", tags: ["العراق", "إقليم كردستان", "الغاز الطبيعي"], regions: ["المشرق وإيران وتركيا"], section: "energy" };
     const plan = planFor({ queries: ["gas field Kurdistan"], place: ["Iraq", "Kurdistan"], places: ["Dukan Dam"], place_queries: ["Dukan Dam"], message: "One drone strike on the Khor Mor gas field cut off most of Kurdistan's electricity" });
     const world = { "Dukan Dam": [dam], "gas field": [plant] };
+    // The check took the dam for the story's own site (RIGHT), as the real one did; the illustration it checks is a
+    // stand-in of the sector (GENERIC_OK).
+    const asReal = (name) => (name.includes("Dukan") ? "RIGHT" : "GENERIC_OK");
     const drawn = await scenario({
       draft: kurdistan,
       plan,
       world,
       judge: (titles, prompt) => (prompt.includes("Photograph 1 is the one held so far") ? { choice: titles.indexOf(plant.title) + 1, says: false } : { choice: titles.length ? 1 : 0, says: false }),
-      verify: () => "GENERIC_OK",
+      verify: asReal,
     });
     const comparison = drawn.judgePrompts.find((p) => p.includes("Photograph 1 is the one held so far")) ?? "";
     check(
@@ -674,12 +677,52 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
       [drawn.image?.title, drawn.image?.alt?.includes(ILLUSTRATIVE), drawn.calls.includes("judge-neutral"), /Photograph 2 would run as an illustration/.test(comparison), drawn.calls.filter((c) => c.startsWith("verify:"))],
       [plant.title, true, true, true, [`verify:${dam.title}`, `verify:${plant.title}`]],
     );
-    const kept = await scenario({ draft: kurdistan, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: () => "GENERIC_OK" });
+    const kept = await scenario({ draft: kurdistan, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: asReal });
     check("the photograph held still runs when the comparison keeps it", [kept.image?.title, kept.image?.alt?.includes(ILLUSTRATIVE)], [dam.title, false]);
     check(
       "the planner, every judge and the second check are told a site named only as the response is not the story's",
       [drawn.judgePrompts.every((p) => p.includes("names only on the side")), drawn.verifyPrompts.every((p) => p.includes("names only on the side"))],
       [true, true],
+    );
+    // A stand-in of the story's own sector held (GENERIC_OK) is never set beside another from elsewhere: the analysis of
+    // Saudi ports of 9 November swapped its anonymous container port for a Maersk ship photographed in Slovenia, which the
+    // check had refused forty seconds before, captioned «سفينة حاويات تابعة لشركة ميرسك» (2026-11-10).
+    const cranes = file("Container cranes at a bustling port during sunset.jpg", { categories: "Container terminals" });
+    const maersk = file("MAERSK HANOI Container Ship (Port Koper SIKOP, 2023).jpg", { categories: "Port of Koper|Maersk Line" });
+    const ports = { ...developers, title: "مكاسب الموانئ السعودية من تحويل الشحن مرتبطة باستمرار تعطل هرمز", subtitle: "", tags: ["السعودية", "الموانئ"], regions: ["الخليج"], section: "economy", kind: "analysis" };
+    const standIn = await scenario({
+      draft: ports,
+      plan: planFor({ queries: ["container port Saudi Arabia"], place: ["Saudi Arabia"], places: [], place_queries: [], message: "Saudi Red Sea ports are busy with rerouted cargo" }),
+      world: { "container port Saudi Arabia": [cranes], "container port": [maersk] },
+      judge: (titles, prompt) => (prompt.includes("Photograph 1 is the one held so far") ? { choice: titles.indexOf(maersk.title) + 1, says: false } : { choice: titles.length ? 1 : 0, says: false }),
+      verify: () => "GENERIC_OK",
+    });
+    check("a stand-in of the story's own sector held is never set beside an illustration from elsewhere", [standIn.image?.title, standIn.calls.includes("judge-neutral")], [cranes.title, false]);
+    check(
+      "an illustration's caption names no company, and the check refuses one that does",
+      drawn.verifyPrompts.filter((p) => p.includes("LAST PASS") || /would run as an illustration/.test(p)).every((p) => p.includes("operator, owner, airline or company")) && drawn.verifyPrompts.some((p) => p.includes("operator, owner, airline or company the story does not name")),
+      true,
+    );
+    // The illustration's search can bring back the photograph held itself, at its own address or as its Flickr copy; the
+    // comparison maps its choice back by address, read "keep the one held" as the illustration, and ran the story's own
+    // photograph captioned «صورة تعبيرية» (a review of 2026-11-10).
+    const field = file("Khor Mor gas field, Iraqi Kurdistan (52345678901).jpg", { categories: "Khor Mor gas field|Natural gas fields in Iraq" });
+    const fieldOnFlickr = { ...file("Khor Mor gas field"), url: "https://live.staticflickr.com/65535/52345678901_0a1b2c3d4e_b.jpg", library: "flickr", pageUrl: "https://www.flickr.com/photos/tester/52345678901" };
+    const ownField = planFor({ queries: ["gas field Kurdistan"], place: ["Iraq", "Kurdistan"], places: ["Khor Mor gas field"], place_queries: ["Khor Mor gas field"], message: "One drone strike on the Khor Mor gas field cut off most of Kurdistan's electricity" });
+    const asField = (name) => (name.includes("Khor Mor") ? "RIGHT" : "GENERIC_OK");
+    const sameAddress = await scenario({ draft: kurdistan, plan: ownField, world: { "Khor Mor gas field": [field], "gas field": [field] }, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: asField });
+    const flickrCopy = await scenario({
+      draft: kurdistan,
+      plan: ownField,
+      world: { "Khor Mor gas field": [field] },
+      libs: { "gas field": [fieldOnFlickr] },
+      judge: (titles, prompt) => ({ choice: prompt.includes("Photograph 1 is the one held so far") ? 2 : titles.length ? 1 : 0, says: false }),
+      verify: asField,
+    });
+    check(
+      "the illustration's search never brings back the photograph held, under any address",
+      [sameAddress.image?.title, sameAddress.image?.alt?.includes(ILLUSTRATIVE), sameAddress.calls.filter((c) => c.startsWith("verify:")).length, flickrCopy.image?.title, flickrCopy.image?.alt?.includes(ILLUSTRATIVE), flickrCopy.calls.filter((c) => c.startsWith("verify:")).length],
+      [field.title, false, 1, field.title, false, 1],
     );
   }
   // Every search of a pass is made: Morocco's first two searches filled the pass and «Tanger Med container port», its

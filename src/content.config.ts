@@ -79,8 +79,9 @@ const worked = z
   .object({
     title: z.string(),
     formula: z.string(),
-    op: z.enum(["difference", "sum", "ratio", "share", "change"]),
-    terms: z.array(z.object({ label: z.string(), value: z.number(), unit: z.string().default("") })).min(2).max(6),
+    op: z.enum(["difference", "sum", "ratio", "share", "change", "recovery"]),
+    // One term for a recovery (the fall it undoes, lib/lesson.mjs WORKED_OPS), two or more for the rest.
+    terms: z.array(z.object({ label: z.string(), value: z.number(), unit: z.string().default("") })).min(1).max(6),
     result: z.object({ label: z.string(), value: z.number(), unit: z.string().default("") }),
     hypothetical: z.boolean().default(false),
     // The step a part prints in, after that step's first paragraph (2026-11-08); without one, the page's default place.

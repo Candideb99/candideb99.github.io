@@ -17,7 +17,7 @@ interface Props {
   worked: {
     title: string;
     formula: string;
-    op: "difference" | "sum" | "ratio" | "share" | "change";
+    op: "difference" | "sum" | "ratio" | "share" | "change" | "recovery";
     terms: Term[];
     result: { label: string; value: number; unit?: string };
     hypothetical?: boolean;
@@ -38,6 +38,7 @@ const working =
   : worked.op === "sum" ? `${worked.terms.map((t) => fmt(t.value)).join(" + ")} = ${r}`
   : worked.op === "ratio" ? `${a} ÷ ${b} = ${r}`
   : worked.op === "share" ? `${a} ÷ ${b} × 100 = ${r}%`
+  : worked.op === "recovery" ? `${a} ÷ (100 − ${a}) × 100 = ${r}%`
   : `(${b} − ${a}) ÷ ${a} × 100 = ${r}%`;
 ---
 
