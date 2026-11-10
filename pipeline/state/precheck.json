@@ -14709,6 +14709,116 @@
           "noted": []
         }
       ]
+    },
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2": {
+      "at": "2026-11-10T21:02:06.522Z",
+      "title": "«أدنوك للغاز» الإماراتية تضاعف ربح الربع الثالث عن سابقه بعودة الشحنات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 29,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 5,
+            "confirmed": 2,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 11,
+              "field": "whyItMatters",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "غطّت التدفقات النقدية لـ«أدنوك للغاز» توزيعاتها 1.3 مرة في تسعة أشهر قيّدت فيها اضطرابات هرمز صادراتها، وهي تستهدف رفع التوزيعات 5% سنوياً وتخطط لاستثمارات بنحو 28 مليار دولار حتى 2030.",
+              "quote": "وولّدت الأنشطة التشغيلية في الأشهر التسعة الأولى تدفقات نقدية بلغت 3.82 مليار دولار، غطت التوزيعات المقررة منذ بداية العام، البالغة 2.82 مليار دولار، بمعدل 1.3 مرة.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "$3.82bn divided by $2.82bn is about 1.35 times, which rounds to 1.4, not 1.3."
+            },
+            {
+              "id": 33,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وولّدت الأنشطة التشغيلية في الأشهر التسعة الأولى تدفقات نقدية بلغت 3.82 مليار دولار، غطت التوزيعات المقررة منذ بداية العام، البالغة 2.82 مليار دولار، بمعدل 1.3 مرة.",
+              "quote": "وولّدت الأنشطة التشغيلية في الأشهر التسعة الأولى تدفقات نقدية بلغت 3.82 مليار دولار، غطت التوزيعات المقررة منذ بداية العام، البالغة 2.82 مليار دولار، بمعدل 1.3 مرة.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "$3.82bn divided by $2.82bn is about 1.35 times (about 1.4 rounded), not 1.3."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 31,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 5,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 19,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتعزو الشركة ذلك إلى أن أحجام صادرات السوائل لم تستعد مستوياتها السابقة، وإلى أن اضطرابات الشحن حدّت من قدرتها على الاستفادة الكاملة من صعود الأسعار العالمية.",
+              "quote": "أما سبب بقاء النتائج دون العام الماضي فهو أن أحجام صادرات السوائل لم تستعد مستوياتها السابقة، وأن اضطرابات الشحن حدّت من قدرة الشركة على الاستفادة الكاملة من صعود الأسعار العالمية.",
+              "source": "Khazendar",
+              "sourceN": 1,
+              "correction": "The source gives this explanation as its own reporting and does not attribute it to the company."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 39,
+            "supported": 33,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
