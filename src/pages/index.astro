@@ -9,7 +9,6 @@ import { getArticles, pickLead, chartOfTheDay, hoursOld, repeatedEvents, firstPi
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { headline } from "@lib/bidi";
-import { cardSizes } from "@lib/wikimedia";
 import { timeAgo, countLabel } from "@lib/format";
 import { isMarketQuote } from "@lib/markets";
 import site from "@data/site.json";
@@ -124,31 +123,45 @@ place(figures.map((f) => f.article));
 // three days; the blocks follow the news, the section with the newest story first. A section with fewer than two
 // such stories runs as one line in «من الأقسام» (its newest story not yet printed, with its date) instead of a block
 // filled with reprints and week-old stories (الدفاع's stories on the front had a median age of 214 hours).
+// One shape for every block since 2026-11-10 (the critique of 9 November: four blocks in four layouts, their columns
+// ending 121-148px apart): a feature with its photograph beside a ruled list of briefs. A block opens on a story of the
+// last three days; its briefs, when three days give fewer than three, are filled from the last week (each prints its
+// age), so the brief column is not left a third full. The feature is the newest story with a photograph, so no block
+// leads on a headline over blank paper.
+// A line carries a story of the last week or is not printed: «من الأقسام» had run الدفاع's, الطاقة's and الشركات's newest
+// unprinted stories at 18 and 19 days old under today's news, which reads as a paper nobody keeps (2026-10-19).
+const LINE_HOURS = 7 * 24;
 const sectionPools = newsSections.map((section) => ({ section, pool: unplaced(news.filter((a) => a.data.section === section.id)) }));
 const rows = sectionPools
-  .map(({ section, pool }) => ({ section, items: pool.filter((a) => hoursOld(a) < FRESH_HOURS).slice(0, 4) }))
-  .filter((r) => r.items.length >= 2)
-  .sort((x, y) => Date.parse(y.items[0].data.publishedAt) - Date.parse(x.items[0].data.publishedAt));
+  .map(({ section, pool }) => {
+    const fresh = pool.filter((a) => hoursOld(a) < FRESH_HOURS);
+    const week = pool.filter((a) => hoursOld(a) >= FRESH_HOURS && hoursOld(a) < LINE_HOURS);
+    const items = [...fresh, ...week].slice(0, 4);
+    const lead = items.find((a) => a.data.image && hoursOld(a) < FRESH_HOURS) ?? items[0];
+    return { section, items: lead ? [lead, ...items.filter((a) => a.id !== lead.id)] : [], newest: fresh[0] };
+  })
+  .filter((r) => r.newest && r.items.length >= 3)
+  .sort((x, y) => Date.parse(y.newest!.data.publishedAt) - Date.parse(x.newest!.data.publishedAt));
 rows.forEach((r) => place(r.items));
-// A line carries a story of the last week or is not printed: «من الأقسام» had run الدفاع's, الطاقة's and الشركات's newest
-// unprinted stories at 18 and 19 days old under today's news, which reads as a paper nobody keeps (2026-10-19). The
-// section bar and the menu still lead to every section.
-const LINE_HOURS = 7 * 24;
+// «من الأقسام» runs only with two lines or more: one line under a section head read as a module left half built (the
+// critique of 9 November). A section left out is one tap away in the section bar.
 const lines = sectionPools
   .filter(({ section }) => !rows.some((r) => r.section.id === section.id))
   .map(({ section, pool }) => ({ section, story: pool.find((a) => hoursOld(a) < LINE_HOURS) }))
   .filter((l): l is { section: typeof l.section; story: Article } => Boolean(l.story))
   .sort((x, y) => Date.parse(y.story.data.publishedAt) - Date.parse(x.story.data.publishedAt));
+if (lines.length < 2) lines.length = 0;
 lines.forEach((l) => l.story && place([l.story]));
 
 // الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk its count, its
-// last update and at most one story of the last three days no module above has printed (it reprinted 11 of 12).
+// last update and one story of the last week no module above has printed (it reprinted 11 of 12). A desk with no such
+// story is left out: three of four desks had printed a count alone over blank paper (the critique of 9 November).
 const desks = DESKS.map((d) => {
   const inDesk = news.filter((a) => desksOf(a).some((x) => x.id === d.id));
-  const story = unplaced(inDesk).find((a) => hoursOld(a) < FRESH_HOURS);
+  const story = unplaced(inDesk).find((a) => hoursOld(a) < LINE_HOURS);
   if (story) place([story]);
   return { ...d, count: inDesk.length, latest: inDesk[0], story };
-}).filter((d) => d.count > 0);
+}).filter((d) => d.count > 0 && d.story);
 
 // The hubs: analyses and explainers run as text in ruled columns, which also tells the reader at a
 // glance that these are argument and concept pieces, not news reports; the readings shown beside the
@@ -191,31 +204,16 @@ const jsonLd = {
     </section>
   )}
 
-  {rows.map((r, i) => {
+  {rows.map((r) => {
     const [feature, ...briefs] = r.items;
-    // Blocks alternate between two shapes so no block repeats its neighbour: a feature beside
-    // briefs, then a row of picture cards. A block with fewer than three stories keeps the first.
-    const cardsRow = i % 2 === 1 && r.items.length >= 3;
+    // One shape for every block (2026-11-10): the alternating row of picture cards and the pair of features went.
     return (
       <section class="wrap row" data-section={r.section.id} aria-labelledby={`sec-${r.section.id}`}>
         <div class="section-head">
           <h2 id={`sec-${r.section.id}`}><a href={sectionHref(r.section.id)}>{r.section.name}</a></h2>
           <a class="more" href={sectionHref(r.section.id)}>{moreLabel(r.section.id)}</a>
         </div>
-        {cardsRow ? (
-          <div class="cards" style={`--n:${r.items.length}`}>
-            {r.items.map((a) => (
-              <StoryCard article={a} variant="card" showSection={false} showExcerpt={!photoIds.has(a.id)} showPhoto={photoIds.has(a.id)} sizes={cardSizes(r.items.length)} />
-            ))}
-          </div>
-        ) : briefs.length === 1 ? (
-          <div class="cols row__pair" style="--n:2">
-            {r.items.map((a) => (
-              <StoryCard article={a} variant="card" class={r.items.filter((s) => s.data.image && photoIds.has(s.id)).length === 1 ? "card--spread" : ""} showSection={false} showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 600px, (min-width: 720px) 48vw, 120px" />
-            ))}
-          </div>
-        ) : (
-        <div class={`row__body${briefs.length ? "" : " row__body--solo"}`}>
+        <div class="row__body">
           <div class="row__feature">
             <StoryCard article={feature} variant="card" class="card--spread" showSection={false} showExcerpt showTopic showPhoto={photoIds.has(feature.id)} sizes="(min-width: 1320px) 380px, (min-width: 1024px) 30vw, (min-width: 720px) 52vw, 120px" />
           </div>
@@ -227,7 +225,6 @@ const jsonLd = {
             </div>
           )}
         </div>
-        )}
       </section>
     );
   })}
@@ -313,20 +310,9 @@ const jsonLd = {
     .first :global(.front__side) { order: 6; margin-top: 0; }
   }
 
-  /* Two stories make a pair of equal features in ruled columns: as a feature and one brief they left the brief
-     column three-fifths empty (2026-09-27). */
-  .row__pair :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
-  .row__pair :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
-  /* A pair where only one story has a photograph: stacked over its headline, the photograph made one column about
-     480px deep beside three lines and blank paper (الأسواق and الاقتصاد, 2026-10-19). That story runs like a block's
-     feature instead (`card--spread`, StoryCard.astro: the headline across, the summary beside the photograph), so the
-     two columns end near each other. */
-
-  /* One story leads each block, the rest sit beside it as briefs. */
+  /* One story leads each block, two or three briefs sit beside it (every block since 2026-11-10). */
   .row__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; }
-  .row__body--solo { grid-template-columns: 1fr; }
   .row__feature { padding-inline-end: var(--col-gap); }
-  .row__body--solo .row__feature { padding-inline-end: 0; max-width: 56rem; }
   .row__briefs { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; align-content: start; }
   .row__briefs > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
   .row__briefs > :global(.card:first-child) { border-top: 0; padding-top: 0; }

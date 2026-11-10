@@ -38,7 +38,12 @@ const all = section.id === "analysis" ? await getArticles() : [];
 const first = page.currentPage === 1;
 // News sections are their own label; the hubs print each story's kind (analysis desk, explainer, paper reading).
 const showKind = HUB_SECTIONS.has(section.id);
-const [lead, ...others] = page.data;
+// The first page leads on its newest story with a photograph when one is among its first four (the critique of
+// 9 November: /energy/ opened on a text-only headline above three photographed cards). The stories it passes over stay
+// at the head of the list beside it, newest first.
+const leadAt = first ? page.data.slice(0, 4).findIndex((a) => a.data.image) : 0;
+const ordered = leadAt > 0 ? [page.data[leadAt], ...page.data.filter((_, i) => i !== leadAt)] : page.data;
+const [lead, ...others] = ordered;
 // Up to three stories beside the lead; when the section is small the ruled list takes them all,
 // so a page never ends with one orphan card under a rule.
 const besideCount = others.length <= 5 ? others.length : 3;
