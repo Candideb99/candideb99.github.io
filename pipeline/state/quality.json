@@ -400,55 +400,65 @@
       "read": 7,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-10",
+      "published": 11,
+      "news": 9,
+      "styleFaultsPerStory": 0,
+      "corrections": 1,
+      "read": 8,
+      "confirmedPerStory": 0.13,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-09T17:46:25.777Z",
+  "updatedAt": "2026-11-10T15:50:08.454Z",
   "week": {
     "published": 91,
     "news": 74,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.28,
-    "corrections": 2,
+    "styleWarningsPerStory": 0.24,
+    "corrections": 3,
     "usefulness": {
       "withLessons": {
-        "stories": 65,
-        "words": 469,
-        "keyFacts": 4
+        "stories": 64,
+        "words": 460,
+        "keyFacts": 3.9
       },
       "control": {
-        "stories": 8,
-        "words": 435,
-        "keyFacts": 2.8
+        "stories": 9,
+        "words": 440,
+        "keyFacts": 3.3
       }
     },
     "precheck": {
       "checked": 84,
-      "clean": 72,
-      "repaired": 12,
+      "clean": 69,
+      "repaired": 15,
       "held": 0,
-      "errorsFound": 12,
+      "errorsFound": 15,
       "unsourcedCut": 0,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 12,
-      "correctionsVerifiedClean": 1,
+      "repairedBeforePublication": 15,
+      "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 36,
-      "clean": 28,
-      "corrected": 1,
-      "stands": 1,
+      "read": 37,
+      "clean": 29,
+      "corrected": 2,
+      "stands": 0,
       "refused": 0,
       "listed": 6,
       "unverifiable": 0,
-      "confirmedPerStory": 0.06,
+      "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 26,
+        "read": 27,
         "confirmedPerStory": 0.04
       },
       "claudeWithout": {
@@ -458,22 +468,14 @@
     },
     "runs": {
       "count": 24,
-      "written": 45,
-      "refused": 10,
-      "callsPerStory": 24.1,
-      "tokensPerStory": 478793,
-      "costPerStory": 3.94,
+      "written": 46,
+      "refused": 9,
+      "callsPerStory": 24.9,
+      "tokensPerStory": 478904,
+      "costPerStory": 3.95,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
-      {
-        "what": "second look: figure errors",
-        "stories": 2,
-        "examples": [
-          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو",
-          "brent-rebounds-us-strike-qeshm-island-382dd6: وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، و"
-        ]
-      },
       {
         "what": "newsroom: skipped: a single independent non-official reporting origin (needs a second independently",
         "stories": 5,
@@ -482,56 +484,56 @@
     ]
   },
   "weekBefore": {
-    "published": 101,
-    "news": 84,
+    "published": 99,
+    "news": 82,
     "revisedShare": 1,
-    "styleFaultsPerStory": 0.08,
-    "styleWarningsPerStory": 0.46,
-    "corrections": 15,
+    "styleFaultsPerStory": 0.07,
+    "styleWarningsPerStory": 0.49,
+    "corrections": 11,
     "usefulness": {
       "withLessons": {
-        "stories": 68,
-        "words": 459,
-        "keyFacts": 4.4
+        "stories": 69,
+        "words": 467,
+        "keyFacts": 4.2
       },
       "control": {
-        "stories": 16,
-        "words": 429,
-        "keyFacts": 3.6
+        "stories": 13,
+        "words": 440,
+        "keyFacts": 2.9
       }
     },
     "precheck": {
-      "checked": 94,
-      "clean": 83,
-      "repaired": 11,
+      "checked": 92,
+      "clean": 82,
+      "repaired": 10,
       "held": 0,
-      "errorsFound": 12,
+      "errorsFound": 11,
       "unsourcedCut": 5,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 12,
-      "correctionsVerifiedClean": 5,
+      "repairedBeforePublication": 11,
+      "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 42,
+      "read": 40,
       "clean": 25,
-      "corrected": 6,
-      "stands": 0,
+      "corrected": 2,
+      "stands": 1,
       "refused": 0,
-      "listed": 11,
+      "listed": 12,
       "unverifiable": 0,
-      "confirmedPerStory": 0.19,
+      "confirmedPerStory": 0.13,
       "withLessons": {
-        "read": 32,
-        "confirmedPerStory": 0.19
+        "read": 31,
+        "confirmedPerStory": 0.16
       },
       "claudeWithout": {
-        "read": 10,
-        "confirmedPerStory": 0.2
+        "read": 9,
+        "confirmedPerStory": 0
       }
     },
     "runs": {
@@ -545,20 +547,28 @@
     },
     "recurring": [
       {
-        "what": "second look: attribution errors",
-        "stories": 4,
+        "what": "second look: figure errors",
+        "stories": 2,
         "examples": [
-          "aramco-orders-remaining-dhahran-hq-staff-to-work-remotely-a95210: أصدرت أرامكو السعودية تعليمات بإخلاء مقرها الرئيسي في الظهران والعمل عن بعد، بحسب ستة أشخاص مطلعين نقلت عنهم رويترز، دون",
-          "french-bond-yields-jump-after-protests-1b64ee: قالت وزارة الداخلية الفرنسية الأحد إن نحو 2400 شخص اعتُقلوا، بعد عنف اندلع عقب أسابيع من تظاهرات سلمية بشأن أوضاع المدار",
-          "binance-freezes-3-billion-potential-hack-647d53: وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل."
+          "binance-freezes-3-billion-potential-hack-647d53: الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
+          "binance-freezes-3-billion-potential-hack-647d53: رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دو",
+          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو"
+        ]
+      },
+      {
+        "what": "second look: attribution errors",
+        "stories": 2,
+        "examples": [
+          "binance-freezes-3-billion-potential-hack-647d53: وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
+          "china-factory-pmi-contracts-october-64c344: غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض ا"
         ]
       }
     ]
   },
   "lessons": {
-    "version": 60,
+    "version": 62,
     "active": 10,
-    "learnedFrom": 246,
+    "learnedFrom": 251,
     "kept": null,
     "lastTest": {
       "at": "2026-11-09T16:07:36.878Z",
@@ -611,7 +621,7 @@
     }
   },
   "evidence": {
-    "pairs": 52,
+    "pairs": 53,
     "vsKept": {
       "n": 0,
       "better": 0,
