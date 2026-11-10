@@ -14681,6 +14681,34 @@
           "noted": []
         }
       ]
+    },
+    "us-tariffs-cheaper-chinese-goods-elsewhere-3f1f9d": {
+      "at": "2026-11-10T17:20:48.503Z",
+      "title": "دراسة أولية نشرها الفيدرالي: رسوم واشنطن خفّضت أسعار السلع الصينية خارج أمريكا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

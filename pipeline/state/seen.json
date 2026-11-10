@@ -1,12 +1,6 @@
 {
   "version": 1,
   "items": {
-    "6dcfd5ada2be210e": {
-      "at": "2026-10-20T15:03:32.056Z",
-      "decision": "published",
-      "slug": "fed-note-bonds-safe-haven-inflation-2abcf8",
-      "title": "FEDS Note: Government Bonds’ Safe-Haven Property and Inflationary Pressures"
-    },
     "c9d917e969e67c7e": {
       "at": "2026-10-20T19:34:25.364Z",
       "decision": "published",
@@ -6141,6 +6135,12 @@
       "decision": "published",
       "slug": "lebanon-resumes-imf-talks-preliminary-deal-62176d",
       "title": "مصرف لبنان: لن نصدر أي توضيحات إعلامية خلال مشاورات صندوق النقد بشأن قانون الانتظام المالي"
+    },
+    "602903b7186eedfc": {
+      "at": "2026-11-10T17:22:48.315Z",
+      "decision": "published",
+      "slug": "us-tariffs-cheaper-chinese-goods-elsewhere-3f1f9d",
+      "title": "IFDP Paper: Trade Deflection: The Spillover Effects of U.S. Tariffs on Import Prices in Bystander Countries"
     }
   }
 }
