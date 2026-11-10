@@ -14585,6 +14585,102 @@
           "noted": []
         }
       ]
+    },
+    "us-consumer-prices-rise-october-above-forecast-fbd271": {
+      "at": "2026-11-10T15:13:44.291Z",
+      "title": "أسعار المستهلكين الأمريكية ترتفع 0.4% في أكتوبر متجاوزة التوقعات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v63",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "anthropic-sets-ipo-price-range-nasdaq-0e1aca": {
+      "at": "2026-11-10T15:26:51.183Z",
+      "title": "أنثروبيك الأمريكية تسعى لجمع ما يصل إلى 64.4 مليار دولار بطرح أولي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v63",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 30,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ويمنح أعلى النطاق السعري الشركة تقييماً يصل إلى 1.02 تريليون دولار، وفق حسابات الوكالة المبنية على عدد الأسهم القائمة الوارد في الإفصاح، وهو أعلى من آخر تقييم للشركة في جولة تمويل خاصة، البالغ 965 مليار دولار.",
+              "quote": "It would value Anthropic at between $1.1tn and $1.3tn which, although large, is below the $2tn some backers of the firm predicted in summer, according to the Financial Times.",
+              "source": "BBC News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "lebanon-resumes-imf-talks-preliminary-deal-62176d": {
+      "at": "2026-11-10T15:39:20.819Z",
+      "title": "لبنان يستأنف مفاوضاته مع صندوق النقد سعياً إلى اتفاق مبدئي هذا الأسبوع",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v63",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 32,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

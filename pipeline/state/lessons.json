@@ -250,10 +250,11 @@
     "germany-trade-surplus-shrinks-september-imports-271dbf:162901e2",
     "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671",
     "saudi-ports-suez-hormuz-red-sea-shift-234b6e:da01db17",
-    "brent-falls-ten-week-low-trump-iran-377a7a:afb98acf"
+    "brent-falls-ten-week-low-trump-iran-377a7a:afb98acf",
+    "fed-waller-december-hike-half-point-3a01d9:2c946d3a"
   ],
-  "version": 62,
-  "updatedAt": "2026-11-10T03:40:28.773Z",
+  "version": 63,
+  "updatedAt": "2026-11-10T15:00:46.875Z",
   "lessons": [
     {
       "id": "L1",
@@ -300,11 +301,12 @@
         "anthropic-researcher-ai-human-extinction-risk-8aa7a2:92d3dbf3",
         "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
         "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb",
-        "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa"
+        "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
+        "fed-waller-december-hike-half-point-3a01d9:2c946d3a"
       ],
-      "seen": 35,
+      "seen": 36,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-07T13:14:26.888Z",
+      "lastSeen": "2026-11-10T15:00:46.875Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
@@ -789,18 +791,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T08:25:25.678Z",
-      "mistakes": 15,
-      "applied": [
-        "sharpen L1 (+2)",
-        "sharpen L2 (+3)",
-        "sharpen L4 (+5)",
-        "sharpen L5 (+2)",
-        "sharpen L6 (+3)",
-        "reinforce L7 (+2)"
-      ]
-    },
     {
       "at": "2026-09-25T12:04:58.585Z",
       "mistakes": 13,
@@ -1297,6 +1287,13 @@
         "reinforce L4 (+1; reworded at most once a week)",
         "reinforce L8 (+1; reworded at most once a week)",
         "reinforce L3 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-10T15:00:46.875Z",
+      "mistakes": 1,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)"
       ]
     }
   ],

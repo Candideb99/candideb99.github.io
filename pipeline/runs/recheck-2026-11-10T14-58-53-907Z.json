@@ -1,0 +1,104 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-10T14:58:53.907Z",
+  "durationSec": 113,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-industrial-production-rises-september-mining-8795ed",
+      "title": "الإنتاج الصناعي السعودي يرتفع 15.6% عن أغسطس بقيادة التعدين",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 23,
+        "weak": 8,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "adnoc-gas-q3-profit-doubles-guidance-beff04",
+      "title": "أرباح «أدنوك للغاز» تتضاعف فصلياً إلى 1.34 مليار دولار في الربع الثالث",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 27,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "fed-waller-december-hike-half-point-3a01d9",
+      "title": "عضو بمجلس محافظي الفيدرالي يطرح رفع الفائدة نصف نقطة إذا بقي التضخم مرتفعاً",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 27,
+        "checked": 27,
+        "supported": 24,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 26715,
+    "completionTokens": 25428,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7223,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 26715,
+        "read": 0,
+        "out": 25428,
+        "usd": 0.7223
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[14:58:54] second look: 3 to read now (3 published pieces not yet read; 232 read clean before publication and left out of the audit sample)",
+    "[14:58:55] saudi-industrial-production-rises-september-mining-8795ed:   source https://finance.yahoo.com/quote/%5ETASI.SR/: a market quote of its moment, with no copy saved at publication",
+    "[14:59:59] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3218 in=7836 read=0 out=8646 attempt=1 ms=63393",
+    "[14:59:59] saudi-industrial-production-rises-september-mining-8795ed: 31 of 31 sentences checked · 23 supported · 0 without a source · 0 confirmed error(s)",
+    "[14:59:59] fed-waller-december-hike-half-point-3a01d9:   source https://www.bloomberg.com/news/articles/2026-11-10/fed-s-waller-backs-december-r: http-403; read from the copy saved at publication (fetched then)",
+    "[15:00:21] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4752 in=12756 read=0 out=10752 attempt=1 ms=84077",
+    "[15:00:21] adnoc-gas-q3-profit-doubles-guidance-beff04: 33 of 33 sentences checked · 27 supported · 2 without a source · 0 confirmed error(s)",
+    "[15:00:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2038 in=6123 read=0 out=6030 attempt=1 ms=46169",
+    "[15:00:46] fed-waller-december-hike-half-point-3a01d9: 27 of 27 sentences checked · 24 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}
