@@ -410,75 +410,90 @@
       "read": 8,
       "confirmedPerStory": 0.13,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-11",
+      "published": 16,
+      "news": 13,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 6,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-10T15:50:08.454Z",
+  "updatedAt": "2026-11-11T15:34:45.907Z",
   "week": {
-    "published": 91,
-    "news": 74,
-    "revisedShare": 0.99,
+    "published": 96,
+    "news": 79,
+    "revisedShare": 1,
     "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.24,
-    "corrections": 3,
+    "styleWarningsPerStory": 0.29,
+    "corrections": 1,
     "usefulness": {
       "withLessons": {
-        "stories": 64,
-        "words": 460,
-        "keyFacts": 3.9
+        "stories": 66,
+        "words": 474,
+        "keyFacts": 4
       },
       "control": {
-        "stories": 9,
-        "words": 440,
-        "keyFacts": 3.3
+        "stories": 12,
+        "words": 402,
+        "keyFacts": 2.9
       }
     },
     "precheck": {
-      "checked": 84,
-      "clean": 69,
-      "repaired": 15,
+      "checked": 89,
+      "clean": 72,
+      "repaired": 17,
       "held": 0,
-      "errorsFound": 15,
-      "unsourcedCut": 0,
+      "errorsFound": 19,
+      "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 15,
-      "correctionsVerifiedClean": 2,
+      "repairedBeforePublication": 19,
+      "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 37,
-      "clean": 29,
-      "corrected": 2,
+      "read": 42,
+      "clean": 34,
+      "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 6,
+      "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0.05,
+      "confirmedPerStory": 0.02,
       "withLessons": {
-        "read": 27,
-        "confirmedPerStory": 0.04
+        "read": 31,
+        "confirmedPerStory": 0.03
       },
       "claudeWithout": {
-        "read": 10,
-        "confirmedPerStory": 0.1
+        "read": 11,
+        "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
       "written": 46,
-      "refused": 9,
-      "callsPerStory": 24.9,
-      "tokensPerStory": 478904,
-      "costPerStory": 3.95,
+      "refused": 5,
+      "callsPerStory": 24.6,
+      "tokensPerStory": 481590,
+      "costPerStory": 3.98,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": [
       {
         "what": "newsroom: skipped: a single independent non-official reporting origin (needs a second independently",
-        "stories": 5,
+        "stories": 2,
+        "examples": []
+      },
+      {
+        "what": "newsroom: rejected after revision: جمل طويلة جداً",
+        "stories": 2,
         "examples": []
       }
     ]
@@ -486,20 +501,20 @@
   "weekBefore": {
     "published": 99,
     "news": 82,
-    "revisedShare": 1,
+    "revisedShare": 0.99,
     "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.49,
-    "corrections": 11,
+    "styleWarningsPerStory": 0.38,
+    "corrections": 13,
     "usefulness": {
       "withLessons": {
-        "stories": 69,
-        "words": 467,
+        "stories": 70,
+        "words": 462,
         "keyFacts": 4.2
       },
       "control": {
-        "stories": 13,
-        "words": 440,
-        "keyFacts": 2.9
+        "stories": 12,
+        "words": 437,
+        "keyFacts": 2.8
       }
     },
     "precheck": {
@@ -513,27 +528,27 @@
     },
     "outcomes": {
       "repairedBeforePublication": 11,
-      "correctionsVerifiedClean": 1,
+      "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 40,
-      "clean": 25,
-      "corrected": 2,
+      "read": 42,
+      "clean": 26,
+      "corrected": 3,
       "stands": 1,
       "refused": 0,
       "listed": 12,
       "unverifiable": 0,
-      "confirmedPerStory": 0.13,
+      "confirmedPerStory": 0.14,
       "withLessons": {
-        "read": 31,
+        "read": 32,
         "confirmedPerStory": 0.16
       },
       "claudeWithout": {
-        "read": 9,
-        "confirmedPerStory": 0
+        "read": 10,
+        "confirmedPerStory": 0.1
       }
     },
     "runs": {
@@ -548,7 +563,7 @@
     "recurring": [
       {
         "what": "second look: figure errors",
-        "stories": 2,
+        "stories": 3,
         "examples": [
           "binance-freezes-3-billion-potential-hack-647d53: الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
           "binance-freezes-3-billion-potential-hack-647d53: رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دو",
@@ -566,9 +581,9 @@
     ]
   },
   "lessons": {
-    "version": 62,
+    "version": 66,
     "active": 10,
-    "learnedFrom": 251,
+    "learnedFrom": 258,
     "kept": null,
     "lastTest": {
       "at": "2026-11-09T16:07:36.878Z",
@@ -621,7 +636,7 @@
     }
   },
   "evidence": {
-    "pairs": 53,
+    "pairs": 56,
     "vsKept": {
       "n": 0,
       "better": 0,
