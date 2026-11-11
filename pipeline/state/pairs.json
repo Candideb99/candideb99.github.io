@@ -2445,6 +2445,54 @@
         ],
         "programmatic": 3
       }
+    },
+    {
+      "at": "2026-11-11T09:47:07.454Z",
+      "slug": "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v65",
+      "lessonsHash": "87fb8f5ec7",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 3,
+        "checked": 31,
+        "words": 573,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 29,
+        "notFound": 1,
+        "checked": 36,
+        "words": 575,
+        "keyFacts": 6,
+        "classes": [
+          "term"
+        ],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 29,
+        "notFound": 1,
+        "checked": 36,
+        "words": 575,
+        "keyFacts": 6,
+        "classes": [
+          "term"
+        ],
+        "programmatic": 2
+      }
     }
   ]
 }

@@ -3988,34 +3988,8 @@
       },
       "confirmed": [
         {
-          "id": 18,
-          "field": "body",
-          "sentence": "ويزيد ضعف النمو صعوبة خفض العجز إلى 5% من الناتج المحلي الإجمالي في 2026 مقابل 5.1% في 2025، وهو هدف أقرّ رئيس الوزراء سيباستيان لورنو بأنه غير متفائل بتحقيقه.",
-          "claim": "Weak growth makes it harder to cut the deficit to 5% of GDP in 2026 from 5.1% in 2025; Prime Minister 'Sébastien Lornu' admitted he is not optimistic about reaching it.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "Alborsa News",
-          "sourceDate": "2026-09-11",
-          "quote": "وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف.",
-          "correction": "The prime minister is Sébastien Lecornu (لوكورنو), not 'لورنو', and he said he was not 'very optimistic', not that he was not optimistic at all.",
-          "class": "actor"
-        }
-      ],
-      "listed": [],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "يُضيّق التباطؤ هامش المناورة أمام الحكومة في سعيها لخفض العجز إلى 5% من الناتج المحلي الإجمالي، وهو هدف أقرّ رئيس الوزراء نفسه بصعوبة تحقيقه.",
-          "quote": "وكان رئيس الوزراء سيباستيان لوكورنو قد أقر بالفعل بأنه ليس «متفائلًا للغاية» بشأن تحقيق هذا الهدف."
-        },
-        {
-          "sentence": "ومع توقع بلوغ التضخم 2.9% بنهاية العام وانخفاض القوة الشرائية 0.4%، تتراجع قدرة الاستهلاك المحلي على دعم التعافي.",
-          "quote": "ومن الأخبار السلبية الأخرى للأسر الفرنسية أن التضخم من المتوقع أن يواصل ارتفاعه ليصل إلى 2.9% بنهاية العام، مقابل 2.4% في أغسطس الماضي."
-        },
-        {
-          "sentence": "وأبرز تأثير موجات الحر الشديدة على الزراعة، وتوقع بلوغ التضخم 2.9% بنهاية العام وانخفاض القوة الشرائية 0.4%، مع تراجع معدل الادخار من 17.8% إلى 17.3% من الدخل الإجمالي.",
-          "quote": "ومن المتوقع أن ينمو استهلاك الأسر، الذي يمثل عادة أحد المحركات الرئيسية للاقتصاد الفرنسي، بنسبة 0.3% فقط في 2026، بينما يُرجح أن تتراجع نسبة الادخار من 17.8% من إجمالي الدخل في 2025 إلى 17.3% هذا العام."
+          "class": "actor",
+          "field": "body"
         }
       ],
       "outcome": "corrected",
@@ -4053,93 +4027,20 @@
       },
       "confirmed": [
         {
-          "id": 2,
-          "field": "subtitle",
-          "sentence": "مؤشر أسعار المستهلكين يرتفع 0.4% شهرياً و3.4% سنوياً مدفوعاً بارتفاع البنزين 3.9%، في وقت تزداد فيه توقعات رفع الفائدة الأسبوع المقبل إلى 86%",
-          "claim": "US CPI rose 0.4% month-on-month and 3.4% year-on-year in August, driven by a 3.9% gasoline rise. Market-implied odds of a Fed rate hike next week have risen to 86%.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 3,
-          "sourceName": "Asharq Al-Awsat",
-          "sourceDate": "2026-09-11",
-          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
-          "correction": "Traders put the probability of a quarter-point Fed hike next week at about 85%, not 86%.",
-          "class": "figure"
-        },
-        {
-          "id": 8,
-          "field": "keyFacts",
-          "sentence": "احتمال رفع الفائدة: 86% حسب سي أم إي فيدووتش",
-          "claim": "Probability of a Fed rate hike is 86%, according to CME FedWatch.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "BBC News",
-          "sourceDate": "2026-09-11",
-          "quote": "According to data from CME Group, 85% of traders are now betting on rates being raised by a quarter percentage point next week.",
-          "correction": "CME Group data put the share betting on a quarter-point hike next week at 85%, not 86%.",
-          "class": "figure"
-        },
-        {
-          "id": 18,
-          "field": "body",
-          "sentence": "قفزت توقعات رفع أسعار الفائدة في اجتماع الاحتياطي الفيدرالي المقبل إلى 86% وفق أداة «سي أم إي فيدووتش»، مقارنة بنحو 70% قبل صدور تقرير التضخم، بحسب أسواق عربية.",
-          "claim": "Odds of a rate hike at the next Fed meeting jumped to 86% per CME FedWatch, up from about 70% before the inflation report, per Aswaq Arabia.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 3,
-          "sourceName": "Asharq Al-Awsat",
-          "sourceDate": "2026-09-11",
-          "quote": "وتشير تقديرات المتعاملين حالياً إلى احتمال يبلغ نحو 85 في المائة لرفع أسعار الفائدة بمقدار ربع نقطة مئوية خلال اجتماع «الاحتياطي الفيدرالي» المقرر يومَي 15 و16 سبتمبر (أيلول)، ارتفاعاً من نحو 70 في المائة قبل صدور بيانات التضخم.",
-          "correction": "The probability rose to about 85%, not 86%, from about 70% before the data.",
-          "class": "figure"
-        },
-        {
-          "id": 32,
-          "field": "table",
-          "sentence": "البنك المركزي: اليابان · سعر الفائدة: 1.25% · آخر تحرك: من المتوقع رفعها الأسبوع المقبل",
-          "claim": "The Bank of Japan's interest rate is 1.25% (shown as the current rate, like the other rows); it is expected to raise rates next week.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "Asharq Al-Awsat",
-          "sourceDate": "2026-09-11",
-          "quote": "من المتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25 في المائة خلال اجتماعه المرتقب بشدة الأسبوع المقبل، لكن المستثمرين سيركزون على مدى تشدد لهجة صناع السياسة النقدية في أعقاب الاجتماع.",
-          "correction": "1.25% is the level the Bank of Japan is expected to raise rates to next week, not its current rate.",
-          "class": "hedge"
-        }
-      ],
-      "listed": [
-        {
-          "status": "drift",
           "class": "figure",
-          "field": "body",
-          "sentence": "ارتفعت أسعار النفط الخام جراء الصراع المستمر في الشرق الأوسط، وتراوحت عقود برنت فوق 104 دولارات للبرميل.",
-          "quote": "The price of benchmark Brent crude oil is hovering above $100 a barrel following recent escalations in the conflict.",
-          "source": "BBC News",
-          "correction": "The sources say Brent is hovering above $100 a barrel; no source gives a level above $104."
-        }
-      ],
-      "notFound": [
-        "يُشكّل ارتفاع التضخم الأمريكي واحتمال رفع الاحتياطي الفيدرالي أسعار الفائدة ضغطاً مباشراً على اقتصادات الخليج المرتبطة بالدولار، التي تتبع سياسات نقدية متوافقة مع تحركات المركزي الأمريكي.",
-        "ورأى سعيد حيدر مؤسس شركة «حيدر كابيتال مانجمنت» أن على الاحتياطي الفيدرالي الاستجابة لهذه المعطيات على المدى القريب، وإلا فإنه يخاطر بتكرار موجة التضخم المرتفع التي شهدتها حقبة السبعينيات، بحسب أسواق عربية."
-      ],
-      "weak": [
-        {
-          "sentence": "ارتفع مؤشر أسعار المستهلكين في الولايات المتحدة 0.4% في أغسطس، مدفوعاً بقفزة في أسعار البنزين بلغت 3.9%.",
-          "quote": "وقال مكتب إحصاءات العمل التابع لوزارة العمل يوم الجمعة إن مؤشر أسعار المستهلكين ارتفع بنسبة 0.4 في المائة الشهر الماضي، بعد زيادة طفيفة بلغت 0.1 في المائة في يوليو (تموز)."
+          "field": "subtitle"
         },
         {
-          "sentence": "وتأتي تحركات الاحتياطي الفيدرالي في سياق موجة تشديد نقدي عالمية، إذ رفع البنك المركزي الأوروبي أسعار الفائدة 25 نقطة أساس الخميس، في حين يُتوقع أن يرفع بنك اليابان أسعار الفائدة إلى 1.25% الأسبوع المقبل.",
-          "quote": "ورفع البنك المركزي الأوروبي أسعار الفائدة بمقدار 25 نقطة أساس يوم الخميس، فيما قد تمهد اجتماعات مجلس «الاحتياطي الفيدرالي» و«المركزي الياباني» المرتقبة الأسبوع المقبل الطريق أمام مزيد من التشديد النقدي، وفق «رويترز»."
+          "class": "figure",
+          "field": "keyFacts"
         },
         {
-          "sentence": "البنك المركزي: منطقة اليورو · سعر الفائدة: لم يُحدد · آخر تحرك: رُفعت مرتين هذا العام، 25 نقطة الخميس",
-          "quote": "رفع البنك المركزي الأوروبي أسعار الفائدة للمرة الثانية هذا العام يوم الخميس، وتبنى لهجة أكثر تشدداً في ظل ارتفاع أسعار الطاقة."
+          "class": "figure",
+          "field": "body"
         },
         {
-          "sentence": "البنك المركزي: سويسرا · سعر الفائدة: 0% · آخر تحرك: من المتوقع الإبقاء عليها حتى العام المقبل",
-          "quote": "تتوقع الأسواق أن يُبقي البنك الوطني السويسري سعر الفائدة الرئيسي عند صفر في المائة خلال اجتماعه في 24 سبتمبر، وأن يحافظ عليه عند هذا المستوى حتى العام المقبل."
+          "class": "hedge",
+          "field": "table"
         }
       ],
       "outcome": "corrected",
@@ -13976,6 +13877,87 @@
         }
       ],
       "outcome": "clean"
+    },
+    "adnoc-vessel-damaged-attack-uae-waters-36b0d8": {
+      "at": "2026-11-11T09:18:22.007Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-11T01:40:27.829Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 10,
+        "checked": 10,
+        "supported": 10,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "cib-egypt-q3-profit-falls-17-percent-b37d44": {
+      "at": "2026-11-11T09:18:22.000Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-11T02:04:42.321Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 35,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "أما محفظة القروض الإجمالية للعملاء فنمت 21.3% منذ بداية العام إلى نحو 662.69 مليار جنيه، و3.8% على أساس فصلي، أي بوتيرة أبطأ من الودائع، فتراجعت نسبة القروض إلى الودائع إلى 49% من 52%.",
+          "quote": "The gross loan portfolio reached EGP 705bn, growing by 22% during the first nine months of 2026.",
+          "source": "Daily News Egypt"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "تراجع صافي دخل البنك التجاري الدولي-مصر 17.3% على أساس سنوي إلى 23.77 مليار جنيه في الربع الثالث، إذ ارتفعت قاعدة المقارنة برد استثنائي لمخصصات بقيمة 13.1 مليار جنيه في الربع نفسه من 2025.",
+          "quote": "Commercial International Bank (CIB) reported consolidated net income of EGP 63.1bn, equivalent to EGP 16.7 per share, for the first nine months of 2026, marking a 2% increase year-on-year (YoY), despite an exceptional EGP 13.1bn provision release recorded in the third quarter of 2025 following the recalibration of the bank’s Expected Credit Loss (ECL) model."
+        },
+        {
+          "sentence": "تتجاوز أرباح الربع الثالث، البالغة 23.77 مليار جنيه، أعلى ما قدّرت «الأهلي فاروس» أن البنك يحتاجه في الربع الأخير لبلوغ مستهدف الإدارة، لكنها تعود إلى نطاق 17 إلى 22 مليار جنيه بعد خصم 3.4 مليار جنيه صافية أضافها البندان غير المتكرران.",
+          "quote": "وتشير تقديرات \"الأهلي فاروس\" إلى أن البنك يحتاج إلى تحقيق أرباح تتراوح بين 17 و22 مليار جنيه في الربع الأخير من العام للوفاء بمستهدف الإدارة لصافي أرباح 2026 البالغ 80 إلى 85 مليار جنيه."
+        },
+        {
+          "sentence": "وبلغت إيراداته المجمعة في الفترة نفسها 103 مليارات جنيه، وربحية السهم 16.7 جنيه، والعائد على متوسط حقوق الملكية 34.3%.",
+          "quote": "The bank’s consolidated revenue reached EGP 103bn during the period, reflecting its sustained business expansion and the resilience of its core operating performance amid ongoing global uncertainties."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

@@ -15044,6 +15044,159 @@
           ]
         }
       ]
+    },
+    "orlen-cancels-qatarenergy-lng-contract-bc174c": {
+      "at": "2026-11-11T09:31:46.906Z",
+      "title": "أورلن البولندية أول عميل يلغي عقد غاز مسال مع قطر للطاقة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ألحقت ضربات صاروخية في مارس أضراراً بالغة بوحدتين من أصل 14 وحدة إنتاج في مصنع التصدير الرئيسي في قطر، ما اضطر قطر للطاقة إلى إعلان القوة القاهرة على شحناتها للمرة الأولى.",
+              "quote": "وأعلنت قطر للطاقة حالة القوة القاهرة في مارس/آذار، عقب هجمات بطائرات مسيرة إيرانية على منشآت الغاز الطبيعي المسال في رأس لفان، بالتزامن مع اضطراب شديد في حركة ناقلات النفط والغاز عبر مضيق هرمز.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd": {
+      "at": "2026-11-11T09:47:07.440Z",
+      "title": "أرباح موانئ أبوظبي تقفز 64% في الربع الثالث رغم إغلاق هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 32,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 2,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 16,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وترى المجموعة أنها كانت المحرك الأساسي لقفزة الأرباح، وأنها حدّت من أثر اضطراب الملاحة في المضيق على متعامليها وعلى اقتصاد الإمارات ودول الخليج.",
+              "quote": "The sharp increase in the quarterly earnings was primarily driven by the company’s push to further consolidated “alternative multimodal trade routes and operations” across the UAE to strengthen supply chain resilience.The move, AD Ports said, helped to minimise the effect of Strait of Hormuz traffic disruptions on its customers in the UAE and the broader Gulf region.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": "That the corridors primarily drove the profit jump is The National's own reporting, not a statement by the group; the group said only that they helped minimise the disruption's effect on customers."
+            },
+            {
+              "id": 20,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "جاء الجزء الأكبر من الإيرادات من قطاع البحري والشحن، الذي ارتفعت إيراداته 56% إلى 4.74 مليار درهم، أي نحو 58% من إيرادات المجموعة.",
+              "quote": "وارتفعت إيراداتها 48% على أساس سنوي إلى 7.99 مليار درهم، مع نمو بنسب من رقمين في قطاعاتها الرئيسية الأربعة.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "AED 4.74 billion out of the AED 7.99 billion group revenue the story prints is about 59.3%, not about 58%."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 3
+          }
+        },
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 35,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "أثر الإغلاق يظهر بوضوح في الأحجام المحلية.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dip-holding-shares-rise-dubai-debut-da4063": {
+      "at": "2026-11-11T10:04:53.253Z",
+      "title": "سهم «دي أي بي هولدينغ» يرتفع نحو 6% في أول أيام تداوله بدبي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 30,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

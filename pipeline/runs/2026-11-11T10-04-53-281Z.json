@@ -1,0 +1,503 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-11T09:20:04.190Z",
+  "durationSec": 2689,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "أورلن البولندية أول مشترٍ يلغي عقداً طويل الأجل للغاز المسال مع قطر للطاقة",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.aljazeera.net/ebusiness/2026/11/11/%d8%a3%d9%88%d8%b1%d9%84%d9%86-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%86%d8%af%d9%8a%d8%a9-%d8%aa%d9%86%d9%87%d9%8a-%d8%b9%d9%82%d8%af%d8%a7-%d8%b7%d9%88%d9%8a%d9%84-%d8%a7%d9%84%d8%a3%d8%ac%d9%84",
+        "https://oilprice.com/Latest-Energy-News/World-News/Polands-Orlen-Becomes-First-Buyer-to-Cancel-Long-Term-Qatar-LNG-Deal.html",
+        "https://www.thenationalnews.com/business/energy/2026/11/11/polands-orlen-becomes-first-buyer-to-cancel-qatarenergy-lng-contract/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يعرّف أورلن بأنها بولندية ويقول ما الجديد: أول عميل يلغي عقداً مع قطر للطاقة. والدك يوضح أن العقد الثاني باقٍ. لكن «العقد ممتد حتى 2034» بصيغة الحاضر توحي بأن العقد الملغى ما زال قائماً.",
+              "repair": "«كان العقد يمتد حتى 2034، وتحتفظ أورلن بعقد ثانٍ…»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر: القوة القاهرة منذ مارس وبند الانسحاب وأضرار وحدتين من 14 وحدة إنتاج (SOURCE 3). ورد أورلن عن أمن الإمدادات حاضر أيضاً. أما الأثر على المشترين الآخرين فحاضر جزئياً عبر لجوئهم إلى السوق الفورية. يغيب توقع أورلن استئناف الشحنات في منتصف نوفمبر (SOURCE 1)، ويغيب بدء تسليمات «فينتشر غلوبال» من لويزيانا (SOURCE 1). مقدمات «لماذا يهمّ» صحيحة ومنسوبة، والاستنتاج معقول لكنه يقطع بأكثر مما تسمح به المقدمات.",
+              "repair": "يُضاف التوقعان المصدريان في موضعيهما، وتُخفَّف «سيقف» إلى «قد يجد»."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان، الإلغاء الأول، يتطور مباشرة بعد المقدمة: الإفصاح وبند القوة القاهرة، ثم تفاصيل العقد الملغى، ثم العقد الباقي. بعد ذلك يأتي قسم الضربات وهرمز الذي يشرح استمرار القوة القاهرة، ثم بدائل أورلن. الفقرات مجمّعة حسب وظيفتها. والمقارنة بين أكتوبر وفبراير تفسر لماذا بقيت القوة القاهرة رغم تعافي الصادرات.",
+              "repair": "يُعدَّل العنوان الفرعي الأخير ليطابق فقرته فقط."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: مليون طن، 570 مليون يورو (637 مليون دولار) قيمةً تقديرية، 60 يوماً، 2009 و2016 و2034، 37 هجوماً، 31 ناقلة مقابل 23، 2.7 مقابل 6.2 مليون طن، 17% و20 مليار دولار. والتمييز قائم بين التسعير المرتبط بالنفط في العقد الملغى والتسعير المرتبط بالغاز في العقد الباقي. الاقتباس من أورلن حرفي من SOURCE 1.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يعرّف أورلن بأنها بولندية ويقول ما الجديد: أول عميل يلغي عقد غاز مسال مع قطر للطاقة. والدك صار بصيغة الماضي («كان العقد يمتد حتى 2034»)، ويوضح أن العقد الثاني باقٍ. والمقدمة تعطي الكمية (مليون طن سنوياً) والسبب (القوة القاهرة منذ مارس) وتنسب الأولوية إلى بلومبرغ كما في SOURCE 3. الفقرة الثالثة تشرح ما لم يتغير، أي العقد الثاني المرتبط بأسعار الغاز.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "السبب حاضر، وكذلك تعريف بند القوة القاهرة وحق الانسحاب وأضرار وحدتين من 14 وحدة إنتاج (SOURCE 3). وحاضر أيضاً تمديد القوة القاهرة حتى نهاية العام ولجوء المشترين إلى السوق الفورية بأعلى أسعار منذ سنوات. أُضيف توقع أورلن استئناف الشحنات منتصف نوفمبر (SOURCE 1)، وأُضيف بدء تسليمات «فينتشر غلوبال» من لويزيانا (SOURCE 1). مربع «لماذا يهمّ» يقوم على مقدمات موثقة: حق الانسحاب، والتمديد حتى نهاية العام، وأسعار السوق الفورية. واستنتاجه مشروط بـ«إذا» ومخفف بـ«قد يجد»، ويضيف معنى لم يقله المتن: خسارة قطر للطاقة مشترياً ملتزماً حتى بعد عودة طاقتها التصديرية.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتطور التقرير في خط واحد. يبدأ بإفصاح أورلن وبند القوة القاهرة، ثم تفاصيل العقد الملغى وقيمته، ثم العقد الباقي وتوقع استئناف الشحنات. بعد ذلك يعرض أصل القوة القاهرة وتمديدها، ثم حال هرمز والصادرات القطرية، ويختم ببدائل أورلن. صار العنوان الفرعي «بدائل أورلن للغاز القطري» مطابقاً لفقرتيه، وقُسّمت الجملة الطويلة السابقة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر ومنسوبة: 570 مليون يورو (637 مليون دولار) للعام الجاري، و2009 و2016 و2034، و60 يوماً، و17% و20 مليار دولار، و37 هجوماً، و31 ناقلة مقابل 23، و2.7 مقابل 6.2 مليون طن. مربع الأرقام صار مقصوراً على الحدث. ملاحظة طفيفة للمكتب: «حتى مليون طن سنوياً حتى 2034» في المربع فيها تكرار لكلمة «حتى».",
+              "repair": "اختياري: «ما يصل إلى مليون طن سنوياً حتى 2034»."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "استمرار العمل بالقوة القاهرة لفترة طويلة يمنح المشترين في الغالب حق الانسحاب من العقد",
+          "source": 3
+        },
+        {
+          "fact": "آخر تمديد للقوة القاهرة في نهاية أكتوبر شمل الشحنات حتى نهاية العام",
+          "source": 2
+        },
+        {
+          "fact": "المشترون في أوروبا وآسيا لجؤوا إلى شحنات السوق الفورية بأسعار هي الأعلى منذ سنوات",
+          "source": 3
+        },
+        {
+          "fact": "العقد الملغى كان مقرراً أن يستمر حتى 2034",
+          "source": 3
+        }
+      ],
+      "slug": "orlen-cancels-qatarenergy-lng-contract-bc174c",
+      "title": "أورلن البولندية أول عميل يلغي عقد غاز مسال مع قطر للطاقة",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "أرباح موانئ أبوظبي تقفز إلى 975 مليون درهم في الربع الثالث رغم إغلاق هرمز",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.thenationalnews.com/business/economy/2026/11/11/ad-ports-profit-jumps-73-due-to-efforts-to-mitigate-effect-of-hormuz-closure/",
+        "https://www.albayan.ae/economy/business/uae-economy/1564278",
+        "https://www.snabusiness.com/article/1904010-%D9%85%D9%88%D8%A7%D9%86%D8%A6-%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A-%D8%AA%D8%B3%D8%AC%D9%84-%D8%A3%D8%B9%D9%84%D9%89-%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D9%81%D8%B5%D9%84%D9%8A%D8%A9-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%D9%87%D8%A7"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدك يحددان الشركة (موانئ أبوظبي)، والفترة (الربع الثالث)، والرقم (64%)، والظرف (إغلاق هرمز منذ فبراير). والمقدمة تفرق بين إجمالي صافي الربح (975 مليوناً، +64%) وصافي الربح العائد للمالكين (767 مليوناً، +73%)، فلا تناقض بين الرقمين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة تفسيرات. الأول سبب النمو، وهو الممرات البديلة، والتقرير يذكره. الثاني موقف الرئيس التنفيذي، والتقرير يذكره. الثالث الحجم الفعلي لأثر الإغلاق على الموانئ، أي تراجع الحاويات 57% سنوياً وتعافيها 30% فصلياً، والتقرير يغفله. ويغفل كذلك الجسر البري الذي يفسر قفزة القطاع اللوجستي 76%. أما «لماذا يهمّ» فيبني استدلاله على ربط غير مسنود بين نمو قطاع البحري والشحن والممرات البديلة.",
+              "repair": "يُضاف رقما مناولة الحاويات (المصدران 1 و2) وفقرة القطاع اللوجستي مع الجسر البري (المصدر 3)، ويُعاد بناء «لماذا يهمّ» على هذه المقدمات المسنودة مع شرط صريح."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطور المتن عنصر العنوان «رغم إغلاق هرمز» مباشرة بعد المقدمة بخلفية المضيق وإجراءات الاستمرارية، وهذا جيد. لكنه يعيد بعد ذلك خبر النتائج القياسية والإسناد إلى البيان، ويضع قطاع الموانئ تحت عنوان «الشحن البحري يقود النمو»، ويقتبس اليافعي عن تعافي الموانئ فصلياً دون أن يعطي رقم هذا التعافي.",
+              "repair": "تُحذف الجملة المكررة، ويُقسم المتن إلى أقسام بحسب القطاعات: البحري والشحن، ثم اللوجستي، ثم الموانئ مع أرقام الحاويات والاقتباس، ثم المدن الاقتصادية. ويبقى قسما الدين والاستحواذ ثم عرض الشراء في الختام."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «الممرات البديلة التي قادت نمو الشحن البحري» في «لماذا يهمّ» تنسب سبباً لا تذكره المصادر، و«تعيد الأحجام» تحول احتمالاً إلى يقين. والمقياس يحمل اسمين مختلفين، و«4.5 مليون طن» خطأ نحوي. أما بقية الأرقام والقواعد والتواريخ (73%، 209 ملايين دولار، 3.5 أضعاف، 691 مليوناً، 6.25 دراهم، 98.93%، 15 سبتمبر، 1 أكتوبر) فمطابقة للمصادر.",
+              "repair": "يُصاغ أثر إعادة فتح المضيق احتمالاً، ويُحذف الربط السببي بقطاع البحري والشحن، ويُوحد اسم المقياس، وتُكتب «4.5 ملايين طن»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والدك والمقدمة معاً ما تغيّر: قفز إجمالي صافي الربح 64% إلى 975 مليون درهم. ويقولان ما بقي على حاله: مناولة الحاويات المحلية أقل 57% من مستواها قبل عام. ويقولان ما تعزو إليه المجموعة النمو: الممرات البديلة عبر الفجيرة وخورفكان والجسور البرية والجوية. اسم «موانئ أبوظبي» يكفي لتعريف البلد، ووصفها في الدك بـ«المجموعة الإماراتية» يحدد هويتها. ويفرّق المتن بين إجمالي صافي الربح (64%) وصافي الربح العائد للمالكين (73%)، فلا يبدو الرقمان متناقضين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تقدم المصادر ثلاثة تفسيرات، والتقرير يحملها كلها. الأول السبب: الممرات البديلة وإجراءات الاستمرارية منذ مارس (المصدران 1 و3)، والجسر البري وراء قفزة القطاع اللوجستي 76% (المصدر 3). الثاني الحجم الفعلي لأثر الإغلاق: الحاويات -57% سنوياً و+30% فصلياً، والبضائع العامة -54% و+48%، والإشغال 29% (المصادر 1 و2 و3). الثالث موقف الرئيس التنفيذي الذي يربط التعافي الفصلي بالممرات البديلة. ويُعرَّف «البرنامج الوطني لتعزيز مرونة سلاسل الإمداد» بما تذكره المصادر. وتبني «لماذا يهمّ» على مقدمتين مسنودتين: نمو الأرباح من ممرات الالتفاف (المصدر 1)، والإشغال المحلي 29% (المصدر 2). ثم تستنتج بصيغة «إذا… قد» أن إعادة فتح المضيق قد تعيد أحجاماً وتقلص إيرادات الالتفاف. هذا استدلال متناسب ومشروط لا يكرر المتن.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن الجديد هو «رغم إغلاق هرمز». يطوره المتن مباشرة بعد المقدمة بخلفية المضيق ثم بإجراءات الاستمرارية والبرنامج الوطني. بعدها تأتي الأرباح الإجمالية، ثم القطاعات كل في قسمه، والعناوين الفرعية تطابق فقراتها. فقرة الموانئ تجمع الإيرادات والأحجام والإشغال واقتباس اليافعي عن التعافي الفصلي في مكان واحد. وتنتهي القصة بالدين والاستحواذ البرازيلي وعرض الشراء والخروج من البورصة، وهي الخطوة التالية في وضع الشركة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "طابقت الأرقام مصادرها: 975 مليون درهم و64%، و767 مليون درهم و73% و209 ملايين دولار، و0.16 درهم للسهم. والإيرادات 7.99 مليار درهم و48%. والأرباح قبل الفوائد والضرائب والإهلاك والاستهلاك 1.97 مليار درهم و63% بهامش 24.6%. والقطاعات: 4.74 مليار و1.96 مليار و690 مليوناً و798 مليون درهم بحصصها ونسب نموها. ومناولة الحاويات 751 ألف حاوية نمطية، والبضائع العامة 4.5 ملايين طن. ونسبة الدين 3.5 أضعاف مقابل 4.4 قبل عام، والتدفق النقدي الحر -691 مليوناً و+1.17 مليار من دون أثر الصفقة. وعرض الشراء 6.25 للسهم، والحصة 75.42% ثم 98.93%، والتاريخان 15 سبتمبر و1 أكتوبر. وكل مقارنة تذكر أساسها، سنوياً أو فصلياً. وأرقام الرسم (4.4 و3.7 و3.5) مطابقة للمصدر 2.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 2,
+        "unsourcedCut": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "انخفضت مناولة الحاويات في الإمارات 57% على أساس سنوي وارتفعت 30% عن الربع الثاني",
+          "source": 1
+        },
+        {
+          "fact": "حوّلت المجموعة منذ مارس عمليات الشحن وخدمات السفن المغذية إلى محطات الفجيرة وميناء خورفكان وأنشأت جسوراً برية وجوية جديدة",
+          "source": 1
+        },
+        {
+          "fact": "ارتفعت إيرادات القطاع اللوجستي 76% إلى 1.96 مليار درهم بفضل الجسر البري الإماراتي وأنشطة الشحن الجوي والبحري",
+          "source": 3
+        },
+        {
+          "fact": "قال اليافعي إن تعافي قطاع الموانئ فصلياً جاء مدعوماً بالممرات والعمليات البديلة متعددة الوسائط عبر الإمارات",
+          "source": 3
+        }
+      ],
+      "slug": "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd",
+      "title": "أرباح موانئ أبوظبي تقفز 64% في الربع الثالث رغم إغلاق هرمز",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "سهم دي أي بي يرتفع نحو 6% في أول طرح عام بالإمارات هذا العام",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.thenationalnews.com/business/markets/2026/11/11/dip-holding-shares-surge-on-debut-in-first-uae-ipo-this-year/",
+        "https://gulfnews.com/business/markets/dubais-dip-shares-jump-6-on-debut-after-dh194-billion-ipo-1.500743544",
+        "https://economymiddleeast.com/news/efg-hermes-concludes-advisory-on-dip-holdings-529-million-dfm-ipo/",
+        "https://www.youm7.com/story/2026/11/11/%D8%A5%D9%8A-%D8%A7%D9%81-%DA%86%D9%8A-%D9%87%D9%8A%D8%B1%D9%85%D9%8A%D8%B3-%D8%AA%D9%82%D8%AF%D9%85-%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B7%D8%B1%D8%AD-%D8%A7%D9%84%D8%B9%D8%A7%D9%85/7614148"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدك يحددان الشركة («المالكة لمجمع دبي للاستثمار»)، والبلد (دبي، الإمارات)، وما تغيّر: صعود السهم نحو 6% في أول يوم، والتسعير قرب منتصف النطاق رغم طلب يبلغ أربعة أضعاف المعروض. ويوضح المتن أن العائدات ذهبت إلى الشركة الأم وأنها تحتفظ بـ80%.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير سبب التسعير كما قاله بن كلبان (شح السيولة)، وتقرير بلومبرغ عن طلب المستثمرين، وخلفية تباطؤ الطروحات والحرب المرتبطة بإيران. ينقصه ما يأتي بعد الإدراج، أي خطة التوزيعات (SOURCE 2). وفي «لماذا يهمّ» مقدمات صحيحة (سعر دون الحد الأعلى، طلب بأربعة أضعاف، صعود 6%)، لكن الاستنتاج تجاوزها إلى دافع غير مسند هو «ليُتمّ الإدراج».",
+              "repair": "إضافة خطة التوزيعات وشرط الموافقات وموعد أول دفعة، وتقييد استنتاج الصندوق بما تحتمله المقدمات."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان عن صعود السهم، والمتن يطوّره مباشرة بعد المقدمة: السعر والتداول والمقارنة بالمؤشر، ثم التسعير والطلب، ثم المكتتبون والبنية والسوق. البناء متماسك، لكن الختام يعود إلى «أول طرح في الإمارات» وإلى رأي لاينغ العام، فينتهي التقرير بتكرار بدل الخطوة التالية.",
+              "repair": "حذف الجملة الختامية لـ«لاينغ» والاعتراضية المكررة، وإنهاء قسم البنية بخطة التوزيعات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 6.2%، و1.185 درهم عند 11:18 بارتفاع 5.8%، و65.6 مليون سهم بقيمة 77.4 مليون درهم، و1,735,243,300 سهم، و9.7 مليار درهم (2.64 مليار دولار)، و99.9% حتى 30 يونيو. لكن خانة الأرقام تقول «المؤسسيين» والمصدر يقول «المهنيين والمؤسسيين»، والدك يقول «طُرحت» حيث المقصود «سُعّرت».",
+              "repair": "تصحيح عنوان الخانة إلى «المهنيين والمؤسسيين» واستبدال «سُعّرت» بـ«طُرحت» في الدك."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد بقوله «بدبي». ويعرّف الدك الشركة بأنها «المالكة لمجمع دبي للاستثمار»، ويضيف القيد الجوهري: سُعّرت الأسهم «قرب منتصف النطاق المعلن لا عند حده الأعلى» رغم طلب بلغ نحو أربعة أضعاف المعروض (SOURCE 2). ويوضح المتن أن الأسهم قائمة وأن العائدات ذهبت إلى الشركة الأم التي تحتفظ بـ80% (SOURCE 2 وSOURCE 3)، فلا يُفهم من عبارة «جمع الطرح» أن الشركة المدرجة تلقت المال.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير التفسيرات الثلاث التي تقدمها المصادر. السبب: التسعير كما عزاه بن كلبان إلى شح السيولة، وتقرير بلومبرغ السابق عن طلب المستثمرين تعويضاً عن المخاطر (SOURCE 2). المقارنة: سعر الطرح 1.12 درهم مقابل 1.19 درهم في التداول، وتراجع المؤشر 0.2% (SOURCE 1). الخلفية: ركود الطروحات والحرب المرتبطة بإيران (SOURCE 1 وSOURCE 2). والخطوة التالية: خطة التوزيعات وموعد أول دفعة. أما «لماذا يهمّ» فيستند إلى مقدمات مسندة (سعر دون الحد الأعلى، طلب بأربعة أضعاف، صعود 6%)، ويستنتج منها استنتاجاً محدوداً: تنازل البائع عن جزء من العائد، وإمكانية أن يتخذ المصدرون التاليون هذا السعر مرجعاً. وجاء الاستنتاج بصيغة «قد» من دون دافع غير مسند.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الجديد في العنوان هو صعود السهم في أول أيام تداوله، والفقرتان التاليتان للمقدمة تطورانه مباشرة: السعر والتداول والترتيب بين الرابحين، ثم الحركة المعاكسة للمؤشر. بعدها يأتي قيد الدك (الطلب والتسعير وسببه)، ثم الخلفية المتصلة به، ثم المكتتبون وبنية الصفقة. ويُختم التقرير بخطة التوزيعات بوصفها الخطوة التالية، بدل تكرار «أول طرح» ورأي المستشار العام.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 6.2% أعلى ارتفاع، و1.185 درهم عند 11:18 بارتفاع 5.8%، و65.6 مليون سهم بقيمة 77.4 مليون درهم، و1,735,243,300 سهم تمثل 20%، و9.7 مليار درهم (2.64 مليار دولار)، و92% للمستثمرين «المهنيين والمؤسسيين»، و99.9% في 30 يونيو. وجاءت التوزيعات بفعل نية «تعتزم» وبشرط «رهناً بالموافقات اللازمة» كما في SOURCE 2. والفرق بين أعلى ارتفاع في الجلسة (6.2%) وقراءة الساعة 11:18 (5.8%) مقياسان مختلفان قُدّما بوضوح.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "سُعّر الطرح عند 1.12 درهم قرب منتصف النطاق رغم طلبات بلغت نحو أربعة أضعاف المعروض",
+          "source": 2
+        },
+        {
+          "fact": "ارتفع السهم بما يصل إلى 6.2% في أول أيام تداوله",
+          "source": 2
+        },
+        {
+          "fact": "عزا رئيس مجلس الإدارة التسعير إلى شح السيولة، وطلب بعض المستثمرين شروطاً تعوّضهم عن المخاطر الجيوسياسية بحسب تقرير سابق لبلومبرغ",
+          "source": 2
+        },
+        {
+          "fact": "باعت دبي للاستثمار 20% من رأس المال المصدر بصفتها المساهم البائع",
+          "source": 3
+        }
+      ],
+      "slug": "dip-holding-shares-rise-dubai-debut-da4063",
+      "title": "سهم «دي أي بي هولدينغ» يرتفع نحو 6% في أول أيام تداوله بدبي",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "أرباح ألبا البحرينية تتراجع بحدة في الربع الثالث مع تعطل الإنتاج بسبب الحرب",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 82,
+    "failures": 0,
+    "promptTokens": 1214526,
+    "completionTokens": 275355,
+    "cacheReadTokens": 248236,
+    "costUsd": 13.2863,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 82
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 86950,
+        "read": 0,
+        "out": 2096,
+        "usd": 0.7375
+      },
+      "desk": {
+        "calls": 13,
+        "in": 104400,
+        "read": 103632,
+        "out": 64331,
+        "usd": 2.1424
+      },
+      "writer": {
+        "calls": 15,
+        "in": 188134,
+        "read": 103944,
+        "out": 72387,
+        "usd": 2.9736
+      },
+      "critic": {
+        "calls": 16,
+        "in": 194349,
+        "read": 40660,
+        "out": 43402,
+        "usd": 2.4308
+      },
+      "checker": {
+        "calls": 7,
+        "in": 71564,
+        "read": 0,
+        "out": 63486,
+        "usd": 1.8423
+      },
+      "vision": {
+        "calls": 30,
+        "in": 320893,
+        "read": 0,
+        "out": 29653,
+        "usd": 3.1597
+      }
+    }
+  },
+  "log": [
+    "[10:02:15] image: dropped \"ذرية خالد بن الوليد.jpg\" — names none of the story's people",
+    "[10:02:15] image: dropped \"ضريح خالد بن الوليد.jpg\" — dated 2002, an archival picture",
+    "[10:02:15] image: dropped \"شاطئ خالد بن الوليد.jpg\" — names none of the story's people",
+    "[10:02:15] image: dropped \"شارع خالد بن الوليد.jpg\" — names none of the story's people",
+    "[10:02:15] image: no photograph of the story's people",
+    "[10:02:15] image: the city's business district (Dubai), the story being about its own stock market: Burj Khalifa Downtown Dubai | Dubai International Financial Centre | Sheikh Zayed Road Dubai; its categories: Downtown Dubai | Dubai International Financial Centre | Sheikh Zayed Road",
+    "[10:02:15] commons \"Burj Khalifa Downtown Dubai 2026\": 2 usable of 2",
+    "[10:02:15] pexels \"Sheikh Zayed Road Dubai\": 8 usable",
+    "[10:02:15] pexels \"Dubai International Financial Centre\": 8 usable",
+    "[10:02:16] pexels \"Burj Khalifa Downtown Dubai\": 8 usable",
+    "[10:02:16] commons \"Burj Khalifa Downtown Dubai\": 21 usable of 24",
+    "[10:02:16] image: dropped \"مرکز خرید دبی مال، بزرگترین مرکز خرید جهان The Dubai Mall 28.jpg\" — names too little of burj, khalifa, downtown",
+    "[10:02:28] openverse \"Dubai International Financial Centre\": 5 usable of 7",
+    "[10:02:29] openverse \"Sheikh Zayed Road Dubai\": 10 usable of 20",
+    "[10:02:30] openverse \"Burj Khalifa Downtown Dubai\": HTTP 504",
+    "[10:02:31] commons \"Dubai International Financial Centre 2026\": 1 usable of 1",
+    "[10:02:31] commons \"Dubai International Financial Centre\": 22 usable of 24",
+    "[10:02:31] image: dropped \"05 Dubai, CWSui Sheikh, 2008 jpg.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 090.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 053.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 055.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 093.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 048.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 028.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 059.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Italy 093.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Italy 039.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 039.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 078.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"DIFC 2013 - Team Vietnam 046.jpg\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Breathtaking view of Dubai's skyline with modern skyscrapers at sunset\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"A stunning view of modern skyscrapers in Dubai embodying urban archite\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Modern skyscrapers against a blue sky in Dubai's bustling cityscape.\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Close-up of modern skyscrapers in Dubai, showcasing innovative archite\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Explore a breathtaking view of the Dubai Marina skyline featuring icon\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Stunning view of skyscrapers and yachts at Dubai Marina reflecting urb\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Breathtaking night view of Dubai skyline with iconic skyscrapers illum\" — names too little of international, financial, centre",
+    "[10:02:31] image: dropped \"Captivating Dubai skyline featuring a mix of modern skyscrapers and cl\" — names too little of international, financial, centre",
+    "[10:02:31] commons \"Sheikh Zayed Road Dubai 2026\": 0 usable of 0",
+    "[10:02:32] commons \"Sheikh Zayed Road Dubai\": 18 usable of 24",
+    "[10:02:33] commons Category:Downtown Dubai: 40 usable of 48",
+    "[10:02:33] commons category \"Dubai International Financial Centre\": none carries its name",
+    "[10:02:34] commons Category:Sheikh Zayed Road: 40 usable of 48",
+    "[10:02:34] image: 2 file(s) dropped for naming none of Dubai's business landmarks",
+    "[10:02:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/8814/28724198092_a9d17e56f3_n.jpg",
+    "[10:02:46] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=757 in=11093 read=0 out=1016 attempt=1 ms=11054",
+    "[10:02:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=909 in=9194 read=0 out=1023 attempt=1 ms=11478",
+    "[10:02:57] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Sheikh Zayed Road 9.jpg\": Burj Khalifa is recognisable, but this is a passer-by's phone snapshot taken from the roadside, with an over-processed s",
+    "[10:02:57] image: thumbnail HTTP 403 for https://live.staticflickr.com/8814/28724198092_a9d17e56f3_n.jpg",
+    "[10:03:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1815 in=11057 read=0 out=2109 attempt=1 ms=22328",
+    "[10:03:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=967 in=9163 read=0 out=1081 attempt=1 ms=13252",
+    "[10:03:33] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Sheikh Zayed Road 1.jpg\": The most prominent tower carries a large, legible advertisement for the developer Sobha, which the story never names, so",
+    "[10:03:33] image: thumbnail HTTP 403 for https://live.staticflickr.com/8814/28724198092_a9d17e56f3_n.jpg",
+    "[10:03:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1511 in=11071 read=0 out=1698 attempt=1 ms=18710",
+    "[10:03:52] image: vision rejected all candidates (None shows Dubai's business district plainly in daylight in a professional frame. 1 and 3 are dark night frames, with the Burj Khalifa a small needle in 3. 2 is a hotel rooftop pool. 4 is an amateur street snapshot led by a billboard, with Emirates Towers small. 5 is a highway whose road signs are the main subject, and it reads as a traffic story. 6 has no landmark a reader would recognise as Dubai without the caption.)",
+    "[10:03:55] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=176 in=3034 read=0 out=218 attempt=1 ms=3162",
+    "[10:03:55] image: last resort: stock exchange trading screens United Arab Emirates | stock exchange trading screens | stock exchange trading screens industrial",
+    "[10:03:56] commons \"stock exchange trading screens United Arab Emirates\": 0 usable of 1",
+    "[10:03:57] commons \"stock exchange\": 19 usable of 24",
+    "[10:03:57] image: dropped \"Stock Exchange Yangon.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:03:57] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[10:03:57] image: dropped \"Stock Exchange Arcade, Charters Towers, circa 1966.jpg\" — dated 1965, an archival picture",
+    "[10:03:57] commons \"stock exchange trading screens\": 5 usable of 9",
+    "[10:03:57] image: dropped \"NSE Building 2.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:03:57] image: dropped \"NSE Building.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:03:57] image: dropped \"Cannon Street Station, London EC4 - geograph.org.uk - 1702692.jpg\" — names too little of stock, exchange, trading, screens",
+    "[10:03:58] commons \"stock exchange trading screens industrial\": 0 usable of 0",
+    "[10:03:58] commons \"stock exchange\": 19 usable of 24",
+    "[10:03:58] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 01.jpg\" — taken in Germany, which the story does not name",
+    "[10:03:58] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 05.jpg\" — taken in Germany, which the story does not name",
+    "[10:03:58] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 02.jpg\" — taken in Germany, which the story does not name",
+    "[10:03:58] image: dropped \"Frankfurt Stock Exchange (Ank Kumar, Infosys) 04.jpg\" — taken in Germany, which the story does not name",
+    "[10:04:01] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 in=9462 read=0 out=149 attempt=1 ms=2890",
+    "[10:04:01] image: vision rejected all candidates (fallback pass) (The only candidate is a staged stock cliché: a hand holding a phone with a folder of other companies' trading app icons (Coinbase, IG, Plus500, etc.). The rules explicitly refuse this kind of frame, and it shows brands the story does not name. It also has nothing to do with DIP Holding or the Dubai Financial Market. Better to run without a photograph.)",
+    "[10:04:01] image: last pass, a neutral illustration: traders screens | stock exchange investors | listing bell ceremony | stock traders",
+    "[10:04:01] pexels \"stock traders\": 8 usable",
+    "[10:04:01] pexels \"traders screens\": 8 usable",
+    "[10:04:01] pexels \"stock exchange investors\": 8 usable",
+    "[10:04:01] commons \"traders screens\": 8 usable of 24",
+    "[10:04:01] image: dropped \"Nanban Byobu Folding Screen Carrack Portuguese Traders in Nagasaki by \" — a scan of a note's or a coin's face, not a photograph",
+    "[10:04:01] image: dropped \"The centennial history of Illinois (1922) (14762814614).jpg\" — names too little of traders, screens",
+    "[10:04:01] image: dropped \"Birds and nature (1905) (14564788060).jpg\" — names too little of traders, screens",
+    "[10:04:01] image: dropped \"Deir Mar Musa al-Habashi, Arabic, Dayr mār Mūsá al-Ḥabashī, literally \" — names too little of traders, screens",
+    "[10:04:01] image: dropped \"Frescoes, Monastery of Saint Moses the Abyssinian, Mar Musa or Deir Ma\" — names too little of traders, screens",
+    "[10:04:01] image: dropped \"Deir Mar Musa al-Habashi, Arabic, Dayr mār Mūsá al-Ḥabashī, literally \" — names too little of traders, screens",
+    "[10:04:01] image: dropped \"Frescoes, Monastery of Saint Moses the Abyssinian, Mar Musa or Deir Ma\" — names too little of traders, screens",
+    "[10:04:01] pexels \"listing bell ceremony\": 8 usable",
+    "[10:04:10] openverse \"traders screens\": 10 usable of 20",
+    "[10:04:10] image: dropped \"New Year Day 2012 - After The Party\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] image: dropped \"New Year Day 2012 At Meeting House Square\" — names too little of traders, screens",
+    "[10:04:10] openverse \"stock traders\": 10 usable of 20",
+    "[10:04:11] commons \"stock exchange investors\": 10 usable of 24",
+    "[10:04:11] image: dropped \"Exchange Square (交易廣塲), Hong Kong Stock Exchange, Hong Kong SAR, China\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:04:11] image: dropped \"Exchange Square (交易廣塲), Hong Kong Stock Exchange, Hong Kong SAR, China\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:04:11] image: dropped \"Exchange Square (交易廣塲), Hong Kong Stock Exchange, Hong Kong SAR, China\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:04:11] image: dropped \"Exchange Square (交易廣塲), Hong Kong Stock Exchange, Hong Kong SAR, China\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:04:22] openverse \"stock exchange investors\": 10 usable of 20",
+    "[10:04:22] image: dropped \"No Software: Getting Ready For the Dreamforce Keynote\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"Detailed view of a cryptocurrency market graph displaying technical an\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"Hand pointing at a financial graph displaying cryptocurrency data anal\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"A hand giving a thumbs up in front of a financial graph displaying mar\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"CONGRATULATIONS to Compass Pathways on their successful IPO today!\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"Market analysis with focus on cryptocurrency trends displayed. Ideal f\" — names too little of stock, exchange, investors",
+    "[10:04:22] image: dropped \"ESA contact the International Space Station from ITU\" — names too little of stock, exchange, investors",
+    "[10:04:22] openverse \"listing bell ceremony\": 6 usable of 10",
+    "[10:04:23] commons \"listing bell ceremony\": 6 usable of 20",
+    "[10:04:23] image: dropped \"De burgemeester van Rotterdam G.E. van Walsum opent in Hoek van Hollan\" — dated 1964, an archival picture",
+    "[10:04:23] image: dropped \"NH 77669 Henderson Hall, Headquarters of the Marine Corps, Alexandria,\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"NH 77670 Henderson Hall, Headquarters of the Marine Corps, Alexandria,\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"Sailors stationed in Poland commemorate 9-11 (5742464).jpg\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"De Njewe Roomse Kerk Trophee (BM 1871,1209.4873).jpg\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"\"The Memory Candle\" monument to the victims of Holodomor - “The Memori\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"House of Sin @ night\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"Clerestory window 11 - War Memorial Chapel - National Cathedral - DC\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"Palace of Westminster and Westminster Bridge\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"Dortmund - Paul-Gerhardt-Kirche\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"A priest holding altar bells during a religious ceremony in a church.\" — an event's photograph, people and banners",
+    "[10:04:23] image: dropped \"Hinderwell, North Yorkshire\" — names too little of listing, bell, ceremony",
+    "[10:04:23] image: dropped \"Jubilee Clock Tower\" — names too little of listing, bell, ceremony",
+    "[10:04:23] commons \"stock traders\": 5 usable of 24",
+    "[10:04:23] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[10:04:23] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[10:04:23] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[10:04:23] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Monkey Business\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"No Known Restrictions: Traders on the Floor of the New York Stock Exch\" — dated 1936, an archival picture",
+    "[10:04:23] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Barcelona, Spain 2012 - The Boqueria Market\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Crackhouse Cupcake\" — names too little of stock, traders",
+    "[10:04:23] image: dropped \"Christmas Market '20 Days Of Christmas' - Dublin Docklands\" — names too little of stock, traders",
+    "[10:04:23] image: thumbnail HTTP 403 for https://live.staticflickr.com/7428/9554023745_2b2d95b963_n.jpg",
+    "[10:04:24] image: thumbnail HTTP 403 for https://live.staticflickr.com/2083/2291498814_923636ac78_n.jpg",
+    "[10:04:24] image: thumbnail HTTP 403 for https://live.staticflickr.com/2082/2291498318_e698470a95_n.jpg",
+    "[10:04:38] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1081 in=10774 read=0 out=1280 attempt=1 ms=13641",
+    "[10:04:38] image: vision rejected all candidates (fallback pass) (None fits. 1 is a NASA control room, not a market. 2 is a chart cliché. 3 is an empty Taiwanese investor room with Chinese-script posters. 4 is a NYSE street scene with a US flag patch. 5 and 6 are an Amsterdam open-outcry options floor that looks pre-2005, with CRT monitors and an early Coolpix finish, and its legible AEX signs suit neither Dubai's electronic market nor today's IPO news. Better to run without a photograph.)",
+    "[10:04:38] image: thumbnail HTTP 403 for https://live.staticflickr.com/7155/26734736462_96aaccd018_n.jpg",
+    "[10:04:39] image: thumbnail HTTP 403 for https://live.staticflickr.com/2352/4510173113_3df9ef97bf_n.jpg",
+    "[10:04:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=912 in=10742 read=0 out=1103 attempt=1 ms=12736",
+    "[10:04:53] image: vision rejected all candidates (fallback pass) (No candidate fits. Photo 4, the Frankfurt trading floor, is the only scene of the sector, but its file names a person (trader Dirk Müller). It also shows German writing and an advertising sign, and is a dated 2008 amateur shot. Photo 6, the Hong Kong lobby, is dated and dominated by Chinese-script boards. Photo 2 is a chart screen with the Investing.com logo. The others (a product render, a London street fence, a bangle stall) are unrelated.)",
+    "[10:04:53] published \"سهم «دي أي بي هولدينغ» يرتفع نحو 6% في أول أيام تداوله بدبي\" -> dip-holding-shares-rise-dubai-debut-da4063",
+    "[10:04:53] run budget of 35 minutes spent; \"أرباح ألبا البحرينية تتراجع بحدة في الربع الثالث مع تعطل الإنتاج بسبب الحرب\" waits for the next run"
+  ]
+}
