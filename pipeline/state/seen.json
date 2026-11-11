@@ -1,60 +1,6 @@
 {
   "version": 1,
   "items": {
-    "9dabda8095fb9cae": {
-      "at": "2026-10-21T00:08:08.211Z",
-      "decision": "published",
-      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
-      "title": "Elon Musk says Tesla-SpaceX merger being considered"
-    },
-    "954ba61da6d3c686": {
-      "at": "2026-10-21T00:08:08.211Z",
-      "decision": "published",
-      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
-      "title": "SpaceX and Tesla boards form special committees to review merger"
-    },
-    "de1e69419e81a6c5": {
-      "at": "2026-10-21T00:08:08.211Z",
-      "decision": "published",
-      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
-      "title": "Tesla’s stock rises as Elon Musk drops new clues about a possible SpaceX merger"
-    },
-    "589388b0b1425476": {
-      "at": "2026-10-21T00:08:08.211Z",
-      "decision": "published",
-      "slug": "tesla-spacex-committees-study-possible-merger-9effc6",
-      "title": "Tesla and SpaceX are discussing a possible merger, Musk says"
-    },
-    "e0b9ac9a40040899": {
-      "at": "2026-10-21T00:28:34.160Z",
-      "decision": "published",
-      "slug": "eni-starts-meleiha-phase-2-egypt-7f5b4c",
-      "title": "Eni project boosts Egypt’s local gas production"
-    },
-    "e4fe6381fbc8a4f2": {
-      "at": "2026-10-21T00:28:34.160Z",
-      "decision": "published",
-      "slug": "eni-starts-meleiha-phase-2-egypt-7f5b4c",
-      "title": "Eni launches second phase of Meleiha gas project in Egypt’s Western Desert"
-    },
-    "eac60371c285785e": {
-      "at": "2026-10-21T00:37:39.826Z",
-      "decision": "published",
-      "slug": "egypt-digital-exports-target-2030-b8fb6e",
-      "title": "وزير الاتصالات: نستهدف الوصول بالصادرات الرقمية إلى 12 مليار دولار بحلول 2030"
-    },
-    "97d3d3ab1fc9fa7e": {
-      "at": "2026-10-21T00:37:39.826Z",
-      "decision": "published",
-      "slug": "egypt-digital-exports-target-2030-b8fb6e",
-      "title": "وزير الاتصالات: التوسع في شبكات الجيل الخامس وإنشاء مراكز البيانات العملاقة"
-    },
-    "396665a7dfc4952b": {
-      "at": "2026-10-21T00:37:39.826Z",
-      "decision": "published",
-      "slug": "egypt-digital-exports-target-2030-b8fb6e",
-      "title": "وزير الاتصالات يستعرض استراتيجية “مصر الرقمية” ومستهدفاتها حتى 2030"
-    },
     "c7bd461ccd0638e7": {
       "at": "2026-10-21T05:05:39.471Z",
       "decision": "published",
@@ -6213,6 +6159,96 @@
       "decision": "published",
       "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
       "title": "Türkiye ile Suudi Arabistan arasında 5 bin megavatlık enerji işbirliği"
+    },
+    "a1335fff0c31412d": {
+      "at": "2026-11-11T01:32:52.076Z",
+      "decision": "published",
+      "slug": "dallas-fed-logan-two-more-rate-hikes-55397e",
+      "title": "Fed’s Goolsbee Says October CPI Report ‘Borderline Disturbing’"
+    },
+    "4976b0078b9e0297": {
+      "at": "2026-11-11T01:32:52.076Z",
+      "decision": "published",
+      "slug": "dallas-fed-logan-two-more-rate-hikes-55397e",
+      "title": "Fed’s Paulson Says Gradual Tightening Seems Appropriate for Now"
+    },
+    "54dbe075c0153a5d": {
+      "at": "2026-11-11T01:32:52.076Z",
+      "decision": "published",
+      "slug": "dallas-fed-logan-two-more-rate-hikes-55397e",
+      "title": "رئيسة «فيدرالي» دالاس تدعو إلى رفع الفائدة مرتين إضافيتين"
+    },
+    "2544668cb5c34b2b": {
+      "at": "2026-11-11T01:32:52.076Z",
+      "decision": "published",
+      "slug": "dallas-fed-logan-two-more-rate-hikes-55397e",
+      "title": "Fed’s Logan Says Two More Hikes Needed, Pace Could Quicken"
+    },
+    "26950873bf626545": {
+      "at": "2026-11-11T01:32:52.076Z",
+      "decision": "published",
+      "slug": "dallas-fed-logan-two-more-rate-hikes-55397e",
+      "title": "Fed needs at least 2 more quarter-point rate hikes: Dallas Fed chief"
+    },
+    "85b3fee4bdab75a2": {
+      "at": "2026-11-11T01:40:27.845Z",
+      "decision": "published",
+      "slug": "adnoc-vessel-damaged-attack-uae-waters-36b0d8",
+      "title": "US-Israel-Iran war: GCC approves military command headquarters in Kuwait; Qatar PM joins G7 talks on Iran; ADNOC vessel sustains damage following attack"
+    },
+    "eff03bfefb69b948": {
+      "at": "2026-11-11T01:40:27.845Z",
+      "decision": "published",
+      "slug": "adnoc-vessel-damaged-attack-uae-waters-36b0d8",
+      "title": "UAE ship attacked and damaged in Arabian Gulf"
+    },
+    "1653390478c022e8": {
+      "at": "2026-11-11T01:40:27.845Z",
+      "decision": "published",
+      "slug": "adnoc-vessel-damaged-attack-uae-waters-36b0d8",
+      "title": "Middle East latest: Ship attacked in UAE waters, says operator Adnoc"
+    },
+    "ed638bceb0a44fa9": {
+      "at": "2026-11-11T01:48:46.728Z",
+      "decision": "rejected",
+      "title": "Anthropic bankers prepare to increase IPO valuation to $1.5tn or more",
+      "strikes": 1
+    },
+    "40fdffafab5e22a4": {
+      "at": "2026-11-11T01:48:46.728Z",
+      "decision": "rejected",
+      "title": "Breaking Down Anthropic's $1.4 Trillion IPO Valuation",
+      "strikes": 1
+    },
+    "95c0556e8ffa2669": {
+      "at": "2026-11-11T01:48:46.728Z",
+      "decision": "rejected",
+      "title": "Anthropic’s Giant IPO Will Tie It Closer to Nvidia",
+      "strikes": 1
+    },
+    "a1514935e728d490": {
+      "at": "2026-11-11T01:48:46.728Z",
+      "decision": "rejected",
+      "title": "Anthropic targets valuation of up to $1.4tn in stock market flotation",
+      "strikes": 1
+    },
+    "9a5bae24e02d25cd": {
+      "at": "2026-11-11T01:48:46.728Z",
+      "decision": "rejected",
+      "title": "All 7 Anthropic founders will each cash out about $250M in IPO",
+      "strikes": 1
+    },
+    "3747b1aa6bf0f354": {
+      "at": "2026-11-11T02:04:42.354Z",
+      "decision": "published",
+      "slug": "cib-egypt-q3-profit-falls-17-percent-b37d44",
+      "title": "أرباح \"CIB\" مصر تتراجع 17% في الربع الثالث رغم نمو عوائد القروض"
+    },
+    "5b086965744e3c41": {
+      "at": "2026-11-11T02:04:42.354Z",
+      "decision": "published",
+      "slug": "cib-egypt-q3-profit-falls-17-percent-b37d44",
+      "title": "CIB reports EGP 103bn in revenue, EGP 63.1bn in net income in 9M 2026"
     }
   }
 }

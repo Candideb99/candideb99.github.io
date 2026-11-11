@@ -14948,6 +14948,102 @@
           }
         }
       ]
+    },
+    "dallas-fed-logan-two-more-rate-hikes-55397e": {
+      "at": "2026-11-11T01:32:52.052Z",
+      "title": "رئيسة فيدرالي دالاس تدعو إلى رفع الفائدة الأمريكية مرتين إضافيتين على الأقل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 17,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "adnoc-vessel-damaged-attack-uae-waters-36b0d8": {
+      "at": "2026-11-11T01:40:27.836Z",
+      "title": "سفينة تابعة لأدنوك تتضرر في هجوم داخل المياه الإقليمية الإماراتية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 10,
+            "checked": 10,
+            "supported": 10,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "cib-egypt-q3-profit-falls-17-percent-b37d44": {
+      "at": "2026-11-11T02:04:42.334Z",
+      "title": "أرباح البنك التجاري الدولي-مصر تتراجع 17% في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 34,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 27,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أما محفظة القروض الإجمالية للعملاء فنمت 21.3% منذ بداية العام إلى نحو 662.69 مليار جنيه، و3.8% على أساس فصلي، أي بوتيرة أبطأ من الودائع، فتراجعت نسبة القروض إلى الودائع إلى 49% من 52%.",
+              "quote": "The gross loan portfolio reached EGP 705bn, growing by 22% during the first nine months of 2026.",
+              "source": "Daily News Egypt",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

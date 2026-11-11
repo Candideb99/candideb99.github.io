@@ -254,10 +254,11 @@
     "fed-waller-december-hike-half-point-3a01d9:2c946d3a",
     "adnoc-gas-profit-hormuz-shipping-test-a98ea2:0c258fdb",
     "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01",
-    "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612"
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612",
+    "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be"
   ],
-  "version": 64,
-  "updatedAt": "2026-11-10T21:26:41.320Z",
+  "version": 65,
+  "updatedAt": "2026-11-11T01:20:36.618Z",
   "lessons": [
     {
       "id": "L1",
@@ -385,11 +386,12 @@
         "saudi-economy-contraction-slows-third-quarter-aba15b:14943288",
         "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522",
         "gold-erases-friday-losses-oil-falls-2282bb:9500b357",
-        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612"
+        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612",
+        "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be"
       ],
-      "seen": 57,
+      "seen": 58,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-10T21:26:41.320Z",
+      "lastSeen": "2026-11-11T01:20:36.618Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -798,15 +800,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T16:38:55.969Z",
-      "mistakes": 5,
-      "applied": [
-        "add L9 [cause] from 1 mistake(s)",
-        "sharpen L3 (+3)",
-        "reinforce L6 (+1; reworded at most once a week)"
-      ]
-    },
     {
       "at": "2026-09-25T17:25:01.821Z",
       "mistakes": 5,
@@ -1296,6 +1289,13 @@
       "mistakes": 3,
       "applied": [
         "sharpen L12 (+2)",
+        "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-11T01:20:36.618Z",
+      "mistakes": 1,
+      "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
       ]
     }

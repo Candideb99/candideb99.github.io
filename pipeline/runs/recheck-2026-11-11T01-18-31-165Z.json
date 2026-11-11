@@ -1,0 +1,104 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-11T01:18:31.165Z",
+  "durationSec": 125,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c",
+      "title": "السعودية وتركيا توقعان مذكرة لدفع مشاريع رياح «أكوا باور» بقدرة 3 آلاف ميغاواط",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "us-two-year-yield-biggest-jump-since-2024-552557",
+      "title": "عائد السندات الأمريكية لأجل عامين يسجل أكبر قفزة منذ 2024 بعد بيانات التضخم",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "adnoc-gas-profit-hormuz-shipping-test-a98ea2",
+      "title": "«أدنوك للغاز» الإماراتية تضاعف ربح الربع الثالث عن سابقه بعودة الشحنات",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 32,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 30214,
+    "completionTokens": 23150,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7047,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 30214,
+        "read": 0,
+        "out": 23150,
+        "usd": 0.7047
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[01:18:32] second look: 3 to read now (3 published pieces not yet read; 235 read clean before publication and left out of the audit sample)",
+    "[01:18:32] us-two-year-yield-biggest-jump-since-2024-552557:   source https://www.ft.com/content/8b564134-dea6-4272-8ede-e0b12ef5aebd?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[01:18:35] saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:   source https://www.dunya.com/ekonomi/bayraktar-duyurdu-suudi-arabistan-ile-5-bin-megava: http-403; read from the copy saved at publication (fetched then)",
+    "[01:19:25] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2218 in=8244 read=0 out=6596 attempt=1 ms=49019",
+    "[01:19:25] saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c: 21 of 21 sentences checked · 20 supported · 1 without a source · 0 confirmed error(s)",
+    "[01:19:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2546 in=7982 read=0 out=6862 attempt=1 ms=52021",
+    "[01:19:33] us-two-year-yield-biggest-jump-since-2024-552557: 30 of 30 sentences checked · 26 supported · 1 without a source · 0 confirmed error(s)",
+    "[01:20:36] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2437 in=13988 read=0 out=9692 attempt=1 ms=71153",
+    "[01:20:36] adnoc-gas-profit-hormuz-shipping-test-a98ea2: 40 of 40 sentences checked · 32 supported · 5 without a source · 0 confirmed error(s)"
+  ]
+}

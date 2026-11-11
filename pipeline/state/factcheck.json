@@ -3869,9 +3869,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [],
-      "weak": [],
       "outcome": "clean"
     },
     "saudi-east-west-pipeline-drone-attack-8ce715": {
@@ -3900,42 +3897,14 @@
       },
       "confirmed": [
         {
-          "id": 9,
-          "field": "body",
-          "sentence": "يربط خط الشرق-الغرب النفطي بين مدينة أبقاع قرب الخليج وميناء ينبع على ساحل البحر الأحمر، وزادت السعودية من استخدامه منذ بداية الحرب في المنطقة لتجاوز إغلاق مضيق هرمز الذي فرضته إيران.",
-          "claim": "The East-West pipeline links the town of 'أبقاع' near the Gulf to the port of Yanbu on the Red Sea. Saudi Arabia has increased its use of the pipeline since the war in the region began, to bypass the Iran-imposed closure of Hormuz.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "The Guardian",
-          "sourceDate": "2026-09-12",
-          "quote": "The world’s largest ⁠crude oil exporter has increased its use of the 745-mile (1,200km) pipeline running across the Arabian peninsula, which links Abqaiq, near the Gulf, to the port of Yanbu, on the Red Sea, since the US-Israeli war against Iran began.",
-          "correction": "The pipeline's eastern end is Abqaiq (بقيق in Arabic), not a place called 'أبقاع'.",
-          "class": "term"
+          "class": "term",
+          "field": "body"
         },
         {
-          "id": 15,
-          "field": "body",
-          "sentence": "لكنها أكدت أن الملك يحتفظ بحق اتخاذ جميع الإجراءات اللازمة لحماية سيادة المملكة وأمنها ومنشآتها.",
-          "claim": "The Saudi statement stressed that the King reserves the right to take all necessary measures to protect the kingdom's sovereignty, security and facilities.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "The Guardian",
-          "sourceDate": "2026-09-12",
-          "quote": "It said the kingdom “reserves the right to take all necessary measures to protect its sovereignty, its security, its facilities” and its people.",
-          "correction": "The statement says the kingdom, not the King, reserves the right to take all necessary measures.",
-          "class": "actor"
+          "class": "actor",
+          "field": "body"
         }
       ],
-      "listed": [],
-      "notFound": [
-        "السعودية تعلّق خط الشرق-الغرب النفطي احترازياً بعد هجوم مسيّرات من العراق",
-        "يُعيق التوقف المؤقت الطريق البديل الرئيسي لتجاوز إغلاق مضيق هرمز، مع تصاعد هجمات الطائرات بدون طيار وتقدّم الحوثيين في مضيق باب المندب.",
-        "وأدانت الحكومة العراقية الهجمات التي وصفتها بأنها تستهدف أشقاءها في المملكة، وأنها انطلقت من موقع داخل المحافظة.",
-        "وأضافت الخارجية السعودية أن المملكة اختارت عدم الرد في هذه المرحلة ودعم جهود الحكومة العراقية لمنع الهجمات التي تنطلق من أراضيها، بناءً على طلب رئيس الوزراء العراقي."
-      ],
-      "weak": [],
       "outcome": "corrected",
       "note": "ذكرت نسخة سابقة من هذا الخبر أن خط الشرق-الغرب يبدأ من مدينة «أبقاع»، والصحيح أنه يبدأ من مدينة بقيق قرب الخليج. كما نسبت النسخة السابقة إلى الملك الاحتفاظ بحق اتخاذ الإجراءات اللازمة، والصحيح أن بيان الخارجية السعودية نسب ذلك إلى المملكة.",
       "verified": {
@@ -3980,35 +3949,8 @@
       },
       "confirmed": [
         {
-          "id": 9,
-          "field": "whyItMatters",
-          "sentence": "تضمّ المبادرتان الإمارات والسعودية بوصفهما من الرعاة الأساسيين، وتتنافسان على تشكيل مستقبل التجارة واللوجستيات عبر المنطقة.",
-          "claim": "Both initiatives count the UAE and Saudi Arabia among their principal sponsors, and the two compete to shape the future of trade and logistics across the region.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "The National",
-          "sourceDate": "2026-09-11",
-          "quote": "It has 155 members, including the UAE and Saudi Arabia.",
-          "correction": "The UAE and Saudi Arabia are among the BRI's 155 members, not its principal sponsors; the BRI is Beijing-led, and only for Imec are they described as backers.",
-          "class": "scope"
-        }
-      ],
-      "listed": [],
-      "notFound": [
-        "تجارة الهند والصين تتضاعف تقريباً في خمس سنوات",
-        "العجز التجاري لنيودلهي يتسع مع استمرار الاعتماد على الواردات الصينية رغم جهود تقليصها، في ظل تنافس الممرين الاقتصاديين الصيني والهندي على نفوذ المنطقة",
-        "تضاعف التبادل التجاري بين الهند والصين، أكبر اقتصادين في آسيا، تقريباً خلال خمس سنوات، بحسب صحيفة «نيويورك تايمز».",
-        "ويتّسع العجز التجاري الهندي مع تعقّد خيارات نيودلهي في بناء قاعدتها الصناعية.",
-        "نمو التبادل التجاري: تقريباً تضاعف خلال خمس سنوات",
-        "ومسار العلاقة التجارية بين الهند والصين ومصير الممرين يؤثران مباشرة على الاستثمارات والبنية التحتية المتدفقة إلى الخليج.",
-        "ارتفع حجم التجارة بين الهند والصين، أكبر اقتصادين في آسيا، إلى ما يقارب ضعفه خلال خمس سنوات فقط، تاركاً نيودلهي مع عجز تجاري متزايد وخيارات صعبة حول كيفية بناء قاعدتها الصناعية دون الاعتماد على الواردات الصينية.",
-        "وتواجه الهند مأزقاً هيكلياً: فهي تسعى لتقليل اعتمادها على السلع الصينية، لكنها في الوقت ذاته تحتاج إلى هذه الواردات لدعم قطاعاتها الصناعية النامية، ما يجعل أي محاولة لقطع العلاقات التجارية أمراً مكلفاً ومعقداً."
-      ],
-      "weak": [
-        {
-          "sentence": "وانطلقت المبادرة الصينية عام 2013، وضُخ ما يقارب 1.4 تريليون دولار كاستثمارات في إطارها، لتصبح أكبر مشروع بنية تحتية تضطلع به دولة واحدة، وفق بيانات معهد غرفيث لآسيا ومركز التمويل الأخضر والتنمية، وتضم 155 عضواً بينهم الإمارات والسعودية.",
-          "quote": "Launched in 2013, the BRI has poured in nearly $1.4 trillion of investments, making it the initiative largest infrastructure endeavour by a single country, according to the latest data from the Griffith Asia Institute and the Green Finance and Development Centre. The initiative aims to connect Asia, including the Middle East, with Africa, Europe and the South Pacific, using land and maritime corridors."
+          "class": "scope",
+          "field": "whyItMatters"
         }
       ],
       "outcome": "corrected",
@@ -13903,6 +13845,134 @@
         {
           "sentence": "أي اتفاق مبدئي يتوصل إليه الطرفان هذا الأسبوع يترك تقاسم خسائر قدّرتها الحكومة بنحو 70 مليار دولار في 2022 لتصويت البرلمان على قانون تعترض عليه المصارف وأحزاب سياسية، وإقرار هذا القانون هو الخطوة الأولى نحو برنامج مع الصندوق ونحو برنامج لتسديد الودائع.",
           "quote": "The cabinet submitted a draft to parliament in 2025, but the text is contested by the banking sector and political parties, preventing a vote."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c": {
+      "at": "2026-11-11T01:18:32.198Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v64",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-10T22:14:09.406Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولم يكشف الوزير كلفة هذه الاستثمارات ولا موعد تشغيلها."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "us-two-year-yield-biggest-jump-since-2024-552557": {
+      "at": "2026-11-11T01:18:32.205Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v64",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-10T21:38:43.256Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 26,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وإذا انتقل البنك إلى رفع بنصف نقطة كما طرح والر، فستواجه الأسهم التي صمدت أمام العوائد المرتفعة مساراً للفائدة أعلى مما تسعّره الأسواق حالياً."
+      ],
+      "weak": [
+        {
+          "sentence": "قفز عائد سندات الخزانة الأمريكية لأجل عامين 17 نقطة أساس إلى 4.73% في تعاملات الثلاثاء، مسجلاً أكبر ارتفاع له منذ 2024، بعدما تجاوز تضخم أسعار المستهلكين في أكتوبر التوقعات، فزادت الرهانات على مواصلة الاحتياطي الفيدرالي رفع الفائدة.",
+          "quote": "US stocks and bonds fell after inflation exceeded expectations, sending two-year Treasury yields sharply higher and strengthening investor bets on further Federal Reserve rate hikes through mid-2027."
+        },
+        {
+          "sentence": "أما التضخم الأساسي، الذي يستثني الغذاء والطاقة، فصعد 0.3% دون تغيير عن سبتمبر، متجاوزاً توقعات بلغت 0.2%، ليفوق التقديرات للشهر الثالث على التوالي.",
+          "quote": "The consumer price index, excluding food and energy, rose 0.3% from a month earlier, according to Bureau of Labor Statistics data, topping estimates for a third straight month."
+        },
+        {
+          "sentence": "وتراجع ناسداك المركب 0.83% إلى 25043.41 نقطة، وداو جونز الصناعي 148.31 نقطة أو 0.28% إلى 52241.44 نقطة، وصعد مؤشر التقلب «فيكس» 5.62% إلى 21.04.",
+          "quote": "The S&P 500 declined 43.05 points, or 0.57%, to 7,506.89, while the Nasdaq Composite lost 209.73 points, or 0.83%, to 25,043.41. The VIX volatility index, also known as Wall Street’s fear gauge, rose 5.62% to 21.04."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "adnoc-gas-profit-hormuz-shipping-test-a98ea2": {
+      "at": "2026-11-11T01:19:25.164Z",
+      "kind": "analysis",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-10T21:04:07.613Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 32,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 5,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ويبدو أن ربح الشركة يتبع الكميات التي تشحنها أكثر مما يتبع السعر، ولهذا يصبح الاضطراب في المضيق اختباراً مباشراً لتوقعها الجديد.",
+        "المقارنة السنوية ترسم الصورة المعاكسة.",
+        "أما المبيعات المحلية، وهي على الأرجح الجزء الأقل تعرضاً لما يجري في المضيق، فلم يكفِ نموها لرفع الأرباح الإجمالية فوق مستواها قبل عام.",
+        "إذا أفضت هذه المساعي إلى إعادة فتح المضيق، فستعود شحنات الشركة إلى الخروج في سوق تراجعت فيها أسعار النفط، ويكون الربع الرابع أقرب إلى نمط الربع الثالث الذي عوّضت فيه الأحجام ما فات في الربع الثاني.",
+        "أما إذا بقي كل طرف على شرطه، فسيقترب الربع الرابع من سيناريو «إنرجي أسبكتس» لاضطراب يمتد إلى 2027."
+      ],
+      "weak": [
+        {
+          "sentence": "تضاعف صافي دخل «أدنوك للغاز» في الربع الثالث عن الربع الثاني إلى 1.34 مليار دولار مع عودة شحناتها إلى مغادرة موانئها، لكنه بقي قريباً من مستواه قبل عام رغم ارتفاع أسعار الغاز المسال في آسيا.",
+          "quote": "لكنه بقي قريباً من مستواه قبل عام، بتراجع طفيف بلغ 0.15%."
+        },
+        {
+          "sentence": "فقد انخفضت الإيرادات 11% على أساس سنوي إلى 5.252 مليار دولار، وتراجع صافي الدخل 0.15%، وبقيت EBITDA الإجمالية دون مستواها قبل عام، في ربع قالت الشركة إن مؤشر «جيه كيه إم»، المرجع لأسعار الغاز المسال في آسيا، ارتفع فيه 52% على أساس سنوي.",
+          "quote": "وانخفضت الإيرادات 11% على أساس سنوي إلى 5.252 مليار دولار، وإن جاءت بدورها أعلى من التوقعات، بحسب إفصاح الشركة على موقع سوق أبوظبي."
+        },
+        {
+          "sentence": "في هذه الظروف رفعت الشركة الثلاثاء توقعها لصافي ربح 2026 إلى ما لا يقل عن 14.69 مليار درهم، أي 4 مليارات دولار على الأقل.",
+          "quote": "رفعت الشركة بعد نتائج الربع الثالث توقعها لصافي ربح 2026 إلى ما لا يقل عن 14.69 مليار درهم، وقالت إنها تراقب تطورات الملاحة البحرية في المنطقة عن كثب."
         }
       ],
       "outcome": "clean"
