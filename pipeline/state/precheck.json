@@ -15447,6 +15447,34 @@
           "noted": []
         }
       ]
+    },
+    "egypt-remittances-suez-land-debt-tools-6aa2b6": {
+      "at": "2026-11-11T21:27:41.574Z",
+      "title": "أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 37,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
