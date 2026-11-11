@@ -255,10 +255,12 @@
     "adnoc-gas-profit-hormuz-shipping-test-a98ea2:0c258fdb",
     "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01",
     "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612",
-    "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be"
+    "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be",
+    "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:cb23e32f",
+    "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:c335546f"
   ],
-  "version": 65,
-  "updatedAt": "2026-11-11T01:20:36.618Z",
+  "version": 66,
+  "updatedAt": "2026-11-11T11:07:19.967Z",
   "lessons": [
     {
       "id": "L1",
@@ -387,11 +389,12 @@
         "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:81a32522",
         "gold-erases-friday-losses-oil-falls-2282bb:9500b357",
         "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612",
-        "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be"
+        "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be",
+        "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:cb23e32f"
       ],
-      "seen": 58,
+      "seen": 59,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-11T01:20:36.618Z",
+      "lastSeen": "2026-11-11T11:07:19.967Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -784,11 +787,12 @@
         "fao-food-price-index-october-2026-86a80b:f5ff02c7",
         "egypt-fertilizer-gas-cuts-reserves-discovery-248ff1:ed4c2f70",
         "adnoc-gas-profit-hormuz-shipping-test-a98ea2:0c258fdb",
-        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01"
+        "adnoc-gas-profit-hormuz-shipping-test-a98ea2:dd504d01",
+        "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:c335546f"
       ],
-      "seen": 12,
+      "seen": 13,
       "createdAt": "2026-10-28T05:52:18.463Z",
-      "lastSeen": "2026-11-10T21:26:41.320Z",
+      "lastSeen": "2026-11-11T11:07:19.967Z",
       "status": "active",
       "activatedAt": "2026-10-30T18:06:12.820Z",
       "previous": [
@@ -800,15 +804,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-25T17:25:01.821Z",
-      "mistakes": 5,
-      "applied": [
-        "sharpen L2 (+2)",
-        "reinforce L3 (+2; reworded at most once a week)",
-        "reinforce L8 (+1)"
-      ]
-    },
     {
       "at": "2026-09-25T21:45:58.243Z",
       "mistakes": 5,
@@ -1297,6 +1292,14 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-11T11:07:19.967Z",
+      "mistakes": 2,
+      "applied": [
+        "reinforce L2 (+1; reworded at most once a week)",
+        "reinforce L12 (+1)"
       ]
     }
   ],

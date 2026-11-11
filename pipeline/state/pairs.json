@@ -2493,6 +2493,50 @@
         ],
         "programmatic": 2
       }
+    },
+    {
+      "at": "2026-11-11T11:40:52.890Z",
+      "slug": "moodys-raises-india-growth-forecast-7-eaf485",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v66",
+      "lessonsHash": "87fb8f5ec7",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 29,
+        "notFound": 0,
+        "checked": 29,
+        "words": 444,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 31,
+        "notFound": 1,
+        "checked": 32,
+        "words": 431,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 31,
+        "notFound": 1,
+        "checked": 32,
+        "words": 431,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

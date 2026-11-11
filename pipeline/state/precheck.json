@@ -15197,6 +15197,102 @@
           "noted": []
         }
       ]
+    },
+    "egypt-remittances-record-13-billion-q1-14cc72": {
+      "at": "2026-11-11T11:20:55.488Z",
+      "title": "تحويلات المصريين بالخارج تبلغ مستوى قياسياً عند 13 مليار دولار بين يوليو وسبتمبر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v66",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 19,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "turkey-banking-watchdog-chief-resigns-funds-b41f0e": {
+      "at": "2026-11-11T11:29:56.011Z",
+      "title": "رئيس الرقابة المصرفية التركية يقدّم استقالته إثر اتهامات تربط هيئته بأزمة الصناديق",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 15,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "نمت أصول هذه الصناديق إلى أكثر من 20 مليار دولار في غضون ثلاث سنوات فقط، واستقطبت نحو نصف مليون مستثمر، بينهم سياسيون ومسؤولون سابقون ومشاهير، سعوا إلى عوائد مرتفعة تعوّض تراجع الليرة التركية وارتفاع التضخم.",
+              "quote": "The funds managed an estimated $18 billion to $21 billion in assets and had approximately 455,000 individual investors.",
+              "source": "Hürriyet Daily News",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "moodys-raises-india-growth-forecast-7-eaf485": {
+      "at": "2026-11-11T11:40:52.881Z",
+      "title": "موديز ترفع توقعاتها لنمو الاقتصاد الهندي إلى 7% من 6.5%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v66",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 20,
+            "weak": 1,
+            "noEvidence": 4,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
