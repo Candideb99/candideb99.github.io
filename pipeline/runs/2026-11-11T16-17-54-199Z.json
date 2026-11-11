@@ -1,0 +1,29 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-11-11T16:17:36.061Z",
+  "durationSec": 18,
+  "published": 0,
+  "refreshed": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "byRole": {}
+  },
+  "log": [
+    "[16:17:36] newsroom start mode=reports limit=4 dry-run=false",
+    "[16:17:43] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
+    "[16:17:43] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
+    "[16:17:43] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[16:17:43] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[16:17:48] report un-tourism-barometer: page not read (http-403)",
+    "[16:17:52] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
+    "[16:17:54] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet",
+    "[16:17:54] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» is listed without its document; it waits"
+  ]
+}
