@@ -1,29 +1,514 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-11-11T16:17:36.061Z",
-  "durationSec": 18,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-11T19:43:35.531Z",
+  "durationSec": 2197,
+  "published": 3,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "إنتاج السعودية من النفط يعود قرب مستويات ما قبل الحرب ويرفع إنتاج أوبك بلس مليوني برميل",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.aljazeera.net/ebusiness/2026/11/11/%d8%a5%d9%86%d8%aa%d8%a7%d8%ac-%d8%a3%d9%88%d8%a8%d9%83-%d8%a8%d9%84%d8%b3-%d9%8a%d9%82%d9%81%d8%b2-%d9%85%d9%84%d9%8a%d9%88%d9%86%d9%8a-%d8%a8%d8%b1%d9%85%d9%8a%d9%84-%d9%8a%d9%88%d9%85%d9%8a%d8%a7",
+        "https://aawsat.com/node/5340165",
+        "https://www.ft.com/content/c844b957-3c98-43a3-b02e-2d0f5368bd49?syn-25a6b1a6=1",
+        "https://oilprice.com/Latest-Energy-News/World-News/Saudi-Crude-Output-Jumps-26-as-Riyadh-Reports-Near-Pre-War-Production.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (السعودية) والحدث: قفزة 26% إلى قرب مستوى ما قبل الحرب، تتجاوز الحصة قليلاً، وتقود زيادة أوبك بلس رغم هرمز. والفقرة الثانية تضع القيد الأساسي: الرقم المبلغ عنه إنتاج عند رأس البئر، والمعروض 9.203 مليون، والمصادر الثانوية تقدّر 9.194 مليون.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر: المسارات البديلة ونقل النفط بين السفن وخط شرق-غرب. وحاضرة أيضاً المقارنة بالحصة وبفبراير وبسبتمبر، والخطوة التالية (المراجعة واجتماع 29 نوفمبر). الغائب سياقان: عودة أوبك بلس إلى نحو 97% من مستوى فبراير البالغ 42.72 مليون (SOURCE 1، SOURCE 2)، وأن المملكة رفعت إنتاجها في فبراير قبل الضربات (SOURCE 2). أما «لماذا يهمّ» فمقدماته مسندة: الفارق إلى التخزين، ومساري التصدير والهجوم، وسحب 537 مليون برميل. واستنتاجه، أن قدرة التعويض مرتبطة بسلامة مسارات التصدير، استنتاج محدود ومقبول.",
+              "repair": "أضف نسبة الـ97% ورقم فبراير للتحالف إلى الفقرة الرابعة، وأضف خلفية رفع الإنتاج السعودي في فبراير إلى الفقرة الأولى."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان (قفزة 26% وقرب مستوى ما قبل الحرب) تبنيه الفقرة الأولى مباشرة، ثم تأتي فقرتا المعروض والتصدير، وهذا بناء سليم. الخلل في الفقرة السابعة: تبدأ بـ«تعود الزيادة بعد أشهر…» وتجمع المخزونات ومتوسط برنت الشهري وتوقع الطلب وسعر الأربعاء تحت عنوان فرعي لا يشمل الأسعار ولا الطلب.",
+              "repair": "صحّح الصياغة إلى «تأتي الزيادة بعد أشهر…»، وافصل فقرة المخزونات والطلب عن فقرة الأسعار، أو عدّل العنوان الفرعي ليطابق محتواه."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر، لكن «وعزت المنظمة هذه الزيادة» ينسب إلى أوبك تعليلاً هو صياغة المنافذ الإخبارية. و«108.34 دولار» متوسط أكتوبر بينما «92.73 دولار» سعر الأربعاء، ولا يميز النص بينهما بما يكفي.",
+              "repair": "احذف نسبة التعليل إلى أوبك، واكتب «متوسط سعر برنت في أكتوبر» بوضوح في مقابل «في تعاملات الأربعاء»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والمقدمة إن الإنتاج السعودي قفز 26% في أكتوبر إلى 10.563 مليون برميل يومياً وفق ما أبلغت به الرياض أوبك. وتضيف الفقرة الثانية القيد الحاسم: المعروض في السوق 9.203 مليون، والفارق ذهب إلى التخزين (SOURCE 4). وتعرّف المقدمة بخافيير بلاس بأنه كاتب عمود في بلومبرغ. ويتضح من بطاقة العنوان والمقدمة أن الخبر عن السعودية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير السياقات التي توفرها المصادر: المسارات البديلة ونقل النفط بين السفن وخط شرق-غرب والهجوم عليه (SOURCE 1، SOURCE 4)، ورفع المملكة إنتاجها في فبراير تحسباً لاضطراب السوق (SOURCE 2)، والمقارنة بالحصة وبسبتمبر وبفبراير، ونسبة 97% للتحالف (SOURCE 2)، ثم المراجعة واجتماع 29 نوفمبر. مقدمات «لماذا يهمّ» مسندة كلها، واستنتاجه أن قدرة التعويض مرتبطة بسلامة مسارات التصدير استنتاج محدود ومتناسب مع الأدلة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان (قفزة 26% إلى قرب مستوى ما قبل الحرب) تبنيه الفقرة الأولى مباشرة، ثم تأتي فقرة المعروض مقابل الإنتاج، ففقرة مسارات التصدير، ثم موقع الزيادة داخل أوبك بلس، فالعراق وإيران، فالمخزونات والأسعار، وأخيراً الخطوة التالية. فصلُ متوسط برنت في أكتوبر عن سعر الأربعاء صار واضحاً. ويبقى ملحظ صغير لا يمنع النشر: جملة توقع الطلب تجلس في فقرة المخزونات تحت عنوان فرعي لا يسميها.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر. يميز التقرير بين أرقام الرياض (10.563) وتقدير المصادر الثانوية (9.194)، وبين متوسط أكتوبر (108.34 دولار) وسعر الأربعاء (92.73 دولار)، وبين ما قاله الوزير العراقي وما أكدته الوزارة. أما «وجاءت معظم هذه الزيادة من القفزة في الإنتاج السعودي» فتصح على أساس المصادر الثانوية (1.18 من 2.04 مليون)، وهو الأساس نفسه الذي يقيس عليه التحالف.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "الكميات السعودية المعروضة في السوق بلغت 9.203 مليون برميل يومياً في أكتوبر، وذهب ما زاد من الإنتاج عند رأس البئر إلى التخزين",
+          "source": 4
+        },
+        {
+          "fact": "تصدّر أرامكو نفطها عبر موانئ الخليج وخط شرق-غرب إلى ينبع، وتعرّض الخط لهجوم الاثنين أشعل حريقاً محدوداً من دون تعطيل العمليات",
+          "source": 4
+        },
+        {
+          "fact": "تراجعت مخزونات النفط العالمية بنحو 537 مليون برميل بين فبراير وسبتمبر 2026 بسبب اضطرابات الإمدادات، بحسب أوبك",
+          "source": 1
+        }
+      ],
+      "slug": "saudi-crude-output-near-prewar-levels-0afc6c",
+      "title": "إنتاج السعودية النفطي يقفز 26% إلى قرب مستوى ما قبل الحرب",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "«أبوظبي الأول» يطرح حقوق أولوية بـ15 مليار درهم بدعم من مبادلة",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://www.albayan.ae/economy/business/uae-economy/1564411",
+        "https://economymiddleeast.com/news/fab-proposes-over-4-billion-rights-issue-as-mubadala-backs-full-entitlement/",
+        "https://www.thenationalnews.com/business/banking/2026/11/11/fab-to-raise-408bn-to-boost-next-phase-of-growth-strategy/",
+        "https://gulfnews.com/business/banking/fab-plans-dh15-billion-rights-issue-at-30-discount-to-fund-growth-1.500744032"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يقول «يعتزم» والعنوان الفرعي يذكر تصويت المساهمين في 7 ديسمبر، فالخطوة تظهر مقترحاً لم يُقر نهائياً بعد. اسم البنك يدل على بلده، والمقدمة تعرّف به أكبرَ بنوك الإمارات، وتعرّف مبادلة بأنها أكبر مساهميه.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الغرض المعلن من الإصدار موجود (فرص النمو في الإمارات وفي الشبكة الدولية، والتكنولوجيا والذكاء الاصطناعي)، وكذلك المقارنة بالهدف السابق للعائد على حقوق الملكية الملموسة، وسياق موجة زيادات رأس المال في السوق الإماراتية من المصدر 3. لكن القيود الرأسمالية التي يلتزمها البنك، أي CET1 فوق 14% وتكلفة مخاطر دون 70 نقطة أساس وتصنيف AA- (المصدران 1 و2)، غائبة، مع أنها تشرح لماذا يحتاج البنك رأس مال جديداً ليحقق نمو القروض والتوزيعات معاً. وفي «لماذا يهمّ» استنتاج مبني على مقدمات مسنودة: هدفان يستهلكان رأس المال، فيطلب الإصدار من المساهمين تمويل التوسع مقدماً. هو استنتاج متناسب، غير أن أداة الربط «مع التزام مبادلة» لا تولّد خيار بقية المساهمين، فهذا الخيار قائم بالاكتتاب النسبي في كل الأحوال.",
+              "repair": "إضافة جملة الإطار الرأسمالي من المصدرين 1 و2 إلى فقرة الأهداف. وفي الصندوق يُستبدل «ومع التزام مبادلة بكامل حصتها، يقع على...» بصيغة لا تجعل التزام مبادلة شرطاً للخيار، مثل: «وبينما تكتتب مبادلة بكامل حصتها، يختار بقية المساهمين بين...»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو دعم مبادلة، والفقرة الأولى من المتن تطوّره مباشرة بحصتها وآلية الاكتتاب النسبي، وهذا بناء سليم. لكن فقرة الرستماني كلام عام يقطع خط «أين تذهب الأموال»، والجملة «في فرص عزاها إلى...» معلّقة، والفقرة الأخيرة تعيد موعدَي العنوان الفرعي.",
+              "repair": "حذف فقرة الرستماني أو دمجها، وإعادة صياغة الجملة المعلّقة جملةً مستقلة يرجع فيها البنك الفرص إلى عواملها، وتقليص الخاتمة إلى ما تضيفه من شروط وخطوات."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "عدد الأسهم والسعر والخصم المحتسب من إغلاق الثلاثاء 10 نوفمبر، وحصة مبادلة البالغة 37.9% حتى 30 سبتمبر، وأرقام الأشهر التسعة والربع الثالث، كلها مطابقة للمصادر وبأساس مقارنة واضح (منذ بداية العام، على أساس سنوي). والأهداف مقدمة طموحاتٍ للبنك لا نتائج محققة. الاستثناء الوحيد تعريف العائد على حقوق الملكية الملموسة، وهو بلا مصدر وأُدرج في القضايا.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البنك (أبوظبي) والمبلغ ودعم مبادلة، والمقدمة تعرّف مبادلة بأنها أكبر مساهمي البنك. لكن العنوان الفرعي يقول «يطرح البنك الأسهم الجديدة» كأن الطرح تقرر، والإصدار ما زال مقترحاً ينتظر الجمعية العمومية والجهات التنظيمية.",
+              "repair": "«يعتزم البنك طرح الأسهم الجديدة بسعر 13.52 درهم...»، أو «سيطرح»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل الغرض المعلن من الإصدار (فرص النمو، والتكنولوجيا والذكاء الاصطناعي) وعوامله بحسب البنك (المصدر 1)، والإطار الرأسمالي (CET1 فوق 14%، وتكلفة مخاطر دون 70 نقطة أساس، وAA-)، وموجة زيادات رأس المال في السوق الإماراتية منسوبة إلى «ذا ناشيونال» (المصدر 3)، والنتائج الأحدث. ومقدمة الصندوق الأولى (هدفان يستهلكان رأس المال مع حد أدنى لـCET1) استنتاج متناسب. أما جملته الثانية فتغفل تداول الحقوق الوارد في المصدرين 1 و2، وتكرر خاصية عامة لأي إصدار حقوق.",
+              "repair": "استبدال الجملة الثانية بما يخص هذا الإصدار: نحو 37.9% من الأسهم الجديدة تغطيها مبادلة بحكم الاكتتاب النسبي، والباقي معلق على بقية المساهمين بين الاكتتاب بخصم 30% وبيع الحقوق مع تراجع الحصة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان، أي دعم مبادلة، يطوّره المتن مباشرة بآلية الاكتتاب النسبي ثم بحصتها 37.9% وقراءة البنك لالتزامها، وهذا سليم. لكن قسم «أهداف أعلى حتى 2031» يفتتح بأهداف لم تذكر المصادر أنها رُفعت، ويؤخر الهدف المرفوع فعلاً (العائد على حقوق الملكية الملموسة) إلى ما بعد فقرة توزيعات 2020-2025.",
+              "repair": "افتتاح القسم بالعائد على حقوق الملكية الملموسة (فوق 17% بعد فوق 16%، والمحقق 18.6%)، ثم بقية الأهداف والإطار الرأسمالي، ثم مقارنة التوزيعات المستهدفة (50 مليار درهم) بالـ44 ملياراً الموزعة بين 2020 و2025."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 15 مليار درهم (4.08 مليار دولار)، و1,109,467,456 سهماً، و13.52 درهم، والخصم 30% عن إغلاق 10 نوفمبر الموافق يوم الثلاثاء، و37.9%، و679 و885 مليار درهم، و1.47 تريليون درهم، و16.46 مليار درهم بزيادة 3%، والربع الثالث 5.73 مليار درهم بزيادة 6% على أساس سنوي، و18.6%. أساس كل مقارنة مذكور (منذ بداية العام، على أساس سنوي)، والإصدار موصوف في المتن بأنه مشروط بالموافقات.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "صندوق «لماذا يهمّ» يختزل خيار بقية المساهمين في بديلين: «يختار بقية المساهمين بين ضخ أموال جديدة بسعر يقل 30% عن إغلاق السهم وقبول تراجع نسب ملكيتهم». المصدر 1 والمصدر 2 ينصان على «فترة تداول حقوق الأولوية»، أي أن من لا يكتتب يستطيع بيع حقه، فالثنائية تقول أكثر مما تسنده المادة. ثم إن الجملة تصف خاصية عامة في أي إصدار حقوق، ولا تجيب عن أثر هذا الإصدار تحديداً. وأداة الربط «وإذ» تعيد إيحاء السببية الذي طُلب نزعه في المراجعة السابقة. الإصلاح المقترح: «وبما أن الاكتتاب نسبي، تغطي مبادلة وحدها نحو 37.9% من الأسهم الجديدة، ويتوقف الباقي على بقية المساهمين: يكتتبون بخصم 30%، أو يبيعون حقوقهم في فترة التداول وتتراجع حصصهم».",
+        "العنوان الفرعي يصوغ خطة معلقة على موافقات بفعل تنفيذ: «يطرح البنك الأسهم الجديدة بسعر 13.52 درهم ويعرض الإصدار على مساهميه في 7 ديسمبر». الإصدار مشروط بموافقة المساهمين والجهات التنظيمية (المصدران 1 و2). الإصلاح: «يعتزم البنك طرح الأسهم الجديدة بسعر 13.52 درهم، ويعرض الإصدار على مساهميه في 7 ديسمبر...». ويُعدَّل في المتن «ويطرح البنك 1,109,467,456 سهماً» إلى «ويعتزم البنك طرح...» أو «سيطرح».",
+        "صياغة ركيكة: «وعدّت منها أدنوك وبنك أبوظبي التجاري...». الفعل «عدّت» بمعنى أحصت لا يستقيم هنا، ومرجع الضمير غير واضح. الإصلاح: «ومن هذه الشركات أدنوك وبنك أبوظبي التجاري وشركة الذكاء الاصطناعي «جي 42» (G42)...».",
+        "دقة الإسناد في قسم الأهداف: تفتتح الفقرة بـ«رفع البنك طموحاته... فبات يستهدف نمواً سنوياً للقروض بين 10% و15%»، فيُفهم أن هدف القروض والإيرادات هو المرفوع. المقارنة بهدف سابق لا ترد في المصادر إلا للعائد على حقوق الملكية الملموسة (فوق 17% بعد فوق 16%، المصدران 1 و2)، وهذا الهدف مؤخَّر إلى فقرة ثالثة تفصله عنها فقرة توزيعات 2020-2025. الإصلاح: افتتاح القسم بالعائد على حقوق الملكية الملموسة، أي الهدف المرفوع ومستواه المحقق 18.6%، ثم سرد أهداف القروض والإيرادات والتوزيعات والإطار الرأسمالي بفعل «يستهدف» من دون «فبات».",
+        "الأسعار في العنوان الفرعي والمتن: «بسعر 13.52 درهم». عدد العقود يكتبه الديسك عادةً «13.52 درهماً» حين يقع مفعولاً، فيُوحَّد الرسم بحسب الدليل.",
+        "العنوان يحدد البنك (أبوظبي) والمبلغ ودعم مبادلة، والمقدمة تعرّف مبادلة بأنها أكبر مساهمي البنك. لكن العنوان الفرعي يقول «يطرح البنك الأسهم الجديدة» كأن الطرح تقرر، والإصدار ما زال مقترحاً ينتظر الجمعية العمومية والجهات التنظيمية. — «يعتزم البنك طرح الأسهم الجديدة بسعر 13.52 درهم...»، أو «سيطرح».",
+        "المسودة تحمل الغرض المعلن من الإصدار (فرص النمو، والتكنولوجيا والذكاء الاصطناعي) وعوامله بحسب البنك (المصدر 1)، والإطار الرأسمالي (CET1 فوق 14%، وتكلفة مخاطر دون 70 نقطة أساس، وAA-)، وموجة زيادات رأس المال في السوق الإماراتية منسوبة إلى «ذا ناشيونال» (المصدر 3)، والنتائج الأحدث. ومقدمة الصندوق الأولى (هدفان يستهلكان رأس المال مع حد أدنى لـCET1) استنتاج متناسب. أما جملته الثانية فتغفل تداول الحقوق الوارد في المصدرين 1 و2، وتكرر خاصية عامة لأي إصدار حقوق. — استبدال الجملة الثانية بما يخص هذا الإصدار: نحو 37.9% من الأسهم الجديدة تغطيها مبادلة بحكم الاكتتاب النسبي، والباقي معلق على بقية المساهمين بين الاكتتاب بخصم 30% وبيع الحقوق مع تراجع الحصة.",
+        "الجديد في العنوان، أي دعم مبادلة، يطوّره المتن مباشرة بآلية الاكتتاب النسبي ثم بحصتها 37.9% وقراءة البنك لالتزامها، وهذا سليم. لكن قسم «أهداف أعلى حتى 2031» يفتتح بأهداف لم تذكر المصادر أنها رُفعت، ويؤخر الهدف المرفوع فعلاً (العائد على حقوق الملكية الملموسة) إلى ما بعد فقرة توزيعات 2020-2025. — افتتاح القسم بالعائد على حقوق الملكية الملموسة (فوق 17% بعد فوق 16%، والمحقق 18.6%)، ثم بقية الأهداف والإطار الرأسمالي، ثم مقارنة التوزيعات المستهدفة (50 مليار درهم) بالـ44 ملياراً الموزعة بين 2020 و2025."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "يستهدف البنك للفترة 2026-2031 نمواً سنوياً للقروض بين 10% و15% وتوزيعات تراكمية تتجاوز 50 مليار درهم",
+          "source": 2
+        },
+        {
+          "fact": "يستهدف الإطار إبقاء نسبة CET1 للمجموعة قبل التوزيعات فوق 14% وتكلفة مخاطر دون 70 نقطة أساس",
+          "source": 2
+        },
+        {
+          "fact": "يحق للمساهمين المؤهلين الاكتتاب بنسبة حصصهم الحالية بما يتيح لهم الإبقاء على نسب ملكيتهم",
+          "source": 2
+        },
+        {
+          "fact": "تعتزم مبادلة، المالكة 37.9% من البنك، الاكتتاب في كامل حصتها المستحقة",
+          "source": 2
+        }
+      ],
+      "slug": "fab-15-billion-dirham-rights-issue-7229cc",
+      "title": "«بنك أبوظبي الأول» يعتزم جمع 15 مليار درهم بحقوق أولوية تدعمها مبادلة",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "مصر تخصص أراضي في البحر الأحمر لإصدار صكوك سيادية وخفض الدين العام",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://dailynewsegypt.com/2026/11/11/egypt-allocates-red-sea-land-to-cut-public-debt-as-madbouly-reviews-2030-debt-target/",
+        "https://alborsaanews.com/2026/11/11/2005714"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والسطر التمهيدي ما تغيّر: أضيف خفض الدين العام إلى استخدامات أرض في البحر الأحمر، وكان تخصيصها مقصوراً على الصكوك. ويقولان ما لا يعنيه القرار: لا بيع تلقائياً للأرض. والبلد واضح في العنوان («مصر»).",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يوفّر SOURCE 2 الغرض المعلن من القرار: تقليص الاحتياجات التمويلية للموازنة، وخفض الاعتماد على الاقتراض مرتفع الكلفة، وتوجيه الوفورات إلى القطاعات الأساسية. ويوفّر كذلك آليته: مرونة توجيه حصيلة الإصدار أو العوائد، مع شرط الإفصاح عن هيكل الإصدار. المسودة تختزل ذلك في «ترشيد الاقتراض». ويقف مربع «لماذا يهمّ» عند تمييز محاسبي لا يصله بهذا الغرض.",
+              "repair": "تُضاف الآلية والغرض والشرط إلى الفقرة الثانية منسوبة إلى المصادر الحكومية لـ«البورصة»، ويُعاد بناء مربع «لماذا يهمّ» كما في المقترح."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن ما يقوله العنوان مباشرة بعد الاستهلال، وهو جيد. لكن الفقرة قبل الأخيرة تضع دراسة استثمار فوائض جهات الدولة، وهي من بيان سابق وفي سياق متصل، بجوار مقترحات الاجتماع، فتوحي بأنها جزء منه. ومربع «لماذا يهمّ» تمييز محاسبي لا يجيب عن السؤال الاقتصادي.",
+              "repair": "تُفصل فقرة الفوائض وتُنسب صراحة إلى توجه تدرسه الحكومة وإلى بيان سابق لكجوك، ويُعاد بناء مربع «لماذا يهمّ»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «يحوّل ... القطعة إلى أصل مرتبط بالإصدار» أقوى من «يهيئها لتكون» في SOURCE 2. أما بقية الأرقام والتواريخ فمطابقة: نحو 26,690 فداناً، و112.1 مليون متر مربع، والقرار رقم 222 لسنة 2026، ونحو 69.5% بحلول 2030، و14 نقطة مئوية بين يونيو 2023 ويونيو 2026، و3.9% من الناتج في 2025/2026.",
+              "repair": "«ويهيّئ التخصيص القطعة لتكون أصلاً يُصدَر عليه»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يسمي مصر والمساحة والغرض المضاف، والاستهلال يبيّن ما تغيّر: كان التخصيص مقصوراً على الصكوك، وأُضيف إليه خفض الدين. والعنوان الفرعي يحمل القيد الحاسم، وهو أن القرار لا يعني بيع الأرض تلقائياً، منسوباً إلى مصادر حكومية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة ما يوفره SOURCE 2: الآلية (صكوك على الأرض، أو توجيه عوائد استغلالها إلى السداد)، والغرض (تقليص الاحتياجات التمويلية، وخفض الاعتماد على الاقتراض مرتفع الكلفة، وتوجيه الوفورات إلى القطاعات الأساسية)، وشرط الإفصاح عن هيكل الإصدار. وتحمل ما يوفره SOURCE 1 من خلفية مسار الدين (69.5% بحلول 2030، و14 نقطة، و3.9%) والخطوة التالية، وهي الخطة التي تُعرض على الرئيس. ومربع «لماذا يهمّ» يستنتج من مقدمات ثابتة أن الصكوك تخفف كلفة الخدمة إذا حلّت محل اقتراض أغلى، لكنها تبقى التزاماً، وأن عوائد الاستغلال وحدها تقلص الرصيد. والشرط فيه صريح، والاستنتاج متناسب مع الوقائع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن عنصر العنوان، أي إضافة خفض الدين، مباشرة بعد الاستهلال، بالآلية ثم الغرض، ثم ينتقل إلى مسار الدين تحت عنوان فرعي يطابق فقراته، وفُصلت دراسة استثمار الفوائض عن مقترحات الاجتماع ونُسبت إلى بيان سابق. لكن الجملة الأولى في المتن مبتورة: «فيتيح استخدام القطعة ... وفق القوانين والقواعد المعمول بها» بلا ذكر لما يتيح استخدامها فيه.",
+              "repair": "«ويعدّل القرار المادة الأولى من القرار الجمهوري رقم 222 لسنة 2026، الذي خصص القطعة نفسها، ومساحتها نحو 112.1 مليون متر مربع من أملاك الدولة الخاصة، للصكوك وحدها. ويجري استخدامها في الغرضين وفق القوانين والقواعد المعمول بها»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصدرين: 26.7 ألف فدان و26,690 فداناً و112.1 مليون متر مربع، والقرار 222 لسنة 2026، و69.5% بحلول 2030، و14 نقطة بين يونيو 2023 ويونيو 2026، و3.9% في 2025/2026. وصار التخصيص «يهيّئ» القطعة لتكون أصلاً للصكوك بدل «يحوّل». والهدف معروض هدفاً معلناً من المصادر لا أثراً متحققاً.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "mendIssues": [
+        "صياغة ناقصة نتجت عن إصلاح التكرار: «يعدّل القرار المادة الأولى من القرار الجمهوري رقم 222 لسنة 2026، فيتيح استخدام القطعة، ومساحتها نحو 112.1 مليون متر مربع من الأراضي المملوكة للدولة ملكية خاصة، وفق القوانين والقواعد المعمول بها». حُذف مفعول «يتيح استخدام»، فلا يعرف القارئ استخدامها في ماذا، ويبدو كأن القرار أباح الاستخدام عموماً. يقول SOURCE 1 إن النص الأصلي قصر التخصيص على الصكوك وإن التعديل أضاف خفض الدين، ويقول SOURCE 2 إن ذلك «وفقاً للقوانين والقواعد المعمول بها». الإصلاح من غير إعادة ما في الاستهلال: «ويعدّل القرار المادة الأولى من القرار الجمهوري رقم 222 لسنة 2026، الذي خصص القطعة نفسها، ومساحتها نحو 112.1 مليون متر مربع من أملاك الدولة الخاصة، للصكوك وحدها. ويجري استخدامها في الغرضين وفق القوانين والقواعد المعمول بها».",
+        "يطوّر المتن عنصر العنوان، أي إضافة خفض الدين، مباشرة بعد الاستهلال، بالآلية ثم الغرض، ثم ينتقل إلى مسار الدين تحت عنوان فرعي يطابق فقراته، وفُصلت دراسة استثمار الفوائض عن مقترحات الاجتماع ونُسبت إلى بيان سابق. لكن الجملة الأولى في المتن مبتورة: «فيتيح استخدام القطعة ... وفق القوانين والقواعد المعمول بها» بلا ذكر لما يتيح استخدامها فيه. — «ويعدّل القرار المادة الأولى من القرار الجمهوري رقم 222 لسنة 2026، الذي خصص القطعة نفسها، ومساحتها نحو 112.1 مليون متر مربع من أملاك الدولة الخاصة، للصكوك وحدها. ويجري استخدامها في الغرضين وفق القوانين والقواعد المعمول بها»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "عدّل القرار تخصيص الأرض لوزارة المالية ليشمل خفض الدين العام بعدما كان مقصوراً على إصدار الصكوك السيادية",
+          "source": 1
+        },
+        {
+          "fact": "قالت مصادر حكومية إن التعديل يتيح خفض الدين إما بإصدار الصكوك وإما بتوجيه عوائد استغلال الأصل إلى تقليص المديونية، وإن القرار لا يعني بيع الأرض تلقائياً",
+          "source": 2
+        },
+        {
+          "fact": "قالت المصادر إن توظيف الأصول العامة في خفض الدين يستهدف تقليص الاحتياجات التمويلية للموازنة وخفض الاعتماد على الاقتراض مرتفع التكلفة",
+          "source": 2
+        },
+        {
+          "fact": "الصكوك تقوم على أصول أو منافع حقيقية، وتخصيص الأرض يهيئها لتكون أصلاً مرتبطاً بالإصدار بحسب المصادر",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-red-sea-land-debt-reduction-sukuk-4defe6",
+      "title": "مصر توسّع أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر لتشمل خفض الدين",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "إيرادات «كور ويف» تقفز 168% وترفع توقعاتها فتنعش أسهم الذكاء الاصطناعي",
+      "section": "technology",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
+    "calls": 77,
     "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {},
-    "byRole": {}
+    "promptTokens": 1183390,
+    "completionTokens": 237160,
+    "cacheReadTokens": 283004,
+    "costUsd": 12.0023,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 77
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 85508,
+        "read": 0,
+        "out": 1911,
+        "usd": 0.7223
+      },
+      "desk": {
+        "calls": 12,
+        "in": 96976,
+        "read": 103632,
+        "out": 56832,
+        "usd": 1.9331
+      },
+      "writer": {
+        "calls": 19,
+        "in": 215982,
+        "read": 138712,
+        "out": 70765,
+        "usd": 3.1705
+      },
+      "critic": {
+        "calls": 13,
+        "in": 165783,
+        "read": 40660,
+        "out": 45143,
+        "usd": 2.2372
+      },
+      "checker": {
+        "calls": 5,
+        "in": 46836,
+        "read": 0,
+        "out": 42756,
+        "usd": 1.2297
+      },
+      "vision": {
+        "calls": 27,
+        "in": 289301,
+        "read": 0,
+        "out": 19753,
+        "usd": 2.7095
+      }
+    }
   },
   "log": [
-    "[16:17:36] newsroom start mode=reports limit=4 dry-run=false",
-    "[16:17:43] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
-    "[16:17:43] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[16:17:43] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[16:17:43] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[16:17:48] report un-tourism-barometer: page not read (http-403)",
-    "[16:17:52] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
-    "[16:17:54] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet",
-    "[16:17:54] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» is listed without its document; it waits"
+    "[20:18:10] image: dropped \"Aerial view of a residential area by the sea with palm trees and rooft\" — names too little of coastal, road",
+    "[20:18:10] image: dropped \"Glorious view of Hurgada's waterfront with sunsetting and reflections \" — names too little of coastal, road",
+    "[20:18:10] image: dropped \"White boat sailing on the Red Sea under a clear blue sky with mountain\" — names too little of coastal, road",
+    "[20:18:10] image: dropped \"Scenic view of boats on the Red Sea with distant Egyptian mountains un\" — names too little of coastal, road",
+    "[20:18:11] commons \"undeveloped desert land Red Sea\": 0 usable of 1",
+    "[20:18:11] commons \"undeveloped desert\": 16 usable of 20",
+    "[20:18:11] image: dropped \"Artillery Ranges - Desert Training Center (16054646899).jpg\" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Camp Iron Mountain - Desert Training Center (16054920297).jpg\" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Camp Iron Mountain - Desert Training Center (16240774685).jpg\" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Camp Iron Mountain - Desert Training Center (16239934792).jpg\" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Camp Iron Mountain - Desert Training Center (16214870196).jpg\" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Camp Ibis Desert Training Center Charles C Dike, 607th Tank Destroyer \" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Tents at Camp Ibis, Desert Training Center Charles C Dike, 607th Tank \" — dated 1942, an archival picture",
+    "[20:18:11] image: dropped \"Breathtaking view of a sandy coastline and tranquil ocean under a clea\" — names too little of undeveloped, desert, land",
+    "[20:18:11] image: dropped \"Close-up of cracked, parched earth symbolizing drought and climate cha\" — names too little of undeveloped, desert, land",
+    "[20:18:11] image: dropped \"Stunning aerial shot of a sandy desert meeting a dark ocean, showcasin\" — an event's photograph, people and banners",
+    "[20:18:11] image: dropped \"Breathtaking aerial view of a mountain valley with sandy dunes and a f\" — names too little of undeveloped, desert, land",
+    "[20:18:11] image: dropped \"Desert View Indian Wells.jpg\" — taken in United States, which the story does not name",
+    "[20:18:11] image: dropped \"San Pedro Recreational River, Arizona (36239793430).jpg\" — taken in United States, which the story does not name",
+    "[20:18:11] image: dropped \"San Pedro Recreational River, Arizona (35827245873).jpg\" — taken in United States, which the story does not name",
+    "[20:18:11] image: 7 likeness(es) set aside for the country's own photographs",
+    "[20:18:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=762 in=12284 read=0 out=933 attempt=1 ms=10203",
+    "[20:18:22] image: vision rejected all candidates (No candidate matches the source scene of empty state desert on Egypt's Red Sea coast. #1 is a finished resort in Dahab, South Sinai, not the Red Sea Governorate, so it reads as tourism. #2 is a false-colour satellite image with a logo stamped on it. #3 and #4 are picturesque Nuweiba shots from 2007, #5 is a sunset cliché and #6 is a regional satellite map.)",
+    "[20:18:32] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=696 in=9498 read=0 out=892 attempt=1 ms=9790",
+    "[20:18:32] image: vision rejected all candidates (Neither candidate fits. Photo 2 is a square, straight-down NASA satellite image of the developed El Gouna resort. It is not a landscape frame, it is hard to read as a thumbnail, and it could mislead readers into thinking the resort is the land being allotted. Photo 1 is a 2007 tourist view of mountains and sea at Nuweiba in South Sinai, which is outside Red Sea Governorate. It is picturesque and shows no desert land, highway or construction like the sources' own photograph.)",
+    "[20:18:32] image: tier 3, the writer's own subjects: Red Sea coast Egypt | Egyptian pounds | counting Egyptian pounds",
+    "[20:18:32] commons \"Red Sea coast Egypt 2026\": 4 usable of 12",
+    "[20:18:33] commons \"Red Sea coast Egypt\": 11 usable of 12",
+    "[20:18:33] image: dropped \"Pez ángel de barra amarilla (Pomacanthus maculosus), parque nacional R\" — names too little of coast",
+    "[20:18:33] image: dropped \"ISS074-E-834654 - View of Saudi Arabia.jpg\" — another frame of a series a published story runs",
+    "[20:18:33] commons \"Egyptian pounds 2026\": 2 usable of 7",
+    "[20:18:34] commons \"Egyptian pounds\": 3 usable of 12",
+    "[20:18:34] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:34] image: dropped \"Multi-Level-Stack-Parking-in-NYC.jpg\" — names too little of pounds",
+    "[20:18:34] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:34] commons \"counting Egyptian pounds 2026\": 0 usable of 0",
+    "[20:18:34] commons \"counting Egyptian pounds\": 4 usable of 7",
+    "[20:18:34] image: dropped \"American bee journal (1918) (17928763999).jpg\" — dated 1918, an archival picture",
+    "[20:18:34] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
+    "[20:18:34] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
+    "[20:18:34] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
+    "[20:18:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=991 in=10727 read=0 out=1223 attempt=1 ms=13365",
+    "[20:18:48] image: \"ISS074-E-834659 - View of Egypt - Red Sea - El Gouna (croppe\" names the story's topic without saying its point (This is the only usable candidate, chosen as a last resort. It is a recent (2026) real NASA photograph of Egypt's Red Sea governorate showing undeveloped desert); checked now and kept in reserve while the desk looks further",
+    "[20:18:52] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=229 in=8397 read=0 out=342 attempt=1 ms=4536",
+    "[20:18:52] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"ISS074-E-834659 - View of Egypt - Red Sea - El Gouna (croppe\": A straight-down ISS view of El Gouna's resort coastline does not read at a glance, names a place the story never mention",
+    "[20:18:52] image: tier 4, the story's point and its subject: Egyptian pound banknotes stack | Red Sea coast desert Egypt | Eastern Desert Egypt | Egyptian pounds | Red Sea desert Egypt | counting Egyptian pounds (home: Egypt, Egyptian, Red Sea Governorate, Hurghada, Cairo)",
+    "[20:18:53] pexels \"Egyptian pounds\": 8 usable",
+    "[20:18:53] pexels \"counting Egyptian pounds\": 8 usable",
+    "[20:18:53] commons \"Egyptian pound banknotes stack\": 0 usable of 0",
+    "[20:18:53] pexels \"Egyptian pound banknotes stack\": 8 usable",
+    "[20:18:53] pexels \"Red Sea coast desert Egypt\": 8 usable",
+    "[20:18:53] pexels \"Eastern Desert Egypt\": 8 usable",
+    "[20:18:53] pexels \"Red Sea desert Egypt\": 8 usable",
+    "[20:18:53] commons \"Egyptian pound banknotes\": 4 usable of 24",
+    "[20:18:53] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:53] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:53] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:53] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of pound, banknotes, stack",
+    "[20:18:54] commons \"Red Sea coast desert Egypt\": 15 usable of 24",
+    "[20:18:54] image: dropped \"ISS006-E-43911 - View of Egypt.jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Man upon the sea - or, a history of maritime adventure, exploration, a\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Travels in the Upper Egyptian deserts (1913) (14756484236).jpg\" — dated 1913, an archival picture",
+    "[20:18:54] image: dropped \"ISS024-E-8184 - View of Egypt.jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"ISS024-E-8183 - View of Egypt.jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Dust over Persian Gulf (MODIS 2020-07-05).jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Every day in prison was an opportunity - Free Alaa Abd El-Fattah.jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Alaa is disappearing -1.jpg\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"White boat sailing on the Red Sea under a clear blue sky with mountain\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"Aquascope submarine navigating the clear waters of the Red Sea with Eg\" — a warship or weapon, and the story is not about the military",
+    "[20:18:54] image: dropped \"Enjoy the stunning view of the Sinai mountains and Red Sea in Dahab du\" — names too little of coast, desert",
+    "[20:18:54] image: dropped \"A panoramic aerial view of the Sharm El Sheikh coastline and surroundi\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[20:18:54] image: dropped \"Tourists enjoy camel riding with stunning mountain views in Dahab, Egy\" — names too little of coast, desert",
+    "[20:18:54] commons \"Eastern Desert Egypt\": 17 usable of 24",
+    "[20:18:54] commons \"Egyptian pounds\": 5 usable of 24",
+    "[20:18:54] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:54] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:18:54] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of pounds",
+    "[20:18:54] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of pounds",
+    "[20:18:54] image: dropped \"Close-up of various British pound coins and banknotes displaying Queen\" — shows elizabeth, elizabeth, not the story's people",
+    "[20:18:56] commons \"Red Sea desert Egypt\": 24 usable of 24",
+    "[20:18:56] commons \"counting Egyptian pounds\": 4 usable of 7",
+    "[20:18:56] image: dropped \"American bee journal (1918) (17928763999).jpg\" — names too little of counting, pounds",
+    "[20:18:56] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
+    "[20:18:56] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
+    "[20:18:56] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
+    "[20:18:56] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of counting, pounds",
+    "[20:18:56] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
+    "[20:19:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1263 in=11411 read=0 out=1495 attempt=1 ms=16232",
+    "[20:19:13] image: vision rejected all candidates (fallback pass) (None fits. 1 shows British currency, the wrong country. 3 is a flat scan of an Egyptian note's face. 5 is an amateur shot through a window with glare, taken in Sinai rather than the Red Sea governorate. 6 has a faded, archival look with an old jeep. 2 is an aerial of a Dahab tourist resort in South Sinai: another governorate and a tourism subject, so it would mislead. 4 is closest, Red Sea desert land, but camels sit at its centre, the exotic cliché the gravity rule refuses under an Egyptian debt story. The story runs better as text.)",
+    "[20:19:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=829 in=12603 read=0 out=1007 attempt=1 ms=11906",
+    "[20:19:25] image: vision rejected all candidates (fallback pass) (Public-debt story; none of the candidates fits. 1 and 2 show British currency, the wrong country. 5 is a chart. 3 has a faded, archival slide look. 4 puts camels under a debt headline, which fails the gravity test. 6 is an ISS satellite view filed under Tabuk's coasts, so it reads as a map and may show Saudi or Sinai land rather than the Red Sea governorate plot. It runs better as text.)",
+    "[20:19:29] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=226 in=2857 read=0 out=271 attempt=1 ms=3774",
+    "[20:19:29] image: last resort: Egyptian pound banknotes Egypt | Egyptian pound banknotes | Egyptian pound banknotes industrial",
+    "[20:19:29] commons \"Egyptian pound banknotes Egypt\": 5 usable of 24",
+    "[20:19:29] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:29] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:29] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:29] commons \"Egyptian pound banknotes\": 4 usable of 24",
+    "[20:19:30] commons \"Egyptian pound banknotes industrial\": 0 usable of 0",
+    "[20:19:30] commons \"Egyptian pound\": 9 usable of 24",
+    "[20:19:30] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:30] image: dropped \"Egyptian Geese by Thousand Pound Pond, Kenwood, Hampstead, London NW3 \" — taken in United Kingdom, which the story does not name",
+    "[20:19:30] image: dropped \"Egyptian Goose by Thousand Pound Pond, Kenwood, Hampstead, London NW3 \" — taken in United Kingdom, which the story does not name",
+    "[20:19:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=66 in=10479 read=0 out=197 attempt=1 ms=3977",
+    "[20:19:34] image: vision rejected all candidates (fallback pass) (None fit. The story is about public debt, which the rules picture with notes counted, stacked or in hand. Option 1 is a flat scan of a banknote's face, option 2 is an exchange-rate chart from 2009, and option 3 is an amateur flash close-up of a coin. All three are refused, so the story runs as text.)",
+    "[20:19:34] image: last pass, a neutral illustration: Egyptian pound banknotes stack | coast desert | Egyptian pounds | counting Egyptian pounds",
+    "[20:19:34] commons \"Egyptian pound banknotes stack\": 0 usable of 0",
+    "[20:19:34] commons \"Egyptian pound banknotes\": 4 usable of 24",
+    "[20:19:34] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:34] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:34] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:34] pexels \"Egyptian pounds\": 8 usable",
+    "[20:19:34] pexels \"coast desert\": 8 usable",
+    "[20:19:34] pexels \"counting Egyptian pounds\": 8 usable",
+    "[20:19:35] pexels \"Egyptian pound banknotes stack\": 8 usable",
+    "[20:19:35] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of pound, banknotes, stack",
+    "[20:19:35] commons \"coast desert\": 20 usable of 24",
+    "[20:19:35] image: dropped \"Coast makran balush arab esimated 1889.jpg\" — dated 1889, an archival picture",
+    "[20:19:35] image: dropped \"Bienertia.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Centralmakran.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Makran beaches 20190622 04.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Makran beaches 20190622 03.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Makran beaches 20190622 01.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Makran beaches 20190622 13.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Makran beaches 20190622 06.jpg\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"A stunning coastal landscape of a rocky desert beach meeting the ocean\" — an event's photograph, people and banners",
+    "[20:19:35] image: dropped \"Stunning view of desert sand dunes meeting the sea under a sunset sky.\" — an event's photograph, people and banners",
+    "[20:19:35] image: dropped \"Breathtaking sunset view of San Carlos, Mexico with serene sea and hil\" — names too little of coast, desert",
+    "[20:19:35] image: dropped \"Golden desert dunes meeting the blue sea under a clear sky, capturing \" — an event's photograph, people and banners",
+    "[20:19:35] commons \"Egyptian pounds\": 5 usable of 24",
+    "[20:19:35] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:35] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:19:35] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of pounds",
+    "[20:19:35] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of pounds",
+    "[20:19:35] image: dropped \"Close-up of various British pound coins and banknotes displaying Queen\" — shows elizabeth, elizabeth, not the story's people",
+    "[20:19:35] commons \"counting Egyptian pounds\": 4 usable of 7",
+    "[20:19:35] image: dropped \"American bee journal (1918) (17928763999).jpg\" — dated 1918, an archival picture",
+    "[20:19:35] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
+    "[20:19:35] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
+    "[20:19:35] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
+    "[20:19:35] image: dropped \"Close-up of British coins and banknotes, showcasing different denomina\" — names too little of counting, pounds",
+    "[20:19:35] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
+    "[20:19:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=138 in=10140 read=0 out=307 attempt=1 ms=4343",
+    "[20:19:40] image: vision rejected all candidates (fallback pass) (This is a public-debt story, so it needs Egyptian money photographed as money or Red Sea desert land. Photos 1 and 2 show British pounds, the wrong country's currency. Photo 3 is a flat scan of an Egyptian note's face, which the rules exclude. Photos 4-6 show Maine's forested coast, which contradicts the Red Sea desert setting and says nothing about debt. The story runs better without a photo.)",
+    "[20:19:54] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=949 in=10758 read=0 out=1162 attempt=1 ms=12860",
+    "[20:19:58] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=217 in=1161 read=0 out=251 attempt=1 ms=4073",
+    "[20:20:12] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1222 in=7990 read=0 out=1331 attempt=1 ms=14689",
+    "[20:20:12] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Expansive aerial shot of a remote desert shoreline with spar\": A clean, professional aerial view of an undeveloped desert coastline neutrally pictures the story's own subject, the sta",
+    "[20:20:12] published \"مصر توسّع أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر لتشمل خفض الدين\" -> egypt-red-sea-land-debt-reduction-sukuk-4defe6",
+    "[20:20:12] run budget of 35 minutes spent; \"إيرادات «كور ويف» تقفز 168% وترفع توقعاتها فتنعش أسهم الذكاء الاصطناعي\" waits for the next run"
   ]
 }

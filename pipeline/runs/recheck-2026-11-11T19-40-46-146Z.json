@@ -1,0 +1,96 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-11T19:40:46.146Z",
+  "durationSec": 161,
+  "read": 2,
+  "corrected": 1,
+  "report": [
+    {
+      "slug": "dip-holding-shares-rise-dubai-debut-da4063",
+      "title": "سهم «دي أي بي هولدينغ» يرتفع نحو 6% في أول أيام تداوله بدبي",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 30,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "attribution",
+          "sentence": "قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
+          "quote": "DIP's offering attracted orders worth approximately four times the shares available.",
+          "source": "Gulf News",
+          "correction": "The roughly fourfold demand is Gulf News's own reporting; bin Kalban is not quoted as saying it."
+        }
+      ]
+    },
+    {
+      "slug": "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd",
+      "title": "أرباح موانئ أبوظبي تقفز 64% في الربع الثالث رغم إغلاق هرمز",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 35,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 33437,
+    "completionTokens": 24173,
+    "cacheReadTokens": 0,
+    "costUsd": 0.7509,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 33437,
+        "read": 0,
+        "out": 24173,
+        "usd": 0.7509
+      }
+    },
+    "correctionsEditorCalls": 1
+  },
+  "log": [
+    "[19:40:47] second look: 2 to read now (2 published pieces not yet read; 240 read clean before publication and left out of the audit sample)",
+    "[19:41:37] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1781 in=11039 read=0 out=6623 attempt=1 ms=47150",
+    "[19:41:37] dip-holding-shares-rise-dubai-debut-da4063: 34 of 34 sentences checked · 30 supported · 0 without a source · 1 confirmed error(s)",
+    "[19:41:37]   ✗ [attribution] قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة. — The roughly fourfold demand is Gulf News's own reporting; bin Kalban is not quoted as saying it.",
+    "[19:42:01] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2480 in=11369 read=0 out=10240 attempt=1 ms=72793",
+    "[19:42:01] ad-ports-q3-profit-jumps-hormuz-closure-28cdcd: 38 of 38 sentences checked · 35 supported · 1 without a source · 0 confirmed error(s)",
+    "[19:42:01] corrections: 1 story to the corrections editor",
+    "[19:42:01] [correct] dip-holding-shares-rise-dubai-debut-da4063: fetching 4 source(s)",
+    "[19:42:28] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=375 in=27397 read=0 out=3171 attempt=1 ms=22501",
+    "[19:42:28] [correct] dip-holding-shares-rise-dubai-debut-da4063: corrected; fields body",
+    "[19:42:28]     note: نسبت نسخة سابقة من هذا الخبر إلى رئيس مجلس إدارة «دي أي بي هولدينغ» خالد بن كلبان قوله إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة، والصحيح أن هذا الرقم ورد في التقارير عن الطرح ولم يُنقل عن بن كلبان.",
+    "[19:42:28] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-11T19-42-01-737Z.json",
+    "[19:43:26] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2497 in=11029 read=0 out=7310 attempt=1 ms=54157",
+    "[19:43:26] dip-holding-shares-rise-dubai-debut-da4063: the correction reads clean where it wrote"
+  ]
+}

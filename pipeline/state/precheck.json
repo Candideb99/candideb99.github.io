@@ -15293,6 +15293,160 @@
           "noted": []
         }
       ]
+    },
+    "saudi-crude-output-near-prewar-levels-0afc6c": {
+      "at": "2026-11-11T19:55:21.745Z",
+      "title": "إنتاج السعودية النفطي يقفز 26% إلى قرب مستوى ما قبل الحرب",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v67",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 38,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "fab-15-billion-dirham-rights-issue-7229cc": {
+      "at": "2026-11-11T20:08:27.732Z",
+      "title": "«بنك أبوظبي الأول» يعتزم جمع 15 مليار درهم بحقوق أولوية تدعمها مبادلة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v67",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 30,
+            "weak": 1,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 13,
+              "field": "whyItMatters",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ولأن الاكتتاب نسبي، تضمن مبادلة وحدها تغطية نحو 37.9% من الأسهم الجديدة، أما الباقي فبيد بقية المساهمين: يكتتبون بخصم 30% عن الإغلاق، أو يبيعون حقوقهم في فترة التداول فتتراجع حصصهم.",
+              "quote": "Mubadala Investment Company, FAB’s largest shareholder with a 37.9 percent stake, intends to subscribe for its full pro-rata entitlement.",
+              "source": "Economy Middle East",
+              "sourceN": 2,
+              "correction": "Mubadala has only stated an intention to subscribe for its full entitlement; the sources describe no guarantee or commitment covering 37.9% of the new shares."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 29,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-red-sea-land-debt-reduction-sukuk-4defe6": {
+      "at": "2026-11-11T20:20:12.879Z",
+      "title": "مصر توسّع أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر لتشمل خفض الدين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v67",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 18,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 7,
+              "field": "whyItMatters",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "يفتح التعديل أمام وزارة المالية طريقين لخفض الدين من أرض واحدة لا يعني القرار بيعها.",
+              "quote": "وأضافت أن القرار لا يعنى بيع الأرض تلقائيًا، وإنما يحدد إطاراً قانونياً يسمح لوزارة المالية باستخدامها وفقاً للقواعد المنظمة للصكوك السيادية وإدارة أصول الدولة.",
+              "source": "Alborsa News",
+              "sourceN": 2,
+              "correction": "The sources say only that the decision does not mean the land is sold automatically, which leaves a sale possible; they do not say the decision rules out selling it."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 17,
+            "weak": 2,
+            "noEvidence": 1,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

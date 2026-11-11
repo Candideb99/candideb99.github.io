@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-11-11T19:42:01.942Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "dip-holding-shares-rise-dubai-debut-da4063",
+      "issue": "The body says «قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.» (Chairman Khalid bin Kalban said subscription orders reached about four times the shares offered.). Source Gulf News says: \"DIP's offering attracted orders worth approximately four times the shares available.\". The roughly fourfold demand is Gulf News's own reporting; bin Kalban is not quoted as saying it.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى رئيس مجلس إدارة «دي أي بي هولدينغ» خالد بن كلبان قوله إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة، والصحيح أن هذا الرقم ورد في التقارير عن الطرح ولم يُنقل عن بن كلبان.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
+        "وعزا بن كلبان التسعير إلى شح السيولة في الأسواق الإقليمية والدولية، ووصف السعر بأنه عادل للجميع وإن تمنى أن يكون أعلى."
+      ],
+      "newSentences": [
+        "بلغت طلبات الاكتتاب نحو أربعة أضعاف الأسهم المعروضة.",
+        "وعزا خالد بن كلبان، رئيس مجلس إدارة الشركة، التسعير إلى شح السيولة في الأسواق الإقليمية والدولية، ووصف السعر بأنه عادل للجميع وإن تمنى أن يكون أعلى."
+      ]
+    }
+  ]
+}

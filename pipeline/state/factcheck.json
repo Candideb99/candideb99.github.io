@@ -3724,118 +3724,32 @@
       },
       "confirmed": [
         {
-          "id": 3,
-          "field": "lede",
-          "sentence": "قفزت تكلفة استئجار ناقلات النفط العملاقة عبر مضيق هرمز إلى أكثر من 800 ألف دولار يومياً، بحسب الجزيرة نقلاً عن محللة الشحن ميشيل بوكمان.",
-          "claim": "The supertanker charter cost through Hormuz jumped to over $800,000 a day, according to Al Jazeera citing shipping analyst Michelle Bockman.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "ومع اندلاع الحرب الأمريكية الإسرائيلية الإيرانية في فبراير/شباط الماضي، قفزت تكلفة استئجار الناقلات العابرة لمضيق هرمز إلى مستويات قياسية، وسجل خط الخليج – الصين أعلى عائد في تاريخه، متجاوزا 800 ألف دولار.",
-          "correction": "The over-$800,000 record comes from Al Jazeera's own reporting and refers to the Gulf–China route when the war broke out in February; it is not Bockman's statement (she cited about $600,000 a day for Oman–China).",
-          "class": "attribution"
+          "class": "attribution",
+          "field": "lede"
         },
         {
-          "id": 4,
-          "field": "lede",
-          "sentence": "وبلغت تكلفة الرحلة الواحدة نحو 29 مليون دولار، ما يعادل 15 دولاراً للبرميل.",
-          "claim": "In the Hormuz context, a single voyage cost about $29 million, equal to about $15 per barrel.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي. وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
-          "correction": "The cost of over $29 million per voyage (about $15 a barrel) applies to the Gulf of Mexico–Asia route, not to a trip through Hormuz.",
-          "class": "scope"
+          "class": "scope",
+          "field": "lede"
         },
         {
-          "id": 10,
-          "field": "whyItMatters",
-          "sentence": "ارتفاع تكلفة نقل البرميل 15 دولاراً يضغط على هوامش المصافي ويزيد فاتورة استيراد الطاقة.",
-          "claim": "Website analysis: a $15 increase in per-barrel transport cost squeezes refinery margins and raises energy import bills.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "وتجاوزت تكلفة الرحلة الواحدة 29 مليون دولار، أي نحو 15 دولارا للبرميل.",
-          "correction": "About $15 a barrel is the total transport cost per barrel on the Gulf of Mexico–Asia voyage, not an increase of $15.",
-          "class": "figure"
+          "class": "figure",
+          "field": "whyItMatters"
         },
         {
-          "id": 14,
-          "field": "body",
-          "sentence": "ونقلت القناة عن بوكمان قولها إن تكلفة استئجار ناقلات النفط العملاقة تشهد ارتفاعاً قياسياً مع استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران.",
-          "claim": "Al Jazeera quoted Bockman as saying supertanker charter costs are at record highs amid the continuing Hormuz crisis and no signs of easing between Washington and Tehran.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "تشهد تكلفة استئجار ناقلات النفط العملاقة ارتفاعا قياسيا، في ظل استمرار أزمة مضيق هرمز وغياب مؤشرات على انفراج التوتر بين واشنطن وطهران، بالتزامن مع إجراءات أمريكية جديدة لتنظيم مواعيد مرور الناقلات عبر المضيق وتوفير الحماية العسكرية لها.",
-          "correction": "This is Al Jazeera's own reporting, not a statement by Bockman.",
-          "class": "attribution"
+          "class": "attribution",
+          "field": "body"
         },
         {
-          "id": 15,
-          "field": "body",
-          "sentence": "وأوضحت أن سحب السفن إلى الأسواق الشرقية رفع تكلفة استئجار الناقلة بين غرب أفريقيا والصين إلى 350 ألف دولار يومياً، واقترب من 400 ألف دولار يومياً في بعض المسارات.",
-          "claim": "Bockman explained that the withdrawal of ships to eastern markets raised the West Africa–China charter cost to $350,000 a day, and that rates neared $400,000 a day on some routes.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "كما امتدت الزيادة إلى المحيط الأطلسي، إذ تجاوزت تكلفة استئجار الناقلة 350 ألف دولار يوميا على المسار بين غرب أفريقيا والصين، نتيجة سحب السفن إلى الأسواق الشرقية واعتماد آسيا على خامات تأتي من مسافات أبعد.",
-          "correction": "The over-$350,000 figure and its cause come from Al Jazeera's own reporting, not from Bockman; Bockman separately said West Africa–China rates approached $400,000 a day.",
-          "class": "attribution"
+          "class": "attribution",
+          "field": "body"
         },
         {
-          "id": 16,
-          "field": "body",
-          "sentence": "وذكرت «سي إن بي سي» أن أحدث ضربة في المضيق وقعت قبل اجتماع متوقع بين مسؤولين إيرانيين وخليجيين في عُمان لتوقيع اتفاق لشحن النفط عبر الممر المائي، في مؤشر على صعوبة التوصل إلى تهدئة ميدانية.",
-          "claim": "CNBC reported that the latest strike came before an expected meeting of Iranian and Gulf officials in Oman to sign an agreement for shipping oil through the waterway.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-13",
-          "quote": "A senior Iranian government official and Gulf diplomat told MS NOW that officials from Iran and Gulf countries would meet in Oman's capital, Muscat, on Monday to sign an agreement establishing an Iran-Oman shipping route through the Strait of Hormuz.",
-          "correction": "The agreement is to establish an Iran-Oman shipping route through the Strait, not specifically an oil-shipping agreement.",
-          "class": "scope"
+          "class": "scope",
+          "field": "body"
         },
         {
-          "id": 17,
-          "field": "body",
-          "sentence": "وقدّرت بوكمان أن كل مليون دولار يُضاف إلى تكلفة النقل اليومية يعني نحو 26 دولاراً إضافياً للبرميل، وأن تكلفة تشغيل الطائرات العسكرية المتقدمة تصل إلى 75 ألف دولار في الساعة.",
-          "claim": "Bockman estimated that each $1 million added to the daily transport cost means about $26 more per barrel, and that advanced military aircraft cost up to $75,000 an hour to operate.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Al Jazeera Arabic",
-          "sourceDate": "2026-09-13",
-          "quote": "ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية.",
-          "correction": "The $26-per-barrel estimate is Bockman's, but the $75,000-per-hour military aircraft cost is Al Jazeera's own reporting, not hers.",
-          "class": "attribution"
-        }
-      ],
-      "listed": [],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "وعلاوات التأمين التي تبلغ 12.5% من قيمة السفينة قد تجعل بعض مسارات الشحن غير مجدية تجارياً، فيما يهدد تراجع التدفقات إلى 45% أمن الإمدادات لآسيا وأوروبا.",
-          "quote": "وتتراوح علاوات التأمين على السفن في المضيق بين 5% و12.5% من قيمة السفينة، مقابل نحو 0.75% في باب المندب، وهو فارق يعكس ارتفاع تقييم المخاطر في هرمز ووتيرة استهداف السفن فيه."
-        },
-        {
-          "sentence": "قالت الجزيرة إن المؤشر العالمي المركب لعوائد الناقلات العملاقة ارتفع بأكثر من 40% منذ بداية الشهر، في حين تراوحت علاوات التأمين على السفن العابرة للمضيق بين 5% و12.5% من قيمة السفينة.",
-          "quote": "وارتفع المؤشر العالمي المركب لعوائد الناقلات العملاقة بأكثر من 40% منذ بداية الشهر، بينما بلغت عروض نقل النفط من خليج المكسيك إلى آسيا مستويات قياسية، مدفوعة بزيادة الطلب الآسيوي على مصادر بديلة للخام الخليجي."
-        },
-        {
-          "sentence": "وأضافت أن كمية النفط الخام المارة عبر المضيق انخفضت إلى نحو 45% من مستويات ما قبل الحرب، مع استغراق العبور نحو 7 ساعات للسفن التجارية.",
-          "quote": "ويأتي ذلك مع ارتفاع تكلفة تشغيل الطائرات العسكرية المتقدمة، التي قد تصل إلى 75 ألف دولار في الساعة، في حين يستغرق عبور المضيق نحو 7 ساعات للسفن التجارية."
+          "class": "attribution",
+          "field": "body"
         }
       ],
       "outcome": "refused",
@@ -4077,14 +3991,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "«بيركشاير» تكاد تضاعف حصتها في «لينار» إلى 10.9%",
-          "quote": "Berkshire Hathaway has increased its bet on a long-term recovery for the struggling U.S. housing market by nearly doubling its stake in Lennar, the nation's second largest homebuilder, since the beginning of July."
-        }
-      ],
       "outcome": "clean"
     },
     "openai-pauses-training-most-capable-models-39ecd5": {
@@ -4112,19 +4018,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [
-        {
-          "status": "unverified",
-          "field": "body",
-          "sentence": "وكانت «أوبن إيه آي» قد أعلنت الجمعة 25 سبتمبر أنها تجري مراجعة واسعة لأنشطة نماذجها عقب اختراق منصة المطورين «هاغينغ فيس»، بعدما ظهرت هذا الأسبوع حالات إضافية لنشاط غير معتاد أو غير مصرح به من وكلائها.",
-          "quote": "The incident happened on September 20th, and “All training, evaluation, and inference with tool-use” remains paused as of Saturday evening, September 25th.",
-          "source": "The Verge"
-        }
-      ],
-      "notFound": [
-        "ووقع الحادث في 20 سبتمبر، بحسب موقع «ذا فيرج» التقني."
-      ],
-      "weak": [],
       "outcome": "listed"
     },
     "saudi-east-west-pipeline-closure-brent-d9de59": {
@@ -4153,95 +4046,24 @@
       },
       "confirmed": [
         {
-          "id": 1,
-          "field": "title",
-          "sentence": "السعودية تغلق خط الشرق-الغرب النفطي إثر هجمات على محطاته",
-          "claim": "Saudi Arabia shut down the East-West oil pipeline after attacks on its stations.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-11",
-          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
-          "correction": "The source says the drones targeted the pipeline itself in the Riyadh and Medina regions; it does not mention stations.",
-          "class": "scope"
+          "class": "scope",
+          "field": "title"
         },
         {
-          "id": 3,
-          "field": "lede",
-          "sentence": "أغلقت السعودية خط الشرق-الغرب النفطي إثر هجمات استهدفت محطات في الرياض والمدينة صباح الخميس.",
-          "claim": "Saudi Arabia shut the East-West pipeline after attacks on Thursday morning that targeted stations in Riyadh and Medina.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-11",
-          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
-          "correction": "The drones targeted the pipeline in the Riyadh and Medina regions, not stations in those cities.",
-          "class": "scope"
+          "class": "scope",
+          "field": "lede"
         },
         {
-          "id": 10,
-          "field": "body",
-          "sentence": "أعلنت وزارة الطاقة السعودية يوم الجمعة إغلاق خط الشرق-الغرب النفطي كإجراء احترازي بعد تعرّضه لهجمات متعددة استهدفت محطات في منطقتي الرياض والمدينة.",
-          "claim": "On Friday the Saudi Energy Ministry announced that it had shut the pipeline as a precaution after multiple attacks targeting stations in the Riyadh and Medina regions.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-11",
-          "quote": "The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
-          "correction": "The drones targeted the pipeline itself in the Riyadh and Medina regions; the source mentions no stations.",
-          "class": "scope"
+          "class": "scope",
+          "field": "body"
         },
         {
-          "id": 15,
-          "field": "body",
-          "sentence": "ارتفعت أسعار النفط الخام أكثر من 8% هذا الأسبوع، ودفعت شائعات عن الهجمات على خط الأنابيب يوم الخميس الأسعار إلى مزيد من الصعود.",
-          "claim": "Crude rose more than 8% this week, and rumors of the pipeline attacks on Thursday pushed prices higher, stated as fact.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-11",
-          "quote": "The attack on the pipeline may have played a role in the rally as rumors about the strike circulated Thursday.",
-          "correction": "The source says only that the attack may have played a role in the rally; it does not state it as fact.",
-          "class": "hedge"
+          "class": "hedge",
+          "field": "body"
         },
         {
-          "id": 18,
-          "field": "body",
-          "sentence": "وقال أمين ناصر، الرئيس التنفيذي لأرامكو السعودية، الشهر الماضي إن خط الشرق-الغرب خفّف من أثر اضطرابات إمدادات النفط المرتبطة بالتوترات مع إيران أكثر من إطلاق الاحتياطيات الطارئة من الخام.",
-          "claim": "Saudi Aramco CEO Amin Nasser said last month that the East-West pipeline did more than the release of emergency crude reserves to mitigate oil supply disruptions linked to tensions with Iran.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 4,
-          "sourceName": "CNBC",
-          "sourceDate": "2026-09-11",
-          "quote": "Saudi Aramco CEO Amin Nasser said last month that the East-West pipeline has played a bigger role in mitigating the oil supply disruption caused by the Iran war than the release of emergency crude reserves.",
-          "correction": "Nasser referred to the oil supply disruption caused by the Iran war, not by tensions with Iran.",
-          "class": "term"
-        }
-      ],
-      "listed": [
-        {
-          "status": "listed",
-          "class": "other",
-          "field": "body",
-          "sentence": "ولم تُحدد الوزارة الجهة المسؤولة عن الهجمات ولا ما إذا كان الخط قد تعرّض لأضرار جوهرية.",
-          "quote": "Saudi Arabia said Friday that it shut down the kingdom's crucial East-West crude oil pipeline as a precautionary measure after multiple attacks by drones launched from Iraq.The drones targeted the pipeline in the Riyadh and Medina regions Thursday morning causing fires and some damage, the Saudi government said.",
-          "source": "CNBC",
-          "correction": "The Saudi government said the drones were launched from Iraq and caused fires and some damage to the pipeline."
-        }
-      ],
-      "notFound": [
-        "وفي المقابل، سجّلت أسعار وقود الديزل الأمريكي مستويات قياسية مرتفعة جديدة، مدفوعة بمخاوف متزايدة من أن الصراع في الشرق الأوسط قد يهدد إمدادات النفط بشكل أكبر.",
-        "ويعزز التقدم الحوثي في اليمن سلطتهم في البحر الأحمر ويكشف ضعف الحكومة اليمنية، وفق ما ذكرته الجزيرة الإنجليزية."
-      ],
-      "weak": [
-        {
-          "sentence": "طاقة الخط 7 ملايين برميل يومياً والخام ارتفع أكثر من 8% هذا الأسبوع",
-          "quote": "The pipeline, which has a capacity of 7 million barrels per day, runs across the kingdom to export terminals on the Red Sea."
+          "class": "term",
+          "field": "body"
         }
       ],
       "outcome": "corrected",
@@ -4278,24 +4100,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [
-        "بحسب بيانات الجمعية الأمريكية للسيارات، يعادل السعر الجديد 1.60 دولار للتر، وهو أعلى مستوى اسمي في التاريخ (بالأسعار الجارية دون تعديل التضخم)، ويتجاوز الذروة السابقة المسجلة في يونيو 2022 عند 5.81 دولار وفق إدارة معلومات الطاقة الأمريكية."
-      ],
-      "weak": [
-        {
-          "sentence": "السعر تخطى ذروة يونيو 2022 البالغة 5.81 دولار وسط خسارة نحو 8% من المعروض العالمي للديزل",
-          "quote": "ووفق البيانات التاريخية لـ«إدارة معلومات الطاقة الأميركية»، ارتفع متوسط سعر الديزل الأسبوعي في الولايات المتحدة إلى مستوى قياسي سابق بلغ نحو 5.81 دولار للغالون، في يونيو (حزيران) 2022."
-        },
-        {
-          "sentence": "سجّل متوسط سعر الديزل في الولايات المتحدة مستوى قياسياً عند 6.06 دولار للغالون الجمعة، مع تصاعد الهجمات الأوكرانية على مصافي التكرير الروسية واضطرابات في مضيق هرمز وارتفاع النفط الخام فوق 100 دولار للبرميل.",
-          "quote": "وبلغ متوسط سعر الغالون الأميركي، الذي يعادل نحو 3.785 لتر، مستوى قياسياً عند 6.06 دولار الجمعة، وفق بيانات «الجمعية الأميركية للسيارات»."
-        },
-        {
-          "sentence": "تجاوز الديزل 6 دولارات للغالون يرفع تكاليف الشحن البري والبحري، وينتقل تدريجياً إلى أسعار الغذاء والمنتجات والخدمات اللوجستية.",
-          "quote": "وبالتالي، فإن ارتفاع سعره لا يبقى محصوراً في محطات الوقود، وإنما ينتقل تدريجياً إلى تكاليف المنتجات والغذاء والخدمات اللوجيستية."
-        }
-      ],
       "outcome": "clean"
     },
     "oil-above-100-and-its-implications-for-gulf-budgets-and-ship-2b4f3c": {
@@ -4323,50 +4127,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [
-        {
-          "status": "conflict",
-          "field": "subtitle",
-          "sentence": "تدفقات مضيق هرمز تتراجع إلى أقل من مليوني برميل يومياً مع تصاعد الهجمات على الملاحة",
-          "quote": "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده. لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.",
-          "source": "Khazendar"
-        },
-        {
-          "status": "conflict",
-          "field": "keyFacts",
-          "sentence": "تدفقات هرمز الحالية: أقل من 2 مليون برميل يومياً",
-          "quote": "حجم النفط عبر المضيق: حوالي 10 ملايين برميل يومياً (نصف مستويات ما قبل الحرب)",
-          "source": "Khazendar"
-        },
-        {
-          "status": "conflict",
-          "field": "whyItMatters",
-          "sentence": "لا يترجَم ارتفاع أسعار النفط فوق مئة دولار تلقائياً إلى طفرة في إيرادات دول الخليج إذا تراجعت أحجام الصادرات بنسب تصل إلى 80% كما في تدفقات مضيق هرمز.",
-          "quote": "لكن هذه الأحجام لم تعد تمثل سوى نصف مستويات ما قبل الحرب، فتفاقم شحّ أسواق الوسائط الحرارية.",
-          "source": "Khazendar"
-        },
-        {
-          "status": "conflict",
-          "field": "body",
-          "sentence": "تراجعت تدفقات النفط الخام عبر مضيق هرمز إلى أقل من مليوني برميل يومياً، مقارنة بنحو 8-9 ملايين برميل يومياً قبل استئناف القتال، وفقاً لبيانات شركة رستاد للطاقة التي نقلتها رويترز.",
-          "quote": "يمر عبر المضيق نحو عشرين بالمئة من إمدادات النفط العالمية، أي نحو عشرة ملايين برميل يومياً من الخام والمنتجات البترولية، منها تسعة ملايين من الخام وحده.",
-          "source": "Khazendar"
-        }
-      ],
-      "notFound": [
-        "على مستوى الإنتاج، قد تعوّض دول الخليج المنتجة جزءاً من خسائر الحجم بارتفاع سعر البرميل، لكن الهوّة بين الأحجام المفقودة والمكاسب السعرية تبقى واسعة.",
-        "السيناريو الأول: استمرار تعطيل مضيق هرمز عند مستويات دون 2 مليون برميل يومياً، مع بقاء برنت فوق 108 دولارات.",
-        "السيناريو الثاني: تصعيد إضافي في الصراع يهدد المسارات البديلة للشحن.",
-        "في هذا السيناريو، قد ترتفع الأسعار أكثر لكن أحجام الصادرات قد تنخفض إلى مستويات أدنى، مما يُعمّق الخسائر على دول الإنتاج ويُفاقم أزمة التضخم على المستوردين.",
-        "السيناريو الثالث: العودة إلى الدبلوماسية واستئناف تدفقات المضيق.",
-        "إذا استؤنفت محادثات التهدئة بين طهران وواشنطن وأُعيد فتح مسارات الشحن، قد تنخفض الأسعار لكن تتعافى الأحجام، مما يُعيد توازن الإيرادات لدول الخليج."
-      ],
-      "weak": [
-        {
-          "sentence": "فالإنتاج المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس بحسب إدارة معلومات الطاقة الأمريكية، ارتفاعاً من 5 ملايين برميل في يوليو، فيما قدّرت الوكالة الدولية للطاقة أن 8.3 ملايين برميل يومياً من الإنتاج لا تزال متوقفة اعتباراً من يوليو.",
-          "quote": "وفي المقابل، قدّرت إدارة معلومات الطاقة الأمريكية أن الإنتاج الخام المتوقف في الشرق الأوسط بلغ متوسط 6.7 مليون برميل يومياً في أغسطس، ارتفاعاً من 5 ملايين برميل في يوليو، مع توقعات باستمرار الانخفاض في المخزونات العالمية بمقدار 400 مليون برميل خلال عام 2026."
-        }
-      ],
       "outcome": "listed"
     },
     "egypt-oil-refining-growth-q3-fy2025-2026-a251e6": {
@@ -13958,6 +13718,112 @@
         }
       ],
       "outcome": "listed"
+    },
+    "dip-holding-shares-rise-dubai-debut-da4063": {
+      "at": "2026-11-11T19:40:47.095Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-11T10:04:53.245Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 30,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 16,
+          "field": "body",
+          "sentence": "قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
+          "claim": "Chairman Khalid bin Kalban said subscription orders reached about four times the shares offered.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 2,
+          "sourceName": "Gulf News",
+          "sourceDate": "2026-11-11",
+          "quote": "DIP's offering attracted orders worth approximately four times the shares available.",
+          "correction": "The roughly fourfold demand is Gulf News's own reporting; bin Kalban is not quoted as saying it.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "سعّرت «دبي للاستثمار» حصتها البالغة 20% دون الحد الأعلى للنطاق رغم طلب بلغ نحو أربعة أضعاف المعروض، فتخلّت عن جزء من العائد ذهب إلى المكتتبين مع صعود السهم نحو 6% في يومه الأول.",
+          "quote": "Despite demand exceeding the shares available, DIP Holding priced its offering at Dh1.12 per share, near the midpoint of the marketed range rather than at the upper end."
+        },
+        {
+          "sentence": "صعد السهم في التعاملات المبكرة إلى 1.19 درهم، من سعر طرح بلغ 1.12 درهم، وعند الساعة 11:18 صباحاً كان يتداول عند 1.185 درهم، مرتفعاً 5.8%.",
+          "quote": "The company’s stock was trading 5.8 per cent higher at at Dh1.185 at 11.18am."
+        },
+        {
+          "sentence": "ومع ذلك جاء سعر 1.12 درهم دون الحد الأعلى للنطاق، ليمنح الشركة قيمة سوقية ضمنية تبلغ 9.7 مليار درهم (2.64 مليار دولار).",
+          "quote": "At the final offer price, DIP Holding’s implied market capitalization reached AED9.7 billion ($2.64 billion)."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "نسبت نسخة سابقة من هذا الخبر إلى رئيس مجلس إدارة «دي أي بي هولدينغ» خالد بن كلبان قوله إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة، والصحيح أن هذا الرقم ورد في التقارير عن الطرح ولم يُنقل عن بن كلبان.",
+      "verified": {
+        "at": "2026-11-11T19:43:26.788Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
+    },
+    "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd": {
+      "at": "2026-11-11T19:40:47.102Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v65",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-11T09:47:07.431Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 35,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وإذا أُعيد فتح هرمز، فقد تستعيد هذه الموانئ جزءاً من أحجامها المفقودة، لكن الإيرادات التي جاءت من الالتفاف على المضيق قد تنحسر معه."
+      ],
+      "weak": [
+        {
+          "sentence": "صعد صافي الربح العائد لمالكي الشركة في الأشهر الثلاثة المنتهية في سبتمبر 73% إلى 767 مليون درهم (209 ملايين دولار)، بربحية للسهم بلغت 0.16 درهم، بحسب بيان أرسلته المجموعة الأربعاء إلى سوق أبوظبي للأوراق المالية.",
+          "quote": "Net profit attributable to the owners of the company for three-month period to the end of September rose to Dh767 million ($209 million), the Abu Dhabi-based global ports and free zones operator said on Wednesday in a statement to the Abu Dhabi Securities Exchange, where its shares trade."
+        },
+        {
+          "sentence": "ارتفعت إيرادات قطاع الموانئ 12% على أساس سنوي إلى 798 مليون درهم، أي 10% من الإجمالي، وبلغت أرباحه قبل الفوائد والضرائب والإهلاك والاستهلاك 388 مليون درهم.",
+          "quote": "Ports cluster third-quarter revenue, which accounted for 10 per cent of the total, rose 12 per cent year-on-year to Dh798 million."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
