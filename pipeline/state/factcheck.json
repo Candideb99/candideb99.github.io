@@ -4425,13 +4425,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [
-        "عوائد سندات أمريكية عشرية: 4.92%، الأعلى منذ 2023",
-        "يُشكّل ارتفاع عوائد السندات العالمية ضغوطًا متزايدة على الاقتصادات الكبرى، إذ إن تصاعد تكاليف الاقتراض الحكومية يُقلّص الهوامش المالية المتاحة للاستثمار ويُرفع أعباء الاقتراض على المستهلكين.",
-        "وارتفعت عوائد سندات الخزانة الأمريكية لأجل عشر سنوات إلى 4.92%، وهو الأعلى منذ 2023."
-      ],
-      "weak": [],
       "outcome": "clean"
     },
     "china-industrial-profits-slowest-growth-august-d8c45a": {
@@ -4459,11 +4452,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [
-        "نمو أرباح الشركات الكبرى يناير-أغسطس: 15.7%"
-      ],
-      "weak": [],
       "outcome": "clean"
     },
     "opec-oil-demand-growth-2027-forecast-2e88df": {
@@ -4491,36 +4479,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [
-        {
-          "status": "drift",
-          "class": "term",
-          "field": "body",
-          "sentence": "وتأتي الزيادة الحادة في النمو بشكل أساسي من دول خارج منظمة التعاون الاقتصادي والتنمية، التي من المتوقع أن يرتفع طلبها من 490 ألف برميل يومياً في 2026 إلى 1.92 مليون برميل يومياً في 2027.",
-          "quote": "Non-OECD countries account for most of next year’s increase. Their combined demand growth accelerates from 490,000 bpd in 2026 to 1.92 million bpd in 2027.",
-          "source": "OilPrice.com",
-          "correction": "The 490,000 bpd and 1.92 million bpd figures are non-OECD demand growth in 2026 and 2027, not their total demand levels."
-        },
-        {
-          "status": "drift",
-          "class": "scope",
-          "field": "body",
-          "sentence": "وبلغ متوسط الإنتاج الأمريكي 13.7 مليون برميل يومياً خلال النصف الأول من هذا العام (2026)، بزيادة 300 ألف برميل يومياً عن الفترة نفسها من العام الماضي، معظمها من حوض بيرميان.",
-          "quote": "Most of that increase came from the Permian and the U.S. part of the Gulf of Mexico.",
-          "source": "OilPrice.com",
-          "correction": "Most of the increase came from the Permian and the US Gulf of Mexico together, and the Gulf alone added 200,000 bpd of the 300,000 bpd rise, so the Permian was not the main source."
-        }
-      ],
-      "notFound": [
-        "لكن ارتفاع الإنتاج الأمريكي المستمر قد يحدّ من قدرة المنظمة على التحكم في الأسعار.",
-        "وأبقت الإدارة على توقعاتها لإنتاج 2026 عند 13.8 مليون برميل يومياً دون تغيير عن توقعات يوليو وأغسطس، وهو ما سيتجاوز الرقم القياسي المسجل في 2025 البالغ 13.7 مليون برميل يومياً إذا تحقق."
-      ],
-      "weak": [
-        {
-          "sentence": "في سياق العرض، رفعت إدارة معلومات الطاقة الأمريكية توقعاتها لإنتاج النفط الأمريكي في 2027 إلى 14.3 مليون برميل يومياً، بزيادة 100 ألف برميل يومياً عن توقعات أغسطس.",
-          "quote": "The U.S. Energy Information Administration has raised its forecast for U.S. crude oil production in 2027 to 14.3 million barrels per day, up from 14.2 million bpd in August and 14.0 million bpd in July."
-        }
-      ],
       "outcome": "listed"
     },
     "trump-weighs-us-diesel-export-ban-7feb98": {
@@ -13790,6 +13748,196 @@
         "يتيح السقف الأعلى للبنوك زيادة أرصدة هذه القروض بوتيرة أسرع في كل فترة من ثمانية أسابيع."
       ],
       "weak": [],
+      "outcome": "clean"
+    },
+    "dewa-record-nine-month-revenue-2026-e5f003": {
+      "at": "2026-11-12T20:01:41.782Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-12T12:09:03.500Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 30,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تعتزم «ديوا» رفع قدرتها لتوليد الكهرباء إلى أكثر من 23 غيغاواط بنهاية 2030، وتتوقع وفق سياسة توزيعاتها دفع 6.2 مليار درهم سنوياً على الأقل."
+      ],
+      "weak": [
+        {
+          "sentence": "ويتقاسم التوسع والتوزيعات النقد الذي تولده عملياتها، وقد بلغ 14.59 مليار درهم في تسعة أشهر، فما يتوافر للأمرين معاً يتبع ربحاً تشغيلياً لم يزد سوى 2.3% في الفترة، أكثر مما يتبع نمو الربح بعد الضريبة 11.7%.",
+          "quote": "EBITDA rose 2.1 per cent to Dh13.43 billion, while operating profit increased 2.3 per cent to Dh8.52 billion. Cash generated from operations stood at Dh14.59 billion."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "japan-warns-yen-intervention-near-160-4167ef": {
+      "at": "2026-11-12T20:01:41.788Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-12T11:57:30.885Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 27,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "ولذلك يقع عبء وقف تراجع الين، وما يجرّه من غلاء الواردات، على قرار بنك اليابان في ديسمبر أكثر مما يقع على وزارة المالية."
+      ],
+      "weak": [
+        {
+          "sentence": "وتُظهر أرقام وزارة المالية أنها باعت الدولار واشترت الين بما مجموعه 15.3993 تريليون ين بين يوليو وسبتمبر، نُفّذت كلها في ثلاثة أيام، وتركّز أكثر من نصفها في 30 يوليو وحده بقيمة 7.9756 تريليون ين.",
+          "quote": "That included JPY7.9756 trillion on July 30, JPY5.5523 trillion on July 31 and JPY1.8714 trillion on August 3, with authorities selling dollars and buying yen."
+        },
+        {
+          "sentence": "ووسّع توقع التشديد الأمريكي فجوة الفائدة مع الاقتصادات الكبرى الأخرى، وهي أوسع ما تكون مع اليابان، إذ لا تتجاوز فائدة بنك اليابان نحو 1.25%؛ ولهذا كان صعود الدولار أمام الين أوضح منه أمام العملات الأخرى.",
+          "quote": "The dollar’s rise has been particularly pronounced against the yen because U.S. interest rates remain significantly above Japanese rates."
+        },
+        {
+          "sentence": "فقد ارتفع مؤشر أسعار السلع للشركات، الذي يقيس أسعار المنتجين، 7.1% على أساس سنوي في أكتوبر بعد 6.8% في سبتمبر، وقفز مؤشر أسعار الواردات المقوّمة بالين 24.8% عن الشهر نفسه من العام الماضي.",
+          "quote": "The Bank of Japan’s Corporate Goods Price Index showed producer prices rising 7.1 percent year on year in October, accelerating from 6.8 percent in September. Prices rose 0.7 percent from the previous month."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "oman-budget-surplus-nine-months-gas-revenue-674ff7": {
+      "at": "2026-11-12T20:02:41.139Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-12T11:46:01.008Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "ونمت الإيرادات العامة 16% بوتيرة فاقت نمو الإنفاق، مدفوعة أساساً بقفزة إيرادات الغاز.",
+          "quote": "Public revenues rose 16 percent year on year to OMR9.8 billion by the end of the third quarter of 2026, primarily driven by higher oil income.",
+          "source": "AGBI (Arabian Gulf Business Insight)"
+        }
+      ],
+      "notFound": [
+        "فإذا هبط سعر النفط إلى نحو 60 دولاراً للبرميل الذي بُنيت عليه الموازنة، فإن إنفاقاً عاماً نما 9% سيقلّص الفائض سريعاً، ويضيق معه الهامش الذي تخصص منه الحكومة حالياً أموالاً لسداد دينها.",
+        "وبلغ صافي إيرادات النفط والغاز معاً 7.134 مليار ريال، أي قرابة 73% من الإيرادات العامة حتى نهاية الربع الثالث، في حين ارتفعت الإيرادات الجارية خارج هذين البندين 7% إلى 2.614 مليار ريال."
+      ],
+      "weak": [
+        {
+          "sentence": "سجّلت سلطنة عُمان فائضاً في ميزانيتها بنحو 90 مليون ريال (234 مليون دولار تقريباً) في الأشهر التسعة الأولى من 2026، مقابل عجز بنحو 433 مليون ريال قبل عام، بحسب نشرة الأداء المالي للربع الثالث الصادرة عن وزارة المالية.",
+          "quote": "That marked a OMR523 million improvement from the first nine months of 2025, when Oman recorded a deficit of around OMR433 million."
+        },
+        {
+          "sentence": "وبلغ متوسط سعر النفط المحقق 81 دولاراً للبرميل مقابل 72 دولاراً قبل عام، أي أنه فاق السعر الذي بُنيت عليه الموازنة بـ21 دولاراً، مع متوسط إنتاج بلغ نحو 1.102 مليون برميل يومياً.",
+          "quote": "The 2026 budget was drawn up using an oil price of $60 a barrel, while the average realized price during the first nine months was $81, providing a $21-per-barrel premium over the budget assumption."
+        },
+        {
+          "sentence": "وكانت الوزارة قد قدّرت إيرادات العام بـ11.447 مليار ريال ونفقاته بـ11.977 مليار ريال، متوقعة نمو الإيرادات 2.4% عن مستوى 2025 المعتمد وخفض العجز المخطط 14.5%.",
+          "quote": "The budget had originally projected revenue growth of 2.4 percent compared with the approved 2025 level and a 14.5 percent reduction in the planned deficit."
+        },
+        {
+          "sentence": "فقد زاد الإنفاق الجاري بمقدار 394 مليون ريال إلى 6.621 مليار ريال، وبلغ الإنفاق الإنمائي للوزارات والوحدات الحكومية المدنية، بما فيه مشاريع التحول الاقتصادي، 1.224 مليار ريال بزيادة 11%، أي 94% من مخصصات العام البالغة 1.3 مليار ريال.",
+          "quote": "Development spending by ministries and civil government units, including economic transformation projects, reached OMR1.224 billion, up 11 percent from OMR1.103 billion.That represented 94 percent of the OMR1.3 billion development budget allocated for the full year, reflecting accelerated implementation of ongoing projects."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "telecom-egypt-nine-month-profit-rises-44-96d0b5": {
+      "at": "2026-11-12T20:02:42.904Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v68",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-12T10:32:06.920Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 21,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وصعدت إيراداتها المجمعة 19% على أساس سنوي إلى 93.6 مليار جنيه، من 78.3 مليار جنيه قبل عام.",
+          "quote": "وزادت إيرادات الشركة لتصل 93.56 مليار جنيه، مقابل 78.3 مليار جنيه عن التسعة أشهر الأولى من عام 2025."
+        },
+        {
+          "sentence": "تخطط المصرية للاتصالات لعام 2027 يذهب فيه نحو ربع إيرادات نشاطها إلى الإنفاق الرأسمالي، ولا تستهدف أن يتحول فيه إلى نقد حر سوى ما بين أوائل الأربعينات ومنتصفها في المئة من ربحها قبل الفوائد والضرائب والإهلاك والاستهلاك، مقابل 65% في الأشهر التسعة الأولى من 2026.",
+          "quote": "​وتسجيل معدل إنفاق رأسمالي داخل الخدمة من إجمالي إيرادات نشاط الشركة في منتصف العشرينيات.\n​ومعدل التدفق النقدي الحر من الربح قبل الفوائد والضرائب والإهلاكات والاستهلاكات بنسبة موجبة في أوائل إلى منتصف الأربعينات."
+        },
+        {
+          "sentence": "أقر مجلس إدارة الشركة الموازنة التخطيطية لعام 2027، وهي تستهدف نمواً في إجمالي الإيرادات بنسبة من خانتين في حدودها الدنيا، أي دون وتيرة 19% التي حققتها في الأشهر التسعة الأولى من 2026.",
+          "quote": "وتستهدف الموازنة ​نمو إجمالي الإيرادات بنسبة ثنائية منخفضة، وتحقيق ​نسبة هامش الربح قبل الفوائد والضرائب والإهلاكات والاستهلاكات في أوائل إلى منتصف الأربعينات."
+        },
+        {
+          "sentence": "وتستهدف كذلك هامشاً للربح قبل الفوائد والضرائب والإهلاك والاستهلاك بين أوائل الأربعينات ومنتصفها في المئة، مقابل 46% في الفترة الحالية.",
+          "quote": "وتستهدف الموازنة ​نمو إجمالي الإيرادات بنسبة ثنائية منخفضة، وتحقيق ​نسبة هامش الربح قبل الفوائد والضرائب والإهلاكات والاستهلاكات في أوائل إلى منتصف الأربعينات."
+        }
+      ],
       "outcome": "clean"
     }
   }

@@ -1,29 +1,419 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-11-12T16:52:08.467Z",
-  "durationSec": 19,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-12T20:03:44.816Z",
+  "durationSec": 2196,
+  "published": 2,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "هوانغ يستقيل من إنفيديا وقيمتها السوقية تهبط دون 4 تريليونات دولار",
+      "section": "technology",
+      "importance": 9,
+      "sources": [
+        "https://www.nytimes.com/2026/11/12/business/nvidia-stock-price-jensen-huang-ceo-affair.html",
+        "https://aawsat.com/node/5340574",
+        "https://www.bbc.co.uk/news/articles/ckgel338xql3o",
+        "https://www.agbi.com/ai/2026/11/gulf-watches-nervously-as-jensen-huang-resigns-from-nvidia/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان «استقالة هوانغ» ويقول الدِّك «بعد رحيله»، ولا تذكر البطاقة أن هوانغ مؤسس الشركة ورئيسها التنفيذي. ويحصر الدِّك السبب في علاقة واحدة، مع أن الاستقالة جاءت بعد الكشف عن العلاقة الثانية (SOURCE 2، SOURCE 3).",
+              "repair": "يُذكر في الدِّك «المؤسس والرئيس التنفيذي جنسن هوانغ» و«الكشف عن علاقتين»، ويمكن تعريف إنفيديا بـ«شركة الرقائق الأمريكية» في الدِّك."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير المحرّك (التحقيق ثم العلاقة الثانية) وردود الفعل (ترامب، إنفيديا، الصين) والخطوة التالية (النتائج وإحاطة الكونغرس). لكنه يغفل المقارنات التي تشرح حجم الهبوط: التراجع خلف أبل ومايكروسوفت، وخسارة 35% من الذروة (SOURCE 2). ويغفل تعيين هارفي جونز رئيساً لمجلس الإدارة (SOURCE 2). أما مقدّمات صندوق «لماذا يهمّ» فتحرّف موضوع التحقيق، مع أن استنتاجه بأن شركاء الخليج سيتعاملون مع إدارة مؤقتة تحت تدقيق أمريكي استنتاج محدود ومقبول.",
+              "repair": "تُضاف المقارنتان والتعيين من SOURCE 2. وتُصحح مقدّمة الصندوق لتقول إن التحقيق في علاقة هوانغ وإن المطلوب منه حضور إحاطة، لا الإدلاء بشهادة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر التقرير العنوان (القيمة السوقية) في فقرة واحدة فقط ثم ينتقل إلى التسلسل. والعنوان الفرعي «الخليج والخلافة» يضم جملة عن أمازون وجوجل وموعد النتائج وإحاطة الكونغرس، وكلها خارج موضوعه.",
+              "repair": "تُجمع أرقام الهبوط ومقارناتها بعد المقدمة مباشرة، وتوضع إحاطة الكونغرس مع تحقيق مكتب التحقيقات الفيدرالي، ويُخصص عنوان الخلافة لكريس وجونز والمرشحين الدائمين."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "في عبارة «وقالت الشركة إن ذلك فُحص وثبت بطلانه» لا يتضح هل المقصود «ميغاسبيد» أم إنفيديا. وعبارة «فهوى السهم في ذلك اليوم» عن هبوط الأربعاء قد يخلطها القارئ بهبوط الخميس الذي يتصدر الخبر.",
+              "repair": "يُكتب «وقالت «ميغاسبيد» إن ذلك...» إن قُصدت هي، وإلا يُكتب «وقيل إن ذلك فُحص...» حفاظاً على غموض المصدر. ويُكتب «فهوى السهم الأربعاء، قبل أن يمتد الهبوط الخميس عقب إعلان الاستقالة»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يقول العنوان إن القيمة نزلت دون 4 تريليونات إثر استقالة «هوانغ»، ويتحدث الدِّك عن «مؤسسها» وعن علاقة واحدة. لا تقول البطاقة إن هوانغ هو المؤسس والرئيس التنفيذي، ولا تذكر العلاقة الثانية التي سبقت الاستقالة مباشرة. أما البلد ونشاط الشركة فواضحان («شركة الرقائق الأمريكية»).",
+              "repair": "يُعاد الدِّك بصيغة: «...بعد استقالة مؤسسها ورئيسها التنفيذي جنسن هوانغ إثر الكشف عن علاقتين، إحداهما مع امرأة يُشتبه في تجسسها للصين»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير ما توفره المصادر من سبب (العلاقتان والتحقيق، SOURCE 2 وSOURCE 3)، ومقارنات (خلف أبل ومايكروسوفت، و35% دون ذروة أكتوبر، وأكبر خسارة يومية محتملة بحسب بلومبرغ)، وردود فعل (ترامب وإنفيديا والصين وارتفاع السوق الأوسع)، وخطوات تالية (النتائج في 17 نوفمبر وإحاطة 18 نوفمبر). مقدّمات صندوق «لماذا يهمّ» صحيحة، لكن جملته الأولى خلاصة للمتن، واستنتاجه يضع الإدارة المؤقتة «تحت هذا التدقيق»، والتحقيق في الحقيقة يخص علاقة هوانغ.",
+              "repair": "يُحذف تلخيص الوقائع من الصندوق، ويُبقى استنتاج محدود: الشراكات الخليجية تتعامل مع رئيسة تنفيذية بالإنابة إلى أن يُعيَّن خلف دائم، بعد رحيل الرجل الذي حمل نفوذ الشركة إلى الخليج."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان الجديد، وهو القيمة السوقية دون 4 تريليونات، يتطور مباشرة بعد المقدمة في فقرتين: مدى الهبوط ومقارنته ثم الترتيب بين الشركات والتراجع عن الذروة. وبعدهما يأتي التسلسل من التحقيق إلى الاستقالة، ثم ملف الصين، ثم الخلافة. الأقسام الثلاثة يضم كل منها فقرتين أو أكثر.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر، فالثلاثاء المقبل بعد الخميس 12 نوفمبر هو 17 نوفمبر، و«بما يصل إلى 14%» و«601 مليار» نُسبتا إلى التعاملات المبكرة. لكن «وواشنطن تحقق» في الدِّك تعمّم ما نسبه SOURCE 3 إلى ترامب عن مكتب التحقيقات الفيدرالي، و«مشاريع الذكاء الاصطناعي الكبرى» في الصندوق توسّع قول SOURCE 4 «مشاريع كبرى».",
+              "repair": "«ومكتب التحقيقات الفيدرالي يحقق، بحسب ترامب، ...» أو صيغة الدِّك المقترحة، ثم «مشاريع كبرى للذكاء الاصطناعي» بلا أداة التعريف."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "مبالغة في استنتاج «لماذا يهمّ»: عبارة «سيتعامل شركاء الخليج مع إدارة مؤقتة تعمل تحت هذا التدقيق الأمريكي» تنقل تحقيق مكتب التحقيقات الفيدرالي وطلب الإحاطة إلى الإدارة المؤقتة. بحسب SOURCE 3، يحقق المكتب في «الفضيحة»، أي علاقة هوانغ نفسه، والمطلوب لإحاطة الكونغرس هو هوانغ لا كوليت كريس. ولا يذكر أي مصدر أن الإدارة الجديدة تخضع لهذا التدقيق. كذلك تجعل صيغة «مشاريع الذكاء الاصطناعي الكبرى» كل المشاريع الكبرى قائمة على إنفيديا، بينما يقول SOURCE 4 «مشاريع كبرى». التصحيح: «إلى أن يُعيَّن خلف دائم لم يتضح اسمه بعد، ستتعامل الشراكات التي تقوم عليها مشاريع كبرى للذكاء الاصطناعي في الإمارات والسعودية مع رئيسة تنفيذية بالإنابة، بعد رحيل الرجل الذي حمل نفوذ إنفيديا من واشنطن إلى الخليج».",
+        "الصندوق يكرر المتن: جملته الأولى تعيد ثلاث وقائع وردت في التقرير، هي نفوذ هوانغ في الخليج وتحقيق المكتب وإحاطة الكونغرس، ولا تضيف إليها معنى. فهي خلاصة مصغّرة للمتن، وتكرر فقرة الخليج قبل الأخيرة شبه حرفياً. التصحيح: تُحذف هذه الجملة، ويُكتفى بالاستنتاج المصحح في الملاحظة السابقة.",
+        "ما زالت ملاحظتا الدِّك السابقتان (4 و7) قائمتين جزئياً. فالدِّك «وواشنطن تحقق في علاقة مؤسسها بامرأة يُشتبه في تجسسها للصين» يحصر السبب في علاقة واحدة، مع أن الاستقالة جاءت بعد كشف «نيويورك تايمز» الأربعاء علاقة ثانية مع مسؤولة ترفع تقاريرها إليه (SOURCE 2، SOURCE 3). ويختصر «واشنطن تحقق» ما نسبه SOURCE 3 إلى ترامب عن تحقيق مكتب التحقيقات الفيدرالي. ثم إن العنوان يقول «هوانغ» والدِّك يقول «مؤسسها»، فلا يربط قارئ البطاقة بين الاسمين، ولا يعرف أنه كان الرئيس التنفيذي. التصحيح: «المديرة المالية كوليت كريس تتولى الرئاسة التنفيذية بالإنابة لشركة الرقائق الأمريكية، بعد استقالة مؤسسها ورئيسها التنفيذي جنسن هوانغ إثر الكشف عن علاقتين، إحداهما مع امرأة يُشتبه في تجسسها للصين».",
+        "المقدمة تقول «استقالة مؤسسها جنسن هوانغ» وتُسقط أنه رئيسها التنفيذي، وهو المنصب الذي يُبنى عليه الخبر ويذكره SOURCE 2 («مؤسسها ورئيسها التنفيذي»). كذلك ورد عمره «البالغ 63 عاماً» في فقرة الخلافة، بعيداً عن أول تعريف به. التصحيح: «استقالة مؤسسها ورئيسها التنفيذي جنسن هوانغ (63 عاماً)»، ويُحذف العمر من فقرة الخلافة.",
+        "ترجمة حرفية: «أعلى جهاز استخبارات في الصين جنّدها» نقل لعبارة \"China's top intelligence agency\". التصحيح: «أن جهاز الاستخبارات الرئيسي في الصين جنّدها».",
+        "يقول العنوان إن القيمة نزلت دون 4 تريليونات إثر استقالة «هوانغ»، ويتحدث الدِّك عن «مؤسسها» وعن علاقة واحدة. لا تقول البطاقة إن هوانغ هو المؤسس والرئيس التنفيذي، ولا تذكر العلاقة الثانية التي سبقت الاستقالة مباشرة. أما البلد ونشاط الشركة فواضحان («شركة الرقائق الأمريكية»). — يُعاد الدِّك بصيغة: «...بعد استقالة مؤسسها ورئيسها التنفيذي جنسن هوانغ إثر الكشف عن علاقتين، إحداهما مع امرأة يُشتبه في تجسسها للصين».",
+        "يحمل التقرير ما توفره المصادر من سبب (العلاقتان والتحقيق، SOURCE 2 وSOURCE 3)، ومقارنات (خلف أبل ومايكروسوفت، و35% دون ذروة أكتوبر، وأكبر خسارة يومية محتملة بحسب بلومبرغ)، وردود فعل (ترامب وإنفيديا والصين وارتفاع السوق الأوسع)، وخطوات تالية (النتائج في 17 نوفمبر وإحاطة 18 نوفمبر). مقدّمات صندوق «لماذا يهمّ» صحيحة، لكن جملته الأولى خلاصة للمتن، واستنتاجه يضع الإدارة المؤقتة «تحت هذا التدقيق»، والتحقيق في الحقيقة يخص علاقة هوانغ. — يُحذف تلخيص الوقائع من الصندوق، ويُبقى استنتاج محدود: الشراكات الخليجية تتعامل مع رئيسة تنفيذية بالإنابة إلى أن يُعيَّن خلف دائم، بعد رحيل الرجل الذي حمل نفوذ الشركة إلى الخليج.",
+        "الأرقام والتواريخ مطابقة للمصادر، فالثلاثاء المقبل بعد الخميس 12 نوفمبر هو 17 نوفمبر، و«بما يصل إلى 14%» و«601 مليار» نُسبتا إلى التعاملات المبكرة. لكن «وواشنطن تحقق» في الدِّك تعمّم ما نسبه SOURCE 3 إلى ترامب عن مكتب التحقيقات الفيدرالي، و«مشاريع الذكاء الاصطناعي الكبرى» في الصندوق توسّع قول SOURCE 4 «مشاريع كبرى». — «ومكتب التحقيقات الفيدرالي يحقق، بحسب ترامب، ...» أو صيغة الدِّك المقترحة، ثم «مشاريع كبرى للذكاء الاصطناعي» بلا أداة التعريف."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تقوم مشاريع كبرى للذكاء الاصطناعي في الإمارات والسعودية على شراكات مع إنفيديا، وكان نفوذ هوانغ يمتد من وادي السيليكون وواشنطن إلى الخليج",
+          "source": 4
+        },
+        {
+          "fact": "تتولى المديرة المالية كوليت كريس الرئاسة التنفيذية لإنفيديا بالإنابة بعد استقالة هوانغ",
+          "source": 4
+        },
+        {
+          "fact": "لم يتضح من سيخلف هوانغ بصفة دائمة",
+          "source": 3
+        }
+      ],
+      "slug": "nvidia-falls-below-4-trillion-huang-exit-838dc3",
+      "title": "القيمة السوقية لإنفيديا تهبط دون 4 تريليونات دولار إثر استقالة هوانغ",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "الذهب يهبط دون 4000 دولار إلى أدنى مستوى في عام مع توقعات رفع الفائدة",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://www.masrawy.com/news/news_economy/details/2026/11/12/3077845/%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D9%87-%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D9%8A%D8%AE%D8%B3%D8%B1-1640-%D8%AC%D9%86%D9%8A%D9%87%D8%A7-%D9%85%D8%B3%D8%AC%D9%84%D8%A7-%D8%A3%D8%AF%D9%86%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%89-%D9%85%D9%86%D8%B0-7-%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3-%D8%AE%D9%84%D8%A7%D9%84-%D8%AA%D8%B9%D8%A7%D9%85%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%AE%D9%85%D9%8A%D8%B3",
+        "https://www.aa.com.tr/en/economy/gold-prices-see-lowest-level-since-october-2025/4123315",
+        "https://www.masrawy.com/news/news_economy/details/2026/11/12/3077819/%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D9%8A%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A5%D9%84%D9%89-%D8%A3%D8%AF%D9%86%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%89-%D9%85%D9%86%D8%B0-%D8%B9%D8%A7%D9%85-%D9%85%D8%B3%D8%AC%D9%84%D8%A7-3864-%D8%AF%D9%88%D9%84%D8%A7%D8%B1%D8%A7",
+        "https://www.masrawy.com/news/news_economy/details/2026/11/12/3077798/%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D8%AA%D8%AD%D8%AA-4-%D8%A2%D9%84%D8%A7%D9%81-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%85%D8%AC%D8%AF%D8%AF%D8%A7-%D9%85%D8%A7-%D8%A7%D9%84%D8%B0%D9%8A-%D8%AF%D9%81%D8%B9-%D8%A7%D9%84%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D9%84%D9%84%D9%87%D8%A8%D9%88%D8%B7-"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحمل رقمين قياسيين: «دون 4000» و«أدنى مستوى في نحو عام». الافتتاحية تقدّم العقود الآجلة (3889.20) مع أن المستوى القياسي منسوب في SOURCE 2 وSOURCE 3 إلى السعر العالمي والفوري لا إلى العقود. والدك يوضح جانب مصر بوضوح.",
+              "repair": "إما أن تبدأ الافتتاحية بالسعر الفوري الذي سجل أدنى مستوى في 2026، وإما أن تنسب الرقم القياسي صراحة إلى السعر الفوري في الجملة الثانية."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدّم أسباب الهبوط: توقعات التشديد، والتضخم الأمريكي (SOURCE 4)، وارتفاع النفط وتصريحات ترامب (SOURCE 2). المسودة تحملها كلها، لكنها تترك سبب SOURCE 4 بلا إسناد في الافتتاحية وتكرره في الفقرة الثانية. ولا تقدّم المصادر خلفية أو خطوة تالية. أما الصندوق فيبني استنتاجه على رابط سببي غير مثبت.",
+              "repair": "جمع الأسباب في فقرة واحدة منسوبة إلى مصادرها، وإعادة صياغة الصندوق على مقدمات مثبتة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الذهب «دون 4000 دولار» عند أدنى مستوى في نحو عام. الفقرة الأولى تطوّر ذلك، لكن السبب موزع بين الافتتاحية والفقرتين الثانية والثالثة وفقرة الطاقة. وتنتهي فقرة مصر بجملة عن الأونصة في غير موضعها، ثم بخاتمة تكرر المعنى.",
+              "repair": "ترتيب المتن هكذا: السعر الفوري وأدنى مستوى، ثم الأسباب مجتمعة ومعها برنت، ثم الفضة، ثم السوق المصرية بلا جملة الأونصة وبلا الخاتمة المكررة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«2.98% إلى نحو 3869… بعدما كان عند نحو 4004» يجمع أرقاماً من تحديثين لا يتسقان حسابياً. و«أدنى سعر خلال العام الجاري» منسوب في SOURCE 3 إلى سعر 3864 لا إلى 3869.",
+              "repair": "اعتماد مجموعة أرقام SOURCE 3 كاملة: 3.1%، ونحو 3864، ونحو 4004، ونحو 140 دولاراً. أو الاكتفاء بأرقام SOURCE 1 من دون سعر الأربعاء."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان إن الذهب عالمياً نزل دون 4000 دولار إلى أدنى مستوى في نحو عام، ويحدد الدك أن الشق الثاني يخص الجنيه الذهب في مصر. وتنسب الافتتاحية الرقم القياسي صراحة إلى السعر الفوري، فزال التعارض الذي أشارت إليه الملاحظة 7.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تقدّم المصادر سبب الهبوط: توقعات التشديد النقدي وارتفاع النفط وتصريحات ترامب (SOURCE 2)، والتضخم الأمريكي وتوقعات رفع الفائدة (SOURCE 4). المسودة تحمل الأسباب كلها في قسم واحد، لكنها تقدّم سبب SOURCE 4 بصيغة «ويُعزى» بلا إسناد. ولا تقدّم المصادر خلفية أو خطوة تالية. أما صندوق «لماذا يهمّ» فتلخيص وبديهة، لا استنتاج.",
+              "repair": "نسبة تفسير التضخم والفائدة إلى «مصراوي» صراحة، وحذف جملة «ويلتقي هذا التفسير…»، وإعادة كتابة الصندوق استنتاجاً واحداً مشروطاً بدل تلخيص الأسباب."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الذهب نزل دون 4000 إلى أدنى مستوى في نحو عام، والفقرة الأولى تطوّر ذلك. لكن فقرة التعريف («ويختلف السعران…») تفصل بين الرقم وأسبابه. وتأتي الفضة والغاز («وامتد البيع إلى الفضة… فقفز مؤشر الغاز الأوروبي 8.3%») قبل الأسباب، مع أن الملاحظة 9 طلبت أن تأتي بعدها. وتُختم فقرة الأسباب بجملة عن المصادر لا عن الذهب.",
+              "repair": "حذف فقرة التعريف وجملة «ويلتقي هذا التفسير…»، وضم سطر الأناضول عن «أدنى مستوى منذ أكتوبر 2025» إلى فقرة الرقم القياسي، ونقل جملة الفضة والغاز إلى ما بعد فقرة الأسباب جملةً واحدة، ثم السوق المصرية."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "صارت أرقام السعر الفوري من تحديث واحد متسق (SOURCE 3: نحو 3864، ونحو 140 دولاراً، و4004 مساء الأربعاء). وأرقام العقود الآجلة (3889.20، و111.30، و2.78%، و4000.50) مطابقة لـ SOURCE 5. ويُنسب السعران إلى نادي نجيب، ويُنسب «منذ 7 أغسطس» إلى الموقع.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ربط مصراوي تراجع الذهب دون 4 آلاف دولار بارتفاع التضخم الأمريكي وتزايد التوقعات برفع أسعار الفائدة",
+          "source": 4
+        },
+        {
+          "fact": "عزت الأناضول هبوط الذهب إلى توقعات بمزيد من التشديد النقدي من الفيدرالي وإلى ارتفاع أسعار النفط، وربطته بمخاوف أثارتها تصريحات ترامب بشأن إيران",
+          "source": 2
+        },
+        {
+          "fact": "انخفض الجنيه الذهب في مصر الخميس إلى نحو 47280 جنيهاً بعد 48920 جنيهاً في نهاية تعاملات الأربعاء",
+          "source": 1
+        }
+      ],
+      "slug": "gold-falls-below-4000-lowest-in-year-789e95",
+      "title": "الذهب يهبط دون 4000 دولار إلى أدنى مستوى في نحو عام",
+      "score": 6,
+      "image": "photo"
+    },
+    {
+      "headline": "ربح الإمارات العالمية للألمنيوم يتراجع 10% وديونها ترتفع 40% بعد الهجوم الإيراني",
+      "section": "companies",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    },
+    {
+      "headline": "تضخم الهند يتجاوز 6% ويضغط على المركزي الهندي لرفع الفائدة",
+      "section": "economy",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
-    "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {},
-    "byRole": {}
+    "calls": 38,
+    "failures": 5,
+    "promptTokens": 754915,
+    "completionTokens": 188821,
+    "cacheReadTokens": 246688,
+    "costUsd": 7.8912,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 38
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 84200,
+        "read": 0,
+        "out": 2620,
+        "usd": 0.726
+      },
+      "desk": {
+        "calls": 10,
+        "in": 82890,
+        "read": 95389,
+        "out": 45923,
+        "usd": 1.6005
+      },
+      "writer": {
+        "calls": 10,
+        "in": 156644,
+        "read": 125937,
+        "out": 85765,
+        "usd": 2.9935
+      },
+      "critic": {
+        "calls": 6,
+        "in": 85035,
+        "read": 25362,
+        "out": 34461,
+        "usd": 1.3746
+      },
+      "checker": {
+        "calls": 3,
+        "in": 20462,
+        "read": 0,
+        "out": 13531,
+        "usd": 0.4343
+      },
+      "vision": {
+        "calls": 8,
+        "in": 78996,
+        "read": 0,
+        "out": 6521,
+        "usd": 0.7623
+      }
+    }
   },
   "log": [
-    "[16:52:08] newsroom start mode=reports limit=4 dry-run=false",
-    "[16:52:17] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
-    "[16:52:17] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[16:52:17] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[16:52:18] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[16:52:21] report un-tourism-barometer: page not read (http-403)",
-    "[16:52:26] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
-    "[16:52:27] release sa-trade: International trade in goods for Saudi Arabia in September 2026 has no document yet",
-    "[16:52:27] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» is listed without its document; it waits"
+    "[20:38:41] commons \"gold bars US dollar banknotes\": 1 usable of 1",
+    "[20:38:41] image: dropped \"Recto The United States 60 dollars 1779 urn-3 HBS.Baker.AC 1085987.jpe\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:38:41] image: dropped \"Bundles of US hundred-dollar bills and Scrabble tiles spelling 'busine\" — a stock cliché («Scrabble»)",
+    "[20:38:41] image: dropped \"Close-up of U.S. dollars and Bitcoin coins placed on a weekly budget p\" — names too little of gold, bars, dollar, banknotes",
+    "[20:38:41] commons \"stacked gold bars\": 14 usable of 20",
+    "[20:38:41] image: dropped \"The Victoria Institute - Library and Museum - Foregate Street, Worcest\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"California mines and minerals (1899) (14595804460).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"The European Race Heat IId Anno Dom MDCCXXXVIII (BM 1868,0808.3606).jp\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"A Skit on Britain (BM 1868,0808.3631).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"Bronze Age twisted torc detail (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"Bronze Age cast torc (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"Bronze Age twisted torc detail (FindID 538672-424207).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"Bronze Age shield palstave (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:38:41] image: dropped \"100_2202\" — names too little of stacked, gold, bars",
+    "[20:38:42] commons \"gold bars dark background\": 4 usable of 12",
+    "[20:38:42] image: dropped \"Bicci di Lorenzo - Scene from the Legend of St. Nicholas - 2010.41 - I\" — a scan of a note's or a coin's face, not a photograph",
+    "[20:38:42] image: dropped \"PUBLIC-34CE62, Harness Pendant (FindID 552626).jpg\" — names too little of gold, bars, dark, background",
+    "[20:38:53] openverse \"gold bars dark background\": 10 usable of 20",
+    "[20:38:53] image: dropped \"Small Yellow Wave\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Satin Beauty\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Storm system moving away\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Argyresthia brockeella\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Rosy Footman\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Aethes smeathmanniana\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Coleophora albidella\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Gold Swift (3)\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Marbled White Spot\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Pine Hawk-moth\" — names too little of gold, bars, dark, background",
+    "[20:38:53] image: dropped \"Tempat uang di Brankas Museum De Javasche Bank.jpg\" — taken in Indonesia, which the story does not name",
+    "[20:38:53] image: dropped \"Bullion Gold bar at Swiss Money Museum (Ank Kumar, Infosys).jpg\" — taken in Switzerland, which the story does not name",
+    "[20:38:54] image: thumbnail HTTP 403 for https://live.staticflickr.com/4077/5440099040_7fbe9db699_n.jpg",
+    "[20:39:00] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=291 in=11021 read=0 out=486 attempt=1 ms=6262",
+    "[20:39:00] image: vision rejected all candidates (None of the candidates fits this story. Photo 1 is the gold-bar subject, but it looks like a well-known 3D render, with too-perfect metal surfaces and lighting. Photo 2 shows a Bitcoin coin, which is the wrong subject and would mislead readers. Photos 3 and 4 are unrelated bar scenes in Thailand. Photo 5 is an amateur, cluttered museum display in South Africa. Photo 6 is a scanned close-up of a product card with a brand logo.)",
+    "[20:39:00] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/52745615147_6627ac79e4_n.jpg",
+    "[20:39:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=844 in=10568 read=0 out=1055 attempt=1 ms=11026",
+    "[20:39:12] image: \"Close-up of a 100g fine gold bar against a red reflective su\" names the story's topic without saying its point (A professional studio shot of a gold bullion bar fits a world gold-price story. Candidate 2 sits on Indonesian rupiah notes and Antam-branded bars, which tie it); checked now and kept in reserve while the desk looks further",
+    "[20:39:19] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=467 in=8258 read=0 out=565 attempt=1 ms=6908",
+    "[20:39:19] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Close-up of a 100g fine gold bar against a red reflective su\": A real, sharp studio photograph of a fine gold bar shows gold in the form the headline prices it, the world price an oun",
+    "[20:39:19] image: tier 3, the writer's own subjects: gold bars | gold jewelry shop Cairo | traders watching screens",
+    "[20:39:20] commons \"gold bars 2026\": 8 usable of 12",
+    "[20:39:20] commons \"gold bars\": 8 usable of 12",
+    "[20:39:20] image: dropped \"Abstract pattern on a tree stump.jpg\" — names too little of gold, bars",
+    "[20:39:20] image: dropped \"Friends Towers, Munich, June 2019.jpg\" — names too little of gold, bars",
+    "[20:39:20] image: dropped \"Abstract view from Børsen.jpg\" — names too little of gold, bars",
+    "[20:39:20] image: dropped \"Staircase of the BGK Building (26620981474).jpg\" — names too little of gold, bars",
+    "[20:39:20] image: dropped \"Ornamentglas B - Ansicht 1.jpg\" — names too little of gold, bars",
+    "[20:39:20] image: dropped \"Rome (Italy), Piazza della Rotonda, Hub of a Coach -- 2013 -- 10.jpg\" — names too little of gold, bars",
+    "[20:39:21] commons \"gold jewelry shop Cairo 2026\": 0 usable of 0",
+    "[20:39:21] commons \"gold jewelry shop Cairo\": 0 usable of 0",
+    "[20:39:22] commons \"gold jewelry\": 8 usable of 12",
+    "[20:39:22] image: dropped \"Argentina 1828 8 Escudos.jpg\" — dated 1828, an archival picture",
+    "[20:39:22] image: dropped \"Buddha Dhatu Jadi DJI 0249-1.jpg\" — names too little of gold, jewelry",
+    "[20:39:22] commons \"traders watching screens 2026\": 0 usable of 0",
+    "[20:39:22] commons \"traders watching screens\": 0 usable of 0",
+    "[20:39:23] commons \"traders watching\": 7 usable of 12",
+    "[20:39:23] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
+    "[20:39:23] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
+    "[20:39:23] image: dropped \"Gold bar of Banque de France.jpg\" — taken in France, which the story does not name",
+    "[20:39:23] image: dropped \"Bullion Gold bar at Swiss Money Museum (Ank Kumar, Infosys).jpg\" — taken in Switzerland, which the story does not name",
+    "[20:39:23] image: dropped \"Monnaie en or, Lucanie, Métaponte.jpg\" — taken in France, which the story does not name",
+    "[20:39:23] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[20:39:23] image: dropped \"Eyes Watching You (136834777).jpeg\" — taken in China, which the story does not name",
+    "[20:39:23] image: dropped \"Friedel Kantaut- \"Is watching You\".jpg\" — taken in Germany, which the story does not name",
+    "[20:39:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=185 in=10447 read=0 out=363 attempt=1 ms=5055",
+    "[20:39:28] image: vision rejected all candidates (No candidate fits. 1 is an archival black-and-white photograph of ancient Dura-Europos jewellery, and jewellery is not the form of an ounce price. 2 is a flat scan of a 1-gram bar in a branded Goldas certificate card: the brand name and printed text dominate, and the story does not name Goldas. 3 shows synthetic gold crystals with a scale-bar overlay, a scientific specimen rather than gold bars as traded.)",
+    "[20:39:28] image: tier 4, the story's point and its subject: gold bullion bars | stacked gold bars | gold bars vault | gold bars | stacked gold ingots | gold bullion vault",
+    "[20:39:28] openverse \"stacked gold bars\": 3 usable of 8",
+    "[20:39:28] openverse \"gold bullion bars\": 8 usable of 20",
+    "[20:39:28] pexels \"stacked gold bars\": 8 usable",
+    "[20:39:28] pexels \"gold bars\": 8 usable",
+    "[20:39:28] pexels \"gold bars vault\": 8 usable",
+    "[20:39:28] pexels \"gold bullion bars\": 8 usable",
+    "[20:39:28] pexels \"stacked gold ingots\": 8 usable",
+    "[20:39:29] pexels \"gold bullion vault\": 8 usable",
+    "[20:39:29] commons \"gold bullion bars\": 14 usable of 24",
+    "[20:39:29] image: dropped \"DSC223861, Silver Legacy Casino Hotel, Reno, Nevada, USA\" — names too little of gold, bullion, bars",
+    "[20:39:29] image: dropped \"Pouring Liquid Gold\" — names too little of gold, bullion, bars",
+    "[20:39:29] image: dropped \"2011 IACA Conference in Winnipeg, Manitoba, Canada – Lifting the Bar a\" — an event's photograph, people and banners",
+    "[20:39:29] image: dropped \"Removing Liquid Gold from the Arc Furnace\" — names too little of gold, bullion, bars",
+    "[20:39:29] commons \"stacked gold bars\": 17 usable of 24",
+    "[20:39:29] image: dropped \"The Victoria Institute - Library and Museum - Foregate Street, Worcest\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"California mines and minerals (1899) (14595804460).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"The European Race Heat IId Anno Dom MDCCXXXVIII (BM 1868,0808.3606).jp\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"A Skit on Britain (BM 1868,0808.3631).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age twisted torc detail (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age cast torc (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age armlet (FindID 538672-424216).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age twisted torc detail (FindID 538672-424207).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age shield palstave (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"Bronze Age quoit headed pin detail (FindID 538672).jpg\" — names too little of stacked, gold, bars",
+    "[20:39:29] image: dropped \"100_2202\" — names too little of stacked, gold, bars",
+    "[20:39:29] commons \"gold bars vault\": 13 usable of 21",
+    "[20:39:29] image: dropped \"Photograph of a vault with gold bars - NARA - 296609.jpg\" — dated 1935, an archival picture",
+    "[20:39:29] image: dropped \"DSC01398 - Inside Bank of Canada Vault (44662916642).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[20:39:29] image: dropped \"The gold fields of the Klondike; fortune seekers' guide to the Yukon r\" — names too little of gold, bars, vault",
+    "[20:39:29] image: dropped \"DSC01400 - Smaller Access Door (42902046820).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[20:39:29] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York (7237026020).jpg\" — names too little of gold, bars, vault",
+    "[20:39:29] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York (7237028356).jpg\" — names too little of gold, bars, vault",
+    "[20:39:29] image: dropped \"Good Delivery (2026).jpg\" — names too little of gold, bars, vault",
+    "[20:39:29] image: dropped \"The Canadian Almanac and Directory 1875-1876 (1875) (14778922994).jpg\" — names too little of gold, bars, vault",
+    "[20:39:29] image: dropped \"The pictorial Bible and commentator- presenting the great truths of Go\" — names too little of gold, bars, vault",
+    "[20:39:33] openverse \"stacked gold ingots\": 0 usable of 0",
+    "[20:39:38] openverse \"gold bars vault\": 5 usable of 11",
+    "[20:39:38] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York\" — names too little of gold, bars, vault",
+    "[20:39:38] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York\" — names too little of gold, bars, vault",
+    "[20:39:38] image: dropped \"Grand Central Terminal Train Station in New York City\" — names too little of gold, bars, vault",
+    "[20:39:38] commons \"gold bars\": 16 usable of 24",
+    "[20:39:39] openverse \"gold bars\": 10 usable of 20",
+    "[20:39:39] commons \"stacked gold ingots\": 15 usable of 24",
+    "[20:39:39] image: dropped \"Akan MHNT.ETH.2010.25.191.jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Akan MHNT.ETH.2010.25.183.jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Akan MHNT.ETH.2010.25.182.jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Akan MHNT.ETH.2010.25.187.jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age cast torc (FindID 538672).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age quoit headed pin detail (FindID 538672).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age reworked blade (FindID 538672).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age twisted torc detail (FindID 538672).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age shield palstave (FindID 538672-423129).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age armlet (FindID 538672-424216).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:39] image: dropped \"Bronze Age torc with rings (FindID 538672).jpg\" — names too little of stacked, gold, ingots",
+    "[20:39:43] openverse \"gold bullion vault\": 5 usable of 16",
+    "[20:39:48] openverse \"stacked gold\": 10 usable of 20",
+    "[20:39:48] image: dropped \"Images of pound coins\" — names too little of stacked, gold, ingots",
+    "[20:39:48] commons \"gold bullion vault\": 3 usable of 17",
+    "[20:39:48] image: dropped \"Gold Vault, U. S. Depository, Fort Knox, Ky (78762).jpg\" — dated 1950, an archival picture",
+    "[20:39:48] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York (7237026020).jpg\" — names too little of gold, bullion, vault",
+    "[20:39:48] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York (7237028356).jpg\" — names too little of gold, bullion, vault",
+    "[20:39:48] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York\" — names too little of gold, bullion, vault",
+    "[20:39:48] image: dropped \"Federal Reserve Bank of New York, Manhattan, New York\" — names too little of gold, bullion, vault",
+    "[20:39:48] image: dropped \"The Sunlife building\" — names too little of gold, bullion, vault",
+    "[20:39:48] image: dropped \"Tempat uang di Brankas Museum De Javasche Bank.jpg\" — taken in Indonesia, which the story does not name",
+    "[20:39:48] image: dropped \"Bullion Gold bar at Swiss Money Museum (Ank Kumar, Infosys).jpg\" — taken in Switzerland, which the story does not name",
+    "[20:39:48] image: dropped \"Ian Sayer Bank of England 11 12 1997.jpg\" — taken in United Kingdom, which the story does not name",
+    "[20:39:48] image: dropped \"UBS gold bars with mirrors.jpg\" — taken in Switzerland, which the story does not name",
+    "[20:39:48] image: thumbnail HTTP 403 for https://live.staticflickr.com/4077/5440099040_7fbe9db699_n.jpg",
+    "[20:39:48] image: thumbnail HTTP 403 for https://live.staticflickr.com/5243/5263740131_1df5de875a_n.jpg",
+    "[20:39:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/8384/8601888534_7e8c12d928_n.jpg",
+    "[20:40:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1445 in=11457 read=0 out=1674 attempt=1 ms=17804",
+    "[20:40:06] image: \"A striking close-up of a gold bar showing inscriptions, capt\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[20:40:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/2568/4091778618_aba19ef06d_n.jpg",
+    "[20:40:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/3775/9701862261_3a84be15b1_n.jpg",
+    "[20:40:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/7/8228640_921246eaa3_n.jpg",
+    "[20:40:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/4150/5036712014_c224de3d12_n.jpg",
+    "[20:40:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=369 in=11182 read=0 out=557 attempt=1 ms=6944",
+    "[20:40:14] image: vision rejected all candidates (fallback pass) (None fits. 1 is a child holding chocolate coins at an Indian amusement park, which is comic and a close-up of a private person. 2 shows fire hoses, the wrong subject. 3 is a flat scan of a 1g bar on a Goldas certificate card; its most legible things are an unnamed brand and a website, and a scan fails the publication standard. 4 is a stock cliché of mixed foreign coins, not gold. 5 is a digital collage with a Monopoly cartoon.)",
+    "[20:40:21] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=301 in=9263 read=0 out=498 attempt=1 ms=6118",
+    "[20:40:21] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Close-up of a 100g fine gold bar against a red reflective su\"",
+    "[20:40:21] published \"الذهب يهبط دون 4000 دولار إلى أدنى مستوى في نحو عام\" -> gold-falls-below-4000-lowest-in-year-789e95",
+    "[20:40:21] run budget of 35 minutes spent; \"ربح الإمارات العالمية للألمنيوم يتراجع 10% وديونها ترتفع 40% بعد الهجوم الإيراني\" waits for the next run",
+    "[20:40:21] run budget of 35 minutes spent; \"تضخم الهند يتجاوز 6% ويضغط على المركزي الهندي لرفع الفائدة\" waits for the next run"
   ]
 }

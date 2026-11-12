@@ -1,0 +1,129 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-12T20:01:40.788Z",
+  "durationSec": 123,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "dewa-record-nine-month-revenue-2026-e5f003",
+      "title": "«ديوا» لكهرباء دبي تسجل إيرادات قياسية قدرها 7.01 مليار دولار في 9 أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 32,
+        "checked": 32,
+        "supported": 30,
+        "weak": 1,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "japan-warns-yen-intervention-near-160-4167ef",
+      "title": "اليابان تلوّح بالتدخل لدعم الين مع اقترابه من 160 يناً للدولار",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 27,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "oman-budget-surplus-nine-months-gas-revenue-674ff7",
+      "title": "ميزانية عُمان تحقق فائضاً قدره 234 مليون دولار بدعم الغاز",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 23,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "telecom-egypt-nine-month-profit-rises-44-96d0b5",
+      "title": "أرباح المصرية للاتصالات ترتفع 44% إلى 24.4 مليار جنيه في 9 أشهر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 21,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 33225,
+    "completionTokens": 30224,
+    "cacheReadTokens": 0,
+    "costUsd": 0.8703,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "byRole": {
+      "checker": {
+        "calls": 4,
+        "in": 33225,
+        "read": 0,
+        "out": 30224,
+        "usd": 0.8703
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[20:01:41] second look: 4 to read now (4 published pieces not yet read; 246 read clean before publication and left out of the audit sample)",
+    "[20:01:43] japan-warns-yen-intervention-near-160-4167ef:   source https://www.bloomberg.com/news/articles/2026-11-12/japan-s-fx-chief-warns-agains: http-403; read from the copy saved at publication (fetched then)",
+    "[20:02:41] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2667 in=7692 read=0 out=7412 attempt=1 ms=57262",
+    "[20:02:41] dewa-record-nine-month-revenue-2026-e5f003: 32 of 32 sentences checked · 30 supported · 1 without a source · 0 confirmed error(s)",
+    "[20:02:42] oman-budget-surplus-nine-months-gas-revenue-674ff7:   source https://www.agbi.com/economy/2026/11/higher-energy-prices-help-oman-to-cut-publi: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[20:02:42] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2278 in=10388 read=0 out=7130 attempt=1 ms=53341",
+    "[20:02:42] japan-warns-yen-intervention-near-160-4167ef: 31 of 31 sentences checked · 27 supported · 1 without a source · 0 confirmed error(s)",
+    "[20:02:44] telecom-egypt-nine-month-profit-rises-44-96d0b5:   source https://www.youm7.com/story/2026/11/12/%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A: http-403; read from the copy saved at publication (fetched 2026-11-12T10:19:42.681Z)",
+    "[20:02:44] telecom-egypt-nine-month-profit-rises-44-96d0b5:   source https://www.youm7.com/story/2026/11/12/%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A: http-403; read from the copy saved at publication (fetched then)",
+    "[20:03:39] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2722 in=7172 read=0 out=7386 attempt=1 ms=55074",
+    "[20:03:39] oman-budget-surplus-nine-months-gas-revenue-674ff7: 30 of 30 sentences checked · 23 supported · 2 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[20:03:44] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2845 in=7973 read=0 out=8296 attempt=1 ms=60181",
+    "[20:03:44] telecom-egypt-nine-month-profit-rises-44-96d0b5: 25 of 25 sentences checked · 21 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

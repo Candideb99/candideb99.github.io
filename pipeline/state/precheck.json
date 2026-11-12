@@ -15862,6 +15862,72 @@
           "noted": []
         }
       ]
+    },
+    "nvidia-falls-below-4-trillion-huang-exit-838dc3": {
+      "at": "2026-11-12T20:16:38.573Z",
+      "title": "القيمة السوقية لإنفيديا تهبط دون 4 تريليونات دولار إثر استقالة هوانغ",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-falls-below-4000-lowest-in-year-789e95": {
+      "at": "2026-11-12T20:40:21.122Z",
+      "title": "الذهب يهبط دون 4000 دولار إلى أدنى مستوى في نحو عام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 17,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "ويختلف السعران لأن السعر الفوري يخص تسليم المعدن في الحال، أما العقود الآجلة فتحدد سعر تسليمه في موعد لاحق، والأقرب استحقاقاً منها هو العقد الذي يحل موعد تسليمه قبل غيره.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []
