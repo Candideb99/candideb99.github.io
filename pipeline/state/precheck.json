@@ -15475,6 +15475,100 @@
           "noted": []
         }
       ]
+    },
+    "german-advisers-raise-2026-growth-forecast-e3cbd8": {
+      "at": "2026-11-12T02:31:50.028Z",
+      "title": "مستشارو الحكومة الألمانية يرفعون توقع نمو 2026 إلى 1.3% من 0.5%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v68",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 36,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iraq-probe-oil-products-smuggling-jurf-al-sakhar-c7af31": {
+      "at": "2026-11-12T02:43:28.523Z",
+      "title": "رئيس الوزراء العراقي يأمر بالتحقيق في تهريب مشتقات نفطية من جرف الصخر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "turkey-central-bank-raises-loan-growth-caps-902a92": {
+      "at": "2026-11-12T02:47:26.541Z",
+      "title": "المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v68",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 7,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "يتيح السقف الأعلى للبنوك زيادة أرصدة هذه القروض بوتيرة أسرع في كل فترة من ثمانية أسابيع.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []

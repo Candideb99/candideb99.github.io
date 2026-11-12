@@ -258,15 +258,17 @@
     "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be",
     "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:cb23e32f",
     "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:c335546f",
-    "dip-holding-shares-rise-dubai-debut-da4063:c536587c"
+    "dip-holding-shares-rise-dubai-debut-da4063:c536587c",
+    "fab-15-billion-dirham-rights-issue-7229cc:d8a5f2c2",
+    "egypt-red-sea-land-debt-reduction-sukuk-4defe6:fffaf1f5"
   ],
-  "version": 67,
-  "updatedAt": "2026-11-11T19:43:27.038Z",
+  "version": 68,
+  "updatedAt": "2026-11-12T02:19:07.952Z",
   "lessons": [
     {
       "id": "L1",
       "class": "hedge",
-      "rule": "Keep every qualifier (could, expected, estimates, reportedly, if) and name who claims or forecasts, in headlines and data lines too. 'Could seek' or 'some estimates' is never a plan, target or set value. Never move a condition onto another statement.",
+      "rule": "Keep every qualifier (could, expected, intends, reportedly, if, not automatically) and name who claims or forecasts, in headlines and data lines too. An intention or estimate is never a plan, guarantee or set value, and 'not automatically' is not 'not'; never move a condition elsewhere.",
       "example": {
         "wrong": "ويوسّع نطاق الانتشار العسكري الأمريكي إلى القطب الشمالي دون تكلفة إضافية على واشنطن.",
         "quote": "\"There will be NO COST to the United States,\" he wrote.",
@@ -309,18 +311,20 @@
         "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3:d59a7a95",
         "saudi-uae-expand-oil-outlets-bypassing-hormuz-fd8a9b:80e914eb",
         "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
-        "fed-waller-december-hike-half-point-3a01d9:2c946d3a"
+        "fed-waller-december-hike-half-point-3a01d9:2c946d3a",
+        "fab-15-billion-dirham-rights-issue-7229cc:d8a5f2c2",
+        "egypt-red-sea-land-debt-reduction-sukuk-4defe6:fffaf1f5"
       ],
-      "seen": 36,
+      "seen": 38,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-10T15:00:46.875Z",
+      "lastSeen": "2026-11-12T02:19:07.952Z",
       "status": "active",
       "previous": [
-        "Keep every qualifier in Arabic: could, possibly, as much as, hopefully, expected, scheduled, will, estimates, reportedly. Name who claims, forecasts or estimates it. Never turn a claim, hope, forecast or reported figure into a stated fact, a present result or a bare headline number.",
         "Keep every qualifier in Arabic: could, possibly, expected, will, estimates, reportedly, if/should it go ahead. Name who claims or forecasts. Never turn a claim, conditional warning, forecast or promise ('no cost') into a stated fact, present result or bare headline.",
-        "Keep every qualifier (could, expected, estimates, reportedly, if) and name who claims or forecasts, including in headlines and data lines. Never turn a claim, estimate or forecast into a fact, and never move a condition from one statement onto another."
+        "Keep every qualifier (could, expected, estimates, reportedly, if) and name who claims or forecasts, including in headlines and data lines. Never turn a claim, estimate or forecast into a fact, and never move a condition from one statement onto another.",
+        "Keep every qualifier (could, expected, estimates, reportedly, if) and name who claims or forecasts, in headlines and data lines too. 'Could seek' or 'some estimates' is never a plan, target or set value. Never move a condition onto another statement."
       ],
-      "sharpenedAt": "2026-09-26T16:41:29.649Z"
+      "sharpenedAt": "2026-11-12T02:19:07.952Z"
     },
     {
       "id": "L2",
@@ -807,19 +811,6 @@
   "model": "claude-cli/claude-opus-5-5",
   "history": [
     {
-      "at": "2026-09-25T23:25:28.192Z",
-      "mistakes": 23,
-      "applied": [
-        "reinforce L2 (+5; reworded at most once a week)",
-        "reinforce L3 (+2; reworded at most once a week)",
-        "sharpen L4 (+3)",
-        "sharpen L6 (+7)",
-        "sharpen L8 (+5)",
-        "reinforce L9 (+1)",
-        "L9 now read by the writer (proved in 2 unrelated stories)"
-      ]
-    },
-    {
       "at": "2026-09-26T05:14:12.401Z",
       "mistakes": 2,
       "applied": [
@@ -1299,6 +1290,13 @@
       "mistakes": 1,
       "applied": [
         "reinforce L2 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-12T02:19:07.952Z",
+      "mistakes": 2,
+      "applied": [
+        "sharpen L1 (+2)"
       ]
     }
   ],

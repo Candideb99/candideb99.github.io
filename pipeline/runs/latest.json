@@ -1,22 +1,93 @@
 {
-  "mode": "analysis",
-  "startedAt": "2026-11-11T21:17:33.570Z",
-  "durationSec": 736,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-11-12T02:19:15.148Z",
+  "durationSec": 1691,
+  "published": 3,
   "refreshed": 0,
   "report": [
     {
-      "headline": "مصادر النقد الأجنبي لمصر بين تحويلات قياسية وعودة الملاحة وتخصيص أراضٍ لخفض الدين",
-      "section": "analysis",
-      "outcome": "published",
-      "mendedAfterReview": 6,
+      "headline": "إنفيديا تبحث مستقبل رئيسها التنفيذي وسهمها يهبط 8% بعد الإغلاق",
+      "section": "technology",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html",
+        "https://www.nytimes.com/2026/11/11/business/nvidia-stock-jensen-huang-ceo.html",
+        "https://www.aljazeera.com/economy/2026/11/12/nvidia-shares-plunge-amid-reports-board-to-discuss-ceo-huangs-future",
+        "https://www.marketwatch.com/story/nvidias-stock-drops-as-the-board-reportedly-prepares-to-remove-ceo-jensen-huang-9edee58d?mod=mw_rss_topstories"
+      ],
+      "outcome": "skipped: repeats a recent story («سهم إنفيديا يهبط نحو 5% إثر تحقيق في علاقة رئيسها التنفيذي بمتهمة بالتجسس»)"
+    },
+    {
+      "headline": "مستشارو ألمانيا الاقتصاديون يرفعون توقعات نمو 2026 إلى 1.3% من 0.5%",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-11/german-economic-advisers-more-than-double-2026-growth-forecast",
+        "https://www.bloomberg.com/news/articles/2026-11-11/german-economy-on-the-mend-though-reforms-needed-nagel-says",
+        "https://www.bloomberght.com/almanya-da-buyume-tahmini-yukseldi-kamu-borcu-uyarisi-geldi-3794243",
+        "https://www.aa.com.tr/en/economy/german-economic-growth-set-to-accelerate-in-4th-quarter-bundesbank-chief/4120715"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والجهة («مستشارو الحكومة الألمانية»، «مجلس الخبراء المستقل»)، والتغيير (من 0.5% إلى 1.3%)، والتحفظ الأساسي (دين قد يبلغ 98% بشرط استمرار الاقتراض للتسلح بوتيرته).",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سبب التغيير موجود (الصادرات، تجاوز صدمات الطاقة، الإنفاق الحكومي)، ومعه المقارنة بتوقعات الصندوق والحكومة وردّ ميرتس. لكن تغيب عتبة الإعفاء الحالية (1% من الناتج) وتعليل المجلس بارتفاع مدفوعات الفائدة والنتيجة على التمويل بالضرائب أو خفض الإنفاق (المصدر 3)، ويغيب صندوق الـ500 مليار يورو (المصدر 3).",
+              "repair": "تُضاف العتبة الحالية وتعليل المقترح ونتيجته إلى فقرة المقترحات، ويُضاف صندوق البنية التحتية إلى فقرة الخلفية."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان (رفع التوقع) يتطور مباشرة بعد المقدمة بأسبابه، وهذا جيد. لكن ناغل يتوزع على الفقرات الثانية والثالثة والثامنة. والصندوق يعيد صياغة مقترحات المجلس بصيغة اليقين بدل استنتاج محدود.",
+              "repair": "تُجمع تصريحات ناغل بحسب ما تفسره، ويُعاد صوغ الصندوق استنتاجاً مشروطاً (انظر القضية الأولى)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«عبر سن التقاعد» تعمّم مقترحاً محدوداً (إلغاء التقاعد المبكر عند 63 لمن سددوا 45 عاماً). و«من دون أن يوسع القدرة» يتجاهل الدفعة المتواضعة من البنية التحتية التي ذكرها ناغل. و«0.25 نقطة» بلا مستوى انطلاق (1% من الناتج).",
+              "repair": "«إلغاء التقاعد المبكر عند 63»، «لا يُتوقع أن يرفع الإنفاق الدفاعي النمو الممكن»، «رفع العتبة من 1% من الناتج بمقدار 0.25 نقطة مئوية سنوياً اعتباراً من 2031»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يبينان البلد والجهة (مستشارو الحكومة الألمانية، مجلس الخبراء المستقل) والتغيير (1.3% من 0.5%). ويحمل العنوان الفرعي شرط الدين «إذا استمر الاقتراض للتسلح بوتيرته الحالية». والمقدمة تقدّم بلوغ 1% أول مرة منذ 2022 تقديراً لا نتيجة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل المقال التفسيرات الثلاث. السبب: الصادرات وصدمات الطاقة (المصدر 3) والإنفاق الحكومي (المصدر 1). المقارنة: توقع صندوق النقد والحكومة 1.3% و1.1%، والتعافي أقوى من توقع البوندسبنك في الصيف (المصدر 4). الردود: ميرتس وناغل. وأُضيفت الآن عتبة الإعفاء البالغة 1% وتعليل المجلس بمدفوعات الفائدة وصندوق الـ500 مليار يورو (المصدر 3).",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (رفع التوقع) يتطور مباشرة بعد المقدمة بأسبابه، وتصريحات ناغل صارت مجمّعة بحسب ما تفسره. لكن أرقام 2027 والتضخم جاءت بعد ردّ ميرتس، وجملة «من المقرر أن يصدر البوندسبنك…» بقيت معزولة في الختام. والصندوق يكرر جملة المتن «ويُلزم الحكومة بتمويل جزء أكبر…» من دون أن يضيف استنتاجاً.",
+              "repair": "تُقدَّم أرقام 2027 والتضخم إلى ما قبل فقرة ميرتس، وتُنقل جملة ديسمبر إلى فقرة ناغل عن المدى القصير. ويُعاد صوغ الصندوق ليربط بين النمو الممكن المحدود ومسار الدين ومقترح 2031، كما في القضية الرابعة."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الشروط محفوظة: «إذا استمر الاقتراض لإعادة التسلح بوتيرته الحالية»، و«رفع عتبة الإعفاء من 1% من الناتج بمقدار 0.25 نقطة مئوية سنوياً اعتباراً من 2031»، و«ما يصل إلى 700 مليار يورو» بفعل نية. ومقترح التقاعد محدد بإلغاء التقاعد المبكر عند 63 لمن سددوا 45 عاماً. والأربعاء يوافق 11 نوفمبر 2026.",
+              "repair": "في الصندوق «اعتباراً من 2031» بدل «بعد 2031»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
       "mendIssues": [
-        "ادعاء بلا سند في «لماذا يهمّ»: «وأرض البحر الأحمر أول أصل بهذا الحجم يُخصص صراحة لهذا الغرض». المصدر 3 لا يقارن هذا التخصيص بأي أصل آخر، فلا شيء فيه يثبت أنه «الأول»، وهذا تفضيل مطلق مخترع. الإصلاح: حذف «أول أصل بهذا الحجم» والاكتفاء بما يثبته المصدر: «وتعديل تخصيص أرض البحر الأحمر يضيف خفض الدين صراحة إلى أغراضها».",
-        "تسلسل زمني وسببي خاطئ: «وبين الخبرين بدأت قناة السويس تستعيد جزءاً من إيراداتها مع رجوع خط «إيفر غرين» إليها». عودة «إيفر غرين» أُعلنت الأحد 8 نوفمبر، أي قبل الخبرين لا بينهما، فقرار الأرض نُشر الأربعاء وأرقام التحويلات أُعلنت الثلاثاء (المصدر 1). كما أن المصدر 2 يثبت أن الإيرادات ارتفعت 94% في أكتوبر، أي قبل عودة الخط، فربط بداية التعافي بهذه العودة غير مسند. الإصلاح: «وتستعيد قناة السويس جزءاً من إيراداتها، إذ ارتفعت 94% في أكتوبر، وعاد إليها خط «إيفر غرين» الأحد بعد انقطاع نحو ثلاث سنوات».",
-        "الملاحظة 5 السابقة لم تُحل كلياً، والعنوان ما زال معيباً: «أرض البحر الأحمر تفتح لمصر طريقاً إلى خفض الدين لا تبلغه التحويلات القياسية». فيه مجاز يجعل الأرض فاعلاً يفتح الطرق، ويجاور خبرين، ويوحي بأن التحويلات طُرحت أداةً لخفض الدين ثم قصرت عنه، ولا مصدر يطرحها كذلك. الإصلاح: عنوان بحكم واحد فاعله صاحب القرار، مثل «مصر تضيف خفض الدين إلى أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر»، ويبقى التمييز بين الأرض والتحويلات في المتن. أما العنوان الفرعي فصار فكرة واحدة، وهذا جزء الملاحظة الذي حُلّ.",
-        "قسم القناة لا يخدم أطروحة المقال، وهي أن الأرض أداة داخل الموازنة والتحويلات تدعم السيولة الخارجية. ويُختم القسم بجملة عن التغطية الصحفية لا عن الاقتصاد، وبتقابل لا يسنده شيء: «لكن تحويلات المغتربين تتقدم في أرقام هذا الأسبوع مصادر النقد الأجنبي التي تناولتها الأخبار». الإصلاح: حذف هذه الجملة، وتقليص قسم القناة إلى فقرة واحدة تبيّن صلتها بالأطروحة، أي أنها مصدر نقد أجنبي لا أداة لخفض الدين، أو إخراجه من المقال.",
-        "فقرة «موديز» في الختام منفصلة عن سياق المقال. تُسرد بعد قسم الأرض كبرقية مستقلة لا تُربط بمسار الدين، ورموز B3 وCaa1 لا تُشرح للقارئ. وفي الفقرة التي قبلها مرجع ناقص: «وترسم توصيات منتدى مصر 2026 مساراً إلى نحو 69.5% من الناتج»، ولا يتضح فيها ما الذي ينخفض. الإصلاح: «مساراً لخفض الدين العام إلى نحو 69.5% من الناتج المحلي الإجمالي بحلول 2030»، ثم نقل فقرة «موديز» بجوار أرقام كجوك عن تراجع الدين، فوكالة التصنيف عزت قرارها إلى وضع الدين وأعباء الفائدة على مسار تراجع، أو حذفها.",
-        "صدى وصياغة غير دقيقة. الجملة الثانية في الصندوق («فإن المستفيد المعلن هو الإنفاق على القطاعات الأساسية الذي تقول الحكومة إن الوفورات ستذهب إليه») تكرر ما قاله المتن («على أن تذهب الوفورات إلى الإنفاق على القطاعات الأساسية») دون أن تضيف معنى، والجملة الأولى تعيد تمييز المقدمة نفسه بين أداة «داخل الموازنة» والسيولة الخارجية. وفي المقدمة «في أسبوع سجلت فيه تحويلات المصريين بالخارج نحو 13 مليار دولار في ربع واحد» توحي بأن المبلغ تحقق هذا الأسبوع، والصحيح أنه أُعلن فيه. وفي المتن تسقط «يمنح وزارة المالية أصلاً تستطيع توجيهه إلى المديونية مباشرة» شرطَي الصكوك أو العوائد والالتزام بالقواعد. الإصلاح: «في أسبوع أعلن فيه البنك المركزي...»، وحذف «مباشرة»، وإعادة كتابة الصندوق باستنتاج واحد غير مكرر."
+        "صياغة مختلّة تُضعف السبب (المصدر 3): عبارة «موضحة أن أداء الصادرات القوي جاء في الربيع، وأن صدمات أسعار النفط والطاقة التي تجاوزها الاقتصاد نجمت عن صراعات الشرق الأوسط» تجعل شنيتزر تشرح متى قويت الصادرات ومن أين جاءت الصدمات. لكنها في المصدر ذكرت الأمرين سببين لتحسن التوقعات. والمقدمة قالت هذا المعنى، فتبدو الجملة تكراراً معوجّاً. الإصلاح: «وعزت تحسن التوقعات إلى قوة الصادرات في الربيع وإلى تجاوز صدمات أسعار النفط والطاقة الناجمة عن صراعات الشرق الأوسط أسرع من المتوقع».",
+        "بناء: الجملة الأخيرة «من المقرر أن يصدر البوندسبنك توقعاته الاقتصادية الشاملة التالية في ديسمبر» معزولة في آخر المقال، بعد مقترحات المجلس عن التقاعد والضرائب، ولا صلة لها بها. فتقرأ كأنها برقية ملحقة. الإصلاح: تُنقل إلى آخر فقرة ناغل عن المدى القصير (المصدر 4)، فتأتي بعد تقديره أن التعافي أقوى مما توقعه البوندسبنك في الصيف، ويُختم المقال بمقترحات المجلس.",
+        "بناء: فقرة «ارتفع توقع المجلس لنمو 2027 كذلك من 0.8% إلى 1%… والتضخم…» تأتي بعد ردّ ميرتس، فتفصل أرقام المجلس عن أسبابها في الفقرة الأولى. الإصلاح: تُضم توقعات 2027 والتضخم إلى الفقرة الأولى بعد الأسباب، أو تُوضع قبل فقرة ميرتس، ليأتي ردّ المستشار بعد اكتمال صورة التقرير.",
+        "لماذا يهمّ يكرر المتن: جملة «فسيُموَّل جزء أكبر من التسلح بعد 2031 من الضرائب أو من خفض بنود إنفاق أخرى» تعيد جملة المتن «ويُلزم الحكومة بتمويل جزء أكبر من الإنفاق العسكري بالضرائب أو بخفض بنود إنفاق أخرى». وجملة الصندوق الأولى تعيد فقرة ناغل عن النمو الممكن. فيصف الصندوق ما قاله المتن، ولا يربط المقدمتين باستنتاج. يأتي الربط من المصدرين 3 و4: مقترح المجلس يبدأ من 2031، والمجلس يقول إن النمو وحده يتطلب معدلات لم تُسجل منذ 50 عاماً. الإصلاح المقترح: «يأتي رفع توقع النمو من إنفاق ممول بالاقتراض لا يتوقع ناغل أن يضيف إلى نمو ممكن بنحو 0.3% إلى 0.4% إلا دفعة متواضعة من البنية التحتية، ولهذا لا يكفي النمو لتغيير مسار دين يتجه إلى 98% من الناتج. وإذا أخذت الحكومة بمقترح المجلس، فستبدأ من 2031 تحويل جزء من كلفة التسلح من الاقتراض إلى الضرائب أو خفض الإنفاق». ويُستبدل «بعد 2031» بـ«اعتباراً من 2031» كما في المصدر 3.",
+        "عنصر العنوان (رفع التوقع) يتطور مباشرة بعد المقدمة بأسبابه، وتصريحات ناغل صارت مجمّعة بحسب ما تفسره. لكن أرقام 2027 والتضخم جاءت بعد ردّ ميرتس، وجملة «من المقرر أن يصدر البوندسبنك…» بقيت معزولة في الختام. والصندوق يكرر جملة المتن «ويُلزم الحكومة بتمويل جزء أكبر…» من دون أن يضيف استنتاجاً. — تُقدَّم أرقام 2027 والتضخم إلى ما قبل فقرة ميرتس، وتُنقل جملة ديسمبر إلى فقرة ناغل عن المدى القصير. ويُعاد صوغ الصندوق ليربط بين النمو الممكن المحدود ومسار الدين ومقترح 2031، كما في القضية الرابعة."
       ],
       "precheck": {
         "ok": true,
@@ -24,215 +95,387 @@
         "rounds": 1,
         "found": 0
       },
-      "slug": "egypt-remittances-suez-land-debt-tools-6aa2b6",
-      "title": "أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر",
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ناغل: النمو الممكن لألمانيا نحو 0.3% إلى 0.4% حالياً، والإنفاق الدفاعي يُستبعد أن يرفعه في المستقبل المنظور، والاستثمار الإضافي في البنية التحتية يعطيه دفعة متواضعة",
+          "source": 4
+        },
+        {
+          "fact": "الإنفاق الحكومي الضخم من أسباب رفع توقعات النمو",
+          "source": 1
+        },
+        {
+          "fact": "الدين العام قد يصل إلى 98% من الناتج بحلول 2040 إذا استمر الاقتراض لإعادة التسلح بوتيرته الحالية، والاعتماد على النمو وحده يتطلب معدلات لم تُسجل منذ 50 عاماً",
+          "source": 3
+        },
+        {
+          "fact": "الإنفاق الدفاعي فوق 1% من الناتج معفى من كبح الديون ويُموَّل بالاقتراض، والمجلس اقترح رفع العتبة 0.25 نقطة سنوياً اعتباراً من 2031، ما يُلزم الحكومة بتمويل جزء أكبر من الإنفاق العسكري بالضرائب أو بخفض بنود أخرى",
+          "source": 3
+        }
+      ],
+      "slug": "german-advisers-raise-2026-growth-forecast-e3cbd8",
+      "title": "مستشارو الحكومة الألمانية يرفعون توقع نمو 2026 إلى 1.3% من 0.5%",
       "score": 8,
-      "image": "none"
+      "image": "photo"
+    },
+    {
+      "headline": "رئيس الوزراء العراقي يأمر بالتحقيق في تهريب مشتقات نفطية من جرف الصخر",
+      "section": "energy",
+      "importance": 6,
+      "sources": [
+        "https://www.independentarabia.com/node/662618/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/%D8%AA%D9%82%D8%A7%D8%B1%D9%8A%D8%B1/%D8%A7%D9%84%D8%B2%D9%8A%D8%AF%D9%8A-%D9%8A%D8%A3%D9%85%D8%B1-%D8%A8%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%8A%D9%82-%D9%81%D9%8A-%D8%B4%D8%A8%D9%87%D8%A7%D8%AA-%D8%AA%D9%87%D8%B1%D9%8A%D8%A8-%D9%86%D9%81%D8%B7-%D9%85%D9%86-%D9%85%D8%B9%D9%82%D9%84-%D9%81%D8%B5%D9%8A%D9%84-%D9%85%D9%82%D8%B1%D8%A8-%D9%84%D8%A5%D9%8A%D8%B1%D8%A7%D9%86",
+        "https://www.thenationalnews.com/news/mena/2026/11/11/iraqi-pm-orders-inquiry-into-oil-product-smuggling-in-area-controlled-by-iran-backed-militia/",
+        "https://www.skynewsarabia.com/middle-east/1904164-%D8%B4%D8%A8%D9%87%D8%A7%D8%AA-%D8%AA%D9%87%D8%B1%D9%8A%D8%A8-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A-%D8%AA%D9%83%D8%B4%D9%81-%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد وصاحب القرار (رئيس الوزراء العراقي)، ويحدد المنطقة. والعنوان الفرعي يشرح ما رصده التقرير. الاستهلال يسمّي الزيدي ويعرّف «كتائب حزب الله» بأنها من أكثر الفصائل نفوذاً وأقربها إلى إيران. وما تغيّر واضح: أمرٌ بلجنة تحقيق، لا نتيجة تحقيق.",
+              "repair": "يُستحسن «شبهات تهريب» في العنوان مطابقةً لصياغة SOURCE 1، لكنها ليست شرطاً."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يقدم التقرير الاستخباري الدافع المباشر للأمر، والمسودة تنقله. أما السياق الأوسع الذي تقدمه المصادر فغائب: الاتهامات والعقوبات الأمريكية على كيانات تخلط النفط الإيراني بالعراقي (SOURCE 1)، واستعداد الزيدي لـ«المواجهة والصدام» (SOURCE 1)، والمقاومة التي أجّلت المهلة (SOURCE 2). وصندوق «لماذا يهمّ» يبني على مقدمات صحيحة، هي المنطقة المغلقة وفصيل يرفض نزع سلاحه، لكنه يقطع باستمرار التهريب.",
+              "repair": "إضافة فقرة عن العقوبات الأمريكية بعد نتائج التقرير، وربط المهلة بسببها وبصيغة «في أقرب تقدير»، وجعل استدلال الصندوق مشروطاً بثبوت نتائج التقرير."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو الأمر بالتحقيق. لكن المتن ينتقل من التقرير إلى خلفية جرف الصخر، ثم يعود إلى رئيس اللجنة في الفقرة الرابعة، من دون أعضائها. ورقم «أربعة مواقع» يتكرر في العنوان الفرعي والاستهلال والفقرتين الأوليين.",
+              "repair": "الترتيب المقترح: الاستهلال، ثم التقرير وما رصده، ثم اللجنة برئاستها وأعضائها وموعد اجتماعها ومسار البرلمان الموازي، ثم خلفية المنطقة والعقوبات، ثم التوتر والمهلة. ويُحذف تكرار المواقع الأربعة من الاستهلال."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «منذ طرد المسلحين منها عام 2014» تحدد سنة لا يعطيها SOURCE 2. وعبارة «حددت الحكومة 30 يونيو 2027» تُسقط قيد «في أقرب تقدير» (SOURCE 2). وجملة «تظل الصهاريج تنقل إلى بغداد» تحوّل «مسارات محتملة» إلى نقل مؤكد. كذلك يعيد المتن عبارة «خسائر جسيمة» إلى المصدر المجهول، بينما يوردها SOURCE 1 في سياق ما تحدثت عنه الوكالة.",
+              "repair": "حذف سنة الطرد أو صوغها نسبةً إلى يونيو 2014، وإضافة «في أقرب تقدير» إلى المهلة، وجعل الصندوق مشروطاً، ونسبة الوثائق والخسائر إلى وكالة الأنباء العراقية نفسها: «وتحدثت الوكالة عن وثائق...»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد والفاعل: «رئيس الوزراء العراقي يأمر بالتحقيق». والعنوان الفرعي يقدم مصدر الشبهة، وهو تقرير وزارة الداخلية وصوره الفضائية. ويحتفظ الاستهلال بالتحفظ اللازم: «معلومات عن سحب مشتقات نفطية». كما يميز المتن بين المهلة الأولى (30 سبتمبر) والمهلة المؤجلة التي وردت «في أقرب تقدير».",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصادر تقدم الدافع، وهو تقرير الاستخبارات. وتقدم رد الفعل، وهو بيانات الكتائب التي اتهمت الزيدي بالفساد. وتقدم الخلفية، وهي العقوبات الأمريكية على كيانات تخلط النفط الإيراني بالعراقي وتاريخ المنطقة المغلقة. وتقدم الخطوة التالية، وهي اجتماع اللجنة ورفع نتائجها إلى مكتب الزيدي ومسار البرلمان. والمسودة تحمل ذلك كله. وأُسقط تحقيق كركوك وكردستان، وهو مسار آخر وإسقاطه سليم.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو الأمر بالتحقيق. والمتن يطوره بعد فقرتي الأدلة مباشرة: اللجنة ورئاستها وأعضاؤها واجتماعها، ثم مسار البرلمان الموازي. بعد ذلك تأتي الخلفية ثم التوتر والمهلة، وهذا تسلسل متماسك. أما صندوق «لماذا يهمّ» فيستند إلى مقدمات صحيحة: منطقة مغلقة، وفصيل يرفض نزع سلاحه، وخسائر للمال العام. لكنه يربطها بمهلة نزع السلاح بصيغة غامضة («في مهلة لا تحل…»، «قبل ذلك»).",
+              "repair": "إعادة صوغ الصندوق كما في الملاحظة الأولى: الشرط يُذكر مرة واحدة، وعائق الوصول يُفصل عن موعد المهلة، ويُختم بكلفة استمرار التهريب على الخزينة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصدر: أربعة مواقع، وصهاريج سعتها 36 ألف لتر، وثلاثة مسارات محتملة، وصور من 2021 إلى 2026، ومهلة 30 يونيو 2027 «في أقرب تقدير». وتُنسب الوثائق والخسائر إلى وكالة الأنباء العراقية. لكن جملة «حدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماعها» تلتبس فيها وظيفة صباح الأربعاء، فلا يُعرف هل هو موعد صدور الكتاب أم موعد الاجتماع.",
+              "repair": "«وحدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماع اللجنة في مقره»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "صندوق «لماذا يهمّ» يربط وقف السحب بمهلة نزع السلاح، وصياغته ملتبسة. في عبارة «والفصيل نفسه يرفض تسليم سلاحه في مهلة لا تحل قبل 30 يونيو 2027» تبدو المهلة إطاراً لرفض الفصيل، مع أن «كتائب حزب الله» تقول إنها لن تنزع سلاحها أصلاً (SOURCE 2)، والمهلة موعد لتسليم السلاح لا لدخول الدولة إلى المنطقة. وعبارة «وكل شهر يمضي قبل ذلك يدفع ثمنه المال العام» لا يتضح مرجع «ذلك» فيها، وتوحي باستمرار الخسائر حتى 2027، وهذا يتجاوز ما تحتمله المقدمات. الإصلاح: «إذا ثبت ما رصده التقرير، فوقف السحب من الأنابيب يمر أولاً بدخول الدولة إلى منطقة تسيطر عليها «كتائب حزب الله» وظلت مغلقة أمام الغرباء منذ سنوات، والفصيل يعلن أنه لن يسلم سلاحه، وأقرب موعد حددته الحكومة لحصر سلاح الفصائل هو 30 يونيو 2027. وما دام التهريب مستمراً تتحمل الخزينة العامة كلفته».",
+        "عبارة «وحدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماعها في مقره» تحتمل أن صباح الأربعاء هو وقت صدور الكتاب. أما SOURCE 3 فيجعل صباح الأربعاء موعد الاجتماع نفسه. الإصلاح: «وحدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماع اللجنة في مقره»، أو «ودعا المكتب في كتاب عاجل اللجنة إلى الاجتماع في مقره صباح الأربعاء».",
+        "الجديد في العنوان هو الأمر بالتحقيق. والمتن يطوره بعد فقرتي الأدلة مباشرة: اللجنة ورئاستها وأعضاؤها واجتماعها، ثم مسار البرلمان الموازي. بعد ذلك تأتي الخلفية ثم التوتر والمهلة، وهذا تسلسل متماسك. أما صندوق «لماذا يهمّ» فيستند إلى مقدمات صحيحة: منطقة مغلقة، وفصيل يرفض نزع سلاحه، وخسائر للمال العام. لكنه يربطها بمهلة نزع السلاح بصيغة غامضة («في مهلة لا تحل…»، «قبل ذلك»). — إعادة صوغ الصندوق كما في الملاحظة الأولى: الشرط يُذكر مرة واحدة، وعائق الوصول يُفصل عن موعد المهلة، ويُختم بكلفة استمرار التهريب على الخزينة.",
+        "الأرقام مطابقة للمصدر: أربعة مواقع، وصهاريج سعتها 36 ألف لتر، وثلاثة مسارات محتملة، وصور من 2021 إلى 2026، ومهلة 30 يونيو 2027 «في أقرب تقدير». وتُنسب الوثائق والخسائر إلى وكالة الأنباء العراقية. لكن جملة «حدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماعها» تلتبس فيها وظيفة صباح الأربعاء، فلا يُعرف هل هو موعد صدور الكتاب أم موعد الاجتماع. — «وحدد المكتب في كتاب عاجل صباح الأربعاء موعداً لاجتماع اللجنة في مقره»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "وثّق تقرير وكالة الاستخبارات والتحقيقات الاتحادية بصور فضائية عمليات استخراج غير قانونية قرب الأنابيب في جرف الصخر.",
+          "source": 2
+        },
+        {
+          "fact": "ظلت جرف الصخر مغلقة إلى حد كبير أمام الغرباء منذ طرد المسلحين الذين سيطروا عليها في يونيو 2014 بعد بضعة أشهر، وتوصف بأنها معقل لكتائب حزب الله.",
+          "source": 2
+        },
+        {
+          "fact": "تقول كتائب حزب الله إنها لن تنزع سلاحها، وأُرجئت مهلة وضع سلاح الفصائل تحت سيطرة الدولة إلى 30 يونيو 2027 في أقرب تقدير.",
+          "source": 2
+        },
+        {
+          "fact": "تحدثت وكالة الأنباء العراقية عن تهريب يتسبب بخسائر جسيمة في المال العام والاقتصاد الوطني.",
+          "source": 1
+        }
+      ],
+      "slug": "iraq-probe-oil-products-smuggling-jurf-al-sakhar-c7af31",
+      "title": "رئيس الوزراء العراقي يأمر بالتحقيق في تهريب مشتقات نفطية من جرف الصخر",
+      "score": 8,
+      "image": "cover-art"
+    },
+    {
+      "headline": "المركزي التركي يرفع سقف نمو القروض الاستهلاكية إلى 3.5% كل ثمانية أسابيع",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.haberturk.com/ekonomi/son-dakika-merkez-bankasi-kredi-sinirlarini-yukseltti-3926658",
+        "https://www.dunya.com/ekonomi/tcmbden-kredi-buyumesine-yeni-duzenleme-limitler-yukseltildi-haberi-847323",
+        "https://www.bloomberght.com/tcmb-kredi-buyume-sinirlarini-yukseltti-3794251"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد «المركزي التركي» والإجراء «يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%». العنوان الفرعي يضيف تفصيلاً من الحدث نفسه هو رفع سقوف قروض الليرة للشركات بنصف نقطة. والمتن يميّز بوضوح بين أمرين: رفع سقوف النمو، وقرار منفصل بدفع فائدة أو تعويض على الاحتياطي الإلزامي. وهذا مطابق للمصدر 3.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "السبب المعلن في المصدرين 1 و3 حاضر في المقدمة: «دعم الاستقرار المالي الكلي وآلية انتقال السياسة النقدية» منسوباً إلى البنك. والسقوف السابقة كلها مذكورة: 3% و5% و2%. ولا تذكر المصادر توقعات أو ردود فعل، والمسودة لم تملأ هذا الفراغ بحشو.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "المقدمة تحمل الخبر والرقم الحاسم. الفقرة الأولى من المتن تضم معنى السقف وسقوف الشركات معاً. والفقرة الثانية تجمع إجراء الاحتياطي الإلزامي مع شرطَي الأجل والعملة. يقل النص قليلاً عن 150 كلمة، لكنه لا يُسقط سبباً ولا رقماً سابقاً تورده المصادر. ملاحظة اختيارية: يمكن حذف الواو من أول العنوان الفرعي «ورفع البنك…» لأنه يُقرأ مستقلاً.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "جاءت الأرقام مطابقة للمصادر: من 3% إلى 3.5%، ومن 5% إلى 5.5%، ومن 2% إلى 2.5%، والفترة ثمانية أسابيع. وحُفظ شرط «التزامات تتجاوز آجالها سنة واحدة» بالليرة والعملات الأجنبية، وأن الدفع بالليرة، كما في المصادر 1 و2 و3. والهدف منسوب إلى البنك بوصفه غاية معلنة لا نتيجة متحققة. أما «الأربعاء» فيوافق تاريخ النشر (11 نوفمبر 2026) في المصادر الثلاثة التي تنقل الإعلان في يومه.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "turkey-central-bank-raises-loan-growth-caps-902a92",
+      "title": "المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%",
+      "score": 9,
+      "image": "cover-art"
     }
   ],
   "llm": {
-    "calls": 21,
+    "calls": 60,
     "failures": 0,
-    "promptTokens": 329026,
-    "completionTokens": 82726,
-    "cacheReadTokens": 81900,
-    "costUsd": 3.6477,
+    "promptTokens": 888599,
+    "completionTokens": 179150,
+    "cacheReadTokens": 240104,
+    "costUsd": 8.8185,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 21
+      "claude-cli/claude-opus-5-5": 60
     },
     "byRole": {
       "editor": {
         "calls": 1,
-        "in": 14443,
+        "in": 84609,
         "read": 0,
-        "out": 1550,
-        "usd": 0.1465
-      },
-      "writer": {
-        "calls": 5,
-        "in": 64146,
-        "read": 34906,
-        "out": 29223,
-        "usd": 1.1046
+        "out": 2567,
+        "usd": 0.7282
       },
       "desk": {
-        "calls": 4,
-        "in": 40141,
-        "read": 38862,
-        "out": 23576,
-        "usd": 0.8004
+        "calls": 12,
+        "in": 90140,
+        "read": 103632,
+        "out": 53969,
+        "usd": 1.8212
+      },
+      "writer": {
+        "calls": 14,
+        "in": 152605,
+        "read": 103944,
+        "out": 52306,
+        "usd": 2.2877
       },
       "critic": {
-        "calls": 4,
-        "in": 49989,
-        "read": 8132,
-        "out": 12684,
-        "usd": 0.6552
+        "calls": 10,
+        "in": 117874,
+        "read": 32528,
+        "out": 34144,
+        "usd": 1.6322
       },
       "checker": {
-        "calls": 1,
-        "in": 10679,
+        "calls": 4,
+        "in": 24673,
         "read": 0,
-        "out": 11073,
-        "usd": 0.3069
+        "out": 21231,
+        "usd": 0.622
       },
       "vision": {
-        "calls": 6,
-        "in": 67728,
+        "calls": 19,
+        "in": 178594,
         "read": 0,
-        "out": 4620,
-        "usd": 0.6341
+        "out": 14933,
+        "usd": 1.7272
       }
     }
   },
   "log": [
-    "[21:17:33] newsroom start mode=analysis limit=4 dry-run=false",
-    "[21:17:50] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=780 in=14443 read=0 out=1550 attempt=1 ms=16097",
-    "[21:17:50] analysis theme: مصادر النقد الأجنبي لمصر بين تحويلات قياسية وعودة الملاحة وتخصيص أراضٍ لخفض الدين (Egypt's foreign-currency inflows: record remittances and returning Suez traffic alongside state land allocated to cut public debt); question: هل تكفي التحويلات القياسية وبوادر عودة الخطوط الملاحية إلى قناة السويس لتخفيف عبء الدين، أم أن تخصيص أراضي الدولة لخفضه يشير إلى أن هذه التدفقات لا تكفي وحدها؟",
-    "[21:17:50]   related: تحويلات المصريين بالخارج تبلغ مستوى قياسياً عند 13 مليار دولار بين يوليو وسبتمبر",
-    "[21:17:50]   related: «إيفر غرين» يستأنف العبور من قناة السويس بعد انقطاع نحو ثلاث سنوات",
-    "[21:17:50]   related: مصر توسّع أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر لتشمل خفض الدين",
-    "[21:19:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=7322 in=25919 read=0 out=10924 attempt=1 ms=96176",
-    "[21:20:03] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1161 in=19320 read=0 out=4827 attempt=1 ms=36379",
-    "[21:20:03] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
-    "[21:20:03] desk \"الحكومة المصرية تبحث عن أدوات لخفض الدين خارج التحويلات القياسية\": rewrote lede, body",
-    "[21:20:03] checks analysis \"الحكومة المصرية تبحث عن أدوات لخفض الدين خارج التحويلات القياسية\": 736 words, 0 issues, 2 warnings",
-    "[21:20:49] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2950 in=19135 read=0 out=4968 attempt=1 ms=45936",
-    "[21:20:49] critic analysis: revise score=7 issues=6",
-    "[21:20:49]   · ادعاء سببي غير وارد في المصادر بصيغة الخبر المؤكد: «دولارات المغتربين تدعم الاحتياطي والجنيه» في العنوان الفرعي، و«تعزز الاحتياطي» في الفقرة الأولى، والعنوان ال",
-    "[21:20:49]   · تحريف لقصة القناة (المصدر 2): «فيقتصر على خط واحد» و«أما بخط واحد معلن». رئيس الهيئة أوضح أن «الخدمات التي استعادتها القناة تتبع خطوطاً ملاحية كبرى»، والعنوان ا",
-    "[21:20:49]   · قراءة تتجاوز مقدماتها: «وأسباب «موديز» كلها من جانب الموازنة، والأرجح أن تحسين كلفة الاقتراض يمر عبر أدوات مثل الأرض أكثر من مروره عبر تحويلات المغتربين». الوكا",
-    "[21:20:49]   · تأكيد بلا سند في الخاتمة: «وفيها يتضح هل تتحول أرض البحر الأحمر إلى صكوك أم إلى عوائد». بحسب المصدر 3، الخطة تحدد «مهام كل وزارة وجهة حكومية في خفض الدين»، ولا ",
-    "[21:21:51] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3174 in=11255 read=17453 out=7414 attempt=1 ms=61624",
-    "[21:22:42] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2216 in=6824 read=12954 out=6691 attempt=1 ms=50607",
-    "[21:22:42] desk model=claude-cli/claude-opus-5-5 applied=[title,whyItMatters,body] rejected=[]",
-    "[21:22:42] desk \"أرض البحر الأحمر تفتح لمصر طريقاً إلى خفض الدين لا تبلغه التحويلات القياسية\": rewrote title, whyItMatters, body",
-    "[21:23:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3658 in=13572 read=8132 out=5880 attempt=1 ms=52454",
-    "[21:23:34] critic (second pass) analysis: revise score=8",
-    "[21:24:50] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4894 in=13411 read=17453 out=9174 attempt=1 ms=75532",
-    "[21:25:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1127 in=6896 read=12954 out=5141 attempt=1 ms=37483",
-    "[21:25:27] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[21:25:27] desk \"مصر تضيف خفض الدين إلى أغراض تخصيص 26.7 ألف فدان بالبحر الأحمر\": rewrote body",
-    "[21:25:27] last desk pass for 2 fault(s): نسبة النقل الحرفي من مصدر عربي مرتفعة (20%). أعد صياغة كل جم | العنوان يكرر عنوان خبر منشور («مصر توسّع أغراض تخصيص 26.7 أل",
-    "[21:26:20] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2536 in=7101 read=12954 out=6917 attempt=1 ms=52943",
-    "[21:26:20] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,whyItMatters,body] rejected=[]",
-    "[21:26:20] desk \"أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر\": rewrote title, subtitle, whyItMatters, body",
-    "[21:26:20] last desk pass: clean",
-    "[21:26:20] mended analysis \"أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر\": the second pass's 6 finding(s) sent back once more",
-    "[21:27:41] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2835 in=10679 read=0 out=11073 attempt=1 ms=80920",
-    "[21:27:41] precheck analysis \"أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر\": clean",
-    "[21:27:56] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1276 in=10565 read=0 out=1526 attempt=1 ms=15076",
-    "[21:27:56] image: the picture should say: Egypt is turning state land on the Red Sea into an asset to pay down its public debt.",
-    "[21:27:56] image: tier 3, the writer's own subjects: Red Sea coast Egypt desert land | Egyptian Ministry of Finance | Suez Canal container ship",
-    "[21:27:57] commons \"Red Sea coast Egypt desert land 2026\": 0 usable of 2",
-    "[21:27:57] commons \"Red Sea coast Egypt desert land\": 5 usable of 12",
-    "[21:27:57] image: dropped \"The pictorial history of Palestine and the Holy land including a compl\" — names too little of coast, desert, land",
-    "[21:27:57] image: dropped \"Dust over Persian Gulf (MODIS 2020-07-05).jpg\" — names too little of coast, desert, land",
-    "[21:27:57] image: dropped \"The romance of plant life, interesting descriptions of the strange and\" — names too little of coast, desert, land",
-    "[21:27:57] image: dropped \"Nile River (MODIS 2022-09-06).jpg\" — names too little of coast, desert, land",
-    "[21:27:58] commons \"Egyptian Ministry of Finance 2026\": 0 usable of 0",
-    "[21:27:58] commons \"Egyptian Ministry of Finance\": 4 usable of 12",
-    "[21:27:58] image: dropped \"Legend- Atlas of Egypt (IA dr legend-atlas-of-egypt-10285009).jpg\" — names too little of egyptian, ministry, finance",
-    "[21:27:58] image: dropped \"Legend- Atlas of Egypt (IA dr legend-atlas-of-egypt-10285095).jpg\" — names too little of egyptian, ministry, finance",
-    "[21:27:58] image: dropped \"Legend- Atlas of Egypt (in Arabic) (IA dr legend-atlas-of-egypt-in-ara\" — names too little of egyptian, ministry, finance",
-    "[21:27:59] commons \"Suez Canal container ship 2026\": 0 usable of 0",
-    "[21:27:59] commons \"Suez Canal container ship\": 6 usable of 12",
-    "[21:28:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=219 in=10431 read=0 out=439 attempt=1 ms=6262",
-    "[21:28:06] image: vision rejected all candidates (None fits. The story is about the state's own accounts: Red Sea land being used to cut Egypt's public debt. Candidates 1-3 show the Suez Canal and container ships, which the story mentions only in passing. The two Ever Given images are 2021 satellite views of a past incident, and candidate 3 is a dated 2009 amateur frame dominated by the EVERGREEN name. Candidate 4 is a square satellite view of El Gouna, a privately developed resort, not the allocated state plot, so it would mislead. No Egyptian money or finance minister is on offer.)",
-    "[21:28:06] image: tier 4, the story's point and its subject: Egyptian pound notes | Red Sea desert coast Egypt | counting Egyptian pounds | Egyptian pounds | Red Sea coast Egypt (home: Egypt, Egyptian, Cairo, Red Sea Governorate)",
-    "[21:28:06] pexels \"Red Sea coast Egypt\": 8 usable",
-    "[21:28:06] pexels \"counting Egyptian pounds\": 8 usable",
-    "[21:28:06] pexels \"Egyptian pounds\": 8 usable",
-    "[21:28:06] pexels \"Egyptian pound notes\": 8 usable",
-    "[21:28:06] pexels \"Red Sea desert coast Egypt\": 8 usable",
-    "[21:28:06] commons \"Egyptian pound notes\": 2 usable of 24",
-    "[21:28:06] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:28:13] openverse \"counting Egyptian pounds\": 0 usable of 0",
-    "[21:28:14] openverse \"Red Sea desert coast Egypt\": HTTP 504",
-    "[21:28:14] openverse \"Egyptian pound notes\": HTTP 504",
-    "[21:28:14] image: dropped \"Close-up of various British pound coins and banknotes displaying Queen\" — shows elizabeth, elizabeth, not the story's people",
-    "[21:28:15] commons \"Red Sea desert coast Egypt\": 15 usable of 24",
-    "[21:28:15] image: dropped \"ISS006-E-43911 - View of Egypt.jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Man upon the sea - or, a history of maritime adventure, exploration, a\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Travels in the Upper Egyptian deserts (1913) (14756484236).jpg\" — dated 1913, an archival picture",
-    "[21:28:15] image: dropped \"ISS024-E-8184 - View of Egypt.jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"ISS024-E-8183 - View of Egypt.jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Dust over Persian Gulf (MODIS 2020-07-05).jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Every day in prison was an opportunity - Free Alaa Abd El-Fattah.jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Alaa is disappearing -1.jpg\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"White boat sailing on the Red Sea under a clear blue sky with mountain\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"Aquascope submarine navigating the clear waters of the Red Sea with Eg\" — a warship or weapon, and the story is not about the military",
-    "[21:28:15] image: dropped \"Enjoy the stunning view of the Sinai mountains and Red Sea in Dahab du\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"A panoramic aerial view of the Sharm El Sheikh coastline and surroundi\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[21:28:15] image: dropped \"Tourists enjoy camel riding with stunning mountain views in Dahab, Egy\" — names too little of desert, coast",
-    "[21:28:15] image: dropped \"A tranquil scene of a boat against the mountain backdrop in Dahab duri\" — names too little of desert, coast",
-    "[21:28:15] commons \"counting Egyptian pounds\": 4 usable of 7",
-    "[21:28:15] image: dropped \"American bee journal (1918) (17928763999).jpg\" — names too little of counting, pounds",
-    "[21:28:15] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
-    "[21:28:15] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
-    "[21:28:15] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
-    "[21:28:21] openverse \"Egyptian pounds\": HTTP 504",
-    "[21:28:21] openverse: 3 failures in a row; left alone for 10 minutes",
-    "[21:28:21] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
-    "[21:28:22] commons \"Egyptian pounds\": 5 usable of 24",
-    "[21:28:22] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:28:22] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:28:22] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:28:22] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of pounds",
-    "[21:28:22] commons \"Red Sea coast Egypt\": 22 usable of 24",
-    "[21:28:34] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=805 in=11904 read=0 out=1044 attempt=1 ms=11739",
-    "[21:28:34] image: \"Wüstenlandschaft im Gouvernement al-Bahr al-ahmar.jpg\" names the story's topic without saying its point (The story's own asset is state desert land in Red Sea governorate, and this file places its frame there, near Marsa Alam. It is an amateur 2012 compact-camera s); checked now and kept in reserve while the desk looks further",
-    "[21:28:47] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1113 in=8682 read=0 out=1196 attempt=1 ms=12733",
-    "[21:28:47] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Wüstenlandschaft im Gouvernement al-Bahr al-ahmar.jpg\": Red Sea desert land fits the headline, but this is a washed-out, grainy, hazy dusk snapshot from a 2012 compact camera t",
-    "[21:28:47] image: \"Wüstenlandschaft im Gouvernement al-Bahr al-ahmar.jpg\" is not held back: an amateur snapshot that only names the story's topic",
-    "[21:29:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1435 in=12508 read=0 out=1689 attempt=1 ms=17193",
-    "[21:29:15] image: \"Sinai red sea.jpg\" names the story's topic without saying its point (The rest are ruled out. Photos 1 and 2 show British pounds, the wrong country. Photo 3 is a flat scan of an Egyptian note with a 'Specimen' overlay. Photo 5 is ); checked now and kept in reserve while the desk looks further",
-    "[21:29:22] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=524 in=8600 read=0 out=640 attempt=1 ms=7229",
-    "[21:29:22] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Sinai red sea.jpg\": The frame is a random Sinai coastline, not the allocated Red Sea governorate plot, under a public-debt story that needs ",
-    "[21:29:25] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=140 in=2996 read=0 out=185 attempt=1 ms=2924",
-    "[21:29:25] image: last resort: Egyptian pound banknotes Egypt | Egyptian pound banknotes | Egyptian pound banknotes industrial",
-    "[21:29:26] commons \"Egyptian pound banknotes Egypt\": 5 usable of 24",
-    "[21:29:26] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:26] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:26] image: dropped \"Egypt 1 pound obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:27] commons \"Egyptian pound banknotes\": 4 usable of 24",
-    "[21:29:27] commons \"Egyptian pound banknotes industrial\": 0 usable of 0",
-    "[21:29:28] commons \"Egyptian pound\": 9 usable of 24",
-    "[21:29:28] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:28] image: dropped \"Egyptian Geese by Thousand Pound Pond, Kenwood, Hampstead, London NW3 \" — taken in United Kingdom, which the story does not name",
-    "[21:29:28] image: dropped \"Egyptian Goose by Thousand Pound Pond, Kenwood, Hampstead, London NW3 \" — taken in United Kingdom, which the story does not name",
-    "[21:29:31] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=64 in=10864 read=0 out=172 attempt=1 ms=3134",
-    "[21:29:31] image: vision rejected all candidates (fallback pass) (None fits. 1 is a flat scan of a banknote's face, which is refused. 2 is a chart. 3 is an amateur flash close-up of a coin, below publication standard. None shows the Red Sea land or the debt story, so it runs as text.)",
-    "[21:29:31] image: last pass, a neutral illustration: Egyptian pound notes | desert coast | counting Egyptian pounds | Egyptian pounds",
-    "[21:29:31] commons \"Egyptian pound notes\": 2 usable of 24",
-    "[21:29:31] image: dropped \"One Egyptian pound note.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:31] pexels \"counting Egyptian pounds\": 8 usable",
-    "[21:29:31] pexels \"Egyptian pound notes\": 8 usable",
-    "[21:29:31] image: dropped \"Close-up of various British pound coins and banknotes displaying Queen\" — shows elizabeth, elizabeth, not the story's people",
-    "[21:29:31] pexels \"Egyptian pounds\": 8 usable",
-    "[21:29:31] pexels \"desert coast\": 8 usable",
-    "[21:29:32] commons \"desert coast\": 16 usable of 24",
-    "[21:29:32] image: dropped \"Operation Desert Storm - U.S. Coast Guard Port Security Unit 302 crew \" — a warship or weapon, and the story is not about the military",
-    "[21:29:32] image: dropped \"A stunning coastal landscape of a rocky desert beach meeting the ocean\" — an event's photograph, people and banners",
-    "[21:29:32] image: dropped \"Stunning view of desert sand dunes meeting the sea under a sunset sky.\" — an event's photograph, people and banners",
-    "[21:29:32] image: dropped \"Stunning aerial photo of an eroded coastline meeting vibrant turquoise\" — an event's photograph, people and banners",
-    "[21:29:32] image: dropped \"Breathtaking sunset view of San Carlos, Mexico with serene sea and hil\" — names too little of desert, coast",
-    "[21:29:32] image: dropped \"Golden desert dunes meeting the blue sea under a clear sky, capturing \" — an event's photograph, people and banners",
-    "[21:29:32] commons \"counting Egyptian pounds\": 4 usable of 7",
-    "[21:29:32] image: dropped \"American bee journal (1918) (17928763999).jpg\" — dated 1918, an archival picture",
-    "[21:29:32] image: dropped \"Allen's catalogue for 1906 - choice strawberry plants and hundreds of \" — names too little of counting, pounds",
-    "[21:29:32] image: dropped \"A collection of voyages and travels- consisting of authentic writers i\" — names too little of counting, pounds",
-    "[21:29:32] image: dropped \"Spring 1897 (1897) (20525382086).jpg\" — names too little of counting, pounds",
-    "[21:29:32] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of counting, pounds",
-    "[21:29:32] commons \"Egyptian pounds\": 5 usable of 24",
-    "[21:29:32] image: dropped \"Obverse of Egyptian 20 piastres.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:32] image: dropped \"EGP 100 Pounds 2009 (Back).jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:32] image: dropped \"1 Egyptian Pound Backside.jpg\" — a scan of a note's or a coin's face, not a photograph",
-    "[21:29:32] image: dropped \"A close-up view of various British coins and banknotes, representing c\" — names too little of pounds",
-    "[21:29:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=105 in=11189 read=0 out=248 attempt=1 ms=4170",
-    "[21:29:37] image: vision rejected all candidates (fallback pass) (None fits. Photos 1 and 2 show British pounds, the wrong currency for Egypt's public debt. Photo 3 is a flat scan of an Egyptian note with a 'Specimen' overlay, not money photographed as money. Photos 4 to 6 show Maine's forested coast, which contradicts the dry Red Sea land the story is about.)",
-    "[21:29:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=841 in=10832 read=0 out=1028 attempt=1 ms=11792",
-    "[21:29:49] image: vision rejected all candidates (fallback pass) (None fits. This is a public-debt story, so it needs Egyptian pounds handled as money or the finance minister. Photos 1 and 5 show British notes with the Queen, the wrong currency. Photo 3 is a chart. Photo 2 is a resort-town panorama, which reads as a cityscape or tourism shot rather than state land as a debt asset. Photo 4 is a picturesque surf-beaten coastline that reads as travel scenery and does not match the calm Red Sea.)",
-    "[21:29:49] published analysis \"أرض البحر الأحمر قد تخفض دين مصر بطريقين مختلفين في الأثر\" -> egypt-remittances-suez-land-debt-tools-6aa2b6"
+    "[02:43:28] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=570 in=8064 read=0 out=667 attempt=1 ms=7718",
+    "[02:43:28] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Rear view of a large tanker truck transporting fuel on a hig\": The tanker fits the story, but the legible Italian «VEICOLO LUNGO» plates on its rear mark it as a European highway scen",
+    "[02:43:28] published \"رئيس الوزراء العراقي يأمر بالتحقيق في تهريب مشتقات نفطية من جرف الصخر\" -> iraq-probe-oil-products-smuggling-jurf-al-sakhar-c7af31",
+    "[02:43:30] evidence dunya: http-403",
+    "[02:43:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1171 in=8590 read=0 out=2321 attempt=1 ms=21686",
+    "[02:43:52] desk notes: 10 facts (? 1, news 4, driver 1, numbers 4), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[02:43:52] short story: \"المركزي التركي يرفع سقف نمو القروض الاستهلاكية إلى 3.5% كل ثمانية أسابيع\" has 10 substantive facts (remarks not counted), fewer than 12 (1 of 7 short stories in 24 hours)",
+    "[02:44:15] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1525 in=6965 read=17324 out=2353 attempt=1 ms=22429",
+    "[02:44:34] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1066 in=3330 read=12954 out=2165 attempt=1 ms=18849",
+    "[02:44:34] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,body] rejected=[]",
+    "[02:44:34] desk \"المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%\": rewrote title, subtitle, lede, body",
+    "[02:45:00] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1578 in=7142 read=8132 out=2664 attempt=1 ms=26558",
+    "[02:45:00] critic \"المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%\": publish score=9 issues=0",
+    "[02:45:19] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=883 in=4111 read=0 out=2314 attempt=1 ms=18916",
+    "[02:45:22] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=104 in=3196 read=0 out=143 attempt=1 ms=3119",
+    "[02:45:22] precheck: 1 sentence(s) no source bears on, all kept (definition)",
+    "[02:45:22] precheck \"المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%\": clean",
+    "[02:45:38] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1193 in=9248 read=0 out=1503 attempt=1 ms=15554",
+    "[02:45:38] image: the picture should say: Turkey's central bank loosens its grip on credit, letting more lira flow to households buying cars and to businesses.",
+    "[02:45:38] image: tier 1, the story's own place (none named): no search; categories: Banknotes of Turkey | Turkish lira",
+    "[02:45:39] commons Category:Banknotes of Turkey: 23 usable of 48",
+    "[02:45:39] image: dropped \"5 Turkish Liras (1927).jpg\" — dated 1927, an archival picture",
+    "[02:45:39] image: dropped \"5+TL E9 T5 arkayuz ORNEKTIR+GECMEZ.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:45:40] commons Category:Turkish lira: 0 usable of 5",
+    "[02:45:46] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=196 in=8985 read=0 out=353 attempt=1 ms=4748",
+    "[02:45:46] image: vision rejected all candidates (All six are flat amateur scans of single Turkish banknotes. Three are obsolete pre-2005 notes with an archival look. The other three carry portraits of named figures who are not the story's people (Cahit Arf, Mimar Kemaleddin, Aydın Sayılı). None shows lending, borrowers or the central bank, so none says the credit-loosening story; run without and let the fallback search.)",
+    "[02:45:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=77 in=7943 read=0 out=213 attempt=1 ms=3738",
+    "[02:45:50] image: vision rejected all candidates (Both candidates are flat scans of worn, pre-2005 old Turkish lira notes (10,000 and 20,000 lira) that are no longer in circulation. They look archival and amateur, and they would mislead readers next to a story about today's lira credit caps. Neither shows lending, borrowers, car buyers or the central bank at work.)",
+    "[02:45:58] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=356 in=3734 read=0 out=524 attempt=1 ms=6424",
+    "[02:45:58] image: the sources' photographs give no brief (1: not a news photo; 2: The gilded TCMB logo and the name of the Central Bank of the)",
+    "[02:45:58] image: tier 3, the writer's own subjects: Istanbul bank customers | Turkish lira banknotes | car dealership Turkey",
+    "[02:45:59] commons \"Istanbul bank customers 2026\": 0 usable of 0",
+    "[02:45:59] commons \"Istanbul bank customers\": 0 usable of 0",
+    "[02:46:00] commons \"Istanbul bank\": 3 usable of 12",
+    "[02:46:00] image: dropped \"Ottoman Bank Beyoğlu Branch, Istanbul (12339044663).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[02:46:00] image: dropped \"Istanbul RBS Head Office.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[02:46:01] commons \"Turkish lira banknotes 2026\": 0 usable of 0",
+    "[02:46:01] commons \"Turkish lira banknotes\": 7 usable of 12",
+    "[02:46:01] image: dropped \"50 Türk Lirası reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:46:01] image: dropped \"1.000.000 Old Turkish Lira, 1995.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:46:01] image: dropped \"50 Türk Lirası front.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:46:02] commons \"car dealership Turkey 2026\": 1 usable of 1",
+    "[02:46:03] commons \"car dealership Turkey\": 6 usable of 8",
+    "[02:46:03] image: dropped \"CBP officers in Savannah recovered a 2023 Bentley and a 2022 Mercedes.\" — names too little of car, dealership",
+    "[02:46:03] image: dropped \"Evim ve arabam - panoramio.jpg\" — names too little of car, dealership",
+    "[02:46:03] image: dropped \"Arabam aliosman seçkin - panoramio.jpg\" — names too little of car, dealership",
+    "[02:46:03] image: dropped \"CBP officers in Savannah recovered a 2023 Bentley and a 2022 Mercedes.\" — names too little of car, dealership",
+    "[02:46:03] image: dropped \"A 2022 Ram truck recovered by CBP officers at Charleston seaport.jpg\" — names too little of car, dealership",
+    "[02:46:03] image: dropped \"Asiae Tabula sexta - Complectitur Arabam felicem & Carmaniam - (Ptolém\" — taken in France, which the story does not name",
+    "[02:46:03] image: dropped \"Asiae Tabula sexta - Complectitur Arabam felicem & Carmaniam - (Ptolém\" — taken in France, which the story does not name",
+    "[02:46:08] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=206 in=9045 read=0 out=375 attempt=1 ms=4950",
+    "[02:46:08] image: vision rejected all candidates (None fits. Photo 1 is the Istanbul Grill restaurant in Prestwich, England: the wrong country, a building front, with a Coral betting-shop sign. Photos 2-4 are amateur table-top close-ups of pre-2005 Turkish lira notes that are no longer in circulation. They look archival and would mislead under a 2026 credit-cap decision. They also show nothing of loans flowing to households or businesses.)",
+    "[02:46:08] image: tier 4, the story's point and its subject: Turkish lira notes in hand | car showroom Istanbul | shoppers in Istanbul | Turkish lira | car dealership Turkey | counting lira banknotes (home: Turkey, Türkiye, Turkish, Istanbul, Ankara)",
+    "[02:46:09] pexels \"counting lira banknotes\": 8 usable",
+    "[02:46:09] commons \"Turkish lira notes in hand\": 0 usable of 0",
+    "[02:46:09] pexels \"Turkish lira notes in hand\": 8 usable",
+    "[02:46:09] pexels \"Turkish lira\": 8 usable",
+    "[02:46:09] pexels \"shoppers in Istanbul\": 8 usable",
+    "[02:46:09] pexels \"car showroom Istanbul\": 8 usable",
+    "[02:46:09] pexels \"car dealership Turkey\": 8 usable",
+    "[02:46:09] commons \"Turkish lira notes hand\": 0 usable of 0",
+    "[02:46:10] commons \"Turkish lira\": 4 usable of 24",
+    "[02:46:10] image: dropped \"1.000.000 Old Turkish Lira, 1995.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:46:10] commons \"car showroom Istanbul\": 1 usable of 1",
+    "[02:46:10] image: dropped \"Vintage Pontiac and Buick parked in Ankara, Türkiye, in a striking bla\" — names too little of car, showroom",
+    "[02:46:12] commons \"shoppers in Istanbul\": 17 usable of 24",
+    "[02:46:12] image: dropped \"Istanbul photos by J.Lubbock 2015 464.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul photos by J.Lubbock 2014 234.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Food shop, Istanbul, July 2018 - 2.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul Airport ISL shopping 3.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul photos by J.Lubbock 2015 763.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Shop in Istanbul city.JPG\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Tepe Nautilus, Istanbul (P1180133).jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul - Büyükada1.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul - Büyükada.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul Airport ISL shopping.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul Airport Shopping area.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Istanbul photos by J.Lubbock 2014 208.jpg\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Busy shopping scene at an indoor bazaar in Istanbul with people browsi\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"A bustling souvenir shop in Istanbul's street market capturing local c\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Vibrant scene inside the Grand Bazaar, filled with shops and people ex\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"A lively street market scene in Istanbul, capturing diverse people and\" — names too little of shoppers",
+    "[02:46:12] image: dropped \"Crowd of people in outerwear wearing medical masks strolling on walkwa\" — names too little of shoppers",
+    "[02:46:12] commons \"Turkish lira\": 4 usable of 24",
+    "[02:46:12] image: dropped \"A vibrant display of Turkish coins alongside a traditional tea cup in \" — names too little of lira",
+    "[02:46:12] image: dropped \"A street vendor sells fresh corn at sunset in a busy market setting.\" — names too little of lira",
+    "[02:46:12] image: dropped \"A street vendor in Istanbul, Turkey, selling simit in a busy urban set\" — names too little of lira",
+    "[02:46:12] image: dropped \"An elderly man with a flat cap exchanging money at Ankara's bustling m\" — names too little of lira",
+    "[02:46:12] commons \"car dealership Turkey\": 6 usable of 8",
+    "[02:46:12] image: dropped \"Evim ve arabam - panoramio.jpg\" — names too little of car, dealership",
+    "[02:46:12] image: dropped \"Arabam aliosman seçkin - panoramio.jpg\" — names too little of car, dealership",
+    "[02:46:12] image: dropped \"CBP officers in Savannah recovered a 2023 Bentley and a 2022 Mercedes.\" — names too little of car, dealership",
+    "[02:46:12] image: dropped \"A 2022 Ram truck recovered by CBP officers at Charleston seaport.jpg\" — names too little of car, dealership",
+    "[02:46:12] commons \"counting lira banknotes\": 0 usable of 0",
+    "[02:46:18] commons \"counting lira\": 4 usable of 24",
+    "[02:46:18] image: dropped \"Asiae Tabula sexta - Complectitur Arabam felicem & Carmaniam - (Ptolém\" — taken in France, which the story does not name",
+    "[02:46:18] image: dropped \"Asiae Tabula sexta - Complectitur Arabam felicem & Carmaniam - (Ptolém\" — taken in France, which the story does not name",
+    "[02:46:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=685 in=9999 read=0 out=856 attempt=1 ms=8831",
+    "[02:46:28] image: vision rejected all candidates (fallback pass) (None fits. The Spice Bazaar shots (1, 6) show a tourist bazaar, and 1 is also black-and-white. Candidates 2, 3 and 5 make lira coins the subject: a studio stock shot, a scan and a tabletop snapshot. The Istanbul car showroom (4) touches on auto loans, but it is an amateur building-front shot and its most legible element is the Nissan sign, a brand the story never names.)",
+    "[02:46:46] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1369 in=9653 read=0 out=1580 attempt=1 ms=17349",
+    "[02:46:46] image: \"Sleek luxury cars showcased in a stylish, modern automotive \" names the story's topic without saying its point (None of the photos shows lira or the central bank. The tenge (3) and Italian lire (6) are the wrong currencies. The couple (2) and the handshake (5) are staged ); checked now and kept in reserve while the desk looks further",
+    "[02:46:56] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=745 in=7226 read=0 out=850 attempt=1 ms=9816",
+    "[02:46:56] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Sleek luxury cars showcased in a stylish, modern automotive \": An unidentified luxury car showroom shows car retail, one loan type named only in the lede, while the story is a broader",
+    "[02:46:56] image: the story's people first: Fatih Karahan 2026 | Fatih Karahan | فاتح كاراهان",
+    "[02:46:57] commons \"Fatih Karahan 2026\": 0 usable of 0",
+    "[02:46:57] commons \"Fatih Karahan\": 0 usable of 0",
+    "[02:46:57] commons \"Fatih Karahan\": 0 usable of 0",
+    "[02:46:58] commons \"فاتح كاراهان\": 0 usable of 0",
+    "[02:46:58] image: no photograph of the story's people",
+    "[02:47:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=479 in=1663 read=0 out=538 attempt=1 ms=6090",
+    "[02:47:04] image: last resort: the headline is not Central Bank of the Republic of Turkey's own decision on rates or its currency, so its building is not searched",
+    "[02:47:04] image: last resort: Turkish lira banknotes Turkey | Turkish lira banknotes | Turkish lira banknotes industrial",
+    "[02:47:04] commons \"Turkish lira banknotes Turkey\": 10 usable of 24",
+    "[02:47:04] image: dropped \"1.000.000 Old Turkish Lira, 1995.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:04] image: dropped \"50 Türk Lirası reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:04] image: dropped \"50 Türk Lirası front.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:04] image: dropped \"5 Turkish Liras (1927).jpg\" — dated 1927, an archival picture",
+    "[02:47:04] image: dropped \"Turkish lira.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:04] image: dropped \"An “Ottomanist” banknote (12965961093).jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:05] commons \"Turkish lira banknotes\": 11 usable of 24",
+    "[02:47:05] image: dropped \"100.000 türkische Lira - Vorderseite.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:05] commons \"Turkish lira banknotes industrial\": 0 usable of 0",
+    "[02:47:05] commons \"Turkish lira\": 4 usable of 24",
+    "[02:47:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=227 in=10272 read=0 out=348 attempt=1 ms=5483",
+    "[02:47:11] image: vision rejected all candidates (fallback pass) (Every candidate is a flat close-up of a note's or coin's face, which the rules refuse. The notes are also defunct pre-2005 lira, misleading under a 2026 credit story. None shows lending, the central bank or credit flowing to households and businesses, so the story runs better without a picture.)",
+    "[02:47:11] image: last pass, a neutral illustration: Turkish lira notes in hand | car showroom | Turkish lira | car dealership | counting lira banknotes",
+    "[02:47:11] commons \"Turkish lira notes in hand\": 0 usable of 0",
+    "[02:47:11] commons \"Turkish lira notes hand\": 0 usable of 0",
+    "[02:47:11] commons \"Turkish lira\": 4 usable of 24",
+    "[02:47:11] image: dropped \"1.000.000 Old Turkish Lira, 1995.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[02:47:12] pexels \"counting lira banknotes\": 8 usable",
+    "[02:47:12] pexels \"car dealership\": 8 usable",
+    "[02:47:12] pexels \"Turkish lira\": 8 usable",
+    "[02:47:12] pexels \"car showroom\": 8 usable",
+    "[02:47:12] pexels \"Turkish lira notes in hand\": 8 usable",
+    "[02:47:12] commons \"car showroom\": 13 usable of 24",
+    "[02:47:12] image: dropped \"Exterior view of a car dealership featuring Suzuki automobiles under a\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[02:47:12] image: dropped \"A lineup of luxury supercars in a well-lit, modern automotive museum s\" — names too little of car, showroom",
+    "[02:47:12] commons \"Turkish lira\": 4 usable of 24",
+    "[02:47:12] image: dropped \"A street vendor sells fresh corn at sunset in a busy market setting.\" — names too little of lira",
+    "[02:47:12] image: dropped \"A street vendor in Istanbul, Turkey, selling simit in a busy urban set\" — names too little of lira",
+    "[02:47:12] image: dropped \"An elderly man with a flat cap exchanging money at Ankara's bustling m\" — names too little of lira",
+    "[02:47:13] commons \"car dealership\": 20 usable of 24",
+    "[02:47:13] commons \"counting lira banknotes\": 0 usable of 0",
+    "[02:47:13] commons \"counting lira\": 4 usable of 24",
+    "[02:47:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=409 in=9371 read=0 out=600 attempt=1 ms=6404",
+    "[02:47:20] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 shows luxury Lamborghinis, which reads as that brand and misstates ordinary consumer car loans. 2 and 5 are coins as the subject: a staged studio shot and a scan. 4 is a flat scan of an old note's face. 3 is an amateur shot of a UK car park with legible number plates. 6 is an amateur shot of a UK Škoda showroom whose logo and plates dominate the frame. None shows credit flowing to Turkish households or firms.)",
+    "[02:47:26] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=272 in=9596 read=0 out=466 attempt=1 ms=5533",
+    "[02:47:26] image: vision rejected all candidates (fallback pass) (None fits. 1 is a souvenir coin display with a flag and a 'Turkish coins' sign, which reads folkloric. 2 shows Kazakh tenge, the wrong currency. 3 is a Mercedes tail-light close-up that reads as that brand's picture. 4 is a single-coin close-up with Atatürk's portrait as its subject. 5 and 6 are distant amateur UK showroom shots dominated by MINI, Dacia and Renault branding, with UK plates and road signs.)",
+    "[02:47:26] published \"المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%\" -> turkey-central-bank-raises-loan-growth-caps-902a92"
   ]
 }
