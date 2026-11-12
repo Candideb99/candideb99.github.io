@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T14:07:35.545Z",
+  "updatedAt": "2026-11-12T16:52:31.955Z",
   "events": [
     {
       "date": "2021-01-27",
@@ -1162,18 +1162,6 @@
       "time": "11:00 UTC",
       "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
       "source": "boe"
-    },
-    {
-      "date": "2027-10-27",
-      "title": "قرار الفائدة: الاحتياطي الفيدرالي الأمريكي",
-      "short": "الفيدرالي: قرار الفائدة",
-      "org": "الاحتياطي الفيدرالي",
-      "kind": "rates",
-      "region": "الأمريكتان",
-      "note": "يليه مؤتمر صحفي؛ البنوك المركزية الخليجية المرتبطة بالدولار تتبعه عادة في اليوم نفسه",
-      "time": "18:00 UTC",
-      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-      "source": "fed"
     },
     {
       "date": "2027-10-28",
