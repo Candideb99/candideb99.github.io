@@ -31,9 +31,12 @@ import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
+import { applySettings, jobProgress, progressLines, runProgram, siteLight } from "./desk-lib.mjs";
 
 const root = process.cwd();
-const PORT = Number(process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
+// `--port=4777` on the command line comes first: a launcher that can pass arguments but no environment (the Browser
+// pane's .claude/launch.json) could not say which port it would open, and waited at 4777 while the desk took 7777.
+const PORT = Number(process.argv.find((a) => a.startsWith("--port="))?.slice(7) ?? process.env.KHAZENDAR_CONTROL_PORT ?? 7777);
 const SITE_FILE = path.join(root, "src", "data", "site.json");
 const ARTICLES = path.join(root, "content", "articles");
 const SEEN = path.join(root, "pipeline", "state", "seen.json");
@@ -172,28 +175,32 @@ async function configureCloudAccount(id, backup = "") {
  * the laptop through it). Answers stdout and stderr together, trimmed; a program that cannot start answers its error.
  */
 function exec(command, args) {
-  return new Promise((resolve) => {
-    const child = spawn(command, args, { cwd: root, shell: false, windowsHide: true });
-    let out = "";
-    child.stdout.on("data", (d) => (out += d));
-    child.stderr.on("data", (d) => (out += d));
-    child.on("error", (error) => resolve(`error: ${error.message}`));
-    child.on("close", () => resolve(out.trim()));
-  });
+  return run(command, args).then((r) => r.out);
+}
+/** The same, with whether the program succeeded, by its exit code and never by its words: { ok, out } (desk-lib.mjs). */
+const run = (command, args) => runProgram(command, args, root);
+/** Sets a repository variable; answers "" when GitHub took it, or what gh said when it did not. */
+async function setCloudVariable(name, value) {
+  const r = await run("gh", ["variable", "set", name, "--repo", REPO, `--body=${value}`]);
+  return r.ok ? "" : r.out.slice(0, 160) || "gh could not reach GitHub";
 }
 const porcelain = () => gitStatus(root);
 /** Kill a job and everything it spawned; `child.kill()` alone leaves node→shell→node grandchildren alive on Windows. */
 function killTree(child) {
-  if (!child) return;
+  if (!child?.pid) return;
   if (process.platform === "win32") spawnSync("taskkill", ["/PID", String(child.pid), "/T", "/F"], { windowsHide: true });
   else child.kill("SIGTERM");
 }
 
 // ----------------------------------------------------------------- the one job
-const job = { running: null, name: "", kind: "", log: [], startedAt: null, exitCode: null, finishedAt: null, stopped: false };
+const job = { running: null, name: "", kind: "", log: [], startedAt: null, exitCode: null, finishedAt: null, stopped: false, link: null };
+const PREVIEW_PORT = 4325;
 function pushLog(line) {
   job.log.push(line);
   if (job.log.length > 3000) job.log.shift();
+  // The local preview says where it listens once it is up: the desk shows that address as a link (until 2026-11-10
+  // «Preview locally first» started a build and nothing said where to look).
+  if (job.kind === "build" && line.replace(/\x1b\[[0-9;]*m/g, "").includes(`127.0.0.1:${PREVIEW_PORT}`)) job.link = `http://127.0.0.1:${PREVIEW_PORT}/`;
 }
 /**
  * Runs `steps`, [program, args] pairs, one after another and stops at the first that fails, as `a && b` did. No shell:
@@ -202,7 +209,7 @@ function pushLog(line) {
  */
 function runJob(name, kind, steps, opts = {}) {
   if (job.running) return false;
-  Object.assign(job, { name, kind, log: [], startedAt: Date.now(), exitCode: null, finishedAt: null, stopped: false });
+  Object.assign(job, { name, kind, log: [], startedAt: Date.now(), exitCode: null, finishedAt: null, stopped: false, link: null });
   const env = { ...loadEnv(), ...(opts.env ?? {}) };
   const step = (i) => {
     const [command, args] = steps[i];
@@ -232,21 +239,16 @@ function runJob(name, kind, steps, opts = {}) {
   step(0);
   return true;
 }
-/** The last log lines that mean something to an editor, not to a programmer. */
-function progressLines() {
-  const meaningful = job.log.filter((l) => /^(drafted|published|skip|desk|rejected|reading|fetched|selected|writing|critic|image|photo|candidates|stories|—)/i.test(l) || /"/.test(l));
-  return meaningful.slice(-4).map((l) => l.replace(/^\$ .*/, "").slice(0, 180));
-}
-/** "2 of 4 written · 1 refused" — counted from the run's own log lines, so it is never a guess. */
-function jobProgress() {
-  const written = job.log.filter((l) => /\] (drafted|published) "/.test(l)).length;
-  // Refused, held by the check before publication, failed, or left for the next run: each a story not written (until
-  // 2026-10-31 only "reject" and "skip" lines were counted, and the second-pass critic printed none).
-  const refused = job.log.filter((l) => /\] (?:reject|skip|held|story failed) /.test(l) || /\] run budget of .* waits for the next run/.test(l)).length;
-  // The run's own command line, not the job's first: since every job opens with the sync (2026-10-31) the first line
-  // is the pull, and "1 of 4 written" had become "1 written".
-  const m = job.log.find((l) => /^\$ .*--limit=\d+/.test(l))?.match(/--limit=(\d+)/);
-  return { written, refused, target: m ? Number(m[1]) : null };
+// What the running box shows of a job (its meaningful lines, «2 of 4 written»): scripts/desk-lib.mjs.
+/**
+ * How many of this copy's commits the cloud does not hold yet, by the last sync or push (the remote's own branch as this
+ * copy last saw it). A publish whose sync or push failed (no network, GitHub down) left its commit here: the story was
+ * no longer a draft, the desk listed it as live, and nothing offered to send it again (2026-11-10).
+ */
+const REMOTE_MAIN = "pages/main";
+async function unsent() {
+  const n = Number(await exec("git", ["rev-list", "--count", `${REMOTE_MAIN}..HEAD`]));
+  return Number.isInteger(n) ? n : 0;
 }
 
 // ------------------------------------------------------------------- articles
@@ -469,22 +471,65 @@ async function fetchLiveGeminiModels(apiKey) {
 }
 
 // --------------------------------------------------------------------- health
+/** How long a pushed story is given to appear on the live site before its absence counts (the host builds on every push). */
+const SETTLE_MS = 20 * 60 * 1000;
+/**
+ * Whether the live site carries the newest story the cloud holds: the newest story of this copy that is in the remote's
+ * branch and was committed long enough ago for the host to have built it, asked for at its own address. `ok` null: the
+ * site gave neither a page nor a plain "not found" (no network here, or the host is down). Null: no such story to ask for.
+ */
+async function liveSite() {
+  try {
+    const newest = (await allArticles()).filter((a) => !a.isDraft && a.slug).slice(0, 6);
+    for (const a of newest) {
+      const file = `content/articles/${a.file}`;
+      const at = Number(await exec("git", ["log", "-1", "--format=%ct", REMOTE_MAIN, "--", file])) * 1000;
+      if (!at || Date.now() - at < SETTLE_MS) continue;
+      // The remote must hold the story as it stands here: a cloud draft approved on this laptop and not yet sent is in
+      // the remote's branch as a draft, which the site never builds, and its absence would read as a site not updating.
+      if (!(await run("git", ["diff", "--quiet", REMOTE_MAIN, "--", file])).ok) continue;
+      const found = { slug: a.slug, title: a.title, checkedAt: new Date().toISOString() };
+      try {
+        const res = await fetch(`${LIVE}/articles/${a.slug}/`, { redirect: "follow", signal: AbortSignal.timeout(8000), headers: { "user-agent": "khazendar-control-room" } });
+        return { ...found, ok: res.status === 200 ? true : res.status === 404 ? false : null, status: res.status };
+      } catch {
+        return { ...found, ok: null };
+      }
+    }
+  } catch {
+    /* unknown */
+  }
+  return null;
+}
 async function health() {
-  const secrets = await exec("gh", ["secret", "list", "--repo", REPO]);
-  const vars = await exec("gh", ["variable", "list", "--repo", REPO]);
-  const ghOk = !/not logged|not recognized|command not found|could not|error/i.test(secrets);
+  // gh's exit code, not its words (run()): a signed-out gh used to pass for a signed-in one.
+  const listed = await run("gh", ["secret", "list", "--repo", REPO]);
+  const listedVars = await run("gh", ["variable", "list", "--repo", REPO]);
+  const ghOk = listed.ok && listedVars.ok;
+  const secrets = ghOk ? listed.out : "";
+  const vars = ghOk ? listedVars.out : "";
   const local = envFileKeys();
   let editorReal = null;
   let deploy = null;
   if (ghOk) {
     // Judged on the last deploy that finished: a deploy still running has no result yet, and the newest run alone had shown
     // "THE SITE IS NOT UPDATING" through each of the day's twenty-odd deploys; a cancelled one was replaced by a newer
-    // one (2026-10-31).
-    const d = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "deploy.yml", "-L", "8", "--json", "status,conclusion,createdAt,headSha,url"]);
+    // one (2026-10-31). This workflow publishes the GitHub Pages mirror; the live site is asked itself (liveSite()).
+    const d = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "deploy.yml", "-L", "8", "--json", "databaseId,status,conclusion,createdAt,headSha,url"]);
     try {
       const runs = JSON.parse(d);
       const r = runs.find((x) => x.status === "completed" && !["cancelled", "skipped"].includes(x.conclusion));
       if (r) deploy = { ok: r.conclusion === "success", when: r.createdAt, sha: (r.headSha ?? "").slice(0, 7), url: r.url, deploying: Boolean(runs[0] && runs[0].status !== "completed") };
+      // Which half failed: the site's build (ours to fix) or GitHub's own publish step, which can stall with a clean build.
+      if (r && !deploy.ok && r.databaseId) {
+        try {
+          const { jobs = [] } = JSON.parse(await exec("gh", ["run", "view", String(r.databaseId), "--repo", REPO, "--json", "jobs"]));
+          const build = jobs.find((j) => /build/i.test(j.name));
+          if (build) deploy.stage = build.conclusion === "success" ? "publish" : "build";
+        } catch {
+          /* the stage stays unnamed */
+        }
+      }
     } catch {
       /* none yet */
     }
@@ -575,6 +620,11 @@ async function health() {
 
   const active = providers[activeProvider] || providers.gemini;
   const activeKeySet = active.subscription || active.keySet || (active.id === "claude" && active.tokenSet);
+  // The chat runs Claude Code whenever it can, whatever writes the news (desk-chat.mjs), so its readiness is Claude
+  // Code's: until 2026-11-10 this line read the newsroom's provider, and said «needs an active key» of a working chat.
+  const chatMode = chatRoute(activeProvider, { cli: CLI, keys: local });
+  const chatReady = chatMode === "claude" ? Boolean(CLI && (local.CLAUDE_CODE_OAUTH_TOKEN || local.ANTHROPIC_API_KEY)) : Boolean(activeKeySet);
+  const site = await liveSite();
   const cloudActive = providers[cloudProvider] || providers.gemini;
   const activeCloudKeySet = cloudProvider === "codex" ? /KHAZENDAR_CODEX_AUTH_JSON/.test(secrets) && /KHAZENDAR_CODEX_STATE_KEY/.test(secrets) : cloudActive.cloudKeySet || (cloudActive.id === "claude" && cloudActive.cloudTokenSet);
 
@@ -591,6 +641,9 @@ async function health() {
     chatgptAccounts: accounts,
     chatgptPool: { local: readAccountStore().pool || { enabled: false }, cloud: { enabled: Boolean(cloudBackupId && cloudBackupId !== "none"), primary: cloudAccountId, backup: cloudBackupId } },
     cloud: {
+      // False when GitHub did not answer: everything below is then a default, not a reading, and the page says so
+      // (it had said «Publishes on its own» and «The daily editor: switched off» of a cloud it could not see).
+      known: ghOk,
       activeProvider: cloudProvider,
       newsroomModel: (vars.match(/KHAZENDAR_MODEL\s+(\S+)/) ?? [])[1] || cloudActive.model,
       editorOn: /KHAZENDAR_EDITOR\s+1/.test(vars),
@@ -617,7 +670,10 @@ async function health() {
     claudeEffort: claudeEffort(local),
     editorReal,
     deploy,
-    chatReady: activeKeySet,
+    site,
+    light: siteLight({ site, mirror: deploy }),
+    chatReady,
+    chatMode,
   };
 }
 
@@ -684,9 +740,18 @@ Answer in the language he wrote in, Arabic or English, in short plain sentences.
 // Also out of the chat's reach: the keys file, and the workflows, which run in the cloud with every key the site has.
 const BLOCKED_TOOLS = ["Bash(git commit:*)", "Bash(git push:*)", "Bash(git reset:*)", "Bash(git checkout:*)", "Bash(git restore:*)", "Bash(git clean:*)", "Bash(git stash:*)", "Bash(git rebase:*)", "Read(./.env)", "Read(./.env.*)", "Edit(./.github/workflows/**)"];
 // `before`: the working tree as the last message found it (desk-git.mjs snapshot()); `touched`: what that message changed.
-const chat = { running: null, sessionId: null, clients: new Set(), turns: [], before: null, touched: [] };
+const chat = { running: null, sessionId: null, clients: new Set(), turns: [], before: null, touched: [], stopped: false };
 function chatSend(event) {
   for (const res of chat.clients) res.write(`data: ${JSON.stringify(event)}\n\n`);
+}
+/**
+ * A message the chat cannot take: said in the thread, and the box is given back («idle»). Until 2026-11-10 the page
+ * unlocked its box only on a finished answer, so a refusal here, an answer that failed, or a Claude Code that stopped
+ * without one (Stop, a crash) left the box and Send disabled until the page was reloaded.
+ */
+function chatRefuse(text) {
+  chatSend({ t: "error", text });
+  chatSend({ t: "idle" });
 }
 async function startChat(message) {
   if (chat.running) return false;
@@ -696,30 +761,58 @@ async function startChat(message) {
   // Claude Code whenever it can run, whatever writes the news: nothing else here can change a file (desk-chat.mjs).
   if (chatRoute(activeProvider, { cli: CLI, keys }) === "claude") {
     if (!CLI) {
-      chatSend({ t: "error", text: "Claude Code is not installed on this machine, and only Claude Code can change the site's files." });
+      chatRefuse("Claude Code is not installed on this machine, and only Claude Code can change the site's files.");
       return true;
     }
     if (!keys.CLAUDE_CODE_OAUTH_TOKEN && !keys.ANTHROPIC_API_KEY) {
-      chatSend({ t: "error", text: "Claude is active but no key or token is saved. Open Settings and add one." });
+      chatRefuse("Claude is active but no key or token is saved. Open Settings and add one.");
       return true;
     }
     chat.before = await snapshot(root);
     chat.touched = [];
+    chat.stopped = false;
     chat.turns.push({ role: "you", text: message });
     chatSend({ t: "you", text: message });
     const args = [...CLI.slice(1), "-p", "--output-format", "stream-json", "--verbose", "--permission-mode", "acceptEdits", "--append-system-prompt", CHAT_RULES];
     // The chat runs Claude Code, so its model is a Claude model; "Default (same as newsroom)" is the newsroom's own (until
     // 2026-10-31 it passed none, and the CLI's own default answered; the menu also offered Gemini and GPT models it cannot run).
     args.push("--model", /^claude-/.test(keys.KHAZENDAR_CHAT_MODEL ?? "") ? keys.KHAZENDAR_CHAT_MODEL : keys.KHAZENDAR_CLAUDE_MODEL || "claude-opus-5-5");
+    // The conversation is resumed only once Claude Code has said it exists (every line it prints carries its session):
+    // an id kept from a run that never started made every later message resume a conversation that was not there.
     if (chat.sessionId) args.push("--resume", chat.sessionId);
-    else {
-      chat.sessionId = randomUUID();
-      args.push("--session-id", chat.sessionId);
-    }
+    else args.push("--session-id", randomUUID());
     args.push("--disallowed-tools", ...BLOCKED_TOOLS);
-    const child = spawn(CLI[0], args, { cwd: root, env: chatEnv(), windowsHide: true, shell: false });
+    let answered = false;
+    let lastSaid = "";
+    let ended = false;
+    // Once, however the run ends: a program that cannot start raises «error» and may raise «close» after it.
+    const finish = async (problem) => {
+      if (ended) return;
+      ended = true;
+      chat.running = null;
+      try {
+        if (problem) chatSend({ t: "error", text: problem });
+        chat.touched = await changedSince(root, chat.before);
+        chatSend({ t: "changes", changes: await siteChanges() });
+      } catch {
+        /* the list of changes is read again when the page next loads */
+      } finally {
+        chatSend({ t: "idle" });
+      }
+    };
+    let child;
+    try {
+      child = spawn(CLI[0], args, { cwd: root, env: chatEnv(), windowsHide: true, shell: false });
+    } catch (error) {
+      await finish(`Claude Code could not start: ${error.message}. Reinstall it, then restart the control room.`);
+      return true;
+    }
     chat.running = child;
     chatSend({ t: "busy" });
+    // A program that has gone since the desk started (an update replaces it) raises «error» with nobody listening, and
+    // Node then stops the whole control room, a running job with it (reproduced 2026-11-10).
+    child.on("error", (error) => finish(`Claude Code could not start: ${error.message}. Reinstall it, then restart the control room.`));
+    child.stdin.on("error", () => {});
     child.stdin.write(message);
     child.stdin.end();
     let buffer = "";
@@ -734,9 +827,11 @@ async function startChat(message) {
         } catch {
           continue;
         }
+        if (typeof ev.session_id === "string" && ev.session_id) chat.sessionId = ev.session_id;
         if (ev.type === "assistant") {
           for (const part of ev.message?.content ?? []) {
             if (part.type === "text" && part.text.trim()) {
+              lastSaid = part.text.trim();
               chat.turns.push({ role: "paper", text: part.text });
               chatSend({ t: "paper", text: part.text });
             }
@@ -746,18 +841,24 @@ async function startChat(message) {
             }
           }
         }
-        if (ev.type === "result") chatSend({ t: "done", text: ev.is_error ? "stopped with an error" : "done", seconds: Math.round((ev.duration_ms ?? 0) / 1000) });
+        if (ev.type === "result") {
+          answered = true;
+          // A run that ends in an error says why in its result (the plan's limit, a refused login), often with no answer
+          // before it: the thread showed «finished in 0s» and nothing else.
+          const why = ev.is_error ? String(ev.result ?? "").trim() : "";
+          if (ev.is_error && (!why || why !== lastSaid)) chatSend({ t: "error", text: (why || "Claude Code stopped with an error.").slice(0, 600) });
+          chatSend({ t: "done", ok: !ev.is_error, seconds: Math.round((ev.duration_ms ?? 0) / 1000) });
+        }
       }
     });
+    let complaint = "";
     child.stderr.on("data", (d) => {
       const text = String(d).trim();
-      if (text) chatSend({ t: "step", text: text.slice(0, 300) });
+      if (!text) return;
+      complaint = text.slice(-300);
+      chatSend({ t: "step", text: text.slice(0, 300) });
     });
-    child.on("close", async () => {
-      chat.running = null;
-      chat.touched = await changedSince(root, chat.before);
-      chatSend({ t: "changes", changes: await siteChanges() });
-    });
+    child.on("close", () => finish(answered ? "" : chat.stopped ? "Stopped." : `Claude Code stopped before it answered${complaint ? `: ${complaint}` : "."}`));
     return true;
   }
 
@@ -770,10 +871,13 @@ async function startChat(message) {
     : false;
 
   if (!hasKey) {
-    chatSend({ t: "error", text: `Active provider "${activeProvider}" has no API key saved yet. Open Settings and add the key to start.` });
+    chatRefuse(`Active provider "${activeProvider}" has no API key saved yet. Open Settings and add the key to start.`);
     return true;
   }
 
+  // Busy from here on, with no program to stop: a second message sent while this one was being answered used to start
+  // a second answer beside it, since nothing marked the chat as running.
+  chat.running = { answering: true };
   chat.before = await snapshot(root);
   chat.touched = [];
   chat.turns.push({ role: "you", text: message });
@@ -799,8 +903,13 @@ async function startChat(message) {
       chatSend({ t: "error", text: `${activeProvider} error: ${err.message}` });
     } finally {
       chat.running = null;
-      chat.touched = await changedSince(root, chat.before);
-      chatSend({ t: "changes", changes: await siteChanges() });
+      try {
+        chat.touched = await changedSince(root, chat.before);
+        chatSend({ t: "changes", changes: await siteChanges() });
+      } catch {
+        /* the list of changes is read again when the page next loads */
+      }
+      chatSend({ t: "idle" });
     }
   })();
 
@@ -881,7 +990,7 @@ h2 .n{font-size:12.5px;font-weight:600;color:var(--paper);background:var(--ink);
 .rail .foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);display:grid;gap:8px;font-size:13px}
 .rail .foot a{display:flex;align-items:center;gap:8px;color:var(--ink-2)}.rail .foot a svg{width:15px;height:15px}
 .light{display:flex;align-items:flex-start;gap:8px;color:var(--ink-2);line-height:1.35}.light i{flex:none;width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--rule)}
-.light.ok i{background:var(--green)}.light.no i{background:var(--red)}
+.light.ok i{background:var(--green)}.light.no i{background:var(--red)}.light.warn i{background:var(--amber)}
 /* content */
 main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%}
 .pane{display:none}.pane.on{display:block}
@@ -904,7 +1013,7 @@ main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%}
 .running details pre{background:var(--ink);color:#e6e2d8;padding:12px;max-height:280px;overflow:auto;margin-top:8px}
 .running summary{cursor:pointer;color:var(--green);font-size:13px}
 /* coverage */
-.cov{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--rule)}
+.cov{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--rule)}
 .cov > div{padding:12px 14px 14px 0;border-inline-end:1px solid var(--rule-2);margin-inline-end:14px}
 .cov > div:last-child{border:0;margin:0}
 .cov .s{font-family:var(--ar);font-size:18px;direction:rtl;text-align:left;line-height:1.2}
@@ -1034,7 +1143,12 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <div class="running" id="running" style="display:none">
     <div class="h">${ICON.spin}<span id="running-name">Working</span><span class="m" id="running-time"></span><span class="ok" id="running-count"></span><button class="danger sm" style="margin-inline-start:auto" onclick="stopJob()">Stop</button></div>
     <pre id="running-lines"></pre>
+    <p id="running-link" style="display:none;margin:0"></p>
     <details><summary>Show every line</summary><pre id="log"></pre></details>
+  </div>
+  <div class="running" id="unsent" style="display:none">
+    <div class="h"><span id="unsent-text"></span><button class="go sm" style="margin-inline-start:auto" onclick="sendWaiting()">Send to the site</button></div>
+    <span class="m">A publish that could not reach GitHub, or changes saved on this laptop and not sent yet. Until they are sent, readers do not have them; a change to the site's code is checked first.</span>
   </div>
 
   <p class="m" id="checks" style="margin:10px 0 0"></p>
@@ -1073,14 +1187,15 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 <!-- ================================ STORIES ================================ -->
 <section class="pane" id="pane-stories">
   <div class="bar">
-    <input type="text" id="f-q" placeholder="Search a headline…" oninput="renderLive()">
-    <select id="f-section" onchange="renderLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
-    <select id="f-kind" onchange="renderLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
-    <select id="f-month" onchange="renderLive()"><option value="">any month</option></select>
-    <select id="f-where" onchange="renderLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
+    <input type="text" id="f-q" placeholder="Search a headline…" oninput="filterLive()">
+    <select id="f-section" onchange="filterLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
+    <select id="f-kind" onchange="filterLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
+    <select id="f-month" onchange="filterLive()"><option value="">any month</option></select>
+    <select id="f-where" onchange="filterLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
     <span class="m" id="f-count"></span>
   </div>
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="live"></tbody></table>
+  <p id="f-more" style="display:none;margin:14px 0 0"><button class="quiet" onclick="showMore()">Show more</button> <span class="m" id="f-more-note"></span></p>
   <p class="m" style="margin-top:14px"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, a reading beside them, a second story, «الأخبار في سطور», the top stories, or its section page (and الأحدث). The section blocks lower on the front page are not shown here. Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p>
 </section>
 
@@ -1335,6 +1450,12 @@ var post=function(url,body){return fetch(url,{method:'POST',headers:{'content-ty
 var fmtWhen=function(iso){if(!iso)return '–';var d=new Date(iso);return d.toLocaleString([], {weekday:'short',hour:'2-digit',minute:'2-digit'})};
 var ago=function(iso){if(!iso)return 'never';var h=(Date.now()-Date.parse(iso))/36e5;if(h<1)return Math.round(h*60)+' min ago';if(h<48)return Math.round(h)+' h ago';return Math.round(h/24)+' days ago'};
 var utcToLocal=function(hhmm){if(!hhmm)return '';var p=hhmm.split(':');var d=new Date();d.setUTCHours(+p[0],+p[1],0,0);return d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})};
+// A story's own time, with its date once it is older than this week: the list had read «Tue 10:25 AM» for a story of two
+// weeks before, as for one of this morning.
+var fmtStory=function(iso){if(!iso)return '–';var d=new Date(iso);if(isNaN(d))return '–';var o=Date.now()-d.getTime()>6*864e5?{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}:{weekday:'short',hour:'2-digit',minute:'2-digit'};if(d.getFullYear()!==new Date().getFullYear())o.year='numeric';return d.toLocaleString([],o)};
+// A block's HTML is replaced only when it has changed. Every reading of the desk's state rebuilt the tables, so an open
+// actions menu or sources list snapped shut every twenty seconds, every three during a job.
+var setHtml=function(el,html){if(!el||el.__html===html)return;el.innerHTML=html;el.__html=html};
 
 // ---- navigation
 function show(tab){document.querySelectorAll('.rail a.nav').forEach(function(a){a.classList.toggle('on',a.dataset.tab===tab)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+tab)});if(tab==='chat')document.getElementById('msg').focus()}
@@ -1372,13 +1493,17 @@ function render(s){
   if (r) {
     r.style.display=s.job.running?'grid':'none';
     if(s.job.running){document.getElementById('running-name').textContent='Working: '+s.job.name;var secs=Math.round((Date.now()-s.job.startedAt)/1000);document.getElementById('running-time').textContent=Math.floor(secs/60)+'m '+(secs%60)+'s';var c=s.job.counts;document.getElementById('running-count').textContent=c&&s.job.kind==='news'?'· '+c.written+(c.target?' of '+c.target:'')+' written'+(c.refused?' · '+c.refused+' refused':''):'';document.getElementById('running-lines').textContent=s.job.progress.join('\\n')||'starting…';document.getElementById('log').textContent=s.job.log.join('\\n')}
-    else if(wasRunning){var lg=(s.job.log||[]).filter(function(l){return l&&!/^— finished/.test(l)&&!/^\\$ /.test(l)});var said=lg.filter(function(l){return /\\] (published|drafted|reject|skip|held|story failed|desk paused)/.test(l)}).slice(-4);var tail=(s.job.exitCode===0||said.length?said:lg.slice(-3)).map(function(l){return l.replace(/^\\[\\d\\d:\\d\\d:\\d\\d\\] /,'').slice(0,220)}).join(' · ');document.getElementById('auto-note').textContent=(s.job.exitCode===0?'Finished: ':'Stopped or failed: ')+s.job.name+'.'+(tail?' '+tail:'')}
+    else if(wasRunning){var lg=(s.job.log||[]).filter(function(l){return l&&!/^— finished/.test(l)&&!/^\\$ /.test(l)});var said=lg.filter(function(l){return /\\] (published|drafted|reject|skip|held|story failed|desk paused)/.test(l)}).slice(-4);var tail=(s.job.exitCode===0||said.length?said:lg.slice(-3)).map(function(l){return l.replace(/^\\[\\d\\d:\\d\\d:\\d\\d\\] /,'').slice(0,220)}).join(' · ');var note=document.getElementById('auto-note');note.className=s.job.exitCode===0?'m':'m no';note.textContent=(s.job.exitCode===0?'Finished: ':'Stopped or failed: ')+s.job.name+'.'+(tail?' '+tail:'')}
+    var rl=document.getElementById('running-link');
+    if(rl){rl.style.display=s.job.running&&s.job.link?'block':'none';setHtml(rl,s.job.link?'<a href="'+esc(link(s.job.link))+'" target="_blank"><b>Open the preview</b></a> <span class="m">· '+esc(s.job.link)+' · press Stop when you have looked</span>':'')}
   }
   wasRunning=Boolean(s.job.running);
+  var us=document.getElementById('unsent');
+  if(us){var un=s.unsent||0;us.style.display=un&&!s.job.running?'grid':'none';document.getElementById('unsent-text').textContent=un+' saved change'+(un===1?'':'s')+' on this laptop '+(un===1?'has':'have')+' not reached the site'}
   var ndEl = document.getElementById('n-drafts');
   if (ndEl) ndEl.textContent=s.drafts.length;
   var dEl = document.getElementById('drafts');
-  if (dEl) dEl.innerHTML=s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>';
+  setHtml(dEl,s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>');
   var daEl = document.getElementById('drafts-all');
   if (daEl) daEl.style.display=s.drafts.length>1?'block':'none';
   var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip|^held|^error|^deferred/.test(x.outcome||'')});
@@ -1387,7 +1512,10 @@ function render(s){
   var rjEl = document.getElementById('rejected');
   if (rjEl) rjEl.innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
   LIVE = s.live;
-  renderChecks(s);
+  // The Desk's own list, the ten newest (START_HERE.md): its table stood under «Latest on the site» with a header and no rows.
+  setHtml(document.getElementById('latest'),LIVE.slice(0,10).map(rowHtml).join(''));
+  // A fault in the checks' line must not take the story lists with it.
+  try{renderChecks(s)}catch(e){console.error('Checks render error:',e)}
   renderLive();
 }
 function renderChecks(s){
@@ -1414,11 +1542,18 @@ function renderLive(){
   var sec=document.getElementById('f-section').value,kind=document.getElementById('f-kind').value,month=document.getElementById('f-month').value,where=document.getElementById('f-where').value,q=document.getElementById('f-q').value.trim().toLowerCase();
   var rows=LIVE.filter(function(a){var front=a.where!=='section'&&a.where!=='hub';return (!sec||a.section===sec)&&(!kind||a.kind===kind)&&(!month||a.publishedAt.slice(0,7)===month)&&(!where||(where==='front'?front:!front))&&(!q||(a.title+' '+a.subtitle).toLowerCase().indexOf(q)>=0)});
   document.getElementById('f-count').textContent=rows.length===LIVE.length?LIVE.length+' stories':rows.length+' of '+LIVE.length;
-  document.getElementById('live').innerHTML=rows.slice(0,200).map(rowHtml).join('');
+  setHtml(document.getElementById('live'),rows.slice(0,SHOWN).map(rowHtml).join(''));
+  // The list stopped at 200 rows and said nothing: of 592 stories, 392 could be reached only by a search, and a month
+  // with more than 200 (October: 210) not even by its filter.
+  var left=rows.length-Math.min(rows.length,SHOWN),more=document.getElementById('f-more');
+  if(more){more.style.display=left>0?'block':'none';document.getElementById('f-more-note').textContent=left>0?'Showing the newest '+SHOWN+' of '+rows.length+': '+left+' older '+(left===1?'story is':'stories are')+' not listed yet.':''}
 }
+var SHOWN=200;
+function filterLive(){SHOWN=200;renderLive()}
+function showMore(){SHOWN+=200;renderLive()}
 function rowHtml(a){var front=a.where!=='section'&&a.where!=='hub';
     var writer=(a.models&&a.models.writer)?String(a.models.writer).split('→').pop().trim().split('/').pop():'';
-    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtWhen(a.publishedAt))+(a.featured?' · ★ featured':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div></td>'+
+    return '<tr><td class="t"><a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">'+esc(a.title)+'</a><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+esc(fmtStory(a.publishedAt))+(a.featured?' · ★ featured':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div></td>'+
       '<td><span class="chip'+(front?' front':'')+'">'+esc(WHERE[a.where]||a.where)+'</span></td><td>'+scoreTag(a.score)+'</td><td class="src">'+srcList(a.sources)+'</td>'+
       '<td><details class="menu"><summary aria-label="Actions">'+DOTS+'</summary><div class="pop">'+
       '<a href="'+LIVE_URL+'/articles/'+esc(a.slug)+'/" target="_blank">Open on the site</a>'+
@@ -1428,11 +1563,14 @@ document.addEventListener('click',function(e){document.querySelectorAll('details
 refresh();
 
 // ---- actions
-function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);refresh()})}
+function run(kind){var limit=document.getElementById('limit').value;var sec=kind==='news'?document.getElementById('newsSection').value:kind==='analysis'?document.getElementById('analysisSection').value:'';post('/run?kind='+kind+'&limit='+limit+(sec?'&sections='+sec:'')).then(function(r){return r.text()}).then(function(t){if(!/^started/.test(t))alert(t);else if(kind==='build')location.hash='desk';refresh()})}
 function stopJob(){post('/stop').then(refresh)}
+function sendWaiting(){post('/push').then(function(r){return r.text()}).then(function(t){if(!/^(Sending|Checking)/.test(t))alert(t);refresh()})}
+// A refusal is shown: a cloud draft discarded during a job is refused (409), and the draft had simply stayed.
+function discardSaid(t){if(t!=='discarded')alert(t)}
 function publish(file){post('/publish?file='+encodeURIComponent(file)).then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);closePreview();refresh()})}
 function publishAll(){if(!confirm('Publish every waiting story to the live site?'))return;post('/publish-all').then(function(r){return r.text()}).then(function(t){if(!/^Publishing/.test(t))alert(t);refresh()})}
-function discard(file,slug){if(!confirm('Throw this draft away? It will not come back on the next run.'))return;post('/discard?file='+encodeURIComponent(file)+'&slug='+encodeURIComponent(slug)).then(function(){closePreview();refresh()})}
+function discard(file,slug){if(!confirm('Throw this draft away? It will not come back on the next run.'))return;post('/discard?file='+encodeURIComponent(file)+'&slug='+encodeURIComponent(slug)).then(function(r){return r.text()}).then(function(t){discardSaid(t);closePreview();refresh()})}
 function unpublish(file,title){if(!confirm('Remove this story from the live site?\\n\\n'+title))return;post('/unpublish?file='+encodeURIComponent(file)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
 function feature(file,on){post('/feature?file='+encodeURIComponent(file)+'&on='+(on?1:0)).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
 function moveTo(file,section){post('/move?file='+encodeURIComponent(file)+'&section='+section).then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
@@ -1519,10 +1657,13 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   var curName = provNames[h.activeProvider] || h.activeProvider || 'Gemini';
   var curModel = (providers[h.activeProvider] && providers[h.activeProvider].model) || '';
 
-  var auto=document.getElementById('auto');if(auto){auto.className='auto'+((cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(PAUSED?'PAUSED — nothing is being written or published':cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';}
-  var an=document.getElementById('auto-note');if(an)an.innerHTML='Controlled by <b>'+esc(curName)+'</b> ('+esc(curModel)+')'+(h.activeProvider!=='claude'?' · Claude in idle mode':'');
+  // GitHub did not answer (no network, or gh signed out): the cloud's state is unknown, and is said to be. Until
+  // 2026-11-10 the desk then read «Publishes on its own» and «The daily editor: switched off» off its own defaults.
+  var known=cloud.known!==false;
+  var auto=document.getElementById('auto');if(auto){auto.className='auto'+((!known||cloud.review||PAUSED)?' off':'');auto.innerHTML='<i></i><span>'+(!known?'Cannot see the cloud: GitHub did not answer this laptop':PAUSED?'PAUSED — nothing is being written or published':cloud.review?'Waits for your approval':'Publishes on its own')+'</span>';}
+  var an=document.getElementById('auto-note');if(an){an.className='m';an.innerHTML='Controlled by <b>'+esc(curName)+'</b> ('+esc(curModel)+')'+(h.activeProvider!=='claude'?' · Claude in idle mode':'');}
 
-  var pb=document.getElementById('pauseBtn');if(pb){pb.style.display='inline-block';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';}
+  var pb=document.getElementById('pauseBtn');if(pb){pb.style.display=known?'inline-block':'none';pb.textContent=PAUSED?'Resume':'Pause everything';pb.className=PAUSED?'go sm':'danger sm';}
 
   var provSummary = [];
   for (var k in providers) {
@@ -1532,8 +1673,8 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   var nowEl=document.getElementById('now');
   if(nowEl)nowEl.innerHTML=
     '<p><b>This laptop:</b> '+esc(curName)+' ('+esc(curModel)+')</p>'+
-    '<p><b>Cloud controller:</b> '+esc(provNames[cloud.activeProvider]||cloud.activeProvider)+' ('+esc(cloud.newsroomModel)+')</p>'+
-    '<p><b>The cloud runs:</b> '+(PAUSED?'are <span class="no">paused</span>':cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
+    '<p><b>Cloud controller:</b> '+(known?esc(provNames[cloud.activeProvider]||cloud.activeProvider)+' ('+esc(cloud.newsroomModel)+')':'<span class="no">unknown: GitHub did not answer this laptop (check the network, or run gh auth login)</span>')+'</p>'+
+    '<p><b>The cloud runs:</b> '+(!known?'unknown':PAUSED?'are <span class="no">paused</span>':cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
     '<p><b>Providers Status:</b> '+provSummary.join(' · ')+'</p>';
 
   var pSel = document.getElementById('activeProvider');
@@ -1578,10 +1719,13 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   var ksAnt = document.getElementById('ks_ant');
   if (ksAnt) ksAnt.innerHTML = h.providers.claude.keySet ? '<span class="ok">Saved' + (h.providers.claude.cloudKeySet ? ' (laptop and GitHub)' : ' (laptop only)') + '</span>' : '<span class="m">Not set</span>';
 
-  var dl = document.getElementById('deploy-light');
-  if (dl && h.deploy) {
-    dl.className = 'light ' + (h.deploy.ok ? 'ok' : 'no');
-    dl.innerHTML = '<i></i><span>' + (h.deploy.ok ? 'Site deploy OK · ' + esc(fmtWhen(h.deploy.when)) : '<b>THE SITE IS NOT UPDATING</b> — last deploy failed. <a href="' + esc(h.deploy.url) + '" target="_blank">See why</a>') + (h.deploy.deploying ? ' · deploying now' : '') + '</span>';
+  // The live site itself decides the light; the GitHub Pages mirror's deploy is named for what it is (desk-lib.mjs
+  // siteLight()). With nothing to read, the light says so: it had stayed at «Checking the last deploy…» for good.
+  var dl = document.getElementById('deploy-light'), lt = h.light;
+  if (dl && lt) {
+    dl.className = 'light' + (lt.level === 'unknown' ? '' : ' ' + lt.level);
+    var checked = h.site && h.site.ok === true ? ' · checked ' + esc(fmtWhen(h.site.checkedAt)) : '';
+    dl.innerHTML = '<i></i><span>' + (lt.alarm ? '<b>' + esc(lt.text) + '</b>' : esc(checked ? lt.text.replace(/\\.$/, '') : lt.text)) + checked + (lt.url ? ' <a href="' + esc(link(lt.url)) + '" target="_blank">See the run</a>' : '') + (h.deploy && h.deploy.deploying ? ' · deploying now' : '') + '</span>';
   }
 
   var cm = document.getElementById('chatModel');
@@ -1599,11 +1743,12 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   if (rs) rs.value = cloud.review ? '1' : '0';
   var sw = document.getElementById('switches');
   if (sw) {
-    sw.innerHTML = (h.deploy ? dot(h.deploy.ok, 'The site\\\'s last deploy', h.deploy.ok ? 'succeeded · ' + fmtWhen(h.deploy.when) : 'FAILED — readers see an older edition') : '') +
-      dot(h.ghOk, 'This laptop can talk to GitHub', h.ghOk ? 'gh is signed in' : 'run: gh auth login') +
-      dot(cloud.editorOn && cloud.hasKey, 'The daily editor', !cloud.editorOn ? 'switched off' : cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
+    sw.innerHTML = (h.site ? dot(h.site.ok, 'The live site', h.site.ok ? 'carries the newest story' : h.site.ok === false ? 'does not carry the newest story yet: readers see an older edition' : 'did not answer this laptop') : '') +
+      (h.deploy ? dot(h.deploy.ok ? true : h.deploy.stage === 'publish' ? null : false, 'The GitHub Pages mirror: last deploy', h.deploy.ok ? 'succeeded · ' + esc(fmtWhen(h.deploy.when)) : h.deploy.stage === 'publish' ? 'the build passed and GitHub\\'s own publish step failed; the next deploy tries again' : h.deploy.stage === 'build' ? 'FAILED at the build' : 'failed') : '') +
+      dot(h.ghOk, 'This laptop can talk to GitHub', h.ghOk ? 'gh is signed in' : 'GitHub did not answer: check the network, or run gh auth login') +
+      dot(known ? cloud.editorOn && cloud.hasKey : null, 'The daily editor', !known ? 'unknown: GitHub did not answer' : !cloud.editorOn ? 'switched off' : cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
       (h.editorReal ? dot(h.editorReal.working, 'The daily editor is actually doing work', 'its last run took ' + h.editorReal.seconds + 's' + (h.editorReal.working ? '' : ' — a real round takes minutes')) : '') +
-      dot(h.chatReady, 'The "Change the site" tab', h.chatReady ? 'ready (' + esc(curName) + ')' : 'needs an active key');
+      dot(h.chatReady, 'The "Change the site" tab', h.chatReady ? (h.chatMode === 'claude' ? 'ready (Claude Code)' : 'answers questions only (' + esc(curName) + '): changing the site needs Claude Code with a Claude token') : h.chatMode === 'claude' ? 'needs Claude Code installed and a Claude token or key' : 'needs an active key');
   }
 }).catch(function(err){ console.error('Health fetch failed:', err); });}
 loadHealth();
@@ -1635,8 +1780,12 @@ var thread=document.getElementById('thread');
 function bubble(cls,text){var e=document.getElementById('thread-empty');if(e)e.remove();var d=document.createElement('div');d.className='bub '+cls+(rtl(text)?' rtl':'');d.textContent=text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight;return d}
 function step(text){var d=document.createElement('div');d.className='step';d.textContent='· '+text;thread.appendChild(d);thread.scrollTop=thread.scrollHeight}
 var busy=null;var ce=new EventSource('/chat/events?t='+TOKEN);
-ce.onmessage=function(e){var ev=JSON.parse(e.data);if(ev.t==='you')bubble('you',ev.text);if(ev.t==='paper'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='step')step(ev.text);if(ev.t==='busy')busy=bubble('paper','…');if(ev.t==='error'){if(busy){busy.remove();busy=null}bubble('paper',ev.text)}if(ev.t==='done'){if(busy){busy.remove();busy=null}document.getElementById('send').disabled=false;document.getElementById('msg').disabled=false;step('finished in '+ev.seconds+'s')}if(ev.t==='changes')renderChanges(ev.changes)};
-function ask(){var box=document.getElementById('msg');var text=box.value.trim();if(!text)return;box.value='';box.disabled=true;document.getElementById('send').disabled=true;post('/chat',{message:text}).then(function(r){if(!r.ok){r.text().then(alert);box.disabled=false;document.getElementById('send').disabled=false}})}
+// The box is locked while the chat works and given back when the desk says it is idle, however the work ended: an
+// answer, a refusal, an error, Stop. It was given back only on a finished answer, and stayed locked after anything else.
+function chatLock(on){document.getElementById('send').disabled=on;document.getElementById('msg').disabled=on}
+function chatQuiet(){if(busy){busy.remove();busy=null}}
+ce.onmessage=function(e){var ev=JSON.parse(e.data);if(ev.t==='you')bubble('you',ev.text);if(ev.t==='paper'){chatQuiet();bubble('paper',ev.text)}if(ev.t==='step')step(ev.text);if(ev.t==='busy'){chatQuiet();busy=bubble('paper','…');chatLock(true)}if(ev.t==='error'){chatQuiet();bubble('paper',ev.text)}if(ev.t==='done'){chatQuiet();step(ev.ok===false?'stopped with an error after '+ev.seconds+'s':'finished in '+ev.seconds+'s')}if(ev.t==='idle'){chatQuiet();chatLock(false);if(location.hash==='#chat')document.getElementById('msg').focus()}if(ev.t==='changes')renderChanges(ev.changes)};
+function ask(){var box=document.getElementById('msg');var text=box.value.trim();if(!text)return;box.value='';chatLock(true);post('/chat',{message:text}).then(function(r){if(!r.ok){r.text().then(alert);chatLock(false)}}).catch(function(e){alert('The control room did not answer: '+e.message);chatLock(false)})}
 document.getElementById('msg').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask()}});
 function renderChanges(c){var box=document.getElementById('changes');if(!c||!c.count){box.style.display='none';return}box.style.display='block';var seen={};c.files.forEach(function(f){var k=f.what+' — '+f.how;seen[k]=(seen[k]||0)+1});document.getElementById('changes-body').innerHTML='<ul>'+Object.keys(seen).map(function(k){return '<li>'+esc(k)+(seen[k]>1?' ('+seen[k]+' files)':'')+'</li>'}).join('')+'</ul>'}
 function publishChanges(){if(!confirm('Publish these site changes?'))return;post('/publish-changes').then(function(r){return r.text()}).then(function(t){alert(t);refresh()})}
@@ -1671,8 +1820,9 @@ function doorCheck(req, url) {
   if (!own.includes(req.headers.host ?? "")) return [403, "This is the Khazendar control room. Open it at its own address."];
   const origin = req.headers.origin;
   if (origin && !own.some((h) => origin === `http://${h}`)) return [403, "Refused: the request came from another website."];
-  // The page itself and its fonts open from anywhere (the launcher, a bookmark); everything else is asked by the page.
-  if (req.method === "GET" && (url.pathname === "/" || url.pathname.startsWith("/fonts/"))) return null;
+  // The page itself, its fonts and a draft's handout photograph (an <img> sends no token; the files are the site's own
+  // public ones) open from anywhere (the launcher, a bookmark); everything else is asked by the page.
+  if (req.method === "GET" && (url.pathname === "/" || url.pathname.startsWith("/fonts/") || url.pathname.startsWith("/photos/handouts/"))) return null;
   const site = req.headers["sec-fetch-site"];
   if (site && site !== "same-origin") return [403, "Refused: the request came from another website."];
   // An EventSource cannot send a header, so the chat's stream alone takes the token in its address.
@@ -1758,16 +1908,29 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname.startsWith("/fonts/")) {
       const file = path.join(FONTS, path.basename(url.pathname));
       if (!file.endsWith(".woff2") || !existsSync(file)) return text(404, "not found");
+      // Read first, answer after: a file that went between the two left the answer begun, and the 500 below then threw.
+      const bytes = await readFile(file);
       res.writeHead(200, { "content-type": "font/woff2", "cache-control": "public, max-age=604800" });
-      return res.end(await readFile(file));
+      return res.end(bytes);
+    }
+    // A handout photograph is kept on the site (public/photos/handouts), so a draft names it by the site's own path:
+    // asked of the desk, that path answered 401 and the draft's card and preview showed a broken picture (2026-11-10).
+    if (url.pathname.startsWith("/photos/handouts/") && req.method === "GET") {
+      const file = path.join(root, "public", "photos", "handouts", path.basename(url.pathname));
+      const type = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp" }[path.extname(file).toLowerCase()];
+      if (!type || !existsSync(file)) return text(404, "not found");
+      const bytes = await readFile(file);
+      res.writeHead(200, { "content-type": type });
+      return res.end(bytes);
     }
     if (url.pathname === "/api/state") {
       const arts = await allArticles();
       const live = placeOnFront(arts.filter((a) => !a.isDraft));
       return json({
-        job: { running: Boolean(job.running), name: job.name, kind: job.kind, startedAt: job.startedAt, exitCode: job.exitCode, finishedAt: job.finishedAt, progress: job.running ? progressLines() : [], counts: job.running ? jobProgress() : null, log: job.log.slice(-400) },
+        job: { running: Boolean(job.running), name: job.name, kind: job.kind, startedAt: job.startedAt, exitCode: job.exitCode, finishedAt: job.finishedAt, link: job.running ? job.link : null, progress: job.running ? progressLines(job.log) : [], counts: job.running ? jobProgress(job.log) : null, log: job.log.slice(-400) },
         drafts: arts.filter((a) => a.isDraft),
         live,
+        unsent: await unsent(),
         coverage: coverage(live),
         // Which models actually wrote the last 24 hours' stories — read from the articles themselves,
         // so it is true whatever the settings say.
@@ -1824,9 +1987,21 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === "/stop" && req.method === "POST") {
       job.stopped = true;
+      chat.stopped = true;
       killTree(job.running);
       killTree(chat.running);
       return text(200, "stopping");
+    }
+    // What a publish left here when its sync or push could not finish (unsent()): sent again, by the owner's button.
+    if (url.pathname === "/push" && req.method === "POST") {
+      if (job.running) return text(409, `Still busy with "${job.name}". Wait for it to finish first.`);
+      if (!(await unsent())) return text(200, "Nothing waits: the cloud holds everything this laptop has.");
+      // Stories and their state go as they are, as when they were published. Anything else among the waiting commits
+      // (the site's code, the newsroom's rules) passes the site's gate first, as the chat's changes do.
+      const waiting = (await exec("git", ["log", "--name-only", "--format=", `${REMOTE_MAIN}..HEAD`])).split(/\r?\n/).filter(Boolean);
+      const code = waiting.some((f) => !NEWSROOM_FILES.test(f) && f !== "src/data/site.json");
+      runJob("send this laptop's saved changes to the site", "publish", [...(code ? [["node", ["scripts/gate.mjs"]]] : []), ...PUSH]);
+      return text(200, code ? "Checking the site, then sending — about ten minutes." : "Sending — live in about a minute.");
     }
     if (url.pathname === "/publish" && req.method === "POST") {
       const file = path.basename(url.searchParams.get("file") ?? "");
@@ -1850,6 +2025,9 @@ const server = http.createServer(async (req, res) => {
       if (!file.endsWith(".md") || !existsSync(full)) return text(404, "not found");
       const status = await porcelain();
       const tracked = !(status.get(`content/articles/${file}`) ?? "").includes("?");
+      // A cloud draft's removal is a commit, and a commit waits its turn like every other: discarded during a job, the
+      // file went from this copy only, uncommitted, and the cloud kept the draft.
+      if (tracked && job.running) return text(409, `Still busy with "${job.name}". Discard this one when it finishes.`);
       // What the draft brought with it and nothing else holds: its evidence and a handout photograph, never committed.
       const extras = (await filesOf([file])).filter((f) => (status.get(f) ?? "").includes("?"));
       await unlink(full);
@@ -1997,16 +2175,22 @@ const server = http.createServer(async (req, res) => {
       if (CLAUDE_EFFORTS.includes(effort)) await setEnvKey("KHAZENDAR_CLAUDE_EFFORT", effort);
 
       if (localOnly === true || prov === "codex") return text(200, `Saved on this laptop for testing: ${prov.toUpperCase()} (${actualModel || "default"}). Scheduled cloud runs are unchanged.`);
-      if (typeof thinkingBudget === "string") await exec("gh", ["variable", "set", "KHAZENDAR_THINKING_BUDGET", "--repo", REPO, `--body=${thinkingBudget}`]);
-      if (CLAUDE_EFFORTS.includes(effort)) await exec("gh", ["variable", "set", "KHAZENDAR_CLAUDE_EFFORT", "--repo", REPO, `--body=${effort}`]);
-
-      const b = await exec("gh", ["variable", "set", "KHAZENDAR_PROVIDER", "--repo", REPO, `--body=${prov}`]);
-      if (actualModel) await exec("gh", ["variable", "set", "KHAZENDAR_MODEL", "--repo", REPO, `--body=${actualModel}`]);
-      // The cloud reads Claude's model from its own variable first (newsroom.yml, llm.mjs): set alone, KHAZENDAR_MODEL
-      // changed nothing there while Settings showed it as the cloud's (2026-10-31).
-      if (actualModel && prov === "claude") await exec("gh", ["variable", "set", "KHAZENDAR_CLAUDE_MODEL", "--repo", REPO, `--body=${actualModel}`]);
-      const bad = /error|not logged|could not/i.test(b) ? b : null;
-      return text(200, bad ? `Saved locally; cloud variable update skipped: ${bad.slice(0, 100)}` : `Done — active controller is now ${prov.toUpperCase()} (${actualModel || "default"}). Other models are in idle mode.`);
+      // Every variable the cloud reads, in the order they were always set, each judged by its exit code (only the
+      // provider's own answer was read before, by its words). The first GitHub refuses ends the list, and the answer
+      // says whether the cloud was left as it was or holds part of the change.
+      const cloudVars = [
+        ...(typeof thinkingBudget === "string" ? [["KHAZENDAR_THINKING_BUDGET", thinkingBudget]] : []),
+        ...(CLAUDE_EFFORTS.includes(effort) ? [["KHAZENDAR_CLAUDE_EFFORT", effort]] : []),
+        ["KHAZENDAR_PROVIDER", prov],
+        // The cloud reads Claude's model from its own variable first (newsroom.yml, llm.mjs): set alone, KHAZENDAR_MODEL
+        // changed nothing there while Settings showed it as the cloud's (2026-10-31).
+        ...(actualModel ? [["KHAZENDAR_MODEL", actualModel], ...(prov === "claude" ? [["KHAZENDAR_CLAUDE_MODEL", actualModel]] : [])] : []),
+      ];
+      for (const [i, [name, value]] of cloudVars.entries()) {
+        const bad = await setCloudVariable(name, value);
+        if (bad) return text(200, i === 0 ? `Saved on this laptop only: GitHub did not take the change, so the cloud runs as before. ${bad.slice(0, 100)}` : `Saved on this laptop. GitHub took part of the change and then refused ${name}: press Apply again, or the cloud runs on a mix of the old and the new. ${bad.slice(0, 100)}`);
+      }
+      return text(200, `Done — active controller is now ${prov.toUpperCase()} (${actualModel || "default"}). Other models are in idle mode.`);
     }
     if (url.pathname === "/keys" && req.method === "POST") {
       const { name, value, github } = await body(req);
@@ -2034,30 +2218,23 @@ const server = http.createServer(async (req, res) => {
     // "Pause everything": the cloud newsroom and the daily editor skip every scheduled run until resumed.
     if (url.pathname === "/pause" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";
-      const out = await exec("gh", ["variable", "set", "KHAZENDAR_PAUSED", "--repo", REPO, `--body=${value}`]);
-      if (/error|not logged|could not/i.test(out)) return text(200, `Could not: ${out.slice(0, 160)}`);
+      const bad = await setCloudVariable("KHAZENDAR_PAUSED", value);
+      if (bad) return text(200, `Could not ${value === "1" ? "pause" : "resume"}: GitHub did not take it, and the cloud runs as before. ${bad}`);
       return text(200, value === "1" ? "Paused — nothing will be written or published until you press Resume. Stories already live stay live." : "Resumed — the next scheduled run goes ahead.");
     }
     if (url.pathname === "/review" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";
-      const out = await exec("gh", ["variable", "set", "KHAZENDAR_REVIEW", "--repo", REPO, `--body=${value}`]);
-      return text(200, /error|not logged|could not/i.test(out) ? `Could not: ${out.slice(0, 160)}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own.");
+      const bad = await setCloudVariable("KHAZENDAR_REVIEW", value);
+      return text(200, bad ? `Could not: GitHub did not take it, and the cloud runs as before. ${bad}` : value === "1" ? "Done — from the next run the cloud writes drafts and waits for you." : "Done — the cloud publishes on its own.");
     }
     if (url.pathname === "/settings" && req.method === "POST") {
       // Saved during a job, a setting never went live: later publishes commit only their own stories (2026-10-31).
       if (job.running) return text(409, `Still busy with "${job.name}". Nothing was saved: save again when it finishes.`);
-      const patch = await body(req);
-      const current = JSON.parse(readFileSync(SITE_FILE, "utf8"));
-      // The AdSense ID decides who is paid for the paper's ads and the verification code whom Google takes for its
-      // owner; both go live at once, so a value in neither form is refused (a pasted meta tag gives up its code).
-      if (typeof patch.googleSiteVerification === "string") patch.googleSiteVerification = (patch.googleSiteVerification.match(/content=["']([^"']+)["']/) ?? [])[1] ?? patch.googleSiteVerification;
-      const FORMS = { adsenseClient: [/^(?:ca-)?pub-\d{10,20}$/, "AdSense ID (ca-pub- and digits)"], googleSiteVerification: [/^[A-Za-z0-9_-]{10,100}$/, "Google verification code"], contactEmail: [/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/, "contact email"] };
-      for (const [key, [form, label]] of Object.entries(FORMS)) {
-        if (typeof patch[key] === "string" && patch[key].trim() && !form.test(patch[key].trim())) return text(400, `That ${label} does not look right, so nothing was saved.`);
-      }
-      for (const key of ["contactEmail", "publisher", "adsenseClient", "googleSiteVerification"]) if (typeof patch[key] === "string") current[key] = patch[key].trim();
-      if (typeof patch.private === "boolean") current.private = patch.private;
-      await writeFile(SITE_FILE, `${JSON.stringify(current, null, 2)}\n`, "utf8");
+      // The forms a value must have, and whether anything changed: scripts/desk-lib.mjs applySettings().
+      const saved = applySettings(JSON.parse(readFileSync(SITE_FILE, "utf8")), await body(req));
+      if (saved.error) return text(400, saved.error);
+      if (!saved.changed) return text(200, "Nothing changed, so nothing was published.");
+      await writeFile(SITE_FILE, `${JSON.stringify(saved.next, null, 2)}\n`, "utf8");
       commitAndPush("publish settings", ["src/data/site.json"], "settings: from the control room");
       return text(200, "Saved and publishing — live in about a minute.");
     }
@@ -2066,6 +2243,8 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-cache", connection: "keep-alive" });
       chat.clients.add(res);
       for (const turn of chat.turns) res.write(`data: ${JSON.stringify({ t: turn.role === "you" ? "you" : "paper", text: turn.text })}\n\n`);
+      // A page opened while the chat is at work is told so: its box waits for the answer like the page that asked.
+      if (chat.running) res.write(`data: ${JSON.stringify({ t: "busy" })}\n\n`);
       req.on("close", () => chat.clients.delete(res));
       return;
     }
@@ -2099,6 +2278,9 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(404);
     res.end("not found");
   } catch (error) {
+    // An answer already begun cannot be begun again: a second writeHead throws, and with nobody to catch it Node stops
+    // the control room.
+    if (res.headersSent) return res.end();
     res.writeHead(500);
     res.end(String(error.message));
   }

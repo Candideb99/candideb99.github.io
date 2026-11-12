@@ -302,6 +302,15 @@ has exactly our template. Now:
   before publication, and analyses, paper readings and the weekly pass the check before publication as news does.
 - **A news outlet's arithmetic is not a fact**: an average or share it computed is recomputed or left out, a share keeps
   its base, and «المصدران» says whose sources they are. «رفع الدعم» means removing a subsidy: «زيادة الدعم» for a rise.
+- **How a piece is built** (the owner, 2026-11-11, asking whether the newest pieces' Arabic and journalism were good:
+  the words were, the construction was not). A subhead heads a section of two paragraphs or more, about one for every
+  200 words of a news story and three at most; a paragraph that does not fit its subhead moves, it never gets a
+  subhead of its own. A document's items (the unnamed opinions of a central bank's summary, a communiqué's clauses)
+  are grouped by what they say, never read out in order. An analysis is one argument of at most three steps from at
+  most four of our stories, its lede under 60 words and its dek one idea (no «فيما»، «بينما» or «، أما … فـ»); a section
+  that tells another of the week's stories goes. An explainer names only terms the field really uses. The week's review
+  tells each story in 40-70 words with the two or three figures it turns on. `style.mjs` reports the first three as
+  «البناء:» findings, which go to the revision and never reject a piece by themselves.
 
 ## 2. The editing (فن التحرير الصحفي)
 

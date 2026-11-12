@@ -282,7 +282,8 @@ a name when the chat mentions one:
 ## 7. If something breaks
 
 - Cloud run failed: open the Actions page, click the red run, read the last lines. A run that ends with "Claude failed" usually means the subscription token expired or a usage limit was hit; the next run recovers once Claude answers again (a new token goes in the desk under Settings → *Keys*).
-- Site not updating: check the latest "Deploy" run on the Actions page.
+- Site not updating: the control room's light (bottom left) asks the live site itself whether it carries the newest story. Green: it does. Amber: it does, and only its GitHub mirror's last deploy failed (the next deploy tries again). Red: the live site is behind; check the latest "Deploy" run on the Actions page.
+- "N saved changes on this laptop have not reached the site" on the Desk: a publish could not reach GitHub. Press **Send to the site**.
 - An email about a new issue titled «خازندار: …»: the morning round opened it because something only you can mend has broken; the issue says what to do. Close it once it is done.
 - Everything else: open Claude Code in this folder and paste what you see.
 

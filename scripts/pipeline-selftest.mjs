@@ -13,6 +13,7 @@ import net from "node:net";
 import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import vm from "node:vm";
 import { MAX_REPAIRS, checkSourcesOf, precheck } from "../pipeline/lib/precheck.mjs";
 import { repeatsRecent } from "../pipeline/lib/events.mjs";
 import { fetchFeed, zonedDate } from "../pipeline/lib/feeds.mjs";
@@ -32,15 +33,17 @@ import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdi
 import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
-import { styleIssues, bareNameInDek } from "../pipeline/lib/style.mjs";
+import { styleIssues, bareNameInDek, structural, WRITER_ONLY, READOUT, tableReadout, figureCount, readoutRoute, unjoinedParagraphs, subjectFirstSpeech } from "../pipeline/lib/style.mjs";
+import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
 import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
 import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 import { issuesToClose } from "../pipeline/lib/health.mjs";
-import { changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
+import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
+import { applySettings, jobProgress, progressLines, runProgram, siteLight } from "./desk-lib.mjs";
 
 let failed = 0;
 function check(name, got, want) {
@@ -739,6 +742,84 @@ if (spawnSync("git", ["--version"]).status === 0) {
     "a headline that names him, one with no title, and «وقال البنك» are not this fault",
     [bareOf({ ...ny, title: "ويليامز: التضخم مرتفع للغاية ويجب إعادته إلى 2%" }), bareOf({ ...ny, title: "التضخم الأمريكي مرتفع للغاية" }), bareNameInDek({ title: "وزير المالية: العجز يتراجع", subtitle: "البنك يتوقع نمواً أسرع", body: "وقال البنك إن النمو سيتسارع." })],
     [null, null, null],
+  );
+  // How a piece is built (the owner, 2026-11-11: "check some new articles … if their arabic and journalism style is good
+  // or needs improving"): limits the briefs already stated and no code held. Each is a warning that opens «البناء:», handed
+  // to the revision and never to the copy desk, whose guard refuses a changed subhead count.
+  const ten = "ارتفعت صادرات البلاد في الشهر الماضي بحسب بيانات الهيئة العامة.";
+  const para = (sentences) => Array.from({ length: sentences }, () => ten).join(" ");
+  const built = (parts, more = {}) => ({ title: "صادرات البلاد ترتفع 12% في أكتوبر", subtitle: "الهيئة تعزو الزيادة إلى الطلب الخارجي", lede: para(4), body: parts.join("\n\n"), whyItMatters: "", keyFacts: [], ...more });
+  const structureOf = (draft, kind = "news") => structural(styleIssues(draft, { kind }).warnings);
+  const chopped = structureOf(built([para(8), "## الطلب الخارجي", para(3), "## الواردات", para(7), "## الميزان", para(8), para(8), "## ما يأتي", para(9)]));
+  check("a 470-word story under four subheads, one over a single short paragraph, is handed to the revision", [chopped.length, chopped[0]?.includes("4 عناوين فرعية في 470 كلمة"), chopped[0]?.includes("«الطلب الخارجي»")], [1, true, true]);
+  check("two subheads in 290 words are too many, though each section runs past 60 words", structureOf(built([para(10), "## الواردات", para(7), "## الميزان", para(8)])).map((w) => w.includes("2 عناوين فرعية في 290 كلمة")), [true]);
+  check("a 560-word story with two sections of two paragraphs each passes, and so does a story with no subhead", [structureOf(built([para(10), para(8), "## الواردات", para(9), para(9), "## الميزان", para(8), para(8)])).length, structureOf(built([para(10), para(9)])).length], [0, 0]);
+  const opinion = (word) => `وذهب رأي ${word} إلى أن الفائدة يجب أن ترتفع قريباً.`;
+  const summary = built([["آخر", "ثالث", "آخر", "رابع", "آخر", "غيره"].map(opinion).join(" "), para(9)]);
+  check("a document's items read out one by one are handed to the revision; a second voice or two is ordinary reporting", [structureOf(summary).map((w) => w.includes("بنود الوثيقة")), structureOf(built([["آخر", "ثالث"].map(opinion).join(" "), para(9)])).length], [[true], 0]);
+  const tour = [para(9), "## الموانئ", para(9), para(9), "## القناة", para(9), para(9), "## المضيق", para(9), para(9), "## السكك", para(9), para(9)];
+  check("an analysis under four subheads is a tour of the week's stories; under three it passes", [structureOf(built(tour), "analysis").map((w) => w.includes("4 عناوين فرعية")), structureOf(built(tour.slice(0, 10)), "analysis").length], [[true], 0]);
+  check("an analysis lede past 75 words is handed to the revision; one of 60 passes", [structureOf(built([para(9)], { lede: para(8) }), "analysis").map((w) => w.includes("مقدمة التحليل 80 كلمة")), structureOf(built([para(9)], { lede: para(6) }), "analysis").length], [[true], 0]);
+  const secondIdea = (subtitle, kind) => styleIssues(built([para(9)], { subtitle }), { kind }).issues.filter((i) => i.startsWith("الوصف الفرعي يضيف فكرة ثانية")).length;
+  check(
+    "an analysis dek that sets a second thing beside the first with «، أما … فـ» is sent back; one finding told as a contrast, and a news dek, are not",
+    [secondIdea("نمو المناولة يتزامن مع تحويل البضائع عن المضيق، أما تعافي القناة فيرافق عودة الخطوط", "analysis"), secondIdea("السداد يعيد للشركاء سبباً للحفر، لكن نتائج الآبار هي التي تحسم حجم الغاز", "analysis"), secondIdea("الصادرات ترتفع، أما الواردات فتتراجع", "news")],
+    [1, 0, 0],
+  );
+  check("a finding about construction is never handed to the copy desk, and structural() takes nothing else", [chopped.every((w) => WRITER_ONLY.test(w)), structural(["«مما» مكررة (2 مرات)", ...chopped, "خارج الخطة: الأرقام 613"]).length], [true, 1]);
+  // الوصل (2026-11-12): a news story whose follow-on paragraphs mostly open with no connective is warned to the desk; the
+  // first paragraph and the first under a subhead are fresh starts; a story joined as the desks join theirs is left alone,
+  // and so is one whose every paragraph opens «و» + verb (the old warning fired at 60%, which real desk stories pass).
+  const bareBody = ["نما الاقتصاد الألماني 0.4% في الربع الأول.", "المجلس هيئة من أساتذة الاقتصاد تقدم المشورة للحكومة.", "ارتفع توقع المجلس لنمو العام المقبل.", "تخطط الحكومة لتحديث الجيش.", "يقدّر ناغل النمو الممكن بنحو 0.3%.", "يرى المجلس أن الرهان على النمو لا يكفي."].join("\n\n");
+  const joinedBody = ["نما الاقتصاد الألماني 0.4% في الربع الأول.", "وقالت رئيسة المجلس إن التعافي واضح.", "وارتفع توقع المجلس لنمو العام المقبل.", "## الدين العام", "حذر المجلس من تزايد الضغط على المالية العامة.", "وكانت ألمانيا قد خففت قاعدة كبح الديون.", "لكن ناغل يقدّر النمو الممكن بنحو 0.3%.", "ويرى المجلس أن الرهان على النمو لا يكفي."].join("\n\n");
+  const joinFound = (body, kind = "news") => styleIssues({ title: "مستشارو الحكومة الألمانية يرفعون توقع النمو", subtitle: "", lede: "رفع المجلس توقعه لنمو الاقتصاد الألماني.", body, whyItMatters: "", keyFacts: [], tags: [] }, { kind }).warnings.filter((w) => w.includes("بلا رابط") || w.includes("تبدأ بالواو وفعل جديد")).length;
+  check(
+    "paragraphs that open bare one after another are sent to the desk to be joined; joined prose, all-«و» prose and an explainer are left alone",
+    [unjoinedParagraphs(bareBody), unjoinedParagraphs(joinedBody), joinFound(bareBody), joinFound(joinedBody), joinFound(bareBody, "explainer"), WRITER_ONLY.test(styleIssues({ title: "ع", subtitle: "", lede: "ل", body: bareBody, whyItMatters: "", keyFacts: [], tags: [] }, { kind: "news" }).warnings.find((w) => w.includes("بلا رابط")))],
+    [{ bare: 5, of: 5, first: "المجلس هيئة من أساتذة الاقتصاد" }, null, 1, 0, 0, false],
+  );
+  check(
+    "a verb of saying after its subject is the English order; after «لكن», in a relative clause or with the verb first it is Arabic",
+    [
+      subjectFirstSpeech("المستشار الألماني فريدريش ميرتس قال عند تسلّم التقرير إنه لم يتوقع تحسناً بهذا الحجم."),
+      subjectFirstSpeech("وقال المستشار الألماني فريدريش ميرتس إنه لم يتوقع تحسناً. لكن المستشار الألماني قال إن الأزمات عديدة. الشركة التي أعلنت نتائجها الخميس رفعت توقعاتها للعام. وزير المالية أحمد كجوك قال إن الدين يتراجع."),
+    ],
+    [["المستشار الألماني فريدريش ميرتس قال عند تسلّم"], ["وزير المالية أحمد كجوك قال إن الدين"]],
+  );
+  // A table read out in the text (2026-11-11): the German trade story of 9 November gave 39% of its body to Destatis's
+  // rows. Two paragraphs of five figures or more, with no cause and no speaker, making a quarter of the body.
+  const row = "ارتفعت الواردات من دول الاتحاد 4.9% إلى 62.9 مليار يورو، وزادت الواردات من خارج الاتحاد 3.6% إلى 62.7 مليار يورو، وبلغت الواردات من الصين 17.3 مليار يورو.";
+  const rowsOf = (parts) => structureOf(built(parts)).filter((w) => w.startsWith(READOUT));
+  const readoutFound = rowsOf([row, row.replace("الواردات", "الصادرات"), para(4)]);
+  check(
+    "two paragraphs of a release's rows, half the body, are handed to the revision as a table read out, never to the copy desk",
+    [readoutFound.length, readoutFound[0]?.includes("2 فقرات"), readoutFound.every((w) => WRITER_ONLY.test(w)), tableReadout(`${row}\n\n${row}\n\n${para(4)}`).caught],
+    [1, true, true, true],
+  );
+  check(
+    "one such paragraph, two under a quarter of the body, a row with its cause and a row with its speaker are not a read-out",
+    [rowsOf([row, para(9)]).length, rowsOf([row, row, para(20)]).length, rowsOf([row, `${row} وجاءت الزيادة بسبب الطلب الأوروبي.`, para(4)]).length, rowsOf([row, `وقال المكتب إن ${row}`, para(4)]).length],
+    [0, 0, 0, 0],
+  );
+  check("a year and the day of a month are not figures of a table", [figureCount("في 2025 و2026، وفي 12 أكتوبر و3 نوفمبر"), figureCount("ارتفعت 4.9% إلى 62.9 مليار في 20 نوفمبر 2026")], [0, 2]);
+  // Code, not the reviser, decides the form (a dry run of 2026-11-12: offered the choice, the reviser padded the German
+  // story to 309 and 301 words, the second with Destatis's method note put back, rather than run it short).
+  const routeOf = (draft, room) => readoutRoute(draft, structural(styleIssues(draft, { kind: "news" }).warnings), { floor: 300, room });
+  const thinRows = built([row, row.replace("الواردات", "الصادرات"), para(4)]);
+  const fullRows = built([...Array.from({ length: 6 }, () => row), para(30)]);
+  check(
+    "a story its rows leave under 300 words is revised short while the day has room, and keeps its rows past the cap; one they leave long is sent long either way",
+    [[routeOf(thinRows, true).send, routeOf(thinRows, true).short], [routeOf(thinRows, false).send, routeOf(thinRows, false).withheld], [routeOf(fullRows, true).send, routeOf(fullRows, true).short], [routeOf(fullRows, false).send, routeOf(fullRows, false).short], routeOf(thinRows, true).left < 300, routeOf(fullRows, true).left >= 300],
+    [[true, true], [false, true], [true, false], [true, false], true, true],
+  );
+  check("a story with no table read out is routed nowhere", Object.values(routeOf(built([para(10), para(9)]), true)), [false, false, false, 0]);
+  // The week's review tells each story in 40-70 words (2026-11-11: the review of 6 November carried 95 figures in 986
+  // words of «أبرز ما جرى», up to nine in a paragraph).
+  const weekStory = "ارتفعت صادرات البلاد 12% في أكتوبر إلى 4.6 مليار دولار بحسب بيانات الهيئة العامة.";
+  check(
+    "a weekly paragraph of 120 words is refused, one of 60 passes, and a figure its story does not carry is still refused",
+    [/^paragraph 120 words/.test(weeklyParagraphFault(para(12), weekStory) ?? ""), weeklyParagraphFault(para(6), weekStory), /numbers not in the story: 7\.3/.test(weeklyParagraphFault(`${para(5)} وبلغت الواردات 7.3 مليار دولار في الشهر نفسه.`, weekStory) ?? "")],
+    [true, null, true],
   );
   // The explainer as a simplified textbook lesson (lib/lesson.mjs, the owner, 2026-11-08: "like economics textbooks with
   // graphs, mathematics and everything"): code computes the worked example's result, the diagram is one of three
@@ -2019,6 +2100,237 @@ check(
   const up = room.exitCode === null;
   room.kill();
   check("a malformed request is refused and the control room stays up", [reply.split("\r\n")[0], up], ["HTTP/1.1 400 Bad Request", true]);
+}
+
+// The control room's own reading of things (scripts/desk-lib.mjs; the debugging of 2026-11-10, each fault reproduced on
+// a test copy first). What a run leaves beside its draft is the newsroom's, not a site change of the chat's.
+check(
+  "a draft's evidence and handout photograph are the newsroom's files, a page of the site is not",
+  ["evidence/a-story.json.gz", "public/photos/handouts/8f22ace222ef.jpg", "content/articles/a-story.md", "src/pages/index.astro", "public/logo.svg"].map((f) => NEWSROOM_FILES.test(f)),
+  [true, true, true, false, false],
+);
+// The running box: the newsroom's lines carry a clock, and the words were looked for at the line's start.
+{
+  const log = [
+    "$ node scripts/sync.mjs pages main",
+    "Already up to date.",
+    "$ node pipeline/run.mjs --draft --limit=4",
+    "[10:00:01] newsroom start mode=news limit=4 dry-run=false",
+    "[10:00:20] candidates: 564 fresh unseen items",
+    "[10:01:00] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=193 in=36166 read=0 out=750 attempt=1 ms=9094",
+    "[10:01:00] editor (claude-cli/claude-opus-5-5) selected 4 stories",
+  ];
+  check("a run's first minutes show its candidates and the editor's choice, never the model's bookkeeping", progressLines(log), [log[4], log[6]]);
+  check("a job that prints none of the newsroom's lines shows its last ones", progressLines(log.slice(0, 2)), ["Already up to date."]);
+  check(
+    "written and refused stories are counted from the run's own lines",
+    jobProgress([...log, '[10:09:00] drafted "عنوان" -> a-slug', '[10:15:00] reject "عنوان" after revision: x', "[10:36:00] run budget of 35 min spent: 1 story waits for the next run"]),
+    { written: 1, refused: 2, target: 4 },
+  );
+}
+// The light: the live site decides, and its GitHub mirror is named for what it is (the evening of 2026-11-10: a clean
+// build, GitHub's publish step stalled, the live site current, and the desk said THE SITE IS NOT UPDATING).
+{
+  const stalled = { ok: false, stage: "publish", url: "https://github.com/x/y/actions/runs/1" };
+  const lights = [
+    siteLight({ site: { ok: true }, mirror: stalled }),
+    siteLight({ site: { ok: true }, mirror: { ok: true } }),
+    siteLight({ site: { ok: false }, mirror: { ok: true } }),
+    siteLight({ site: { ok: false }, mirror: { ok: false, stage: "build", url: "u" } }),
+    siteLight({ site: null, mirror: null }),
+    siteLight({ site: { ok: null }, mirror: { ok: true } }),
+    siteLight({ site: { ok: null }, mirror: stalled }),
+    // A build that failed is the site's own fault, an alarm even while the newest story this copy knows of is live.
+    siteLight({ site: { ok: true }, mirror: { ok: false, stage: "build", url: "u" } }),
+    siteLight({ site: { ok: true }, mirror: { ok: false, url: "u" } }),
+    // Nothing to ask the live site for (every story minutes old): the mirror's word alone, and no claim about the site.
+    siteLight({ site: null, mirror: { ok: true } }),
+    siteLight({ site: null, mirror: stalled }),
+  ];
+  check(
+    "the live site decides the light; a publish step that stalled is a note, a build that failed an alarm",
+    lights.map((l) => [l.level, Boolean(l.alarm), Boolean(l.url)]),
+    [["warn", false, true], ["ok", false, false], ["no", true, false], ["no", true, true], ["unknown", false, false], ["ok", false, false], ["warn", false, true], ["no", true, true], ["no", true, true], ["ok", false, false], ["warn", false, true]],
+  );
+  check("a stalled mirror is said to be GitHub's, with the live site up to date", /up to date/.test(lights[0].text) && /GitHub's side/.test(lights[0].text) && !/NOT UPDATING/.test(lights[0].text), true);
+  check("with nothing to ask the live site for, the light makes no claim about it", [lights[9].text, /did not answer/.test(lights[10].text), /BUILD IS FAILING/.test(lights[7].text)], ["Last deploy OK", false, true]);
+}
+// Settings: a save that changes nothing publishes nothing; a value in no known form is refused; a pasted tag gives its code.
+{
+  const current = { name: "x", contactEmail: "", publisher: "", adsenseClient: "", googleSiteVerification: "", private: true };
+  const same = applySettings(current, { contactEmail: "", publisher: " ", adsenseClient: "", googleSiteVerification: "", private: true });
+  const changed = applySettings(current, { publisher: "Khazendar", googleSiteVerification: '<meta name="google-site-verification" content="abcDEF123456_-x">', private: false });
+  check(
+    "settings saved unchanged are not published; a changed one is, and a wrong AdSense ID is refused",
+    [same.changed, changed.changed, changed.next.publisher, changed.next.googleSiteVerification, changed.next.private, Boolean(applySettings(current, { adsenseClient: "not-an-id" }).error), current.publisher],
+    [false, true, "Khazendar", "abcDEF123456_-x", false, true, ""],
+  );
+}
+// A program's exit code is its verdict, not its words: gh signed out prints none of the words the desk looked for.
+{
+  const signedOut = await runProgram(process.execPath, ["-e", "console.log('To get started with GitHub CLI, please run:  gh auth login'); process.exit(4)"]);
+  const fine = await runProgram(process.execPath, ["-e", "console.log('error: this word is only a word')"]);
+  const missing = await runProgram(path.join(os.tmpdir(), "khazendar-no-such-program"), []);
+  check("a program that fails has failed whatever it prints, and one that succeeds has not", [signedOut.ok, /gh auth login/.test(signedOut.out), fine.ok, missing.ok], [false, true, true, false]);
+}
+
+// The control room driven as its page drives it, in a scratch repository with a stand-in for Claude Code (2026-11-10).
+if (spawnSync("git", ["--version"]).status === 0) {
+  const tmp = mkdtempSync(path.join(os.tmpdir(), "khazendar-room-"));
+  const repo = path.join(tmp, "desk");
+  const git = (...args) => spawnSync("git", args, { cwd: repo, encoding: "utf8" });
+  const put = (file, text) => {
+    mkdirSync(path.dirname(path.join(repo, file)), { recursive: true });
+    writeFileSync(path.join(repo, file), text);
+  };
+  const id = ["-c", "user.name=selftest", "-c", "user.email=selftest@example.invalid"];
+  const story = (slug, extra = "") => `---\nslug: ${slug}\ntitle: "خبر ${slug}"\nsection: economy\nkind: news\n${extra}publishedAt: 2026-11-01T10:00:00.000Z\nsources: []\n---\n\nنص الخبر.\n`;
+  mkdirSync(repo, { recursive: true });
+  spawnSync("git", ["init", "-q", "--bare", "-b", "main", path.join(tmp, "remote.git")]);
+  git("init", "-q", "-b", "main");
+  git("config", "core.autocrlf", "false");
+  put("src/data/site.json", `${JSON.stringify({ name: "x", url: "http://127.0.0.1:9", contactEmail: "", publisher: "", adsenseClient: "", googleSiteVerification: "", private: true }, null, 2)}\n`);
+  put("content/articles/live.md", story("live"));
+  put("pipeline/state/seen.json", '{"version":1,"items":{}}\n');
+  put("public/photos/handouts/earlier.jpg", "jpeg");
+  put("evidence/live.json.gz", "gz");
+  put(".gitignore", ".env\n");
+  // The desk's jobs run the sync from the copy they work in.
+  put("scripts/sync.mjs", readFileSync(path.resolve("scripts", "sync.mjs"), "utf8"));
+  git("add", "-A");
+  git(...id, "commit", "-q", "-m", "start");
+  git("remote", "add", "pages", path.join(tmp, "remote.git"));
+  git("push", "-q", "pages", "HEAD:main");
+  git("fetch", "-q", "pages");
+  // What a local run leaves: a draft with a handout photograph and its evidence, none of them committed.
+  put("content/articles/draft.md", story("draft", "draft: true\nimage:\n  url: /photos/handouts/abc123.jpg\n"));
+  put("public/photos/handouts/abc123.jpg", "jpeg");
+  put("evidence/draft.json.gz", "gz");
+  put(".env", "KHAZENDAR_PROVIDER=claude\nCLAUDE_CODE_OAUTH_TOKEN=selftest-not-a-token\n");
+  // The stand-in for Claude Code does what mode.txt beside it says.
+  const cliDir = (appdata) => path.join(tmp, appdata, "npm", "node_modules", "@anthropic-ai", "claude-code");
+  mkdirSync(cliDir("appdata"), { recursive: true });
+  writeFileSync(
+    path.join(cliDir("appdata"), "cli.js"),
+    `const fs = require("fs"), path = require("path");
+const mode = fs.readFileSync(path.join(__dirname, "mode.txt"), "utf8").trim();
+const say = (o) => process.stdout.write(JSON.stringify(o) + "\\n");
+process.stdin.resume();
+process.stdin.on("end", () => {
+  if (mode === "ok") { say({ type: "assistant", session_id: "s1", message: { content: [{ type: "text", text: "Done." }] } }); say({ type: "result", session_id: "s1", is_error: false, duration_ms: 1000 }); }
+  if (mode === "limit") say({ type: "result", session_id: "s1", is_error: true, duration_ms: 100, result: "You've hit your session limit" });
+  if (mode === "crash") { process.stderr.write("Fatal: it broke\\n"); process.exit(3); }
+});
+`,
+  );
+  const mode = (m) => writeFileSync(path.join(cliDir("appdata"), "mode.txt"), m);
+  // A second install whose program file is there when the desk starts and gone when the chat runs (an update replaces it).
+  mkdirSync(path.join(cliDir("appdata-gone"), "bin"), { recursive: true });
+  const exe = path.join(cliDir("appdata-gone"), "bin", "claude.exe");
+  writeFileSync(exe, "a program file");
+
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const until = async (test, ms = 10000) => {
+    for (const end = Date.now() + ms; Date.now() < end; await wait(100)) if (await test()) return true;
+    return false;
+  };
+  const start = async (appdata) => {
+    const room = spawn(process.execPath, [path.resolve("scripts", "control-room.mjs")], { cwd: repo, env: { ...process.env, KHAZENDAR_CONTROL_PORT: "0", KHAZENDAR_OPEN_BROWSER: "", APPDATA: path.join(tmp, appdata) }, stdio: ["ignore", "pipe", "pipe"] });
+    let said = "";
+    room.stdout.on("data", (d) => (said += d));
+    await until(() => /control room: http:\/\/127\.0\.0\.1:\d+/.test(said) || room.exitCode !== null, 20000);
+    const base = `http://127.0.0.1:${said.match(/control room: http:\/\/127\.0\.0\.1:(\d+)/)?.[1]}`;
+    const html = await (await fetch(`${base}/`)).text();
+    const token = html.match(/var TOKEN="([0-9a-f]+)"/)?.[1];
+    // The page's script is a string inside the server's file, which the gate's parse check cannot see into: a slip in
+    // it would pass every check and leave the desk blank.
+    let parses = true;
+    try {
+      new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
+    } catch (error) {
+      parses = String(error.message);
+    }
+    check("the control room's page script parses", parses, true);
+    const ask = (route, body) => fetch(base + route, { method: body === undefined ? "GET" : "POST", headers: { "x-khazendar-token": token, ...(body === undefined ? {} : { "content-type": "application/json" }) }, body: body === undefined ? undefined : JSON.stringify(body) });
+    // The chat's stream, as the page's EventSource reads it.
+    const events = [];
+    const stream = new AbortController();
+    fetch(`${base}/chat/events?t=${token}`, { signal: stream.signal })
+      .then(async (res) => {
+        let buffer = "";
+        for await (const chunk of res.body) {
+          buffer += Buffer.from(chunk).toString("utf8");
+          for (let i; (i = buffer.indexOf("\n\n")) >= 0; buffer = buffer.slice(i + 2)) if (buffer.startsWith("data: ")) events.push(JSON.parse(buffer.slice(6, i)));
+        }
+      })
+      .catch(() => {});
+    // One message and everything the chat said until it gave the box back.
+    const chat = async (message) => {
+      const from = events.length;
+      const answer = await ask("/chat", { message });
+      await until(() => events.slice(from).some((e) => e.t === "idle"));
+      return { status: answer.status, said: events.slice(from) };
+    };
+    return { room, base, ask, chat, stop: () => (stream.abort(), room.kill()) };
+  };
+
+  const desk = await start("appdata");
+  const photo = await fetch(`${desk.base}/photos/handouts/abc123.jpg`);
+  check("a draft's handout photograph is served to the desk's page, and nothing outside its folder is", [photo.status, photo.headers.get("content-type"), (await fetch(`${desk.base}/photos/handouts/..%2F..%2F..%2F.env`)).status], [200, "image/jpeg", 404]);
+  check("what a run leaves beside its draft is not listed as a site change", (await (await desk.ask("/changes")).json()).count, 0);
+  const saved = await (await desk.ask("/settings", { contactEmail: "", publisher: "", adsenseClient: "", googleSiteVerification: "", private: true })).text();
+  let state = await (await desk.ask("/api/state")).json();
+  check("a settings save that changes nothing starts no publish", [saved, state.job.name, state.unsent, state.drafts.length], ["Nothing changed, so nothing was published.", "", 0, 1]);
+  // A publish whose push never happened: the commit waits here, and the desk says so.
+  put("content/articles/second.md", story("second"));
+  git("add", "content/articles/second.md");
+  git(...id, "commit", "-q", "-m", "a publish that could not be sent");
+  state = await (await desk.ask("/api/state")).json();
+  check("a commit the cloud does not hold is counted as not sent", state.unsent, 1);
+  await desk.ask("/push", {});
+  await until(() => git("rev-list", "--count", "pages/main..HEAD").stdout.trim() === "0", 15000);
+  state = await (await desk.ask("/api/state")).json();
+  check("sending it again from the desk reaches the remote", [state.unsent, spawnSync("git", ["log", "--format=%s", "-1", "main"], { cwd: path.join(tmp, "remote.git"), encoding: "utf8" }).stdout.trim()], [0, "a publish that could not be sent"]);
+  // A waiting commit that touches the site's code goes through the site's gate first (the scratch copy has none, so
+  // the job stops there and nothing is sent).
+  await until(async () => !(await (await desk.ask("/api/state")).json()).job.running);
+  put("src/page.astro", "a page\n");
+  git("add", "src/page.astro");
+  git(...id, "commit", "-q", "-m", "a change to the site's code");
+  const gated = await (await desk.ask("/push", {})).text();
+  await wait(1500);
+  check("waiting commits that touch the site's code are checked before they are sent", [/^Checking the site, then sending/.test(gated), git("rev-list", "--count", "pages/main..HEAD").stdout.trim()], [true, "1"]);
+  // The chat gives its box back however the work ends, and says why it stopped.
+  mode("ok");
+  const answered = await desk.chat("hello");
+  mode("limit");
+  const limited = await desk.chat("again");
+  mode("crash");
+  const crashed = await desk.chat("and again");
+  const kinds = (r) => r.said.map((e) => e.t).filter((t) => t !== "changes" && t !== "step");
+  check("an answer ends with the box given back", [answered.status, kinds(answered)], [200, ["you", "busy", "paper", "done", "idle"]]);
+  check("a run that ends in an error says why, then gives the box back", [kinds(limited), limited.said.find((e) => e.t === "error")?.text, limited.said.find((e) => e.t === "done")?.ok], [["you", "busy", "error", "done", "idle"], "You've hit your session limit", false]);
+  check("a Claude Code that stops without answering is reported, and the box is given back", [kinds(crashed), /stopped before it answered: Fatal: it broke/.test(crashed.said.find((e) => e.t === "error")?.text ?? "")], [["you", "busy", "error", "idle"], true]);
+  desk.stop();
+
+  const gone = await start("appdata-gone");
+  unlinkSync(exe);
+  const first = await gone.chat("hello");
+  await wait(500);
+  const up = gone.room.exitCode === null;
+  const second = up ? await gone.chat("hello again") : { status: 0, said: [] };
+  check(
+    "a chat whose Claude Code program has gone says so and the control room stays up",
+    [up, first.status, /could not start/.test(first.said.find((e) => e.t === "error")?.text ?? ""), first.said.at(-1)?.t, second.status, second.said.at(-1)?.t],
+    [true, 200, true, "idle", 200, "idle"],
+  );
+  gone.stop();
+  await wait(300);
+  try {
+    rmSync(tmp, { recursive: true, force: true, maxRetries: 5 });
+  } catch {
+    /* a handle Windows has not let go of yet; the folder is in the system's temp */
+  }
 }
 
 if (failed) {

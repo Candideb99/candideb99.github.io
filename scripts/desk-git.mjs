@@ -7,8 +7,13 @@ import { spawn } from "node:child_process";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-/** What the newsroom writes and the desk publishes by its own buttons: never listed or undone as the chat's change. */
-export const NEWSROOM_FILES = /^(?:content\/articles|pipeline\/state|pipeline\/runs)\//;
+/**
+ * What the newsroom writes and the desk publishes by its own buttons: never listed or undone as the chat's change. A
+ * story's evidence and its handout photograph are the newsroom's too (newsroom.yml commits them with the story): until
+ * 2026-11-10 a draft written here left them listed under «Site changes not live yet», where «Publish to the live site»
+ * would have sent an unapproved draft's files and Undo, after a run during a chat, deleted them.
+ */
+export const NEWSROOM_FILES = /^(?:content\/articles|pipeline\/state|pipeline\/runs|evidence|public\/photos\/handouts)\//;
 
 function git(root, args) {
   return new Promise((resolve) => {

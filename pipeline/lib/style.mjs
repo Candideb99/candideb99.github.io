@@ -198,6 +198,46 @@ export function bridgeOpenings(body) {
 }
 
 /**
+ * الوصل: Arabic prose is joined. A paragraph that carries on from the one before opens with «و» and its verb («وقال»،
+ * «وارتفعت»، «وكانت … قد»، «وفي الربع الثالث») or with «لكن»، «أما … فـ»; a bare opening is for the start of a section and
+ * for a real turn. The owner, 2026-11-12: "did the news writing style (eloquence, high quality arabic language) has
+ * improved". The grammar had; the prose read as a list of separate statements, the English way. Measured: follow-on
+ * paragraphs opening with no connective were 10% of our news before 19 October, 25% in the two weeks after the rule
+ * of that day («paragraphs open on their own actor, figure or date», written against filler bridges and obeyed by
+ * dropping the «و» too) and 17% since; Asharq Al-Awsat's and Anadolu's economy desks, 16 stories read that day, 7-9%,
+ * and no story of theirs at half or more. The first paragraph and one right under a subhead are fresh starts.
+ */
+const JOINED = /^(?:و|ف(?:قد|إن|ال)|لكن|أما\s|ثم\s|كما\s|إذ\s|بل\s|غير أن|إلا أن|بيد أن|كذلك|في المقابل|مع ذلك|رغم ذلك|لذلك|لهذا|هكذا|إلى ذلك|بدوره|بدورها)/;
+export const UNJOINED = { minParagraphs: 4, share: 0.5 };
+export function unjoinedParagraphs(body) {
+  const follow = [];
+  let fresh = true;
+  for (const block of String(body ?? "").split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)) {
+    if (block.startsWith("#")) fresh = true;
+    else if (!/^[-*|>]/.test(block)) {
+      if (!fresh) follow.push(block);
+      fresh = false;
+    }
+  }
+  const bare = follow.filter((p) => !JOINED.test(p));
+  if (follow.length < UNJOINED.minParagraphs || bare.length / follow.length < UNJOINED.share) return null;
+  return { bare: bare.length, of: follow.length, first: bare[0].split(/\s+/).slice(0, 5).join(" ") };
+}
+
+/**
+ * «المستشار الألماني فريدريش ميرتس قال عند تسلّم التقرير إنه…»: the subject before its verb of saying, the English order.
+ * Arabic news puts the verb first («وقال المستشار…»); after «لكن»، «إن»، «أما» the subject rightly leads, and a relative
+ * clause («الشركة التي أعلنت…») is no speech. Only a sentence that opens on a definite noun or a title is read, since a
+ * first word in «و» may be a word («وزير») or a joint.
+ */
+const SAID = "(?:قال|قالت|أضاف|أضافت|أوضح|أوضحت|أعلن|أعلنت|أكد|أكدت|أكّد|أكّدت|صرّح|صرّحت|صرح|صرحت|أفاد|أفادت)";
+const SUBJECT_OPENS = "(?:ال[\\u0621-\\u064A]+|رئيس|رئيسة|وزير|وزيرة|محافظ|محافظة|مدير|مديرة|كبير|كبيرة|نائب|نائبة|محلل|محللة|محللو|مسؤول|مسؤولة|مسؤولو|مصدر|مصادر)";
+const SUBJECT_FIRST = new RegExp(`^${SUBJECT_OPENS}\\s(?:(?!(?:الذي|التي|الذين|اللذين|اللتين|أن|إن|لم|لن|لا|ما|قد|كان|كانت)\\s)[^\\s،.:؛«»]+\\s){1,7}${SAID}\\s`);
+export function subjectFirstSpeech(text) {
+  return sentencesOf(text).filter((s) => SUBJECT_FIRST.test(s)).map((s) => s.split(/\s+/).slice(0, 7).join(" "));
+}
+
+/**
  * A speaker's exhortations told one by one («ودعا… وشدد… وأكد أهمية… وأشاد…»): how a thin event was stretched to
  * the news floor (the Egypt exports story, 2026-10-19: a minister's general remarks at a bell-ringing filled 400 words).
  */
@@ -217,7 +257,112 @@ export const ARAB_OUTLET_NAMES = ["الشرق الأوسط", "الجزيرة", "
  * desk (which sees the draft, not the sources, and must keep every figure) kept both and invented a time for the
  * second set («وعند التسوية»، 2026-09-24). Choosing between sources is the writer's job; the desk is never asked.
  */
-export const WRITER_ONLY = /يقارن بين ما أوردته المصادر/;
+export const WRITER_ONLY = /يقارن بين ما أوردته المصادر|^البناء:/;
+
+/**
+ * Faults of construction (the owner, 2026-11-11: "check some new articles … if their arabic and journalism style is
+ * good or needs improving"). The newest 45 pieces were clean on every word-level check; what read as a machine was how
+ * they were built, each a limit the writers' briefs already state and no code held:
+ * - a news story chopped under subheads: the schema allows "one or two if the piece is long", and the long stories went
+ *   from 0.67 subheads each before 18 October to 2.2 since 1 November: 11 of 100 with four or more, 27 with a subhead over
+ *   one short paragraph (a 299-word story under four);
+ * - a document read out item by item («جاء في أحد الآراء… وذهب رأي آخر… ودعا رأي ثالث…», fifteen unnamed opinions of
+ *   the Bank of Japan's summary in 549 words): one story of 592, from a source added two days before, and every such
+ *   summary or set of minutes will read the same;
+ * - an analysis that wanders: "at most three subheads" in its schema, yet 4 of the 16 since that rule ran four or five,
+ *   and each of the four was a tour of the week's stories (the Saudi ports analysis of 9 November went on to the Suez
+ *   Canal and the Gulf railway; the Egyptian gas one to the reserves and a gas discovery); 5 of 29 ledes ran past 75
+ *   words where the schema asks for two or three sentences.
+ * They are warnings that open with STRUCTURE: the newsroom hands them to the revision (run.mjs), never to the copy
+ * desk, whose guard refuses a changed subhead count, and none can reject a piece by itself.
+ */
+export const STRUCTURE = "البناء:";
+export const structural = (warnings) => (warnings ?? []).map(String).filter((w) => w.startsWith(STRUCTURE));
+const ITEM_BY_ITEM = new RegExp(`(?<![${AR}])(?:رأي|عضو|مشارك|بند)\\s+(?:آخر|ثالث|رابع|خامس|سادس|غيره)(?![${AR}])|(?<![${AR}])(?:أحد|إحدى)\\s+(?:الآراء|البنود)(?![${AR}])`, "g");
+const wordsIn = (text) => String(text ?? "").trim().split(/\s+/).filter(Boolean).length;
+
+/**
+ * A table read out in the text (2026-11-11; open since the rule of 2026-10-30 in NEWS_DEPTH, which names it and never held
+ * it): a news story whose only readable source is a statistics release or a results statement fills its floor with the
+ * release's rows («ارتفعت الواردات من … 4.9% … إلى 62.9 مليار يورو… وزادت الواردات من خارج الاتحاد 3.6% إلى…»). A
+ * paragraph is a row read out when it carries five figures or more (a year and a day of the month are not figures) and
+ * no cause and no speaker; a story is caught with two such paragraphs making a quarter of its body or more. Calibrated on
+ * the 488 long news stories published to 11 November: 36 had two such paragraphs, 24 (4.9%) at a quarter or more, and the
+ * eight since 25 October were each a read-out on reading (Germany's and Morocco's trade, Egypt's and Saudi Arabia's
+ * budgets, euro-area GDP, the results of Elm, IHC and FAB); those just under the bar (Emaar, Egypt's inflation, the Fed,
+ * 13-24%) were sound. The desk notes' tallies could not tell these stories from sound ones (NEWS_MIN_EXPLAINING passed
+ * the German story), so the check reads the written text, and the newsroom lets the revision run such a story short when
+ * what is left cannot carry a developed report (run.mjs, READOUT).
+ */
+const READOUT_MONTHS = "يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر";
+const READOUT_SPEAKER = new RegExp(`(?<![${AR}])(?:و|ف)?(?:قال|قالت|أضاف|أضافت|أوضح|أوضحت|صرّ?ح|صرّ?حت|ذكر|ذكرت|أكّ?د|أكّ?دت|أشار|أشارت|يرى|ترى|رأى|رأت|توقّ?ع|توقّ?عت|يتوقع|تتوقع|حذّ?ر|حذّ?رت|عزا|عزت|أرجع|أرجعت|نقلت|اعتبر|اعتبرت|أفاد|أفادت|كتب|كتبت|بحسب|حسب|وفق|وفقاً)(?![${AR}])`);
+const READOUT_CAUSE = new RegExp(`(?<![${AR}])(?:و|ف)?(?:بسبب|نتيجة|جراء|جرّاء|بفعل|بدعم|مدعوم(?:اً|ة|ا)?|مدفوع(?:اً|ة|ا)?|بفضل|لأن|لأنّ|إذ|بعدما|بعد أن|على خلفية|وسط|في ظل|نظراً|يعود|تعود|يرجع|ترجع|نتج|نتجت|أدى|أدت|دفع|دفعت|ساهم|ساهمت|أسهم|أسهمت|انعكس|انعكست|بضغط|تحت ضغط|مع (?:ارتفاع|تراجع|انخفاض|صعود|هبوط|زيادة|تسارع|تباطؤ|تحسن|استمرار|عودة|توقف|تعطل)|عقب|إثر|ما (?:أدى|دفع|رفع|خفض)|مما)(?![${AR}])`);
+/** The figures of a paragraph, years and the day of a month left out. */
+export function figureCount(text) {
+  const t = normalizeDigits(String(text ?? "")).replace(new RegExp(`\\d{1,2}\\s+(?:${READOUT_MONTHS})`, "g"), " ");
+  return (t.match(/\d[\d.,]*\d|\d/g) ?? []).filter((n) => !/^(?:19|20)\d{2}$/.test(n)).length;
+}
+/** The body's paragraphs that read a table out, and the share of the body's words they make. */
+export function tableReadout(body) {
+  const paras = String(body ?? "").split(/\n{2,}/).map((p) => p.trim()).filter((p) => p && !/^##\s/.test(p) && !/^[-*|]/.test(p));
+  const total = paras.reduce((n, p) => n + wordsIn(p), 0);
+  const rows = paras.filter((p) => figureCount(p) >= 5 && !READOUT_CAUSE.test(p) && !READOUT_SPEAKER.test(p));
+  const rowWords = rows.reduce((n, p) => n + wordsIn(p), 0);
+  const share = total ? rowWords / total : 0;
+  return { rows, rowWords, share, caught: rows.length >= 2 && share >= 0.25 };
+}
+/**
+ * The words a story would keep once its rows give way to the two or three sentences that say what the table shows
+ * (READOUT_SUMMARY_WORDS). The newsroom decides from this, in code, whether the revision is long or short: offered the
+ * choice, the reviser kept the 300-word floor both times by padding to it (a dry run of 2026-11-12: the German trade story
+ * came back at 309 and 301 words, the second with Destatis's method note put back in).
+ */
+export const READOUT_SUMMARY_WORDS = 40;
+export function wordsWithoutRows({ lede, body }) {
+  return wordsIn(lede) + wordsIn(String(body ?? "").replace(/^##\s.*$/gm, "")) - tableReadout(body).rowWords + READOUT_SUMMARY_WORDS;
+}
+/** How the read-out finding opens: the newsroom finds it by this (run.mjs). */
+export const READOUT = `${STRUCTURE} المتن يسرد صفوف جدول`;
+/**
+ * Where a long story carrying the read-out finding goes (run.mjs, at the revision and again at the mend): `send` the
+ * finding, revised `short` when about `left` words would remain without the rows (under `floor`) and the day has `room`
+ * for a short story; with no room, the finding goes only when the rows can go without taking the story under the floor,
+ * and is otherwise `withheld` (the story revised as before, its rows kept).
+ */
+export function readoutRoute(draft, warnings, { floor, room }) {
+  if (!(warnings ?? []).some((w) => String(w).startsWith(READOUT))) return { send: false, short: false, withheld: false, left: 0 };
+  const left = wordsWithoutRows(draft);
+  const short = left < floor && room;
+  const send = left >= floor || short;
+  return { send, short, withheld: !send, left };
+}
+
+function structureFaults({ kind, lede, body }) {
+  const found = [];
+  const heads = [...body.matchAll(/^##\s+(.+)$/gm)].map((m) => m[1].trim());
+  const ledeWords = wordsIn(lede);
+  if (kind === "news") {
+    if (heads.length) {
+      const total = ledeWords + wordsIn(body.replace(/^##\s.*$/gm, ""));
+      const sections = body.split(/^##\s.*$/m).slice(1).map(wordsIn);
+      const thin = sections.findIndex((w) => w < 60);
+      // One subhead for every 150 words at the very most, three in all, and none over a section under 60 words: at 170
+      // words a head the check fired on 47 of the 100 long stories since 1 November, sound two-section stories among them.
+      if (heads.length > Math.min(3, Math.floor(total / 150)) || thin >= 0) {
+        found.push(`${STRUCTURE} ${heads.length} عناوين فرعية في ${total} كلمة${thin >= 0 ? `، وتحت «${heads[thin]}» فقرة قصيرة واحدة` : ""}؛ العنوان الفرعي يعلو قسماً من فقرتين أو أكثر في خبر طويل، بنحو عنوان لكل 200 كلمة وثلاثة على الأكثر. ادمج كل قسم قصير في الذي يتصل به، وسمِّ ما يبقى بما تقوله فقراته كلها، أو احذف العناوين إن قصر الخبر.`);
+      }
+    }
+    const items = `${lede}\n${body}`.match(ITEM_BY_ITEM) ?? [];
+    if (items.length >= 5) found.push(`${STRUCTURE} الخبر يسرد بنود الوثيقة واحداً واحداً («${[...new Set(items)].slice(0, 2).join("»، «")}»… ${items.length} مرات)؛ اجمعها بحسب ما تقوله: كم منها في كل اتجاه كما تعدّها المصادر، وأقوى ما في كل اتجاه في جملة أو جملتين، وما يعنيه ميزانها للقرار المقبل إن قالته المصادر، واحذف ما يكرر غيره.`);
+    const readout = tableReadout(body);
+    if (readout.caught) found.push(`${READOUT} المصدر رقماً رقماً: ${readout.rows.length} فقرات في كل منها خمسة أرقام أو أكثر بلا سبب ولا متحدث، ${Math.round(readout.share * 100)}% من المتن (أولها يبدأ «${readout.rows[0].split(/\s+/).slice(0, 6).join(" ")}…»)؛ النص يقول ما يُظهره الجدول في جملتين أو ثلاث: الأكبر، والشاذ، والتحول، والمقارنة التي تغيّر قراءة الرقم الرئيسي، ويترك الصفوف للجدول أو الرسم. لا يبقى صف لبلوغ عدد الكلمات.`);
+  }
+  if (kind === "analysis") {
+    if (heads.length > 3) found.push(`${STRUCTURE} ${heads.length} عناوين فرعية، والتحليل حجة واحدة من ثلاث خطوات على الأكثر؛ القسم الذي يروي خبراً آخر من أخبار الأسبوع وليس خطوة في حجة العنوان يُحذف، ويبقى من وقائعه ما تحتاجه الحجة في جملة حيث تحتاجه.`);
+    if (ledeWords > 75) found.push(`${STRUCTURE} مقدمة التحليل ${ledeWords} كلمة؛ هي جملتان أو ثلاث بأقل من 60 كلمة تقول الحجة مسنودة بواقعتها الأولى، وما زاد ينتقل إلى أول المتن.`);
+  }
+  return found;
+}
 
 /** What «لماذا يهمّ» must never say: the region as a formula, the reader addressed, a chain of maybes. */
 const BOX_BANNED = /القارئ العربي|للقارئ العربي|للمواطنين العرب|(?<![؀-ۿ])يجب على|بما في ذلك الشرق الأوسط|المنطقة العربية الأوسع|ما قد يعيد تشكيل/g;
@@ -485,7 +630,15 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   const wawOpeners = paragraphs.filter((p) => /^و(?!كان|في|رغم|قال|قالت|أضاف|أضافت|أشار|أشارت|أوضح|أوضحت|بحسب|وفق)/.test(p)).length;
   const wawReporting = /^و(?:قال|أضاف|أوضح|استند|أشار|أكد|توقع|أفاد|بلغ|سجّل|ارتفع|انخفض|بحسب|وفق|كان|ترى|تقول|يعني|يقول|لكن|هو|هي|في|رغم|أن|من|مع)/;
   if (news && paragraphs.length >= 4 && paragraphs.every((p) => wawReporting.test(p))) warnings.push('كل فقرات المتن تبدأ بالواو وأفعال الإسناد أو الوصل؛ راجع ترتيب الأفكار وإيقاعها. قد تبدأ فقرة التعريف بمصطلحها أو المقارنة برقمها، مع حفظ الإسناد. لا تستبدل أدوات الربط آلياً ولا تختلق تقابلاً لتنويع الافتتاح.');
-  else if (paragraphs.length >= 4 && wawOpeners / paragraphs.length > 0.6) warnings.push(`أكثر من نصف الفقرات تبدأ بواو العطف المجردة؛ نوّع المفاصل: «وكان … قد»، «فقد»، «لكن»، «أما … فـ»، «وقال».`);
+  // 0.6 until 2026-11-12: four of sixteen stories of Asharq Al-Awsat's and Anadolu's desks read that day passed it, and
+  // the warning, with the rule against bridges, had taught the writer to open paragraphs with nothing at all.
+  else if (paragraphs.length >= 5 && wawOpeners / paragraphs.length > 0.85) warnings.push(`الفقرات كلها تقريباً تبدأ بالواو وفعل جديد؛ أبقِ الوصل ونوّع المفاصل حيث يصح المعنى: «وكان … قد»، «فقد»، «لكن»، «أما … فـ»، «وقال».`);
+
+  // الوصل (unjoinedParagraphs()): a news story whose paragraphs mostly open with no connective reads as a list of statements.
+  const unjoined = news ? unjoinedParagraphs(body) : null;
+  if (unjoined) warnings.push(`${unjoined.bare} من ${unjoined.of} فقرات تتابع ما قبلها تبدأ بلا رابط (أولها «${unjoined.first}…»)؛ النثر العربي موصول: الفقرة التي تكمل ما قبلها تبدأ بالواو وفعلها («وقال»، «وارتفعت»، «وكانت … قد»، «وفي الربع الثالث») أو بـ«لكن» و«أما … فـ»، ويبقى البدء المقطوع لأول القسم ولانتقال حقيقي في الموضوع. صِل الفقرات بالواو وحدها، بلا جسر حشو («إلى جانب ذلك»، «وفي هذا السياق») وبلا تغيير في واقعة أو رقم.`);
+  const subjectFirst = subjectFirstSpeech(`${lede}\n${body}`);
+  if (subjectFirst.length) warnings.push(`جملة تبدأ بالفاعل ثم فعل القول («${subjectFirst[0]}…») على ترتيب الإنجليزية؛ الخبر العربي يقدّم الفعل: «وقال المستشار الألماني فريدريش ميرتس…»، ويتقدّم الفاعل بعد «لكن» و«إن» و«أما» فقط.`);
 
   // Speech: قال takes إن, never أن.
   const qalAn = prose.match(/(?:قال|قالت|وقال|وقالت)\s+[^.،\n]{0,40}?\s+أن\s/g) ?? [];
@@ -684,7 +837,13 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
   // An analysis's dek says its finding, so a second development glued on is sent back there: three of the 27 published
   // analyses, each two ideas («…، فيما تدخل براميلها سوقاً قد يعيد إليها اتفاقٌ مع طهران الخامَ الإيراني», which the owner
   // found hard to understand, 2026-11-07); a news story's stays a warning.
-  if (/(?<![؀-ۿ])(?:فيما|بينما)(?![؀-ۿ])/.test(dek)) (kind === "analysis" ? issues : warnings).push(kind === "analysis" ? `الوصف الفرعي يضيف فكرة ثانية بـ«فيما/بينما»؛ وصف التحليل جملة واحدة تقول خلاصته: من يربح أو يخسر وماذا.` : `الوصف الفرعي يضيف تطوراً ثانياً بـ«فيما/بينما»؛ الوصف الفرعي جملة واحدة عن الخبر نفسه.`);
+  // «، أما … فـ» does the same work (the analysis of 2026-11-09, two days after the rule above: «نمو مناولة الحاويات 14%
+  // يتزامن مع…، أما تعافي قناة السويس فيرافق…»; 2 of the 29 analyses, each two things side by side). «لكن» is left: the
+  // three deks that turn on it state one finding as a contrast.
+  const second = kind === "analysis" ? /(?<![؀-ۿ])(?:فيما|بينما)(?![؀-ۿ])|[،؛]\s*و?أما(?![؀-ۿ])/ : /(?<![؀-ۿ])(?:فيما|بينما)(?![؀-ۿ])/;
+  if (second.test(dek)) (kind === "analysis" ? issues : warnings).push(kind === "analysis" ? `الوصف الفرعي يضيف فكرة ثانية بـ«فيما/بينما» أو «أما… فـ»؛ وصف التحليل جملة واحدة تقول خلاصته: من يربح أو يخسر وماذا.` : `الوصف الفرعي يضيف تطوراً ثانياً بـ«فيما/بينما»؛ الوصف الفرعي جملة واحدة عن الخبر نفسه.`);
+  // How the piece is built (structureFaults() above): handed to the revision, never to the desk.
+  warnings.push(...structureFaults({ kind, lede, body }));
   // The same hedge again and again («والأرجح… والأرجح… فالأرجح»): 8 of the 27 published analyses said «الأرجح» three times
   // or more, against one news story of 478; the critic asks a reading to be framed as one, and the hedge rule above offered
   // «والأرجح أن» as the alternative. The desk keeps every hedge (its guard) but words each one differently.
@@ -751,7 +910,7 @@ export function styleIssues(draft, { kind = "news", sources = [], latin = true }
     // Paragraphs joined by pointing back: one is Arabic, two or more is the model stitching its notes together
     // (three stories of 245: the Egypt exports story, a UAE–Germany story, none of them read as a desk wrote them).
     const bridges = bridgeOpenings(body);
-    if (bridges.length >= 2) issues.push(`فقرات تبدأ بجسر يشير إلى الفقرة السابقة («${bridges.slice(0, 2).join("…»، «")}…»)؛ ابدأ كل فقرة بفاعلها أو رقمها أو تاريخها، وأعد ترتيب الوقائع بحيث لا تحتاج إلى «إلى جانب ذلك» أو «ولتطوير هذه…» لتتصل.`);
+    if (bridges.length >= 2) issues.push(`فقرات تبدأ بجسر يشير إلى الفقرة السابقة («${bridges.slice(0, 2).join("…»، «")}…»)؛ صِل الفقرة بما قبلها بالواو وفعلها («وقال»، «وارتفعت») لا بعبارة تشير إلى الوراء، وأعد ترتيب الوقائع بحيث لا تحتاج إلى «إلى جانب ذلك» أو «ولتطوير هذه…» لتتصل.`);
     // One attribution formula said over and over: the China growth story of 2026-10-19 used «في تصريحات أوردتها» four
     // times (the only story of 245 with three or more), with one analyst quoted four times through two outlets.
     const relayed = (`${lede}\n${body}`.match(/في (?:تصريحات|مقابلة|حديث|تعليقات) (?:أوردتها|أوردها|نقلتها|نقلها|مع|لـ|ل«|لشبكة|لوكالة|لصحيفة)/g) ?? []).length;

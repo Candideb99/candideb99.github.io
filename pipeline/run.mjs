@@ -30,6 +30,7 @@ import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatur
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
+import { READOUT, readoutRoute, structural } from "./lib/style.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
@@ -459,6 +460,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // the cap, or for a refresh, it is not written and its items take the short mark, so the event is tried again when
   // more outlets have reported it.
   let short = false;
+  // Short stories in the last 24 hours, this run's included (SHORT_DAILY_CAP).
+  const shortToday = () => existing.filter((a) => a.kind === "news" && a.format === "short" && hoursSince(a.publishedAt) < 24).length + SHORT_PUBLISHED;
   // Remarks (calls, emphasis, praise) are kept for the writer but never count toward a developed report, and neither
   // does a pile of figures nothing explains (NEWS_MIN_EXPLAINING: the euro-area GDP story of 2026-10-30).
   const substantive = substantiveFacts(notes);
@@ -470,8 +473,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     entry.format = "short";
     log(`short story: "${story.headlineHint}" is a data release`);
   } else if (notes && (substantive < NEWS_MIN_FACTS || explaining < NEWS_MIN_EXPLAINING)) {
-    const shortToday = existing.filter((a) => a.kind === "news" && a.format === "short" && hoursSince(a.publishedAt) < 24).length + SHORT_PUBLISHED;
-    if (refresh || shortToday >= SHORT_DAILY_CAP) {
+    if (refresh || shortToday() >= SHORT_DAILY_CAP) {
       entry.outcome = `skipped: too little material for a developed report (${thin})${refresh ? "" : `; ${SHORT_DAILY_CAP} short stories already in 24 hours`}`;
       report.push(entry);
       log(`skip "${story.headlineHint}": ${thin}; items marked for one retry`);
@@ -479,7 +481,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
     short = true;
     entry.format = "short";
-    log(`short story: "${story.headlineHint}" has ${thin} (${shortToday + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
+    log(`short story: "${story.headlineHint}" has ${thin} (${shortToday() + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
   }
   let { draft, model: writerModel } = await writeArticle({ story, sources, notes, log, lessons, short });
   // The writer's own draft, before the desk and the critic touch it: what a private pair compares.
@@ -489,7 +491,19 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   draft = desk.draft;
   const deskModel = desk.model;
   // A news story is a developed report or it is not published (NEWS_FLOOR in lib/editorial.mjs, the owner, 2026-10-18).
-  const minWords = short ? SHORT_WORDS.minWords : newsFloor(notes);
+  // `let`: a long story whose revision gives up a table read out may run short (READOUT, below); the checks' closures follow.
+  let minWords = short ? SHORT_WORDS.minWords : newsFloor(notes);
+  // A long story whose body reads a table out (lib/style.mjs readoutRoute()): the finding goes to the revision, and the
+  // revision is a short story's when the rows, gone, would leave less than the floor; a refresh keeps its form.
+  const routeReadout = (d, built) => (short ? readoutRoute(d, [], {}) : readoutRoute(d, built, { floor: NEWS_FLOOR, room: !refresh && shortToday() < SHORT_DAILY_CAP }));
+  // From here the story is a short one: no boxes, the short critic, the short floor, SHORT_DAILY_CAP.
+  const goShort = (why) => {
+    short = true;
+    minWords = SHORT_WORDS.minWords;
+    entry.format = "short";
+    entry.shortAfterReadout = true;
+    log(`short story: "${draft.title}": ${why} (${shortToday() + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
+  };
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
   let review = await critique({ draft, sources, log, short });
   await checkpoint("first-review", { deskDraft: draft, firstReview: review, checks });
@@ -503,10 +517,21 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // critic again; the post-revision threshold (not "reject", 6 or more) is the owner's and does not change.
   const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok;
   if (!straightOut) {
-    const issues = [...checks.issues, ...review.issues];
+    // How the story is built (lib/style.mjs structural(): chopped under subheads, a document read out item by item)
+    // rides along with the revision the story is getting anyway; it never sends a story to one or rejects it (2026-11-11).
+    // A table read out (lib/style.mjs READOUT, 2026-11-11: the body gives a release's rows to fill the floor) goes to the
+    // revision, and code decides its form (readoutRoute()): when the rows, given up for two or three sentences, leave less
+    // than a developed report, the revision is the short story's, keeping the chart and table where the rows belong.
+    const built = structural(checks.warnings);
+    const route = routeReadout(draft, built);
+    if (route.withheld) log(`table read-out in "${draft.title}" not sent to the revision: about ${route.left} words would remain, and ${refresh ? "a refresh keeps its form" : `${SHORT_DAILY_CAP} short stories already ran in 24 hours`}`);
+    const issues = [...checks.issues, ...built.filter((w) => route.send || !w.startsWith(READOUT)), ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const reviewed = draft;
+    const visuals = { chart: draft.chart ?? null, table: draft.table ?? null };
+    if (route.short) goShort(`about ${route.left} words would remain once its table read out gives way`);
     const revision = await reviseArticle({ draft, sources, issues, log, notes, lessons, short });
+    if (route.short) revision.draft = { ...revision.draft, ...visuals };
     draft = (await copyDeskPass(revision.draft, { includeBody: true, sources, minWords })).draft;
     writerModel = `${writerModel} → ${revision.model}`;
     revised = true;
@@ -539,16 +564,28 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     // fact-check passed both). The thresholds above are unchanged; a repair the checks refuse leaves the reviewed draft.
     if (review.verdict === "revise" && review.issues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources, issues: review.issues, log, notes, lessons, short, settled: issues });
+        // The revision can bring a table read out back (a dry run of 2026-11-12: the German trade story's first draft held
+        // one paragraph of rows, 18% of its body; the revision, merging a thin section, and this mend, asked for "the trend
+        // from the table", left two, 26% of 318 words). The mend, which runs anyway, then carries the finding too, routed
+        // the same way (readoutRoute()); a short mend becomes the story only if it passes its checks.
+        const mendBuilt = structural(checks.warnings);
+        const mendRoute = routeReadout(draft, mendBuilt);
+        if (mendRoute.withheld) log(`table read-out in "${draft.title}" not sent to the mend: about ${mendRoute.left} words would remain`);
+        const mendIssues = [...review.issues, ...(mendRoute.send ? mendBuilt.filter((w) => w.startsWith(READOUT)) : [])];
+        const mendShort = mendRoute.short;
+        const mendFloor = mendShort ? SHORT_WORDS.minWords : minWords;
+        const mend = await reviseArticle({ draft, sources, issues: mendIssues, log, notes, lessons, short: short || mendShort, settled: issues });
         // A figure the revision took out that the mend puts back is an earlier finding undone (restoredFigures()): refused,
         // rescue or not.
         const revisedDraft = draft;
         const recheck = (d) => {
-          const c = programmaticChecks(d, sources, { recentTitles, minWords });
-          const back = restoredFigures(reviewed, revisedDraft, d, review.issues.join(" "));
+          const c = programmaticChecks(d, sources, { recentTitles, minWords: mendFloor });
+          const back = restoredFigures(reviewed, revisedDraft, d, mendIssues.join(" "));
           return back.length ? { ...c, ok: false, issues: [...c.issues, `الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] } : c;
         };
-        let mended = (await copyDeskPass(mend.draft, { includeBody: true, sources, minWords })).draft;
+        // A short mend returns no chart or table; a story that went short after a table read out keeps its own.
+        const mendDraft = mendShort || entry.shortAfterReadout ? { ...mend.draft, chart: draft.chart ?? null, table: draft.table ?? null } : mend.draft;
+        let mended = (await copyDeskPass(mendDraft, { includeBody: true, sources, minWords: mendFloor })).draft;
         let mendedChecks = recheck(mended);
         // A mend the checks refuse for a fault of the desk's trade gets the revision's own rescue, the last cut and the
         // last desk pass, before it is thrown away (2026-10-28): from 25 to 28 October five mends that had put right all
@@ -557,15 +594,17 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
         // nine; Almarai's possible revenue stated as certain).
         if (!mendedChecks.ok) {
           ({ draft: mended, checks: mendedChecks } = lastCut(mended, mendedChecks, { sources, recheck }));
-          ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources, minWords, recheck }));
+          ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources, minWords: mendFloor, recheck }));
         }
         if (mendedChecks.ok) {
           draft = mended;
           checks = mendedChecks;
           writerModel = `${writerModel} → ${mend.model}`;
           entry.mendedAfterReview = review.issues.length;
-          entry.mendIssues = review.issues;
-          log(`mended "${draft.title}": the second pass's ${review.issues.length} finding(s) sent back once more`);
+          entry.mendIssues = mendIssues;
+          log(`mended "${draft.title}": the second pass's ${review.issues.length} finding(s) sent back once more${mendRoute.send ? ", with the table read out" : ""}`);
+          // Only once the short mend has passed its checks: a refused one leaves the long reviewed draft, long.
+          if (mendShort) goShort(`about ${mendRoute.left} words would have remained once its table read out gave way, so the mend wrote it short`);
         } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
       } catch (error) {
         if (error.meta?.quota) throw error;
@@ -919,7 +958,9 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   let writerModel = models.writer;
   // An explainer's figures off its researcher's plan (the checks' «خارج الخطة» warning, 2026-11-08) go to its revision
   // and its mend as problems to cut; never a reason to reject the piece.
-  const offPlan = (c) => (kind === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : []);
+  // An analysis that wanders (more than three subheads, a lede past 75 words: lib/style.mjs structural(), 2026-11-11)
+  // goes the same way: to its revision and its mend, never a rejection.
+  const offPlan = (c) => (kind === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : kind === "analysis" ? structural(c.warnings) : []);
   // The same gate as a news story: out untouched only on "publish" at 6 or more with clean checks.
   const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok && !offPlan(checks).length;
   if (!straightOut) {

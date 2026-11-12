@@ -199,6 +199,9 @@ function matchTitles(titles, articles, max = 5) {
  * Picks one theme for a house analysis: a question where at least two recent stories connect.
  * Returns { topic: { theme_ar, theme_en, question_ar, related_titles, hook, angle }, related: [articles], model }.
  */
+/** The stories an analysis is written from: the one its question comes from and at most three that carry its evidence. */
+export const ANALYSIS_STORIES = 4;
+
 export async function selectAnalysisTopic({ recentArticles, existingAnalyses, log }) {
   const lines = recentArticles.map((a, i) => {
     const facts = (a.keyFacts ?? []).map((f) => [f.label, f.value].filter(Boolean).join(": ")).join("؛ ");
@@ -213,10 +216,10 @@ ANALYSES ALREADY PUBLISHED (do not choose a theme that repeats one of these):
 ${existingAnalyses.map((t) => `- ${t}`).join("\n") || "- (none)"}
 
 TASK
-Pick ONE theme where at least two of the stories above connect and an educated Arab reader would ask "what does this mean for us?". The register: what oil above 100 dollars means for Gulf budgets; what a Fed cut means for dollar-pegged currencies; what a defence deal means for a local industry. Prefer themes with concrete figures in the stories, direct relevance to Arab economies, and a real tension or consequence to unpack. Do not pick a theme that merely summarises one story. The theme, question and angle must be answerable from the facts in the stories listed: do not introduce framings or concepts the stories do not contain, because the writer may use no other material. Keep the theme sober and specific, in Khazendar's calm register: no metaphors or dramatic framings (no "vicious cycle", "hidden price", "crisis" unless a story reports one); the theme names the question, not a conclusion.
+Pick ONE question that one of the stories above leaves an educated Arab reader asking ("what does this mean for us?") and that the facts of at least one other story help answer. It is one argument, never a tour of the week: the related titles are the story the question comes from, first, then only the stories whose facts the answer needs, four in all at most; a story that merely shares the country, the sector or the week stays out (2026-11-11: the analyses given four or five stories went through them one by one). The register: what oil above 100 dollars means for Gulf budgets; what a Fed cut means for dollar-pegged currencies; what a defence deal means for a local industry. Prefer themes with concrete figures in the stories, direct relevance to Arab economies, and a real tension or consequence to unpack. Do not pick a theme that merely summarises one story. The theme, question and angle must be answerable from the facts in the stories listed: do not introduce framings or concepts the stories do not contain, because the writer may use no other material. Keep the theme sober and specific, in Khazendar's calm register: no metaphors or dramatic framings (no "vicious cycle", "hidden price", "crisis" unless a story reports one); the theme names the question, not a conclusion.
 
 Return JSON:
-{"theme_ar":"<the theme in Arabic, one line>","theme_en":"<the theme in English, one line>","question_ar":"<the single question the analysis answers, in Arabic>","related_titles":["<2 to 5 titles copied EXACTLY from the list above>"],"hook":"<one Arabic sentence tying the theme to this week's news>","angle":"<one Arabic sentence stating the argument the analysis should make and for whom it matters>"}`;
+{"theme_ar":"<the theme in Arabic, one line>","theme_en":"<the theme in English, one line>","question_ar":"<the single question the analysis answers, in Arabic>","related_titles":["<2 to 4 titles copied EXACTLY from the list above: the story the question comes from, then only those whose facts the answer needs>"],"hook":"<one Arabic sentence tying the theme to this week's news>","angle":"<one Arabic sentence stating the argument the analysis should make and for whom it matters>"}`;
   let related = [];
   const { data, model } = await chat({
     role: "editor",
@@ -228,7 +231,8 @@ Return JSON:
     log,
     validate: (d) => {
       if (!d?.theme_ar || !d?.question_ar) throw new Error("theme or question missing");
-      related = matchTitles(d.related_titles, recentArticles);
+      // Four at most (2026-11-11): the analyses handed four or five stories told them one after another.
+      related = matchTitles(d.related_titles, recentArticles, ANALYSIS_STORIES);
       if (related.length < 2) throw new Error(`fewer than two related_titles match the coverage list (${related.length})`);
     },
   });
