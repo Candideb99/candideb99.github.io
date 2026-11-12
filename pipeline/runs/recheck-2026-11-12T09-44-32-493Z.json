@@ -1,0 +1,57 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-12T09:44:32.493Z",
+  "durationSec": 23,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "turkey-central-bank-raises-loan-growth-caps-902a92",
+      "title": "المركزي التركي يرفع سقف نمو القروض الاستهلاكية لكل ثمانية أسابيع إلى 3.5%",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 7,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 3895,
+    "completionTokens": 2305,
+    "cacheReadTokens": 0,
+    "costUsd": 0.0773,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 3895,
+        "read": 0,
+        "out": 2305,
+        "usd": 0.0773
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:44:33] second look: 1 to read now (1 published pieces not yet read; 244 read clean before publication and left out of the audit sample)",
+    "[09:44:34] turkey-central-bank-raises-loan-growth-caps-902a92:   source https://www.dunya.com/ekonomi/tcmbden-kredi-buyumesine-yeni-duzenleme-limitler-y: http-403; read from the copy saved at publication (fetched then)",
+    "[09:44:55] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=866 in=3895 read=0 out=2305 attempt=1 ms=19749",
+    "[09:44:55] turkey-central-bank-raises-loan-growth-caps-902a92: 8 of 8 sentences checked · 7 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

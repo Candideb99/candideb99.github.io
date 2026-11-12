@@ -15569,6 +15569,203 @@
           }
         }
       ]
+    },
+    "uk-economy-grows-fastest-pace-since-2024-b81344": {
+      "at": "2026-11-12T10:07:01.126Z",
+      "title": "الاقتصاد البريطاني ينمو 0.7% في الربع الثالث بأسرع وتيرة منذ مطلع 2024",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 39,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "adnoc-ls-raises-2026-profit-guidance-fourth-time-fccbd4": {
+      "at": "2026-11-12T10:19:40.018Z",
+      "title": "أدنوك للإمداد والخدمات ترفع توقع نمو صافي ربحها لعام 2026 إلى 360%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 23,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 7,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "رفعت أدنوك للإمداد والخدمات، الذراع البحرية لشركة بترول أبوظبي الوطنية (أدنوك)، توقعها لنمو صافي ربحها في 2026 إلى نحو 360%، بعدما صعد صافي ربحها في الربع الثالث 321% على أساس سنوي إلى 3.258 مليار درهم (نحو 887 مليون دولار).",
+              "quote": "Net profit attributable to the equity holders of the company jumped 310 per cent to $842.7 million in the three months to the end of September, from $205.4 million a year earlier, the Abu Dhabi-listed company said on Thursday.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "الأرباح قبل الفوائد والضرائب والإهلاك والاستهلاك المتوقعة لعام 2026: نحو 14.7 مليار درهم",
+              "quote": "The shipping arm of Abu Dhabi National Oil Company now expects annual net profit of about $4 billion, growth in the low-360 per cent range, up from its previous forecast of growth in the high-110 per cent range.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "صافي ربح الربع الثالث 2026: 3.258 مليار درهم",
+              "quote": "Net profit attributable to the equity holders of the company jumped 310 per cent to $842.7 million in the three months to the end of September, from $205.4 million a year earlier, the Abu Dhabi-listed company said on Thursday.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "فالشركة تتوقع الآن نمو إيراداتها بنحو 100% بدلاً من نحو 20%، ونمو أرباحها قبل الفوائد والضرائب والإهلاك والاستهلاك بنحو 210% بدلاً من 60%، لتبلغ هذه الأرباح نحو 14.7 مليار درهم (4 مليارات دولار) في العام كاملاً.",
+              "quote": "The shipping arm of Abu Dhabi National Oil Company now expects annual net profit of about $4 billion, growth in the low-360 per cent range, up from its previous forecast of growth in the high-110 per cent range.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 19,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "في الربع الثالث وحده، ارتفعت إيرادات الشركة 149% على أساس سنوي إلى 12.085 مليار درهم (نحو 3.291 مليار دولار)، وزادت أرباحها قبل الفوائد والضرائب والإهلاك والاستهلاك 187% إلى 3.996 مليار درهم (1.088 مليار دولار)، وارتفع ربحها التشغيلي نحو أربعة أضعاف إلى 898.7 مليون دولار.",
+              "quote": "Revenue rose 160 per cent to $3.29 billion, while operating profit nearly quadrupled to $898.7 million.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 21,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وعلى مدى الأشهر التسعة الأولى من العام، زادت إيرادات الشركة 82% إلى 25.551 مليار درهم (6.957 مليار دولار)، وصافي ربحها 227% إلى 7.566 مليار درهم (2.06 مليار دولار).",
+              "quote": "Nine-month attributable profit rose 219 per cent to $1.96 billion, while revenue climbed 88 per cent to $6.96 billion.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 32,
+              "field": "table",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "القطاع: الشحن البحري · الإيرادات (مليار درهم): 18.696 · تغير الإيرادات على أساس سنوي: +217% · تغير صافي الربح على أساس سنوي: +846%",
+              "quote": "Revenue rose 244 per cent to $5.09 billion in the first nine months, from $1.48 billion a year earlier.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "telecom-egypt-nine-month-profit-rises-44-96d0b5": {
+      "at": "2026-11-12T10:32:06.927Z",
+      "title": "أرباح المصرية للاتصالات ترتفع 44% إلى 24.4 مليار جنيه في 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v68",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 20,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 24,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويذهب هذا الإنفاق، بحسب ما أوردته صحيفة «اليوم السابع» المصرية، إلى البنية التحتية الرقمية والتوسع في الألياف الضوئية ومراكز البيانات والسعات الدولية، بهدف تنويع مصادر الإيرادات والتركيز على الأنشطة الأعلى ربحية.",
+              "quote": "وتواصل المصرية للاتصالات توجيه استثماراتها نحو تطوير البنية التحتية الرقمية، والتوسع في شبكات الألياف الضوئية ومراكز البيانات والسعات الدولية، بما يدعم تنويع مصادر الإيرادات وتعزيز مكانة مصر كمحور إقليمي للاتصالات الدولية، مع التركيز على الأنشطة الأكثر ربحية وتعظيم قيمة الشركة وثروة مساهميها.",
+              "source": "Youm7",
+              "sourceN": 3,
+              "correction": "Youm7 describes where the company's ongoing investments are directed and does not mention the 2027 budget or its capex allocation."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 21,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
