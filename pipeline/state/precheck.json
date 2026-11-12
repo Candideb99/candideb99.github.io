@@ -15928,6 +15928,34 @@
           }
         }
       ]
+    },
+    "oman-budget-surplus-brent-price-margin-3c7558": {
+      "at": "2026-11-12T21:38:17.172Z",
+      "title": "فائض ميزانية عُمان يستند إلى سعر نفط يفوق تقدير موازنتها بـ21 دولاراً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 41,
+            "checked": 41,
+            "supported": 32,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
