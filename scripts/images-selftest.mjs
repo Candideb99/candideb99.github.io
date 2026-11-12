@@ -312,6 +312,37 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
   });
   check("the neutral pass runs its frame as «صورة تعبيرية»", [r.image?.title, String(r.image?.alt ?? "").includes(ILLUSTRATIVE)], [plant.title, true]);
 }
+// G2. The neutral pass looks at the stock libraries first, three looks: Saudi output's return to pre-war levels ran as
+// text with 32 Pexels oil photographs unseen behind Commons' place-bound files (2026-11-11).
+{
+  const commons = Array.from({ length: 12 }, (_, i) => file(`Construction site snapshot ${i + 1}.jpg`, { categories: "Construction" }));
+  const stock = Array.from({ length: 7 }, (_, i) => file(`Construction site stock frame ${i + 1}.jpg`, { description: "A construction site with cranes" }));
+  const r = await scenario({
+    draft: developers,
+    plan: planFor({ queries: ["construction site Egypt"], places: [], place_queries: [] }),
+    world: { "construction site Egypt": [], "construction site": commons },
+    libs: { "construction site": stock },
+    judge: (titles, prompt) => (prompt.includes("LAST PASS") ? titles.findIndex((t) => t.includes("stock frame 7")) + 1 : 0),
+    verify: (name, prompt) => (prompt.includes("LAST-PASS") ? "GENERIC_OK" : "WRONG_SUBJECT"),
+  });
+  const first = r.judgePrompts.find((p) => p.includes("LAST PASS"));
+  check("the neutral pass shows the stock libraries' frames first, over three looks", [r.image?.title, titlesIn(first ?? "").filter((t) => t.includes("stock frame")).length], [stock[6].title, 3]);
+}
+// G3. A pass's later searches read the libraries' answers too, however many files Commons had: Pexels' «oil field»
+// photographs were fetched and thrown away because it was the pass's fifth search and Commons had ten (2026-11-11).
+{
+  const snaps = Array.from({ length: 6 }, (_, i) => file(`Cement mixer snapshot ${i + 1}.jpg`, { categories: "Construction" }));
+  const frame = file("Cement mixer stock frame.jpg", { description: "A cement mixer at work" });
+  const r = await scenario({
+    draft: developers,
+    plan: planFor({ queries: ["construction site Egypt", "building crane Egypt", "cement mixer Egypt"], places: [], place_queries: [] }),
+    world: { "cement mixer": snaps },
+    libs: { "cement mixer": [frame] },
+    judge: (titles, prompt) => (prompt.includes("LAST PASS") ? titles.findIndex((t) => t.includes("stock frame")) + 1 : 0),
+    verify: (name, prompt) => (prompt.includes("LAST-PASS") ? "GENERIC_OK" : "WRONG_SUBJECT"),
+  });
+  check("a pass's third search still reads the libraries' answer when Commons had five files or more", r.image?.title, frame.title);
+}
 // H. The planner fails: the writer's own searches still find a photo; with none, the story runs without one.
 {
   const r = await scenario({

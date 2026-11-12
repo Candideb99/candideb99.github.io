@@ -983,7 +983,12 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     // search, which keeps Openverse's 200 anonymous searches a day for the searches that need them.
     // The first two searches of a pass always ask them too: Commons' five "fitting" trading floors were named
     // traders the judges refuse, and the libraries were never asked (2026-09-24).
-    if (libraries && !category && (added < 5 || queries.indexOf(query) < 2)) consider(await fromLibraries.get(query), forLibraries);
+    // Every search since 2026-11-12: the libraries are asked for all of a pass's searches at once (above), so the old
+    // condition (fewer than five from Commons, or one of the first two searches) saved no request and threw the answers
+    // away. Under Saudi output's return to pre-war levels the neutral pass fetched Pexels' eight «oil field» photographs,
+    // the desert pump jacks the owner asked for, and never read them, because Commons had ten files that named an oil field.
+    void added;
+    if (libraries && !category) consider(await fromLibraries.get(query), forLibraries);
   }
   candidates.sort((a, b) => b.score - a.score);
   return candidates;
@@ -2641,7 +2646,13 @@ async function neutralScene({ draft, story, log, exclude, queries, place, fronts
   if (!neutral.length) return null;
   log(`image: last pass, a neutral illustration: ${neutral.join(" | ")}`);
   const candidates = (await collect(neutral, log, { perQuery: 12, max: 12, exclude, people: "none", libraries: true, civilian: civilianStory(draft), fronts })).filter((c) => !treasuryFault(c, draft));
-  const image = await twoLooks({ candidates, draft, story, log, exclude, neutral: true });
+  // The stock libraries first, and three looks: an illustration that names no place is what Pexels and Unsplash hold, a
+  // professional's unplaced frame, while Commons' files for a bare subject are someone's snapshot of one named place. Saudi
+  // output's return to pre-war levels ran as text (2026-11-11, the owner: "why no picture here (for example oil extraxtion
+  // from desert…)"): 32 Pexels photographs of oil fields, tankers and terminals were in hand, each look of six showed four
+  // Commons files and one of Pexels', the judge chose an «ODFJELL» chemical tanker and a Swedish fjord terminal, both
+  // rightly refused, and after two looks the pass gave up with the stock photographs unseen.
+  const image = await twoLooks({ candidates, draft, story, log, exclude, neutral: true, looks: 3, stockFirst: true });
   return image ? asIllustration(image) : null;
 }
 
