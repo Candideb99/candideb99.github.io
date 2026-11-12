@@ -20,7 +20,15 @@ regions:
 readingMinutes: 1
 chart: null
 table: null
-image: null
+image:
+  url: https://images.pexels.com/photos/12944672/pexels-photo-12944672.jpeg?auto=compress&cs=tinysrgb&w=1280
+  width: 1280
+  height: 853
+  alt: أوراق نقدية وعملات معدنية من الليرة التركية
+  credit: Atlantic Ambience · بيكسلز
+  license: Pexels License
+  licenseUrl: https://www.pexels.com/license/
+  pageUrl: https://www.pexels.com/photo/banknotes-and-coins-on-brown-wooden-surface-12944672/
 sources:
   - name: خبر تورك
     nameEn: Habertürk
@@ -44,7 +52,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v68
 quality:

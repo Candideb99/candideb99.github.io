@@ -420,131 +420,130 @@
       "read": 6,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-12",
+      "published": 14,
+      "news": 12,
+      "styleFaultsPerStory": 0,
+      "corrections": 1,
+      "read": 5,
+      "confirmedPerStory": 0.2,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-11T15:34:45.907Z",
+  "updatedAt": "2026-11-12T16:19:31.230Z",
   "week": {
-    "published": 96,
-    "news": 79,
-    "revisedShare": 1,
+    "published": 99,
+    "news": 82,
+    "revisedShare": 0.99,
     "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.29,
-    "corrections": 1,
+    "styleWarningsPerStory": 0.9,
+    "corrections": 2,
     "usefulness": {
       "withLessons": {
         "stories": 66,
         "words": 474,
-        "keyFacts": 4
+        "keyFacts": 4.1
       },
       "control": {
-        "stories": 12,
-        "words": 402,
-        "keyFacts": 2.9
+        "stories": 15,
+        "words": 449,
+        "keyFacts": 3.5
       }
     },
     "precheck": {
-      "checked": 89,
-      "clean": 72,
-      "repaired": 17,
+      "checked": 92,
+      "clean": 73,
+      "repaired": 19,
       "held": 0,
-      "errorsFound": 19,
+      "errorsFound": 21,
       "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 19,
-      "correctionsVerifiedClean": 1,
+      "repairedBeforePublication": 21,
+      "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
       "read": 42,
-      "clean": 34,
-      "corrected": 1,
+      "clean": 33,
+      "corrected": 2,
       "stands": 0,
       "refused": 0,
       "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0.02,
+      "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 31,
-        "confirmedPerStory": 0.03
+        "read": 32,
+        "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 11,
+        "read": 10,
         "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
-      "written": 46,
+      "written": 48,
       "refused": 5,
-      "callsPerStory": 24.6,
-      "tokensPerStory": 481590,
-      "costPerStory": 3.98,
+      "callsPerStory": 24.2,
+      "tokensPerStory": 469706,
+      "costPerStory": 3.89,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "newsroom: skipped: a single independent non-official reporting origin (needs a second independently",
-        "stories": 2,
-        "examples": []
-      },
-      {
-        "what": "newsroom: rejected after revision: جمل طويلة جداً",
-        "stories": 2,
-        "examples": []
-      }
-    ]
+    "recurring": []
   },
   "weekBefore": {
-    "published": 99,
-    "news": 82,
+    "published": 96,
+    "news": 79,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.07,
-    "styleWarningsPerStory": 0.38,
-    "corrections": 13,
+    "styleFaultsPerStory": 0.06,
+    "styleWarningsPerStory": 0.71,
+    "corrections": 4,
     "usefulness": {
       "withLessons": {
-        "stories": 70,
-        "words": 462,
+        "stories": 68,
+        "words": 458,
         "keyFacts": 4.2
       },
       "control": {
-        "stories": 12,
-        "words": 437,
-        "keyFacts": 2.8
+        "stories": 11,
+        "words": 404,
+        "keyFacts": 2.3
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 82,
-      "repaired": 10,
+      "checked": 89,
+      "clean": 80,
+      "repaired": 9,
       "held": 0,
-      "errorsFound": 11,
-      "unsourcedCut": 5,
+      "errorsFound": 10,
+      "unsourcedCut": 4,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 11,
+      "repairedBeforePublication": 10,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 1
     },
     "secondLook": {
-      "read": 42,
-      "clean": 26,
+      "read": 43,
+      "clean": 29,
       "corrected": 3,
       "stands": 1,
       "refused": 0,
-      "listed": 12,
+      "listed": 10,
       "unverifiable": 0,
       "confirmedPerStory": 0.14,
       "withLessons": {
-        "read": 32,
-        "confirmedPerStory": 0.16
+        "read": 33,
+        "confirmedPerStory": 0.15
       },
       "claudeWithout": {
         "read": 10,
@@ -581,9 +580,9 @@
     ]
   },
   "lessons": {
-    "version": 66,
+    "version": 69,
     "active": 10,
-    "learnedFrom": 258,
+    "learnedFrom": 262,
     "kept": null,
     "lastTest": {
       "at": "2026-11-09T16:07:36.878Z",
