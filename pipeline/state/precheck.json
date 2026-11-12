@@ -15766,6 +15766,102 @@
           "noted": []
         }
       ]
+    },
+    "oman-budget-surplus-nine-months-gas-revenue-674ff7": {
+      "at": "2026-11-12T11:46:01.019Z",
+      "title": "ميزانية عُمان تحقق فائضاً قدره 234 مليون دولار بدعم الغاز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 22,
+            "weak": 4,
+            "noEvidence": 2,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 4,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ونمت الإيرادات العامة 16% بوتيرة فاقت نمو الإنفاق، مدفوعة أساساً بقفزة إيرادات الغاز.",
+              "quote": "Public revenues rose 16 percent year on year to OMR9.8 billion by the end of the third quarter of 2026, primarily driven by higher oil income.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "japan-warns-yen-intervention-near-160-4167ef": {
+      "at": "2026-11-12T11:57:30.891Z",
+      "title": "اليابان تلوّح بالتدخل لدعم الين مع اقترابه من 160 يناً للدولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 27,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "dewa-record-nine-month-revenue-2026-e5f003": {
+      "at": "2026-11-12T12:09:03.506Z",
+      "title": "«ديوا» لكهرباء دبي تسجل إيرادات قياسية قدرها 7.01 مليار دولار في 9 أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
