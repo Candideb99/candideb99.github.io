@@ -1,0 +1,101 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-11-13T13:24:15.243Z",
+  "durationSec": 459,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "حذّرت طوكيو مراراً من التدخل، فلماذا يواصل الين هبوطه أمام الدولار؟",
+      "section": "explainers",
+      "outcome": "rejected after revision: أرقام لا تظهر في المصادر: 10. احذف كل رقم غير مذكور في المصادر أو صحّحه."
+    }
+  ],
+  "llm": {
+    "calls": 9,
+    "failures": 1,
+    "promptTokens": 226209,
+    "completionTokens": 50340,
+    "cacheReadTokens": 97629,
+    "costUsd": 1.9199,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 9
+    },
+    "byRole": {
+      "editor": {
+        "calls": 2,
+        "in": 10783,
+        "read": 0,
+        "out": 1331,
+        "usd": 0.1129
+      },
+      "planner": {
+        "calls": 1,
+        "in": 24647,
+        "read": 0,
+        "out": 10297,
+        "usd": 0.4031
+      },
+      "writer": {
+        "calls": 2,
+        "in": 35395,
+        "read": 70375,
+        "out": 17809,
+        "usd": 0.5184
+      },
+      "desk": {
+        "calls": 3,
+        "in": 35683,
+        "read": 27254,
+        "out": 16959,
+        "usd": 0.6301
+      },
+      "critic": {
+        "calls": 1,
+        "in": 22072,
+        "read": 0,
+        "out": 3944,
+        "usd": 0.2554
+      }
+    }
+  },
+  "log": [
+    "[13:24:15] newsroom start mode=explainer limit=4 dry-run=false",
+    "[13:24:26] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=473 in=7650 read=0 out=943 attempt=1 ms=11091",
+    "[13:24:26] explainer question: حذّرت طوكيو مراراً من التدخل، فلماذا يواصل الين هبوطه أمام الدولار؟ (Interest rate differentials, the carry trade, and currency supply and demand in the foreign exchange market); opens on \"الدولار يتخطى 160 يناً للمرة الأولى منذ سبتمبر رغم تحذيرات طوكيو\"",
+    "[13:26:10] llm ok role=planner provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3609 in=24647 read=0 out=10297 attempt=1 ms=103210",
+    "[13:26:10] explainer plan: الين لا يهبط لأن طوكيو صامتة، بل لأن ما يكسبه المستثمر من حيازة الدولار بدل الين ما زال أكبر، وقد اتسع هذا الأسبوع. التحذير والتدخل لا يمسّان هذا العائد، بل يرف",
+    "[13:26:10]   plan step 1: التحذير كلام، والسعر يتحرك بالبيع والشراء، فالسؤال الأول هو من يبيع الين. → من يبيع الين، ولماذا يفضّل الدولار عليه؟",
+    "[13:26:10]   plan step 2: لكن هذا الفارق موجود منذ أشهر، فلماذا تسارع هبوط الين هذا الأسبوع بالذات؟ → ما الذي تغيّر هذا الأسبوع ليدفع الدولار فوق 160 يناً؟",
+    "[13:26:10]   plan step 3: إذا كان الضغط مصدره العائد، فماذا تملك وزارة المالية أمامه، ولماذا لا يكفي تحذيرها؟ → لماذا لا يوقف التحذير، ولا حتى التدخل الفعلي، هبوط الين؟",
+    "[13:26:10]   plan leaves out: المستويات الفنية 160.30 و160.39 و164 يناً كما قدّرها أوهارا: هذه قراءة للرسوم البيانية للأسعار، لا تفسير لسبب الهبوط",
+    "[13:26:10]   plan leaves out: سعر 159.91 ين الساعة 11:36 بتوقيت غرينتش والإغلاق السابق عند 159.86، ومعهما 159.72 و159.74: لقطات من الجلسات لا تخدم الش",
+    "[13:26:10]   plan leaves out: تفصيل التدخل بالأرقام الدقيقة: 15.3993 تريليون ين، منها 7.9756 تريليون في 30 يوليو وحده، ونُفذت كلها في ثلاثة أيام. يكفي",
+    "[13:26:10]   plan leaves out: تصويت ليزا كوك وبيث هاماك لرفع الفائدة في اجتماع أكتوبر: تفصيل من قصة الفيدرالي، ويكفي من القرار نطاق الفائدة",
+    "[13:26:10]   plan leaves out: ترقب تصريحات جون ويليامز: حدث عابر في يوم واحد",
+    "[13:26:10]   plan leaves out: توقع «ميزوهو» المرتبط بقوة الاستثمارات في الذكاء الاصطناعي، واحتمال تدخل منفرد بفعل الضغط السياسي: توقع لجهة واحدة، وليس",
+    "[13:26:10]   plan leaves out: الضغوط السياسية على حكومة تاكايتشي، ومؤشر أسعار السلع للشركات عند 7.1%، وأسعار الواردات بالين عند 24.8%: هذه نتائج لضعف ",
+    "[13:26:10]   plan leaves out: تلميح بيسنت إلى عشرة مليارات دولار يُذكر مقارناً بالـ500 مليون فقط، لا بوصفه قصة مستقلة",
+    "[13:26:10]   plan leaves out: أن الوزارة تنشر بيانات التدخل فصلياً بعد تنفيذه: صحيح، لكنه لا يجيب عن السؤال",
+    "[13:26:10]   plan leaves out: عزو الأناضول سبب الهبوط: الوقائع نفسها، أي التضخم الأمريكي وتشدد الفيدرالي والعوائد، تُذكر من غير اسم الوكالة",
+    "[13:28:14] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=7065 in=16406 read=52384 out=11406 attempt=1 ms=124002",
+    "[13:28:19] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=307 in=3133 read=0 out=388 attempt=1 ms=5168",
+    "[13:28:20] data chart: fetch failed (HTTP 502); none drawn",
+    "[13:28:50] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: desk answer lacks title",
+    "[13:29:19] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=327 in=7410 read=13627 out=3714 attempt=2 ms=25986",
+    "[13:29:19] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[13:29:19] desk \"حذّرت طوكيو مراراً من التدخل، فلماذا يواصل الين هبوطه أمام الدولار؟\": rewrote body",
+    "[13:29:19] checks explainer \"حذّرت طوكيو مراراً من التدخل، فلماذا يواصل الين هبوطه أمام الدولار؟\": 778 words, 1 issues, 0 warnings",
+    "[13:29:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2555 in=22072 read=0 out=3944 attempt=1 ms=36133",
+    "[13:29:55] critic explainer: revise score=8 issues=5",
+    "[13:29:55]   · أرقام لا تظهر في المصادر: 2.5. احذف كل رقم غير مذكور في المصادر أو صحّحه.",
+    "[13:29:55]   · العنوان الفرعي (الدك) يقول «ما يكسبه المستثمر من حيازة الدولار بدل الين ما زال أكبر وقد اتسع هذا الأسبوع». في هذا خلل مزدوج. أولاً «أكبر» مقارنة بلا طرف ثانٍ: أ",
+    "[13:29:55]   · النفي بدل الشرح: يتكرر بناء النفي في مواضع عدة. في الدك: «من غير أن يمسّ هذا العائد». في العنوان الفرعي: «يبطئ البائعين ولا يغيّر الفائدة». في الفقرة الأخيرة: «",
+    "[13:29:55]   · جملة مكسورة البناء في القسم الأول: «فإذا رغب في بيع الين عند السعر السائد أكثر ممن يرغب في شرائه، هبط سعره». فعل «رغب» بلا فاعل. الإصلاح: «فإذا زاد عدد الراغبين",
+    "[13:30:41] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1896 in=18989 read=17991 out=6403 attempt=1 ms=46193",
+    "[13:31:54] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4905 in=7307 read=13627 out=9140 attempt=1 ms=72760",
+    "[13:31:54] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,body] rejected=[]",
+    "[13:31:54] desk \"لوّحت طوكيو مراراً بالتدخل، فلماذا يواصل الين هبوطه أمام الدولار؟\": rewrote title, subtitle, body",
+    "[13:31:54] reject explainer \"حذّرت طوكيو مراراً من التدخل، فلماذا يواصل الين هبوطه أمام الدولار؟\" after revision: أرقام لا تظهر في المصادر: 10. احذف كل رقم غير مذكور في المصادر أو صحّحه."
+  ]
+}
