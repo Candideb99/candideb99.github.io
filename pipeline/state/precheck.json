@@ -16280,6 +16280,34 @@
           "noted": []
         }
       ]
+    },
+    "oil-prices-core-inflation-fed-study-d9df4b": {
+      "at": "2026-11-13T17:28:47.286Z",
+      "title": "باحثون في الفيدرالي: غلاء النفط يتسرب إلى بقية الأسعار منذ الجائحة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 24,
+            "weak": 4,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
