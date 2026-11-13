@@ -4,11 +4,12 @@
   "woken": {
     "dup:f50acce14e": "2026-10-31T13:51:09.733Z"
   },
-  "pagesCheckedAt": "2026-11-06T15:13:03.045Z",
+  "pagesCheckedAt": "2026-11-13T15:32:51.817Z",
   "last": {
-    "at": "2026-11-12T16:19:30.981Z",
+    "at": "2026-11-13T15:42:35.231Z",
     "findings": [],
     "owner": [
+      "خازندار: news feeds that have served nothing new for three days",
       "خازندار: published stories with a proved error the corrections desk could not fix"
     ],
     "photos": {

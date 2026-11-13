@@ -27,7 +27,15 @@ regions:
 readingMinutes: 3
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/%E4%B8%80%E4%B8%87%E5%86%86%E6%9C%AD_%281711957514%29.jpg/1280px-%E4%B8%80%E4%B8%87%E5%86%86%E6%9C%AD_%281711957514%29.jpg
+  width: 1280
+  height: 850
+  alt: ورقة نقدية من فئة عشرة آلاف ين ياباني
+  credit: ketou-daisuki from Kyoto, japansko · CC BY-SA 2.0 · ويكيميديا كومنز
+  license: CC BY-SA 2.0
+  licenseUrl: https://creativecommons.org/licenses/by-sa/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A%E4%B8%80%E4%B8%87%E5%86%86%E6%9C%AD_(1711957514).jpg
 sources:
   - name: الشرق الأوسط
     nameEn: Asharq Al-Awsat
@@ -63,7 +71,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: control
 quality:

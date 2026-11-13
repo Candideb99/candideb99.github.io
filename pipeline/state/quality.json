@@ -430,26 +430,36 @@
       "read": 5,
       "confirmedPerStory": 0.2,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-13",
+      "published": 10,
+      "news": 9,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 8,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-12T16:19:31.230Z",
+  "updatedAt": "2026-11-13T15:42:35.400Z",
   "week": {
-    "published": 99,
+    "published": 98,
     "news": 82,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.9,
+    "styleWarningsPerStory": 0.82,
     "corrections": 2,
     "usefulness": {
       "withLessons": {
-        "stories": 66,
-        "words": 474,
+        "stories": 64,
+        "words": 462,
         "keyFacts": 4.1
       },
       "control": {
-        "stories": 15,
-        "words": 449,
-        "keyFacts": 3.5
+        "stories": 17,
+        "words": 441,
+        "keyFacts": 3.6
       }
     },
     "precheck": {
@@ -469,60 +479,60 @@
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 42,
-      "clean": 33,
+      "read": 46,
+      "clean": 35,
       "corrected": 2,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 0.05,
+      "confirmedPerStory": 0.04,
       "withLessons": {
-        "read": 32,
+        "read": 35,
         "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 10,
+        "read": 11,
         "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
-      "written": 48,
-      "refused": 5,
-      "callsPerStory": 24.2,
-      "tokensPerStory": 469706,
-      "costPerStory": 3.89,
+      "written": 43,
+      "refused": 8,
+      "callsPerStory": 24.6,
+      "tokensPerStory": 497827,
+      "costPerStory": 4.12,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": []
   },
   "weekBefore": {
-    "published": 96,
-    "news": 79,
+    "published": 93,
+    "news": 76,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.06,
-    "styleWarningsPerStory": 0.71,
-    "corrections": 4,
+    "styleFaultsPerStory": 0.04,
+    "styleWarningsPerStory": 0.74,
+    "corrections": 3,
     "usefulness": {
       "withLessons": {
-        "stories": 68,
-        "words": 458,
+        "stories": 67,
+        "words": 459,
         "keyFacts": 4.2
       },
       "control": {
-        "stories": 11,
-        "words": 404,
-        "keyFacts": 2.3
+        "stories": 9,
+        "words": 372,
+        "keyFacts": 1.8
       }
     },
     "precheck": {
-      "checked": 89,
-      "clean": 80,
+      "checked": 86,
+      "clean": 77,
       "repaired": 9,
       "held": 0,
       "errorsFound": 10,
-      "unsourcedCut": 4,
+      "unsourcedCut": 2,
       "heldTitles": []
     },
     "outcomes": {
@@ -530,24 +540,24 @@
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
-      "correctionsStuck": 1
+      "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 43,
-      "clean": 29,
-      "corrected": 3,
+      "read": 44,
+      "clean": 32,
+      "corrected": 2,
       "stands": 1,
       "refused": 0,
-      "listed": 10,
+      "listed": 9,
       "unverifiable": 0,
-      "confirmedPerStory": 0.14,
+      "confirmedPerStory": 0.07,
       "withLessons": {
         "read": 33,
-        "confirmedPerStory": 0.15
+        "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 10,
-        "confirmedPerStory": 0.1
+        "read": 11,
+        "confirmedPerStory": 0.09
       }
     },
     "runs": {
@@ -562,27 +572,18 @@
     "recurring": [
       {
         "what": "second look: figure errors",
-        "stories": 3,
-        "examples": [
-          "binance-freezes-3-billion-potential-hack-647d53: الرقم في إعلان بينانس السابق: نحو 2.54 مليار دولار",
-          "binance-freezes-3-billion-potential-hack-647d53: رفعت بينانس قيمة الأصول التي جمّدتها إلى نحو 3 مليارات دولار حتى الآن، بعدما أعلنت في وقت سابق رقماً يقارب 2.54 مليار دو",
-          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو"
-        ]
-      },
-      {
-        "what": "second look: attribution errors",
         "stories": 2,
         "examples": [
-          "binance-freezes-3-billion-potential-hack-647d53: وأوضح تشاو أنه لم يعد يدير المنصة، لكنه يتوقع بصفته مساهماً أن تُغطى أموال المستخدمين بالكامل.",
-          "china-factory-pmi-contracts-october-64c344: غير أن اقتصاديين يرون أن قراءة أكتوبر تُظهر أن الصادرات، رغم ارتفاعها خلال معظم العام، قد لا تكون قوية بما يكفي لتعويض ا"
+          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو",
+          "brent-rebounds-us-strike-qeshm-island-382dd6: وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، و"
         ]
       }
     ]
   },
   "lessons": {
-    "version": 69,
+    "version": 70,
     "active": 10,
-    "learnedFrom": 262,
+    "learnedFrom": 265,
     "kept": null,
     "lastTest": {
       "at": "2026-11-09T16:07:36.878Z",
@@ -635,7 +636,7 @@
     }
   },
   "evidence": {
-    "pairs": 56,
+    "pairs": 58,
     "vsKept": {
       "n": 0,
       "better": 0,
