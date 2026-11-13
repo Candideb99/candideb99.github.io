@@ -4868,18 +4868,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "أظهرت نشرة الاكتتاب العام لشركة الذكاء الاصطناعي «أنثروبيك» صافي خسارة بنحو 42 مليار دولار في 2025، وقفزت إيراداتها في العام نفسه اثني عشر ضعفاً إلى نحو 4.6 مليار دولار.",
-          "quote": "Revenue jumped twelvefold to almost $4.6 billion (€4bn) in 2025, but operating expenses reached $12.65 billion (€11.1bn), more than half of it on computing and infrastructure, leaving an operating loss of more than $8 billion (€7bn)."
-        },
-        {
-          "sentence": "وهي مخاطر تقع على شركة يتوقع داعموها إدراجها بتقييم يتجاوز تريليوني دولار، وتخطط لإنفاق 518 مليار دولار على الحوسبة والبنية التحتية.",
-          "quote": "Backers expect Anthropic to list at a valuation above $2 trillion (€1.73tn), more than double the $965 billion (€848bn) set in its funding round in May."
-        }
-      ],
       "outcome": "clean"
     },
     "uae-germany-45-agreements-state-visit-9774e1": {
@@ -4908,48 +4896,8 @@
       },
       "confirmed": [
         {
-          "id": 19,
-          "field": "body",
-          "sentence": "وقال الدكتور عبدالرحمن عمار إن الاستثمارات الإماراتية تأتي في قطاعات تمثل أولوية لألمانيا، وتدعم مساعيها لمواجهة ارتفاع تكاليف الطاقة وضغوط قطاع السيارات.",
-          "claim": "Abdulrahman Ammar said UAE investments are in sectors that are German priorities, and stated as fact that they support Germany's efforts against high energy costs and auto-sector pressures.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 1,
-          "sourceName": "Sky News Arabia",
-          "sourceDate": "2026-09-10",
-          "quote": "ويشدد على أهمية الاستثمارات المتبادلة، لا سيما في ظل التحديات التي يواجهها الاقتصاد الألماني، سواء على مستوى ارتفاع تكاليف الطاقة أو الضغوط التي تواجه القطاع الصناعي، وفي مقدمتها صناعة السيارات، موضحاً أن ضخ استثمارات إماراتية في قطاعات الطاقة والصناعة والتكنولوجيا يمكن أن يدعم مساعي الحكومة الألمانية لإيجاد حلول عملية لهذه التحديات، وتعزيز القدرة التنافسية للاقتصاد الألماني.",
-          "correction": "Ammar said UAE investment in energy, industry and technology could support Germany's efforts to address these challenges, not that it does.",
-          "class": "hedge"
-        }
-      ],
-      "listed": [
-        {
-          "status": "conflict",
-          "field": "keyFacts",
-          "sentence": "التجارة الثنائية 2025: 13.6 مليار يورو",
-          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
-          "source": "Sky News Arabia"
-        },
-        {
-          "status": "conflict",
-          "field": "keyFacts",
-          "sentence": "نمو التجارة: 15%",
-          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
-          "source": "Sky News Arabia"
-        },
-        {
-          "status": "conflict",
-          "field": "body",
-          "sentence": "أكد الدكتور سلطان بن أحمد الجابر، وزير الصناعة والتكنولوجيا المتقدمة والمبعوث الخاص إلى ألمانيا، أن التجارة الثنائية بلغت 13.6 مليار يورو في 2025 بزيادة 15%، وقفزت صادرات الإمارات إلى ألمانيا 58%.",
-          "quote": "ويمكننا البناء على قاعدة اقتصادية متينة، إذ من المتوقع أن يصل حجم التجارة الثنائية إلى 13.6 مليار يورو في عام 2025، بزيادة قدرها 15 بالمئة مقارنة بالعام السابق، فيما ارتفعت صادرات دولة الإمارات إلى ألمانيا بنسبة 58 بالمئة.",
-          "source": "Sky News Arabia"
-        }
-      ],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "وبلغت الاستثمارات الإماراتية في ألمانيا أكثر من 34 مليار يورو، تتركز في الطاقة والصناعة، منها استحواذ شركة XRG التابعة لأدنوك على كوفسترو بقيمة 14.7 مليار يورو، واستثمار مصدر في مزرعة رياح بحر البلطيق (إيغل) بـ 1.6 مليار يورو لتزويد 475 ألف منزل بالطاقة النظيفة.",
-          "quote": "على صعيد الطاقة النظيفة، توفر شركة \"مصدر\" 476 ميغاواط من الطاقة النظيفة لألمانيا من خلال الاستثمار في مشروع مزرعة الرياح البحرية \"إيغل بحر البلطيق\" بقيمة تصل إلى 1.6 مليار يورو، مما يسهم في تزويد 475,000 منزل في ألمانيا بالطاقة عبر هذا المشروع."
+          "class": "hedge",
+          "field": "body"
         }
       ],
       "outcome": "corrected",
@@ -4995,32 +4943,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [
-        {
-          "status": "conflict",
-          "field": "lede",
-          "sentence": "أدى عطل تقني في نظام معالجة بيانات الطيران التابع لشركة ناتس، مزوّد خدمة التحكم بالحركة الجوية في المملكة المتحدة، إلى إلغاء أكثر من ألفي رحلة جوية خلال يومين، مما أبرز مخاوف متجددة حول مرونة النظام الذي يُدار بنسبة 49% من الحكومة البريطانية.",
-          "quote": "Nats is a public-private partnership, with the government holding the majority stake.",
-          "source": "BBC News"
-        },
-        {
-          "status": "conflict",
-          "field": "keyFacts",
-          "sentence": "حصة الحكومة في ناتس: 49%",
-          "quote": "Nats is a public-private partnership, with the government holding the majority stake.",
-          "source": "BBC News"
-        }
-      ],
-      "notFound": [
-        "واجهت المطارات الرئيسية أسوأ الأثر، حيث كانت هيثرو وغاتويك ومانشستر وبرمنغهام أكثر المطارات تضرراً.",
-        "السنة: 2025 · الوصف: عطب في النظام · الأثر: 150 إلغاء"
-      ],
-      "weak": [
-        {
-          "sentence": "يُذكر أن ناتس شهدت عطلين كبيرين سابقين: إغلاقاً حاسوبياً خلال عطلة نهاية الأسبوع في أغسطس 2023 أخلّ بخطوط 700 ألف مسافر، وعطباً أصغر في 2025 تسبب في 150 إلغاءً فقط.",
-          "quote": "In 2023, a computer shutdown over the August bank holiday weekend caused chaos for 700,000 passengers."
-        }
-      ],
       "outcome": "listed"
     },
     "egypt-offers-mining-incentives-equity-partnerships-42b042": {
@@ -13786,6 +13708,56 @@
         {
           "sentence": "ويرى اقتصاديون أن استمرار ارتفاع التضخم قد يزيد احتمال التشديد النقدي، مع إمكانية أن يرفع البنك الفائدة 25 نقطة أساس في كل من مراجعتي ديسمبر وفبراير.",
           "quote": "The sustained rise in inflation could increase the likelihood of monetary tightening, with the RBI potentially raising the benchmark interest rate by 0.25 per cent each in its December and February monetary policy reviews, they said."
+        }
+      ],
+      "outcome": "listed"
+    },
+    "dollar-tops-160-yen-intervention-warnings-940a5b": {
+      "at": "2026-11-13T19:48:53.072Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-13T11:51:35.203Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 28,
+        "checked": 28,
+        "supported": 24,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "فقد استخدمت وزارة الخزانة الأمريكية، بحسب التقرير، ما يعادل نحو 500 مليون دولار من حيازاتها باليورو لشراء الين في التدخل المنسق مع اليابان في 31 يوليو، وجاء الرقم مؤكداً لمؤشرات سابقة على هذا الحجم.",
+          "quote": "غير أن تقريراً أصدره بنك الاحتياطي الفيدرالي في نيويورك، الخميس، كشف أن المشاركة الأميركية اقتصرت على بيع يورو بقيمة نحو 497 مليون دولار لشراء الين، وهو مبلغ أقل كثيراً من التقديرات السابقة.",
+          "source": "Asharq Al-Awsat"
+        }
+      ],
+      "notFound": [
+        "وشراء الين، منفرداً كان أو مشتركاً، لا يزيل مصدر الضغط عليه ما دامت فجوة الفائدة مع الولايات المتحدة قائمة."
+      ],
+      "weak": [
+        {
+          "sentence": "إذا تكرر نمط الصيف، حين لم تتجاوز مساهمة واشنطن نحو 500 مليون دولار أمام نحو 96.5 مليار دولار أنفقتها اليابان، فسيقع معظم عبء أي تدخل جديد على طوكيو.",
+          "quote": "وكانت اليابان قد أنفقت 15.4 تريليون ين، تعادل نحو 96.5 مليار دولار، لدعم عملتها، خلال يوليو (تموز) وأغسطس (آب)، بعدما هبط الين إلى 163.99 للدولار، وهو أدنى مستوى له منذ أربعة عقود."
+        },
+        {
+          "sentence": "وبعدما تجاوز الدولار مستوى 160 يناً لفترة وجيزة، قالت وزيرة المالية اليابانية ساتسوكي كاتاياما إن مسؤولي الوزارة سيواصلون التنسيق الوثيق مع نظرائهم في واشنطن.",
+          "quote": "Japanese Finance Minister Satsuki Katayama said ministry officials will continue to work closely with their counterparts in Washington to take appropriate action as needed in response to one-sided, rapid moves in the currency market, after the yen briefly fell below a key threshold."
         }
       ],
       "outcome": "listed"

@@ -16308,6 +16308,130 @@
           "noted": []
         }
       ]
+    },
+    "us-producer-prices-fastest-since-2022-c192a8": {
+      "at": "2026-11-13T20:01:28.486Z",
+      "title": "أسعار المنتجين الأمريكية ترتفع 6.5% سنوياً في أكتوبر بأسرع وتيرة منذ 2022",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 29,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "lebanon-imf-talks-end-without-agreement-7bb8ed": {
+      "at": "2026-11-13T20:13:21.045Z",
+      "title": "مفاوضات لبنان وصندوق النقد تنتهي دون اتفاق أولي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 34,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 14,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتركزت المناقشات على مواءمة مشروع قانون «الانتظام المالي واسترداد الودائع»، المعروف في لبنان بقانون الفجوة المالية والمعروض على مجلس النواب، مع المعايير الدولية.",
+              "quote": "وبينما اتفق الطرفان على تكثيف العمل لإنجاز قانون الفجوة المالية، وتوحيد الصيغة التي ستُحال إلى مجلس النواب، تبدو المهلة الزمنية المحددة لإنجاز التشريعات المطلوبة قابلة للتمديد مجدداً، بما يرجّح تأجيل توقيع برنامج التمويل البالغ نحو 4 مليارات دولار.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "iraq-trucks-crude-to-syria-baniyas-9426b5": {
+      "at": "2026-11-13T20:23:44.983Z",
+      "title": "العراق ينقل حتى 150 ألف برميل يومياً بالشاحنات إلى ميناء بانياس السوري",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 24,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "spinneys-q3-revenue-growth-shipping-costs-9921ab": {
+      "at": "2026-11-13T20:35:58.368Z",
+      "title": "«سبينيز» الإماراتية للتجزئة تعود إلى النمو بزيادة إيراداتها 6.9% في الربع الثالث",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
