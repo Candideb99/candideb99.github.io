@@ -16196,6 +16196,90 @@
           "noted": []
         }
       ]
+    },
+    "india-trade-deficit-one-year-high-october-b9e4f0": {
+      "at": "2026-11-13T11:23:23.595Z",
+      "title": "عجز الهند التجاري يتسع في أكتوبر إلى 39.88 مليار دولار، أعلى مستوى في عام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "euro-area-gdp-grows-third-quarter-employment-939d88": {
+      "at": "2026-11-13T11:36:40.905Z",
+      "title": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث مع استقرار التوظيف",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 25,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "dollar-tops-160-yen-intervention-warnings-940a5b": {
+      "at": "2026-11-13T11:51:35.214Z",
+      "title": "الدولار يتخطى 160 يناً للمرة الأولى منذ سبتمبر رغم تحذيرات طوكيو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 25,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

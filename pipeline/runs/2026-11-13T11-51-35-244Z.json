@@ -1,0 +1,518 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-13T11:09:10.746Z",
+  "durationSec": 2544,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "عجز الهند التجاري يرتفع إلى 39.88 مليار دولار في أكتوبر، أعلى مستوى في عام",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5340746",
+        "https://www.bloomberg.com/news/articles/2026-11-13/india-s-trade-deficit-widens-as-festive-demand-boosts-imports",
+        "https://www.thehindubusinessline.com/economy/indias-exports-to-us-rise-11-brazil-and-mexico-shipments-register-strong-growth/article71697593.ece",
+        "https://economictimes.indiatimes.com/news/economy/foreign-trade/indias-gold-imports-plunge-62-57-to-5-51-billion-in-october-as-prices-fall-below-4000/oz/articleshow/135798822.cms"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والدك يحددان البلد والرقم والتوقع، لكنهما يكرران ما في الافتتاحية ولا يذكران أن الصادرات بلغت مستوى قياسياً، وهو ما يفسر أن العجز اتسع رغم الصادرات.",
+              "repair": "يحمل الدك معلومة مكمّلة: «رغم صادرات قياسية، ومع ضغط على الروبية بعد عام من الخسائر» (المصدران 1 و2)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب (الأعياد والنفط) والأثر على الروبية موجودان. يغيب الصراع في الشرق الأوسط، وتراجع برنت إلى نحو 92 دولاراً، وآمال التهدئة (المصدر 1). والصندوق يكرر استنتاج المتن.",
+              "repair": "إضافة هذه الوقائع إلى فقرة النفط، وإعادة صياغة الصندوق حول ما يغيّره تراجع برنت في الضغط على العجز."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان عن العجز، والفقرتان الأوليان تطورانه. بعدهما ينتقل المتن إلى آفاق سعر الذهب عند مجلس الذهب العالمي ويقرأ صفوف الجدول، فيتشتت الخط.",
+              "repair": "حذف فقرة آفاق المجلس، وضمّ واردات الذهب في فقرة واحدة تبيّن أن العجز اتسع رغم هبوطها، وقول ما يُظهره الجدول بدل قراءة صفوفه."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«أسواق جديدة» بلا سند. أغراوال بلا صفة مع تضارب المصادر في لقب الوزير. الجدول يسقط أوروبا وهي أكبر من الولايات المتحدة. «تنتقل… سريعاً» وصف غير مسند.",
+              "repair": "تصحيح العنوان الفرعي، وتعريف أغراوال من دون منصب مخترع، وإضافة صف أوروبا (51.04، +8%)، وحذف «سريعاً»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدك يحددان البلد والرقم وأنه أعلى مستوى في عام. ويضيف الدك أن الصادرات سجلت رقماً قياسياً، فيفسر اتساع العجز رغم ذلك. ولا يرد في العنوان أو الدك فاعل مجهول.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المسودة تحمل التفسيرات الثلاثة التي توفرها المصادر: السبب (طلب الأعياد والنفط بحسب بلومبرغ، والصراع في الشرق الأوسط واستيراد 85% من النفط)، والتوقع الذي تجاوزه الرقم (32.25 مليار دولار)، والأثر (الضغط على الروبية وارتياح تراجع برنت). ويبني صندوق «لماذا يهمّ» استنتاجاً مشروطاً بتراجع برنت، ويفصل بين ضغط موسمي وضغط نفطي، فيضيف معنى لا يكرر المتن.",
+              "repair": "تحسين اختياري للصياغة: «فإذا بقي برنت قرب 92 دولاراً للبرميل» بدل «إذا استمر تراجع برنت إلى نحو 92 دولاراً»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان عن اتساع العجز، والفقرات الثلاث الأولى تطوره بالأرقام والسبب والأثر. يليه قسم الذهب، لكنه يربط نفسه بالعجز عبر «رغم» قائمة على أساس مختلف، وينتهي بإحصاء المجوهرات المعلّق. قسم الصادرات يطور ما يقوله الدك عن الصادرات القياسية.",
+              "repair": "تصحيح جملة «رغم» أو حذفها، وحذف جملة صادرات الأحجار الكريمة والمجوهرات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«اتسع العجز رغم هذا الهبوط» يضع تغيراً سنوياً في مقابل تغير شهري، مع أن واردات الذهب ارتفعت من سبتمبر إلى أكتوبر (1.80 ← 5.51). و«أبقاه دون 4,000 دولار» يمدّ المستوى الحالي للسعر على الفترة كلها.",
+              "repair": "تسمية أساس كل مقارنة، و«هبط بالمعدن أخيراً إلى ما دون 4,000 دولار للأوقية»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "تباين مضلل بين أساسين مختلفين (المصدران 1 و4): «واتسع العجز رغم هذا الهبوط». العجز اتسع على أساس شهري، من 30.21 مليار دولار في سبتمبر إلى 39.88 مليار في أكتوبر. أما هبوط الذهب 62.57% فهو على أساس سنوي. وعلى الأساس الشهري نفسه ارتفعت واردات الذهب من 1.80 مليار دولار في سبتمبر إلى 5.51 مليار في أكتوبر، كما يُظهر الرسم البياني للمقال. فلا يصح «رغم» بين مقارنتين مختلفتي الأساس. الإصلاح: حذف الجملة، أو كتابتها بأساس واحد صريح، مثلاً: «وجاء ذلك رغم أن واردات الذهب في أكتوبر بقيت دون نصف مستواها قبل عام».",
+        "مبالغة في سعر الذهب (المصدر 4): «تزامن ذلك مع تصحيح في أسعار المعدن عالمياً أبقاه دون 4,000 دولار للأوقية». المصدر يقول إن المعدن يتداول حالياً دون 4,000 دولار بعد تصحيح أخير، وإنه بلغ ذروة 5,405 دولارات في يناير 2026. ولا يقول إن التصحيح أبقاه دون هذا المستوى طوال الفترة من أبريل إلى أكتوبر. الإصلاح: «وتزامن ذلك مع تصحيح في الأسعار العالمية هبط بالمعدن أخيراً إلى ما دون 4,000 دولار للأوقية».",
+        "إحصاء معلّق في آخر قسم الذهب: «أما صادرات الأحجار الكريمة والمجوهرات فارتفعت في الأشهر السبعة نفسها إلى 18.50 مليار دولار…». لا يربطه المتن بالعجز ولا بواردات الذهب، فيبقى رقماً منفصلاً بلا وظيفة. المصدر 4 لا يقدّم صلة بين الرقمين، والمقال لا يحتاج إلى اختراعها. الإصلاح: حذف الجملة.",
+        "صياغة مترجمة في الفقرة الأولى من المتن: «متقدمة على نمو الصادرات التي ارتفعت…» عبارة ملتبسة. الإصلاح: «وزادت الواردات… بوتيرة أسرع من الصادرات، التي ارتفعت إلى 49.47 مليار دولار من 44.40 مليار».",
+        "اسمان لشيء واحد: «المملكة المتحدة» ثم «بريطانيا» في جملة واحدة («ودخلت اتفاقيتا التجارة مع المملكة المتحدة… وبدأ سريان الاتفاق مع بريطانيا في 15 يوليو»). الإصلاح: اسم واحد، مثلاً: «…مع بريطانيا ونيوزيلندا حيز التنفيذ هذا العام، الأولى في 15 يوليو». وفي عنوان الجدول تبقى «السنة المالية 2027» ملتبسة، والأوضح «السنة المالية 2026-2027».",
+        "العنوان عن اتساع العجز، والفقرات الثلاث الأولى تطوره بالأرقام والسبب والأثر. يليه قسم الذهب، لكنه يربط نفسه بالعجز عبر «رغم» قائمة على أساس مختلف، وينتهي بإحصاء المجوهرات المعلّق. قسم الصادرات يطور ما يقوله الدك عن الصادرات القياسية. — تصحيح جملة «رغم» أو حذفها، وحذف جملة صادرات الأحجار الكريمة والمجوهرات.",
+        "«اتسع العجز رغم هذا الهبوط» يضع تغيراً سنوياً في مقابل تغير شهري، مع أن واردات الذهب ارتفعت من سبتمبر إلى أكتوبر (1.80 ← 5.51). و«أبقاه دون 4,000 دولار» يمدّ المستوى الحالي للسعر على الفترة كلها. — تسمية أساس كل مقارنة، و«هبط بالمعدن أخيراً إلى ما دون 4,000 دولار للأوقية».",
+        "البناء: المتن يسرد صفوف جدول المصدر رقماً رقماً: 2 فقرات في كل منها خمسة أرقام أو أكثر بلا سبب ولا متحدث، 30% من المتن (أولها يبدأ «وزادت الواردات في أكتوبر إلى 89.35…»)؛ النص يقول ما يُظهره الجدول في جملتين أو ثلاث: الأكبر، والشاذ، والتحول، والمقارنة التي تغيّر قراءة الرقم الرئيسي، ويترك الصفوف للجدول أو الرسم. لا يبقى صف لبلوغ عدد الكلمات."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "سجلت صادرات السلع الهندية في أكتوبر أعلى قيمة شهرية على الإطلاق",
+          "source": 1
+        },
+        {
+          "fact": "طلب موسم الأعياد وارتفاع أسعار النفط دفعا الواردات إلى الصعود، واتساع العجز يزيد التحديات أمام الروبية بعد عام من خسائر حادة",
+          "source": 2
+        },
+        {
+          "fact": "تستورد الهند نحو 85% من احتياجاتها النفطية، وتراجعت عقود برنت إلى نحو 92 دولاراً للبرميل فوفّرت بعض الارتياح للاقتصاد الهندي",
+          "source": 1
+        },
+        {
+          "fact": "بلغ العجز 39.88 مليار دولار في أكتوبر، أعلى مستوى في عام",
+          "source": 1
+        }
+      ],
+      "slug": "india-trade-deficit-one-year-high-october-b9e4f0",
+      "title": "عجز الهند التجاري يتسع في أكتوبر إلى 39.88 مليار دولار، أعلى مستوى في عام",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث والمركزي الأوروبي يدرس رفعاً جديداً للفائدة",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-13/euro-zone-shows-solid-growth-as-ecb-weighs-another-rate-hike",
+        "https://ec.europa.eu/eurostat/product?code=2-13112026-ap"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان المنطقة (منطقة اليورو) ورقم النمو واستقرار التوظيف، ويوضحان أن «بلومبرغ» هي من رأت هامشاً لرفع الفائدة. التباطؤ من 0.6% مذكور في المقدمة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصادر لا تقدم سبباً لتباطؤ النمو ولا لانكماش فرنسا، ولا رقماً متوقعاً. ردّ الفعل الوحيد المتاح هو قراءة «بلومبرغ» عن الصمود أمام حرب إيران وهامش رفع الفائدة (المصدر 1)، والمسودة تحمله وتنسبه. المقارنات بالأرباع السابقة وبالولايات المتحدة أرقام في سياقها وليست تفسيراً.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان الأول (نمو 0.4%) لا يُطوَّر إلا بعد فقرة التوظيف. القسم الأخير يقرأ صفوف الجدول ورزنامة المكتب تحت عنوان فرعي لا يطابقها. صندوق «لماذا يهمّ» يقيم استدلاله على قسمة غير مسنودة للكلفة بين الدول.",
+              "repair": "تقديم النمو الفصلي والسنوي بعد المقدمة، ثم التوظيف، ثم قراءة «بلومبرغ». حصر قسم الدول فيما يُظهره الجدول، وحذف أيرلندا وليتوانيا ورومانيا وبولندا ورزنامة يناير. صياغة الصندوق على أثر عام لرفع الفائدة على اقتصاد توقف فيه نمو التوظيف."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "كل الأرقام وفترات المقارنة صحيحة. الخلل في «فتقع كلفة كبح التضخم على أضعف دوله أداءً أولاً»: يقين في التوزيع والتسلسل لا تقدمه المصادر.",
+              "repair": "حذف «على أضعف دوله أداءً أولاً» والاكتفاء بأن رفع الفائدة سيأتي على اقتصاد توقف فيه نمو التوظيف وانكمش أو ركد فيه ناتج فرنسا وإيطاليا."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد الاقتصاد (منطقة اليورو) والفترة (الربع الثالث) والرقم (0.4%) وحال التوظيف. المقدمة تضيف القيد اللازم لقراءته: أن الرقم تقدير سريع وأن النمو تباطأ من 0.6%. والعنوان الفرعي ينسب قراءة الصمود وهامش رفع الفائدة إلى «بلومبرغ» ولا يقدمها حقيقة مثبتة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم المصدران تفسيراً واحداً للحدث هو قراءة «بلومبرغ» (المصدر 1): صمود أمام رياح معاكسة منها حرب إيران، وهامش للمركزي الأوروبي لرفع الفائدة. المسودة تحمله منسوباً في العنوان الفرعي والمتن. لا يقدم أي مصدر سبباً لانكماش فرنسا ولا توقعات سابقة للرقم، والمسودة لا تخترع شيئاً من ذلك. أما صندوق «لماذا يهمّ» فمقدماته مسنودة: هامش الرفع عند «بلومبرغ»، وتوقف نمو التوظيف، وانكماش فرنسا وركود إيطاليا (المصدر 2). واستدلاله محدود ومشروط بـ«إذا»: رفع الفائدة سيزيد كلفة الاقتراض على اقتصاد تظهر فيه هذه المواضع الضعيفة. ولم تعد فيه قسمة الكلفة بين الدول.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يطوّر المتن عنصر العنوان الأول، أي النمو 0.4%، مباشرة بعد المقدمة: تباطؤ الاتحاد والتسارع السنوي في المنطقتين، ثم مسار الربعين الأول والرابع. يلي ذلك عنصره الثاني، التوظيف، مع المقارنتين الفصلية والسنوية. فقرتا الدول تقولان ما يُظهره الجدول: إسبانيا تتصدر وتتفوق على المنطقة، وفرنسا الوحيدة المنكمشة بين الأربع، وإيطاليا راكدة. وقد حُذفت أيرلندا وليتوانيا ورومانيا وبولندا ورزنامة المراجعات والعناوين الفرعية التي تعلو فقرة واحدة. ويختم التقرير بموعد الإصدار التالي وحده.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "كل رقم مطابق للمصدر 2 مع أساس مقارنته الصحيح، الفصلي أو السنوي: منطقة اليورو 0.4/1.3، والاتحاد 0.5/1.5، وإسبانيا 0.6/2.7، وألمانيا 0.2/1.2، وإيطاليا 0/0.8، وفرنسا -0.1/-0.1، والولايات المتحدة 0.8/2.1، والتوظيف 0.0 و0.4 سنوياً بعد 0.5 و0.4. يوم 13 نوفمبر 2026 جمعة فعلاً. وعضوية المنطقة 21 دولة (EA21). وموعد 7 ديسمبر هو موعد تقديرات المكتب الدورية. وصندوق «الأرقام» يقتصر على أرقام الحدث بعد حذف الرقم الأمريكي. والرسم والجدول مطابقان للمصدر.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "رأت «بلومبرغ» أن صمود منطقة اليورو يمنح المركزي الأوروبي هامشاً لرفع الفائدة مجدداً لكبح التضخم",
+          "source": 1
+        },
+        {
+          "fact": "استقر عدد المشتغلين في منطقة اليورو في الربع الثالث بعد نموه 0.1% في الربع الثاني",
+          "source": 2
+        },
+        {
+          "fact": "انكمش الاقتصاد الفرنسي 0.1% وسجل الاقتصاد الإيطالي نمواً صفرياً في الربع الثالث على أساس فصلي",
+          "source": 2
+        }
+      ],
+      "slug": "euro-area-gdp-grows-third-quarter-employment-939d88",
+      "title": "اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث مع استقرار التوظيف",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "الين يتجاوز 160 للدولار رغم تحذيرات طوكيو من التدخل",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5340745",
+        "https://www.bloomberg.com/news/articles/2026-11-13/us-confirms-500-million-spent-on-yen-intervention-with-euros",
+        "https://www.bloomberg.com/news/articles/2026-11-13/japan-s-katayama-warns-of-fx-steps-after-one-sided-rapid-moves",
+        "https://www.aa.com.tr/en/economy/japanese-yen-weakens-past-160-per-dollar/4123646"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يحدد العنوان والعنوان الفرعي البلد والحدث بوضوح: الين وطوكيو وواشنطن. لكن الاستهلال يقول إن الدولار تخطى 160 ثم يورد 159.91 دون أن يوضح أنه عاد دون العتبة. ولا يقول العنوان الفرعي ما يغيّره رقم الـ500 مليون، أي إضعاف ردع التهديد بالتدخل المشترك بحسب المصدر 1.",
+              "repair": "توضيح عودة الدولار إلى ما دون 160 في الاستهلال، وإضافة دلالة الرقم المسندة إلى المحللين في الفقرة التي تلي الاستهلال."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل سبب التراجع (قوة الدولار وتوقعات الفائدة، من المصدر 4) ورقم الـ10 مليارات الذي لمّح إليه بيسنت. وتغيب عنها مقارنة إنفاق اليابان البالغ 15.4 تريليون ين، وآلية عوائد الخزانة التي يشرحها واكاباياشي، ورد موروغا المقابل، وضغوط الواردات على حكومة تاكايتشي، وكلها في المصدر 1. واستنتاج «لماذا يهمّ» يقطع بأن طوكيو «وحدها» ستتحمل الكلفة، وهذا يتجاوز مقدماته.",
+              "repair": "إضافة الوقائع الأربع من المصدر 1، وتقييد استنتاج الصندوق بشرطه وجعله «العبء الأكبر» بدل «وحدها»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان «رغم تحذيرات طوكيو» يُطوَّر مباشرة بعد الاستهلال عبر كاتاياما وميمورا، وهذا جيد. لكن قسم «فجوة الفائدة» يقفز إلى عبارة «تباين السياسة النقدية» دون أن يذكر موقف بنك اليابان، ويختم بجملة التضخم المستورد بلا خلفية تمهد لها.",
+              "repair": "جمع وقائع الدولار والعوائد وتصريحات واكاباياشي في قسم الفائدة، ثم ختم التقرير بفقرة المستويات المقبلة ورأي موروغا."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 500 مليون و163.99 و10 مليارات و159.91 مطابقة للمصادر. أما خانة «ظهر الجمعة» فلا تطابق توقيت 11:36 بتوقيت غرينتش، وعبارة «هذه العتبة» تحيل إلى ما قبلها بغموض.",
+              "repair": "كتابة التوقيت بتوقيت غرينتش وتسمية مستوى 160 صراحة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والحدث: الين وطوكيو وواشنطن وتقرير فيدرالي نيويورك. والاستهلال يوضح الآن أن الدولار عاد دون 160. لكن تأريخ الاختراق بالجمعة يتعارض مع «قمة الخميس البالغة 160.30» في الفقرة الأخيرة.",
+              "repair": "حذف «الجمعة» من جملة الاختراق وكتابة «هذا الأسبوع»، مع إبقاء سعر الجمعة مؤرخاً."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل السبب (قوة الدولار والعوائد وتوقعات الفيدرالي، من المصدرين 1 و4)، والمقارنة (بيسنت 10 مليارات، واليابان 15.4 تريليون ين)، وردود الفعل (كاتاياما وميمورا وساساكي وأوهارا وموروغا). ينقصها موعد قرار الفيدرالي التالي «الشهر المقبل» (المصدر 1). وصندوق لماذا يهمّ يقارن بين عملتين مختلفتين.",
+              "repair": "إضافة «الشهر المقبل» إلى جملة توقعات الفيدرالي، واستخدام 96.5 مليار دولار في الصندوق."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان «رغم تحذيرات طوكيو» يُطوَّر مباشرة بعد الاستهلال، والأقسام مجمّعة جيداً. لكن عبارة «دون التقديرات السابقة بكثير» تليها «بما يؤكد مؤشرات سابقة» دون توضيح الفرق بينهما. وفي الختام تضع جملة «في نظر المحللين… فاقتراب العملة من أدنى مستوياتها في الصيف قد يعيد السلطات اليابانية إلى السوق» قراءة المصدر 1 الختامية، وهي من الصحيفة نفسها، على لسان المحللين.",
+              "repair": "تسمية التقديرات (تلميح بيسنت) والمؤشرات (حجم الـ500 مليون)، وفصل جملة العودة إلى السوق عن نسبتها إلى المحللين، أو إسنادها إلى موروغا فيما قاله فقط."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 159.91 و159.86 و0.03% و160.30 و160.39 و164 و15.4 تريليون و96.5 مليار و163.99 و31 يوليو و19 شهراً كلها مطابقة للمصادر. الخلل في تأريخ الاختراق بالجمعة إلى جانب قمة الخميس، وفي خانات الخلفية داخل صندوق الأرقام.",
+              "repair": "توحيد التأريخ، وإخراج 160.30 والعشرة مليارات و15.4 تريليون من الصندوق مع إبقائها في النص."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 10,
+      "mendIssues": [
+        "الدقة في التوقيت: يقول الاستهلال «تخطى الدولار مستوى 160 يناً الجمعة للمرة الأولى منذ أوائل سبتمبر»، ثم تنقل الفقرة الختامية عن أوهارا (المصدر 1) أن «قمة الخميس» بلغت 160.30 ين، أي فوق 160 قبل الجمعة. يرى القارئ تناقضاً لا يشرحه النص. والمصدران 1 و4 يذكران أن الضغوط امتدت «طوال الأسبوع». الإصلاح: «تخطى الدولار هذا الأسبوع مستوى 160 يناً للمرة الأولى منذ أوائل سبتمبر…»، مع إبقاء سعر الجمعة 159.91 مؤرخاً بيومه، أو حذف رقم 160.30 من النص والصندوق.",
+        "ينقص التقرير: ما يأتي بعد ذلك. يذكر المصدر 1 أن التوقعات تتصاعد بأن يرفع الاحتياطي الفيدرالي الفائدة «الشهر المقبل» بمقدار أكبر. تكتفي المسودة بعبارة «تزايد التوقعات برفع أشد لأسعار الفائدة الأمريكية» دون موعد القرار التالي، وهو المحطة التي تحدد اتجاه فجوة الفائدة. الإصلاح: «مع تزايد التوقعات بأن يرفع الاحتياطي الفيدرالي الفائدة الشهر المقبل بمقدار أكبر».",
+        "صندوق الأرقام: «قمة الدولار يوم الخميس 160.30 ين» سعر يوم آخر. و«المساهمة الأمريكية التي لمّح إليها بيسنت: عشرة مليارات دولار» و«إنفاق اليابان لدعم الين في يوليو وأغسطس» رقمان من خلفية تدخل الصيف، لا من حدث اليوم. الإصلاح: إخراج هذه الخانات الثلاث من الصندوق وإبقاؤها في النص، والاكتفاء بسعر الجمعة وإغلاقه السابق ومساهمة واشنطن البالغة نحو 500 مليون دولار التي كشفها تقرير الخميس.",
+        "ركاكة في العربية: «وسندت عوائد سندات الخزانة الأمريكية المرتفعة العملة الأمريكية، فبلغت أمام العملات الرئيسية أعلى مستوى لها في 19 شهراً». الفعل «سندت» غير مألوف هنا، والصفة «المرتفعة» تفصل الفاعل عن مفعوله. الإصلاح: «ودعم ارتفاعُ عوائد سندات الخزانة الأمريكية الدولارَ، فبلغ أعلى مستوياته أمام العملات الرئيسية منذ 19 شهراً».",
+        "التباس للقارئ: تقول الفقرة الثانية إن المساهمة الأمريكية جاءت «دون التقديرات السابقة بكثير»، وتقول التالية إن التقرير جاء «بما يؤكد مؤشرات سابقة». يبدو الأمران متناقضين ما لم يُبيَّن أن «التقديرات» هي ما لمّح إليه بيسنت (المصدر 1)، وأن «المؤشرات» هي ما سبق تسريبه عن حجم المساهمة (المصدر 2). الإصلاح: «جاءت المساهمة أقل كثيراً من العشرة مليارات التي لمّح إليها بيسنت، لكنها أكدت مؤشرات سابقة على أنها لم تتجاوز نحو 500 مليون دولار».",
+        "لماذا يهمّ: المقارنة «نحو 500 مليون دولار أمام 15.4 تريليون ين» تقابل عملتين مختلفتين، فلا يقرأ القارئ النسبة. والمصدر 1 يعطي المعادل: نحو 96.5 مليار دولار. والجملة الثانية تكرر بكلام آخر خلاصة فقرة واكاباياشي في المتن. الإصلاح: «أمام نحو 96.5 مليار دولار أنفقتها اليابان»، واختصار الجملة الثانية إلى ما تضيفه: أن تدخلاً منفرداً لا يعالج مصدر الضغط ما دامت فجوة الفائدة قائمة.",
+        "العنوان والعنوان الفرعي يحددان البلد والحدث: الين وطوكيو وواشنطن وتقرير فيدرالي نيويورك. والاستهلال يوضح الآن أن الدولار عاد دون 160. لكن تأريخ الاختراق بالجمعة يتعارض مع «قمة الخميس البالغة 160.30» في الفقرة الأخيرة. — حذف «الجمعة» من جملة الاختراق وكتابة «هذا الأسبوع»، مع إبقاء سعر الجمعة مؤرخاً.",
+        "المسودة تحمل السبب (قوة الدولار والعوائد وتوقعات الفيدرالي، من المصدرين 1 و4)، والمقارنة (بيسنت 10 مليارات، واليابان 15.4 تريليون ين)، وردود الفعل (كاتاياما وميمورا وساساكي وأوهارا وموروغا). ينقصها موعد قرار الفيدرالي التالي «الشهر المقبل» (المصدر 1). وصندوق لماذا يهمّ يقارن بين عملتين مختلفتين. — إضافة «الشهر المقبل» إلى جملة توقعات الفيدرالي، واستخدام 96.5 مليار دولار في الصندوق.",
+        "عنصر العنوان «رغم تحذيرات طوكيو» يُطوَّر مباشرة بعد الاستهلال، والأقسام مجمّعة جيداً. لكن عبارة «دون التقديرات السابقة بكثير» تليها «بما يؤكد مؤشرات سابقة» دون توضيح الفرق بينهما. وفي الختام تضع جملة «في نظر المحللين… فاقتراب العملة من أدنى مستوياتها في الصيف قد يعيد السلطات اليابانية إلى السوق» قراءة المصدر 1 الختامية، وهي من الصحيفة نفسها، على لسان المحللين. — تسمية التقديرات (تلميح بيسنت) والمؤشرات (حجم الـ500 مليون)، وفصل جملة العودة إلى السوق عن نسبتها إلى المحللين، أو إسنادها إلى موروغا فيما قاله فقط.",
+        "الأرقام 159.91 و159.86 و0.03% و160.30 و160.39 و164 و15.4 تريليون و96.5 مليار و163.99 و31 يوليو و19 شهراً كلها مطابقة للمصادر. الخلل في تأريخ الاختراق بالجمعة إلى جانب قمة الخميس، وفي خانات الخلفية داخل صندوق الأرقام. — توحيد التأريخ، وإخراج 160.30 والعشرة مليارات و15.4 تريليون من الصندوق مع إبقائها في النص."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "استخدمت الخزانة الأمريكية يورو تعادل نحو 500 مليون دولار في تدخل 31 يوليو المنسق مع اليابان",
+          "source": 2
+        },
+        {
+          "fact": "أنفقت اليابان 15.4 تريليون ين، نحو 96.5 مليار دولار، لدعم عملتها في يوليو وأغسطس",
+          "source": 1
+        },
+        {
+          "fact": "قال واكاباياشي إن ارتفاع العوائد الأمريكية من الأسباب الرئيسية لبيع الين وإن بنك اليابان لا يبدو مستعداً لمجاراة وتيرة الفيدرالي",
+          "source": 1
+        }
+      ],
+      "slug": "dollar-tops-160-yen-intervention-warnings-940a5b",
+      "title": "الدولار يتخطى 160 يناً للمرة الأولى منذ سبتمبر رغم تحذيرات طوكيو",
+      "score": 7,
+      "image": "cover-art"
+    },
+    {
+      "headline": "مرسيدس-بنز توقف استثماراتها في ألمانيا وتدرس إغلاق مصانع",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 79,
+    "failures": 0,
+    "promptTokens": 1239080,
+    "completionTokens": 263096,
+    "cacheReadTokens": 363349,
+    "costUsd": 12.34,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 79
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 85019,
+        "read": 0,
+        "out": 2257,
+        "usd": 0.7253
+      },
+      "desk": {
+        "calls": 18,
+        "in": 126925,
+        "read": 177151,
+        "out": 75137,
+        "usd": 2.5534
+      },
+      "writer": {
+        "calls": 14,
+        "in": 178881,
+        "read": 143928,
+        "out": 80911,
+        "usd": 3.0781
+      },
+      "critic": {
+        "calls": 16,
+        "in": 184685,
+        "read": 42270,
+        "out": 50852,
+        "usd": 2.5029
+      },
+      "checker": {
+        "calls": 5,
+        "in": 37947,
+        "read": 0,
+        "out": 35185,
+        "usd": 1.0073
+      },
+      "vision": {
+        "calls": 25,
+        "in": 262274,
+        "read": 0,
+        "out": 18754,
+        "usd": 2.473
+      }
+    }
+  },
+  "log": [
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.147894 2 - Leiothrix argenta\" — dated 1934, an archival picture",
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.147895 1 - Leiothrix argenta\" — dated 1934, an archival picture",
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.147895 2 - Leiothrix argenta\" — dated 1934, an archival picture",
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.53717 2 - Leiothrix argentau\" — dated 1934, an archival picture",
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.147893 2 - Leiothrix argenta\" — dated 1934, an archival picture",
+    "[11:49:42] image: dropped \"Naturalis Biodiversity Center - RMNH.AVES.147893 1 - Leiothrix argenta\" — dated 1934, an archival picture",
+    "[11:49:52] openverse \"currency exchange counter Tokyo\": HTTP 504",
+    "[11:49:52] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[11:49:53] commons \"10000 yen notes\": 5 usable of 20",
+    "[11:49:53] image: dropped \"Series F 10K Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:49:53] image: dropped \"Series F 10K Yen Bank of Japan note - reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:49:53] image: dropped \"Asian man in a modern office holding cash and a sticky note with '1000\" — a stock cliché («sticky note»)",
+    "[11:49:53] image: dropped \"Businessman holds stack of cash and sticky note in a modern office set\" — a stock cliché («sticky note»)",
+    "[11:49:53] image: dropped \"Close-up image of a stack of US dollars with a $10,000 band, symbolizi\" — names too little of yen, notes",
+    "[11:49:53] commons \"currency exchange counter Tokyo\": 0 usable of 0",
+    "[11:49:54] commons \"currency exchange\": 6 usable of 20",
+    "[11:49:54] image: dropped \"Two adults conversing at an outdoor money exchange booth with vivid si\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:49:54] image: dropped \"Night view of a brightly lit storefront and currency exchange signs in\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:49:54] image: 14 likeness(es) set aside for the country's own photographs",
+    "[11:50:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1391 in=11852 read=0 out=1603 attempt=1 ms=17965",
+    "[11:50:12] image: vision rejected all candidates (None of the candidates is usable. 1, 2 and 4 are flat scans of single new 10,000-yen notes: product close-ups, not editorial photographs, and 1 and 2 may fall under currency-reproduction laws. 3 is an amateur phone shot of an old Series D note on pavement. 5 is a WWII military note, archival and off-subject. 6 is a 2010 film snapshot of old-series notes counted at a market stall, with blur, dated colour and a head blocking the foreground, and it reads as household spending rather than the yen's exchange rate.)",
+    "[11:50:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=86 in=10733 read=0 out=231 attempt=1 ms=3745",
+    "[11:50:16] image: vision rejected all candidates (Neither photograph can run. No. 1 is a flat scan of a 1946 banknote that was withdrawn in 1955. It looks archival and does not show today's yen notes changing hands. No. 2 is an amateur family snapshot that is a close-up of a private child, which is inappropriate and too light for a story about yen weakness and Tokyo defending the currency.)",
+    "[11:50:16] image: tier 3, the writer's own subjects: Japanese yen banknotes | currency traders screens Tokyo | yen dollar exchange board",
+    "[11:50:17] commons \"Japanese yen banknotes 2026\": 0 usable of 0",
+    "[11:50:17] commons \"Japanese yen banknotes\": 8 usable of 12",
+    "[11:50:17] image: dropped \"JAPAN-10-Constitutional Monarchy-One Yen (1873).jpg\" — dated 1873, an archival picture",
+    "[11:50:17] image: dropped \"Series A 10 Yen Bank of Japan note - front.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:50:17] image: dropped \"10 Yen Modified banknote in Japan - reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:17] image: dropped \"10 Yen Modified banknote in Japan - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:17] image: dropped \"Bank of Japan gold convertible yen banknote 1900.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:18] commons \"currency traders screens Tokyo 2026\": 0 usable of 0",
+    "[11:50:18] commons \"currency traders screens Tokyo\": 0 usable of 0",
+    "[11:50:18] commons \"currency traders\": 3 usable of 12",
+    "[11:50:18] image: dropped \"Hudsons Bay Company currency to fur traders 1820 Fort York.jpg\" — dated 1820, an archival picture",
+    "[11:50:19] commons \"yen dollar exchange board 2026\": 0 usable of 0",
+    "[11:50:19] commons \"yen dollar exchange board\": 0 usable of 0",
+    "[11:50:20] commons \"yen dollar\": 6 usable of 12",
+    "[11:50:20] image: dropped \"Currency symbols, Euro, Riyal, Dollar, Yuan, Yen, Pound, Ruble, Won.jp\" — taken in Saudi Arabia, which the story does not name",
+    "[11:50:25] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=125 in=10480 read=0 out=292 attempt=1 ms=4874",
+    "[11:50:25] image: vision rejected all candidates (No candidate fits. 1 is an archival WWII Japanese military note, misleading beside a current exchange-rate story. 2 is a 17th-century English trade token, unrelated to the story. 3 is an amateur storefront of a 100-yen shop whose sign is the main subject, which says nothing about the dollar-yen rate or intervention. 4 is a coin close-up on a plain background, not the yen's notes changing hands.)",
+    "[11:50:25] image: tier 4, the story's point and its subject: yen banknotes in hand | currency exchange rate board Japan | yen and dollar banknotes | Japanese yen | yen banknotes Japan | currency exchange Tokyo (home: Japan, Japanese, Tokyo, Osaka)",
+    "[11:50:25] pexels \"yen banknotes in hand\": 8 usable",
+    "[11:50:25] pexels \"Japanese yen\": 8 usable",
+    "[11:50:25] pexels \"yen banknotes Japan\": 8 usable",
+    "[11:50:25] pexels \"currency exchange Tokyo\": 8 usable",
+    "[11:50:25] commons \"yen banknotes in hand\": 1 usable of 1",
+    "[11:50:25] pexels \"yen and dollar banknotes\": 8 usable",
+    "[11:50:25] pexels \"currency exchange rate board Japan\": 8 usable",
+    "[11:50:26] commons \"currency exchange rate board Japan\": 0 usable of 0",
+    "[11:50:26] commons \"currency exchange\": 6 usable of 24",
+    "[11:50:26] image: dropped \"Close-up of 50 euro banknotes with a digital stock market chart on a t\" — names too little of currency, exchange, rate, board",
+    "[11:50:26] image: dropped \"Close-up of a cryptocurrency trading chart displayed on a monitor, sho\" — names too little of currency, exchange, rate, board",
+    "[11:50:26] image: dropped \"Close-up of stock market candlestick chart showcasing financial data t\" — names too little of currency, exchange, rate, board",
+    "[11:50:26] commons \"yen and dollar banknotes\": 3 usable of 6",
+    "[11:50:27] commons \"Japanese yen\": 13 usable of 24",
+    "[11:50:27] image: dropped \"JAPAN-10-Constitutional Monarchy-One Yen (1873).jpg\" — dated 1873, an archival picture",
+    "[11:50:27] image: dropped \"Series F 5,000 yen reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:27] image: dropped \"Series F 1,000 yen note reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:27] image: dropped \"A Japanese 5 Yen (¥5) reverse side.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:27] image: dropped \"1-Yen Banknote with Empress Jingu 1881.jpg\" — dated 1881, an archival picture",
+    "[11:50:27] image: dropped \"5 Yen Heisei obverse.jpg\" — dated 1993, an archival picture",
+    "[11:50:27] image: dropped \"Explore a bustling market street in Kyoto, showcasing local vendors an\" — names too little of yen",
+    "[11:50:27] image: dropped \"A moody street scene in Nagoya, Japan with reflections on wet asphalt \" — names too little of yen",
+    "[11:50:27] image: dropped \"Image of various coins on financial documents with graphs and charts.\" — names too little of yen",
+    "[11:50:27] image: dropped \"A tempting display of taiyaki with custard and sweet bean paste at a J\" — names too little of yen",
+    "[11:50:27] image: dropped \"Outdoor market stall featuring seafood and beef skewers on sale with v\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:50:28] commons \"yen banknotes Japan\": 11 usable of 24",
+    "[11:50:28] image: dropped \"Series A 10 Yen Bank of Japan note - front.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:50:28] image: dropped \"10 Yen Modified banknote in Japan - reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:28] image: dropped \"10 Yen Modified banknote in Japan - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:28] image: dropped \"Bank of Japan gold convertible yen banknote 1900.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:28] image: dropped \"Series Ro 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:28] image: dropped \"Series Kaizo 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:28] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of yen, banknotes",
+    "[11:50:28] image: dropped \"Vending machine glowing at night beside a cozy café with two men insid\" — names too little of yen, banknotes",
+    "[11:50:28] commons \"currency exchange Tokyo\": 2 usable of 6",
+    "[11:50:28] image: dropped \"Two adults conversing at an outdoor money exchange booth with vivid si\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:50:28] image: dropped \"Busy street vendor serving a customer at a lively market stall in Toky\" — names too little of currency, exchange",
+    "[11:50:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=248 in=11216 read=0 out=404 attempt=1 ms=6640",
+    "[11:50:35] image: vision rejected all candidates (fallback pass) (None fit. 1 is a blurred stock composite of a USD/EUR/GBP board with no yen. 2 is an exchange booth in Bucharest, Romania, the wrong country. 3 and 4 are flat scans of yen note faces, which are banned. 5 and 6 are amateur shots of an old, discontinued 1000-yen note lying flat on pavement. Better to run text only.)",
+    "[11:50:50] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=966 in=11616 read=0 out=1195 attempt=1 ms=13696",
+    "[11:50:50] image: vision rejected all candidates (fallback pass) (None fits. No. 1 is the closest, with yen and dollar notes, but it is a staged studio shot and its most prominent element is a red 100-yuan note with Mao's portrait, which points readers to China's currency, not this yen-dollar story. No. 2 shows dollar notes only, staged, with no yen. No. 3 is an amateur street snapshot of a cash truck among bicycles. No. 4 is a lottery shop at night dominated by brand signs. No. 5 is a flat scan of a coin. No. 6 is an amateur 2006 snapshot of a casual cash handover beside wine bottles.)",
+    "[11:50:54] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=193 in=2996 read=0 out=237 attempt=1 ms=3561",
+    "[11:50:54] image: last resort: Japanese yen banknotes Japan | Japanese yen banknotes | Japanese yen banknotes industrial",
+    "[11:50:55] commons \"Japanese yen banknotes Japan\": 16 usable of 24",
+    "[11:50:55] image: dropped \"JAPAN-10-Constitutional Monarchy-One Yen (1873).jpg\" — dated 1873, an archival picture",
+    "[11:50:55] image: dropped \"Series A 10 Yen Bank of Japan note - front.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:50:55] image: dropped \"10 Yen Modified banknote in Japan - reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"10 Yen Modified banknote in Japan - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"Bank of Japan gold convertible yen banknote 1900.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"Series Ro 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] commons \"Japanese yen banknotes\": 16 usable of 24",
+    "[11:50:55] image: dropped \"Series Kaizo 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] commons \"Japanese yen banknotes industrial\": 0 usable of 0",
+    "[11:50:55] commons \"Japanese yen\": 13 usable of 24",
+    "[11:50:55] image: dropped \"Series F 5,000 yen reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"Series F 1,000 yen note reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"A Japanese 5 Yen (¥5) reverse side.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:50:55] image: dropped \"1-Yen Banknote with Empress Jingu 1881.jpg\" — dated 1881, an archival picture",
+    "[11:50:55] image: dropped \"5 Yen Heisei obverse.jpg\" — dated 1993, an archival picture",
+    "[11:51:00] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=128 in=11205 read=0 out=279 attempt=1 ms=4524",
+    "[11:51:00] image: vision rejected all candidates (fallback pass) (All six candidates fail. Photos 1-4 are flat scans of single yen notes, which the rules refuse because the printed art reads as a monument. Photos 5-6 are amateur shots of one old, superseded Series D note lying flat on pavement, not money being counted, stacked or handled. None shows the yen trading or Tokyo defending it, so the story runs better without a photograph.)",
+    "[11:51:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=99 in=10027 read=0 out=264 attempt=1 ms=4068",
+    "[11:51:04] image: vision rejected all candidates (fallback pass) (Neither photograph fits. Candidate 1 is a 19th-century national-bank note shown flat in a museum. Candidate 2 is a scan of a WWII Japanese military note used in occupied China, which is archival and potentially embarrassing. Both are flat views of the face of a non-current note rather than today's yen changing hands, so neither pictures the yen's slide past 160 or Tokyo's lonely defence of it.)",
+    "[11:51:04] image: last pass, a neutral illustration: yen banknotes in hand | currency exchange rate board Japan | yen and dollar banknotes | Japanese yen | yen banknotes Japan | currency exchange Tokyo",
+    "[11:51:04] commons \"yen banknotes in hand\": 1 usable of 1",
+    "[11:51:04] pexels \"yen and dollar banknotes\": 8 usable",
+    "[11:51:05] pexels \"yen banknotes in hand\": 8 usable",
+    "[11:51:05] commons \"currency exchange rate board Japan\": 0 usable of 0",
+    "[11:51:05] commons \"currency exchange\": 6 usable of 24",
+    "[11:51:05] pexels \"yen banknotes Japan\": 8 usable",
+    "[11:51:05] pexels \"currency exchange Tokyo\": 8 usable",
+    "[11:51:05] pexels \"Japanese yen\": 8 usable",
+    "[11:51:05] pexels \"currency exchange rate board Japan\": 8 usable",
+    "[11:51:05] image: dropped \"Close-up of 50 euro banknotes with a digital stock market chart on a t\" — names too little of currency, exchange, rate, board",
+    "[11:51:05] image: dropped \"Close-up of a cryptocurrency trading chart displayed on a monitor, sho\" — names too little of currency, exchange, rate, board",
+    "[11:51:05] image: dropped \"Close-up of stock market candlestick chart showcasing financial data t\" — names too little of currency, exchange, rate, board",
+    "[11:51:05] commons \"yen and dollar banknotes\": 3 usable of 6",
+    "[11:51:05] commons \"Japanese yen\": 13 usable of 24",
+    "[11:51:05] image: dropped \"JAPAN-10-Constitutional Monarchy-One Yen (1873).jpg\" — dated 1873, an archival picture",
+    "[11:51:05] image: dropped \"Series F 5,000 yen reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"Series F 1,000 yen note reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"A Japanese 5 Yen (¥5) reverse side.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"1-Yen Banknote with Empress Jingu 1881.jpg\" — dated 1881, an archival picture",
+    "[11:51:05] image: dropped \"5 Yen Heisei obverse.jpg\" — dated 1993, an archival picture",
+    "[11:51:05] image: dropped \"Explore a bustling market street in Kyoto, showcasing local vendors an\" — names too little of yen",
+    "[11:51:05] image: dropped \"A moody street scene in Nagoya, Japan with reflections on wet asphalt \" — names too little of yen",
+    "[11:51:05] image: dropped \"Image of various coins on financial documents with graphs and charts.\" — names too little of yen",
+    "[11:51:05] image: dropped \"Outdoor market stall featuring seafood and beef skewers on sale with v\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:51:05] commons \"yen banknotes Japan\": 11 usable of 24",
+    "[11:51:05] image: dropped \"Series A 10 Yen Bank of Japan note - front.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:51:05] image: dropped \"10 Yen Modified banknote in Japan - reverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"10 Yen Modified banknote in Japan - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"Bank of Japan gold convertible yen banknote 1900.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"Series Ro 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"Series Kaizo 10 Yen Bank of Japan note - obverse.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[11:51:05] image: dropped \"Colorful assortment of international paper currencies from various cou\" — names too little of yen, banknotes",
+    "[11:51:05] image: dropped \"Vending machine glowing at night beside a cozy café with two men insid\" — names too little of yen, banknotes",
+    "[11:51:05] commons \"currency exchange Tokyo\": 2 usable of 6",
+    "[11:51:05] image: dropped \"Two adults conversing at an outdoor money exchange booth with vivid si\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[11:51:05] image: dropped \"Busy street vendor serving a customer at a lively market stall in Toky\" — names too little of currency, exchange",
+    "[11:51:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=548 in=10674 read=0 out=733 attempt=1 ms=8708",
+    "[11:51:14] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a blurred double-exposure composite with chart lines, shows EUR and GBP but no yen, and reads as a stock cliché. 2 is a Bucharest station booth full of Romanian signs. 3 is a taiyaki shop, off-topic and light. 4 and 5 are flat scans of note faces, which the rules exclude. 6 is an amateur shot of a single obsolete Series D note lying on pavement, with the note's face as the subject.)",
+    "[11:51:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=651 in=10967 read=0 out=865 attempt=1 ms=9961",
+    "[11:51:24] image: vision rejected all candidates (fallback pass) (No candidate pictures the yen trading as money. #1 sets yen and dollars beside a prominent yuan note with Mao's portrait, on a staged plain background, so it points the reader to China. #2 shows dollars only, laid flat and staged. #3 shows Cambodian riel, the wrong currency. #4 is a flat shot of the face of an old, withdrawn 1000-yen note. #5 is an amateur street snapshot of a security truck with Japanese signs. #6 is a lottery shop at night, which would mislead. The story runs better as text.)",
+    "[11:51:35] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=673 in=11914 read=0 out=894 attempt=1 ms=10358",
+    "[11:51:35] image: vision rejected all candidates (fallback pass) (None of the photos fits. 1 shows Soviet rubles in an archival look. 2 is a stock fan of mixed foreign notes with no yen. 3 is a Moldovan exchange-shop street with legible signs and rates in the local currency. 4 is a flat scan of a coin. 6 is a Somaliland street money-changer scene in another currency. 5 is the only one with yen changing hands, but it is a 2006 amateur snapshot of a casual wine party: the note is tiny at thumbnail size, and the bottles and laughing guest are too light for the story. The story runs better as text.)",
+    "[11:51:35] published \"الدولار يتخطى 160 يناً للمرة الأولى منذ سبتمبر رغم تحذيرات طوكيو\" -> dollar-tops-160-yen-intervention-warnings-940a5b",
+    "[11:51:35] run budget of 35 minutes spent; \"مرسيدس-بنز توقف استثماراتها في ألمانيا وتدرس إغلاق مصانع\" waits for the next run"
+  ]
+}
