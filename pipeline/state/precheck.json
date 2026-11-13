@@ -15956,6 +15956,218 @@
           "noted": []
         }
       ]
+    },
+    "houthis-target-saudi-east-west-pipeline-yanbu-1fae7f": {
+      "at": "2026-11-13T02:07:39.857Z",
+      "title": "الحوثيون يعلنون استهداف خط شرق-غرب لنقل النفط السعودي إلى البحر الأحمر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 22,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "المسيّرات المعترضة في منطقة الرياض الخميس: 2",
+              "quote": "في المقابل، أعلن المتحدث باسم التحالف بقيادة السعودية، تركي المالكي، اعتراض وتدمير طائرتين مسيرتين في منطقتي الرياض والشرقية، في أحدث سلسلة من عمليات الاعتراض التي أعلنها التحالف خلال الأيام الماضية.",
+              "source": "BBC Arabic",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال تحالف دعم الشرعية في اليمن، الذي تقوده السعودية، إن طائرتين مسيّرتين اعتُرضتا ودُمّرتا في منطقة الرياض الخميس في حادثين منفصلين، أحدهما صباحاً والآخر مساءً، وإن الحوثيين أطلقوا مسيّرة المساء.",
+              "quote": "في المقابل، أعلن المتحدث باسم التحالف بقيادة السعودية، تركي المالكي، اعتراض وتدمير طائرتين مسيرتين في منطقتي الرياض والشرقية، في أحدث سلسلة من عمليات الاعتراض التي أعلنها التحالف خلال الأيام الماضية.",
+              "source": "BBC Arabic",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "us-budget-deficit-october-record-2027-628088": {
+      "at": "2026-11-13T02:28:28.463Z",
+      "title": "عجز الموازنة الأمريكية يقفز 42% إلى 404 مليارات دولار في أكتوبر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 27,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 21,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويعود جزء من الزيادة العسكرية إلى تحويلات لصناديق استئمانية عسكرية تأخرت بسبب الإغلاق الحكومي العام الماضي، إضافة إلى زيادة نفقات العمليات والصيانة والمشتريات، وفق بيانات الخزانة.",
+              "quote": "وارتفع الإنفاق العسكري بمقدار 28 مليار دولار، أو 30%، مدفوعا جزئيا بتحويلات إلى صناديق استئمانية عسكرية كانت قد تأخرت بسبب الإغلاق الحكومي العام الماضي، إلى جانب زيادة نفقات العمليات والصيانة والمشتريات، بحسب رويترز.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 1,
+              "correction": "The source attributes this explanation of the military spending increase to Reuters, not to Treasury data."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "india-inflation-breaches-rbi-ceiling-october-4e4475": {
+      "at": "2026-11-13T02:44:15.437Z",
+      "title": "تضخم أسعار المستهلكين في الهند يقفز إلى 6.09% متجاوزاً سقف المركزي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 27,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 11,
+              "field": "whyItMatters",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "المحرك الرئيسي للارتفاع هو الغذاء، الذي يشكل نحو 40% من سلة المستهلك وتتحدد أسعاره بالمحاصيل ومخزون الخزانات أكثر مما تتحدد بكلفة الاقتراض، غير أن تجاوز تضخم الخدمات 10% يضع جزءاً من الضغوط في متناول الفائدة.",
+              "quote": "Retail inflation in restaurant and accommodation services was 10.06 per cent, F&B 8.51 per cent and personal care and miscellaneous goods and services 10.14 per cent.",
+              "source": "The Hindu BusinessLine",
+              "sourceN": 2,
+              "correction": "The sources do not give overall services inflation above 10%; only two categories exceeded 10%: restaurant and accommodation services (10.06%) and personal care and miscellaneous goods and services (10.14%)."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 28,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 33,
+              "field": "body",
+              "class": "hedge",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويرجح اقتصاديون أن يتبع رفعَ ديسمبر رفعٌ آخر بمقدار 25 نقطة أساس في مراجعة فبراير.",
+              "quote": "The sustained rise in inflation could increase the likelihood of monetary tightening, with the RBI potentially raising the benchmark interest rate by 0.25 per cent each in its December and February monetary policy reviews, they said.",
+              "source": "The Economic Times",
+              "sourceN": 3,
+              "correction": "Economists presented 25 bps hikes in both December and February only as a possibility (the RBI 'potentially' raising rates), not as a likely outcome."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 28,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

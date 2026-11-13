@@ -1,0 +1,81 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-13T01:53:44.086Z",
+  "durationSec": 54,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "gold-falls-below-4000-lowest-in-year-789e95",
+      "title": "الذهب يهبط دون 4000 دولار إلى أدنى مستوى في نحو عام",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 17,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "nvidia-falls-below-4-trillion-huang-exit-838dc3",
+      "title": "القيمة السوقية لإنفيديا تهبط دون 4 تريليونات دولار إثر استقالة هوانغ",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 18326,
+    "completionTokens": 11469,
+    "cacheReadTokens": 0,
+    "costUsd": 0.376,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 18326,
+        "read": 0,
+        "out": 11469,
+        "usd": 0.376
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[01:53:44] second look: 2 to read now (2 published pieces not yet read; 247 read clean before publication and left out of the audit sample)",
+    "[01:53:45] nvidia-falls-below-4-trillion-huang-exit-838dc3:   source https://www.nytimes.com/2026/11/12/business/nvidia-stock-price-jensen-huang-ceo-: http-403",
+    "[01:53:47] nvidia-falls-below-4-trillion-huang-exit-838dc3:   source https://www.agbi.com/ai/2026/11/gulf-watches-nervously-as-jensen-huang-resigns-f: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[01:54:30] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1243 in=8661 read=0 out=4791 attempt=1 ms=35946",
+    "[01:54:30] gold-falls-below-4000-lowest-in-year-789e95: 21 of 21 sentences checked · 17 supported · 2 without a source · 0 confirmed error(s)",
+    "[01:54:37] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1488 in=9665 read=0 out=6678 attempt=1 ms=50547",
+    "[01:54:37] nvidia-falls-below-4-trillion-huang-exit-838dc3: 31 of 31 sentences checked · 28 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}
