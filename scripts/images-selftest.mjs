@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, standInUnplaced, neutralQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -342,6 +342,35 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     verify: (name, prompt) => (prompt.includes("LAST-PASS") ? "GENERIC_OK" : "WRONG_SUBJECT"),
   });
   check("a pass's third search still reads the libraries' answer when Commons had five files or more", r.image?.title, frame.title);
+}
+// G4. The stand-in for an incident (the owner, 2026-11-12, on a night container port with an «LNG» tanker under the attack
+// on an unidentified ADNOC vessel: "confusing and not really suitable").
+{
+  const adnoc = { title: "سفينة تابعة لأدنوك تتضرر في هجوم داخل المياه الإقليمية الإماراتية", subtitle: "", lede: "أكدت الشركة أن إحدى سفنها تضررت.", body: "فقرة.", tags: ["الإمارات", "الشحن البحري"], regions: ["الخليج"], kind: "news", section: "energy", imageQueries: [] };
+  const unplaced = { title: "Vibrant night view of a cargo port with ships and cranes", description: "", categories: "" };
+  check(
+    "a stand-in whose record places it nowhere is one; a file placed at home, the company's own, or under a world story is not",
+    [standInUnplaced(unplaced, adnoc), standInUnplaced({ title: "Oil tanker off Fujairah, United Arab Emirates.jpg" }, adnoc), standInUnplaced(unplaced, { ...adnoc, regions: ["عالمي"] }), standInUnplaced({ title: "Port of Rotterdam tanker.jpg" }, adnoc)],
+    [true, false, false, true],
+  );
+  check(
+    "an illustration is never searched by the incident: «damaged oil tanker» is «oil tanker», and the plain thing at sea is kept",
+    neutralQueries(["damaged oil tanker", "burning tanker Gulf of Oman", "tanker attack", "tanker ship at sea", "oil tanker UAE"], ["UAE", "Gulf of Oman"]),
+    ["oil tanker", "tanker ship sea"],
+  );
+  const night = file("Tanker at an oil terminal at night, Egypt.jpg", { categories: "Ports of Egypt" });
+  const day = file("Tanker at an oil terminal, Egypt.jpg", { categories: "Ports of Egypt" });
+  const stock = file("Oil tanker under way.jpg", { description: "An oil tanker at sea" });
+  const egypt = { ...developers, title: "مصر ترفع صادراتها من النفط الخام", subtitle: "", tags: ["مصر", "النفط"] };
+  const placed = await scenario({ draft: egypt, plan: planFor({ queries: ["oil terminal tanker Egypt"], places: [], place_queries: [] }), world: { "oil terminal tanker Egypt": [night, day] }, judge: (titles) => (titles.length ? 1 : 0), verify: () => "GENERIC_OK" });
+  check("a record that calls itself a night view comes after the daylight frame, and a stand-in placed at home keeps its plain caption", [titlesIn(placed.judgePrompts[0])[0], placed.image?.title, String(placed.image?.alt ?? "").includes(ILLUSTRATIVE)], [day.title, day.title, false]);
+  const loose = await scenario({ draft: egypt, plan: planFor({ queries: ["oil tanker"], places: [], place_queries: [] }), world: { "oil tanker": [stock] }, judge: (titles) => (titles.length ? 1 : 0), verify: () => "GENERIC_OK" });
+  check("a stand-in no record places in the story's country runs as «صورة تعبيرية»", [loose.image?.title, String(loose.image?.alt ?? "").includes(ILLUSTRATIVE)], [stock.title, true]);
+  check(
+    "every judge and the check are told: daylight, and no stand-in of a kind the story does not state",
+    [placed.judgePrompts.every((p) => p.includes("DAYLIGHT.") && p.includes("A KIND THE STORY DOES NOT STATE")), placed.verifyPrompts.every((p) => p.includes("lights and their glare") && p.includes("plainly of one particular kind"))],
+    [true, true],
+  );
 }
 // H. The planner fails: the writer's own searches still find a photo; with none, the story runs without one.
 {
