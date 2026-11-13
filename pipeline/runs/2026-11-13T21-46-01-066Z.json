@@ -1,0 +1,93 @@
+{
+  "mode": "weekly",
+  "startedAt": "2026-11-13T21:35:58.033Z",
+  "durationSec": 603,
+  "published": 0,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "سهم إنفيديا يهبط حتى 14% وأسعار المستهلكين الأمريكية ترتفع 0.4%",
+      "section": "analysis",
+      "outcome": "rejected after revision: بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: أبرز ما جرى، ما ننتظره الأسبوع المقبل. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل."
+    }
+  ],
+  "llm": {
+    "calls": 14,
+    "failures": 1,
+    "promptTokens": 368487,
+    "completionTokens": 69083,
+    "cacheReadTokens": 235028,
+    "costUsd": 2.4962,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 14
+    },
+    "byRole": {
+      "desk": {
+        "calls": 12,
+        "in": 48749,
+        "read": 208454,
+        "out": 47993,
+        "usd": 1.3914
+      },
+      "critic": {
+        "calls": 1,
+        "in": 42159,
+        "read": 8454,
+        "out": 5450,
+        "usd": 0.448
+      },
+      "writer": {
+        "calls": 1,
+        "in": 42551,
+        "read": 18120,
+        "out": 15640,
+        "usd": 0.6568
+      }
+    }
+  },
+  "log": [
+    "[21:35:58] newsroom start mode=weekly limit=4 dry-run=false",
+    "[21:35:58] weekly: 14 stories of the week, 0 calendar events",
+    "[21:35:58]   story: القيمة السوقية لإنفيديا تهبط دون 4 تريليونات دولار إثر استقالة هوانغ",
+    "[21:35:58]   story: أسعار المستهلكين الأمريكية ترتفع 0.4% في أكتوبر متجاوزة التوقعات",
+    "[21:35:58]   story: أسعار المنتجين الأمريكية ترتفع 6.5% سنوياً في أكتوبر بأسرع وتيرة منذ 2022",
+    "[21:35:58]   story: وكالة الطاقة الدولية: سوق النفط تتجه إلى فائض لأول مرة منذ حرب إيران",
+    "[21:35:58]   story: الحوثيون يعلنون استهداف خط شرق-غرب لنقل النفط السعودي إلى البحر الأحمر",
+    "[21:35:58]   story: إنتاج السعودية النفطي يقفز 26% إلى قرب مستوى ما قبل الحرب",
+    "[21:35:58]   story: تحويلات المصريين بالخارج تبلغ مستوى قياسياً عند 13 مليار دولار بين يوليو وسبتمبر",
+    "[21:35:58]   story: أورلن البولندية أول عميل يلغي عقد غاز مسال مع قطر للطاقة",
+    "[21:36:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1833 in=3671 read=18120 out=2174 attempt=1 ms=20271",
+    "[21:36:18] weekly paragraph 1/8: 66 words (claude-cli/claude-opus-5-5)",
+    "[21:36:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=617 in=2722 read=18120 out=917 attempt=1 ms=9199",
+    "[21:36:28] weekly paragraph 2/8: 59 words (claude-cli/claude-opus-5-5)",
+    "[21:36:41] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1190 in=3575 read=18120 out=1481 attempt=1 ms=13177",
+    "[21:36:41] weekly paragraph 3/8: 53 words (claude-cli/claude-opus-5-5)",
+    "[21:36:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1020 in=2324 read=18120 out=1349 attempt=1 ms=11041",
+    "[21:36:52] weekly paragraph 4/8: 66 words (claude-cli/claude-opus-5-5)",
+    "[21:37:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1071 in=2885 read=18120 out=1364 attempt=1 ms=12956",
+    "[21:37:05] weekly paragraph 5/8: 58 words (claude-cli/claude-opus-5-5)",
+    "[21:37:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=909 in=3503 read=18120 out=1226 attempt=1 ms=11154",
+    "[21:37:16] weekly paragraph 6/8: 65 words (claude-cli/claude-opus-5-5)",
+    "[21:37:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=989 in=2541 read=18120 out=1291 attempt=1 ms=11619",
+    "[21:37:28] weekly paragraph 7/8: 61 words (claude-cli/claude-opus-5-5)",
+    "[21:37:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1329 in=3144 read=18120 out=1644 attempt=1 ms=15371",
+    "[21:37:43] weekly paragraph 8/8: 63 words (claude-cli/claude-opus-5-5)",
+    "[21:38:53] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: ahead missing",
+    "[21:39:55] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4009 in=4131 read=18120 out=6124 attempt=2 ms=59225",
+    "[21:40:40] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1470 in=7580 read=13627 out=5896 attempt=1 ms=44755",
+    "[21:40:40] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,body] rejected=[]",
+    "[21:40:40] desk \"تضخم المستهلكين الأمريكي يفوق التوقعات ويعزز ترجيح رفع الفائدة في ديسمبر\": rewrote title, subtitle, body",
+    "[21:40:40] checks weekly \"تضخم المستهلكين الأمريكي يفوق التوقعات ويعزز ترجيح رفع الفائدة في ديسمبر\": 881 words, 0 issues, 0 warnings",
+    "[21:41:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3256 in=42159 read=8454 out=5450 attempt=1 ms=50220",
+    "[21:41:30] critic weekly: revise score=5 issues=6",
+    "[21:41:30]   · سببية لا تسندها القصة: «ثم سجّلت أسعار المنتجين الجمعة أسرع وتيرة سنوية منذ 2022، فازداد ترجيح رفع الفائدة في اجتماع ديسمبر». المصدر 3 يقول إن القراءة السنوية ج",
+    "[21:41:30]   · نتيجة لم ترد في المصدر 4: «لكن الفائض الذي تتوقعه الوكالة قد يضغط على أسعار الخام وإيراداته في الربع الرابع، ما لم تمتص إعادة بناء المخزونات جزءاً من الزيادة». ",
+    "[21:41:30]   · أثر مخترع على بلد بعينه: «ومن المحتمل أن يقابل هذا الدعم ارتفاع في كلفة اقتراضها الخارجي إذا رفع الاحتياطي الفيدرالي الفائدة في ديسمبر». لا تربط أي قصة بين الفا",
+    "[21:41:30]   · قسم «ما ننتظره الأسبوع المقبل» لا يستند إلى الأجندة. الأجندة المرفقة (المصدر 15) خالية من أي موعد، واجتماع 8 و9 ديسمبر ليس في الأسبوع المقبل. ثم إن عبارة «وأقرب",
+    "[21:43:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=9806 in=42551 read=18120 out=15640 attempt=1 ms=126556",
+    "[21:46:01] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=11198 in=8610 read=13627 out=17327 attempt=1 ms=143509",
+    "[21:46:01] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters] rejected=[body:subheads changed]",
+    "[21:46:01] desk \"تضخم أمريكي أعلى من المتوقع يعزز رهان رفع الفائدة في ديسمبر\": rewrote title, subtitle, lede, whyItMatters; refused body (subheads changed)",
+    "[21:46:01] reject weekly \"تضخم أمريكي أعلى من المتوقع يعزز رهان رفع الفائدة في ديسمبر\" after revision: بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: أبرز ما جرى، ما ننتظره الأسبوع المقبل. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل."
+  ]
+}
