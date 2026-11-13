@@ -16,7 +16,9 @@ firecrawl*.txt
 Thumbs.db
 .codebase-memory/
 pipeline/.cache/
-.claude/
+# Local Claude Code settings stay here; the agents' notes (.claude/rules/, loaded by path) are part of the repository
+.claude/*
+!.claude/rules/
 public/fonts/
 
 # Stray scratch files an agent may drop in the project root
