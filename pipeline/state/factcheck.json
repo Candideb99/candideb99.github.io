@@ -13839,6 +13839,111 @@
         }
       ],
       "outcome": "clean"
+    },
+    "us-budget-deficit-october-record-2027-628088": {
+      "at": "2026-11-13T09:27:57.032Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-13T02:28:28.454Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 24,
+        "weak": 4,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "تدفع واشنطن 115 مليار دولار في شهر واحد فوائدَ على دينها الاتحادي، وقد بلغ الجزء الذي يحمله الجمهور منه وحده ما يعادل ناتجها المحلي، ثم بدأت السنة الجديدة بعجز معدّل يفوق مستواه قبل عام بنسبة 49%.",
+        "وإذا بقي العجز على هذا المسار، فسيضيف كل شهر ديناً جديداً تُحمَّل فوائده على الموازنات التالية، فيتسع بند لا تستطيع الحكومة خفضه بقرار إنفاق."
+      ],
+      "weak": [
+        {
+          "sentence": "عجز الموازنة الأمريكية يقفز 42% إلى 404 مليارات دولار في أكتوبر",
+          "quote": "وزاد العجز بمقدار 120 مليار دولار، أو 42%، مقارنة بالشهر نفسه من العام الماضي، بعدما انخفضت الإيرادات إلى 369 مليار دولار، بينما ارتفعت النفقات إلى مستوى قياسي لشهر أكتوبر/تشرين الأول بلغ 773 مليار دولار، حسب البيانات التي نقلتها رويترز."
+        },
+        {
+          "sentence": "قفز عجز الموازنة الاتحادية الأمريكية 42% على أساس سنوي إلى 404 مليارات دولار في أكتوبر، أول أشهر السنة المالية 2027، بحسب بيانات وزارة الخزانة الصادرة الخميس، مع تراجع الإيرادات وارتفاع الإنفاق.",
+          "quote": "بدأت الولايات المتحدة السنة المالية 2027 بعجز في الموازنة قدره 404 مليارات دولار خلال أكتوبر/تشرين الأول الماضي، وهو أعلى عجز مسجل لهذا الشهر، مع تراجع الإيرادات وارتفاع الإنفاق الحكومي، وفق بيانات وزارة الخزانة الأمريكية الصادرة اليوم الخميس."
+        },
+        {
+          "sentence": "وقفز إنفاق وزارة الزراعة 14 مليار دولار، أو 80%، بسبب مدفوعات الإغاثة الزراعية، وزاد الإنفاق العسكري 28 مليار دولار، أو 30%.",
+          "quote": "أما النفقات المعلنة، فزادت بمقدار 84 مليار دولار، أو 12%، على أساس سنوي. وشملت الزيادة ارتفاع إنفاق وزارة الزراعة بمقدار 14 مليار دولار، أو 80%، بسبب مدفوعات الإغاثة الزراعية."
+        },
+        {
+          "sentence": "البند: العجز · أكتوبر (مليار دولار): 404 · التغير السنوي (مليار دولار): +120 · التغير السنوي (%): +42%",
+          "quote": "وزاد العجز بمقدار 120 مليار دولار، أو 42%، مقارنة بالشهر نفسه من العام الماضي، بعدما انخفضت الإيرادات إلى 369 مليار دولار، بينما ارتفعت النفقات إلى مستوى قياسي لشهر أكتوبر/تشرين الأول بلغ 773 مليار دولار، حسب البيانات التي نقلتها رويترز."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "india-inflation-breaches-rbi-ceiling-october-4e4475": {
+      "at": "2026-11-13T09:27:57.027Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v69",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-13T02:44:15.427Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 28,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وقالت راديكا راو، كبيرة الاقتصاديين والمديرة التنفيذية في بنك «دي بي إس»، إن التضخم العام لم يبلغ ذروته بعد، ورجحت أن يعدّل البنك المركزي توقعاته الفصلية صعوداً، مع أثر أساس غير موات.",
+          "quote": "“With headline inflation yet to peak, compounded by an unfavourable base effect, the central bank’s quarterly projection is likely to be revised higher. The data reinforces our expectation of a second successive rate hike in December,” said Radhika Rao, Senior Economist at DBS Bank.",
+          "source": "The Hindu BusinessLine"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "المحرك الرئيسي للارتفاع هو الغذاء، الذي يشكل نحو 40% من سلة المستهلك وتتحدد أسعاره بالمحاصيل ومخزون الخزانات أكثر مما تتحدد بكلفة الاقتراض، غير أن تجاوز التضخم 10% في فئتي خدمات المطاعم والإقامة والعناية الشخصية والسلع والخدمات المتنوعة يضع جزءاً من الضغوط في متناول الفائدة.",
+          "quote": "Retail inflation in restaurant and accommodation services was 10.06 per cent, F&B 8.51 per cent and personal care and miscellaneous goods and services 10.14 per cent."
+        },
+        {
+          "sentence": "وتشكل المواد الغذائية نحو 40% من مؤشر أسعار المستهلكين في الهند، وقد ارتفع تضخمها إلى 8.94% في أكتوبر من 7.74% في سبتمبر.",
+          "quote": "وارتفع تضخم أسعار الغذاء إلى 8.94 في المائة خلال أكتوبر، مقارنة بـ7.74 في المائة خلال سبتمبر، مع زيادة أسعار السلع الأساسية، مثل البصل والثوم والزنجبيل."
+        },
+        {
+          "sentence": "وكان بنك الاحتياطي الهندي قد رفع سعر الفائدة القياسي 25 نقطة أساس إلى 5.50% في أكتوبر، في أول زيادة منذ نحو أربع سنوات، ملمحاً إلى زيادات أخرى وسط ارتفاع التضخم وضعف الروبية وارتفاع أسعار النفط الخام.",
+          "quote": "The RBI hiked the benchmark policy rate by 0.25 per cent to 5.50 per cent in October, its first hike in nearly four years, while signalling that further rate hikes could follow amid rising inflation, a weak rupee and high crude oil prices."
+        },
+        {
+          "sentence": "ويرى اقتصاديون أن استمرار ارتفاع التضخم قد يزيد احتمال التشديد النقدي، مع إمكانية أن يرفع البنك الفائدة 25 نقطة أساس في كل من مراجعتي ديسمبر وفبراير.",
+          "quote": "The sustained rise in inflation could increase the likelihood of monetary tightening, with the RBI potentially raising the benchmark interest rate by 0.25 per cent each in its December and February monetary policy reviews, they said."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

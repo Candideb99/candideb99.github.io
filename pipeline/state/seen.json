@@ -1,66 +1,6 @@
 {
   "version": 1,
   "items": {
-    "be49da96e5c15cd0": {
-      "at": "2026-10-23T05:11:20.044Z",
-      "decision": "published",
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "title": "Global tech sell-off sparks flight to safety"
-    },
-    "5e97f2194ae23f86": {
-      "at": "2026-10-23T05:11:20.044Z",
-      "decision": "published",
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "title": "US tech stocks tumble as investors fret over AI spending"
-    },
-    "5a628e55a15faea4": {
-      "at": "2026-10-23T05:11:20.044Z",
-      "decision": "published",
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "title": "Japanese Bonds Rally as Global Tech Rout Fuels Haven Demand"
-    },
-    "1ca09f847594f60a": {
-      "at": "2026-10-23T05:11:20.044Z",
-      "decision": "published",
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "title": "Stocks See Steepest Decline in Months Amid A.I. Worries"
-    },
-    "ac9c1fd37193f87d": {
-      "at": "2026-10-23T05:11:20.044Z",
-      "decision": "published",
-      "slug": "nasdaq-falls-meta-ai-spending-fears-e3dbef",
-      "title": "Nasdaq tumbles while Treasuries soar as Meta rekindles AI spending fears"
-    },
-    "fdfe58c6641cd34e": {
-      "at": "2026-10-23T05:23:33.058Z",
-      "decision": "published",
-      "slug": "libya-central-bank-governor-resignation-accepted-781c9a",
-      "title": "استقالة محافظ المصرف المركزي تفجر أزمة جديدة في ليبيا"
-    },
-    "147e3e52dfc207b5": {
-      "at": "2026-10-23T05:23:33.058Z",
-      "decision": "published",
-      "slug": "libya-central-bank-governor-resignation-accepted-781c9a",
-      "title": "اقتحام المقر الرئيس للبنك المركزي الليبي في طرابلس"
-    },
-    "ee1d955cd2facd77": {
-      "at": "2026-10-23T05:23:33.058Z",
-      "decision": "published",
-      "slug": "libya-central-bank-governor-resignation-accepted-781c9a",
-      "title": "مصرف ليبيا المركزي.. البرلمان يقيل المحافظ ويكلف بديلا"
-    },
-    "ae4ad03ea2745302": {
-      "at": "2026-10-23T05:38:25.250Z",
-      "decision": "published",
-      "slug": "qatarenergy-cheniere-us-lng-purchase-deal-347068",
-      "title": "قطر للطاقة تؤمن إمدادات غاز مسال أمريكي من شينير مع استمرار أزمة مضيق هرمز"
-    },
-    "1ba096c0fdaec59b": {
-      "at": "2026-10-23T05:38:25.250Z",
-      "decision": "published",
-      "slug": "qatarenergy-cheniere-us-lng-purchase-deal-347068",
-      "title": "QatarEnergy signs long-term agreements to purchase 4 MTPA of US LNG"
-    },
     "4fabf130300ba1c1": {
       "at": "2026-10-23T12:02:35.381Z",
       "decision": "published",
@@ -6255,6 +6195,96 @@
       "decision": "published",
       "slug": "india-inflation-breaches-rbi-ceiling-october-4e4475",
       "title": "Retail inflation may remain above 6 pc for next few months; economists see possibility of rate hikes"
+    },
+    "c618ee085f4c9d77": {
+      "at": "2026-11-13T09:46:30.685Z",
+      "decision": "published",
+      "slug": "iea-oil-market-surplus-gulf-exports-104e86",
+      "title": "Iraq October Oil Output Jumps to Highest Since 2019, IEA Says"
+    },
+    "d25249c5dde1f614": {
+      "at": "2026-11-13T09:46:30.685Z",
+      "decision": "published",
+      "slug": "iea-oil-market-surplus-gulf-exports-104e86",
+      "title": "Global oil markets swing to surplus as Gulf shipments rebound"
+    },
+    "8c81fd9c653a73d6": {
+      "at": "2026-11-13T09:46:30.685Z",
+      "decision": "published",
+      "slug": "iea-oil-market-surplus-gulf-exports-104e86",
+      "title": "Global Oil Market Swings to Surplus on Gulf Exports, IEA Says"
+    },
+    "55e78d6e91a1e335": {
+      "at": "2026-11-13T09:46:30.685Z",
+      "decision": "published",
+      "slug": "iea-oil-market-surplus-gulf-exports-104e86",
+      "title": "\" الطاقة الدولية\": فائض متوقع في سوق النفط خلال الربع الرابع"
+    },
+    "4af0e0b7b1924373": {
+      "at": "2026-11-13T09:46:30.685Z",
+      "decision": "published",
+      "slug": "iea-oil-market-surplus-gulf-exports-104e86",
+      "title": "IEA’dan petrol arzı tahmini: Küresel petrol arzı 2027’de günlük 108,1 milyon varile çıkacak"
+    },
+    "1e83409f6ae72bcf": {
+      "at": "2026-11-13T09:47:35.925Z",
+      "decision": "rejected",
+      "title": "مايكروسوفت تسعى لاستعادة خدماتها بعد عطل عالمي، لكنها تقول إن عمليات الإصلاح لا تسير \"كما هو متوقع\"",
+      "strikes": 1
+    },
+    "89a9e0787008d2a2": {
+      "at": "2026-11-13T09:47:35.925Z",
+      "decision": "rejected",
+      "title": "Outlook, Teams and More Microsoft Programs Disrupted by Outage",
+      "strikes": 1
+    },
+    "9024dba0337b63a3": {
+      "at": "2026-11-13T09:47:35.925Z",
+      "decision": "rejected",
+      "title": "What we know about the global Microsoft outage",
+      "strikes": 1
+    },
+    "d527a0148616a0f2": {
+      "at": "2026-11-13T09:47:35.925Z",
+      "decision": "rejected",
+      "title": "GPs, police and pharmacies among UK services affected by Microsoft outage",
+      "strikes": 1
+    },
+    "59a19c0246d1a0c1": {
+      "at": "2026-11-13T09:47:35.925Z",
+      "decision": "rejected",
+      "title": "\"مايكروسوفت\" تعلن تعافيا جزئيا بعد عطل عالمي تجاوز 12 ساعة",
+      "strikes": 1
+    },
+    "d8c9750895b04a84": {
+      "at": "2026-11-13T09:47:45.055Z",
+      "decision": "rejected",
+      "title": "Großhandelspreise im Oktober 2026: +8,8 % gegenüber Oktober 2025",
+      "strikes": 1
+    },
+    "315e92b56ffcb7e5": {
+      "at": "2026-11-13T09:47:45.055Z",
+      "decision": "rejected",
+      "title": "Almanya toptan eşya fiyatlarında 3,5 yılın en hızlı artışı",
+      "strikes": 1
+    },
+    "5fb5cd50613b8673": {
+      "at": "2026-11-13T09:47:45.055Z",
+      "decision": "rejected",
+      "title": "German wholesale price growth slows last month",
+      "strikes": 1
+    },
+    "c613e63f834f3074": {
+      "at": "2026-11-13T09:47:50.021Z",
+      "decision": "rejected",
+      "title": "Talabat CEO: Grocery Demand Up Amid Mideast Situation",
+      "strikes": 1
+    },
+    "26f2083d79c093e7": {
+      "at": "2026-11-13T09:47:50.021Z",
+      "decision": "rejected",
+      "title": "Talabat considers acquisitions after cash reserves grows",
+      "strikes": 1
     }
   }
 }

@@ -261,10 +261,13 @@
     "dip-holding-shares-rise-dubai-debut-da4063:c536587c",
     "fab-15-billion-dirham-rights-issue-7229cc:d8a5f2c2",
     "egypt-red-sea-land-debt-reduction-sukuk-4defe6:fffaf1f5",
-    "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8"
+    "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8",
+    "us-budget-deficit-october-record-2027-628088:a7a49d19",
+    "india-inflation-breaches-rbi-ceiling-october-4e4475:553f18bf",
+    "india-inflation-breaches-rbi-ceiling-october-4e4475:96a88620"
   ],
-  "version": 69,
-  "updatedAt": "2026-11-12T11:26:00.712Z",
+  "version": 70,
+  "updatedAt": "2026-11-13T09:29:06.436Z",
   "lessons": [
     {
       "id": "L1",
@@ -314,11 +317,12 @@
         "sp-500-biggest-weekly-loss-ai-midterms-f9fb82:43da44aa",
         "fed-waller-december-hike-half-point-3a01d9:2c946d3a",
         "fab-15-billion-dirham-rights-issue-7229cc:d8a5f2c2",
-        "egypt-red-sea-land-debt-reduction-sukuk-4defe6:fffaf1f5"
+        "egypt-red-sea-land-debt-reduction-sukuk-4defe6:fffaf1f5",
+        "india-inflation-breaches-rbi-ceiling-october-4e4475:96a88620"
       ],
-      "seen": 38,
+      "seen": 39,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-12T02:19:07.952Z",
+      "lastSeen": "2026-11-13T09:29:06.436Z",
       "status": "active",
       "previous": [
         "Keep every qualifier in Arabic: could, possibly, expected, will, estimates, reportedly, if/should it go ahead. Name who claims or forecasts. Never turn a claim, conditional warning, forecast or promise ('no cost') into a stated fact, present result or bare headline.",
@@ -397,11 +401,12 @@
         "adnoc-gas-profit-hormuz-shipping-test-a98ea2:d44fd612",
         "saudi-turkey-mou-acwa-power-wind-3000-mw-baad3c:d69412be",
         "ad-ports-q3-profit-jumps-hormuz-closure-28cdcd:cb23e32f",
-        "dip-holding-shares-rise-dubai-debut-da4063:c536587c"
+        "dip-holding-shares-rise-dubai-debut-da4063:c536587c",
+        "us-budget-deficit-october-record-2027-628088:a7a49d19"
       ],
-      "seen": 60,
+      "seen": 61,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-11T19:43:27.038Z",
+      "lastSeen": "2026-11-13T09:29:06.436Z",
       "status": "active",
       "previous": [
         "Credit each fact to whom the source credits and name the originating outlet. An outlet's inference ('implying', 'suggesting') is not the official's own statement. An interview is not a statement. Add no conclusion the speaker did not draw.",
@@ -504,11 +509,12 @@
         "saudi-utility-tariffs-monthly-support-2027-748f63:29472625",
         "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74",
         "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671",
-        "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8"
+        "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8",
+        "india-inflation-breaches-rbi-ceiling-october-4e4475:553f18bf"
       ],
-      "seen": 39,
+      "seen": 40,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-12T11:26:00.712Z",
+      "lastSeen": "2026-11-13T09:29:06.436Z",
       "status": "active",
       "previous": [
         "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
@@ -812,18 +818,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-26T11:43:04.129Z",
-      "mistakes": 6,
-      "applied": [
-        "reinforce L2 (+1)",
-        "sharpen L5 (+2)",
-        "reinforce L6 (+2; reworded at most once a week)",
-        "reinforce L8 (+2; reworded at most once a week)",
-        "add L10 [attribution] from 1 mistake(s)",
-        "L10 now read by the writer (one serious mistake in a headline or lede)"
-      ]
-    },
     {
       "at": "2026-09-26T16:41:29.649Z",
       "mistakes": 11,
@@ -1297,6 +1291,15 @@
       "at": "2026-11-12T11:26:00.712Z",
       "mistakes": 1,
       "applied": [
+        "reinforce L4 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-13T09:29:06.436Z",
+      "mistakes": 3,
+      "applied": [
+        "reinforce L1 (+1; reworded at most once a week)",
+        "reinforce L2 (+1; reworded at most once a week)",
         "reinforce L4 (+1; reworded at most once a week)"
       ]
     }

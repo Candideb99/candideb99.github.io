@@ -16168,6 +16168,34 @@
           "noted": []
         }
       ]
+    },
+    "iea-oil-market-surplus-gulf-exports-104e86": {
+      "at": "2026-11-13T09:46:30.665Z",
+      "title": "وكالة الطاقة الدولية: سوق النفط تتجه إلى فائض لأول مرة منذ حرب إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
