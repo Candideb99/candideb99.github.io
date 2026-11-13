@@ -16432,6 +16432,34 @@
           "noted": []
         }
       ]
+    },
+    "iraq-banias-discount-could-weigh-more-as-brent-falls-1ccee0": {
+      "at": "2026-11-13T21:06:48.367Z",
+      "title": "العراق يبيع خام بانياس بخصم 38 دولاراً قد يثقل مع تراجع برنت",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 42,
+            "checked": 42,
+            "supported": 31,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 7,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
