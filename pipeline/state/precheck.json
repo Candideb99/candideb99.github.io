@@ -16528,6 +16528,62 @@
           ]
         }
       ]
+    },
+    "iran-three-oil-tankers-mines-hormuz-37792b": {
+      "at": "2026-11-14T09:09:04.308Z",
+      "title": "إيران: ثلاث ناقلات نفط تصطدم بألغام في مضيق هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-us-trade-council-first-meeting-tariffs-bfae1d": {
+      "at": "2026-11-14T09:33:05.982Z",
+      "title": "واشنطن وبكين تبحثان تنفيذ الخفض المتبادل للرسوم في أول اجتماع لمجلس التجارة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 18,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

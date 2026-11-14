@@ -1,0 +1,57 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-14T08:55:16.078Z",
+  "durationSec": 79,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "faa-nationwide-ground-stop-10000-flights-886601",
+      "title": "عطل في اتصالات المراقبة الجوية يربك أكثر من 10 آلاف رحلة في الولايات المتحدة",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 13,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 10233,
+    "completionTokens": 9820,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2783,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 10233,
+        "read": 0,
+        "out": 9820,
+        "usd": 0.2783
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[08:55:16] second look: 1 to read now (1 published pieces not yet read; 257 read clean before publication and left out of the audit sample)",
+    "[08:55:17] faa-nationwide-ground-stop-10000-flights-886601:   source https://www.marketwatch.com/story/faa-declares-rare-widespread-ground-outage-bdc: robots-disallow; read from the copy saved at publication (fetched then)",
+    "[08:56:35] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4608 in=10233 read=0 out=9820 attempt=1 ms=77505",
+    "[08:56:35] faa-nationwide-ground-stop-10000-flights-886601: 40 of 40 sentences checked · 24 supported · 13 without a source · 0 confirmed error(s) · 2 listed for a person"
+  ]
+}
