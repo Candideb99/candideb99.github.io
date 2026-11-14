@@ -440,55 +440,65 @@
       "read": 8,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-14",
+      "published": 14,
+      "news": 11,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 3,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-13T15:42:35.400Z",
+  "updatedAt": "2026-11-14T14:34:24.227Z",
   "week": {
-    "published": 98,
-    "news": 82,
+    "published": 93,
+    "news": 78,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.82,
+    "styleFaultsPerStory": 0,
+    "styleWarningsPerStory": 0.71,
     "corrections": 2,
     "usefulness": {
       "withLessons": {
-        "stories": 64,
-        "words": 462,
-        "keyFacts": 4.1
+        "stories": 58,
+        "words": 466,
+        "keyFacts": 3.9
       },
       "control": {
-        "stories": 17,
-        "words": 441,
-        "keyFacts": 3.6
+        "stories": 20,
+        "words": 442,
+        "keyFacts": 3.5
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 73,
-      "repaired": 19,
+      "checked": 87,
+      "clean": 71,
+      "repaired": 16,
       "held": 0,
-      "errorsFound": 21,
+      "errorsFound": 18,
       "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 21,
+      "repairedBeforePublication": 18,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 46,
-      "clean": 35,
+      "read": 42,
+      "clean": 30,
       "corrected": 2,
       "stands": 0,
       "refused": 0,
-      "listed": 9,
+      "listed": 10,
       "unverifiable": 0,
-      "confirmedPerStory": 0.04,
+      "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 35,
+        "read": 31,
         "confirmedPerStory": 0.06
       },
       "claudeWithout": {
@@ -498,61 +508,61 @@
     },
     "runs": {
       "count": 24,
-      "written": 43,
+      "written": 39,
       "refused": 8,
-      "callsPerStory": 24.6,
-      "tokensPerStory": 497827,
-      "costPerStory": 4.12,
+      "callsPerStory": 25.1,
+      "tokensPerStory": 506801,
+      "costPerStory": 4.14,
       "note": "from the run reports kept (the newest 24)"
     },
     "recurring": []
   },
   "weekBefore": {
-    "published": 93,
-    "news": 76,
+    "published": 94,
+    "news": 77,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.04,
-    "styleWarningsPerStory": 0.74,
+    "styleFaultsPerStory": 0.05,
+    "styleWarningsPerStory": 0.84,
     "corrections": 3,
     "usefulness": {
       "withLessons": {
         "stories": 67,
-        "words": 459,
-        "keyFacts": 4.2
+        "words": 463,
+        "keyFacts": 4.1
       },
       "control": {
         "stories": 9,
-        "words": 372,
-        "keyFacts": 1.8
+        "words": 400,
+        "keyFacts": 2.4
       }
     },
     "precheck": {
-      "checked": 86,
-      "clean": 77,
-      "repaired": 9,
+      "checked": 87,
+      "clean": 75,
+      "repaired": 12,
       "held": 0,
-      "errorsFound": 10,
+      "errorsFound": 13,
       "unsourcedCut": 2,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 10,
+      "repairedBeforePublication": 13,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 44,
+      "read": 42,
       "clean": 32,
       "corrected": 2,
       "stands": 1,
       "refused": 0,
-      "listed": 9,
+      "listed": 7,
       "unverifiable": 0,
       "confirmedPerStory": 0.07,
       "withLessons": {
-        "read": 33,
+        "read": 31,
         "confirmedPerStory": 0.06
       },
       "claudeWithout": {
@@ -636,7 +646,7 @@
     }
   },
   "evidence": {
-    "pairs": 58,
+    "pairs": 59,
     "vsKept": {
       "n": 0,
       "better": 0,
