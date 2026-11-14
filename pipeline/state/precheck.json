@@ -16703,6 +16703,125 @@
           }
         }
       ]
+    },
+    "un-urges-fertilizer-passage-through-hormuz-3371ae": {
+      "at": "2026-11-14T18:26:39.576Z",
+      "title": "مسؤول أممي يطالب واشنطن وطهران بالسماح فوراً بعبور الأسمدة من هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "fitch-affirms-uae-rating-despite-iran-war-8c5e5a": {
+      "at": "2026-11-14T18:39:32.956Z",
+      "title": "فيتش تثبّت تصنيف الإمارات عند رابع أعلى درجة رغم حرب إيران",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 29,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 12,
+              "field": "whyItMatters",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وإذا صحّ هذا الافتراض، تقع كلفة تعافي دبي، التي يُتوقع أن يبقى ناتجها العام المقبل دون مستوى 2025، على ميزانية الإمارة نفسها، وتبقى الميزانية الاتحادية التي يقيّمها التصنيف خارج هذا العبء.",
+              "quote": "Fitch also kept the UAE's sovereign credit rating at AA-, with a stable outlook, reflecting low consolidated government debt, strong net external asset position and high GDP per capita.",
+              "source": "The National",
+              "sourceN": 1,
+              "correction": "The rating rests on consolidated government debt, which covers the individual emirates, and on Abu Dhabi's sovereign assets, not on the federal budget alone, so Dubai's costs are not outside what the rating assesses."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "uae-mozambique-conclude-cepa-negotiations-dbe467": {
+      "at": "2026-11-14T18:51:55.679Z",
+      "title": "الإمارات وموزمبيق تختتمان مفاوضات اتفاقية الشراكة الاقتصادية الشاملة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

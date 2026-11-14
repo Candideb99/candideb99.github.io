@@ -1,95 +1,11 @@
 {
   "version": 1,
   "items": {
-    "8dbb2ed007e47684": {
-      "at": "2026-10-24T16:03:51.815Z",
-      "decision": "rejected",
-      "title": "Global Oil Price Hits $116 a Barrel, Highest Since April",
-      "strikes": 2
-    },
-    "030fbd8260ce0776": {
-      "at": "2026-10-24T16:03:51.815Z",
-      "decision": "rejected",
-      "title": "$120 Oil Is Almost Here, and Trump Has Few Good Options",
-      "strikes": 2
-    },
-    "2dd84dc56be42f64": {
-      "at": "2026-10-24T16:03:51.815Z",
-      "decision": "rejected",
-      "title": "خام برنت يقفز 3.55 دولاراً... وأسوأ شهر للهجمات في هرمز",
-      "strikes": 2
-    },
-    "a2905af63a5d665e": {
-      "at": "2026-10-24T16:03:51.815Z",
-      "decision": "rejected",
-      "title": "برنت يتجاوز 117 دولارًا للبرميل لأول مرة منذ مارس",
-      "strikes": 2
-    },
-    "9f8fafb5b33a4b03": {
-      "at": "2026-10-24T11:27:13.440Z",
-      "decision": "published",
-      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
-      "title": "مصر: نتائج إيجابية لبئر «نرجس 2» للغاز الطبيعي بالبحر المتوسط"
-    },
-    "52e60278b9e298d1": {
-      "at": "2026-10-24T11:27:13.440Z",
-      "decision": "published",
-      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
-      "title": "وزارة البترول وشيفرون تعلنان نتائج إيجابية لبئر نرجس 2 بالبحر المتوسط"
-    },
-    "a23f1ed5d81828ef": {
-      "at": "2026-10-24T11:27:13.440Z",
-      "decision": "published",
-      "slug": "egypt-chevron-narges-2-gas-well-results-44a207",
-      "title": "“البترول” و”شيفرون” تعلنان وجود طبقات حاملة للغاز في بئر “نرجس 2”"
-    },
-    "2ee11d610382793b": {
-      "at": "2026-10-24T11:46:00.570Z",
-      "decision": "published",
-      "slug": "russian-diesel-tankers-head-to-america-634507",
-      "title": "3 ناقلات محملة بديزل روسي تتجه نحو أميركا الشمالية"
-    },
-    "ce0401b6a072d3a1": {
-      "at": "2026-10-24T11:46:00.570Z",
-      "decision": "published",
-      "slug": "russian-diesel-tankers-head-to-america-634507",
-      "title": "نوفاك: 3 ناقلات محملة بديزل روسي تتجه نحو أمريكا الشمالية"
-    },
-    "fbc45a0060e8a088": {
-      "at": "2026-10-24T11:46:00.570Z",
-      "decision": "published",
-      "slug": "russian-diesel-tankers-head-to-america-634507",
-      "title": "بعد سنوات من الحظر.. الديزل الروسي يبحر مجدداً نحو أمريكا"
-    },
-    "68fdca802b452954": {
-      "at": "2026-10-24T11:46:00.570Z",
-      "decision": "published",
-      "slug": "russian-diesel-tankers-head-to-america-634507",
-      "title": "U.S. Diesel at $6.30 a Gallon as First Russian Cargo Sets Sail for New York"
-    },
-    "e88b39dbae13570a": {
-      "at": "2026-10-24T11:46:00.570Z",
-      "decision": "published",
-      "slug": "russian-diesel-tankers-head-to-america-634507",
-      "title": "First Russian diesel shipment is heading to US under Trump-Putin deal"
-    },
-    "b39b3a2955059e06": {
-      "at": "2026-10-24T16:03:51.815Z",
-      "decision": "rejected",
-      "title": "النفط قرب 117 دولاراً... فاتورة الطاقة تربك الأسهم والذهب",
-      "strikes": 1
-    },
     "0aaf1e62c6134490": {
       "at": "2026-10-25T05:04:24.683Z",
       "decision": "published",
       "slug": "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2",
       "title": "شواطئ رأس الخيمة \"مغلقة\" بعد تسرب نفطي"
-    },
-    "f49362ef605edd1a": {
-      "at": "2026-10-24T16:11:17.205Z",
-      "decision": "rejected",
-      "title": "UAE’s Ras Al-Khaimah shuts beaches amid tanker oil spill",
-      "strikes": 1
     },
     "871176bf5982776b": {
       "at": "2026-10-25T05:04:24.683Z",
@@ -102,54 +18,6 @@
       "decision": "published",
       "slug": "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2",
       "title": "Swift response key to limiting environmental impact of UAE oil spill, experts say"
-    },
-    "39db91a57f09ba21": {
-      "at": "2026-10-24T16:23:53.495Z",
-      "decision": "published",
-      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
-      "title": "ترمب يخفف الرسوم على سلع كندية مع احتدام سباق انتخابي في مين"
-    },
-    "a732864d1bbe80e9": {
-      "at": "2026-10-24T16:23:53.495Z",
-      "decision": "published",
-      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
-      "title": "White House lifts tariffs on some Canadian goods as midterm elections loom"
-    },
-    "a64d51764e73ad74": {
-      "at": "2026-10-24T16:23:53.495Z",
-      "decision": "published",
-      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
-      "title": "Trump drops some Canada tariffs in bid to boost embattled Susan Collins in Maine"
-    },
-    "c0429058b02ccc07": {
-      "at": "2026-10-24T16:23:53.495Z",
-      "decision": "published",
-      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
-      "title": "Coffins and Canoes From Canada Get 50% Tariff Under New Trump Order"
-    },
-    "73ecc8e75020598c": {
-      "at": "2026-10-24T16:23:53.495Z",
-      "decision": "published",
-      "slug": "trump-exempts-canadian-goods-tariffs-midterms-787322",
-      "title": "Ahead of Tight Race, Trump Swaps Tariffs on Some Canadian Goods"
-    },
-    "7f5ba1cc31dda55f": {
-      "at": "2026-10-24T16:37:04.652Z",
-      "decision": "published",
-      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
-      "title": "إندونيسيا تبدأ خفض صادرات الغاز الطبيعي إلى سنغافورة"
-    },
-    "6034f5ffcecd923f": {
-      "at": "2026-10-24T16:37:04.652Z",
-      "decision": "published",
-      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
-      "title": "إندونيسيا تقلّص شحنات الغاز إلى سنغافورة لصالح الطلب المحلي"
-    },
-    "0e18779cab6b1de8": {
-      "at": "2026-10-24T16:37:04.652Z",
-      "decision": "published",
-      "slug": "indonesia-cuts-gas-exports-to-singapore-e91659",
-      "title": "إندونيسيا تخفض صادرات الغاز الطبيعي إلى سنغافورة لضمان تلبية الإمدادات المحلية"
     },
     "c686a0ea2c4d2967": {
       "at": "2026-10-24T20:56:21.664Z",
@@ -6244,6 +6112,54 @@
       "decision": "published",
       "slug": "bessent-blames-commerce-megaspeed-blacklist-61e7c4",
       "title": "Nvidia scandal draws in Commerce Secretary Lutnick, who reportedly agrees to testify about China chip sales"
+    },
+    "7ac591db3e80fe35": {
+      "at": "2026-11-14T18:26:39.596Z",
+      "decision": "published",
+      "slug": "un-urges-fertilizer-passage-through-hormuz-3371ae",
+      "title": "منسق \"هرمز\" الأممي يدعو إلى السماح بعبور الأسمدة فورا"
+    },
+    "1a73ec3b5cbd328f": {
+      "at": "2026-11-14T18:26:39.596Z",
+      "decision": "published",
+      "slug": "un-urges-fertilizer-passage-through-hormuz-3371ae",
+      "title": "UN urges US, Iran to allow fertiliser shipments through Strait of Hormuz"
+    },
+    "a869177ce22e6b79": {
+      "at": "2026-11-14T18:26:39.596Z",
+      "decision": "published",
+      "slug": "un-urges-fertilizer-passage-through-hormuz-3371ae",
+      "title": "UN official urges Iran, US to let fertilizers through Hormuz Strait"
+    },
+    "35999654f2a2618e": {
+      "at": "2026-11-14T18:39:32.975Z",
+      "decision": "published",
+      "slug": "fitch-affirms-uae-rating-despite-iran-war-8c5e5a",
+      "title": "Fitch expects UAE GDP to rise this year and maintains high-grade credit rating"
+    },
+    "348b598123fca1f2": {
+      "at": "2026-11-14T18:39:32.976Z",
+      "decision": "published",
+      "slug": "fitch-affirms-uae-rating-despite-iran-war-8c5e5a",
+      "title": "Gargash: Fitch rating shows UAE economy’s strength during regional crisis"
+    },
+    "308daa9069aec34d": {
+      "at": "2026-11-14T18:51:55.699Z",
+      "decision": "published",
+      "slug": "uae-mozambique-conclude-cepa-negotiations-dbe467",
+      "title": "UAE-Mozambique trade hits $2.5b as CEPA talks conclude"
+    },
+    "9ff9921bd6731e03": {
+      "at": "2026-11-14T18:51:55.699Z",
+      "decision": "published",
+      "slug": "uae-mozambique-conclude-cepa-negotiations-dbe467",
+      "title": "الإمارات وموزمبيق توسعان آفاق التعاون التجاري والاستثماري"
+    },
+    "24a0cad2b72d8b10": {
+      "at": "2026-11-14T18:51:55.699Z",
+      "decision": "published",
+      "slug": "uae-mozambique-conclude-cepa-negotiations-dbe467",
+      "title": "President Sheikh Mohamed meets Mozambique's Chapo to strengthen UAE-Africa ties"
     }
   }
 }

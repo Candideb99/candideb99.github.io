@@ -2679,6 +2679,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-14T18:39:32.976Z",
+      "slug": "fitch-affirms-uae-rating-despite-iran-war-8c5e5a",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v70",
+      "lessonsHash": "5646222060",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 25,
+        "words": 433,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 0,
+        "checked": 28,
+        "words": 477,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 0,
+        "checked": 28,
+        "words": 477,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

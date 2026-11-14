@@ -1,0 +1,82 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-14T18:12:42.746Z",
+  "durationSec": 58,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "iran-three-oil-tankers-mines-hormuz-37792b",
+      "title": "إيران: ثلاث ناقلات نفط تصطدم بألغام في مضيق هرمز",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 21,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "bessent-blames-commerce-megaspeed-blacklist-61e7c4",
+      "title": "وزير الخزانة الأمريكي يحمّل وزارة التجارة مسؤولية تأخر إدراج «ميغاسبيد»",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 29,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 17788,
+    "completionTokens": 13714,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4165,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 17788,
+        "read": 0,
+        "out": 13714,
+        "usd": 0.4165
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[18:12:43] second look: 2 to read now (2 published pieces not yet read; 260 read clean before publication and left out of the audit sample)",
+    "[18:12:44] bessent-blames-commerce-megaspeed-blacklist-61e7c4:   source https://www.nytimes.com/2026/11/13/business/economy/bessent-commerce-megaspeed-l: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[18:12:44] iran-three-oil-tankers-mines-hormuz-37792b:   source https://www.arabnews.com/middle-east/iran-guards-say-two-oil-tankers-hit-by-mine: http-403; read from the copy saved at publication (fetched 2026-11-14T08:57:14.913Z)",
+    "[18:12:45] bessent-blames-commerce-megaspeed-blacklist-61e7c4:   source https://www.bloomberg.com/news/articles/2026-11-13/bessent-says-treasury-favored: subscribers-only; read from the copy saved at publication (fetched then)",
+    "[18:13:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2163 in=9384 read=0 out=6378 attempt=1 ms=47845",
+    "[18:13:33] iran-three-oil-tankers-mines-hormuz-37792b: 25 of 25 sentences checked · 21 supported · 0 without a source · 0 confirmed error(s) · 4 listed for a person",
+    "[18:13:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2132 in=8404 read=0 out=7336 attempt=1 ms=54627",
+    "[18:13:40] bessent-blames-commerce-megaspeed-blacklist-61e7c4: 31 of 31 sentences checked · 29 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}
