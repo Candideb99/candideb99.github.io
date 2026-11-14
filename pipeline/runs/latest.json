@@ -1,501 +1,233 @@
 {
-  "mode": "news",
-  "startedAt": "2026-11-14T10:36:12.955Z",
-  "durationSec": 2298,
-  "published": 3,
+  "mode": "explainer",
+  "startedAt": "2026-11-14T12:28:50.316Z",
+  "durationSec": 772,
+  "published": 1,
   "refreshed": 0,
   "report": [
     {
-      "headline": "كبير اقتصاديي بنك إنجلترا يرجّح استمرار رفع الفائدة خلال 2027",
-      "section": "economy",
-      "importance": 7,
-      "sources": [
-        "https://aawsat.com/node/5341066",
-        "https://alborsaanews.com/2026/11/14/2006132"
-      ],
-      "format": "short",
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يقول العنوان والدك إن كبير اقتصاديي بنك إنجلترا، أي بريطانيا، يرجّح مواصلة رفع الفائدة في 2027، ويرى أن الرفع إلى 4% لا يكفي. البلد والصفة واضحان، والمقدمة تضع الاسم بجانب الصفة.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يوفّر المصدران سبب التوقع ورقمه: تضخم متوقع بنحو 5% منتصف العام المقبل مقابل مستهدف 2%، بفعل الطاقة والحرب الإيرانية، مع ترجيح ضعيف لانتهاء الصراع. ويوفّران الرقم السابق: الرفع من 3.75% إلى 4%، وهو الأول منذ أغسطس 2023. ويوفّران رد الأسواق: تسعير 90 نقطة أساس نحو 5%. المسودة لا تحمل أياً من ذلك، وتكتفي بعبارة «استمرار الضغوط التضخمية».",
-              "repair": "إدراج توقع التضخم البالغ 5% وسببه من المصدرين 1 و2، والزيادة من 3.75% إلى 4% من المصدر 1، وتسعير الأسواق البالغ 90 نقطة أساس من المصدرين 1 و2."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يطوّر المتن مباشرة بعد المقدمة ما يقوله العنوان عن استمرار الرفع في 2027، لكن من دون الوقائع التي تشرحه. والخاتمة «أما توقعات الأسواق لهذا التشديد النقدي...» تحيل إلى توقعات لم تُذكر قط، فتبدو منفصلة عما قبلها.",
-              "repair": "جمع سبب التوقع (التضخم والطاقة والحرب وزيادة ديسمبر بربع نقطة) في الفقرة الأولى من المتن، ثم وضع الزيادة السابقة، ثم إقرار البنك بالتأخر، ثم ختم القصة بتسعير الأسواق مع رقمه."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «أنه انتظر في رأيه» تنسب الانتظار إلى بيل شخصياً، بينما القول في المصدر 1 «انتظرنا»، أي البنك. ولا تذكر المسودة أن زيادة ديسمبر المتوقعة بمقدار ربع نقطة مئوية.",
-              "repair": "«وقال: «في رأيي، انتظرنا وقتاً أطول مما ينبغي»»، وذكر أن زيادة ديسمبر المرجحة بربع نقطة مئوية."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "يحدد العنوان والدك البلد (بنك إنجلترا) وصفة المتحدث (كبير الاقتصاديين)، ويذكر الدك أن الرفع الأخير إلى 4% لن يكفي وحده، وهذا مدعوم من المصدر 2. لا يقرأ القارئ في البطاقة شخصين مختلفين، لأن الدك يكتفي بالضمير.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "يوفر المصدران سبب التوقع ورقمه: تضخم بنحو 5% منتصف العام المقبل مقابل مستهدف 2%، بفعل الطاقة والحرب الإيرانية، مع احتمال ضعيف لانتهاء الصراع. ويوفران الرقم السابق: من 3.75% إلى 4%، وهي الأولى منذ أغسطس 2023. ويوفران تسعير الأسواق: 90 نقطة أساس نحو 5%. المسودة لا تحمل أياً منها، وتربط التصويت في ديسمبر بسبب خاطئ.",
-              "repair": "إدراج توقع التضخم وسببه (المصدران 1 و2)، والزيادة من 3.75% إلى 4% (المصدر 1)، وتسعير الأسواق بـ90 نقطة أساس (المصدران 1 و2)، وربط تصويت ديسمبر باحتمال انتهاء الصراع (المصدر 1)."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "يقول العنوان إن الرفع سيستمر في 2027. تتناول الفقرة الأولى من المتن ذلك مباشرة، لكن من دون الوقائع التي تشرحه. وعبارة «توقعات الأسواق لمزيد من التشديد» تحيل إلى توقعات لم تُذكر، ثم تُعلَّق عليها جملة التصويت بعلاقة سببية لا أصل لها.",
-              "repair": "الفقرة الأولى: السبب، أي التضخم بنحو 5% والطاقة والحرب، مع ضعف احتمال انتهاء الصراع وزيادة ديسمبر بربع نقطة. ثم الزيادة السابقة وقول بيل إنها «خطوة مهمة» وإن أمام البنك المزيد. ثم إقراره بالتأخر. ثم الختام بتسعير الأسواق ورقمه وحكم بيل عليه."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "عبارة «ويعزز تقديره هذا الترجيحات بأن يصوّت» تغيّر سبب ترجيح التصويت الوارد في المصدر 1. أما الملاحظة السابقة عن الضمير فقد أُصلحت، إذ صار النص «أن البنك انتظر».",
-              "repair": "«ويرى بيل أن انتهاء الصراع وتراجع أسعار الطاقة احتمال ضعيف للغاية، ما يعزز ترجيح تصويته لزيادة بربع نقطة مئوية في ديسمبر»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 9,
-      "mendIssues": [
-        "خطأ في السببية: «ووصف بيل توقعات الأسواق لمزيد من التشديد النقدي بأنها ليست مبالغاً فيها، ويعزز تقديره هذا الترجيحات بأن يصوّت في ديسمبر لزيادة جديدة في الفائدة بربع نقطة مئوية». المصدر 1 لا يربط ترجيح التصويت بتقدير بيل لتوقعات الأسواق. الذي يعزز هذا الترجيح هو اعتباره «انتهاء الصراع بين الولايات المتحدة وإسرائيل وإيران، وما قد يرافقه من تراجع في أسعار الطاقة، احتمالاً ضعيفاً للغاية». الإصلاح: «ويرى بيل أن انتهاء الصراع مع إيران وتراجع أسعار الطاقة احتمال ضعيف للغاية، ما يعزز ترجيح تصويته لزيادة بربع نقطة مئوية في ديسمبر».",
-        "الملاحظة 1 باقية بصيغة أخرى: «توقعات الأسواق لمزيد من التشديد النقدي» لا تذكر ما تتوقعه الأسواق، فيبقى حكم بيل على رقم لا يعرفه القارئ. الإصلاح من المصدرين 1 و2: «وتسعّر الأسواق تشديداً تراكمياً بنحو 90 نقطة أساس بحلول نهاية 2027، ما قد يدفع الفائدة إلى الاقتراب من 5%، وهي توقعات وصفها بيل بأنها «ليست مبالغاً فيها»».",
-        "الملاحظتان 2 و6 باقيتان: يكتفي المتن بعبارة عامة هي «باستمرار الضغوط التضخمية وخطر انتقال ارتفاع تكاليف الطاقة». يغيب عنه توقع البنك أن يرتفع التضخم إلى نحو 5% في منتصف العام المقبل، أي أكثر من ضعف المستهدف البالغ 2%، بفعل انتقال تكاليف الطاقة الناجمة عن الحرب الإيرانية إلى الأجور (المصدران 1 و2). تُضاف هذه الوقائع إلى الفقرة الأولى من المتن.",
-        "الملاحظة 3 باقية: يذكر الدك «رفع الفائدة الأخير إلى 4%» ولا يعود المتن إليه. يغيب الرقم السابق وكون الزيادة الأولى منذ أغسطس 2023، كما يغيب وصف بيل لها بأنها «خطوة مهمة» (المصدر 1، ورقم 3.75% في المصدر 2 أيضاً). الإصلاح: «وكان البنك قد رفع الفائدة في نوفمبر إلى 4% من 3.75%، في أول زيادة منذ أغسطس 2023، وهي خطوة وصفها بيل بأنها «مهمة»، لكنه قال: «لا يزال أمامنا المزيد لنفعله»».",
-        "الملاحظة 5 باقية: يبلغ طول القصة (المقدمة والمتن) نحو 120 كلمة، أي أقل من الحد الأدنى للقصة القصيرة البالغ 150 كلمة. والمصدران يوفران السبب ورقمه والرقم السابق وتسعير الأسواق. تُكمَّل القصة بهذه الوقائع من دون حشو.",
-        "صياغة: عبارة «وقال إن أمام البنك المزيد ليفعله» ركيكة، صوابها «وقال إن على البنك أن يفعل المزيد» أو الاقتباس الحرفي «لا يزال أمامنا المزيد لنفعله». وفي الفقرة الأخيرة تكرار للمعنى نفسه: «تأخر في التحرك ضد التضخم» ثم «انتظر وقتاً أطول مما ينبغي». الإصلاح: «وأقرّ بأن البنك تأخر في مواجهة التضخم، قائلاً: «في رأيي، انتظرنا وقتاً أطول مما ينبغي»».",
-        "يوفر المصدران سبب التوقع ورقمه: تضخم بنحو 5% منتصف العام المقبل مقابل مستهدف 2%، بفعل الطاقة والحرب الإيرانية، مع احتمال ضعيف لانتهاء الصراع. ويوفران الرقم السابق: من 3.75% إلى 4%، وهي الأولى منذ أغسطس 2023. ويوفران تسعير الأسواق: 90 نقطة أساس نحو 5%. المسودة لا تحمل أياً منها، وتربط التصويت في ديسمبر بسبب خاطئ. — إدراج توقع التضخم وسببه (المصدران 1 و2)، والزيادة من 3.75% إلى 4% (المصدر 1)، وتسعير الأسواق بـ90 نقطة أساس (المصدران 1 و2)، وربط تصويت ديسمبر باحتمال انتهاء الصراع (المصدر 1).",
-        "يقول العنوان إن الرفع سيستمر في 2027. تتناول الفقرة الأولى من المتن ذلك مباشرة، لكن من دون الوقائع التي تشرحه. وعبارة «توقعات الأسواق لمزيد من التشديد» تحيل إلى توقعات لم تُذكر، ثم تُعلَّق عليها جملة التصويت بعلاقة سببية لا أصل لها. — الفقرة الأولى: السبب، أي التضخم بنحو 5% والطاقة والحرب، مع ضعف احتمال انتهاء الصراع وزيادة ديسمبر بربع نقطة. ثم الزيادة السابقة وقول بيل إنها «خطوة مهمة» وإن أمام البنك المزيد. ثم إقراره بالتأخر. ثم الختام بتسعير الأسواق ورقمه وحكم بيل عليه.",
-        "عبارة «ويعزز تقديره هذا الترجيحات بأن يصوّت» تغيّر سبب ترجيح التصويت الوارد في المصدر 1. أما الملاحظة السابقة عن الضمير فقد أُصلحت، إذ صار النص «أن البنك انتظر». — «ويرى بيل أن انتهاء الصراع وتراجع أسعار الطاقة احتمال ضعيف للغاية، ما يعزز ترجيح تصويته لزيادة بربع نقطة مئوية في ديسمبر»."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
+      "headline": "كيف تتجه سوق النفط إلى فائض وناقلات تصطدم بألغام في هرمز؟",
+      "section": "explainers",
       "outcome": "published",
-      "whyBasis": [],
-      "slug": "bank-of-england-pill-rate-hikes-2027-bdfdfc",
-      "title": "كبير اقتصاديي بنك إنجلترا يرجّح استمرار رفع الفائدة خلال 2027",
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "خطأ في الرقم ونسبته: «وتقدّر الوكالة أن صادرات الخليج المتعافية تتقدم على الطلب بنحو 1.7 مليون برميل يومياً». في المصدر 1 الرقم 1.7 مليون برميل يومياً هو فائض الإمدادات العالمية كلها على الطلب العالمي في الربع الرابع، وليس فارق صادرات الخليج على الطلب. صادرات الخليج أصغر من الطلب العالمي بكثير، وما تقوله الوكالة إن وتيرة تعافيها أسرع من وتيرة نمو الطلب. التصحيح: «وتقدّر الوكالة الفائض بنحو 1.7 مليون برميل يومياً، أي نحو 1.6% من متوسط الإمدادات».",
+        "تضخيم في العنوان الفرعي: «الفائض يذهب أولاً إلى خزانات فرغت». المصدر 1 يقول إن النزاع «استنزف» المخزونات، ولا يقول إنها فرغت. التصحيح: «الفائض يذهب أولاً إلى خزانات استنزفتها الحرب».",
+        "الخاتمة تحصيل حاصل ولا تجيب عن سؤال العنوان: «فإذا اتسعت الحوادث حتى أنقصت الإمدادات بما يقارب هامش الفائض، تقلّص هذا الهامش قبل أن تمتلئ الخزانات». معناها أن الفائض يتقلص إذا نقصت الإمدادات بمقدار الفائض. التصحيح: أن تجيب الخاتمة عن سؤال العنوان صراحة بنتيجة المثال المحسوب، وبشرط ثبات الطلب، مثل: «لهذا تفيض السوق رغم ألغام هرمز: فما تُنقصه الحوادث لم يبلغ حتى الآن فارقاً يقارب 1.6% من الإمدادات. وإذا بلغه في المتوسط على مدى الربع وبقي الطلب على حاله، عادت السوق إلى التعادل قبل أن تعوّض الخزانات ما سُحب منها».",
+        "حساب التعادل يُسقط افتراضه: «يكفي تعطل يُنقص الإمدادات بما يقارب هذا القدر في المتوسط على مدى الربع لإعادة السوق إلى التعادل». هذا صحيح فقط إذا بقي الطلب ثابتاً، فيجب أن يُذكر الشرط مرة واحدة، مثل «إذا بقي الطلب على حاله».",
+        "خطوات الرسم لا يتبع بعضها بعضاً: الخطوة «حوادث هرمز تُنقص ما يصل إلى السوق» لا تؤدي إلى الخطوة التالية «الإمدادات تبقى أعلى من الطلب على مدى الربع»، لأن الحادثة طرح من التدفق وليست سبباً لبقاء الفائض. التصحيح: «صادرات الخليج تتعافى أسرع من نمو الطلب» ← «الإمدادات تتجاوز الطلب رغم ما تُنقصه حوادث هرمز» ← «الفارق يذهب إلى المخزونات التي استنزفتها الحرب»."
+      ],
+      "slug": "oil-surplus-despite-hormuz-mines-explained-276601",
+      "title": "كيف تتجه سوق النفط إلى فائض والناقلات تصطدم بألغام في هرمز؟",
       "score": 9,
       "image": "photo"
-    },
-    {
-      "headline": "بيسنت يحمّل وزارة التجارة مسؤولية عدم حظر «ميغاسبيد» مع تمدد أزمة إنفيديا إلى واشنطن",
-      "section": "technology",
-      "importance": 7,
-      "sources": [
-        "https://www.bbc.co.uk/news/articles/cqvg2d1eg7zro",
-        "https://www.nytimes.com/2026/11/13/business/economy/bessent-commerce-megaspeed-lutnick.html",
-        "https://www.bloomberg.com/news/articles/2026-11-13/bessent-says-treasury-favored-megaspeed-on-trade-blacklist",
-        "https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والملخص يحددان البلد والفاعلين: «وزير الخزانة الأمريكي» في العنوان مع اسمه «سكوت بيسنت» في الملخص، و«ميغاسبيد» معرّفة بأنها شركة حوسبة سحابية سنغافورية مشتبه في تهريبها رقائق إنفيديا إلى الصين.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المصادر تقدّم ثلاثة عناصر تشرح الحدث. أولها سبب التوقيت، أي فضيحة هوانغ وتقرير «أكسيوس»، والمسودة تحملها لكنها تؤخر الفضيحة إلى الفقرة الثامنة. وثانيها ردود الأطراف، أي وزارة التجارة وتيم سكوت ونيل ووايدن، وهي حاضرة. وثالثها الخطوة التالية، والمسودة تحمل منها شهادة مجلس الشيوخ فقط وتسقط جلسات 1 و2 و3 ديسمبر (SOURCE 4). كما يغيب غرض بند قانون التجارة (SOURCE 1)، فتبقى عبارة «عكس غرضه» بلا معنى.",
-              "repair": "تقديم خلفية الفضيحة إلى ما بعد الملخص التمهيدي، وإضافة غرض بند قانون التجارة، وإضافة مواعيد جلسات ديسمبر في مجلس النواب."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "محور العنوان، أي تحميل وزارة التجارة المسؤولية، يُطوَّر مباشرة بعد الملخص التمهيدي مع تأييد الجهات الأربع وتحقيق الوزارة وتأخيرها، وهذا جيد. لكن صندوق «لماذا يهمّ» ينتهي بـ«ولهذا تقف وزارة التجارة والشركة معاً أمام مساءلة الكونغرس»، وهو رابط سببي غير مسنود. أما الاستنتاج القائل إن الفرز ينتقل عملياً إلى إنفيديا ما دامت «ميغاسبيد» خارج القائمة فاستنتاج محدود مقبول.",
-              "repair": "حذف الجملة الأخيرة من الصندوق، ونقل فقرة استقالة هوانغ إلى موضع مبكر."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "«كانت تُستورد من تايوان... لفحصها قبل بيعها» تُسقط الشرط الذي يذكره SOURCE 1. و«إذا ثبت أنه تحايل على القانون» تضيف شرطاً لم يقله بيسنت، وتنسب التصريح إلى غير مصدره.",
-              "repair": "«كان يمكن بيعها لشركات صينية إذا استُوردت أولاً... لفحصها»، و«وقال لسي إن بي سي إن من المهم محاسبة أي شخص في الشركة على ذلك»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "revise",
-              "evidence": "العنوان يقدّم الفاعل بلقبه «وزير الخزانة الأمريكي»، والعنوان الفرعي يسمّيه ويعرّف «ميغاسبيد» ببلدها ونشاطها، وهذا جيد. لكن العنوان الفرعي يقول «أيدت منذ أشهر إدراج شركة...» من دون ذكر القائمة، ويصف الجهات المؤيدة بأنها «وزارات أخرى» مع أن بينها الخزانة نفسها ومكتب الممثل التجاري.",
-              "repair": "«قال وزير الخزانة سكوت بيسنت إن وزارته وجهات حكومية أخرى أيدت منذ أشهر إدراج شركة الحوسبة السحابية السنغافورية المشتبه في تهريبها رقائق إنفيديا إلى الصين على قائمة الكيانات»."
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "المصادر تقدّم ثلاثة عناصر، والمسودة تحملها كلها. سبب التوقيت: فضيحة هوانغ صارت في الفقرة الأولى من المتن، وتقرير «أكسيوس» حاضر. ردود الأطراف: نفي إيكامر، وموافقة لوتنيك على المثول، وتيم سكوت، ونيل ووايدن. الخطوة التالية: شهادتا مجلس الشيوخ وجلسات 1 و2 و3 ديسمبر. وقائمة الكيانات معرّفة عند أول حاجة إليها، وغرض بند قانون التجارة صار مذكوراً. أما صندوق «لماذا يهمّ» فمقدماته مسنودة: الشركة خارج القائمة، وأربع جهات أيدت إدراجها، وصيغة البيع لعملاء معتمدين. واستنتاجه أن الفرز يقع عملياً على إنفيديا محدود ومتناسب، وانتهى بعد حذف الرابط السببي السابق.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "محور العنوان، أي تحميل وزارة التجارة المسؤولية، يُطوَّر بعد فقرة الخلفية مباشرة، وتتجمع فيه الجهات الأربع وتحقيق الوزارة وتأخيرها، ثم تأتي رواية «أكسيوس» والنفي. الخلل في ترتيب بيع H200: قرار ترامب تحت «سقف الرقائق ومسؤولية إنفيديا»، وشروطه تحت «تحقيقات الكونغرس» بعبارة «هذه الرقائق» التي تحيل عبر العنوان الفرعي.",
-              "repair": "نقل فقرة ضغط هوانغ وقرار ترامب في ديسمبر إلى أول قسم الكونغرس، وتسمية «رقائق H200» صراحة في فقرة نيل ووايدن."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الشروط صُحّحت: «كان يمكن بيعها... إذا استُوردت أولاً»، والمحاسبة «على ذلك» من دون «إذا ثبت». والتواريخ دقيقة: الأربعاء والخميس والجمعة وديسمبر الماضي. لكن عبارة «حققت مع «ميغاسبيد»... بشأن تهريب بعض رقائق إنفيديا» تُسقط أن التحقيق كان قائماً على الاشتباه (SOURCE 1).",
-              "repair": "«حققت معها العام الماضي للاشتباه في تهريبها بعض رقائق إنفيديا المتقدمة إلى الصين»."
-            }
-          }
-        }
-      ],
-      "mendedAfterReview": 6,
-      "mendIssues": [
-        "عبارة ناقصة في العنوان الفرعي: «إن وزارات أخرى أيدت منذ أشهر إدراج شركة الحوسبة السحابية السنغافورية». الفعل «إدراج» بلا متمّمه، فلا يعرف قارئ البطاقة على أي قائمة تُدرج الشركة ولا ماذا يعني إدراجها. وعبارة «وزارات أخرى» غير دقيقة، فالجهات الأربع تشمل وزارة الخزانة نفسها ومكتب الممثل التجاري، وهو ليس وزارة (SOURCE 4). الإصلاح: «قال وزير الخزانة سكوت بيسنت إن وزارته وجهات حكومية أخرى أيدت منذ أشهر إدراج شركة الحوسبة السحابية السنغافورية المشتبه في تهريبها رقائق إنفيديا إلى الصين على قائمة الكيانات المحظور التعامل معها».",
-        "إحالة غامضة عبر عنوان فرعي: تبدأ فقرة الكونغرس بعبارة «تحقيقات في كيفية السماح لإنفيديا ببيع هذه الرقائق»، والمقصود بـ«هذه الرقائق» رقائق H200 المذكورة في آخر فقرة من القسم السابق. كما أن ترتيب بيع H200 مقسوم بين قسمين: قرار ترامب في ديسمبر تحت «مسؤولية إنفيديا»، وشروط الاستيراد للفحص والرسوم تحت «تحقيقات الكونغرس». الإصلاح: نقل فقرة «وكان جنسن هوانغ قد ضغط... بشرط حصول الولايات المتحدة على نسبة من المبيعات» إلى أول قسم الكونغرس، ثم كتابة «تحقيقات في كيفية السماح لإنفيديا ببيع رقائق H200 لشركات صينية» (SOURCE 1، SOURCE 4).",
-        "تحفّظ ساقط: «وكانت وزارة التجارة نفسها قد حققت مع «ميغاسبيد» العام الماضي بشأن تهريب بعض رقائق إنفيديا المتقدمة إلى الصين». ما تنقله «نيويورك تايمز» أن التحقيق كان للاشتباه في التهريب (SOURCE 1)، والتهريب نفسه غير مثبت. الإصلاح: «للاشتباه في تهريبها بعض رقائق إنفيديا المتقدمة إلى الصين».",
-        "العنوان يقدّم الفاعل بلقبه «وزير الخزانة الأمريكي»، والعنوان الفرعي يسمّيه ويعرّف «ميغاسبيد» ببلدها ونشاطها، وهذا جيد. لكن العنوان الفرعي يقول «أيدت منذ أشهر إدراج شركة...» من دون ذكر القائمة، ويصف الجهات المؤيدة بأنها «وزارات أخرى» مع أن بينها الخزانة نفسها ومكتب الممثل التجاري. — «قال وزير الخزانة سكوت بيسنت إن وزارته وجهات حكومية أخرى أيدت منذ أشهر إدراج شركة الحوسبة السحابية السنغافورية المشتبه في تهريبها رقائق إنفيديا إلى الصين على قائمة الكيانات».",
-        "محور العنوان، أي تحميل وزارة التجارة المسؤولية، يُطوَّر بعد فقرة الخلفية مباشرة، وتتجمع فيه الجهات الأربع وتحقيق الوزارة وتأخيرها، ثم تأتي رواية «أكسيوس» والنفي. الخلل في ترتيب بيع H200: قرار ترامب تحت «سقف الرقائق ومسؤولية إنفيديا»، وشروطه تحت «تحقيقات الكونغرس» بعبارة «هذه الرقائق» التي تحيل عبر العنوان الفرعي. — نقل فقرة ضغط هوانغ وقرار ترامب في ديسمبر إلى أول قسم الكونغرس، وتسمية «رقائق H200» صراحة في فقرة نيل ووايدن.",
-        "الشروط صُحّحت: «كان يمكن بيعها... إذا استُوردت أولاً»، والمحاسبة «على ذلك» من دون «إذا ثبت». والتواريخ دقيقة: الأربعاء والخميس والجمعة وديسمبر الماضي. لكن عبارة «حققت مع «ميغاسبيد»... بشأن تهريب بعض رقائق إنفيديا» تُسقط أن التحقيق كان قائماً على الاشتباه (SOURCE 1). — «حققت معها العام الماضي للاشتباه في تهريبها بعض رقائق إنفيديا المتقدمة إلى الصين»."
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "قائمة الكيانات تضم شركات يُمنع على الشركات الأمريكية التعامل معها، و«ميغاسبيد» لم تكن مدرجة عليها رغم التحقيق معها للاشتباه في تهريب رقائق إنفيديا إلى الصين",
-          "source": 1
-        },
-        {
-          "fact": "وزارات الخزانة والدفاع والخارجية ومكتب الممثل التجاري الأمريكي أيدت إدراج «ميغاسبيد» منذ أشهر، والقرار بيد وزارة التجارة",
-          "source": 4
-        },
-        {
-          "fact": "قال ترامب في ديسمبر إن إنفيديا يمكنها بيع رقائق H200 لعملاء صينيين معتمدين بشرط حصول الولايات المتحدة على نسبة من المبيعات",
-          "source": 4
-        }
-      ],
-      "slug": "bessent-blames-commerce-megaspeed-blacklist-61e7c4",
-      "title": "وزير الخزانة الأمريكي يحمّل وزارة التجارة مسؤولية تأخر إدراج «ميغاسبيد»",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "أسعار الجملة في ألمانيا ترتفع 8.8% سنوياً في أكتوبر",
-      "section": "economy",
-      "importance": 6,
-      "sources": [
-        "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/11/PD26_396_61281.html",
-        "https://www.hurriyetdailynews.com/german-wholesale-price-growth-slows-last-month-229356"
-      ],
-      "editorialReviews": [
-        {
-          "pass": 1,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان والدِّسك يحددان البلد (ألمانيا) والمؤشر (أسعار الجملة) والشهر (أكتوبر في الدِّسك). ويوضح الدِّسك التناقض الظاهر بين تسارع المعدل السنوي وتباطؤ الزيادة الشهرية.",
-              "repair": ""
-            },
-            "context": {
-              "status": "revise",
-              "evidence": "المسبب مذكور: الحرب في إيران والشرق الأوسط ومنتجات الطاقة (SOURCE 1). والتوقع الذي طابقته القراءة مذكور: الأناضول (SOURCE 2). ولا يورد المصدران رد فعل أو موعداً قادماً. لكن «لماذا يهمّ» يحمّل العبء لتجار الجملة بلا سند، وجملة «بقيت الأسعار قرب المستوى المرتفع» تفسير غير دقيق.",
-              "repair": "تصحيح جملة العبء لتقع على مشتري الجملة أو حذفها، واستبدال جملة «قرب المستوى» بالتباطؤ الشهري المنسوب للأناضول."
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "العنوان يقول إن الزيادة السنوية هي الأعلى منذ فبراير 2023، والفقرة الأولى بعد الاستهلال تطوّره بمقارنة 9.5% ومسار أغسطس وسبتمبر، وهذا سليم. أما النصف الثاني من المتن فقراءة لصفوف الجدول فئة فئة تحت عنوانين فرعيين.",
-              "repair": "دمج فقرات الفئات في فقرة أو فقرتين تبرزان القائد (المنتجات النفطية) والتاليين في الارتفاع والاستثناء في الانخفاض، وترك التفاصيل للجدول."
-            },
-            "precision": {
-              "status": "revise",
-              "evidence": "الأرقام والفترات في المتن والجدول والرسم مطابقة لـ SOURCE 1 و SOURCE 2. لكن «صعود 1.9 نقطة مئوية» حساب تحريري يتطابق رقمه مع الزيادة الشهرية لسبتمبر (1.9%)، و«من الفئات القليلة» حكم كمي غير مسند.",
-              "repair": "حذف الحساب وعبارة «من الفئات القليلة»."
-            }
-          }
-        },
-        {
-          "pass": 2,
-          "verdict": "revise",
-          "readerCheck": {
-            "scope": {
-              "status": "clear",
-              "evidence": "العنوان يحدد البلد (ألمانيا) والرقم (8.8% سنوياً) وأنه الأعلى منذ فبراير 2023. والملحق يضيف القيد الحاسم: تباطؤ الزيادة الشهرية إلى 0.4% من 1.9% في أكتوبر، مع بقاء المنتجات النفطية المحرك الرئيسي. ولا تناقض بين القياسين بعد شرحهما.",
-              "repair": ""
-            },
-            "context": {
-              "status": "clear",
-              "evidence": "المسبب مذكور ومنسوب إلى المكتب: الحرب في إيران والشرق الأوسط رفعت أسعار منتجات الطاقة (SOURCE 1). والتوقع الذي طابقته القراءة الشهرية منسوب إلى الأناضول (SOURCE 2). ولا يورد المصدران رد فعل أو موعداً قادماً. أما «لماذا يهمّ» فيستنتج من مقدمتين مسندتين (المنتجات النفطية +47.6% سنوياً و+0.9% شهرياً، والتباطؤ الشهري) أن معظم أثر الصدمة دخل الأسعار قبل أكتوبر، وأن مشتري الجملة يدفعون ثمن المستوى المرتفع لا وتيرة الصعود. وهو استنتاج محدود ومتناسب.",
-              "repair": ""
-            },
-            "flow": {
-              "status": "revise",
-              "evidence": "ما يقول العنوان إنه جديد (الأعلى منذ فبراير 2023) تطوّره الفقرة الأولى بعد الاستهلال بمقارنة 9.5% ومسار أغسطس وسبتمبر، وهذا سليم. لكن الفقرة الثالثة تعرّف المعدلين السنوي والشهري، والفقرات الخامسة إلى السابعة تقرأ صفوف الجدول فئة فئة تحت عنوان فرعي لا يطابق التراجعات التي تحته.",
-              "repair": "حذف فقرة التعريف وضم «واصلت الأسعار الصعود بوتيرة أبطأ» إلى فقرة التباطؤ الشهري. ودمج فقرات الفئات في فقرة تبرز القائد والتاليين والانعطافة (المعادن شهرياً) والاستثناء (الحيوانات الحية والغذاء). وإعادة صوغ العنوان الفرعي أو حذفه."
-            },
-            "precision": {
-              "status": "clear",
-              "evidence": "الأرقام والفترات في المتن والجدول والرسم مطابقة لـ SOURCE 1. والزيادة الشهرية لسبتمبر (1.9%) وتوقعات السوق منسوبتان إلى الأناضول (SOURCE 2) لأن بيان المكتب لا يوردهما. وعبارة «أعلى زيادة شهرية بين الفئات التي ذكرها المكتب» صحيحة (1.5% لأجهزة معالجة البيانات) ومقيدة بالفئات المذكورة.",
-              "repair": ""
-            }
-          }
-        }
-      ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "outcome": "published",
-      "whyBasis": [
-        {
-          "fact": "ارتفعت أسعار الجملة في ألمانيا 8.8% على أساس سنوي و0.4% على أساس شهري في أكتوبر 2026",
-          "source": 1
-        },
-        {
-          "fact": "تباطأت الزيادة الشهرية إلى 0.4% في أكتوبر من 1.9% في سبتمبر",
-          "source": 2
-        },
-        {
-          "fact": "ارتفعت أسعار المنتجات النفطية بالجملة 47.6% سنوياً و0.9% شهرياً، وكانت السبب الرئيسي للزيادة السنوية بعد أن رفعت العمليات الحربية في إيران والشرق الأوسط أسعار الطاقة",
-          "source": 1
-        },
-        {
-          "fact": "ارتفعت أسعار المنتجات الكيميائية 18.6% سنوياً وأسعار الحبوب والتبغ الخام والبذور والأعلاف 21.2%",
-          "source": 1
-        }
-      ],
-      "slug": "german-wholesale-prices-rise-october-2026-621693",
-      "title": "أسعار الجملة في ألمانيا ترتفع 8.8% سنوياً بأعلى وتيرة منذ فبراير 2023",
-      "score": 8,
-      "image": "photo"
-    },
-    {
-      "headline": "مصر تطلق مبادرة وصندوقاً لتمويل الشركات الناشئة وتدعو الصناديق الأمريكية للمشاركة",
-      "section": "economy",
-      "importance": 6,
-      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 68,
-    "failures": 1,
-    "promptTokens": 1139135,
-    "completionTokens": 241916,
-    "cacheReadTokens": 385704,
-    "costUsd": 10.9425,
+    "calls": 31,
+    "failures": 0,
+    "promptTokens": 452351,
+    "completionTokens": 77984,
+    "cacheReadTokens": 116935,
+    "costUsd": 4.2664,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 68
+      "claude-cli/claude-opus-5-5": 31
     },
     "byRole": {
       "editor": {
-        "calls": 1,
-        "in": 83611,
+        "calls": 2,
+        "in": 10782,
         "read": 0,
-        "out": 3120,
-        "usd": 0.7313
+        "out": 1211,
+        "usd": 0.1105
       },
-      "desk": {
-        "calls": 17,
-        "in": 116688,
-        "read": 163524,
-        "out": 60538,
-        "usd": 2.177
+      "planner": {
+        "calls": 1,
+        "in": 25285,
+        "read": 0,
+        "out": 8791,
+        "usd": 0.3781
       },
       "writer": {
-        "calls": 14,
-        "in": 189966,
-        "read": 179910,
-        "out": 96286,
-        "usd": 3.4813
+        "calls": 7,
+        "in": 69176,
+        "read": 53973,
+        "out": 23200,
+        "usd": 1.0281
+      },
+      "desk": {
+        "calls": 5,
+        "in": 45074,
+        "read": 54508,
+        "out": 26124,
+        "usd": 0.8939
       },
       "critic": {
-        "calls": 11,
-        "in": 125437,
-        "read": 42270,
-        "out": 35306,
-        "usd": 1.7179
-      },
-      "checker": {
-        "calls": 6,
-        "in": 39934,
-        "read": 0,
-        "out": 31138,
-        "usd": 0.9421
+        "calls": 7,
+        "in": 80203,
+        "read": 8454,
+        "out": 10673,
+        "usd": 0.8568
       },
       "vision": {
-        "calls": 19,
-        "in": 197795,
+        "calls": 9,
+        "in": 104896,
         "read": 0,
-        "out": 15528,
-        "usd": 1.8929
+        "out": 7985,
+        "usd": 0.999
       }
     }
   },
   "log": [
-    "[11:12:18] commons \"grain storage silo\": 3 usable of 12",
-    "[11:12:18] image: dropped \"Henninger Turm - Original Platzset aus dem Restaurant.jpg\" — names too little of grain, storage, silo",
-    "[11:12:18] image: dropped \"Henninger Turm Abriss.JPG\" — names too little of grain, storage, silo",
-    "[11:12:18] image: dropped \"Henninger Turm Eingang.JPG\" — names too little of grain, storage, silo",
-    "[11:12:18] image: dropped \"Xinfadi Meat Exchange Hall (20260707131416).jpg\" — taken in China, which the story does not name",
-    "[11:12:18] image: dropped \"Bunge Destrehan Export Terminal and Bunge Chevron Ag Renewables Destre\" — taken in United States, which the story does not name",
-    "[11:12:18] image: dropped \"25th St 8th Av td (2018-11-27) 02 - Tanker Truck.jpg\" — taken in United States, which the story does not name",
-    "[11:12:18] image: dropped \"GMC General Dump Truck in Emporia VA.jpg\" — taken in United States, which the story does not name",
-    "[11:12:18] image: dropped \"800 Cala Millor tanker transporting oil.jpg\" — taken in Spain, which the story does not name",
-    "[11:12:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=263 in=11329 read=0 out=448 attempt=1 ms=5412",
-    "[11:12:24] image: vision rejected all candidates (No candidate fits. The story is about German wholesale prices rising mainly because war-driven oil product costs went up. The Thuringia grain silos (1) show a commodity the story mentions only as a secondary factor; they would read as a grain price story, and the frame is a static amateur shot. The Botswana mural silos (2) are the wrong country and folkloric. The UK fishmarket front (3) is a building front in the wrong country. The tram museum (4) is unrelated and a curiosity.)",
-    "[11:12:24] image: tier 4, the story's point and its subject: oil refinery Germany | fuel tanker trucks Germany | wholesale warehouse Germany | wholesale market Germany | oil refinery | fuel tanker truck (home: Germany, German, Hamburg, Bavaria, Berlin)",
-    "[11:12:24] pexels \"oil refinery\": 8 usable",
-    "[11:12:24] pexels \"oil refinery Germany\": 8 usable",
-    "[11:12:24] pexels \"wholesale warehouse Germany\": 8 usable",
-    "[11:12:24] pexels \"fuel tanker truck\": 8 usable",
-    "[11:12:24] pexels \"wholesale market Germany\": 8 usable",
-    "[11:12:24] pexels \"fuel tanker trucks Germany\": 8 usable",
-    "[11:12:25] commons \"oil refinery Germany\": 21 usable of 24",
-    "[11:12:25] image: dropped \"Target-15AF-B-24-Liberators-464BG-Oil-Refinery-at-Blechhammer-Germany-\" — dated 1944, an archival picture",
-    "[11:12:25] image: dropped \"Target-15AF-B-24-Liberators-bomb-Oil-Refinery-at-Blechhammer-Germany-2\" — dated 1944, an archival picture",
-    "[11:12:25] image: dropped \"2012-05-28 Fotoflug Cuxhaven Wilhelmshaven DSC 3893.jpg\" — names too little of oil, refinery",
-    "[11:12:30] openverse \"fuel tanker trucks Germany\": 0 usable of 0",
-    "[11:12:32] openverse \"wholesale warehouse Germany\": HTTP 504",
-    "[11:12:40] openverse \"oil refinery Germany\": 10 usable of 11",
-    "[11:12:40] image: dropped \"1992 Strausberg MINOL Tankstelle\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"'Remember.... Returning is Secondary' by Roy Grinnell\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"Consolidated B-24D 'Liberators'\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"Skyline view of an industrial factory with tall chimneys against a cle\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"Consolidated B-24D 'Liberators'\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"Kralupy , Czech Republic. 2000. [Photo by CM]\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"bab23\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"Detailed industrial scene of structures and pipes at Botlek Rotterdam,\" — names too little of oil, refinery",
-    "[11:12:40] image: dropped \"SC 201667 - Clouds of blcak smoke pour from a German oil refinery in W\" — dated 1945, an archival picture",
-    "[11:12:40] commons \"fuel tanker trucks Germany\": 14 usable of 18",
-    "[11:12:40] image: dropped \"HEMTT after Desert Storm.JPEG\" — dated 1991, an archival picture",
-    "[11:12:40] image: dropped \"Feeding the beast 141103-A-JI163-005.jpg\" — soldiers or a patrol, and the story is not about the military",
-    "[11:12:40] image: dropped \"COMBINED RESOLVE VII 160908-A-NY707-004.jpg\" — soldiers or a patrol, and the story is not about the military",
-    "[11:12:40] image: dropped \"Fueling Dragoons 150326-A-WZ553-266.jpg\" — a warship or weapon, and the story is not about the military",
-    "[11:12:40] image: dropped \"Dragoon Ride 150326-A-WZ553-269.jpg\" — names too little of fuel, tanker, trucks",
-    "[11:12:40] image: dropped \"Dragoon Ride 150326-A-WZ553-139.jpg\" — names too little of fuel, tanker, trucks",
-    "[11:12:40] image: dropped \"Dragoon Ride 150326-A-WZ553-315.jpg\" — names too little of fuel, tanker, trucks",
-    "[11:12:45] openverse \"wholesale market Germany\": 8 usable of 11",
-    "[11:12:48] openverse \"oil refinery\": HTTP 504",
-    "[11:12:52] openverse \"fuel tanker truck\": 10 usable of 20",
-    "[11:12:57] openverse \"fuel tanker\": 10 usable of 20",
-    "[11:12:57] image: dropped \"1982 Volvo F7 Aircraft Fuel Tanker\" — dated 1982, an archival picture",
-    "[11:12:57] image: dropped \"South African Army Samil 100 MPV fuel tanker\" — soldiers or a patrol, and the story is not about the military",
-    "[11:12:57] image: dropped \"REO Speedwagon fuel tanker. Melbourne, (1937).\" — dated 1937, an archival picture",
-    "[11:12:58] commons \"wholesale warehouse Germany\": 14 usable of 24",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Interior, Albert D. German Warehouse, Church Street and Haseltine Stre\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Albert D. German Warehouse, Church Street and Haseltine Street, Richla\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:12:58] image: dropped \"Aerial shot of a vast industrial yard with stacked bricks and a loadin\" — names too little of wholesale, warehouse",
-    "[11:13:00] commons \"wholesale market Germany\": 11 usable of 24",
-    "[11:13:00] image: dropped \"Munich Sendling Großmarkthalle aerial numbered.jpg\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"FULTON STREET, PART OF OLD WHOLESALE MARKET AREA - NARA - 550042.jpg\" — dated 1973, an archival picture",
-    "[11:13:00] image: dropped \"Burpee's seeds that grow for 1900 - wholesale catalogue for market gar\" — dated 1900, an archival picture",
-    "[11:13:00] image: dropped \"Moore and Simon's seed buyers guide and wholesale price list - market \" — dated 1902, an archival picture",
-    "[11:13:00] image: dropped \"Großmarkthalle-3-260416.jpg\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"Großmarkthalle-9-260416.jpg\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"Important Jamilla Wholesale Market Continues to Grow As Micro-grants, \" — soldiers or a patrol, and the story is not about the military",
-    "[11:13:00] image: dropped \"Seeds - wholesale price list (1897) (20359048128).jpg\" — dated 1897, an archival picture",
-    "[11:13:00] image: dropped \"Wholesale price list of seeds (1902) (20563505315).jpg\" — dated 1902, an archival picture",
-    "[11:13:00] image: dropped \"Wholesale catalogue of the Ki-ote Seed Co (1897) (20549045795).jpg\" — dated 1897, an archival picture",
-    "[11:13:00] image: dropped \"What is the cost of Energy Transformation?\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"A vibrant display of beer crates stacked in a warehouse, showcasing va\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"New York City, Manhattan, East Village, St Marks Pl., #4 The Hamilton-\" — dated 1831, an archival picture",
-    "[11:13:00] image: dropped \"How supply and demand determine electricity prices: the merit order pr\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"Die Gilde / The fraternity\" — names too little of wholesale, market",
-    "[11:13:00] image: dropped \"Quedlinburg\" — names too little of wholesale, market",
-    "[11:13:01] commons \"oil refinery\": 12 usable of 24",
-    "[11:13:01] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
-    "[11:13:01] image: dropped \"Industrial factory near mountains by a river, showcasing chimneys and \" — names too little of oil, refinery",
-    "[11:13:01] image: dropped \"Industrial buildings by the sea under a dramatic cloudy sky.\" — names too little of oil, refinery",
-    "[11:13:01] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of oil, refinery",
-    "[11:13:02] commons \"fuel tanker truck\": 20 usable of 24",
-    "[11:13:02] image: dropped \"M978 tactical fuel truck (1984).JPEG\" — dated 1984, an archival picture",
-    "[11:13:02] image: dropped \"Oilfield Service Truck/Oilfield Maintenance Truck\" — names too little of fuel, tanker, truck",
-    "[11:13:02] image: dropped \"Day 5 - DEP Photo - emulsified oil in wetland\" — names too little of fuel, tanker, truck",
-    "[11:13:02] image: dropped \"DAY 3 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, truck",
-    "[11:13:02] image: dropped \"DAY 4 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, truck",
-    "[11:13:02] image: dropped \"Day 2 - DEP Photo - Cleanup at source area\" — names too little of fuel, tanker, truck",
-    "[11:13:02] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 02.jpg\" — taken in Australia, which the story does not name",
-    "[11:13:02] image: dropped \"BP Oil Refinery Jetty, Kwinana, January 2024 01.jpg\" — taken in Australia, which the story does not name",
-    "[11:13:02] image: dropped \"Altona Oil Refinery Victoria.jpg\" — taken in Australia, which the story does not name",
-    "[11:13:02] image: dropped \"Altona oil refinery 2.jpg\" — taken in Australia, which the story does not name",
-    "[11:13:02] image: dropped \"Vibrant fresh vegetables on display at a local market in Antwerp, Belg\" — taken in Belgium, which the story does not name",
-    "[11:13:02] image: thumbnail HTTP 403 for https://live.staticflickr.com/65535/51829609842_3fc4ce9d65_n.jpg",
-    "[11:13:03] image: thumbnail HTTP 403 for https://live.staticflickr.com/8150/7534825298_a213bd7544_n.jpg",
-    "[11:13:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=322 in=11880 read=0 out=561 attempt=1 ms=6758",
-    "[11:13:10] image: vision rejected all candidates (fallback pass) (No candidate fits. The Harburg refinery (1) is in Germany but is a black-and-white night shot whose subject is lit structures against black sky, which the daylight and archival-look rules refuse. The tanker truck (2) carries Italian 'VEICOLO LUNGO' plates, placing it outside Germany. The Shell tanker (3) is in Argentina and shows a brand the story does not name. The Sainsbury's Scania (6) is in the UK, with a UK plate and a supermarket brand. The Kunduz wrecks (4, 5) show war destruction in Afghanistan, which is wrong in subject and tone for a price story.)",
-    "[11:13:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/2209/5714939515_42fea55712_n.jpg",
-    "[11:13:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/5050/5327719310_8867bf8da5_n.jpg",
-    "[11:13:11] image: thumbnail HTTP 403 for https://live.staticflickr.com/2802/4387619946_72a8b8f28a_n.jpg",
-    "[11:13:22] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=665 in=11841 read=0 out=868 attempt=1 ms=10458",
-    "[11:13:22] image: \"A large oil refinery complex next to the water with cloudy s\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
-    "[11:13:22] image: an illustration of the story's own subject, to set beside the photograph held: oil refinery | fuel tanker trucks | wholesale warehouse | wholesale market | fuel tanker truck",
-    "[11:13:22] commons \"oil refinery\": 12 usable of 24",
-    "[11:13:22] image: dropped \"Waterloo, NSW - NSW Shale & Oil Co.'s refinery in Botany Rd (Aust. Tow\" — dated 1875, an archival picture",
-    "[11:13:23] pexels \"fuel tanker truck\": 8 usable",
-    "[11:13:23] pexels \"wholesale warehouse\": 8 usable",
-    "[11:13:23] pexels \"oil refinery\": 8 usable",
-    "[11:13:23] pexels \"wholesale market\": 8 usable",
-    "[11:13:23] pexels \"fuel tanker trucks\": 8 usable",
-    "[11:13:36] openverse \"wholesale warehouse\": 10 usable of 20",
-    "[11:13:36] openverse \"fuel tanker trucks\": 10 usable of 20",
-    "[11:13:36] openverse \"fuel tanker truck\": 10 usable of 20",
-    "[11:13:37] openverse \"oil refinery\": HTTP 504",
-    "[11:13:37] image: dropped \"Industrial factory near mountains by a river, showcasing chimneys and \" — names too little of oil, refinery",
-    "[11:13:37] image: dropped \"Industrial buildings by the sea under a dramatic cloudy sky.\" — names too little of oil, refinery",
-    "[11:13:37] image: dropped \"A striking view of an industrial facility in Zuid-Holland, illuminated\" — names too little of oil, refinery",
-    "[11:13:37] commons \"fuel tanker trucks\": 19 usable of 24",
-    "[11:13:37] image: dropped \"Destroyed Iraqi fuel tanker (2003).JPEG\" — dated 2003, an archival picture",
-    "[11:13:37] image: dropped \"Oilfield Service Truck/Oilfield Maintenance Truck\" — names too little of fuel, tanker, trucks",
-    "[11:13:37] image: dropped \"Day 5 - DEP Photo - emulsified oil in wetland\" — names too little of fuel, tanker, trucks",
-    "[11:13:37] image: dropped \"DAY 3 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, trucks",
-    "[11:13:37] image: dropped \"DAY 4 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, trucks",
-    "[11:13:37] image: dropped \"Day 2 - DEP Photo - Cleanup at source area\" — names too little of fuel, tanker, trucks",
-    "[11:13:39] commons \"wholesale warehouse\": 15 usable of 24",
-    "[11:13:39] image: dropped \"Costco Wholesale Club.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
-    "[11:13:39] commons \"wholesale market\": 13 usable of 24",
-    "[11:13:51] openverse \"wholesale market\": 10 usable of 20",
-    "[11:13:51] image: dropped \"Vibrant warehouse scene showcasing rows of stocked shelves and busy sh\" — names too little of wholesale, market",
-    "[11:13:51] commons \"fuel tanker truck\": 20 usable of 24",
-    "[11:13:51] image: dropped \"M978 tactical fuel truck (1984).JPEG\" — dated 1984, an archival picture",
-    "[11:13:51] image: dropped \"Oilfield Service Truck/Oilfield Maintenance Truck\" — names too little of fuel, tanker, truck",
-    "[11:13:51] image: dropped \"Day 5 - DEP Photo - emulsified oil in wetland\" — names too little of fuel, tanker, truck",
-    "[11:13:51] image: dropped \"DAY 3 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, truck",
-    "[11:13:51] image: dropped \"DAY 4 - DEP Photo - Frac tanks to hold recovered contaminated water\" — names too little of fuel, tanker, truck",
-    "[11:13:51] image: dropped \"Day 2 - DEP Photo - Cleanup at source area\" — names too little of fuel, tanker, truck",
-    "[11:13:51] image: thumbnail HTTP 403 for https://live.staticflickr.com/2209/5714939515_42fea55712_n.jpg",
-    "[11:14:07] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1107 in=11498 read=0 out=1337 attempt=1 ms=14781",
-    "[11:14:07] image: vision rejected all candidates (fallback pass) (No candidate qualifies, so the story should run without a photograph. Photos 1, 3 and 4 are fuel tankers led by a large Shell logo, a brand the story never names, and 3, 4 and 1 are also amateur snapshots. Photo 6 is a street scene with shop signs and wires. Photo 5 is a night shot of the fenced-off Wuhan market, which has nothing to do with German prices. Photo 2 is the closest fit, a tanker on a highway, but it carries Italian 'VEICOLO LUNGO' plates that point to another country, and it only names the fuel topic without saying the story.)",
-    "[11:14:18] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=774 in=10200 read=0 out=961 attempt=1 ms=11240",
-    "[11:14:18] image: of 3 photographs of the story's topic, \"Heinersdorf 006-2 jiw.jpg\" is chosen over the one held",
-    "[11:14:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1079 in=8975 read=0 out=1169 attempt=1 ms=12275",
-    "[11:14:30] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Heinersdorf 006-2 jiw.jpg\": A sharp, well-lit view of the PCK refinery at Schwedt in Germany shows the oil-products sector that the headline and sta",
-    "[11:14:30] published \"أسعار الجملة في ألمانيا ترتفع 8.8% سنوياً بأعلى وتيرة منذ فبراير 2023\" -> german-wholesale-prices-rise-october-2026-621693",
-    "[11:14:30] run budget of 35 minutes spent; \"مصر تطلق مبادرة وصندوقاً لتمويل الشركات الناشئة وتدعو الصناديق الأمريكية للمشاركة\" waits for the next run"
+    "[12:38:54] commons \"oil tanker 2026\": 11 usable of 12",
+    "[12:38:54] commons \"oil tanker\": 8 usable of 12",
+    "[12:38:56] commons \"oil storage tanks 2026\": 7 usable of 12",
+    "[12:38:56] commons \"oil storage tanks\": 0 usable of 12",
+    "[12:38:56] image: dropped \"Sun Oil Refinery, Oregon, Ohio (approximately 1900) - DPLA - cc5f849e2\" — dated 1900, an archival picture",
+    "[12:38:57] commons \"Strait of Hormuz tanker 2026\": 0 usable of 0",
+    "[12:38:57] commons \"Strait of Hormuz tanker\": 11 usable of 12",
+    "[12:38:57] image: dropped \"A port view of the guided missile frigate USS TAYLOR (FFG-50) as it pa\" — dated 1992, an archival picture",
+    "[12:38:57] image: dropped \"An oil tanker sails past Cochin Port, Vallarpadam Island.jpg\" — taken in India, which the story does not name",
+    "[12:39:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=887 in=11324 read=0 out=1159 attempt=1 ms=13504",
+    "[12:39:12] image: \"Oil storage tanks, Aberdeen Harbour - geograph.org.uk - 8280\" names the story's topic without saying its point (The story's point is extra oil going first to refill stocks drained by the war, and storage tanks picture those stocks. No candidate shows a tanker under way, G); checked now and kept in reserve while the desk looks further",
+    "[12:39:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=634 in=8521 read=0 out=728 attempt=1 ms=7981",
+    "[12:39:20] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Oil storage tanks, Aberdeen Harbour - geograph.org.uk - 8280\": The frame and caption place these tanks in Aberdeen, Scotland, a place the Gulf and Hormuz story never mentions, so like",
+    "[12:39:20] image: tier 4, the story's point and its subject: oil tankers Strait of Hormuz | oil storage tank farm | tanker loading crude terminal | oil tanker | tanker ship at sea | oil storage tanks",
+    "[12:39:20] pexels \"oil storage tanks\": 8 usable",
+    "[12:39:20] pexels \"tanker ship at sea\": 8 usable",
+    "[12:39:20] pexels \"oil tanker\": 8 usable",
+    "[12:39:20] pexels \"oil tankers Strait of Hormuz\": 8 usable",
+    "[12:39:20] pexels \"tanker loading crude terminal\": 8 usable",
+    "[12:39:20] pexels \"oil storage tank farm\": 8 usable",
+    "[12:39:20] commons \"oil tankers Strait of Hormuz\": 13 usable of 14",
+    "[12:39:20] image: dropped \"Khalig-fars-Persian-Gulf 05.jpg\" — names too little of oil, tankers",
+    "[12:39:20] image: dropped \"Khalig-fars-Persian-Gulf 02.jpg\" — names too little of oil, tankers",
+    "[12:39:20] image: dropped \"Khalig-fars-Persian-Gulf 04.jpg\" — names too little of oil, tankers",
+    "[12:39:20] image: dropped \"Khalig-fars-Persian-Gulf 03.jpg\" — names too little of oil, tankers",
+    "[12:39:30] openverse \"tanker loading crude terminal\": 1 usable of 3",
+    "[12:39:30] openverse \"oil tanker\": 10 usable of 20",
+    "[12:39:30] openverse \"oil tankers Strait of Hormuz\": 3 usable of 3",
+    "[12:39:30] image: dropped \"Oliver Hazzard Perry Class Frigate - from an 'Island AIr' De Havilland\" — names too little of oil, tankers",
+    "[12:39:30] image: dropped \"Top-down view of cargo ship and tugboats in turquoise waters near Butt\" — names too little of oil, tankers",
+    "[12:39:30] image: dropped \"Aerial shot of a red cargo ship navigating the Bosphorus Strait near I\" — names too little of oil, tankers",
+    "[12:39:30] image: dropped \"Cargo ship navigating through Bosphorus Strait, Istanbul under cloudy \" — names too little of oil, tankers",
+    "[12:39:30] image: dropped \"A large oil tanker navigates the Bosphorus Strait with Istanbul's skyl\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[12:39:30] image: dropped \"Oil tanker navigating the Bosphorus Strait with the Istanbul cityscape\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[12:39:30] openverse \"oil storage tank farm\": 10 usable of 20",
+    "[12:39:31] commons \"oil storage tank farm\": 17 usable of 24",
+    "[12:39:31] image: dropped \"Wyatt Metal and Boiler Works at General American Tank Storage (9526924\" — dated 1940, an archival picture",
+    "[12:39:31] image: dropped \"oil truck siphoning oil - Sergeant Major - Evanson Place - Arnegard No\" — names too little of oil, storage, tank, farm",
+    "[12:39:31] image: dropped \"oil truck driver - Sergeant Major - Evanson Place - Arnegard North Dak\" — names too little of oil, storage, tank, farm",
+    "[12:39:31] image: dropped \"Bernice 1 and 2 wells - Evanson Place - Arnegard North Dakota - 2013-0\" — names too little of oil, storage, tank, farm",
+    "[12:39:32] commons \"tanker loading crude terminal\": 5 usable of 9",
+    "[12:39:32] image: dropped \"Tanker offshore terminal.jpg\" — dated 2003, an archival picture",
+    "[12:39:32] image: dropped \"Drift River Terminal 2009 3.jpg\" — names too little of tanker, loading, crude, terminal",
+    "[12:39:32] image: dropped \"United States Strategic Petroleum Reserve 026.jpg\" — another frame of a series a published story runs",
+    "[12:39:32] image: dropped \"Iraq's petroleum and gas infrastructure. LOC 2007629280.jpg\" — dated 2003, an archival picture",
+    "[12:39:32] image: dropped \"An industrial ship navigating through a canal with another vessel in t\" — names too little of tanker, loading, crude, terminal",
+    "[12:39:32] image: dropped \"A large red cargo ship docked at an industrial port with scenic mounta\" — names too little of tanker, loading, crude, terminal",
+    "[12:39:32] image: dropped \"Large red tanker ship docked at an industrial port with storage tanks \" — names too little of tanker, loading, crude, terminal",
+    "[12:39:32] image: dropped \"A tanker truck parked near a docked ferry at a bustling harbor, showca\" — names too little of tanker, loading, crude, terminal",
+    "[12:39:32] commons \"oil tanker\": 20 usable of 24",
+    "[12:39:32] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
+    "[12:39:33] commons \"tanker ship at sea\": 12 usable of 24",
+    "[12:39:33] image: dropped \"Vulcania meeting tanker in the adriatic sea.jpg\" — dated 1960, an archival picture",
+    "[12:39:33] image: dropped \"Sea Brilliance IMO 7408720 und Esso Pacific T Vestnes 07-1985.jpg\" — dated 1985, an archival picture",
+    "[12:39:33] image: dropped \"'World Concord' tanker at sea off Ballyquintin, Co. Down.jpg\" — dated 1954, an archival picture",
+    "[12:39:38] openverse \"oil storage tanks\": HTTP 504",
+    "[12:39:43] openverse \"tanker ship at sea\": 10 usable of 20",
+    "[12:39:43] image: dropped \"Beached by Cyclone\" — names too little of tanker, ship, sea",
+    "[12:39:43] image: dropped \"Show me the energy sources!\" — names too little of tanker, ship, sea",
+    "[12:39:43] commons \"oil storage tanks\": 2 usable of 24",
+    "[12:39:43] image: dropped \"An oil tanker sails past Cochin Port, Vallarpadam Island.jpg\" — taken in India, which the story does not name",
+    "[12:39:43] image: dropped \"Chemical tanker Ramira - IMO 9890599 - North Sea Canal at IJmuiden-814\" — taken in Netherlands, which the story does not name",
+    "[12:39:43] image: dropped \"Chemical tanker Ramira - IMO 9890599 - North Sea Canal at IJmuiden-814\" — taken in Netherlands, which the story does not name",
+    "[12:39:43] image: dropped \"Sinclair Oil Refinery Storage Tanks - Wyoming.jpg\" — taken in United States, which the story does not name",
+    "[12:39:43] image: dropped \"MT Alaskan Navigator at Valdez Marine Terminal (Deck).jpg\" — taken in United States, which the story does not name",
+    "[12:39:43] image: dropped \"Oil storage tanks, Purfleet - geograph.org.uk - 7146167.jpg\" — taken in United Kingdom, which the story does not name",
+    "[12:39:43] image: dropped \"Oil storage tank, Fleet Lane - geograph.org.uk - 5452704.jpg\" — taken in United Kingdom, which the story does not name",
+    "[12:39:43] image: dropped \"Firth of Forth at sunset, Edinburgh, Scotland\" — taken in United Kingdom, which the story does not name",
+    "[12:39:43] image: dropped \"Orvis State oil well and gas tanks and natural gas flare - Evanson Pla\" — taken in United States, which the story does not name",
+    "[12:39:43] image: thumbnail HTTP 403 for https://live.staticflickr.com/8297/7775151552_df66fbe4b7_n.jpg",
+    "[12:39:44] image: thumbnail HTTP 403 for https://live.staticflickr.com/8293/7775140748_69c281c2d7_n.jpg",
+    "[12:39:56] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=793 in=12286 read=0 out=1016 attempt=1 ms=11213",
+    "[12:39:56] image: \"A large red oil tanker named Bow Excellence docked at a harb\" names the story's topic without saying its point (Photos 1, 3, 5 and 6 show the 2012 USS Porter collision: a military vessel's wreckage at night, which misleads under a mine and supply story. Photo 4 is a dista); checked now and kept in reserve while the desk looks further",
+    "[12:40:00] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=186 in=8484 read=0 out=305 attempt=1 ms=4246",
+    "[12:40:00] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"A large red oil tanker named Bow Excellence docked at a harb\": The operator's name «ODFJELL TANKERS», which the story never mentions, is painted large on the hull and is among the mos",
+    "[12:40:00] image: thumbnail HTTP 403 for https://live.staticflickr.com/8297/7775151552_df66fbe4b7_n.jpg",
+    "[12:40:00] image: thumbnail HTTP 403 for https://live.staticflickr.com/8293/7775140748_69c281c2d7_n.jpg",
+    "[12:40:00] image: thumbnail HTTP 403 for https://live.staticflickr.com/7218/7287110396_a639495c56_n.jpg",
+    "[12:40:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=369 in=12428 read=0 out=562 attempt=1 ms=8611",
+    "[12:40:09] image: vision rejected all candidates (fallback pass) (None of the six photographs fits. Candidates 1, 2, 4 and 5 show the 2012 night collision of the destroyer USS Porter: a damaged warship, which is military, dark, archival, and would mislead next to a story about tankers hitting mines. Candidate 3 is a disused tank on a grassy mound in the Scottish Highlands, an amateur frame that does not read as oil storage at a glance. Candidate 6 is farmland with the tanks only a speck on the horizon.)",
+    "[12:40:12] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=76 in=2880 read=0 out=109 attempt=1 ms=2726",
+    "[12:40:12] image: last resort: oil tanker at sea | oil tanker at sea industrial",
+    "[12:40:13] commons \"oil tanker at sea\": 18 usable of 24",
+    "[12:40:13] image: dropped \"BARC carrying a fuel tanker approaches an oiler.jpg\" — dated 1967, an archival picture",
+    "[12:40:13] image: dropped \"Grootste tanker in Europoort, de Sea Spray aan de loskade, Bestanddeel\" — dated 1967, an archival picture",
+    "[12:40:13] commons \"oil tanker at sea industrial\": 6 usable of 16",
+    "[12:40:13] image: dropped \"Swans in water between Forth bridges (Keven Law).jpg\" — names too little of oil, tanker, sea, industrial",
+    "[12:40:13] image: dropped \"VB FECAMP - Flickr - Alexandre Prevot.jpg\" — names too little of oil, tanker, sea, industrial",
+    "[12:40:13] image: dropped \"SS ARGO MERCHANT DISASTER DVIDS1082121.jpg\" — dated 2000, an archival picture",
+    "[12:40:13] image: dropped \"Inverness Harbour - last century and before - Inverness Scotland (1501\" — names too little of oil, tanker, sea, industrial",
+    "[12:40:13] image: dropped \"Inverness Harbour - last century and before - Inverness Scotland (1545\" — names too little of oil, tanker, sea, industrial",
+    "[12:40:13] image: dropped \"Inverness Harbour - last century and before - Inverness Scotland (1563\" — names too little of oil, tanker, sea, industrial",
+    "[12:40:13] image: dropped \"Chemical Oil Products Tanker 'Stolt Petrel' - North sea - Netherlands \" — taken in Netherlands, which the story does not name",
+    "[12:40:13] image: dropped \"Bay of Eilat-coral observatory-oil tanker depot2.jpg\" — taken in Israel, which the story does not name",
+    "[12:40:13] image: dropped \"Bering Sea IMO 9085429 docked at Port of Antwerp, Belgium 17-Jun-2006.\" — taken in Belgium, which the story does not name",
+    "[12:40:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=776 in=10670 read=0 out=973 attempt=1 ms=10847",
+    "[12:40:29] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=214 in=9268 read=0 out=328 attempt=1 ms=4507",
+    "[12:40:29] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Oil tankers, Tranmere Oil Terminal (geograph 4548088).jpg\": The caption and file place these tankers at Tranmere in Britain, a place the story never mentions, under a story about G",
+    "[12:40:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=572 in=9585 read=0 out=755 attempt=1 ms=8130",
+    "[12:40:37] image: vision rejected all candidates (fallback pass) (The only candidate is the LNG Croatia floating gas terminal moored at Omišalj, Croatia. It is a gas vessel at a Croatian terminal, not an oil tanker, so it would picture the wrong commodity for a story about oil supply, Gulf exports and oil tankers mined in Hormuz. It is also a distant, hazy shot in which the ship is small in the frame. It does not show Gulf oil flowing back to market, so running the story without a photograph is better.)",
+    "[12:40:37] image: last pass, a neutral illustration: oil tankers | oil storage tank farm | tanker loading crude terminal | oil tanker | tanker ship sea | oil storage tanks",
+    "[12:40:37] openverse \"oil storage tank farm\": 10 usable of 20",
+    "[12:40:37] openverse \"oil tanker\": 10 usable of 20",
+    "[12:40:37] openverse \"tanker loading crude terminal\": 1 usable of 3",
+    "[12:40:37] pexels \"oil storage tank farm\": 8 usable",
+    "[12:40:37] pexels \"oil tankers\": 8 usable",
+    "[12:40:37] pexels \"oil tanker\": 8 usable",
+    "[12:40:38] pexels \"oil storage tanks\": 8 usable",
+    "[12:40:38] pexels \"tanker ship sea\": 8 usable",
+    "[12:40:38] commons \"oil tankers\": 19 usable of 24",
+    "[12:40:38] image: dropped \"Britannica Ship, Oil-Tank Steamer.jpg\" — dated 1911, an archival picture",
+    "[12:40:38] image: dropped \"SS Tiger (1917) in 1918.jpg\" — dated 1918, an archival picture",
+    "[12:40:38] pexels \"tanker loading crude terminal\": 8 usable",
+    "[12:40:47] openverse \"tanker ship sea\": 10 usable of 20",
+    "[12:40:47] openverse \"oil tankers\": 10 usable of 20",
+    "[12:40:47] commons \"oil storage tank farm\": 17 usable of 24",
+    "[12:40:47] image: dropped \"Wyatt Metal and Boiler Works at General American Tank Storage (9526924\" — dated 1940, an archival picture",
+    "[12:40:47] image: dropped \"oil truck siphoning oil - Sergeant Major - Evanson Place - Arnegard No\" — names too little of oil, storage, tank, farm",
+    "[12:40:47] image: dropped \"oil truck driver - Sergeant Major - Evanson Place - Arnegard North Dak\" — names too little of oil, storage, tank, farm",
+    "[12:40:47] image: dropped \"Bernice 1 and 2 wells - Evanson Place - Arnegard North Dakota - 2013-0\" — names too little of oil, storage, tank, farm",
+    "[12:40:47] commons \"tanker loading crude terminal\": 5 usable of 9",
+    "[12:40:47] image: dropped \"Tanker offshore terminal.jpg\" — dated 2003, an archival picture",
+    "[12:40:47] image: dropped \"Drift River Terminal 2009 3.jpg\" — names too little of tanker, loading, crude, terminal",
+    "[12:40:47] image: dropped \"United States Strategic Petroleum Reserve 026.jpg\" — another frame of a series a published story runs",
+    "[12:40:47] image: dropped \"Iraq's petroleum and gas infrastructure. LOC 2007629280.jpg\" — dated 2003, an archival picture",
+    "[12:40:47] image: dropped \"An industrial ship navigating through a canal with another vessel in t\" — names too little of tanker, loading, crude, terminal",
+    "[12:40:47] image: dropped \"A large red cargo ship docked at an industrial port with scenic mounta\" — names too little of tanker, loading, crude, terminal",
+    "[12:40:47] image: dropped \"Large red tanker ship docked at an industrial port with storage tanks \" — names too little of tanker, loading, crude, terminal",
+    "[12:40:47] image: dropped \"A tanker truck parked near a docked ferry at a bustling harbor, showca\" — names too little of tanker, loading, crude, terminal",
+    "[12:40:47] commons \"oil tanker\": 20 usable of 24",
+    "[12:40:48] commons \"tanker ship sea\": 11 usable of 24",
+    "[12:40:48] image: dropped \"Vulcania meeting tanker in the adriatic sea.jpg\" — dated 1960, an archival picture",
+    "[12:40:48] image: dropped \"Sea Brilliance IMO 7408720 und Esso Pacific T Vestnes 07-1985.jpg\" — dated 1985, an archival picture",
+    "[12:40:48] image: dropped \"Beached by Cyclone\" — names too little of tanker, ship, sea",
+    "[12:40:48] image: dropped \"Show me the energy sources!\" — names too little of tanker, ship, sea",
+    "[12:40:48] commons \"oil storage tanks\": 2 usable of 24",
+    "[12:40:48] openverse \"oil storage tanks\": 10 usable of 20",
+    "[12:40:48] image: dropped \"Caltex oil storage tanks in the Gladstone Harbour area, November 1974\" — dated 1974, an archival picture",
+    "[12:40:49] image: thumbnail HTTP 403 for https://live.staticflickr.com/5060/5517674994_15630be0a5_n.jpg",
+    "[12:41:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1014 in=10877 read=0 out=1233 attempt=1 ms=12711",
+    "[12:41:10] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=624 in=1155 read=0 out=653 attempt=1 ms=8079",
+    "[12:41:14] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=102 in=8299 read=0 out=184 attempt=1 ms=3665",
+    "[12:41:14] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"A large red oil tanker named Bow Excellence docked at a harb\": The hull carries «ODFJELL TANKERS» in large legible letters, a company the story does not name, so it reads as that oper",
+    "[12:41:14] image: thumbnail HTTP 403 for https://live.staticflickr.com/5060/5517674994_15630be0a5_n.jpg",
+    "[12:41:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1085 in=10866 read=0 out=1292 attempt=1 ms=14144",
+    "[12:41:33] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=264 in=1132 read=0 out=287 attempt=1 ms=4967",
+    "[12:41:42] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=645 in=8282 read=0 out=748 attempt=1 ms=8982",
+    "[12:41:42] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Modern industrial storage tanks with walkways against a clea\": A sharp, unbranded frame of white storage tanks linked by catwalks reads as an oil tank farm, the sector's own object fo",
+    "[12:41:42] image: \"Modern industrial storage tanks with walkways against a clea\" stands in and its record places it nowhere: captioned «صورة تعبيرية»",
+    "[12:41:42] published explainer \"كيف تتجه سوق النفط إلى فائض والناقلات تصطدم بألغام في هرمز؟\" -> oil-surplus-despite-hormuz-mines-explained-276601"
   ]
 }
