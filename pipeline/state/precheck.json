@@ -16885,6 +16885,152 @@
           "noted": []
         }
       ]
+    },
+    "iraq-pm-sacks-nine-over-oil-smuggling-85afd9": {
+      "at": "2026-11-14T22:42:56.303Z",
+      "title": "رئيس الوزراء العراقي يقيل 9 مسؤولين إثر تحقيق في تهريب النفط بجرف الصخر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "wall-street-markets-anthropic-ipo-valuation-bdd0d2": {
+      "at": "2026-11-14T22:52:58.264Z",
+      "title": "بنوك وول ستريت تسوّق طرح «أنثروبيك» بتقييم يصل إلى 1.4 تريليون دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "بنوك وول ستريت تسوّق طرح «أنثروبيك» بتقييم يصل إلى 1.4 تريليون دولار",
+              "quote": "AI lab’s chief executive brushes off tech stock turbulence less than a week before planned $1.5tn listing",
+              "source": "Financial Times",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وحددت الشركة هذا الأسبوع نطاقاً سعرياً بين 70 و78 دولاراً للسهم، يقدّر قيمتها عند حده الأعلى بنحو 1.4 تريليون دولار.",
+              "quote": "AI lab’s chief executive brushes off tech stock turbulence less than a week before planned $1.5tn listing",
+              "source": "Financial Times",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "التقييم عند الحد الأعلى: نحو 1.4 تريليون دولار",
+              "quote": "AI lab’s chief executive brushes off tech stock turbulence less than a week before planned $1.5tn listing",
+              "source": "Financial Times",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "italy-fines-meta-805-million-euros-photos-c5c5ed": {
+      "at": "2026-11-14T23:01:41.530Z",
+      "title": "إيطاليا تغرّم ميتا 805 ملايين يورو لوصولها إلى الصور دون موافقة محددة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 19,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "iran-gas-supply-strain-11-provinces-winter-86fd69": {
+      "at": "2026-11-14T23:15:12.026Z",
+      "title": "شركة الغاز الإيرانية تحذّر من توتر الإمدادات في 11 محافظة على الأقل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 37,
+            "checked": 37,
+            "supported": 32,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

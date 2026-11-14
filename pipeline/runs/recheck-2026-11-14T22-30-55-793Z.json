@@ -1,0 +1,125 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-14T22:30:55.793Z",
+  "durationSec": 135,
+  "read": 4,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "uae-mozambique-conclude-cepa-negotiations-dbe467",
+      "title": "الإمارات وموزمبيق تختتمان مفاوضات اتفاقية الشراكة الاقتصادية الشاملة",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "uae-rating-oil-surplus-abu-dhabi-assets-c24abd",
+      "title": "فائض النفط قد يرفع وزن أصول أبوظبي في تصنيف الإمارات",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 34,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "fitch-affirms-uae-rating-despite-iran-war-8c5e5a",
+      "title": "فيتش تثبّت تصنيف الإمارات عند رابع أعلى درجة رغم حرب إيران",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 30,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "un-urges-fertilizer-passage-through-hormuz-3371ae",
+      "title": "مسؤول أممي يطالب واشنطن وطهران بالسماح فوراً بعبور الأسمدة من هرمز",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 4,
+    "failures": 0,
+    "promptTokens": 37922,
+    "completionTokens": 32229,
+    "cacheReadTokens": 0,
+    "costUsd": 0.948,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 4
+    },
+    "byRole": {
+      "checker": {
+        "calls": 4,
+        "in": 37922,
+        "read": 0,
+        "out": 32229,
+        "usd": 0.948
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:30:56] second look: 4 to read now (4 published pieces not yet read; 260 read clean before publication and left out of the audit sample)",
+    "[22:31:55] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2565 in=10506 read=0 out=7767 attempt=1 ms=57606",
+    "[22:31:55] uae-mozambique-conclude-cepa-negotiations-dbe467: 25 of 25 sentences checked · 23 supported · 1 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[22:32:03] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2376 in=11980 read=0 out=9181 attempt=1 ms=66391",
+    "[22:32:03] uae-rating-oil-surplus-abu-dhabi-assets-c24abd: 38 of 38 sentences checked · 34 supported · 2 without a source · 0 confirmed error(s)",
+    "[22:32:40] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1427 in=7691 read=0 out=6063 attempt=1 ms=43375",
+    "[22:32:40] fitch-affirms-uae-rating-despite-iran-war-8c5e5a: 30 of 30 sentences checked · 30 supported · 0 without a source · 0 confirmed error(s)",
+    "[22:33:10] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3930 in=7745 read=0 out=9218 attempt=1 ms=67034",
+    "[22:33:10] un-urges-fertilizer-passage-through-hormuz-3371ae: 25 of 25 sentences checked · 24 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

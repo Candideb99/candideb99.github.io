@@ -264,10 +264,12 @@
     "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8",
     "us-budget-deficit-october-record-2027-628088:a7a49d19",
     "india-inflation-breaches-rbi-ceiling-october-4e4475:553f18bf",
-    "india-inflation-breaches-rbi-ceiling-october-4e4475:96a88620"
+    "india-inflation-breaches-rbi-ceiling-october-4e4475:96a88620",
+    "fitch-affirms-uae-rating-despite-iran-war-8c5e5a:4ead2592",
+    "uae-rating-oil-surplus-abu-dhabi-assets-c24abd:73f32d6c"
   ],
-  "version": 70,
-  "updatedAt": "2026-11-13T09:29:06.436Z",
+  "version": 71,
+  "updatedAt": "2026-11-14T22:33:10.826Z",
   "lessons": [
     {
       "id": "L1",
@@ -463,7 +465,7 @@
     {
       "id": "L4",
       "class": "scope",
-      "rule": "Tie each figure, share and claim to the exact item, group, place, day and instrument the source attaches it to: never fuse two conditions into one group, drop members of a list, or add 'only'. Middle East flows are not Hormuz flows.",
+      "rule": "Tie each figure, share, ranking and claim to the exact item, group, place, day and instrument the source names: never narrow 'every' to the members you mention, drop list members, fuse conditions or add 'only'. Consolidated government debt is not the federal budget.",
       "example": {
         "wrong": "ترامب يعلن تأسيس قوة للذكاء الاصطناعي وتعيين مسؤول لقيادتها",
         "quote": "United States President Donald Trump has announced he’s creating an “AI Force” and will appoint a new “AI czar” to oversee development of the nation’s artificial intelligence industry.",
@@ -510,18 +512,20 @@
         "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a:4593dc74",
         "germany-trade-surplus-shrinks-september-imports-271dbf:605a7671",
         "telecom-egypt-nine-month-profit-rises-44-96d0b5:4c4512e8",
-        "india-inflation-breaches-rbi-ceiling-october-4e4475:553f18bf"
+        "india-inflation-breaches-rbi-ceiling-october-4e4475:553f18bf",
+        "fitch-affirms-uae-rating-despite-iran-war-8c5e5a:4ead2592",
+        "uae-rating-oil-surplus-abu-dhabi-assets-c24abd:73f32d6c"
       ],
-      "seen": 40,
+      "seen": 42,
       "createdAt": "2026-09-25T07:41:52.105Z",
-      "lastSeen": "2026-11-13T09:29:06.436Z",
+      "lastSeen": "2026-11-14T22:33:10.826Z",
       "status": "active",
       "previous": [
-        "Keep a figure or claim tied to the exact item, place, day and instrument the source names. 'The stock market' is not global markets, one day's flow is not a daily rate, and diesel is not all fuel. An official does only what the source assigns.",
         "Tie each figure to the exact item, place, day and instrument the source's sentence attaches it to. Flows from the broader Middle East are not Hormuz flows, one day's flow is not a daily rate, and diesel is not all fuel.",
-        "Tie each figure and claim to the exact item, place, day and instrument the source attaches it to. 'Some exports' is not all, energy diversification is not nuclear, one cargo's loading point is not another's, and Middle East flows are not Hormuz flows."
+        "Tie each figure and claim to the exact item, place, day and instrument the source attaches it to. 'Some exports' is not all, energy diversification is not nuclear, one cargo's loading point is not another's, and Middle East flows are not Hormuz flows.",
+        "Tie each figure, share and claim to the exact item, group, place, day and instrument the source attaches it to: never fuse two conditions into one group, drop members of a list, or add 'only'. Middle East flows are not Hormuz flows."
       ],
-      "sharpenedAt": "2026-10-25T20:57:25.422Z"
+      "sharpenedAt": "2026-11-14T22:33:10.826Z"
     },
     {
       "id": "L5",
@@ -818,18 +822,6 @@
   ],
   "model": "claude-cli/claude-opus-5-5",
   "history": [
-    {
-      "at": "2026-09-26T16:41:29.649Z",
-      "mistakes": 11,
-      "applied": [
-        "sharpen L10 (+4)",
-        "reinforce L2 (+1)",
-        "sharpen L1 (+3)",
-        "reinforce L3 (+1; reworded at most once a week)",
-        "reinforce L6 (+1; reworded at most once a week)",
-        "reinforce L7 (+1)"
-      ]
-    },
     {
       "at": "2026-09-26T20:30:24.516Z",
       "mistakes": 11,
@@ -1301,6 +1293,13 @@
         "reinforce L1 (+1; reworded at most once a week)",
         "reinforce L2 (+1; reworded at most once a week)",
         "reinforce L4 (+1; reworded at most once a week)"
+      ]
+    },
+    {
+      "at": "2026-11-14T22:33:10.826Z",
+      "mistakes": 2,
+      "applied": [
+        "sharpen L4 (+2)"
       ]
     }
   ],

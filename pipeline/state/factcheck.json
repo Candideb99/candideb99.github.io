@@ -5361,24 +5361,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [
-        {
-          "status": "conflict",
-          "field": "whyItMatters",
-          "sentence": "يُبقي المستهدف الجديد البالغ 5% بحسب «عرب نيوز» بطالة السعوديين عند 6.5% فوق السقف الجديد، رغم نزولها دون مستهدف الرؤية الأصلي البالغ 7%.",
-          "quote": "وكانت «رؤية 2030» قد حددت خفض معدل البطالة بين السعوديين إلى 7 في المائة بحلول 2030 ضمن مستهدفاتها الاقتصادية، بعدما كان المعدل يبلغ 11.6 في المائة في 2016، وهو ما يجعل مستوى 6.5 في المائة المسجل في الربع الثاني أدنى من المستهدف المحدد لنهاية العقد.",
-          "source": "Asharq Al-Awsat"
-        },
-        {
-          "status": "conflict",
-          "field": "body",
-          "sentence": "وأفادت صحيفة «عرب نيوز» السعودية بأن المملكة تستهدف الآن خفض هذا المعدل إلى 5% بحلول نهاية العقد.",
-          "quote": "وكانت «رؤية 2030» قد حددت خفض معدل البطالة بين السعوديين إلى 7 في المائة بحلول 2030 ضمن مستهدفاتها الاقتصادية، بعدما كان المعدل يبلغ 11.6 في المائة في 2016، وهو ما يجعل مستوى 6.5 في المائة المسجل في الربع الثاني أدنى من المستهدف المحدد لنهاية العقد.",
-          "source": "Asharq Al-Awsat"
-        }
-      ],
-      "notFound": [],
-      "weak": [],
       "outcome": "listed"
     },
     "egypt-ewallets-h1-2026-transactions-growth-9789a5": {
@@ -5407,37 +5389,8 @@
       },
       "confirmed": [
         {
-          "id": 15,
-          "field": "body",
-          "sentence": "وجاءت «إي آند كاش» في المركز الثاني بـ23% من التوزيع و20% من عدد العمليات و14% من القيمة، تلتها «أورنج كاش» و«وي باي» بنسب أحادية.",
-          "claim": "e& Cash ranked second with 23% of wallets, 20% of transaction count and 14% of value; Orange Cash and WE Pay followed with single-digit shares.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 3,
-          "sourceName": "Alborsa News",
-          "sourceDate": "2026-09-09",
-          "quote": "وأشار التقرير إلى زيادة معدل انتشار المحافظ الإلكترونية بنسبة 15%؛ حيث بلغ 45% بالنصف الأول لعام 2026، مقارنةً بـ 39% بالنصف الأول لعام 2025، لافتًا إلى أن توزيع المحافظ للهاتف المحمول على الشركات جاء بالترتيب: فودافون كاش 53%، إي آند كاش 23%، أورنج كاش 20%، وي باي 4%.",
-          "correction": "Orange Cash's shares are not single-digit: it holds 20% of wallets, 17% of active wallets and 10% of transaction count; only its 8% share of value is single-digit.",
-          "class": "figure"
-        }
-      ],
-      "listed": [],
-      "notFound": [
-        "عدد المحافظ بلغ 57 مليوناً بزيادة 23%، و«فودافون كاش» تستحوذ على 77% من قيمة العمليات",
-        "تدلّ هذه الأرقام على تسارع التحول الرقمي للشمول المالي في أكبر الدول العربية سكاناً.",
-        "وهيمنة التحويلات بين المحافظ وقناة «إنستاباي» تشير إلى أن البنية التحتية للربط بين البنوك وشركات الاتصالات باتت المحرك الرئيس للسيولة الرقمية، وتقلّص الاعتماد على النقد وتدعم جهود البنك المركزي في توثيق الاقتصاد.",
-        "هيمن تحويل المحفظة إلى محفظة على النشاط، ممثّلاً 54% من عدد العمليات و67% من قيمتها.",
-        "وشكّل شحن الرصيد (موبايل وإنترنت) 25% من عدد العمليات لكن 1% فقط من القيمة، واستحوذت عمليات الإيداع على 13% من العدد و17% من القيمة، والسحب على 4% من العدد و12% من القيمة.",
-        "في قنوات التمويل، جاء الإيداع عبر «إنستاباي» (الحساب البنكي للمحفظة) في الصدارة بـ78% من عدد عمليات الإيداع و58% من قيمتها، يليه الإيداع المباشر (15% من العدد، 28% من القيمة)، ثم استقبال حوالات من الخارج (3% و10% على الترتيب)."
-      ],
-      "weak": [
-        {
-          "sentence": "استحوذت «فودافون كاش» على الحصة الأكبر في كل المؤشرات: 53% من إجمالي المحافظ الموزعة، و57% من المحافظ النشطة، و69% من عدد العمليات، و77% من قيمة العمليات.",
-          "quote": "وأوضح أن توزيع المحافظ الإلكترونية النشطة للهاتف المحمول على الشركات جاء بالترتيب: فودافون كاش 57%، إي آند كاش 24%، أورنج كاش 17%، وي باي 2%. ولفت إلى أن توزيع عدد العمليات المالية على الشركات جاء بالترتيب: فودافون كاش 69%، إي آند كاش 20%، أورنج كاش 10%، وي باي 1%، بينما جاء توزيع قيمة العمليات المالية على الشركات: فودافون كاش 77%، إي آند كاش 14%، أورنج كاش 8%، وي باي 1%."
-        },
-        {
-          "sentence": "وتوزعت المحافظ على الفئات العمرية: 25% للفئة 26-35 سنة، و25% للفئة 36-45 سنة، و20% للفئة 16-25 سنة، و17% للفئة 46-55 سنة، و13% لمن تزيد أعمارهم على 55 سنة.",
-          "quote": "وبلغ عدد المحافظ الإلكترونية الخاصة بالمشتركين من الفئة العمرية 26-35 سنة 14.1 مليون محفظة بنسبة 25%، ووصل عدد الخاصة بالمشتركين من الفئة العمرية 36-45 سنة إلى 14.5 مليون محفظة بنسبة 25%. وسجل عدد المحافظ الإلكترونية الخاصة بالمشتركين من الفئة العمرية 46-55 سنة 9.4 مليون محفظة بنسبة 17%، وبلغ عدد الخاصة بالمشتركين من الفئة العمرية 55 سنة فأكثر 7.5 مليون محفظة بنسبة 13%."
+          "class": "figure",
+          "field": "body"
         }
       ],
       "outcome": "corrected",
@@ -5475,23 +5428,10 @@
       },
       "confirmed": [
         {
-          "id": 11,
-          "field": "body",
-          "sentence": "كشف وزير الاتصالات وتكنولوجيا المعلومات رافت هندي عن المشروع الذي يبدأ بمرحلة أولية بقدرة 20 ميغاواط وتكلفة 200 مليون دولار تمتد على ثلاث سنوات، بحسب «بلومبرغ» و«رويترز».",
-          "claim": "Communications Minister Raafat Hindi unveiled the project, which starts with a 20 MW, $200 million three-year first phase. The sentence attributes this to Bloomberg and Reuters.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 2,
-          "sourceName": "Arab News",
-          "sourceDate": "2026-09-09",
-          "quote": "CAIRO: Egypt plans to build its first large-scale artificial intelligence data centre, aiming for a 200-megawatt facility worth $1 billion, using Nvidia technology.The project, announced on Sept. 9 by Egypt’s Minister of Communications and Information Technology Raafat Hindi, comes as the world’s two main AI rivals, the US and China, vie for a greater foothold in the Middle East and Africa.",
-          "correction": "The source reports the project as announced by Minister Hindi and does not attribute it or its phase details to Bloomberg or Reuters; Bloomberg is cited only for the Huawei bid, and Reuters is not mentioned.",
-          "class": "attribution"
+          "class": "attribution",
+          "field": "body"
         }
       ],
-      "listed": [],
-      "notFound": [],
-      "weak": [],
       "outcome": "corrected",
       "note": "نسبت نسخة سابقة من هذا الخبر تفاصيل المرحلة الأولى من المشروع إلى وكالتي «بلومبرغ» و«رويترز»، والصحيح أن وزير الاتصالات وتكنولوجيا المعلومات المصري رافت هندي هو من أعلن المشروع وتفاصيله.",
       "verified": {
@@ -13654,6 +13594,155 @@
         {
           "sentence": "وبدأ ريتشارد نيل، كبير الديمقراطيين في لجنة الطرق والوسائل، ورون وايدن، كبير الديمقراطيين في لجنة المالية بمجلس الشيوخ، تحقيقات في كيفية السماح لإنفيديا ببيع رقائق H200 لشركات صينية.",
           "quote": "Ways and Means Committee Ranking Member Richard E Neal and Senate Finance Committee Ranking Member Ron Wyden are starting investigations into the way Nvidia was allowed to sell these chips."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "uae-mozambique-conclude-cepa-negotiations-dbe467": {
+      "at": "2026-11-14T22:30:56.724Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-14T18:51:55.673Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 1,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 1,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "listed",
+          "class": "other",
+          "field": "body",
+          "sentence": "وهي شبكة بدأت ببرنامج اتفاقيات الشراكة الاقتصادية الشاملة الذي أطلقته الإمارات في سبتمبر 2021، وأبرمت عبره اتفاقيات مع اقتصادات في آسيا وأفريقيا وأوروبا والأمريكتين.",
+          "quote": "The CEPA program is a cornerstone of the UAE’s foreign trade agenda. Since the program’s launch in September 2021, several agreements have been concluded with promising economies across Asia, Africa, Europe and the Americas.",
+          "source": "Gulf News",
+          "correction": "The source calls the CEPA program, launched in September 2021, a cornerstone of the UAE's foreign trade agenda under which several agreements have been concluded; it does not say the UAE's partnership network began with it, and it notes that the CEPA builds on existing UAE investment in Mozambique."
+        }
+      ],
+      "notFound": [
+        "وأضاف أن الاتفاقية ستسهّل نفاذ السلع والخدمات وتشجع الاستثمار المتبادل، وتدعم سلاسل إمداد أكثر كفاءة ومرونة."
+      ],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "uae-rating-oil-surplus-abu-dhabi-assets-c24abd": {
+      "at": "2026-11-14T22:30:56.722Z",
+      "kind": "analysis",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-14T19:27:41.558Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 34,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "فائض النفط قد يرفع وزن أصول أبوظبي في تصنيف الإمارات",
+        "وإذا ضغط هذا الفائض على السعر بعد إعادة بناء المخزونات، فقد يزداد وزن صافي أصول أبوظبي الأجنبية في النظرة المستقرة."
+      ],
+      "weak": [
+        {
+          "sentence": "وفي توقعات الوكالة ينمو الاقتصاد الإماراتي 0.5% هذا العام، إذ يعوّض نمو الناتج الهيدروكربوني نحو 7% انكماشَ الناتج غير النفطي 1.5%.",
+          "quote": "وفي مقابل انكماش الناتج غير النفطي، تتوقع فيتش أن يرتفع الناتج الهيدروكربوني نحو 7% في 2026، ثم يقفز 26% العام المقبل مع تحرر الإنتاج النفطي من حصص أوبك+."
+        },
+        {
+          "sentence": "وفي اليوم الذي ثبّتت فيه فيتش التصنيف، قالت وكالة الطاقة الدولية في تقريرها الشهري إن الإمدادات ستزيد على الطلب بمقدار 1.7 مليون برميل يومياً في الربع الرابع، بعدما كانت تتوقع عجزاً في الربع نفسه، وقدّرت أن يبلغ متوسط الإمدادات العالمية فيه 105 ملايين برميل يومياً.",
+          "quote": "وكانت الوكالة، وهي هيئة تقدم المشورة للدول الصناعية، قد توقعت في وقت سابق أن تسجل السوق عجزاً في الإمدادات خلال الربع الرابع، الذي يمتد من أكتوبر إلى ديسمبر. لكنها عدّلت تقديرها في أحدث تقاريرها الشهرية إلى فائض في المعروض، وباتت تقدّر أن يبلغ متوسط إمدادات النفط العالمية 105 ملايين برميل يومياً في هذا الربع، متجاوزاً الطلب الذي تتوقعه للفترة نفسها."
+        }
+      ],
+      "outcome": "clean"
+    },
+    "fitch-affirms-uae-rating-despite-iran-war-8c5e5a": {
+      "at": "2026-11-14T22:31:55.594Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-14T18:39:32.948Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 30,
+        "checked": 30,
+        "supported": 30,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "un-urges-fertilizer-passage-through-hormuz-3371ae": {
+      "at": "2026-11-14T22:32:03.148Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-14T18:26:39.566Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 24,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "آلية العبور الأممية جاهزة للتشغيل خلال 7 إلى 10 أيام، فما يؤخر خمس سفن أسمدة يومياً قرار سياسي في واشنطن وطهران، وكلفته يتحملها مزارعو الدول المستوردة: كل موسم بذار يفوتهم يحوّل صعود أسعار الأسمدة 30% إلى غذاء أغلى في دول مثل السودان ونيبال.",
+          "quote": "وأضاف بأسف \"وضعنا آلية يمكن أن تدخل حيز التنفيذ خلال 7 إلى 10 أيام، لكن الإرادة السياسية لا تزال غائبة\" على رغم دعم \"عدد متزايد من دول\" الجنوب العالمي."
         }
       ],
       "outcome": "clean"
