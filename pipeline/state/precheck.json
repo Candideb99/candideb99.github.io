@@ -16460,6 +16460,74 @@
           "noted": []
         }
       ]
+    },
+    "faa-nationwide-ground-stop-10000-flights-886601": {
+      "at": "2026-11-14T01:45:47.368Z",
+      "title": "عطل في اتصالات المراقبة الجوية يربك أكثر من 10 آلاف رحلة في الولايات المتحدة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 39,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "microsoft-outage-fax-phones-70-countries-ec5280": {
+      "at": "2026-11-14T01:56:34.936Z",
+      "title": "عطل مايكروسوفت العالمي يعيد شركات ومؤسسات إلى الفاكس والهاتف",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 20,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 16,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "لكن الوزيرة البريطانية المسؤولة عن الأمن السيبراني ليز لويد قالت إن الأثر على الخدمات الحيوية مثل خط الطوارئ 999 بقي محدوداً، وإن شبكة النقل لم تتعطل.",
+              "quote": "ومع ذلك، أكد الوزير المسؤول عن الأمن السيبراني أن خدمات الطوارئ (999)، وخدمات الخط الساخن (111) التابعة للهيئة، لم تتأثر، كما لم يشهد قطاع النقل أي اضطرابات.",
+              "source": "BBC Arabic",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []

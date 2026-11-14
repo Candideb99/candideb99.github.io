@@ -1,93 +1,456 @@
 {
-  "mode": "weekly",
-  "startedAt": "2026-11-13T21:35:58.033Z",
-  "durationSec": 603,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-14T01:29:38.499Z",
+  "durationSec": 2143,
+  "published": 2,
   "refreshed": 0,
   "report": [
     {
-      "headline": "سهم إنفيديا يهبط حتى 14% وأسعار المستهلكين الأمريكية ترتفع 0.4%",
-      "section": "analysis",
-      "outcome": "rejected after revision: بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: أبرز ما جرى، ما ننتظره الأسبوع المقبل. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل."
+      "headline": "عطل اتصالات يوقف إقلاع الرحلات في مطارات أمريكا ويؤخر أكثر من 10 آلاف رحلة",
+      "section": "economy",
+      "importance": 8,
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-11-13/flights-grounded-across-us-video",
+        "https://www.aljazeera.net/news/2026/11/14/%d8%b9%d8%a7%d8%ac%d9%84-%d8%b1%d9%88%d9%8a%d8%aa%d8%b1%d8%b2-%d8%b9%d9%86-%d8%a5%d8%af%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%b7%d9%8a%d8%b1%d8%a7%d9%86",
+        "https://www.cnbc.com/2026/11/13/faa-ground-stop.html",
+        "https://www.marketwatch.com/story/faa-declares-rare-widespread-ground-outage-bdc46393?mod=mw_rss_topstories"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والمقدمة يحددان البلد والجهة والإجراء ومدته وحجم الأثر، والمقدمة تبيّن أن الوقف شمل الإقلاع لا الهبوط، وأن الرحلات التي كانت في الجو واصلت مسارها.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السابقة التاريخية (يناير 2023 و11 سبتمبر) والأعطال الأخيرة موجودة. أما سبب العطل كما تنقله المصادر (أجهزة توجيه الشبكات، تحديث شبكة «إل ثري هاريس»، انقطاع الرادار والترددات معاً، استبعاد مكتب التحقيقات الفيدرالي للهجوم، وكلها في المصدر 2) فغائب. وفي «لماذا يهمّ» استدلال مقبول من انتقال الكلفة إلى السبت عبر ساعات عمل الأطقم وتموضع الطائرات (المصدر 3)، لكن عبارة «جداول قلّصتها الشركات بسبب غلاء الوقود» تجعل من «في ظل» الواردة في المصدر 4 علاقة سببية.",
+              "repair": "أضف فقرة السبب المنسوبة مع التنبيه إلى أنه لم يتأكد بعد، واكتب في الصندوق: «ومع جداول تقلصت في ظل غلاء الوقود»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العطل الذي يتصدر العنوان لا يُشرح بعد المقدمة إلا متفرقاً: الفقرتان الأولى والثانية، ثم تصريحات المسؤولين في الفقرة السابعة، ثم البنية المتقادمة في الأخيرة، تفصل بينها الأرقام والرحلات الدولية. أما رفع الوقف فيأتي في جملة واحدة معلقة: «ثم رفعت الإدارة الوقف لاحقاً».",
+              "repair": "رتّب التقرير هكذا: المقدمة، ثم طبيعة العطل وسببه المرجح ونفي الهجوم، ثم الأرقام، ثم الرفع التدريجي للوقف وأثره على الرحلات الدولية وإلغاءات السبت، ثم الخلفية التاريخية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «رحلات داخلية» تحرّف «داخل الولايات المتحدة». ورحلات الساحل الغربي منسوبة خطأ إلى «فلايت رادار 24»، وهاواي معدودة ضمن الرحلات الدولية. وتقول الإدارة إن العطل طال «عدة مراكز» (المصدر 3)، بينما يقول دافي «جميع مراكز» (المصدر 2)، والتقرير يورد الصيغتين في فقرتين متباعدتين من دون أن يقابل بينهما. وفي «لماذا يهمّ» عبارة «عطل دام أربع ساعات»، والصحيح أن الوقف هو الذي استمر أكثر من أربع ساعات.",
+              "repair": "صحّح النطاق والنسبة، واجمع صيغتي الإدارة ودافي في جملة واحدة كلٌّ منسوبة إلى قائلها، واكتب في الصندوق: «وقف للإقلاع استمر أكثر من أربع ساعات»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والحدث والمدة وامتداد الإلغاءات إلى السبت، وإدارة الطيران الفدرالية معرّفة. لكن المقدمة تقول إن الإقلاع أُوقف «من جميع مطارات الولايات المتحدة»، والمتن يذكر لاحقاً رحلات أقلعت من بوسطن عند 5:21 و5:24 دون أن يقول إنها استثناء سُمح به أثناء الوقف.",
+              "repair": "صرّح بأن بعض الرحلات الدولية سُمح لها بالإقلاع رغم سريان الوقف (المصدر 2 عن «فلايت رادار 24»؛ المصدر 3)، وضع الفقرة قبل جملة الرفع."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير التفسيرات الثلاث التي تقدمها المصادر. السبب المرجّح منسوب ومقيّد بأنه لم يتضح بعد: أجهزة توجيه الشبكات (سي إن إن)، وتحديث شبكة «إل ثري هاريس» (سي بي إس)، وانقطاع الرادار والترددات معاً. وردود الأطراف حاضرة: دافي ومولين وترامب ومكتب التحقيقات الفيدرالي وشركات الطيران و«يوروكنترول» و«طيران كندا». والأثر اللاحق حاضر: إلغاءات السبت وساعات عمل الأطقم. وتأتي معها السابقة في يناير 2023 و11 سبتمبر وأعطال نيوآرك. والصندوق يستند إلى مقدمات صحيحة من المصدرين 3 و4.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان هو العطل، ويُطوَّر الآن مباشرة بعد المقدمة: نطاقه في الفقرة الثانية، ثم قسم «ما الذي تعطّل» وفيه طبيعة العطل وسببه المرجّح ونفي الهجوم. لكن فقرة الرحلات الدولية تعود إلى الخامسة مساء بعد «ثم رفعت الإدارة الوقف» فتربك الزمن. والصندوق يعيد جملة «ماركت ووتش» وفقرة «جيت بلو» بدل أن يجمعهما في استدلال واحد.",
+              "repair": "انقل فقرة الإقلاعات الدولية قبل الرفع بصيغة صريحة، واختصر الصندوق في جملة تربط انتقال الكلفة إلى السبت بضيق المقاعد دون أن يكرر المتن."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر وتواقيتها وجهاتها محددة: 11 ألف رحلة مقررة بعد الرابعة و600 رحلة محوّلة (سيريوم)، ونحو 5 آلاف إلغاء بحلول 7:45 «في الولايات المتحدة» (فلايت أوير)، وأكثر من 370 إلغاءً يوم السبت، وأكثر من 10 آلاف رحلة متعطلة. وصيغة الإدارة («عدة مراكز») وصيغة دافي («جميع المراكز») منسوبتان كلٌّ إلى قائلها في جملة واحدة. و«في ظل» في الصندوق لا تحوّل الظرف إلى سبب.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "التسلسل والنطاق في فقرة الرحلات الدولية: «ثم رفعت الإدارة الوقف» تأتي أولاً، وبعدها «وفي الاتجاه المعاكس، أقلعت من بوسطن رحلة لـ«لوفتهانزا» إلى فرانكفورت عند 5:21 مساء…». الوقف صدر نحو الرابعة واستمر أكثر من أربع ساعات (المصدر 3)، فهذه الرحلات أقلعت والوقف سارٍ. والقارئ يخرج بتناقض مع المقدمة («أوقفت… إقلاع الرحلات من جميع مطارات الولايات المتحدة») أو يظن أنها أقلعت بعد الرفع. يورد المصدر 2 (نيويورك تايمز عن «فلايت رادار 24») أن السلطات سمحت لبعض الرحلات الدولية بالمغادرة رغم سريان القرار، ويورد المصدر 3 أن الإدارة تتعامل مع الرحلات الدولية القادمة كل حالة على حدة. الإصلاح: انقل الفقرة قبل جملة الرفع، واستبدل «وفي الاتجاه المعاكس» بصيغة صريحة: «وسُمح لبعض الرحلات الدولية بالإقلاع رغم سريان الوقف، فأقلعت من بوسطن رحلة لـ«لوفتهانزا» إلى فرانكفورت عند 5:21 مساء وأخرى لـ«إيتا إيرويز» إلى روما عند 5:24 مساء بتوقيت الشرق، بحسب «فلايت رادار 24»، ثم بدأت نحو 6:50 مساء رحلات ركاب وشحن تغادر الساحل الغربي إلى آسيا وهاواي». بعد ذلك تأتي فقرة بيدفورد والاستئناف التدريجي ثم الرفع.",
+        "تكرار المعنى في الفقرة الأولى: المقدمة تقول «أوقفت… إقلاع الرحلات من جميع مطارات الولايات المتحدة». ثم يقول المتن «وقضى بإبقاء الطائرات المغادرة على الأرض حتى إشعار آخر» وبعدها «ويُبقي هذا الإجراء الطائرات في مطارات انطلاقها». فالمعنى نفسه قيل ثلاث مرات. الإصلاح: احذف «ويُبقي هذا الإجراء الطائرات في مطارات انطلاقها» واكتب: «…حتى إشعار آخر، وعللته الإدارة… بظروف استثنائية ودواعي السلامة، فيما واصلت الرحلات التي كانت في الجو مسارها، بحسب شركات الطيران».",
+        "صندوق «لماذا يهمّ» يكرر خلاصة المتن ولا يضيف إليها. جملته الثانية «ومع جداول تقلصت في ظل غلاء الوقود، قد يجد المسافرون العالقون مقاعد أقل لإعادة الحجز» تعيد بلفظ قريب جملة المتن «ورأى موقع «ماركت ووتش»… أن تقليص الرحلات في ظل ارتفاع تكاليف الوقود قد يحد من خيارات إعادة حجز المسافرين». وجملته الأولى تعيد فقرة «جيت بلو» وساعات عمل الأطقم. الإصلاح: أبقِ النسبة إلى «ماركت ووتش» في المتن، واجعل الصندوق جملة واحدة تجمع المقدمتين في استدلال واحد، مثل: «كلفة الساعات الأربع لا تنتهي برفع الوقف، فهي تقع على مسافري السبت الذين يُعاد حجزهم في جداول تقلصت أصلاً في ظل غلاء الوقود».",
+        "تكرار في الفقرة الأخيرة: «ما أثار مخاوف من تقادم البنية التحتية ونقص الموظفين»، ثم «إلى استبدال البنية التحتية… بسبب تقادمها، في ظل أعطال في المعدات ونقص في المراقبين». التقادم والنقص قيلا مرتين في جملتين متتاليتين. الإصلاح: اكتفِ بمرة واحدة: «…ما أثار مخاوف من تقادم البنية التحتية ونقص المراقبين، وتسعى إدارة الطيران الفدرالية إلى استبدال هذه البنية (المصدر 2)». يقرّب هذا الحذف مع حذف التكرار في الفقرة الأولى طولَ التقرير (نحو 690 كلمة) من سقف 650.",
+        "العنوان والعنوان الفرعي يحددان البلد والحدث والمدة وامتداد الإلغاءات إلى السبت، وإدارة الطيران الفدرالية معرّفة. لكن المقدمة تقول إن الإقلاع أُوقف «من جميع مطارات الولايات المتحدة»، والمتن يذكر لاحقاً رحلات أقلعت من بوسطن عند 5:21 و5:24 دون أن يقول إنها استثناء سُمح به أثناء الوقف. — صرّح بأن بعض الرحلات الدولية سُمح لها بالإقلاع رغم سريان الوقف (المصدر 2 عن «فلايت رادار 24»؛ المصدر 3)، وضع الفقرة قبل جملة الرفع.",
+        "العنصر الجديد في العنوان هو العطل، ويُطوَّر الآن مباشرة بعد المقدمة: نطاقه في الفقرة الثانية، ثم قسم «ما الذي تعطّل» وفيه طبيعة العطل وسببه المرجّح ونفي الهجوم. لكن فقرة الرحلات الدولية تعود إلى الخامسة مساء بعد «ثم رفعت الإدارة الوقف» فتربك الزمن. والصندوق يعيد جملة «ماركت ووتش» وفقرة «جيت بلو» بدل أن يجمعهما في استدلال واحد. — انقل فقرة الإقلاعات الدولية قبل الرفع بصيغة صريحة، واختصر الصندوق في جملة تربط انتقال الكلفة إلى السبت بضيق المقاعد دون أن يكرر المتن."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تتفاقم الاضطرابات إذا طال وقف الإقلاع لأن الأطقم تبلغ الحد الأقصى لساعات عملها اليومية",
+          "source": 3
+        },
+        {
+          "fact": "ألغت جيت بلو رحلات السبت لتكون الأطقم والطائرات في مواقعها لاستئناف العمليات",
+          "source": 3
+        },
+        {
+          "fact": "تقليص الرحلات في ظل ارتفاع تكاليف الوقود قد يحد من خيارات إعادة الحجز، بحسب ماركت ووتش",
+          "source": 4
+        }
+      ],
+      "slug": "faa-nationwide-ground-stop-10000-flights-886601",
+      "title": "عطل في اتصالات المراقبة الجوية يربك أكثر من 10 آلاف رحلة في الولايات المتحدة",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "عطل مايكروسوفت العالمي يعيد شركات إلى الفاكس بعد يومين من الاضطراب",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5341005",
+        "https://www.bbc.com/arabic/articles/ck1l04y736q9o",
+        "https://www.nytimes.com/2026/11/13/business/microsoft-outage.html",
+        "https://www.bbc.co.uk/news/articles/c6rrg51rkz09o"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والدِّك يعرّفان الحدث (مايكروسوفت معروفة) وسببه المعلن ونفي الهجوم السيبراني. لكن «مؤسسات في أكثر من 70 دولة إلى الفاكس» تنسب الرجوع إلى الفاكس إلى نطاق العطل كله. و«توقف … نحو 24 ساعة» يوحي بأن العطل انتهى، مع أن الشركة لا تعرف موعد التعافي الكامل.",
+              "repair": "يُفصل نطاق العطل (أكثر من 70 دولة) عن اللجوء إلى الفاكس (شركات ومؤسسات). وتُصاغ المدة على أنها بداية تعافٍ واسع بعد نحو 24 ساعة، لا عودة كاملة."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير السبب المعلن (ترقية سعة الشبكة ومشكلات الخوادم ونفي النشاط الخبيث، SOURCE 1 و SOURCE 4)، والتسلسل الزمني للإقرار والتعافي، وردود ديمين وسوندرز معرّفين بمنصبيهما ومؤسستيهما، والخطوة التالية (تقرير ما بعد الحادثة وغياب موعد التعافي الكامل).",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يُبنى المتن على ما يقوله العنوان: الفاكس والهاتف و«يورونكست» تأتي مباشرة بعد المقدمة، ثم الأثر الجغرافي، ثم السبب والتعافي، ثم الدلالة. أما صندوق «لماذا يهمّ» فيبني استنتاجه على مقدمتين خاطئتين: «يورونكست» والفاكس، والخدمة الثانية «المستحيلة». و«لكن» قبل سوندرز تصنع تبايناً لا وجود له.",
+              "repair": "تُصحح مقدمتا الصندوق ويُبقى استنتاجه المحدود: عند تعطل مزود سحابي واحد يصبح البديل العملي هو الهاتف والفاكس، وتتحمل الكلفة المؤسسات التي لا تملك خطة للعمل من دون هذه الأدوات. وتُستبدل «لكن» بـ«و»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 430 مليوناً، وأكثر من 70 دولة، والأوقات 17:54 و04:36 و13:32 بتوقيت غرينتش. الخلل في دقة الإسناد ونطاقه: قول سوندرز محرّف، و«يورونكست» في الصندوق موصوفة بما لم تفعله، والفاكس معمّم على سبعين دولة، والمدة مقدّمة على أنها انتهت.",
+              "repair": "تُعاد العبارات الثلاث إلى ما في SOURCE 1 و SOURCE 4 كما فُصّل في قائمة المشكلات، ويُذكر صراحة أن الشركة لا تملك موعداً للتعافي الكامل حيثما ذُكرت المدة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحصر العودة إلى الفاكس والهاتف في «شركات ومؤسسات». والمقدمة تجعل «أكثر من 70 دولة» وصفاً لنطاق العطل، وتقدم التعافي على أنه بداية تعافٍ واسع بعد نحو 24 ساعة، مع التنبيه إلى أن الشركة لا تملك موعداً للاستعادة الكاملة. و«مايكروسوفت» اسم معروف لا يحتاج إلى تعريف في البطاقة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يقدم التقرير التفسيرات التي توفرها المصادر. السبب: خلل تقني أثناء ترقية سعة الشبكة ومشكلات في الخوادم، ونفي أي هجوم أو نشاط خبيث (SOURCE 1 وSOURCE 4). ردود الفعل: الوزيرة ليز لويد، وموظفو مجلس النواب عبر «بوليتيكو»، وخبيران معرّفان بصفتيهما ومؤسستيهما. وما يلي: التقرير الكامل المنتظر وغياب موعد للتعافي الكامل. يبقى في الصندوق ربط «إذ» الملتبس المذكور في قائمة المشكلات.",
+              "repair": "تصحيح الربط في الصندوق كما ورد في قائمة المشكلات."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو العودة إلى الفاكس والهاتف، والمتن يطوره مباشرة بعد المقدمة: البلوتوث، وتأكيد المعاملات بالفاكس، و«يورونكست». بعد ذلك يتدرج التقرير من الأثر الجغرافي إلى السبب فالتعافي فالاعتماد على المزودين، وهو بناء متماسك. لكن عنوان «خلل أثناء ترقية الشبكة» يعلو فقرتين عن مسار التعافي والاعتذار لا يصفهما.",
+              "repair": "إعادة تسمية القسم: «خلل في الشبكة وتعافٍ تدريجي»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والأوقات مطابقة لـSOURCE 2 وSOURCE 4: أكثر من 430 مليون مستخدم للمنتجات المتأثرة، وأكثر من 70 دولة، والأوقات 17:54 و04:36 و13:32 بتوقيت غرينتش، ونحو 24 ساعة حتى بدء التعافي الواسع. وقول سوندرز صار مطابقاً لـSOURCE 4. ووصف أثر العطل على خدمة 999 بأنه «محدود» مأخوذ من SOURCE 4.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "بناء: عنوان القسم الفرعي «## خلل أثناء ترقية الشبكة» لا يصف إلا الفقرة الأولى من فقراته الثلاث، وهي فقرة السبب. الفقرة الثانية تسرد مراحل إقرار الشركة بالعطل وتعافي الخدمة (17:54 ثم 04:36 ثم 13:32). والثالثة عن الإعادة التدريجية والاعتذار والتقرير الكامل المنتظر (SOURCE 4). الإصلاح: تسمية القسم بما تقوله فقراته، مثل «## خلل في الشبكة وتعافٍ تدريجي»، أو نقل الفقرتين إلى قسم عنوانه «## مسار التعافي». ولا يُفرد عنوان لفقرة واحدة.",
+        "صندوق «لماذا يهمّ»: الربط بـ«إذ» في «يتضح أن البديل العملي عند تعطل مزود سحابي واحد هو الهاتف والفاكس، إذ يكاد يستحيل أن تعمل الشركات من دون أدواته» يجعل استحالة العمل من دون أدوات «مايكروسوفت» سبباً للعودة إلى الفاكس، والقارئ يراها نقيضاً لها. أما مقدمة سوندرز في SOURCE 4 فهي أن الخدمة الثانية التي تنصح بها خطط الطوارئ لا تغني عملياً عن هذه الأدوات. الإصلاح: «حين تؤكد شركات مالية معاملاتها بالفاكس وتطلب «يورونكست» من الشركات المدرجة التواصل هاتفياً، يتبين أن الخدمة الثانية التي تنصح بها خطط الطوارئ لا تغني عملياً عن أدوات مزود سحابي واحد، فيصبح الهاتف والفاكس هما البديل». ويبقى بعدها الاستنتاج الثاني عن الكلفة كما هو.",
+        "العنوان يقول إن الجديد هو العودة إلى الفاكس والهاتف، والمتن يطوره مباشرة بعد المقدمة: البلوتوث، وتأكيد المعاملات بالفاكس، و«يورونكست». بعد ذلك يتدرج التقرير من الأثر الجغرافي إلى السبب فالتعافي فالاعتماد على المزودين، وهو بناء متماسك. لكن عنوان «خلل أثناء ترقية الشبكة» يعلو فقرتين عن مسار التعافي والاعتذار لا يصفهما. — إعادة تسمية القسم: «خلل في الشبكة وتعافٍ تدريجي»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "أكدت شركات مالية معاملاتها بالفاكس، وطلبت «يورونكست» من الشركات المدرجة التواصل معها هاتفياً",
+          "source": 1
+        },
+        {
+          "fact": "قال مات سوندرز إن خطط الطوارئ التقليدية تنصح بخدمة ثانية، لكن يكاد يستحيل عملياً أن تعمل الشركة من دون أدوات مثل مايكروسوفت، ودعا المؤسسات إلى خطة للعمل من دونها",
+          "source": 4
+        },
+        {
+          "fact": "قالت مايكروسوفت إنها لا تملك موعداً متوقعاً لاستعادة الخدمات بالكامل",
+          "source": 4
+        }
+      ],
+      "slug": "microsoft-outage-fax-phones-70-countries-ec5280",
+      "title": "عطل مايكروسوفت العالمي يعيد شركات ومؤسسات إلى الفاكس والهاتف",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "ألمانيا تقر موازنة 2027 باقتراض جديد قدره 210 مليارات يورو",
+      "section": "economy",
+      "importance": 6,
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-13/german-lawmakers-sign-off-on-higher-borrowing-spending-for-2027",
+        "https://tejaratnews.com/%d8%a8%d8%af%d9%87%db%8c-%db%b2%db%b1%db%b0-%d9%85%db%8c%d9%84%db%8c%d8%a7%d8%b1%d8%af-%db%8c%d9%88%d8%b1%d9%88%db%8c%db%8c-%d8%a2%d9%84%d9%85%d8%a7%d9%86%d8%9b"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (ألمانيا) والجهة (لجنة الموازنة) والرقم (210.4 مليار يورو)، ويبيّنان أن الإقرار سابق للتصويت النهائي في البرلمان، فلا يظن القارئ أن الموازنة أُقرّت نهائياً. ويُعرَّف ميرتس بأنه قائد الحكومة الائتلافية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر توفر السبب (الاستثمار في البنية التحتية والجيش، المصدر 1 والمصدر 2) والمقارنة (الرقم القياسي في 2021، المصدر 2) وردود الفعل (المعارضة والخضر، المصدر 2)، والمسودة تحمل الثلاثة. غير أن «لماذا يهمّ» يربط التخلي عن الضرائب بالاعتماد على الاقتراض دون سند، بينما المقدّمة الأقوى هي الجزء الممول عبر آليات خاصة.",
+              "repair": "إعادة صياغة الصندوق حول ما يترتب على مرور نحو 87 مليار يورو من الاقتراض خارج الموازنة الأساسية (المصدر 2، نقلاً عن رويترز)، بلا «ولهذا يُرجَّح» وبلا تعميم الاتهام على المعارضة."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "العنوان يقول إن الاقتراض يقارب المستوى القياسي، والفقرة الأولى بعد السطر التمهيدي تطوّر ذلك مباشرة برقم 2021. ثم يأتي السبب، فتركيبة الاقتراض، فالتنازلات، فالمعارضة، فالخطوة التالية، في خط واحد. والعيب الوحيد هو اختلاط رأي الموقع بخبر الإحالة في الفقرة الختامية.",
+              "repair": "فصل الإحالة إلى البرلمان عن رأي الموقع، أو حذف الرأي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام (561، و210.4، و215.4، ونحو 123 مليار يورو) والتوقيت (فجر الجمعة) مطابقة للمصادر، لكن عبارة إنعاش النمو منسوبة إلى بلومبرغ خطأً، والعنوان الفرعي «والبرلمان يصوّت» يقدّم خطوة مقبلة كأنها جارية.",
+              "repair": "نقل عبارة النمو إلى المصدر 2 أو حذفها، وتصحيح العنوان الفرعي إلى صيغة تدل على أن التصويت لاحق."
+            }
+          }
+        }
+      ],
+      "lastCut": 3,
+      "outcome": "rejected after revision: المقال قصير جداً (287 كلمة)؛ لا يُنشر خبر دون 300 كلمة، والمستهدف 350-650. أضف من المصادر ما ينقصه: سبب الحدث، والأرقام في سياقها، وردود الفعل، والخلفية، وما يليه، دون اختراع معلومات."
+    },
+    {
+      "headline": "«طلبات» تربح 1.06 مليار درهم في 9 أشهر وتدرس استحواذات في المنطقة",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
     }
   ],
   "llm": {
-    "calls": 14,
-    "failures": 1,
-    "promptTokens": 368487,
-    "completionTokens": 69083,
-    "cacheReadTokens": 235028,
-    "costUsd": 2.4962,
+    "calls": 61,
+    "failures": 2,
+    "promptTokens": 1032708,
+    "completionTokens": 201657,
+    "cacheReadTokens": 323277,
+    "costUsd": 9.7726,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 14
+      "claude-cli/claude-opus-5-5": 61
     },
     "byRole": {
-      "desk": {
-        "calls": 12,
-        "in": 48749,
-        "read": 208454,
-        "out": 47993,
-        "usd": 1.3914
-      },
-      "critic": {
+      "editor": {
         "calls": 1,
-        "in": 42159,
-        "read": 8454,
-        "out": 5450,
-        "usd": 0.448
+        "in": 84726,
+        "read": 0,
+        "out": 2697,
+        "usd": 0.7317
+      },
+      "desk": {
+        "calls": 16,
+        "in": 118323,
+        "read": 163524,
+        "out": 67998,
+        "usd": 2.3391
       },
       "writer": {
-        "calls": 1,
-        "in": 42551,
-        "read": 18120,
-        "out": 15640,
-        "usd": 0.6568
+        "calls": 14,
+        "in": 157281,
+        "read": 125937,
+        "out": 59142,
+        "usd": 2.466
+      },
+      "critic": {
+        "calls": 13,
+        "in": 161723,
+        "read": 33816,
+        "out": 38748,
+        "usd": 2.0754
+      },
+      "checker": {
+        "calls": 2,
+        "in": 21560,
+        "read": 0,
+        "out": 15752,
+        "usd": 0.4875
+      },
+      "vision": {
+        "calls": 15,
+        "in": 165818,
+        "read": 0,
+        "out": 17320,
+        "usd": 1.6729
       }
     }
   },
   "log": [
-    "[21:35:58] newsroom start mode=weekly limit=4 dry-run=false",
-    "[21:35:58] weekly: 14 stories of the week, 0 calendar events",
-    "[21:35:58]   story: القيمة السوقية لإنفيديا تهبط دون 4 تريليونات دولار إثر استقالة هوانغ",
-    "[21:35:58]   story: أسعار المستهلكين الأمريكية ترتفع 0.4% في أكتوبر متجاوزة التوقعات",
-    "[21:35:58]   story: أسعار المنتجين الأمريكية ترتفع 6.5% سنوياً في أكتوبر بأسرع وتيرة منذ 2022",
-    "[21:35:58]   story: وكالة الطاقة الدولية: سوق النفط تتجه إلى فائض لأول مرة منذ حرب إيران",
-    "[21:35:58]   story: الحوثيون يعلنون استهداف خط شرق-غرب لنقل النفط السعودي إلى البحر الأحمر",
-    "[21:35:58]   story: إنتاج السعودية النفطي يقفز 26% إلى قرب مستوى ما قبل الحرب",
-    "[21:35:58]   story: تحويلات المصريين بالخارج تبلغ مستوى قياسياً عند 13 مليار دولار بين يوليو وسبتمبر",
-    "[21:35:58]   story: أورلن البولندية أول عميل يلغي عقد غاز مسال مع قطر للطاقة",
-    "[21:36:18] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1833 in=3671 read=18120 out=2174 attempt=1 ms=20271",
-    "[21:36:18] weekly paragraph 1/8: 66 words (claude-cli/claude-opus-5-5)",
-    "[21:36:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=617 in=2722 read=18120 out=917 attempt=1 ms=9199",
-    "[21:36:28] weekly paragraph 2/8: 59 words (claude-cli/claude-opus-5-5)",
-    "[21:36:41] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1190 in=3575 read=18120 out=1481 attempt=1 ms=13177",
-    "[21:36:41] weekly paragraph 3/8: 53 words (claude-cli/claude-opus-5-5)",
-    "[21:36:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1020 in=2324 read=18120 out=1349 attempt=1 ms=11041",
-    "[21:36:52] weekly paragraph 4/8: 66 words (claude-cli/claude-opus-5-5)",
-    "[21:37:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1071 in=2885 read=18120 out=1364 attempt=1 ms=12956",
-    "[21:37:05] weekly paragraph 5/8: 58 words (claude-cli/claude-opus-5-5)",
-    "[21:37:16] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=909 in=3503 read=18120 out=1226 attempt=1 ms=11154",
-    "[21:37:16] weekly paragraph 6/8: 65 words (claude-cli/claude-opus-5-5)",
-    "[21:37:28] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=989 in=2541 read=18120 out=1291 attempt=1 ms=11619",
-    "[21:37:28] weekly paragraph 7/8: 61 words (claude-cli/claude-opus-5-5)",
-    "[21:37:43] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1329 in=3144 read=18120 out=1644 attempt=1 ms=15371",
-    "[21:37:43] weekly paragraph 8/8: 63 words (claude-cli/claude-opus-5-5)",
-    "[21:38:53] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: ahead missing",
-    "[21:39:55] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4009 in=4131 read=18120 out=6124 attempt=2 ms=59225",
-    "[21:40:40] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1470 in=7580 read=13627 out=5896 attempt=1 ms=44755",
-    "[21:40:40] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,body] rejected=[]",
-    "[21:40:40] desk \"تضخم المستهلكين الأمريكي يفوق التوقعات ويعزز ترجيح رفع الفائدة في ديسمبر\": rewrote title, subtitle, body",
-    "[21:40:40] checks weekly \"تضخم المستهلكين الأمريكي يفوق التوقعات ويعزز ترجيح رفع الفائدة في ديسمبر\": 881 words, 0 issues, 0 warnings",
-    "[21:41:30] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3256 in=42159 read=8454 out=5450 attempt=1 ms=50220",
-    "[21:41:30] critic weekly: revise score=5 issues=6",
-    "[21:41:30]   · سببية لا تسندها القصة: «ثم سجّلت أسعار المنتجين الجمعة أسرع وتيرة سنوية منذ 2022، فازداد ترجيح رفع الفائدة في اجتماع ديسمبر». المصدر 3 يقول إن القراءة السنوية ج",
-    "[21:41:30]   · نتيجة لم ترد في المصدر 4: «لكن الفائض الذي تتوقعه الوكالة قد يضغط على أسعار الخام وإيراداته في الربع الرابع، ما لم تمتص إعادة بناء المخزونات جزءاً من الزيادة». ",
-    "[21:41:30]   · أثر مخترع على بلد بعينه: «ومن المحتمل أن يقابل هذا الدعم ارتفاع في كلفة اقتراضها الخارجي إذا رفع الاحتياطي الفيدرالي الفائدة في ديسمبر». لا تربط أي قصة بين الفا",
-    "[21:41:30]   · قسم «ما ننتظره الأسبوع المقبل» لا يستند إلى الأجندة. الأجندة المرفقة (المصدر 15) خالية من أي موعد، واجتماع 8 و9 ديسمبر ليس في الأسبوع المقبل. ثم إن عبارة «وأقرب",
-    "[21:43:37] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=9806 in=42551 read=18120 out=15640 attempt=1 ms=126556",
-    "[21:46:01] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=11198 in=8610 read=13627 out=17327 attempt=1 ms=143509",
-    "[21:46:01] desk model=claude-cli/claude-opus-5-5 applied=[title,subtitle,lede,whyItMatters] rejected=[body:subheads changed]",
-    "[21:46:01] desk \"تضخم أمريكي أعلى من المتوقع يعزز رهان رفع الفائدة في ديسمبر\": rewrote title, subtitle, lede, whyItMatters; refused body (subheads changed)",
-    "[21:46:01] reject weekly \"تضخم أمريكي أعلى من المتوقع يعزز رهان رفع الفائدة في ديسمبر\" after revision: بنية حصاد الأسبوع ناقصة؛ العناوين الفرعية المطلوبة (بصيغة \"## \") غير موجودة: أبرز ما جرى، ما ننتظره الأسبوع المقبل. أضفها بهذا الترتيب: أبرز ما جرى، ما يعنيه للمنطقة، ما ننتظره الأسبوع المقبل."
+    "[01:55:07] image: dropped \"Faxing instructions with my post-it addendum proposing setting one's t\" — dated 1994, an archival picture",
+    "[01:55:07] openverse \"sending a fax\": 1 usable of 20",
+    "[01:55:07] openverse \"office worker on telephone\": 10 usable of 20",
+    "[01:55:08] commons \"office worker on telephone\": 9 usable of 24",
+    "[01:55:08] image: dropped \"Some comment on government ownership of telephone properties (1914) (1\" — names too little of office, worker, telephone",
+    "[01:55:08] image: dropped \"105113 kibbutz ramot menashe PikiWiki Israel.jpg\" — dated 1971, an archival picture",
+    "[01:55:08] image: dropped \"Portret van secretaresse Aviva terwijl ze telefoneert met twee telefoo\" — dated 1964, an archival picture",
+    "[01:55:08] image: dropped \"Portret van secretaresse Aviva terwijl ze telefoneert, Bestanddeelnr 2\" — dated 1964, an archival picture",
+    "[01:55:08] image: dropped \"StateLibQld 2 193699 Staff outside the Goondiwindi Post Office, 1919.j\" — dated 1919, an archival picture",
+    "[01:55:08] image: dropped \"Indoor Sports - Leaving an April Fool's Day Telephone Call on the Desk\" — names too little of office, worker, telephone",
+    "[01:55:08] image: dropped \"08-12-1949_06425 Telefoniste\" — dated 1949, an archival picture",
+    "[01:55:08] image: dropped \"02-28-1952_10298 Secretaresse\" — dated 1952, an archival picture",
+    "[01:55:09] commons \"sending a fax\": 21 usable of 24",
+    "[01:55:09] image: dropped \"Havasupai Indian woman basket maker, ca.1900 (CHS-3385)\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Collection of vintage electronics and gadgets on display in Tomé Açu, \" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Close-up of a vintage typewriter typing 'Send a Mail' on paper, emphas\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Focused man reading papers at an outdoor workspace with a laptop and l\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Close-up of hands holding an envelope with a letter on a rustic wooden\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Close-up of a person holding a brown paper envelope, highlighting cour\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Top view set of white envelops with striped red and blue edges placed \" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"High-quality close-up of a red British postage stamp with postal marki\" — names too little of sending, fax",
+    "[01:55:09] image: dropped \"Close-up of a woman sealing a brown envelope while seated at a wooden \" — names too little of sending, fax",
+    "[01:55:10] commons \"fax machine\": 18 usable of 24",
+    "[01:55:19] openverse \"office workers computers\": 10 usable of 20",
+    "[01:55:19] openverse \"fax machine\": 10 usable of 20",
+    "[01:55:19] image: dropped \"A nostalgic desk scene featuring a classic blue typewriter and a vinta\" — names too little of fax, machine",
+    "[01:55:19] image: dropped \"Close-up of a black printer toner cartridge against a rustic wooden ba\" — names too little of fax, machine",
+    "[01:55:19] image: dropped \"A tidy office desk featuring a classic black telephone and organized d\" — names too little of fax, machine",
+    "[01:55:19] commons \"office workers computers\": 14 usable of 24",
+    "[01:55:19] image: dropped \"World War II woman aircraft worker, Vega Aircraft Corporation, Burbank\" — names too little of office, workers, computers",
+    "[01:55:19] image: dropped \"Seattle City Light worker with office machine, 1954.jpg\" — dated 1954, an archival picture",
+    "[01:55:19] image: dropped \"The National airline EL Al received the first computers (FL45761172).j\" — dated 1974, an archival picture",
+    "[01:55:19] image: dropped \"Card puncher - NARA - 513295.jpg\" — names too little of office, workers, computers",
+    "[01:55:19] image: dropped \"122701 kibbutz geva PikiWiki Israel.jpg\" — dated 1970, an archival picture",
+    "[01:55:19] image: dropped \"Eugene Wong with President George H.W. Bush.jpg\" — dated 1990, an archival picture",
+    "[01:55:19] image: dropped \"Rosie the Riveter (Vultee) DS.jpg\" — names too little of office, workers, computers",
+    "[01:55:19] image: dropped \"US Army 51408 Luis Pagan-Arroyo, duty officer at the U.S. Army Garriso\" — soldiers or a patrol, and the story is not about the military",
+    "[01:55:20] commons \"Microsoft Teams meeting\": 16 usable of 24",
+    "[01:55:20] image: dropped \"IAEA meeting (virtual) with Pekka Haavisto, Vienna, March 2023, 07.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[01:55:20] image: dropped \"Bill Gates - World Economic Forum Annual Meeting Davos 2008 (cropped).\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Bill Gates - World Economic Forum Annual Meeting Davos 2008 number3.jp\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Millennium Development Goals - World Economic Forum Annual Meeting Dav\" — shows rania, not the story's people",
+    "[01:55:20] image: dropped \"Bill Gates - World Economic Forum Annual Meeting Davos 2008 number2.jp\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Terry (6421146).jpg\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Onlineteacher.jpg\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Warfare Centers Knowledge Forum a One-Stop Shop for Trainings, Seminar\" — a warship or weapon, and the story is not about the military",
+    "[01:55:20] image: dropped \"NLG Encoding 3.jpg\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Bill Gates, WEF 2009 Davos.jpg\" — names too little of meeting",
+    "[01:55:20] openverse \"Microsoft Teams meeting\": 10 usable of 20",
+    "[01:55:20] image: dropped \"Hands gesturing during a video call on a laptop screen, showing two pe\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Women collaborating in a modern office with laptops and large digital \" — names too little of meeting",
+    "[01:55:20] image: dropped \"ITU-T Review Committee\" — names too little of meeting",
+    "[01:55:20] image: dropped \"From above of diverse employees gathering at table in contemporary con\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Person using a laptop with an online communication platform, showcasin\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Innovation Competition Award Winners\" — an event's photograph, people and banners",
+    "[01:55:20] image: dropped \"Close-up of a laptop showing a messaging app interface with eyeglasses\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Laptop displaying a messaging app, with eyeglasses and coffee cup on a\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Business team engaged in presentation with sticky notes and digital sc\" — names too little of meeting",
+    "[01:55:20] image: dropped \"Women discussing business strategy in a modern office during a team me\" — an event's photograph, people and banners",
+    "[01:55:20] image: thumbnail HTTP 403 for https://live.staticflickr.com/6193/6061839213_22956995e1_n.jpg",
+    "[01:55:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=725 in=11790 read=0 out=948 attempt=1 ms=10403",
+    "[01:55:30] image: \"Bookmark-inside-office.jpg\" names the story's topic without saying its point (Photo 5 is a professional, current scene of anonymous office work, the story's own sector, and the only acceptable choice; it names the topic but does not show ); checked now and kept in reserve while the desk looks further",
+    "[01:55:36] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=372 in=9110 read=0 out=470 attempt=1 ms=6038",
+    "[01:55:36] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Bookmark-inside-office.jpg\": An anonymous Bookmark agency office where a woman works normally at an Apple iMac, with that firm's name on the wall, sh",
+    "[01:55:37] image: thumbnail HTTP 403 for https://live.staticflickr.com/6193/6061839213_22956995e1_n.jpg",
+    "[01:55:37] image: thumbnail HTTP 403 for https://live.staticflickr.com/5296/5511259393_7dac261174_n.jpg",
+    "[01:55:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1698 in=12033 read=0 out=1971 attempt=1 ms=19949",
+    "[01:55:57] image: \"Samsung SF-370 fax with inkjet printing.jpg\" names the story's topic without saying its point (The headline's point is offices falling back on fax and phone, and a fax machine with its handset is that object. Candidate 3 is the clearest and sharpest frame); checked now and kept in reserve while the desk looks further",
+    "[01:56:01] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=296 in=9204 read=0 out=383 attempt=1 ms=4786",
+    "[01:56:01] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Samsung SF-370 fax with inkjet printing.jpg\": The fax machine is only the fallback that firms turned to, not Microsoft's outage itself, and Samsung's brand is among t",
+    "[01:56:01] image: the company's own brand (Microsoft): Microsoft sign | Microsoft campus sign | Microsoft office building sign | Microsoft headquarters; its categories: Microsoft Redmond Campus",
+    "[01:56:02] pexels \"Microsoft campus sign\": 8 usable",
+    "[01:56:02] pexels \"Microsoft headquarters\": 8 usable",
+    "[01:56:02] pexels \"Microsoft sign\": 8 usable",
+    "[01:56:02] pexels \"Microsoft office building sign\": 8 usable",
+    "[01:56:02] commons \"Microsoft sign 2026\": 7 usable of 10",
+    "[01:56:02] commons \"Microsoft sign\": 16 usable of 24",
+    "[01:56:02] image: dropped \"Eugene Paul (1895-1975) or Gen Paul or Paul Trelade L'Ark De St Martin\" — names too little of sign",
+    "[01:56:02] image: dropped \"Gen Paul or Eugene Paul or Paul Trelade, Aquatint, Entitled Montmartre\" — names too little of sign",
+    "[01:56:02] image: dropped \"Eugene Paul or Gen Paul or Paul Trelade Aquatint of Le Lapin Agile.jpg\" — names too little of sign",
+    "[01:56:02] image: dropped \"Eugene Paul Gen Paul Trelade Aquatint of Montmartre L'orage or Moulin \" — names too little of sign",
+    "[01:56:12] openverse \"Microsoft office building sign\": 3 usable of 3",
+    "[01:56:12] openverse \"Microsoft sign\": 10 usable of 20",
+    "[01:56:12] image: dropped \"White and red Xbox wireless controllers set outdoors. A computer scree\" — names too little of sign",
+    "[01:56:12] image: dropped \"Detailed view of a gaming controller circuit board in repair setup.\" — names too little of sign",
+    "[01:56:12] image: dropped \"Elegant vintage-style bedroom with ornate decor and classic design ele\" — names too little of sign",
+    "[01:56:12] image: dropped \"Detailed view of Xbox gaming controller with vibrant buttons displayed\" — names too little of sign",
+    "[01:56:12] image: dropped \"Contemporary high city skyscraper with offices and glass walls located\" — names too little of sign",
+    "[01:56:12] image: dropped \"Explore this luxurious vintage style living room featuring classic dec\" — names too little of sign",
+    "[01:56:12] image: dropped \"A clean office workspace featuring a desk, laptop, and hidden power co\" — names too little of sign",
+    "[01:56:12] openverse \"Microsoft campus sign\": 7 usable of 11",
+    "[01:56:13] commons \"Microsoft campus sign 2026\": 0 usable of 0",
+    "[01:56:13] commons \"Microsoft campus sign\": 5 usable of 5",
+    "[01:56:13] image: dropped \"Exterior view of Hội Trường Building A in Hồ Chí Minh, Vietnam, with g\" — names too little of campus, sign",
+    "[01:56:13] image: dropped \"White and red Xbox wireless controllers set outdoors. A computer scree\" — names too little of campus, sign",
+    "[01:56:13] image: dropped \"Welcome to the Redmond Fred Meyer!\" — names too little of campus, sign",
+    "[01:56:13] image: dropped \"Contemporary building with lush greenery under a clear blue sky.\" — names too little of campus, sign",
+    "[01:56:13] image: dropped \"Detailed view of a gaming controller circuit board in repair setup.\" — names too little of campus, sign",
+    "[01:56:13] commons \"Microsoft office building sign 2026\": 0 usable of 0",
+    "[01:56:13] commons \"Microsoft office building sign\": 4 usable of 7",
+    "[01:56:13] image: dropped \"Governor Gavin Newsom AI press conference.jpg\" — shows gavin, not the story's people",
+    "[01:56:13] image: dropped \"Klauzál Platz 7, Kulturdenkmal, 2023 Szeged.jpg\" — names too little of office, building, sign",
+    "[01:56:13] image: dropped \"Vancouver skyline featuring illuminated skyscrapers at night with icon\" — names too little of office, building, sign",
+    "[01:56:14] commons \"Microsoft headquarters 2026\": 4 usable of 5",
+    "[01:56:14] commons \"Microsoft headquarters\": 21 usable of 24",
+    "[01:56:19] openverse \"Microsoft headquarters\": 10 usable of 20",
+    "[01:56:19] image: dropped \"High-angle nighttime view of a modern urban skyscraper with rooftop ga\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Vancouver skyline featuring illuminated skyscrapers at night with icon\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Stunning aerial view of the modern Apple Park in Cupertino, showcasing\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Bellevue, Washington, Interstate 405\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Contemporary business office building with curved architecture and tre\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Dublin Docklands - Spanish Point Technologies\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Glass facade skyscraper with trees in downtown urban scene, perfect fo\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Shrine Auditorium, Los Angeles, California\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"A modern glass-facade building against a blue sky, featuring innovativ\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Tuspark\" — names too little of headquarters",
+    "[01:56:19] image: dropped \"Shrine Auditorium, Los Angeles, California\" — names too little of headquarters",
+    "[01:56:19] commons Category:Microsoft Redmond campus: 38 usable of 44",
+    "[01:56:19] image: 20 file(s) dropped for not naming Microsoft",
+    "[01:56:19] image: thumbnail HTTP 403 for https://live.staticflickr.com/2780/4335272889_b75c63ebbe_n.jpg",
+    "[01:56:20] image: thumbnail HTTP 403 for https://live.staticflickr.com/7454/9314102442_36d6239126_n.jpg",
+    "[01:56:21] image: thumbnail HTTP 403 for https://live.staticflickr.com/3310/5711383283_0e508f1504_n.jpg",
+    "[01:56:21] image: thumbnail HTTP 403 for https://live.staticflickr.com/3556/3463408515_fd3ce2d898_n.jpg",
+    "[01:56:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=465 in=11734 read=0 out=640 attempt=1 ms=7318",
+    "[01:56:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=429 in=9150 read=0 out=516 attempt=1 ms=6271",
+    "[01:56:34] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Interior view of Microsoft office with logo on wooden wall i\": Microsoft's current logo and wordmark are the large, legible subject on its own office wall, which is the standard pictu",
+    "[01:56:34] published \"عطل مايكروسوفت العالمي يعيد شركات ومؤسسات إلى الفاكس والهاتف\" -> microsoft-outage-fax-phones-70-countries-ec5280",
+    "[01:57:02] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=959 in=8446 read=0 out=2889 attempt=1 ms=25812",
+    "[01:57:02] desk notes: 20 facts (? 1, news 7, driver 3, numbers 3, background 2, reaction 3, next 1), 0 quotes (claude-cli/claude-opus-5-5)",
+    "[01:57:54] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3400 in=10721 read=17991 out=5748 attempt=1 ms=52077",
+    "[01:58:38] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2537 in=5700 read=13627 out=5094 attempt=1 ms=43447",
+    "[01:58:38] desk model=claude-cli/claude-opus-5-5 applied=[subtitle,whyItMatters,body] rejected=[]",
+    "[01:58:38] desk \"لجنة الموازنة الألمانية تقر اقتراضاً بـ210.4 مليار يورو يقارب المستوى القياسي\": rewrote subtitle, whyItMatters, body",
+    "[01:59:27] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2772 in=10889 read=8454 out=5146 attempt=1 ms=49049",
+    "[01:59:27] critic \"لجنة الموازنة الألمانية تقر اقتراضاً بـ210.4 مليار يورو يقارب المستوى القياسي\": revise score=7 issues=7",
+    "[01:59:27]   · إسناد خاطئ: تنسب الفقرة الثانية إلى بلومبرغ عبارة «في وقت تحتاج فيه ألمانيا أيضاً إلى موارد مالية أكبر لإنعاش النمو الاقتصادي»، والمصدر 1 لا يذكرها. هي من الفقر",
+    "[01:59:27]   · صلة سببية بلا سند في «لماذا يهمّ»: «تخلّت الحكومة عن ضرائب جديدة وأرجأت أخرى، فبات تمويل أولوياتها في البنية التحتية والجيش يقوم على الاقتراض». المصدر 2 يقدّم ا",
+    "[01:59:27]   · صندوق «الأرقام» لا يضم إلا أرقام حدث العنوان: بند «الاقتراض القياسي في 2021: 215.4 مليار يورو» رقم سنة أخرى، أي خلفية للمقارنة. يُحذف من الصندوق ويبقى في النص.",
+    "[01:59:27]   · عنوان فرعي مضلل: «المعارضة تنتقد والبرلمان يصوّت». المضارع يوحي بأن التصويت يجري الآن، والمصدر 2 يقول إن الحزمة «تُحال الآن» إلى البرلمان لمراجعتها وإقرارها نها",
+    "[02:03:27] llm fail role=writer provider=claude model=claude-opus-5-5 attempt=1: claude cli timeout after 240000ms",
+    "[02:04:23] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3946 in=12527 read=17991 out=6237 attempt=2 ms=53477",
+    "[02:05:05] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2997 in=5439 read=13627 out=5096 attempt=1 ms=42062",
+    "[02:05:21] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=673 in=3161 read=13627 out=1866 attempt=1 ms=15499",
+    "[02:05:21] desk: body refused again (a hedge was dropped («وبحسب وكالة بلومبرغ، يتجاوز الاقتراض والإنفاق في الخطة التي »))",
+    "[02:05:21] desk model=claude-cli/claude-opus-5-5 applied=[subtitle] rejected=[body:length: the story would fall to 289 words, under 300,lede:length: the story would fall to 289 words, under 300]",
+    "[02:05:21] desk \"لجنة الموازنة الألمانية تقر اقتراضاً بـ210.4 مليار يورو يقترب من الرقم القياسي\": rewrote subtitle; refused body (length: the story would fall to 289 words, under 300), lede (length: the story would fall to 289 words, under 300)",
+    "[02:05:21] last cut: 3 sentence(s) removed («فبحسب رويترز، يأتي نحو 123 مليار يورو منه من الموا…» «يمر نحو 87 مليار يورو من اقتراض 2027 عبر آليات خاص…» «الاقتراض عبر آليات خاصة بالبنية التحتية والدفاع: ن…»); still 1 fault(s)",
+    "[02:05:21] reject \"لجنة الموازنة الألمانية تقر اقتراضاً بـ210.4 مليار يورو يقترب من الرقم القياسي\" after revision: المقال قصير جداً (287 كلمة)؛ لا يُنشر خبر دون 300 كلمة، والمستهدف 350-650. أضف من المصادر ما ينقصه: سبب الحدث، والأرقام في سياقها، وردود الفعل، والخلفية، وما يليه، دون اختراع معلومات.",
+    "[02:05:21] run budget of 35 minutes spent; \"«طلبات» تربح 1.06 مليار درهم في 9 أشهر وتدرس استحواذات في المنطقة\" waits for the next run"
   ]
 }
