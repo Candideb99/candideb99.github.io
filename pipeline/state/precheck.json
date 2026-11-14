@@ -16822,6 +16822,69 @@
           "noted": []
         }
       ]
+    },
+    "uae-rating-oil-surplus-abu-dhabi-assets-c24abd": {
+      "at": "2026-11-14T19:24:43.328Z",
+      "title": "فائض النفط قد يرفع وزن أصول أبوظبي في تصنيف الإمارات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 33,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 36,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتفترض فيتش أن تتحمل كل إمارة كلفة الحرب بدلاً من الحكومة الاتحادية، فتقع الكلفة على إمارتين في حالتين متباعدتين: أبوظبي بأصولها تلك، ودبي التي تراجع اقتصادها.",
+              "quote": "وتستند النظرة المستقرة كذلك إلى وفرة الاحتياطيات المالية والخارجية، وإلى توقع الوكالة أن تتحمل كل إمارة كلفة الحرب بدلاً من الحكومة الاتحادية.",
+              "source": "Khazendar",
+              "sourceN": 1,
+              "correction": "Fitch assumes every emirate bears its own war cost (and expects all emirates to set up recovery programmes), not that the cost falls on two emirates."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 34,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
