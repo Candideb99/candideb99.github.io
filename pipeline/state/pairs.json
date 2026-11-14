@@ -2633,6 +2633,52 @@
         ],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-14T10:55:20.328Z",
+      "slug": "bessent-blames-commerce-megaspeed-blacklist-61e7c4",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v70",
+      "lessonsHash": "5646222060",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 2,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 28,
+        "words": 625,
+        "keyFacts": 2,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 0,
+        "checked": 26,
+        "words": 599,
+        "keyFacts": 1,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 23,
+        "notFound": 0,
+        "checked": 26,
+        "words": 599,
+        "keyFacts": 1,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

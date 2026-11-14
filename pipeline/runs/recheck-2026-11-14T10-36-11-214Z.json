@@ -1,0 +1,22 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-14T10:36:11.214Z",
+  "durationSec": 1,
+  "read": 0,
+  "corrected": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "byRole": {},
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[10:36:12] second look: 0 to read now (1 published pieces not yet read; 258 read clean before publication and left out of the audit sample)"
+  ]
+}

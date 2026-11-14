@@ -16584,6 +16584,125 @@
           "noted": []
         }
       ]
+    },
+    "bank-of-england-pill-rate-hikes-2027-bdfdfc": {
+      "at": "2026-11-14T10:43:37.575Z",
+      "title": "كبير اقتصاديي بنك إنجلترا يرجّح استمرار رفع الفائدة خلال 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 7,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 1,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 6,
+              "field": "body",
+              "class": "cause",
+              "verdict": "contradicted",
+              "status": "listed",
+              "sentence": "وتعزز هذه التقديرات ترجيح أن يصوّت بيل لزيادة جديدة بربع نقطة مئوية في ديسمبر.",
+              "quote": "واعتبر بيل أن انتهاء الصراع بين الولايات المتحدة وإسرائيل وإيران، وما قد يرافقه من تراجع في أسعار الطاقة، احتمال ضعيف للغاية، وهو ما يعزز ترجيحات تصويته لمصلحة زيادة جديدة للفائدة بمقدار ربع نقطة مئوية في ديسمبر.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": "What strengthens the expectation that Pill will vote for a quarter-point hike in December is his view that an end to the US-Israel-Iran conflict, and a resulting fall in energy prices, is very unlikely; it is not his expectation of signals justifying further hikes."
+            }
+          ]
+        }
+      ]
+    },
+    "bessent-blames-commerce-megaspeed-blacklist-61e7c4": {
+      "at": "2026-11-14T10:55:20.301Z",
+      "title": "وزير الخزانة الأمريكي يحمّل وزارة التجارة مسؤولية تأخر إدراج «ميغاسبيد»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 12,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكان جنسن هوانغ قد استقال من منصب الرئيس التنفيذي لإنفيديا الخميس، بعد اعترافه بعلاقة مع أليس هوانغ، المسؤولة في «ميغاسبيد» التي أفادت تقارير بأن الاستخبارات الأمريكية رأت أنها جاسوسة صينية.",
+              "quote": "Jensen Huang was ousted as Nvidia CEO after revelations he had an affair with a businesswoman who was also allegedly a Chinese spy.",
+              "source": "BBC News",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "german-wholesale-prices-rise-october-2026-621693": {
+      "at": "2026-11-14T11:14:30.542Z",
+      "title": "أسعار الجملة في ألمانيا ترتفع 8.8% سنوياً بأعلى وتيرة منذ فبراير 2023",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v70",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 34,
+            "checked": 34,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "ويقارن معدله السنوي أسعار أكتوبر بمستواها في أكتوبر 2025، أما الشهري فيقيس ما أضافه أكتوبر وحده فوق مستوى سبتمبر.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
     }
   },
   "held": []
