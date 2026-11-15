@@ -619,6 +619,20 @@ export function standInUnplaced(image, story) {
   return !(namesake ? home.has(namesake) : found.some((c) => home.has(c)));
 }
 
+/**
+ * Whether a photograph's own record places it in one of the countries its story is about, or at the company whose news
+ * it is. A world-desk story has no such country. Read for the snapshot held back (findImage(): `amateur.home`).
+ */
+export function placedAtHome(image, story) {
+  const desks = story?.regions ?? [];
+  if (desks.length && desks.every((d) => d === "عالمي")) return false;
+  const home = storyCountries(story);
+  if (!home.size) return false;
+  if (namesBrand(image, companyNames(story))) return true;
+  const { namesake, found } = recordCountries(image);
+  return namesake ? home.has(namesake) : found.some((c) => home.has(c));
+}
+
 /** The countries a photograph's own record places it in: a namesake town's country («Cairo, IL»), else every country named. */
 function recordCountries(image) {
   // A camera's category names the uploader's habit, not the place: "Germany photos taken with Canon PowerShot SX60 HS" sat
@@ -1117,7 +1131,9 @@ const GLANCE_RULE = `AT A GLANCE. The reader sees the photograph beside the head
  * photograph of any kind is found. Until then an AMATEUR verdict threw the frame away, so a story whose only fitting
  * photographs were snapshots ran without one. The judges are told so, to choose the clearest snapshot when nothing better fits.
  */
-const AMATEUR_LAST = `AMATEUR LAST. Choose a professional's frame before an amateur's every time. When only amateur snapshots fit, choose the clearest of them: the second check holds it back as the paper's last resort, run only if no professional photograph of any kind is found.`;
+// The second sentence until 2026-11-15 ended at "the paper's last resort", and a judge shown two Saudi fruit markets with
+// their shoppers answered none, "choosing none lets the later searches look further": nothing held, a stock stall ran.
+const AMATEUR_LAST = `AMATEUR LAST. Choose a professional's frame before an amateur's every time. When only amateur snapshots fit, choose the clearest of them, never none in the hope of a later search: the second check holds it back while the desk looks on, and it runs only if no professional photograph of the story's subject is found. A clear snapshot of the story's own subject in its own country is then worth more to a reader than a professional's frame of the same kind of thing taken nowhere in particular, and runs before it (the owner, 2026-11-15: "real one first").`;
 // Iran's agencies publish their photographs under CC BY 4.0 and Commons holds thousands, nearly all stamped: the IRGC
 // spokesman's one usable photograph carries a «MEHR NEWS AGENCY» box, the Front Altair's «Tasnim News» nine times (2026-11-05).
 const WATERMARK_RULE = `NO OTHER NAME STAMPED ON THE PICTURE. Refuse a photograph carrying a watermark, a logo or a credit stamped on the picture itself by a news agency, a photo agency, a stock library, a broadcaster or a photographer (Getty Images, AFP, Reuters, AP, Anadolu, Tasnim, Mehr, Fars, IRNA, iStock, Shutterstock, Alamy, a channel's logo in a corner, a «© name» line), however small, faint or tucked into a corner, and however well the picture fits: it reads as another's picture under this paper's headline (the owner, 2026-11-05: "i do not want pictures to have other agencies logos on it or logos like getty image etc"). Files from Iran's agencies (Tasnim, Mehr, Fars) nearly always carry one: look at every corner and along the edges. Writing that is part of the scene (a sign, a ship's name, a podium's emblem) is no stamp: the other rules judge it.`;
@@ -1396,7 +1412,7 @@ function briefTierNote(shows) {
 }
 
 /** Asks the vision model to choose one photograph, or none. `relaxed` accepts a generic illustration. */
-async function judge({ list, inlined, draft, story, log, relaxed, neutral = false, people = [], places = [], tierNote = "", skyline = false, known = [], side = [], brand = false, claimant = "", hub = null }) {
+async function judge({ list, inlined, draft, story, log, relaxed, neutral = false, people = [], places = [], tierNote = "", skyline = false, known = [], side = [], brand = false, claimant = "", hub = null, browsed = [] }) {
   // A story about named people is illustrated with those people, as the desks do: the owner, 2026-09-23,
   // on the White House's facade under a Trump–Xi summit story: "i would search for uncopyrighted pictures
   // from older summits maybe for trump and xi together … makes the news look less appealing and boring".
@@ -1416,7 +1432,11 @@ ${people.length || brand ? "" : PLACE_RULE}`;
   // the neutral one prefers life (Task 3, 2026-09-24): the agencies show people and sectors at work.
   // Every pass, the neutral one too, wants a frame that reads at a glance; a piece that explains is pictured at work.
   const concept = CONCEPT_KINDS.has(draft.kind) ? `\n${CONCEPT_RULE}` : "";
-  const atPlace = places.length && !neutral ? `\n${placeTierNote(places)} When none of them shows the story's subject at its place, choose 0: the searches after this one look further.` : "";
+  // The categories the desk opened beside the named places (findImage(): `browsed`): for a national figure the country
+  // is the place, and a judge told only of Batha and Bab Makkah refused two fruit markets in Taif as "not taken there"
+  // (the Saudi inflation dry run of 2026-11-15).
+  const filedNote = browsed.length ? ` Some of these photographs were filed by Wikimedia Commons under the categories this desk opened for the story (${browsed.join(", ")}): they show the story's subject in its own country, and when the story is about the country as a whole (a national figure of prices, spending, trade or output) every one of them is at the story's own place, wherever in the country it was taken.` : "";
+  const atPlace = places.length && !neutral ? `\n${placeTierNote(places)}${filedNote} When none of them shows the story's subject at its place, choose 0: the searches after this one look further.` : "";
   // The strict passes carry the skyline rule too (the fallback pass has it in its own text), and a pass with a purpose
   // (the sources' photograph) says what it may take.
   // Not in the city pass, whose subject is the business district a reader knows the city by (hubPhoto()).
@@ -1685,7 +1705,7 @@ ${CONCEPT_KINDS.has(draft.kind) ? "- This piece explains or analyses a concept: 
 ${neutral ? "" : "- RECAPTION: the frame alone would be RIGHT or GENERIC_OK, but the caption names an airline, an operator, an owner, a company, a port, an airport or a person the story does not mention (an airline's A321neo under a story about the A321neo's fuselage; a tanker's operator under a story about tanker rates). " + (audit ? "The caption is then written again to name only what the story names." : "The paper then rewrites the caption to name only what the story names and asks you again.") + " Never for a wrong person, a wrong country or a wrong subject: those stay refusals.\n"}${places.length && !neutral && namesAPlace(image, places) ? `- ${placeTierNote(places)} The file places this photograph there: RIGHT when its frame shows the story's subject at that place, WRONG_SUBJECT when it shows something else there.\n` : ""}- UNSERIOUS, whatever else fits: ${GRAVITY_RULE}
 ${neutral ? NEUTRAL_CHECK + (audit ? AUDIT_PRINTED : "") : people.length ? "" : PLACE_RULE}${!neutral && company ? `\n${companyHome(company, draft?.imageCompanyAlso ?? [])}` : ""}
 - STOCK: ${STOCK_RULE}
-${thumbnail ? `${standardAside ? "- (This photograph is already known to be a snapshot below publication standard, to run only as the paper's last resort. That is not your question: judge everything else, its subject above all and whether it reads at a glance.)" : `- AMATEUR: the photograph itself is attached; refuse it when it is not to publication standard, whatever its subject: ${PUBLICATION_STANDARD.replace(/^PUBLICATION STANDARD\. /, "")}`}
+${thumbnail ? `${standardAside ? "- (This photograph is already known to be a snapshot below publication standard, to run only when no professional photograph of the story's subject is found. That is not your question: judge everything else, its subject above all and whether it reads at a glance. It must be CLEAR to run at all: the subject large and plain in daylight or good light. A frame taken at night or in poor light, hazy, blurred, washed out or heavily processed, or one whose subject is small, distant, cut off or lost among empty ground is UNCLEAR.)" : `- AMATEUR: the photograph itself is attached; refuse it when it is not to publication standard, whatever its subject: ${PUBLICATION_STANDARD.replace(/^PUBLICATION STANDARD\. /, "")}`}
 - UNCLEAR: the photograph itself is attached. Cover the caption and look at it as a reader meets it, small beside the headline. Refuse it when its subject cannot be recognised at a glance: a gate, a fence, a wall or a facade standing in for an industry; a hazy, dark, blurred or distant view; a night scene in which lights and their glare are what the eye meets and the subject is a dark shape among them, or a frame that is half black sky or black water (unless the night is the story's own event); a main subject cut by the frame's edge; a cluttered scene with no main subject (several ships, cranes and lights, none of them plainly the picture's subject); a detail only a specialist would recognise. A photograph that needs its caption to be understood is UNCLEAR however true the caption is (a hazy phosphate-mine gate ran under a fertilizer story, 2026-10-18).
 - WATERMARK: the photograph itself is attached. ${WATERMARK_RULE.replace(/^NO OTHER NAME STAMPED ON THE PICTURE\. /, "")}${stamped ? ` This file's record says it comes from ${stamped}, which stamps its photographs: look for the stamp before anything else.` : ""}\n` : ""}`;
 }
@@ -1812,6 +1832,15 @@ function markFilePhoto(image, chosen, people = [], filed = false) {
   // Trump–Xi summit story printed exactly that, 2026-09-27).
   if (!alt) return { ...image, alt: "صورة أرشيفية" };
   return { ...image, alt: `${alt.replace(/[\s.،]+$/, "")} (أرشيفية)` };
+}
+
+/** A photograph taken more than two years ago says so, as the desks mark a file photograph: «(أرشيفية)» (asIllustration()'s twin). */
+function asOldFilePhoto(image, chosen) {
+  const alt = String(image?.alt ?? "").replace(/[\s.،]+$/, "");
+  const year = photoYear(chosen, { upload: false });
+  if (!image || !alt || !year || year >= new Date().getUTCFullYear() - 2) return image;
+  if (alt.includes("أرشيفية") || alt.includes(ILLUSTRATIVE) || /(?<!\d)(?:19|20)\d\d(?!\d)/.test(alt)) return image;
+  return { ...image, alt: `${alt} (أرشيفية)` };
 }
 
 /**
@@ -2028,7 +2057,12 @@ async function settle({ image, chosen, thumbnail, draft, story, log, neutral = f
     // here is suitable», the owner, 2026-11-07), and twenty-dollar bills fanned on a table under the poorest countries'
     // debt (2026-11-06). The passes for the story's own brand or spokesman, and for its people when they are the news, hold
     // theirs as before (no `gate`): what they show is the story's own (BP's sign, 2026-10-30).
-    const standIn = gate && image.says === false;
+    // Nor does the rule cover a snapshot its record places in the story's own country (placedAtHome()): the owner,
+    // 2026-11-15, asked whether a clear but amateur photograph from the story's own country should run before a stock
+    // illustration, "Yes, real one first". A judge found two fruit markets in Taif "the only candidates showing the story's
+    // subject" under Saudi inflation and still answered that they named its topic, as any market does under a price index,
+    // and they were dropped unread. Such a frame goes to the second reading, which holds it only when it is clear.
+    const standIn = gate && image.says === false && !(!people.length && placedAtHome(chosen, draft));
     if (verdict === "AMATEUR" && amateur && !amateur.held && standIn) log(`image: "${String(chosen.title ?? "").slice(0, 60)}" is not held back: an amateur snapshot that only names the story's topic`);
     if (verdict === "AMATEUR" && amateur && !amateur.held && !standIn) {
       let rest = "FAILED";
@@ -2048,7 +2082,11 @@ async function settle({ image, chosen, thumbnail, draft, story, log, neutral = f
       }
       if (rest === "OK") {
         amateur.held = people.length ? markFilePhoto(held, chosen, people) : markFilePhoto(await asIllustrationIfElsewhere(held, chosen, draft, log), chosen, [], filed);
-        log(`image: "${String(chosen.title ?? "").slice(0, 60)}" held back as the last resort, should no professional photograph be found`);
+        // Taken in the story's own country, by its record: such a snapshot runs before an illustration from elsewhere
+        // (findImage(): homeSnapshot()). A photograph of a place more than two years old says it is a file photograph.
+        amateur.home = !people.length && placedAtHome(chosen, draft);
+        if (amateur.home) amateur.held = asOldFilePhoto(amateur.held, chosen);
+        log(`image: "${String(chosen.title ?? "").slice(0, 60)}" held back as the last resort, should no professional photograph be found${amateur.home ? " (taken in the story's own country)" : ""}`);
       } else log(`image: "${String(chosen.title ?? "").slice(0, 60)}" is not held back either (${rest})`);
     }
     return null;
@@ -2432,6 +2470,19 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     if (amateur.held) log(`image: no professional photograph was found; the snapshot held back runs as the last resort: "${String(amateur.held.title ?? "").slice(0, 60)}"`);
     return amateur.held;
   };
+  // A real photograph before a stand-in from nowhere (the owner, 2026-11-15, shown a stock close-up of vegetables beside
+  // two fruit markets in Taif and a street market in old Jeddah under Saudi inflation, asked whether a clear but amateur
+  // photograph from the story's own country should run before a stock illustration: "Yes, real one first"). The snapshot
+  // held back has passed the second check's reading for its subject and its clarity with the standard set aside
+  // (settle()); when its record places it in the story's country, or at the company whose news it is (`amateur.home`),
+  // it runs in place of a photograph that is only an illustration, and the last pass for one is not made. His rule of
+  // 2026-10-30 stands for every other snapshot: last of all, after the illustration.
+  const homeSnapshot = (instead) => {
+    if (!amateur.held || !amateur.home) return null;
+    if (instead && !String(instead.alt ?? "").includes(ILLUSTRATIVE)) return null;
+    log(`image: the snapshot held back was taken in the story's own country and reads at a glance; it runs before ${instead ? `the illustration "${String(instead.title ?? "").slice(0, 50)}"` : "any illustration from elsewhere"}: "${String(amateur.held.title ?? "").slice(0, 60)}"`);
+    return amateur.held;
+  };
   if (message) {
     story = { ...(story ?? {}), message };
     log(`image: the picture should say: ${message}`);
@@ -2472,7 +2523,7 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     if (found.length > candidates.length) log(`image: ${found.length - candidates.length} file(s) dropped for naming none of ${places.join(", ")}`);
     // A third look when the categories gave more than two looks can show: the files a category holds were found by
     // Commons' own filing, the most exact search the desk has.
-    const image = candidates.length ? await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, places, looks: candidates.length > 12 ? 3 : 2, ...desk }) : null;
+    const image = candidates.length ? await twoLooks({ candidates, draft, story, log, exclude, relaxed: false, places, browsed: categories, looks: candidates.length > 12 ? 3 : 2, ...desk }) : null;
     if (image) return image;
     if (!candidates.length) log("image: no photograph of the story's own place");
   }
@@ -2550,6 +2601,9 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
       if (drawn) (reserve.later ??= []).push(drawn);
     }
     const better = await bestOfReserve({ reserve, draft, story, log });
+    const standIn = better ?? reserve.ready;
+    const real = homeSnapshot(standIn);
+    if (real) return real;
     if (better) return better;
     log(`image: nothing said the story's point; the earlier pass's photograph of its topic runs: "${String(reserve.ready.title ?? "").slice(0, 60)}"`);
     return reserve.ready;
@@ -2563,7 +2617,10 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   }
   if (!queries.length) return lastAmateur();
   const last = await lastResort({ draft, story, log, exclude, known, side });
-  if (last) return last;
+  if (last) return homeSnapshot(last) ?? last;
+  // A snapshot of the story's own subject in its own country, before the illustration from elsewhere is looked for.
+  const real = homeSnapshot(null);
+  if (real) return real;
   // The last pass may take a photo the passes before it refused for where it was taken or for a caption naming
   // that place: that is what it is for (the bond explainer lost the Frankfurt exchange floor to its caption,
   // 2026-09-24). Its own checks judge every photo afresh; the photos other stories run stay out.

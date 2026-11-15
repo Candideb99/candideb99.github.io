@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, standInUnplaced, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -402,6 +402,11 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     verify: () => "RIGHT",
   });
   check("a browsed category gives the judges the files of the story's subject, however old their upload", browsed.image?.title, fruit.title);
+  check(
+    "the place tier's judge is told the browsed categories are the story's place for a national figure, and to choose the clearest snapshot over none",
+    [browsed.judgePrompts[0].includes("under the categories this desk opened for the story (Markets in Saudi Arabia)"), browsed.judgePrompts.every((p) => p.includes("never none in the hope of a later search"))],
+    [true, true],
+  );
 }
 // H. The planner fails: the writer's own searches still find a photo; with none, the story runs without one.
 {
@@ -1285,6 +1290,46 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const signSnap = file("BP sign on the A1, Chesterton - geograph.org.uk - 6236712.jpg");
   const brandSnap = await scenario({ draft: bp, plan: { ...pointed, company: { name: "BP", headline: "بي بي" }, brand_queries: ["BP sign"] }, world: { "BP sign": [signSnap] }, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: false }), verify: (name, prompt) => (prompt.includes("already known to be a snapshot") ? "RIGHT" : "AMATEUR") });
   check("a snapshot of the company's own brand is still held back and runs", brandSnap.image?.title ?? null, signSnap.title);
+}
+
+// A real photograph before a stand-in from nowhere (the owner, 2026-11-15, shown stock vegetables beside two fruit markets
+// in Taif under Saudi inflation, asked whether a clear but amateur photograph from the story's own country should run
+// before a stock illustration: "Yes, real one first"). Every other held snapshot still comes after the illustration.
+{
+  const saudi = { title: "التضخم السعودي يتباطأ إلى أدنى مستوى في 6 أشهر عند 1.7%", subtitle: "مع تباطؤ أسعار الأغذية والإيجارات", lede: "تباطأ التضخم السنوي في السعودية.", body: "فقرة.", tags: ["السعودية", "التضخم"], regions: ["الخليج"], kind: "news", section: "economy", imageQueries: [] };
+  const market = file("Fruit and vegetable market, Taif, Saudi Arabia.jpg", { categories: "Retail in Saudi Arabia", date: "2011-11-09" });
+  const dusk = file("Fruit and vegetable market at dusk.jpg", { date: "2011-11-09" });
+  const stock = file("Colourful vegetable market stall.jpg", { description: "Fresh vegetables at a market stall" });
+  const stock2 = file("Vegetable market crates.jpg", { description: "Crates of vegetables at a market" });
+  const plan = planFor({ queries: ["vegetable market Saudi Arabia"], place: ["Saudi Arabia", "Riyadh"], places: [], place_queries: [], message: "Saudi households pay only a little more for food" });
+  const snapshot = (name, prompt) => ((name.includes("Taif") || name.includes("at dusk")) && !prompt.includes("already known to be a snapshot") ? "AMATEUR" : "GENERIC_OK");
+  const judge = (titles) => {
+    const own = titles.findIndex((t) => t.includes("Taif") || t.includes("at dusk"));
+    return own >= 0 ? { choice: own + 1, says: true } : { choice: titles.length ? 1 : 0, says: false };
+  };
+  check("a file's record places it in the story's country, at its company, or nowhere", [placedAtHome(market, saudi), placedAtHome(dusk, saudi), placedAtHome(market, { ...saudi, regions: ["عالمي"] }), placedAtHome(file("Markets of Cairo, Egypt.jpg"), saudi)], [true, false, false, false]);
+  const alone = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [market], "vegetable market": [stock] }, judge, verify: snapshot });
+  check(
+    "a held snapshot of the story's own country runs before the illustration from elsewhere, which is not looked for, and says it is a file photograph",
+    [alone.image?.title, alone.calls.includes("judge-neutral"), String(alone.image?.alt ?? "").includes("أرشيفية"), String(alone.image?.alt ?? "").includes(ILLUSTRATIVE)],
+    [market.title, false, true, false],
+  );
+  const reserved = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [market, stock2] }, judge, verify: snapshot });
+  check("and before a stand-in from nowhere that an earlier pass kept in reserve", reserved.image?.title, market.title);
+  // A judge says of any market under a price index that it names the topic: at home it is still read, and held when clear.
+  const topicJudge = (titles, prompt) => {
+    const said = judge(titles, prompt);
+    return { ...said, says: false };
+  };
+  const topicHome = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [market], "vegetable market": [stock] }, judge: topicJudge, verify: snapshot });
+  const unclearHome = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [market], "vegetable market": [stock] }, judge: topicJudge, verify: (name, prompt) => (name.includes("Taif") ? (prompt.includes("already known to be a snapshot") ? "UNCLEAR" : "AMATEUR") : "GENERIC_OK") });
+  check(
+    "a snapshot of the story's own country that only names its topic is held when its second reading finds it clear, and dropped when it does not",
+    [topicHome.image?.title, unclearHome.image?.title, topicHome.verifyPrompts.some((p) => p.includes("It must be CLEAR to run at all"))],
+    [market.title, stock.title, true],
+  );
+  const unplaced = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [dusk], "vegetable market": [stock] }, judge, verify: snapshot });
+  check("a held snapshot no record places in the story's country still comes after the illustration", [unplaced.image?.title, String(unplaced.image?.alt ?? "").includes(ILLUSTRATIVE)], [stock.title, true]);
 }
 
 // The city pass (the owner, 2026-11-07, of Bloomberg's Downtown Dubai under DIP Holding's offering: "why not then use dubai
