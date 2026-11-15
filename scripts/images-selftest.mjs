@@ -8,7 +8,7 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, standInUnplaced, neutralQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, standInUnplaced, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -371,6 +371,37 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     [placed.judgePrompts.every((p) => p.includes("DAYLIGHT.") && p.includes("A KIND THE STORY DOES NOT STATE")), placed.verifyPrompts.every((p) => p.includes("lights and their glare") && p.includes("plainly of one particular kind"))],
     [true, true],
   );
+}
+// G5. A country's own markets (the owner, 2026-11-15, on generic vegetables under Saudi inflation: "there are no saudi
+// markets pictures?"). They existed; the search lost them twice before any judge looked.
+{
+  check(
+    "a search that finds nothing keeps its place and gives up its modifier; its one-word form is a site's own name, never a noun, a country or a sea",
+    [simplerQueries("food market Saudi Arabia"), simplerQueries("Riyadh grocery market"), simplerQueries("Yanbu oil tanker Red Sea"), simplerQueries("petrochemical plant Jubail"), simplerQueries("Sharara oilfield"), simplerQueries("Egyptian pound banknotes"), simplerQueries("construction site Egypt")],
+    [["market Saudi Arabia", "food market"], ["market Riyadh", "Riyadh grocery"], ["tanker Yanbu Red Sea", "Yanbu oil"], ["plant Jubail", "petrochemical plant", "Jubail"], ["Sharara"], ["banknotes Egyptian", "Egyptian pound"], ["site Egypt", "construction site"]],
+  );
+  const saudi = { title: "التضخم السعودي يتباطأ إلى أدنى مستوى في 6 أشهر عند 1.7%", subtitle: "مع تباطؤ أسعار الأغذية والإيجارات", lede: "تباطأ التضخم السنوي في السعودية.", body: "فقرة.", tags: ["السعودية", "التضخم"], regions: ["الخليج"], kind: "news", section: "economy", imageQueries: [] };
+  const home = file("Vegetable market and its shoppers, Jeddah, Saudi Arabia.jpg", { categories: "Jeddah" });
+  const dublin = file("Moore Street food market.jpg", { categories: "Markets in Dublin" });
+  const fallback = await scenario({
+    draft: saudi,
+    plan: planFor({ queries: ["food market Saudi Arabia"], place: ["Saudi Arabia", "Riyadh", "Jeddah"], places: [], place_queries: [] }),
+    world: { "market Saudi Arabia": [home], "food market": [dublin] },
+    judge: (titles) => (titles.length ? 1 : 0),
+    verify: () => "GENERIC_OK",
+  });
+  check("an empty search is asked again with the country kept, before the world's", [fallback.image?.title, fallback.searched.includes("market Saudi Arabia"), fallback.searched.includes("food market")], [home.title, true, false]);
+  // The category the planner names holds ten photographs; the one of the story's subject is its oldest upload.
+  const walls = Array.from({ length: 9 }, (_, i) => file(`Old town gate ${i + 1}, Hofuf, Saudi Arabia.jpg`, { categories: "Markets in Saudi Arabia", date: "2024-03-01" }));
+  const fruit = file("Fruit and vegetable market with shoppers, Taif, Saudi Arabia.jpg", { categories: "Markets in Saudi Arabia", date: "2015-03-22" });
+  const browsed = await scenario({
+    draft: saudi,
+    plan: planFor({ queries: ["vegetable market Saudi Arabia"], place: ["Saudi Arabia", "Riyadh"], places: ["Batha"], place_queries: ["Batha"], categories: ["Markets in Saudi Arabia"] }),
+    categoryWorld: { "Markets in Saudi Arabia": [...walls, fruit] },
+    judge: (titles) => titles.findIndex((t) => t.includes("Fruit and vegetable market")) + 1,
+    verify: () => "RIGHT",
+  });
+  check("a browsed category gives the judges the files of the story's subject, however old their upload", browsed.image?.title, fruit.title);
 }
 // H. The planner fails: the writer's own searches still find a photo; with none, the story runs without one.
 {
