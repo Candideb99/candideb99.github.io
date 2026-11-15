@@ -13732,6 +13732,79 @@
       "notFound": [],
       "weak": [],
       "outcome": "clean"
+    },
+    "bessent-nvidia-ten-days-china-export-controls-142aa6": {
+      "at": "2026-11-15T22:54:58.668Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-15T17:00:33.037Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 23,
+        "weak": 0,
+        "noEvidence": 3,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "الوزير يدعو إلى قيادة من خارج الشركة بعد إقالة رئيسها التنفيذي جنسن هوانغ، ويسأل هل تجاهلت تحذيرات من تمرير رقائقها إلى الصين",
+        "وأدلى بيسنت بتصريحاته في مقابلة مع برنامج «صنداي مورنينغ فيوتشرز» على قناة «فوكس نيوز»، بعد أن أقالت «إنفيديا» هوانغ وأسندت القيادة مؤقتاً إلى مديرتها المالية.",
+        "وذكرت صحيفة «فايننشال تايمز» البريطانية أن «ميغاسبيد» يُشتبه في ارتباطها بالاستخبارات الصينية، وأن وزارة التجارة الأمريكية أبطأت جهود إدراجها في القائمة السوداء للكيانات التي تُعد تهديداً للأمن القومي."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "talaat-moustafa-q3-profit-rises-development-734df9": {
+      "at": "2026-11-15T22:54:58.663Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-15T17:11:51.667Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 34,
+        "checked": 34,
+        "supported": 32,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "أعلنت مجموعة طلعت مصطفى القابضة ارتفاع صافي ربحها في الربع الثالث بنسبة 12.5% على أساس سنوي إلى 5.06 مليار جنيه، بعدما قفزت إيرادات التطوير العقاري 31.5% مع زيادة تسليم الوحدات.",
+          "quote": "Talaat Moustafa Group (TMG) reported a 12.5% year-on-year rise in net profit for the third quarter (Q3) of 2026 to EGP 5.06bn, up from EGP 4.52bn in the same period of 2025. Higher unit deliveries and strong growth in real estate sales drove the increase."
+        },
+        {
+          "sentence": "ما زال نمو المجموعة يأتي في معظمه من بيع الوحدات وتسليمها؛ فالتطوير العقاري شكّل نحو 77% من زيادة إيرادات الأشهر التسعة، وتنتظر مبيعات بنحو 491 مليار جنيه تسجيلها إيرادات مع تقدم التنفيذ.",
+          "quote": "Real estate development revenue climbed 33.2% to EGP 28.64bn and made up about 77% of the group’s total revenue growth. Hospitality and other recurring activities brought in the remaining EGP 18.9bn."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

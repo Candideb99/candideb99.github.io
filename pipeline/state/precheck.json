@@ -17311,6 +17311,130 @@
           "noted": []
         }
       ]
+    },
+    "egypt-raises-private-sector-minimum-wage-1092c6": {
+      "at": "2026-11-15T23:07:43.363Z",
+      "title": "مصر ترفع الحد الأدنى لأجور القطاع الخاص 21% إلى 8500 جنيه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 29,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-raises-gas-price-fertilizer-plants-a61b9a": {
+      "at": "2026-11-15T23:20:43.674Z",
+      "title": "مصر ترفع سعر الغاز لمصانع الأسمدة 50% مؤقتاً مقابل حرية التصدير",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 30,
+            "checked": 30,
+            "supported": 24,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "suez-canal-extends-transit-fee-discounts-2027-b00636": {
+      "at": "2026-11-15T23:28:39.421Z",
+      "title": "قناة السويس تمدد تخفيضات رسوم عبور ناقلات النفط والغاز حتى منتصف 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "jensen-huang-weighs-nvidia-ceo-return-29d418": {
+      "at": "2026-11-15T23:39:50.723Z",
+      "title": "«فايننشال تايمز» البريطانية: جنسن هوانغ يبحث العودة لرئاسة «إنفيديا» التنفيذية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 34,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "أفادت صحيفة «فايننشال تايمز» البريطانية بأن جنسن هوانغ يبحث مع مقربين منه العودة إلى الرئاسة التنفيذية لـ«إنفيديا»، بعد أيام فقط من استقالته، فيما بدأ حلفاء له في وادي السيليكون الضغط من أجل إعادته.",
+              "quote": "أفادت صحيفة \"فاينانشال تايمز\" بأن الرئيس التنفيذي المقال لشركة \"إنفيديا\" (Nvidia Corp)، جنسن هوانغ، يجري محادثات بشأن احتمال عودته إلى الشركة، بعد أيام فقط من إطاحة مجلس الإدارة به.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
