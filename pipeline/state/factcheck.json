@@ -5467,81 +5467,12 @@
       },
       "confirmed": [
         {
-          "id": 2,
-          "field": "subtitle",
-          "sentence": "أسعار الوقود في بريطانيا عند أعلى مستوياتها في أربع سنوات",
-          "claim": "UK fuel prices (petrol and diesel generally) are at their highest level in four years (reported fact).",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 3,
-          "sourceName": "The Guardian",
-          "sourceDate": "2026-09-09",
-          "quote": "The AA said diesel hit an average of 187.7p, a price it last reached in May.",
-          "correction": "Only petrol reached a four-year high; diesel's average price was last reached in May.",
-          "class": "scope"
+          "class": "scope",
+          "field": "subtitle"
         },
         {
-          "id": 18,
-          "field": "body",
-          "sentence": "وارتفعت أسعار النفط بأكثر من الربع منذ أوائل أغسطس مع تلاشي آمال الحل الدائم للحرب المستمرة منذ ستة أشهر.",
-          "claim": "Oil prices rose by more than a quarter since early August as hopes for a permanent resolution to the six-month war faded (reported fact).",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 3,
-          "sourceName": "The Guardian",
-          "sourceDate": "2026-09-09",
-          "quote": "The oil price has jumped by a quarter since early August as hopes for a permanent resolution to the six-month-old war faded.",
-          "correction": "The oil price has jumped by a quarter since early August, not by more than a quarter.",
-          "class": "figure"
-        }
-      ],
-      "listed": [
-        {
-          "status": "drift",
           "class": "figure",
-          "field": "keyFacts",
-          "sentence": "سعر برنت: 100.6 دولار للبرميل",
-          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
-          "source": "The Guardian",
-          "correction": "Brent topped $101 a barrel, not $100.6."
-        },
-        {
-          "status": "drift",
-          "class": "figure",
-          "field": "keyFacts",
-          "sentence": "نسبة الارتفاع: 2.7%",
-          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
-          "source": "The Guardian",
-          "correction": "Brent rose by more than 3%, not 2.7%."
-        },
-        {
-          "status": "drift",
-          "class": "figure",
-          "field": "body",
-          "sentence": "ارتفع برنت 2.7% إلى نحو 100.6 دولار للبرميل، بحسب «الغارديان».",
-          "quote": "Brent crude, the international benchmark for oil prices, rose by more than 3% to top $101 after tensions increased in the Gulf amid the latest tit-for-tat exchange of fire between the US and Iran.",
-          "source": "The Guardian",
-          "correction": "The Guardian says Brent rose by more than 3% to top $101."
-        },
-        {
-          "status": "conflict",
-          "field": "body",
-          "sentence": "وكان الخام قد بلغ ذروته في أبريل عند 126 دولاراً قبل أن يتراجع مع آمال الهدنة.",
-          "quote": "The price of Brent is some way off the $120 it hit in April, but remains well above the $70 it was trading at before the conflict started.",
-          "source": "BBC News"
-        }
-      ],
-      "notFound": [
-        "تراجع الطلب الصيني المتوقع: 600 ألف برميل يومياً (8.9%)",
-        "يعطل التصعيد في الخليج تدفقات النفط والغاز إلى آسيا وأوروبا، ويرفع كلفة النقل والصناعة.",
-        "وأفادت هيئة RAC بأن البنزين وصل لاحقاً إلى 167.17 بنس والديزل إلى 188.63 بنس، في أكبر زيادة أسبوعية منذ أبريل.",
-        "وارتفع العقد البريطاني 7.77 بنس إلى 196.57 بنس للثرم (وحدة قياس تعادل نحو 29.3 كيلوواط ساعة)، وهو الأعلى منذ ديسمبر 2022.",
-        "أما الطلب، فتوقعت الذراع البحثية لـ«سينوبك» الصينية تراجع استهلاك النفط في الصين بمقدار 600 ألف برميل يومياً في 2026، أي 8.9% مقارنة بالعام الماضي، في إشارة إلى تباطؤ استهلاكي محتمل في أكبر مستورد للخام عالمياً."
-      ],
-      "weak": [
-        {
-          "sentence": "وسجّل متوسط سعر البنزين في بريطانيا 166.2 بنس للتر، الأعلى منذ أربع سنوات، والديزل 187.7 بنس، وفقاً لهيئة AA.",
-          "quote": "The climb in costs has hit UK motorists, with petrol at the pump reaching an average of 166.2p a litre on Tuesday, the highest level in four years, according to the motoring body the AA."
+          "field": "body"
         }
       ],
       "outcome": "corrected",
@@ -5578,31 +5509,6 @@
         "unchecked": 0
       },
       "confirmed": [],
-      "listed": [],
-      "notFound": [
-        "وتدلّ هذه الأرقام على طلب قوي في الوقت الراهن، لكنها لا تكشف قدرته على تحمّل كلفة اقتراض أعلى.",
-        "فالبيانات المعلنة لا تذكر كم من المشترين دفع نقداً وكم اعتمد على التمويل، والأرجح في تقدير «خازندار» أن هذه النسبة هي التي تحدد أثر أي رفع للفائدة.",
-        "ويرى «خازندار» أن المطورين أنفسهم أقدر من غيرهم على طمأنة المستثمرين إن أفصحوا عن وحداتهم المبيعة وطرق سدادها، ما دامت حصة المشترين بالتمويل غير معلنة.",
-        "أما اتجاه الفائدة فلا يبدو واضحاً كما يوحي صعود العوائد.",
-        "ويعني ذلك أن المتعاملين منقسمون تقريباً، وأن سوق أبوظبي العقارية تواصل البيع أمام قرار لم يُحسم بعد.",
-        "وقد يخفف بيع أراضي ياس عنها جزءاً من عبء التنفيذ، غير أن قيمة هذه الصفقة لم تُعلن.",
-        "أما المشترون الأصغر سناً فقد يتحملون كلفة أعلى إذا موّلوا شراءهم بقروض يتبع سعرها الفائدة الأمريكية.",
-        "ولا تتوافر أرقام عن أسعار الرهن العقاري في الإمارة، ولا عن أداء أسهم العقار في سوق أبوظبي هذا الأسبوع، فيبقى هذا الأثر احتمالاً لم تقسه البيانات."
-      ],
-      "weak": [
-        {
-          "sentence": "باعت «الدار» فللاً في مشروعين سكنيين بأبوظبي بأكثر من 5 مليارات درهم، ثم وقّعت مع «أرادَ» شراكات بقيمة 15 مليار درهم، في أسبوع قفز فيه عائد السندات الأمريكية لأجل 30 عاماً إلى أعلى مستوى منذ 2002.",
-          "quote": "وقّعت مجموعة الدار وشركة أرادَ الأربعاء اتفاقيات شراكة لتطوير مشاريع في جزيرة ياس ومنطقة سيح السديرة بأبوظبي، تبلغ قيمتها الإجمالية 15 مليار درهم (4 مليارات دولار)، بحسب بيان للدار."
-        },
-        {
-          "sentence": "وسجّل عائد سندات الخزانة لأجل 30 عاماً نحو 5.6206% الثلاثاء، أعلى مستوى منذ يونيو 2002، واستقر عائد العشر سنوات عند 5.2383% الأربعاء.",
-          "quote": "صعد عائد سندات الخزانة الأمريكية لأجل 30 عاماً الثلاثاء إلى نحو 5.6206%، وهو أعلى مستوى له منذ يونيو 2002."
-        },
-        {
-          "sentence": "ويُرجَّح في قراءة خازندار أن يعكس النزول الطفيف للعائد لأجل عامين إلى 4.8889% انحسارَ رهانات الرفع، وإن احتفظ بمكاسب تفوق 50 نقطة أساس منذ مطلع سبتمبر.",
-          "quote": "العائد لأجل عامين يحافظ على مكاسب تفوق 50 نقطة أساس منذ مطلع سبتمبر رغم تراجعه الطفيف"
-        }
-      ],
       "outcome": "clean"
     },
     "saudi-leisure-tourism-93-percent-growth-2025-2030-4f69b3": {
@@ -5631,34 +5537,8 @@
       },
       "confirmed": [
         {
-          "id": 9,
-          "field": "whyItMatters",
-          "sentence": "واستمرار النمو بهذه الوتيرة يضغط على قطاع الضيافة السعودي لتوسيع طاقته؛ ففي الرياض يتجاوز الطلب من الشركات والاستشارات المعروض الفندقي الجديد، وفي جدة يُنتظر افتتاح أكثر من 2300 غرفة عام 2027.",
-          "claim": "Website analysis: growth pressures hospitality to expand. It states as present fact that in Riyadh corporate and consulting demand exceeds new hotel supply. It says more than 2,300 rooms are expected to open in Jeddah in 2027.",
-          "verdict": "contradicted",
-          "status": "confirmed",
-          "source": 1,
-          "sourceName": "Asharq Al-Awsat",
-          "sourceDate": "2026-09-08",
-          "quote": "كما تتوقع شركة «إس تي آر» نمو إيرادات الغرف المتاحة في الرياض بنسبة 18.6 في المائة في عام 2027، حيث من المتوقع أن يتجاوز الطلب المتزايد من الشركات والاستشارات العرض الفندقي الجديد، ومن المتوقع أن يستمر نمو إيرادات الغرف المتاحة خلال السنوات الأربع التالية مع توسع العاصمة في قطاعي الأعمال والترفيه بما يتماشى مع «رؤية 2030».",
-          "correction": "STR only expects corporate and consulting demand in Riyadh to exceed new hotel supply; it is a forecast, not a current fact.",
-          "class": "hedge"
-        }
-      ],
-      "listed": [],
-      "notFound": [],
-      "weak": [
-        {
-          "sentence": "التقرير يتوقع تجاوز ثلاثة أضعاف المعدل العالمي مع ارتفاع إيرادات الغرف في الرياض 18.6% عام 2027",
-          "quote": "كشف ديف غودجر، المدير الإداري لمنطقة أوروبا والشرق الأوسط وأفريقيا في شركة «توريزم إيكونوميكس»، أن السياحة الترفيهية الدولية في المملكة، مقيسةً بعدد الليالي السياحية التي قضاها الزوار، من المتوقع أن تنمو بأكثر من ثلاثة أضعاف المعدل العالمي البالغ 30 في المائة خلال السنوات الخمس المقبلة، متجاوزةً بذلك منطقة الشرق الأوسط التي سجلت معدل نمو بلغ 64 في المائة."
-        },
-        {
-          "sentence": "أظهر تقرير صادر عن شركة \"توريزم إيكونوميكس\" عُرض خلال معرض سوق السفر العالمي – سبوت لايت الرياض أن السياحة الترفيهية الدولية في السعودية مرشحة للنمو بنسبة 93% بين عامي 2025 و2030، متجاوزةً ثلاثة أضعاف المعدل العالمي البالغ 30%، بينما سجل الشرق الأوسط معدل نمو بلغ 64%.",
-          "quote": "كشف ديف غودجر، المدير الإداري لمنطقة أوروبا والشرق الأوسط وأفريقيا في شركة «توريزم إيكونوميكس»، أن السياحة الترفيهية الدولية في المملكة، مقيسةً بعدد الليالي السياحية التي قضاها الزوار، من المتوقع أن تنمو بأكثر من ثلاثة أضعاف المعدل العالمي البالغ 30 في المائة خلال السنوات الخمس المقبلة، متجاوزةً بذلك منطقة الشرق الأوسط التي سجلت معدل نمو بلغ 64 في المائة."
-        },
-        {
-          "sentence": "كما أشار 42% من الوكلاء إلى أن المسافرين من ذوي الثروات الكبيرة هم الشريحة الأكثر نمواً، مع اهتمام 54% بالطبيعة والمناظر الطبيعية و45% بالمغامرات والأنشطة الخارجية.",
-          "quote": "ووفقاً لاستطلاع شمل وكلاء سفر صينيين، أشار 54 في المائة منهم إلى أن الطبيعة والمناظر الطبيعية تحظى بجاذبية خاصة لدى عملائهم، تليها المغامرات والأنشطة الخارجية بنسبة 45 في المائة، ثم المتاحف والمعالم الثقافية بـ41 في المائة، والتفاعل مع السكان المحليين بنسبة 41 في المائة، والمنتجعات الفاخرة 37 في المائة."
+          "class": "hedge",
+          "field": "whyItMatters"
         }
       ],
       "outcome": "corrected",
@@ -13746,6 +13626,65 @@
         }
       ],
       "outcome": "clean"
+    },
+    "italy-fines-meta-805-million-euros-photos-c5c5ed": {
+      "at": "2026-11-15T06:42:54.687Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-14T23:01:41.518Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 22,
+        "checked": 22,
+        "supported": 17,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 3,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتعادل الغرامة نحو 0.47% من الإيرادات العالمية للمجموعة، لكنها أكبر غرامة تفرضها «غارانتي» في تاريخها بفارق كبير.",
+          "quote": "The fine is among the largest an Italian authority has ever imposed on a tech giant.",
+          "source": "BBC News"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وقال متحدث باسم ميتا لـ«بي بي سي» إن الشركة تعتزم الطعن في القرار، وإنها تعارض بشدة تقييم الهيئة للوقائع وتطبيقها للقانون، وترى مستوى الغرامة غير متناسب.",
+          "quote": "Meta has not yet publicly commented on the matter, and it has the right to appeal the regulator’s decision.",
+          "source": "Al Jazeera English"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ودافعت ميتا عن الخاصية بوصفها أداة بسيطة تساعد على نشر الصور، قائلة إنها لا تعمل إلا بعد أن يمنح المستخدم الإذن على جهازه، ويمكنه تغيير هذا الإذن من الإعدادات في أي وقت.",
+          "quote": "Meta has not yet publicly commented on the matter, and it has the right to appeal the regulator’s decision.",
+          "source": "Al Jazeera English"
+        }
+      ],
+      "notFound": [
+        "تبقى الغرامة صغيرة قياساً بإيرادات ميتا العالمية، أما الأثر الأثقل للحكم فيقع على طريقة جمع الموافقة: إذا صمد القرار أمام الطعن، فلن يكفي في إيطاليا تفويض واحد للتطبيق كله لكي يستخدم فيسبوك معرض الصور في غرض لم يُبلَّغ به المستخدم."
+      ],
+      "weak": [
+        {
+          "sentence": "فرضت هيئة حماية البيانات الإيطالية «غارانتي» السبت على ميتا غرامة قدرها 805 ملايين يورو (نحو 887 مليون دولار)، لأن تطبيق فيسبوك على أجهزة أندرويد وصل إلى الصور ومقاطع الفيديو المخزنة في هواتف مستخدمين في إيطاليا دون موافقة محددة منهم.",
+          "quote": "The Facebook app on Android devices “accessed photos, videos and associated metadata stored on Italian users’ smartphones without specific consent and without informing them”, Garante, the Italian data privacy authority, said Saturday."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

@@ -1,53 +1,11 @@
 {
   "version": 1,
   "items": {
-    "0aaf1e62c6134490": {
-      "at": "2026-10-25T05:04:24.683Z",
-      "decision": "published",
-      "slug": "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2",
-      "title": "شواطئ رأس الخيمة \"مغلقة\" بعد تسرب نفطي"
-    },
-    "871176bf5982776b": {
-      "at": "2026-10-25T05:04:24.683Z",
-      "decision": "published",
-      "slug": "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2",
-      "title": "UAE oil spill: Ras Al Khaimah closes all beaches 'until further notice'"
-    },
-    "7ea766211e8af55e": {
-      "at": "2026-10-25T05:04:24.683Z",
-      "decision": "published",
-      "slug": "ras-al-khaimah-closes-beaches-oil-spill-8c2ef2",
-      "title": "Swift response key to limiting environmental impact of UAE oil spill, experts say"
-    },
     "18fa28268c03057b": {
       "at": "2026-10-25T12:14:40.187Z",
       "decision": "published",
       "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
       "title": "Egypt Forum recommends raising minimum wage to EGP 15,000 by FY2029/30"
-    },
-    "1447736dd0b17d47": {
-      "at": "2026-10-24T23:32:22.850Z",
-      "decision": "published",
-      "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
-      "title": "\"لا يزال هدفاً عسكرياً\" الحوثيون يجددون تهديدهم لمطار الرياض بعد إعلان استئناف الرحلات الأحد"
-    },
-    "44b6612c9095c448": {
-      "at": "2026-10-24T23:32:22.850Z",
-      "decision": "published",
-      "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
-      "title": "Saudi Arabia Suggests Riyadh Airport May Reopen on Sunday"
-    },
-    "8f528183befac9d1": {
-      "at": "2026-10-24T23:32:22.850Z",
-      "decision": "published",
-      "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
-      "title": "Riyadh’s King Khalid International Airport to reopen terminals on Sunday"
-    },
-    "2541e57ff291cfd8": {
-      "at": "2026-10-24T23:32:22.850Z",
-      "decision": "published",
-      "slug": "riyadh-airport-resumes-flights-two-terminals-d29856",
-      "title": "الرياض.. مطار الملك خالد يعيد توزيع الرحلات بالصالات"
     },
     "48522e3fa03f98a9": {
       "at": "2026-10-25T11:57:29.913Z",
@@ -6172,6 +6130,60 @@
       "decision": "published",
       "slug": "iran-gas-supply-strain-11-provinces-winter-86fd69",
       "title": "بازسازی پالایشگاه‌های گازی آسیب‌دیده ۳ شیفته دنبال می‌شود"
+    },
+    "70222ee39d8b17b9": {
+      "at": "2026-11-15T06:57:22.716Z",
+      "decision": "published",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "title": "الحرس الثوري الإيراني يعلن مهاجمة قاعدة عسكرية بالبحرين، وصواريخ باليستية تستهدف الرياض"
+    },
+    "a99949fba6775cd1": {
+      "at": "2026-11-15T06:57:22.716Z",
+      "decision": "published",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "title": "ترامب يدرس تعليق الضربات على إيران، ونتنياهو يتعهّد بـ\"محو التهديد الإيراني للأبد\""
+    },
+    "0d75e42014716720": {
+      "at": "2026-11-15T06:57:22.716Z",
+      "decision": "published",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "title": "الحرس الثوري: استهدفنا قاعدة الرفاع في البحرين بست طائرات مسيرة"
+    },
+    "9747c59716730474": {
+      "at": "2026-11-15T06:57:22.716Z",
+      "decision": "published",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "title": "طهران تحذر مالكي السفن وتقدير استخباري أمريكي لترسانة إيران الصاروخية"
+    },
+    "9feb53f187542141": {
+      "at": "2026-11-15T06:57:22.716Z",
+      "decision": "published",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "title": "البحرين تتصدى لمسيرات إيرانية... واشتعال 3 ناقلات في هرمز"
+    },
+    "060b4ba76f9738f6": {
+      "at": "2026-11-15T07:10:14.272Z",
+      "decision": "published",
+      "slug": "saudi-inflation-slows-six-month-low-october-4c96b4",
+      "title": "التضخم في السعودية يتباطأ إلى 1.7 % في أكتوبر رغم مخاطر الاقتصاد العالمي"
+    },
+    "e5e94cbb72f3dcbb": {
+      "at": "2026-11-15T07:10:14.272Z",
+      "decision": "published",
+      "slug": "saudi-inflation-slows-six-month-low-october-4c96b4",
+      "title": "التضخم في السعودية يتباطأ لأدنى مستوى في 6 أشهر عند 1.7% رغم التوترات"
+    },
+    "2f5da1464c9e2ec3": {
+      "at": "2026-11-15T07:21:58.785Z",
+      "decision": "published",
+      "slug": "sipchem-completes-al-waha-propylene-expansion-e05149",
+      "title": "«سبكيم» للبتروكيماويات تستكمل توسعة مصانع «الواحة» وتزيد طاقتها الإنتاجية بأكثر من 30 %"
+    },
+    "f3aaf3fe30679d5e": {
+      "at": "2026-11-15T07:21:58.785Z",
+      "decision": "published",
+      "slug": "sipchem-completes-al-waha-propylene-expansion-e05149",
+      "title": "\"سبكيم\" تنهي توسعة مصنعي البروبيلين والبولي بروبيلين لرفع الطاقة الإنتاجية بأكثر من 30%"
     }
   }
 }

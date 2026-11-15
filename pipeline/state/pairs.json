@@ -2723,6 +2723,100 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-15T06:57:22.717Z",
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v71",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 22,
+        "notFound": 1,
+        "checked": 24,
+        "words": 453,
+        "keyFacts": 1,
+        "classes": [
+          "figure"
+        ],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 22,
+        "notFound": 5,
+        "checked": 28,
+        "words": 479,
+        "keyFacts": 3,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 3,
+        "supported": 22,
+        "notFound": 5,
+        "checked": 28,
+        "words": 479,
+        "keyFacts": 3,
+        "classes": [
+          "scope"
+        ],
+        "programmatic": 1
+      }
+    },
+    {
+      "at": "2026-11-15T07:10:14.276Z",
+      "slug": "saudi-inflation-slows-six-month-low-october-4c96b4",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v71",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 27,
+        "notFound": 0,
+        "checked": 28,
+        "words": 419,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 0,
+        "checked": 37,
+        "words": 419,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 32,
+        "notFound": 0,
+        "checked": 37,
+        "words": 419,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

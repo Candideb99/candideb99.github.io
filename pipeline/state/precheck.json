@@ -17031,6 +17031,90 @@
           "noted": []
         }
       ]
+    },
+    "irgc-hormuz-closed-three-tankers-mines-92bbd3": {
+      "at": "2026-11-15T06:57:22.704Z",
+      "title": "الحرس الثوري الإيراني يؤكد إغلاق مضيق هرمز بعد اصطدام 3 ناقلات بألغام",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 17,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-inflation-slows-six-month-low-october-4c96b4": {
+      "at": "2026-11-15T07:10:14.251Z",
+      "title": "التضخم السعودي يتباطأ إلى أدنى مستوى في 6 أشهر عند 1.7%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 24,
+            "weak": 3,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "sipchem-completes-al-waha-propylene-expansion-e05149": {
+      "at": "2026-11-15T07:21:58.759Z",
+      "title": "«سبكيم» السعودية للبتروكيماويات ترفع طاقة مصنعَين بأكثر من 30%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 7,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
