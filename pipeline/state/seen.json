@@ -1,48 +1,6 @@
 {
   "version": 1,
   "items": {
-    "18fa28268c03057b": {
-      "at": "2026-10-25T12:14:40.187Z",
-      "decision": "published",
-      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
-      "title": "Egypt Forum recommends raising minimum wage to EGP 15,000 by FY2029/30"
-    },
-    "48522e3fa03f98a9": {
-      "at": "2026-10-25T11:57:29.913Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
-      "title": "البورصة توقف التداول نصف ساعة لأول مرة منذ 2011 وتراجع المؤشر المئوي 10%"
-    },
-    "2e3c0b04c9840088": {
-      "at": "2026-10-25T11:57:29.913Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
-      "title": "المؤشر الرئيسي للبورصة يهبط دون 50 ألف نقطة اليوم لأول مرة منذ 8 أشهر"
-    },
-    "49fccb6e56f0b7a6": {
-      "at": "2026-10-25T11:57:29.913Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
-      "title": "تفاقم الخسائر لـ 177 مليار جنيه.. خسائر حادة للبورصة خلال تعاملات الأحد"
-    },
-    "6737abf57a3874ee": {
-      "at": "2026-10-25T11:57:29.913Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
-      "title": "واقعة تاريخية بالبورصة.. تعليق التداول للمرة الثالثة منذ عام 2021"
-    },
-    "4454af171ba18196": {
-      "at": "2026-10-25T11:57:29.913Z",
-      "decision": "published",
-      "slug": "egyptian-exchange-halts-trading-index-drop-65632a",
-      "title": "البورصة توقف التداول نصف ساعة بعد هبوط مؤشر EGX 100 EWI بنسبة 10%"
-    },
-    "bbaeb1e3086db3be": {
-      "at": "2026-10-25T12:02:33.513Z",
-      "decision": "rejected",
-      "title": "«سابك» تعود إلى الربحية في الربع الثالث بدعم من تحسن المبيعات والاستثمارات",
-      "strikes": 1
-    },
     "d5a60c1b33d7fcd4": {
       "at": "2026-10-26T05:10:06.308Z",
       "decision": "published",
@@ -66,12 +24,6 @@
       "decision": "published",
       "slug": "sabic-returns-to-profit-third-quarter-92d313",
       "title": "أسعار البيع تدفع \"سابك\" لتحقيق أرباح فصلية ضعف التوقعات"
-    },
-    "1ba80a4f3d8f0c83": {
-      "at": "2026-10-25T12:14:40.187Z",
-      "decision": "published",
-      "slug": "egypt-targets-state-employees-minimum-wage-15000-pounds-1620b2",
-      "title": "الحكومة تكشف مستهدف الحد الأدنى للأجور وموقف المعلمين بحلول 2030"
     },
     "7a99370d7ce05e2b": {
       "at": "2026-10-25T16:50:13.150Z",
@@ -6250,6 +6202,90 @@
       "decision": "rejected",
       "title": "موجة هبوط جماعية تضرب أسواق العملات المشفرة",
       "strikes": 1
+    },
+    "4fb29f74b6dab885": {
+      "at": "2026-11-15T16:38:39.704Z",
+      "decision": "published",
+      "slug": "houthis-tighten-grip-bab-el-mandeb-withdrawal-838aac",
+      "title": "انسحاب القوات اليمنية من قرب باب المندب، وجماعة أنصار الله تفرج عن 600 من أفراد القوات الحكومية"
+    },
+    "d73e74d41a232c47": {
+      "at": "2026-11-15T16:38:39.704Z",
+      "decision": "published",
+      "slug": "houthis-tighten-grip-bab-el-mandeb-withdrawal-838aac",
+      "title": "Saudi-backed Yemeni forces retreat from Red Sea in win for Houthis"
+    },
+    "aece00c9b7f0b38d": {
+      "at": "2026-11-15T16:38:39.704Z",
+      "decision": "published",
+      "slug": "houthis-tighten-grip-bab-el-mandeb-withdrawal-838aac",
+      "title": "Yemeni presidency: redeployment of forces near Bab Al-Mandab a ‘calculated military move’"
+    },
+    "e1aa8cb4cb12cb05": {
+      "at": "2026-11-15T16:38:39.704Z",
+      "decision": "published",
+      "slug": "houthis-tighten-grip-bab-el-mandeb-withdrawal-838aac",
+      "title": "القوات اليمنية تعيد تموضع قواتها في باب المندب لمواجهة تهديدات الملاحة"
+    },
+    "3871ae76a5dd416e": {
+      "at": "2026-11-15T16:38:39.704Z",
+      "decision": "published",
+      "slug": "houthis-tighten-grip-bab-el-mandeb-withdrawal-838aac",
+      "title": "Yemen government forces pullback hands Houthis greater leverage over Bab Al Mandeb"
+    },
+    "70f58e2c77635463": {
+      "at": "2026-11-15T16:49:43.696Z",
+      "decision": "published",
+      "slug": "iran-says-supertanker-sank-hormuz-mine-72c598",
+      "title": "حادثه دریایی در نزدیکی تنگه هرمز"
+    },
+    "30bbb2da4bb6feeb": {
+      "at": "2026-11-15T16:49:43.696Z",
+      "decision": "published",
+      "slug": "iran-says-supertanker-sank-hormuz-mine-72c598",
+      "title": "İran duyurdu: Hürmüz Boğazı'nda mayınlara çarpan 2 petrol tankerinden biri battı"
+    },
+    "84285be21fca81ec": {
+      "at": "2026-11-15T16:49:43.696Z",
+      "decision": "published",
+      "slug": "iran-says-supertanker-sank-hormuz-mine-72c598",
+      "title": "Iran says supertanker with 2 million barrels of oil sank in Gulf"
+    },
+    "ee5f412489d6461f": {
+      "at": "2026-11-15T17:00:33.062Z",
+      "decision": "published",
+      "slug": "bessent-nvidia-ten-days-china-export-controls-142aa6",
+      "title": "بيسنت: \"إنفيديا\" تحتاج إلى \"تغيير جذري\" بعد الإطاحة بهوانغ"
+    },
+    "87d9d3988dc34070": {
+      "at": "2026-11-15T17:00:33.062Z",
+      "decision": "published",
+      "slug": "bessent-nvidia-ten-days-china-export-controls-142aa6",
+      "title": "بيسنت يمهل «إنفيديا» 10 أيام لتوضيح التزامها قيود تصدير الرقائق"
+    },
+    "4d3013a3f8888c08": {
+      "at": "2026-11-15T17:00:33.062Z",
+      "decision": "published",
+      "slug": "bessent-nvidia-ten-days-china-export-controls-142aa6",
+      "title": "الكونغرس الأميركي يسرّع تشديد قيود تصدير رقائق الذكاء الاصطناعي إلى الصين"
+    },
+    "7fae2886662a9c80": {
+      "at": "2026-11-15T17:11:51.685Z",
+      "decision": "published",
+      "slug": "talaat-moustafa-q3-profit-rises-development-734df9",
+      "title": "أرباح \"طلعت مصطفى\" المصرية ترتفع 12.5% في الربع الثالث بدعم من إيرادات التطوير"
+    },
+    "cd1e48d153954e24": {
+      "at": "2026-11-15T17:11:51.685Z",
+      "decision": "published",
+      "slug": "talaat-moustafa-q3-profit-rises-development-734df9",
+      "title": "TMG bets on recurring income for next growth phase"
+    },
+    "bfbcbc881d62c02b": {
+      "at": "2026-11-15T17:11:51.685Z",
+      "decision": "published",
+      "slug": "talaat-moustafa-q3-profit-rises-development-734df9",
+      "title": "TMG Q3 profit up 12.5% to EGP 5.06bn"
     }
   }
 }

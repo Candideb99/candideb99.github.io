@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-15T16:25:14.605Z",
+  "durationSec": 32,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "sipchem-completes-al-waha-propylene-expansion-e05149",
+      "title": "«سبكيم» السعودية للبتروكيماويات ترفع طاقة مصنعَين بأكثر من 30%",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 8,
+        "checked": 8,
+        "supported": 8,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 4291,
+    "completionTokens": 3720,
+    "cacheReadTokens": 0,
+    "costUsd": 0.1087,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 4291,
+        "read": 0,
+        "out": 3720,
+        "usd": 0.1087
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[16:25:15] second look: 1 to read now (1 published pieces not yet read; 267 read clean before publication and left out of the audit sample)",
+    "[16:25:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1633 in=4291 read=0 out=3720 attempt=1 ms=27666",
+    "[16:25:46] sipchem-completes-al-waha-propylene-expansion-e05149: 8 of 8 sentences checked · 8 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}
