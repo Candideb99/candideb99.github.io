@@ -10,15 +10,18 @@ import { escapeHtml, isolateNumbers } from "@lib/bidi";
 
 interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
-  sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string }[];
+  sources: { name: string; nameEn?: string; title: string; url: string; publishedAt?: string | null; lang?: string; detail?: string }[];
   explainer?: boolean;
   /** A news story credits its outlets in one line, each named once, as the desks credit theirs («المصدر: الجزيرة +
    *  وكالات»), and the line opens the list of the reports it was written from (the owner, 2026-11-09: four rows of
    *  headlines under every story, three of them from one outlet). A hub piece's own stories and a paper reading's paper
    *  stay listed: there the list is the reading, not a credit. */
   credit?: boolean;
+  /** The sentence under the list, for a page that is not a story (the agenda: its sources are schedules, read by
+   *  code, and a source may carry a `detail`, printed beside its address). */
+  note?: string;
 }
-const { explainer = false, credit = false } = Astro.props;
+const { explainer = false, credit = false, note } = Astro.props;
 // An address that is not a web page is named, not linked, like a retired internal source (lib/safe-url.mjs).
 const sources = Astro.props.sources.map((s) => ({ ...s, url: safeHref(s.url) ?? "" }));
 function host(url: string) {
@@ -70,6 +73,7 @@ const Fold = oneLine ? "details" : "div";
             <span class="sources__host ui">
               {host(s.url) && <bdi dir="ltr">{host(s.url)}</bdi>}
               {s.publishedAt && <time datetime={s.publishedAt}>{formatShortDate(s.publishedAt)}</time>}
+              {s.detail && <span>{s.detail}</span>}
             </span>
           </li>
         ))}
@@ -79,10 +83,14 @@ const Fold = oneLine ? "details" : "div";
     )}
   </Fold>
   <p class="sources__note">
-    {explainer
-      ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
-      : "كُتب هذا المقال آلياً استناداً إلى المصادر أعلاه حصراً، ورُوجعت وقائعه وأرقامه ببرنامج تدقيق مستقل قبل النشر. "}
-    عند أي تعارض يُعتدّ بالمصدر الأصلي.
+    {note ?? (
+      <>
+        {explainer
+          ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
+          : "كُتب هذا المقال آلياً استناداً إلى المصادر أعلاه حصراً، ورُوجعت وقائعه وأرقامه ببرنامج تدقيق مستقل قبل النشر. "}
+        عند أي تعارض يُعتدّ بالمصدر الأصلي.
+      </>
+    )}
   </p>
 </section>
 
@@ -102,7 +110,7 @@ const Fold = oneLine ? "details" : "div";
   .sources__title { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.6; color: var(--ink); overflow-wrap: anywhere; }
   /* An English headline is set in the reading face's own Latin, like the Arabic titles around it (until 2026-09-27
      it took the furniture face, which the renderer was drawing in the system's Segoe UI). */
-  .sources__host { grid-column: 2; display: flex; gap: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
+  .sources__host { grid-column: 2; display: flex; flex-wrap: wrap; gap: 0.1rem 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
   /* On a phone the name sits over its title. This rule must come after the one above: while it stood before it, the
      host line's `grid-column: 2` won, opened a second column, and the title was drawn over the source's name on every
      phone (found 2026-10-19). */

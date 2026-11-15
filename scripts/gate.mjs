@@ -91,6 +91,13 @@ const newsEvidence = spawnSync(process.execPath, [path.join("scripts", "news-evi
 if (newsEvidence.status !== 0) fail("news evidence collection (scripts/news-evidence-selftest.mjs)", newsEvidence.stdout + newsEvidence.stderr);
 console.log(`[ok] source metadata, cited primary documents and fetch failures pass offline (${seconds(t)})`);
 
+// 1c-2. The economic calendar's readers decide the institutions' own markup correctly (scripts/calendar-selftest.mjs,
+// 2026-11-15): a vote on paper had been stored as a rate decision and a day's events ran out of the order of their hours.
+t = Date.now();
+const agenda = spawnSync(process.execPath, [path.join("scripts", "calendar-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (agenda.status !== 0) fail("the economic calendar (scripts/calendar-selftest.mjs)", agenda.stdout + agenda.stderr);
+console.log(`[ok] the calendar's readers, order and stored fallbacks pass offline (${seconds(t)})`);
+
 // 1d. The picture desk decides its known cases correctly (scripts/images-selftest.mjs, 2026-09-28): the cascade's
 // order, the place filter, the repeat guard, accented names, namesake towns, and every library failing at once.
 t = Date.now();

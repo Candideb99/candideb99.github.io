@@ -225,6 +225,14 @@ for (const [name, file, maxH] of [["Market quotes", "src/data/markets.json", 12]
   if (at && hoursAgo(at) > maxH) findings.push({ key: `data:${file}`, text: `${name} (${file}) were last refreshed ${Math.round(hoursAgo(at))} hours ago. The refresh runs in the newsroom and deploy workflows as a best-effort step; read its output in the latest runs and fix the script if a source changed.` });
   else if (at) fine.push(`${name} refreshed ${Math.round(hoursAgo(at))} hour(s) ago.`);
 }
+// The calendar's stamp moves whenever any one schedule answers, so one that has stopped answering is hidden behind the
+// rest: bls.gov refused every request through October 2026 and the US inflation and jobs dates ran on stored ones until
+// an audit found them ending in December. Each schedule records its own last reading (pipeline/lib/calendar.mjs).
+const silent = (readJson("src/data/calendar.json")?.sources ?? []).filter((s) => !s.readAt || hoursAgo(s.readAt) > 7 * 24);
+if (silent.length) {
+  const list = silent.map((s) => `${s.id} (${s.url}, last read ${s.readAt ? s.readAt.slice(0, 10) : "never"})`).join("; ");
+  findings.push({ key: "data:calendar-sources", text: `The economic calendar has not read ${silent.length} of its schedules for a week or more: ${list}. Its dates on the site are the stored ones. Run "node pipeline/calendar.mjs --check" to see why each fails; when a page has moved or changed its layout, fix its reader in pipeline/lib/calendar.mjs and pin the new markup in scripts/calendar-selftest.mjs. Never enter a date by hand.` });
+}
 // A news feed that still answers but has stopped moving gives the newsroom "0 fresh items" run after run and nothing
 // else: Sky News Arabia's business desk moved to its own site, snabusiness.com, on 2026-10-29 and its old feed stood
 // still for two days until an audit found it; cnbc-finance stood still for ten. The newsroom records each feed's newest

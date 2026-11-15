@@ -11,16 +11,31 @@ export interface CalendarEvent {
   /** The title for the front's module, one line. */
   short?: string;
   org: string;
-  kind: "rates" | "data";
-  region: string;
+  /** A rate decision, a data release, or a central bank's minutes. */
+  kind: "rates" | "data" | "minutes";
   note?: string;
   time?: string;
   url: string;
   source: string;
 }
 
+/** One schedule the calendar is read from: whose it is, what it lists, and how far it reaches. */
+export interface CalendarSource {
+  id: string;
+  name: string;
+  what: string;
+  url: string;
+  /** Set when the schedule is read from another institution's copy of it. */
+  via?: string;
+  /** The last time the schedule was read. */
+  readAt: string | null;
+  /** The last date the schedule holds, or null when it holds none ahead. */
+  until: string | null;
+}
+
 export interface Calendar {
   updatedAt: string | null;
+  sources?: CalendarSource[];
   events: CalendarEvent[];
 }
 
@@ -40,16 +55,61 @@ export function upcoming(limit = 6, from = todayIso()): CalendarEvent[] {
   return calendar.events.filter((e) => e.date >= from).slice(0, limit);
 }
 
-/** Events within the next `days` days, grouped by day. */
-export function byDay(days = 60, from = todayIso()): { date: string; label: string; events: CalendarEvent[] }[] {
-  const end = new Date(Date.parse(from) + days * 86400000).toISOString().slice(0, 10);
-  const groups = new Map<string, CalendarEvent[]>();
+/**
+ * The page's months: the next `count` months that hold an event, each with its days. Whole months, so a month's
+ * head never stands over half of it, and a month with nothing left is passed over.
+ */
+export function byMonth(count = 3, from = todayIso()): { key: string; label: string; days: { date: string; label: string; events: CalendarEvent[] }[] }[] {
+  const months = new Map<string, Map<string, CalendarEvent[]>>();
   for (const e of calendar.events) {
-    if (e.date < from || e.date > end) continue;
-    if (!groups.has(e.date)) groups.set(e.date, []);
-    groups.get(e.date)!.push(e);
+    if (e.date < from) continue;
+    const key = e.date.slice(0, 7);
+    if (!months.has(key)) {
+      if (months.size === count) break;
+      months.set(key, new Map());
+    }
+    const days = months.get(key)!;
+    if (!days.has(e.date)) days.set(e.date, []);
+    days.get(e.date)!.push(e);
   }
-  return [...groups.entries()].map(([date, events]) => ({ date, label: dayLabel(date), events }));
+  return [...months.entries()].map(([key, days]) => ({
+    key,
+    label: `${MONTHS[Number(key.slice(5, 7)) - 1]} ${key.slice(0, 4)}`,
+    days: [...days.entries()].map(([date, events]) => ({ date, label: weekdayLabel(date), events })),
+  }));
+}
+
+/** "الثلاثاء 15" under a month's own head. */
+export function weekdayLabel(date: string): string {
+  const d = new Date(date + "T12:00:00Z");
+  return `${DAYS[d.getUTCDay()]} ${d.getUTCDate()}`;
+}
+
+/** "15 سبتمبر", with the year when it is not the current one. */
+export function shortDate(date: string, from = todayIso()): string {
+  const d = new Date(date.slice(0, 10) + "T12:00:00Z");
+  const base = `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
+  return date.slice(0, 4) === from.slice(0, 4) ? base : `${base} ${d.getUTCFullYear()}`;
+}
+
+/** A source's last successful reading counts as old after this many days: the page then says when it was. */
+export const SOURCE_STALE_DAYS = 3;
+
+/**
+ * The schedules behind the page, each with what a reader should know about it: that it was last read days ago (the
+ * institution's page has stopped answering, and its dates are the stored ones), or that its published dates end
+ * before the page's last day (next year's schedule is not out, so a month may look emptier than it will be).
+ */
+export function sourceNotes(until: string, from = todayIso()): (CalendarSource & { detail: string })[] {
+  return (calendar.sources ?? []).map((s) => {
+    const notes: string[] = [];
+    if (s.via) notes.push(s.via);
+    const age = s.readAt ? (Date.parse(from) - Date.parse(s.readAt.slice(0, 10))) / 86400000 : Infinity;
+    if (age > SOURCE_STALE_DAYS) notes.push(s.readAt ? `آخر قراءة في ${shortDate(s.readAt, from)}` : "لم يُقرأ بعد");
+    if (!s.until || s.until < from) notes.push("لا مواعيد معلنة للفترة المقبلة");
+    else if (s.until < until) notes.push(`المواعيد المعلنة تنتهي في ${shortDate(s.until, from)}`);
+    return { ...s, detail: notes.join("، ") };
+  });
 }
 
 /** "الثلاثاء 15 سبتمبر" from YYYY-MM-DD, with the year when it is not the current one. */
