@@ -450,124 +450,143 @@
       "read": 3,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-15",
+      "published": 15,
+      "news": 13,
+      "styleFaultsPerStory": 0,
+      "corrections": 1,
+      "read": 8,
+      "confirmedPerStory": 0.13,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-14T14:34:24.227Z",
+  "updatedAt": "2026-11-15T15:04:03.025Z",
   "week": {
-    "published": 93,
-    "news": 78,
+    "published": 98,
+    "news": 83,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.71,
-    "corrections": 2,
+    "styleWarningsPerStory": 0.66,
+    "corrections": 3,
     "usefulness": {
       "withLessons": {
-        "stories": 58,
-        "words": 466,
-        "keyFacts": 3.9
+        "stories": 65,
+        "words": 451,
+        "keyFacts": 3.8
       },
       "control": {
-        "stories": 20,
-        "words": 442,
-        "keyFacts": 3.5
+        "stories": 18,
+        "words": 449,
+        "keyFacts": 3.6
       }
     },
     "precheck": {
-      "checked": 87,
-      "clean": 71,
-      "repaired": 16,
+      "checked": 92,
+      "clean": 75,
+      "repaired": 17,
       "held": 0,
-      "errorsFound": 18,
+      "errorsFound": 19,
       "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 18,
-      "correctionsVerifiedClean": 2,
+      "repairedBeforePublication": 19,
+      "correctionsVerifiedClean": 3,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 42,
-      "clean": 30,
-      "corrected": 2,
+      "read": 48,
+      "clean": 32,
+      "corrected": 3,
       "stands": 0,
       "refused": 0,
-      "listed": 10,
+      "listed": 13,
       "unverifiable": 0,
-      "confirmedPerStory": 0.05,
+      "confirmedPerStory": 0.06,
       "withLessons": {
-        "read": 31,
-        "confirmedPerStory": 0.06
+        "read": 36,
+        "confirmedPerStory": 0.08
       },
       "claudeWithout": {
-        "read": 11,
+        "read": 12,
         "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
-      "written": 39,
-      "refused": 8,
-      "callsPerStory": 25.1,
-      "tokensPerStory": 506801,
-      "costPerStory": 4.14,
+      "written": 40,
+      "refused": 6,
+      "callsPerStory": 25.3,
+      "tokensPerStory": 506386,
+      "costPerStory": 4.09,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": []
+    "recurring": [
+      {
+        "what": "second look: attribution errors",
+        "stories": 2,
+        "examples": [
+          "dip-holding-shares-rise-dubai-debut-da4063: قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
+          "irgc-hormuz-closed-three-tankers-mines-92bbd3: ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات."
+        ]
+      }
+    ]
   },
   "weekBefore": {
-    "published": 94,
-    "news": 77,
+    "published": 89,
+    "news": 72,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.05,
-    "styleWarningsPerStory": 0.84,
-    "corrections": 3,
+    "styleFaultsPerStory": 0.01,
+    "styleWarningsPerStory": 0.83,
+    "corrections": 2,
     "usefulness": {
       "withLessons": {
-        "stories": 67,
-        "words": 463,
-        "keyFacts": 4.1
+        "stories": 61,
+        "words": 470,
+        "keyFacts": 4.2
       },
       "control": {
-        "stories": 9,
-        "words": 400,
-        "keyFacts": 2.4
+        "stories": 10,
+        "words": 394,
+        "keyFacts": 2.5
       }
     },
     "precheck": {
-      "checked": 87,
-      "clean": 75,
-      "repaired": 12,
+      "checked": 82,
+      "clean": 72,
+      "repaired": 10,
       "held": 0,
-      "errorsFound": 13,
+      "errorsFound": 11,
       "unsourcedCut": 2,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 13,
-      "correctionsVerifiedClean": 2,
+      "repairedBeforePublication": 11,
+      "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 42,
-      "clean": 32,
-      "corrected": 2,
+      "read": 37,
+      "clean": 30,
+      "corrected": 1,
       "stands": 1,
       "refused": 0,
-      "listed": 7,
+      "listed": 5,
       "unverifiable": 0,
-      "confirmedPerStory": 0.07,
+      "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 31,
-        "confirmedPerStory": 0.06
+        "read": 27,
+        "confirmedPerStory": 0.04
       },
       "claudeWithout": {
-        "read": 11,
-        "confirmedPerStory": 0.09
+        "read": 10,
+        "confirmedPerStory": 0.1
       }
     },
     "runs": {
@@ -591,9 +610,9 @@
     ]
   },
   "lessons": {
-    "version": 70,
+    "version": 72,
     "active": 10,
-    "learnedFrom": 265,
+    "learnedFrom": 268,
     "kept": null,
     "lastTest": {
       "at": "2026-11-09T16:07:36.878Z",
@@ -646,7 +665,7 @@
     }
   },
   "evidence": {
-    "pairs": 59,
+    "pairs": 62,
     "vsKept": {
       "n": 0,
       "better": 0,
