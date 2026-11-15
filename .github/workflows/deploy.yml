@@ -22,7 +22,10 @@ jobs:
   build:
     name: Build site
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # 45, not 20: with 659 articles the build alone takes 15 to 20 minutes on a runner, and from 13 to 15 November
+    # 10 of 14 deploys were cut at the 20-minute limit inside `npm run build`, so the GitHub Pages mirror stood still
+    # for most of each day (Cloudflare Pages kept publishing). Room to finish; the build's own speed is the real fix.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
