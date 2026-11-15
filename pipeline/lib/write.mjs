@@ -4,7 +4,7 @@ import { DESK_NAMES, groundedRegions } from "./regions.mjs";
  *  schemas and still offered «الشرق الأوسط» a day after that desk became «المشرق وإيران وتركيا»). */
 const REGION_NAMES = DESK_NAMES.join("، ");
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS, followUpBrief, followUpNotesBrief } from "./editorial.mjs";
 import { boxFacts, figureOnly, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { labelLine, quotedOutletsBlock } from "./outlets.mjs";
@@ -206,9 +206,15 @@ const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic 
  * source and checked against it (a fact whose figures are not in its source is dropped). The writer
  * then writes from these notes, so nothing enters the story that the sources do not carry.
  * Returns null when no usable notes can be made, and the writer works from the sources alone.
+ * `published` is the published stories this event may continue (lib/events.mjs relatedRecent()): the notes say which
+ * one it continues and what happened since (`notes.followUp`, its `newSince` null when nothing did), and tag what that
+ * story already told "earlier" (lib/editorial.mjs, the follow-up).
  */
-export async function deskNotes({ story, sources, log, lessons = "", today = new Date(), chatWith = chat }) {
+export async function deskNotes({ story, sources, log, lessons = "", today = new Date(), chatWith = chat, published = [] }) {
   const texts = sources.map((s) => s.text || s.summary || "");
+  const cards = (published ?? []).slice(0, 3);
+  const followUpBlock = followUpNotesBrief(cards, new Date(today).getTime());
+  const followUpNotes = followUpBlock ? `${followUpBlock}\n\n` : "";
   const user = `STORY BRIEF FROM THE EDITOR
 Working headline: ${story.headlineHint}
 Angle: ${story.angle}
@@ -221,14 +227,14 @@ For an expert whose view you select, retain a concise source-backed role and ins
 
 ${NEWS_DEPTH}
 
-The writer may state ONLY what these notes hold, so the notes decide how deep the story can go. Read every source to its end: the driver, the reactions, the background and the next steps usually sit in the lower half of a report. Select the distinct facts a developed report needs, normally 20-30, never a digest of the first source's opening. Preserve the named expert's concise role, the central term's sourced definition, the scale/category that makes a rating meaningful, a relevant comparison, the reported financing mechanism and material risks or limits. Use at most three supplied REFERENCE definitions as separately numbered facts, never as news of a second event. A rating reference should supply meaning (creditworthiness, the investment/speculative risk distinction and its financing implication), not just a list of code thresholds. Leave out ancillary jargon that no supplied source explains, such as credit-default swaps, if the main event can be explained without it. State the role independently and concisely rather than pasting a long job title. Do not drop useful explanatory material merely to shorten the list; remove duplicate facts and ceremonial promises first. Never invent: when the sources are thin, return only what they hold (a thin event is not written).
+${followUpNotes}The writer may state ONLY what these notes hold, so the notes decide how deep the story can go. Read every source to its end: the driver, the reactions, the background and the next steps usually sit in the lower half of a report. Select the distinct facts a developed report needs, normally 20-30, never a digest of the first source's opening. Preserve the named expert's concise role, the central term's sourced definition, the scale/category that makes a rating meaningful, a relevant comparison, the reported financing mechanism and material risks or limits. Use at most three supplied REFERENCE definitions as separately numbered facts, never as news of a second event. A rating reference should supply meaning (creditworthiness, the investment/speculative risk distinction and its financing implication), not just a list of code thresholds. Leave out ancillary jargon that no supplied source explains, such as credit-default swaps, if the main event can be explained without it. State the role independently and concisely rather than pasting a long job title. Do not drop useful explanatory material merely to shorten the list; remove duplicate facts and ceremonial promises first. Never invent: when the sources are thin, return only what they hold (a thin event is not written).
 
 ${lessons}${lessons ? "SCOPE OF THE LEARNED RULES: preserve their safeguards for reported facts and attribution. A prohibition on adding a source's conclusion does not prohibit the house synthesis permitted by WHY IT MATTERS. Its premises remain sourced, its inference remains bounded and conditional, and no analyst opinion becomes an established fact.\n\n" : ""}TASK
 Extract the desk notes for this ONE event (the working headline). 15 to 30 facts, each one Arabic sentence of at most 30 words in your own words (never a sentence copied from an Arabic source), with the figure, its unit, the date and the actor exactly as the source gives them, and the number of the source it comes from; a figure appears only with its own period and unit. Attribution words belong in the fact («قال المصرف في بيان إن…», «بحسب بيانات المكتب…»): a public fact (a decision, a published figure, a price) names the institution, company or news agency behind it, never the outlet that relayed it; an outlet is named only for what it alone reports (its own sources, interview or exclusive). When two sources give different figures for the same measure, keep ONE fact: the latest-timed, or the one the institution itself published, with its time if the source gives it; never both. Leave out everything that is a different event, a background fact from memory, or an interpretation.
 Within those notes, preserve the supplied facts that explain this event: its purpose, relevant previous position, meaningful comparison, affected group and decisive exceptions or conditions. Select the useful context instead of filling the notes with procedural details. Keep every supplied fact that develops what the working headline says is new (a dissent or split vote: who, what they wanted, their stated reason, how the decision or its speaker answered them, what it signals for the next step), so the writer can develop it after the lede. In reader_context, identify the ONE source-backed fact that best answers why the event matters or what the reader must understand to interpret it: a law's purpose, the meaningful prior position, an affected group or a mechanism. Prefer this to a signing date or a list of delegated officials. Write it independently in Arabic with its source number, under the same accuracy and originality rules. Return null only if the sources contain no useful context; never invent it. Distinguish new from existing measures, a fixed rate from a ceiling, the reference date of a deadline and a sample from a whole population. For a provision described differently by reports, use its supplied primary document when available. Then list up to three verbatim quotations only if the source is Arabic (Arabic text copied exactly); for other languages, no quotations.
 In identifications, reserve up to three source-backed sentences identifying unfamiliar experts whose views you selected (name, concise role and institution), or named programmes/institutions essential to an important figure (name and the brief function supplied by the source). A transliterated programme name alone does not explain a major spending item. Use [] when no such identification is needed or supplied. These sentences count within the thirty-fact budget, not in addition to it; write them independently, not as a copied string of job-title words. Do not invent a role or definition from memory.
 Tag each fact with its job honestly, because the tags decide whether the event can be written long (2026-10-30: the euro-area GDP story was 300 words of Eurostat's table with nothing explaining it). "driver" is a cause the sources give for THIS change: why the figure rose or fell, why the decision came now; a condition the event happened despite, or a general backdrop the source does not tie to this change, is "background". "reaction" is a named party's response to or assessment of this event: a market move timed to it, an official, a company, an analyst, or the forecast the figure beat or missed, with the forecast's figure. An outlet's one-word framing of its own headline («غير متوقع»، «أفضل من المتوقع»، «قفز») with no reason, figure or voice is how the news is told: tag it "news". A statistics office's coverage, method and revision calendar is a "remark"; its next release date is "next". "remark" is a speaker's general statement with no decision, figure, date, commitment or named consequence: a call («دعا إلى»), an emphasis («شدد على أهمية»), praise («أشاد»), a hope or a description of something as important. So is padding that only looks like a fact (NEWS DEPTH): a company's standing description of itself (founded, countries, project count, assets under management), an executive's praise of the results or of a partner, and the list of topics a communiqué says a meeting covered. In a story told for its economic consequence, political, diplomatic and security facts that do not bear on that consequence are left out of the notes: they are another story. The political setting that frames it (a first visit since a change of government, where the leaders met before, how warm or cautious relations have been, a shared border, who received whom at the airport) is a "remark" at most (2026-10-29: the Iraq–Syria pipeline talks held one figure and fifteen such "facts", and the critic rejected the 300 words they made). Keep at most two remarks, the ones that best show the speaker's position; a fact carrying a decision, figure, date or commitment is never a remark, whatever verb reports it. Who attended a ceremony is not a fact of the event.
-Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"identifications":[{"fact":"<name and concise sourced role or function>","source":<source number>}],"facts":[{"fact":"<sentence>","source":<source number>,"job":"news|driver|numbers|reaction|background|next|remark"}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
+Return: {"event":"<one Arabic sentence naming the one event>",${cards.length ? `"follows":<the number of the published story this event continues, 1 to ${cards.length}, or null>,"new_since":"<for a story that follows one: one Arabic sentence on what happened since, or null when nothing did>",` : ""}"reader_context":{"fact":"<one contextual fact, or null instead of this object if none is supplied>","source":<source number>},"identifications":[{"fact":"<name and concise sourced role or function>","source":<source number>}],"facts":[{"fact":"<sentence>","source":<source number>,"job":"news|driver|numbers|reaction|background|next|remark${cards.length ? "|earlier" : ""}"}],"quotes":[{"text":"<verbatim Arabic>","source":<source number>}]}`;
   let tagsAsked = false;
   let answers = 0;
   try {
@@ -261,6 +267,15 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
           log?.(`desk notes: ${untagged} of ${d.facts.length} facts still carry no job; kept, and they explain nothing`);
         }
         if (!Object.hasOwn(d, "reader_context")) throw new Error("reader_context missing (use null when the sources supply none)");
+        // A follow-up (lib/editorial.mjs): the published story this event continues, and what happened since. An answer
+        // that names the story and leaves out what is new is asked again while a try remains; on the last it is kept,
+        // unknown, and the story is written (a story is never dropped for a missing key).
+        const followed = cards[Number(String(d.follows ?? "").match(/\d+/)?.[0]) - 1] ?? null;
+        if (followed && !Object.hasOwn(d, "new_since") && !lastTry) throw new Error(`new_since missing: say in one Arabic sentence what happened since «${followed.title}» was published, or null when nothing did`);
+        const since = typeof d.new_since === "string" && d.new_since.trim() && !/^(?:null|none|لا شيء|لا جديد)$/i.test(d.new_since.trim()) ? d.new_since.trim() : null;
+        d.followUp = followed ? { title: followed.title, slug: followed.slug ?? null, publishedAt: followed.publishedAt ?? null, newSince: Object.hasOwn(d, "new_since") ? since : "" } : null;
+        // "earlier" is a follow-up's tag alone: with no story followed, such a fact is background.
+        if (!followed) for (const f of d.facts) if (f?.job === "earlier") f.job = "background";
         prioritizeContext(d);
         // A fact whose figures its own source does not carry is dropped; too many dropped means the notes are unreliable.
         const kept = d.facts.filter((f) => {
@@ -281,8 +296,11 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
         if (kept.length < d.facts.length) log?.(`desk notes: ${d.facts.length - kept.length} of ${d.facts.length} facts dropped (not in their source or copied from it)`);
         // Two remarks at most reach the writer, so a speech cannot be told call by call (the Egypt exports story, 2026-10-19).
         let remarks = 0;
-        const trimmed = kept.filter((f) => f?.job !== "remark" || ++remarks <= 2);
-        if (trimmed.length < kept.length) log?.(`desk notes: ${kept.length - trimmed.length} remarks beyond two dropped`);
+        // And three facts of the story already published: the writer cannot tell again at length what the notes do not hold.
+        let earlier = 0;
+        const trimmed = kept.filter((f) => (f?.job === "remark" ? ++remarks <= 2 : f?.job === "earlier" ? ++earlier <= 3 : true));
+        if (remarks > 2) log?.(`desk notes: ${remarks - 2} remarks beyond two dropped`);
+        if (earlier > 3) log?.(`desk notes: ${earlier - 3} facts of the story already published dropped (three kept)`);
         d.facts = trimmed.slice(0, 30);
         d.quotes = (Array.isArray(d.quotes) ? d.quotes : []).filter((q) => {
           const n = Number(q?.source);
@@ -291,7 +309,7 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
         }).slice(0, 3);
       },
     });
-    return { notes: { event: String(data.event ?? "").trim(), facts: data.facts, quotes: data.quotes }, model };
+    return { notes: { event: String(data.event ?? "").trim(), facts: data.facts, quotes: data.quotes, followUp: data.followUp ?? null }, model };
   } catch (error) {
     if (error.meta?.quota) throw error;
     log?.(`desk notes failed: ${String(error.message).split("\n")[0]}; the writer works from the sources alone`);
@@ -303,9 +321,11 @@ Return: {"event":"<one Arabic sentence naming the one event>","reader_context":{
  * The facts that can carry a developed report: a speaker's general remarks do not count (the owner, 2026-10-19: a
  * minister's calls and praise at a bell-ringing had passed NEWS_MIN_FACTS and were stretched to 400 words).
  */
-export const substantiveFacts = (notes) => (notes?.facts ?? []).filter((f) => f?.job !== "remark").length;
+export const substantiveFacts = (notes) => (notes?.facts ?? []).filter((f) => f?.job !== "remark" && f?.job !== "earlier").length;
 
-const FACT_JOBS = new Set(["news", "driver", "numbers", "reaction", "background", "next", "remark"]);
+// "earlier": a fact the story this one follows already told (a follow-up's notes only). It carries no developed report:
+// counted, the day before's event would fill the floor again (2026-11-15).
+const FACT_JOBS = new Set(["news", "driver", "numbers", "reaction", "background", "next", "remark", "earlier"]);
 
 /** The facts that explain the event: its causes and the named reactions to it (NEWS_MIN_EXPLAINING in editorial.mjs). */
 export const explainingFacts = (notes) => (notes?.facts ?? []).filter((f) => f?.job === "driver" || f?.job === "reaction").length;
@@ -345,7 +365,7 @@ function notesBlock(notes) {
   if (!notes) return "";
   const facts = notes.facts.map((f, i) => `${i + 1}. ${f.fact} [SOURCE ${f.source}${f.job ? `; ${f.job}` : ""}]`).join("\n");
   const quotes = notes.quotes?.length ? `\nVERBATIM ARABIC QUOTATIONS (the only text that may stand inside «»):\n${notes.quotes.map((q) => `- «${q.text}» [SOURCE ${q.source}]`).join("\n")}` : "";
-  return `DESK NOTES: the facts of this one event, each checked against its source. Every reported figure, date, name and attribution must appear in these notes; do not add facts from memory. The synthesis box may draw a limited inference from these facts under WHY IT MATTERS, without inventing an additional fact. The source material below is for accurate phrasing and attribution, not additional reporting beyond the notes.
+  return `${followUpBrief(notes.followUp)}DESK NOTES: the facts of this one event, each checked against its source. Every reported figure, date, name and attribution must appear in these notes; do not add facts from memory. The synthesis box may draw a limited inference from these facts under WHY IT MATTERS, without inventing an additional fact. The source material below is for accurate phrasing and attribution, not additional reporting beyond the notes.
 Event: ${notes.event}
 ${facts}${quotes}
 

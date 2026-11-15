@@ -35,7 +35,7 @@ import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
 import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
-import { repeatsRecent } from "./lib/events.mjs";
+import { nothingNewSince, relatedRecent, repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
@@ -447,8 +447,27 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   const control = !LAUNCHED && Boolean(LESSONS) && inControlGroup(story);
   const lessons = control ? "" : LESSONS;
   if (control) log(`control group: "${story.headlineHint}" is written without the lessons`);
-  const notesResult = await deskNotes({ story, sources, log, lessons });
+  // The published stories this one may continue go to the desk notes, the first desk to read the sources whole: it says
+  // which one the event continues and what happened since (lib/editorial.mjs, the follow-up; the owner, 2026-11-15). Not
+  // for a refresh, which tells its own story again, nor for a flagship report, told from its own document.
+  const published = refresh || preset ? [] : relatedRecent(story.headlineHint, existing, { follows: story.follows });
+  if (published.length) log(`already published, for the desk notes to judge: ${published.map((a) => `"${a.title}"`).join(" | ")}`);
+  const notesResult = await deskNotes({ story, sources, log, lessons, published });
   const notes = notesResult?.notes ?? null;
+  const followUp = notes?.followUp ?? null;
+  // Nothing has happened since the story it follows: the event is told, and telling it again is a repeat. The items are
+  // marked as a repeat's are.
+  const told = nothingNewSince(notes);
+  if (told) {
+    entry.outcome = `skipped: nothing new since a published story («${told}»)`;
+    report.push(entry);
+    log(`skip "${story.headlineHint}": the sources report nothing new since "${told}"; items marked as seen`);
+    return { rejected: true, items };
+  }
+  if (followUp) {
+    entry.followUp = { title: followUp.title, newSince: followUp.newSince };
+    log(`follow-up of "${followUp.title}": ${followUp.newSince || "what is new was not said"}`);
+  }
   if (notes) {
     const jobs = Object.entries(notes.facts.reduce((n, f) => ({ ...n, [f.job || "?"]: (n[f.job || "?"] ?? 0) + 1 }), {})).map(([j, c]) => `${j} ${c}`).join(", ");
     log(`desk notes: ${notes.facts.length} facts (${jobs}), ${notes.quotes.length} quotes (${notesResult.model})`);
@@ -505,7 +524,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     log(`short story: "${draft.title}": ${why} (${shortToday() + 1} of ${SHORT_DAILY_CAP} short stories in 24 hours)`);
   };
   let checks = programmaticChecks(draft, sources, { recentTitles, minWords });
-  let review = await critique({ draft, sources, log, short });
+  let review = await critique({ draft, sources, log, short, followUp });
   await checkpoint("first-review", { deskDraft: draft, firstReview: review, checks });
   entry.editorialReviews = [{ pass: 1, verdict: review.verdict, readerCheck: review.readerCheck }];
   log(`critic "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
@@ -549,7 +568,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     }
     // Every revised draft faces the critic again and is published only with a second-pass score of 6 or more.
     const floor = 6;
-    review = await critique({ draft, sources, previousIssues: issues, log, short });
+    review = await critique({ draft, sources, previousIssues: issues, log, short, followUp });
     await checkpoint("second-review", { finalDraft: draft, finalReview: review, checks });
     entry.editorialReviews.push({ pass: 2, verdict: review.verdict, readerCheck: review.readerCheck });
     log(`critic (second pass) "${draft.title}": ${review.verdict} score=${review.score} issues=${review.issues.length}`);
@@ -780,7 +799,8 @@ async function runNews(report) {
     return { report, published: 0 };
   }
   const runLimit = Math.min(LIMIT, room);
-  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, sections, coverage24h, limit: runLimit, log });
+  const recent = existing.filter((a) => hoursSince(a.publishedAt) < 96).map((a) => ({ title: a.title, publishedAt: a.publishedAt }));
+  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, recent, sections, coverage24h, limit: runLimit, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
   let chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
   // `--sections=energy,markets` on a news run: the desk asked for one part of the paper. Keep only those

@@ -25,9 +25,18 @@ function formatCandidate(c) {
 /**
  * Asks the editor model to cluster candidates into stories and pick the best ones.
  * `coverage24h` maps section id → stories published there in the last 24 hours (for the balance rule).
- * Returns an array of { ids, section, importance, angle, headlineHint, regions }.
+ * `recent` gives the published stories with their dates, so the list says how long ago each ran; `follows` is the
+ * published headline a chosen story continues (the desk notes then say what happened since, lib/editorial.mjs).
+ * Returns an array of { ids, section, importance, angle, headlineHint, regions, follows }.
  */
-export async function selectStories({ candidates, recentTitles, sections, coverage24h = {}, limit, log }) {
+export async function selectStories({ candidates, recentTitles, recent = null, sections, coverage24h = {}, limit, log, chatWith = chat }) {
+  // Each published story with its age: a follow-up is judged against a story of yesterday, not one of four days ago.
+  const publishedLines = (recent ?? recentTitles.map((title) => ({ title }))).map((a) => {
+    const h = Math.round(hoursSince(a.publishedAt));
+    return `- ${Number.isFinite(h) ? `(${h < 48 ? `${h}h` : `${Math.round(h / 24)}d`} ago) ` : ""}${a.title}`;
+  });
+  const sameHeadline = (t) => String(t ?? "").replace(/[«»"'\s]+/g, " ").trim();
+  const samePublished = (value) => recentTitles.find((t) => sameHeadline(t) && sameHeadline(t) === sameHeadline(value)) ?? "";
   const newsSections = newsSectionsOf(sections);
   const sectionIds = newsSections.map((s) => `${s.id} (${s.name})`).join(", ");
   // The filing guide per section: what belongs, and the cases that keep going wrong (2026-09-22: an
@@ -43,14 +52,14 @@ CANDIDATE ITEMS from the last hours (one per line; tier A = official institution
 ${candidates.map(formatCandidate).join("\n")}
 
 STORIES ALREADY PUBLISHED RECENTLY (do not select stories that merely repeat these; a genuinely new development is fine):
-${recentTitles.length ? recentTitles.map((t) => `- ${t}`).join("\n") : "- (none)"}
+${publishedLines.length ? publishedLines.join("\n") : "- (none)"}
 
 STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quiet.length ? ` (no story yet in: ${quiet.join(", ")})` : ""}
 
 TASK
 1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together). A story is ONE event: one decision, one data release, one deal, one market move. Never merge different events into a cluster because they happened the same day or touch the same theme; a US confidence survey and a British rate outlook are two stories, not one, and a roundup is not a story. If two events are related, pick the more important and mention the other only if the writer needs it as context. A story cites at most FIVE candidate items (the outlets reporting that one event); a list of more than five ids means events have been merged, and the desk cuts it to the first five. "A week of central bank decisions", "markets await…", "X and Y" framings are roundups, not events: the story is the decision, the release, the deal or the move itself.
 2. Choose up to ${limit} stories: every event that clears the bar below, and fewer only when fewer clear it. A news site is edited, not filled, but a worthy story left unwritten is a gap in the file. Score each candidate on the news values an Arabic desk edits by (قيم الخبر): التأثير (does it change money, prices, jobs or policy for our readers?), الأهمية (a central bank, a government, a market, a major company), الآنية (it happened or was decided now; a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt, the Levant, the Maghreb, or the global forces that move them: oil, the dollar, the Fed, the ECB, China, the other large economies, trade, technology), الضخامة (the size of the number), الصراع والنتائج (winners, losers, what follows). A story must carry at least three of these to be selected; importance below 6 is not published. State the values it carries in "news_value".
-   Development over repetition: when a candidate advances a story Khazendar already ran (a running file), prefer the development to an unrelated marginal item, and say what is new in the angle; when it only repeats, skip it.
+   Development over repetition: when a candidate advances a story Khazendar already ran (a running file), prefer the development to an unrelated marginal item; when it only repeats, skip it. A development is something that HAPPENED after that story was published: a new decision, figure, deal or incident, a price that moved, a named party's response that changes something for an economy. The same event in another outlet's words or with another count, more detail of it, or a position that already stood restated (a closure, a ban, a demand, a threat) is a repeat, however fresh the item. For a story that continues a published one, copy that published headline exactly into "follows", say in the angle what happened since, and lead the headline_hint with that alone: the working headline never tells the published event again, and never joins it to the day's other news with «و» or «مع».
    Defence economics is part of our beat: defence budgets, procurement and contract awards (an official award with a stated value is news, not fluff), arms exports and imports, the defence industry and its suppliers, and what each of these means for Arab economies (Gulf procurement, offsets, local industry, public budgets). File a contractor's award, an arms deal or the defence industry under companies, and a defence budget or a war's cost to a state under economy (the defence section was folded into them on 2026-10-19).
    POLITICS AND CONFLICT WHEN THEY MOVE MONEY (the owner, 2026-10-22: Khazendar stays an economics paper, but covers politics and conflict when they move money, told from the economic angle; the Houthi attacks on Saudi airports and Aramco, and Libya's ratification of its maritime deal with Turkey, had gone untold). An attack, a war, a sanction, a treaty, a ratification, a boundary or a government's political decision is selected when the items report that it changes something an economy runs on: oil and gas output, exports or facilities, shipping lanes and ports, airports and flights, drilling and exploration rights (a maritime boundary decides who may drill), sanctions and trade, investment and events that bring it, a state's budget or debt, a market's price. The angle and the headline_hint lead with that consequence, and the story is filed where the consequence lives: energy for oil, gas, facilities and drilling rights; economy for a state's budget, trade, sanctions, airports and security pacts; companies for one company's assets, staff or contracts; markets for a price. Not selected: battlefield news, diplomacy, elections, protests, statements and condemnations that the items tie to no economic consequence.
    OUR READERS' OWN ECONOMIES FIRST, as on every Arab economics desk. A Saudi, Emirati, Qatari, Kuwaiti, Omani, Bahraini, Egyptian, Moroccan, Jordanian or Iraqi decision, data release, budget, central-bank move, company result, listing, deal or project of real weight is selected ahead of a comparable foreign story, and about half of a day's stories should be about the Arab world when the candidates allow. The Gulf and Egyptian outlets in the list (الخليج، جريدة الرياض، اليوم السابع، مصراوي، هسبريس، AGBI، Gulf Times، Saudi Gazette، Daily News Egypt، Arabian Business, alongside الشرق الأوسط، الجزيرة، سكاي نيوز عربية، البورصة) report such events; two of them reporting one event make a cluster like any other. Give such a story the region الخليج or مصر والمغرب العربي.
@@ -64,10 +73,10 @@ ${sectionGuide}
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
-{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","regions":["<1-3 region names, only from: ${DESK_NAMES.join("، ")}>"]}]}
+{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","follows":"<the published headline this story continues, copied exactly from the list above, or an empty string>","regions":["<1-3 region names, only from: ${DESK_NAMES.join("، ")}>"]}]}
 Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories.`;
 
-  const { data, model } = await chat({
+  const { data, model } = await chatWith({
     role: "editor",
     system: EDITOR_SYSTEM,
     user,
@@ -107,6 +116,8 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       angle: String(s.angle ?? "").trim(),
       headlineHint: String(s.headline_hint ?? "").trim(),
       newsValue: String(s.news_value ?? "").trim(),
+      // Only a headline the paper published: anything else written there is dropped.
+      follows: samePublished(s.follows),
       regions: Array.isArray(s.regions) ? s.regions.map(String).slice(0, 4) : [],
     }))
     .filter((s) => s.ids.length && s.section)

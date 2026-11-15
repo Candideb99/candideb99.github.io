@@ -42,6 +42,41 @@ export const SHORT_DAILY_CAP = Number(process.env.KHAZENDAR_SHORT_CAP) || 7;
 export const SHORT_STORY = `SHORT STORY — THIS EVENT'S FORM
 The sources of this event carry too little for a developed report, so it runs as a short news story, the way Arab news sites and the wires run a small event on its own page: 150-250 words (lede plus body), in two to five short paragraphs of one to three sentences. The lede carries the news: who did what, the decisive figure, when. The paragraphs after it give the most useful sourced detail in the order the reader needs: the cause or stated reason, a comparison with the previous figure, a named reaction, the next step. No subheads and no list. No key-figures box and no «لماذا يهمّ»: this form has neither. Never pad, never invent, nothing from memory; a short story is complete, not a fragment.`;
 
+/**
+ * A follow-up: a story about an event Khazendar has already told (the owner, 2026-11-15, on «الحرس الثوري الإيراني يؤكد
+ * إغلاق مضيق هرمز بعد اصطدام 3 ناقلات بألغام», a day after «إيران: ثلاث ناقلات نفط تصطدم بألغام في مضيق هرمز»: "are these
+ * duplicated news … if a bug then fix at the source"). They were: its box, its first section and half its headline were
+ * the day before's story, and the one new thing about the strait was a statement of a closure in place since February.
+ * The editor had chosen a round of the war's news (the statement, attacks on Bahrain and Riyadh, Washington's
+ * deliberations); the critic rightly sent the security news out, and what stayed was the old event. No desk after the
+ * editor knew what the paper had run: the repeat check read the editor's working headline alone, before a word was
+ * written. Now the desk notes, the first desk to read the sources whole, see the cards of the published stories this
+ * one may continue (lib/events.mjs relatedRecent()), say which it continues and what happened since, and tag what that
+ * story told as "earlier": nothing new and the story is not written; the writer, the reviser and the critic are told
+ * what the paper ran, so the old event is background and never the news.
+ */
+const hoursAgo = (iso, now = Date.now()) => {
+  const h = Math.round((now - Date.parse(iso)) / 3600e3);
+  return !Number.isFinite(h) ? "recently" : h < 1 ? "within the hour" : h < 48 ? `${h} hours ago` : `${Math.round(h / 24)} days ago`;
+};
+/** The card of a published story, as its readers saw it: headline, dek, lede and the box's figures. */
+const publishedCard = (a, i, now) => `[P${i + 1}] published ${hoursAgo(a.publishedAt, now)}: «${a.title}»${a.subtitle ? ` — ${a.subtitle}` : ""}\n${a.lede ?? ""}${a.keyFacts?.length ? `\nIts box: ${a.keyFacts.map((k) => `${k.label}: ${k.value}`).join("؛ ")}` : ""}`;
+/** For the desk notes: the published stories this event may continue, and what a follow-up's notes must say. */
+export const followUpNotesBrief = (cards, now = Date.now()) => (cards?.length ? `ALREADY PUBLISHED BY KHAZENDAR (what our readers have read; never a source: no fact enters the notes from these lines)
+${cards.map((a, i) => publishedCard(a, i, now)).join("\n\n")}
+
+FOLLOW-UP. Read the cards above against the source material. When this event continues one of them (the same incident, decision, release, deal or dispute, hours or days later), put its number in "follows"; when it continues none (another country's figure, another company's results, a different incident in the same running story), "follows" is null and the rest of this paragraph does not apply. For a story that follows one:
+- "new_since" says in one Arabic sentence what has HAPPENED since that story was published, as the sources report it: a new decision, figure, deal or incident, a price that moved, a named party's response that changes something for the economy. It is null when the sources only tell that event again, give another outlet's wording or count of it, add colour to it, or repeat a position that already stood when it was published (a closure, a ban, a demand or a threat restated): such a story is not written, and saying so is this desk's job.
+- A fact the published story already told its readers (what happened, its figures, the parties' account of it) is tagged "earlier", however much room the sources give it. Keep at most three, the ones the new development cannot be understood without. "news" is only what happened or was said after it.` : "");
+/** For the writer and the reviser of a follow-up. */
+export const followUpBrief = (followUp, now = Date.now()) => (followUp ? `FOLLOW-UP — WHAT KHAZENDAR HAS ALREADY TOLD
+Khazendar published «${followUp.title}» ${hoursAgo(followUp.publishedAt, now)}, and its readers know that event. This story is what happened since${followUp.newSince ? `: ${followUp.newSince}` : ""}. The headline, the dek and the lede say that, in their own words, and never give the earlier event as news; the earlier event is background, told once in a sentence or two after the news with its day (the notes tag its facts "earlier"), never a section of its own and never the story's first paragraphs. The box holds this story's own figures and none that the earlier story's readers were given as its news. When the notes leave too little that is new for the length asked, write what there is: never fill the story with the earlier event.
+
+` : "");
+/** For the critic of a follow-up. */
+export const followUpCriticBrief = (followUp, now = Date.now()) => (followUp ? `FOLLOW-UP: Khazendar published «${followUp.title}» ${hoursAgo(followUp.publishedAt, now)}, and this story is told as what happened since${followUp.newSince ? ` (${followUp.newSince})` : ""}. The facts of that earlier event are background by the desk's decision: never ask for more of them, as a missing element or as the headline's development. Write an issue opening «تكرار:» when the headline, dek, lede or box give the earlier event as this story's news, or when the body tells it again beyond a sentence or two, and ask for it to be cut down to that. When, the earlier event set aside, the draft reports nothing that story did not, the verdict is "reject".
+` : "");
+
 /** What a news report must answer from its sources; read by the desk notes, the writer, the reviser and the critic. */
 export const NEWS_DEPTH = `NEWS DEPTH — THE STANDARD OF A KHAZENDAR NEWS REPORT
 A Khazendar news story is a developed report of 350-650 words (lede plus body), as the Financial Times, Reuters and the economy desk of الشرق الأوسط report an event: never a digest, a wire brief or a list of figures. From the supplied evidence it answers, in the order the reader needs:

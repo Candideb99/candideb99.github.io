@@ -1,5 +1,5 @@
 import { chat } from "./llm.mjs";
-import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY } from "./editorial.mjs";
+import { EDITORIAL_CRAFT, EDITORIAL_READER_CHECK, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, followUpCriticBrief } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, overlappingPhrases, phraseOverlap, refersBack, sentenceUnits, suspiciousLatinWords, ungroundedNumbers, wordCount } from "./util.mjs";
 import { STITCH, styleIssues } from "./style.mjs";
 import { labelLine, unlabelledOutlets } from "./outlets.mjs";
@@ -401,7 +401,7 @@ Judge it as a short story: never ask for a developed report, more words, subhead
 };
 
 /** Critic pass. Returns { verdict: "publish"|"revise"|"reject", score, issues[], model }. */
-export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, short = false, previousIssues = null, log }) {
+export async function critique({ draft, sources, explainer = false, analysis = false, paper = false, weekly = false, feature = false, short = false, previousIssues = null, followUp = null, log }) {
   const news = !explainer && !analysis && !paper && !weekly && !feature;
   // A developed news report: the synthesis box and the depth checklist apply. A short story has neither.
   const full = news && !short;
@@ -423,7 +423,7 @@ CHECK
 6. Charts and tables: check every cell against its entity, period, unit and direction in the sources; a number that occurs somewhere in a source is not evidence for a different claim. Reject unsupported superlatives and claims of breakthroughs.
 
 ${news ? EDITORIAL_READER_CHECK : ""}
-
+${news ? followUpCriticBrief(followUp) : ""}
 ${previousIssues?.length ? `\nA REVISION WAS MADE. These problems were reported on the previous draft; say which of them remain and judge the draft as it now stands, not the old one:\n${previousIssues.map((i, n) => `${n + 1}. ${i}`).join("\n")}\n` : ""}
 SCORING (apply exactly)
 ${full ? "For the synthesis box, distinguish reported premises from inference. Independently check why_basis against the numbered sources: these are the writer's assertions, not verified evidence. A bounded economic inference from supported premises is allowed even when no source states that conclusion. Invented premises, a faulty causal link or certainty beyond the evidence remain errors. An attributed recap or vague process attribution is a concrete editorial defect requiring revision." : ""}

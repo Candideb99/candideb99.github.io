@@ -82,3 +82,33 @@ export function sameEvent(a, b) {
 
 /** The recent headline a working headline repeats, or null. */
 export const repeatsRecent = (headline, recentTitles) => recentTitles.find((title) => sameEvent(headline, title)) ?? null;
+
+/**
+ * The published news stories a working headline may continue, for the desk notes to judge (write.mjs deskNotes()): the
+ * editor's own choice first (`follows`, a published headline), then those sharing two distinctive words with the working
+ * headline, most shared first, then newest; three at most. Words only find them, a model decides: on 2026-11-15 «الحرس
+ * الثوري الإيراني يؤكد إغلاق مضيق هرمز بعد اصطدام 3 ناقلات بألغام» ran a day after «إيران: ثلاث ناقلات نفط تصطدم بألغام في
+ * مضيق هرمز» and told it again, and over the 563 news stories then published no count of shared words set that pair
+ * apart from stories of two different events (13 pairs shared as much in their headlines, 12 of them two countries' or
+ * two companies' figures; by headline, dek and lede it ranked 34th). A period («الربع الثالث»، «9 أشهر») joins no two
+ * stories: every result of a season carries it.
+ */
+const PERIOD_WORDS = new Set(["الربع", "ربع", "الثالث", "الرابع", "أشهر", "شهر", "الشهر", "سنوياً", "سنويا", "شهرياً", "شهريا", "العام", "عام", "عاماً", "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "نوفمبر", "ديسمبر", "التوالي", "وتيرة", "بأسرع"]);
+const fileWords = (title) => new Set([...distinctiveWords(title)].filter((w) => !PERIOD_WORDS.has(w)).map((w) => w.replace(/[ً-ْـ]/g, "").replace(/[أإآ]/g, "ا").replace(/^(?:و|ف)?(?:ب|ل|ك)?(?:ال)?/, "")).filter((w) => w.length > 2));
+const sameTitle = (a, b) => String(a ?? "").replace(/[«»"'\s]+/g, " ").trim() === String(b ?? "").replace(/[«»"'\s]+/g, " ").trim();
+export function relatedRecent(headline, articles, { follows = "", max = 3, hours = 96, now = Date.now() } = {}) {
+  const mine = fileWords(headline);
+  const recent = (articles ?? []).filter((a) => a?.kind === "news" && a.title && (now - Date.parse(a.publishedAt)) / 3600e3 < hours);
+  const ranked = recent
+    .map((a) => {
+      let shared = 0;
+      for (const w of fileWords(a.title)) if (mine.has(w)) shared += 1;
+      return { a, shared, chosen: Boolean(follows) && sameTitle(a.title, follows) };
+    })
+    .filter((r) => r.chosen || r.shared >= 2)
+    .sort((x, y) => y.chosen - x.chosen || y.shared - x.shared || Date.parse(y.a.publishedAt) - Date.parse(x.a.publishedAt));
+  return ranked.slice(0, max).map((r) => r.a);
+}
+
+/** The published headline a follow-up's notes found nothing new since, or null (run.mjs: such a story is not written). */
+export const nothingNewSince = (notes) => (notes?.followUp && notes.followUp.newSince === null ? notes.followUp.title : null);

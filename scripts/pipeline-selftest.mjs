@@ -390,6 +390,80 @@ check(
   [Boolean(repeatsRecent("ارتفاع أرباح سابك 30% إلى 1.2 مليار ريال", ["أرباح سابك ترتفع 30% إلى 1.2 مليار ريال"])), repeatsRecent("ارتفاع أرباح الراجحي 20% في الربع الثالث", ["ارتفاع أرباح الأهلي 18% في الربع الثالث"])],
   [true, null],
 );
+// A follow-up (the owner, 2026-11-15: «الحرس الثوري الإيراني يؤكد إغلاق مضيق هرمز بعد اصطدام 3 ناقلات بألغام» ran a day after
+// «إيران: ثلاث ناقلات نفط تصطدم بألغام في مضيق هرمز» and told it again). The repeat check read the editor's working headline
+// alone; now the desk notes are shown what the paper ran, say what happened since, and nothing new is not written.
+{
+  const { relatedRecent, nothingNewSince } = await import("../pipeline/lib/events.mjs");
+  const { followUpBrief, followUpCriticBrief } = await import("../pipeline/lib/editorial.mjs");
+  const { selectStories } = await import("../pipeline/lib/select.mjs");
+  const now = Date.parse("2026-11-15T06:44:00Z");
+  const hint = "الحرس الثوري يؤكد إغلاق هرمز واحتراق أربع ناقلات مع هجمات على البحرين والسعودية";
+  const tankers = { kind: "news", slug: "iran-three-oil-tankers-mines-hormuz-37792b", title: "إيران: ثلاث ناقلات نفط تصطدم بألغام في مضيق هرمز", subtitle: "تقول طهران إن الناقلات أبحرت في مسارات غير مصرح بها", lede: "أعلنت إيران السبت اشتعال النيران في ثلاث ناقلات نفط بعد اصطدامها بألغام بحرية في مضيق هرمز.", keyFacts: [{ label: "ناقلات النفط المشتعلة في هرمز السبت", value: "3 ناقلات" }], publishedAt: "2026-11-14T09:09:04.298Z" };
+  const ports = { kind: "news", title: "أرباح موانئ أبوظبي تقفز 64% في الربع الثالث رغم إغلاق هرمز", publishedAt: "2026-11-11T09:30:00Z" };
+  const inflation = { kind: "news", title: "التضخم في السعودية يتباطأ إلى 1.7% في أكتوبر", publishedAt: "2026-11-15T05:00:00Z" };
+  const explainer = { kind: "explainer", title: "لماذا تشتعل ناقلات النفط في مضيق هرمز؟", publishedAt: "2026-11-14T12:00:00Z" };
+  const old = { kind: "news", title: "ألغام بحرية تصيب ناقلات في مضيق هرمز", publishedAt: "2026-11-09T09:00:00Z" };
+  const titles = (list) => list.map((a) => a.title);
+  check("the published story a working headline may continue is found, newest first among equals; never an explainer, a story of five days ago or another subject",
+    titles(relatedRecent(hint, [ports, inflation, explainer, old, tankers], { now })), [tankers.title, ports.title]);
+  check("a period joins no two stories",
+    relatedRecent("اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث", [{ kind: "news", title: "الاقتصاد البريطاني ينمو 0.7% في الربع الثالث بأسرع وتيرة منذ مطلع 2024", publishedAt: "2026-11-14T09:00:00Z" }], { now }), []);
+  check("the story the editor says it continues comes first, whatever its words; three cards at most",
+    titles(relatedRecent(hint, [tankers, ports, { ...tankers, title: "ناقلات تحترق في هرمز" }, { ...tankers, title: "هرمز: ناقلات تتوقف" }, inflation], { now, follows: ` ${inflation.title} ` })).map((t, i) => (i ? 1 : t)), [inflation.title, 1, 1]);
+
+  // The desk notes: the card in the brief, the story followed, what happened since, the facts already told.
+  const fact = (text, job) => ({ fact: text, source: 1, job });
+  const told = ["اشتعلت النيران في ناقلات نفط بعد اصطدامها بألغام", "قالت البحرية إن الناقلات أبحرت في مسار غير مصرح به", "أصيبت الناقلة الأولى صباحاً شرقي المضيق", "اصطدمت ناقلتان أخريان بألغام لاحقاً", "لم يتسن التحقق من الرواية"].map((t) => fact(t, "earlier"));
+  const fresh = ["أعلن الحرس الثوري أن المضيق مغلق", "حذرت طهران مالكي السفن", "قال مسؤول إن الحصار مستمر", "يدرس الرئيس تعليق الضربات", "قال الحرس إن واشنطن فشلت في تمرير النفط"].map((t) => fact(t, "news"));
+  const ask = async (answers, published = [tankers]) => {
+    const seen = { prompts: [], refusals: [] };
+    const result = await deskNotes({ story: { headlineHint: hint, angle: "" }, sources, published, today: new Date(now), chatWith: async ({ user, validate }) => {
+      seen.prompts.push(user);
+      for (const data of answers) {
+        try { validate(data); return { data, model: "stand-in" }; } catch (error) { seen.refusals.push(error.message); }
+      }
+      throw new Error(seen.refusals.at(-1));
+    } });
+    return { notes: result?.notes ?? null, ...seen };
+  };
+  const nothing = await ask([{ event: "e", follows: 1, new_since: null, reader_context: null, facts: [...told, ...fresh] }]);
+  check("the desk notes are shown the published story's card and asked which story this one continues",
+    [nothing.prompts[0].includes("ALREADY PUBLISHED BY KHAZENDAR"), nothing.prompts[0].includes(`[P1] published 22 hours ago: «${tankers.title}»`), nothing.prompts[0].includes("3 ناقلات"), nothing.prompts[0].includes('"follows":'), nothing.prompts[0].includes("|earlier")], [true, true, true, true, true]);
+  check("a follow-up whose sources report nothing new is not written", [nothingNewSince(nothing.notes), nothing.notes?.followUp?.newSince], [tankers.title, null]);
+  check("three facts of the story already told are kept, and none counts toward a developed report",
+    [nothing.notes.facts.filter((f) => f.job === "earlier").length, substantiveFacts(nothing.notes)], [3, 5]);
+  const moved = await ask([{ event: "e", follows: "P1", new_since: "أعلن الحرس الثوري الأحد أن المضيق مغلق", reader_context: null, facts: [...told, ...fresh] }]);
+  check("a follow-up with a development is written, and carries what happened since", [nothingNewSince(moved.notes), moved.notes?.followUp?.title, moved.notes?.followUp?.newSince], [null, tankers.title, "أعلن الحرس الثوري الأحد أن المضيق مغلق"]);
+  const other = await ask([{ event: "e", follows: null, new_since: null, reader_context: null, facts: [...told, ...fresh] }]);
+  check("an event that continues no published story is no follow-up: nothing is skipped, and «earlier» is background",
+    [nothingNewSince(other.notes), other.notes?.followUp, other.notes.facts.filter((f) => f.job === "earlier").length, substantiveFacts(other.notes)], [null, null, 0, 10]);
+  const unsaid = await ask([{ event: "e", follows: 1, reader_context: null, facts: [...told, ...fresh] }, { event: "e", follows: 1, new_since: "null", reader_context: null, facts: [...told, ...fresh] }]);
+  check("notes that name the story and leave out what is new are asked again", [unsaid.refusals.length, /new_since missing/.test(unsaid.refusals[0] ?? ""), nothingNewSince(unsaid.notes)], [1, true, tankers.title]);
+  const plain = await ask([{ event: "e", reader_context: null, facts: fresh }], []);
+  check("with nothing published on the event the notes' brief is as it was", [plain.prompts[0].includes("ALREADY PUBLISHED"), plain.prompts[0].includes('"follows"'), plain.prompts[0].includes("|earlier"), plain.notes?.followUp], [false, false, false, null]);
+
+  // The writer, the reviser and the critic are told what the paper ran.
+  const brief = followUpBrief(moved.notes.followUp, now);
+  check("the writer of a follow-up is told what was published, when, and what is new", [brief.includes(`«${tankers.title}» 22 hours ago`), brief.includes("أعلن الحرس الثوري الأحد أن المضيق مغلق"), followUpBrief(null)], [true, true, ""]);
+  check("the critic of a follow-up is told too, and names a story told again", [followUpCriticBrief(moved.notes.followUp, now).includes("«تكرار:»"), followUpCriticBrief(null)], [true, ""]);
+
+  // The editor: each published story with its age, and the story a chosen one continues.
+  let editorPrompt = "";
+  const picked = await selectStories({
+    candidates: [{ id: "c1", title: "t", sourceNameEn: "BBC", reliability: 2, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }],
+    recentTitles: [tankers.title], recent: [{ title: tankers.title, publishedAt: new Date(Date.now() - 22 * 3600e3).toISOString() }],
+    sections: [{ id: "energy", name: "الطاقة", description: "" }], limit: 2, log: () => {},
+    chatWith: async ({ user, validate }) => {
+      editorPrompt = user;
+      const data = { stories: [{ ids: ["c1"], section: "energy", importance: 8, angle: "a", headline_hint: "عنوان أول", follows: `  ${tankers.title.replace("إيران:", "إيران: ")} ` }, { ids: ["c1"], section: "energy", importance: 7, angle: "a", headline_hint: "عنوان ثان", follows: "عنوان لم ينشر" }] };
+      validate(data);
+      return { data, model: "stand-in" };
+    },
+  });
+  check("the editor sees how long ago each story ran", editorPrompt.includes(`- (22h ago) ${tankers.title}`), true);
+  check("…and names the published story a chosen one continues, never a headline the paper did not publish", [picked.stories[0]?.follows, editorPrompt.includes('"follows":')], [tankers.title, true]);
+}
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
   [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],
