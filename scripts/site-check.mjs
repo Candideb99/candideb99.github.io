@@ -13,6 +13,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
 import { bareFigures } from "./site-furniture.mjs";
 
@@ -53,6 +54,16 @@ function target(href, from) {
 const pages = walk(DIST);
 const faults = [];
 const fault = (page, what) => faults.push(`${path.relative(DIST, page).replace(/\\/g, "/")}: ${what}`);
+
+// The market strip prints an exchange rate's level beside its move (`stripShowsLevel()`, src/lib/markets.ts; the owner,
+// 2026-11-15: «دولار/جنيه مصري −0.04%» in red, its 53.37 only in a tooltip, read as the pound falling on a day it gained),
+// and the board files only yields under «السندات» (bitcoin had stood there).
+const board = JSON.parse(readFileSync(fileURLToPath(new URL("../src/data/markets.json", import.meta.url)), "utf8"));
+const rateIds = new Set(board.quotes.filter((q) => q.group === "fx").map((q) => q.id));
+for (const q of board.quotes) {
+  if (q.group === "rates" && q.unit !== "%") faults.push(`markets.json: «${q.name}» is filed under the bonds (group "rates") but is no yield (pipeline/lib/quotes.mjs)`);
+}
+let stripRates = 0;
 let links = 0;
 let images = 0;
 let stories = 0;
@@ -81,6 +92,11 @@ for (const page of pages) {
   const visible = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
   for (const leak of ["undefined", "NaN", "[object Object]", "Invalid Date"]) {
     if (new RegExp(`(^|[\\s>،:(])${leak.replace(/[[\]]/g, "\\$&")}([\\s<،.:)]|$)`).test(visible)) fault(page, `"${leak}" printed in the text`);
+  }
+  for (const m of html.matchAll(/<li class="markets__item"[^>]*data-id="([^"]+)"[^>]*>([\s\S]*?)<\/li>/g)) {
+    if (!rateIds.has(m[1])) continue;
+    stripRates += 1;
+    if (!/class="q__price"/.test(m[2])) fault(page, `the market strip prints «${m[1]}» as its move alone, without its rate`);
   }
   for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
     images += 1;
@@ -117,7 +133,8 @@ for (const page of pages) {
 }
 for (const key of broken.keys()) faults.push(`broken link: ${key}`);
 
-console.log(`site-check: ${pages.length} pages (${stories} stories, ${facts} «الأرقام» boxes), ${links} links inside the site, ${images} images`);
+console.log(`site-check: ${pages.length} pages (${stories} stories, ${facts} «الأرقام» boxes), ${links} links inside the site, ${images} images, ${stripRates} exchange rates in the market strip`);
+if (!stripRates) faults.push("no exchange rate found in any page's market strip: the strip's markup changed and this check reads nothing");
 if (faults.length) {
   console.log(`${faults.length} fault(s):`);
   for (const f of faults.slice(0, 60)) console.log(`  - ${f}`);

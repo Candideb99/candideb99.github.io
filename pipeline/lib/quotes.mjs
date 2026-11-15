@@ -48,10 +48,11 @@ export const INSTRUMENTS = [
   { id: "silver", group: "commodities", symbol: "SI=F", name: "الفضة", short: "الفضة", unit: "دولار/أونصة", decimals: 2, limit: 20 },
   { id: "copper", group: "commodities", symbol: "HG=F", name: "النحاس", short: "النحاس", unit: "دولار/رطل", decimals: 3, limit: 20 },
   { id: "wheat", group: "commodities", symbol: "ZW=F", name: "القمح (شيكاغو)", short: "القمح", unit: "سنت/بوشل", decimals: 2, limit: 20 },
-  // السندات والأصول الرقمية
+  // السندات
   { id: "us10y", group: "rates", symbol: "^TNX", name: "عائد سندات الخزانة الأمريكية لعشر سنوات", short: "الخزانة 10 سنوات", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
   { id: "us30y", group: "rates", symbol: "^TYX", name: "عائد سندات الخزانة الأمريكية لثلاثين سنة", short: "الخزانة 30 سنة", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
-  { id: "btc", group: "rates", symbol: "BTC-USD", name: "بتكوين", short: "بتكوين", unit: "دولار", decimals: 0, limit: 40 },
+  // العملات المشفرة: bitcoin was filed with the Treasury yields until 2026-11-15 (src/lib/markets.ts, GROUP_NAMES).
+  { id: "btc", group: "crypto", symbol: "BTC-USD", name: "بتكوين", short: "بتكوين", unit: "دولار", decimals: 0, limit: 40 },
 ];
 
 export async function fetchJson(url, headers = {}) {

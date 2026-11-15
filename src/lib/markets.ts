@@ -5,7 +5,7 @@
 import data from "@data/markets.json";
 import { formatShortDate, formatTime } from "./format";
 
-export type Group = "arab" | "world" | "fx" | "commodities" | "rates";
+export type Group = "arab" | "world" | "fx" | "commodities" | "rates" | "crypto";
 
 export interface Quote {
   id: string;
@@ -42,11 +42,27 @@ export const GROUP_NAMES: Record<Group, string> = {
   world: "الأسواق العالمية",
   fx: "العملات",
   commodities: "السلع",
-  rates: "السندات والأصول الرقمية",
+  rates: "السندات",
+  // Bitcoin stood under «السندات والأصول الرقمية» beside the Treasury yields until 2026-11-15 (the owner, asking whether
+  // the dollar's rate in pounds fell under «الأسواق»): a coin is no bond, and the desks file it on its own («كريبتو» at
+  // Asharq Bloomberg, «العملات المشفرة» at most Arab desks).
+  crypto: "العملات المشفرة",
 };
 
-/** The strip under the section bar: eight reference numbers, each as its move on the day, on one line at 1240px. */
+/** The strip under the section bar: eight reference numbers, each as its move on the day, on one line at 1366px. */
 export const STRIP_IDS = ["tasi", "egx30", "spx", "ndq", "brent", "gold", "eurusd", "usdegp"];
+
+/**
+ * Whether the strip prints an instrument's level beside its move. A yield and an exchange rate are read by their level:
+ * an Egyptian reader checks the dollar at 53.37 pounds, not «−0.04%», and the strip had printed «دولار/جنيه مصري −0.04%»
+ * in red, read as the pound falling on a day it gained, its rate only in a tooltip no phone shows (the owner, 2026-11-15:
+ * "is this really the best depiction for this short markets board?"). Asharq Bloomberg's strip prints «الدولار الأميركي
+ * مقابل الجنيه المصري 53.42 −0.02%», Al Eqtisadiah's «اليورو / $ 1.10 −0.29%». An index or a commodity keeps its move
+ * alone, for the room of eight.
+ */
+export function stripShowsLevel(q: Quote): boolean {
+  return q.changeMode === "abs" || q.group === "fx";
+}
 
 /** The box beside the cover: what an Arab reader looks up first, five rows so the cover keeps its height. */
 export const BOX_IDS = ["tasi", "egx30", "brent", "gold", "usdegp"];

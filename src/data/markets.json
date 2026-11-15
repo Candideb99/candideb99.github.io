@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T19:42:07.544Z",
+  "updatedAt": "2026-11-15T20:09:53.884Z",
   "source": "Yahoo Finance",
   "quotes": [
     {
@@ -720,7 +720,7 @@
       "price": 6386.86,
       "prev": 6398.97998046875,
       "time": "2026-11-13T17:00:00.000Z",
-      "currency": null,
+      "currency": "EUR",
       "change": -12.11998,
       "pct": -0.1894,
       "source": "yahoo",
@@ -1283,7 +1283,7 @@
       "changeMode": "pct",
       "price": 1.1031,
       "prev": 1.1027790307998657,
-      "time": "2026-11-15T19:41:45.000Z",
+      "time": "2026-11-15T20:01:45.000Z",
       "currency": "USD",
       "change": 0.000321,
       "pct": 0.0291,
@@ -1422,12 +1422,12 @@
       "unit": null,
       "decimals": 4,
       "changeMode": "pct",
-      "price": 1.3221,
+      "price": 1.3223,
       "prev": 1.320899248123169,
-      "time": "2026-11-15T19:41:45.000Z",
+      "time": "2026-11-15T20:01:45.000Z",
       "currency": "USD",
-      "change": 0.001201,
-      "pct": 0.0909,
+      "change": 0.001401,
+      "pct": 0.106,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1549,7 +1549,7 @@
         },
         {
           "d": "2026-11-16",
-          "c": 1.3221
+          "c": 1.3223
         }
       ]
     },
@@ -1563,12 +1563,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 159.576,
+      "price": 159.545,
       "prev": 159.68600463867188,
-      "time": "2026-11-15T19:42:00.000Z",
+      "time": "2026-11-15T20:09:30.000Z",
       "currency": "JPY",
-      "change": -0.110005,
-      "pct": -0.0689,
+      "change": -0.141005,
+      "pct": -0.0883,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -1690,7 +1690,7 @@
         },
         {
           "d": "2026-11-16",
-          "c": 159.576
+          "c": 159.545
         }
       ]
     },
@@ -1706,7 +1706,7 @@
       "changeMode": "pct",
       "price": 0.8381,
       "prev": 0.8381999731063843,
-      "time": "2026-11-15T19:42:00.000Z",
+      "time": "2026-11-15T20:09:30.000Z",
       "currency": "CHF",
       "change": -0.0001,
       "pct": -0.0119,
@@ -1986,12 +1986,12 @@
       "unit": null,
       "decimals": 2,
       "changeMode": "pct",
-      "price": 50.3469,
+      "price": 50.3456,
       "prev": 50.34469985961914,
-      "time": "2026-11-15T19:42:03.000Z",
+      "time": "2026-11-15T20:01:39.000Z",
       "currency": "TRY",
-      "change": 0.0022,
-      "pct": 0.0044,
+      "change": 0.0009,
+      "pct": 0.0018,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -2113,7 +2113,7 @@
         },
         {
           "d": "2026-11-16",
-          "c": 50.3469
+          "c": 50.3456
         }
       ]
     },
@@ -3815,16 +3815,16 @@
       "name": "بتكوين",
       "short": "بتكوين",
       "note": null,
-      "group": "rates",
+      "group": "crypto",
       "unit": "دولار",
       "decimals": 0,
       "changeMode": "pct",
-      "price": 64911.39,
+      "price": 64793.54,
       "prev": 64128.05078125,
-      "time": "2026-11-15T19:42:02.000Z",
+      "time": "2026-11-15T20:09:53.000Z",
       "currency": "USD",
-      "change": 783.339219,
-      "pct": 1.2215,
+      "change": 665.489219,
+      "pct": 1.0378,
       "source": "yahoo",
       "stale": false,
       "history": [
@@ -3946,7 +3946,7 @@
         },
         {
           "d": "2026-11-15",
-          "c": 64911.39
+          "c": 64793.54
         }
       ]
     }

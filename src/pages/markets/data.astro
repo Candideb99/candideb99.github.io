@@ -17,8 +17,9 @@ const featured = quotes(FEATURED_IDS);
 // watch (oil, gold), then the bonds, the currencies and the world's indices. Three across, columns break before the
 // bonds and the indices: Arab markets and commodities | bonds and currencies | indices, ending within 174px of each
 // other at 1440. Two across, the browser balances them: Arab markets, commodities and bonds | currencies and indices,
-// within 49-94px (the order that suited three across left 338-383px there).
-const ORDER = ["arab", "commodities", "rates", "fx", "world"];
+// within 49-94px (the order that suited three across left 338-383px there). Bitcoin, its own group since 2026-11-15, closes
+// the indices' column, the shortest of the three.
+const ORDER = ["arab", "commodities", "rates", "fx", "world", "crypto"];
 const groups = grouped().sort((x, y) => ORDER.indexOf(x.group) - ORDER.indexOf(y.group));
 const news = (await getArticlesBySection("markets")).slice(0, 4);
 const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime(board.updatedAt)}` : "";
