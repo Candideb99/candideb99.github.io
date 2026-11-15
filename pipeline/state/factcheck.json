@@ -13685,6 +13685,60 @@
         }
       ],
       "outcome": "listed"
+    },
+    "irgc-hormuz-closed-three-tankers-mines-92bbd3": {
+      "at": "2026-11-15T09:17:05.939Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v71",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-15T06:57:22.691Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 18,
+        "checked": 18,
+        "supported": 16,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 9,
+          "field": "body",
+          "sentence": "ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات.",
+          "claim": "Reuters could not verify the Iranian account of the tankers.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 1,
+          "sourceName": "BBC Arabic",
+          "sourceDate": "2026-11-15",
+          "quote": "ولم يتسن التحقق من صحة ما ورد في التقرير.",
+          "correction": "The note that the report could not be verified is BBC Arabic's own; the source does not say Reuters tried or failed to verify it.",
+          "class": "attribution"
+        }
+      ],
+      "listed": [],
+      "notFound": [
+        "فقرار إرسال ناقلات النفط عبر هرمز، وكلفة كل عبور تحت إعلان الإغلاق، صارا على عاتق مالكي هذه السفن."
+      ],
+      "weak": [],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وكالة رويترز لم تتمكن من التحقق من الرواية الإيرانية بشأن الناقلات، والصحيح أن المصادر لم تنسب محاولة التحقق إلى رويترز، وإنما أشارت إلى أنه لم يتسنَّ التحقق من صحة تلك الرواية.",
+      "verified": {
+        "at": "2026-11-15T09:18:59.144Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": []
+      }
     }
   }
 }

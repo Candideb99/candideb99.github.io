@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-15T09:17:46.007Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "irgc-hormuz-closed-three-tankers-mines-92bbd3",
+      "issue": "The body says «ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات.» (Reuters could not verify the Iranian account of the tankers.). Source BBC Arabic says: \"ولم يتسن التحقق من صحة ما ورد في التقرير.\". The note that the report could not be verified is BBC Arabic's own; the source does not say Reuters tried or failed to verify it.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن وكالة رويترز لم تتمكن من التحقق من الرواية الإيرانية بشأن الناقلات، والصحيح أن المصادر لم تنسب محاولة التحقق إلى رويترز، وإنما أشارت إلى أنه لم يتسنَّ التحقق من صحة تلك الرواية.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات."
+      ],
+      "newSentences": [
+        "ولم يتسنَّ التحقق من صحة الرواية الإيرانية بشأن الناقلات."
+      ]
+    }
+  ]
+}

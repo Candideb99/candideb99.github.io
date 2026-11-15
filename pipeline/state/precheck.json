@@ -17115,6 +17115,90 @@
           "noted": []
         }
       ]
+    },
+    "shell-egypt-mina-west-gas-production-7bd568": {
+      "at": "2026-11-15T09:27:32.931Z",
+      "title": "شل تبدأ إنتاج الغاز من حقل «مينا غرب» في مصر بعد 3 سنوات من اكتشافه",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 10,
+            "checked": 10,
+            "supported": 10,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "acwa-bash-2-wind-uzbekistan-financial-close-e24f5a": {
+      "at": "2026-11-15T09:34:58.749Z",
+      "title": "«أكوا» السعودية تؤمّن 226 مليون دولار لمحطة رياح في أوزبكستان",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 7,
+            "checked": 7,
+            "supported": 7,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "tunisia-foreign-investment-rises-nine-months-134dee": {
+      "at": "2026-11-15T09:42:40.414Z",
+      "title": "الاستثمارات الأجنبية في تونس ترتفع 14.4% إلى نحو مليار دولار في تسعة أشهر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 12,
+            "checked": 12,
+            "supported": 11,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []
