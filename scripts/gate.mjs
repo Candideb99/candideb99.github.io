@@ -115,6 +115,25 @@ for (const [name, command] of [["astro check", "npm run check"], ["npm run build
   const errors = out.match(/-\s*(\d+)\s+errors?/);
   if (name === "astro check" && errors && Number(errors[1]) > 0) fail(name, out);
   console.log(`[ok] ${name} (${seconds(t)})`);
+  // 3a. No page pays for the whole archive (2026-11-15). The section bar's panels read every story against every
+  // sub-topic's terms again on each page: about a second a page, so the build grew with the square of the archive, reached
+  // 17 to 28 minutes at 660 stories and was cut at the deploy's 20-minute limit on most runs for five days. Astro prints
+  // each page's time; the middle one is a few milliseconds when shared work is done once per build (src/lib/topics.ts).
+  if (name === "npm run build") {
+    const slow = slowPages(out);
+    if (slow) fail("the build's time per page", slow);
+  }
+}
+
+/** The build's pages by Astro's own clock («(+12ms)», «(+1.20s)»): a message when the middle page takes too long. */
+function slowPages(out) {
+  const LIMIT_MS = 250;
+  const times = [...String(out).replace(/\u001b\[[0-9;]*m/g, "").matchAll(/\.html\s+\(\+([\d.]+)(ms|s)\)/g)].map((m) => Number(m[1]) * (m[2] === "s" ? 1000 : 1)).sort((a, b) => a - b);
+  if (times.length < 50) return "";
+  const middle = times[Math.floor(times.length / 2)];
+  console.log(`[ok] ${times.length} pages built, the middle one in ${Math.round(middle)} ms`);
+  if (middle <= LIMIT_MS) return "";
+  return `The middle page of ${times.length} took ${Math.round(middle)} ms to build (limit ${LIMIT_MS} ms): something reads the whole archive on every page.\nFind it with a CPU profile of the build (.claude/rules/operations.md, 2026-11-15) and compute it once per build.`;
 }
 
 // 4. What a reader meets on the built site: links, Arabic right-to-left pages, alt text, dates, sources (2026-09-26).

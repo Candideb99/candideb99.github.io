@@ -107,6 +107,17 @@ interface Hit {
  * («منطقة اليورو تنمو… بقيادة الصادرات» is growth, not trade). Null when nothing matches.
  */
 function hit(article: Article, topic: Topic): Hit | null {
+  // Read once per story and topic for the whole build (2026-11-15): the answer rests on the story's headline, tags and
+  // the topic's terms alone, and the section bar asks it again on every page (see `topicArticles`).
+  let known = hits.get(article);
+  if (!known) hits.set(article, (known = new Map()));
+  let h = known.get(topic);
+  if (h === undefined) known.set(topic, (h = readHit(article, topic)));
+  return h;
+}
+const hits = new WeakMap<Article, Map<Topic, Hit | null>>();
+
+function readHit(article: Article, topic: Topic): Hit | null {
   let best: Hit | null = null;
   const better = (h: Hit) => !best || h.score > best.score || (h.score === best.score && (h.at < best.at || (h.at === best.at && h.length > best.length)));
   const title = readable(article.data.title, topic);
@@ -135,6 +146,22 @@ function hit(article: Article, topic: Topic): Hit | null {
  *  headline. A tag far down the list is a side of the story: the oil page had listed gold's fall below 4,000 dollars, the
  *  Fed's hold and Riyadh airport's reopening, whose tags ended in «النفط» (130 such listings, 2026-10-31). */
 export function topicArticles(articles: Article[], section: string, topic: Topic): Article[] {
+  // One reading per list of stories, section and topic (2026-11-15). The section bar's panels (`menuTopics`, in
+  // Masthead.astro) ask for every sub-topic's stories on every page, and each answer read every headline and tag against
+  // every term again: about a second a page over 1,679 pages, a build of 17 to 28 minutes that the deploy's 20-minute limit
+  // cut. The list is keyed by the array itself (`getArticles()` hands every page the same one), so another list of
+  // stories is read afresh. The answer is shared: never sort or change it in place.
+  let lists = topicLists.get(articles);
+  if (!lists) topicLists.set(articles, (lists = new Map()));
+  let bySection = lists.get(topic);
+  if (!bySection) lists.set(topic, (bySection = new Map()));
+  let list = bySection.get(section);
+  if (!list) bySection.set(section, (list = readTopicArticles(articles, section, topic)));
+  return list;
+}
+const topicLists = new WeakMap<Article[], Map<Topic, Map<string, Article[]>>>();
+
+function readTopicArticles(articles: Article[], section: string, topic: Topic): Article[] {
   const own = new Set((topic.tags ?? []).map(normalizeArabic));
   // The headline is read in whole words and in its main clause only (a review of 2026-10-31): a part of a word put
   // «الصادرات غير النفطية» on the oil page, and a subject in a cause clause put gold's fall «مع رهانات رفع الفائدة» on
