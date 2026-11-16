@@ -93,7 +93,7 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
             <aside class="topic-top__beside topic-prices" aria-labelledby="topic-prices-head">
               <h2 id="topic-prices-head" class="module__head">الأسعار الآن</h2>
               <div class="topic-prices__list">
-                {prices.map((q) => <QuoteCard quote={q} href={`/markets/data/#${q.group}`} />)}
+                {prices.map((q) => <QuoteCard quote={q} />)}
               </div>
               <a class="topic-prices__more ui" href="/markets/data/">لوحة الأسواق كاملة</a>
             </aside>

@@ -1654,6 +1654,38 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [bareFigures(sourceLine(isolateNumbers("عائد سندات 10-year الأمريكية يرتفع إلى 4.2%"))).length, bareFigures(`<a class="sources__title" href="https://x.test/"><bdi>${isolateNumbers("أرباح 9.5 مليارات")}</bdi></a> <span class="sources__host ui"></span>`).length, bareFigures(sourceLine("عائد 10 سنوات")).length],
     [0, 0, 1],
   );
+  // The interactive parts (2026-11-16): a chart's note must match what can be pointed at, a chart of several series
+  // needs a switch for each, and a figure card three figures and a story printed once on its page.
+  const { interactiveFaults } = await import("./site-furniture.mjs");
+  const figure = (cats, series, { hits = cats.length, keys = series.length } = {}) =>
+    `<figure id="c" data-chart data-tips="${JSON.stringify({ cats, series }).replace(/&/g, "&amp;").replace(/"/g, "&quot;")}" class="chart"><ul class="chart__legend ui">${'<li><button type="button" class="chart__key" data-s="0"></button></li>'.repeat(keys)}</ul>${'<rect class="chart__hit" data-i="0"/>'.repeat(hits)}<div class="chart__tip ui" hidden></div></figure>`;
+  const two = [{ name: "أ", values: ["1%", "2%"] }, { name: "ب", values: ["3%", "4%"] }];
+  const card = (facts, href = "/articles/a/") => `<li class="figcard"><h3><a href="${href}">عنوان</a></h3>${'<div class="figcard__fact"></div>'.repeat(facts)}</li>`;
+  check(
+    "the site check passes a sound chart and figure card and finds a lost category, a lost switch, a short series, a thin card and a story printed twice",
+    [
+      interactiveFaults(figure(["2024", "<bdi dir=\"ltr\">2025</bdi>"], two) + card(3)).length,
+      interactiveFaults(figure(["2024", "2025"], two, { hits: 1 })).length,
+      interactiveFaults(figure(["2024", "2025"], two, { keys: 1 })).length,
+      interactiveFaults(figure(["2024", "2025"], [{ name: "أ", values: ["1%"] }], { keys: 0 })).length,
+      interactiveFaults(card(2)).length,
+      interactiveFaults(card(3) + '<a href="/articles/a/">مرة ثانية</a>').length,
+    ],
+    [0, 1, 1, 1, 1, 1],
+  );
+  // The instrument pages' chart and the front's moving strip (2026-11-16).
+  const pchart = (series) => `<section class="pchart" data-pchart data-series="${JSON.stringify(series).replace(/&/g, "&amp;").replace(/"/g, "&quot;")}">`;
+  const moving = (shown, copy) => `<div class="markets-wrap markets-wrap--moving" data-ticker><ul class="markets__list">${shown.map((id) => `<li class="markets__item" data-id="${id}">x</li>`).join("")}${copy.map((id) => `<li class="markets__item" data-id="${id}" aria-hidden="true">x</li>`).join("")}</ul></div>`;
+  check(
+    "the site check passes a sound price chart and moving strip and finds a close without its date, a period too long and a strip printed once",
+    [
+      interactiveFaults(pchart({ c: [1, 2, 3], d: ["a", "b", "c"], periods: [{ id: "all", sessions: 3 }] }) + moving(["tasi", "brent"], ["tasi", "brent"])).length,
+      interactiveFaults(pchart({ c: [1, 2, 3], d: ["a", "b"], periods: [{ id: "all", sessions: 3 }] })).length,
+      interactiveFaults(pchart({ c: [1, 2, 3], d: ["a", "b", "c"], periods: [{ id: "m1", sessions: 22 }] })).length,
+      interactiveFaults(moving(["tasi", "brent"], [])).length,
+    ],
+    [0, 1, 1, 1],
+  );
 }
 
 {
@@ -1960,6 +1992,26 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [["2026-10-23", "2026-10-26"], ["2026-10-25"], ["2026-10-24", "2026-10-25"]],
   );
   check("the quote's own point goes under its session", days(mergeHistory(inst("brent"), [{ d: "2026-11-06", c: 98.32 }], [], { price: 97.69, session: "2026-11-09" })), ["2026-11-06", "2026-11-09"]);
+  // The instrument pages (2026-11-16): the record keeps a year of sessions, where it kept thirty, and a period is
+  // offered only when the record fills it.
+  const yearOfDays = [];
+  for (let t = Date.parse("2025-06-02T00:00:00Z"); yearOfDays.length < 300; t += 86400000) {
+    const d = new Date(t);
+    if (d.getUTCDay() >= 1 && d.getUTCDay() <= 5) yearOfDays.push({ d: d.toISOString().slice(0, 10), c: 100 + yearOfDays.length });
+  }
+  check("an instrument's record keeps a year of sessions, the newest", [mergeHistory(inst("spx"), yearOfDays, [], null).length, mergeHistory(inst("spx"), yearOfDays, [], null).at(-1).d === yearOfDays.at(-1).d], [260, true]);
+  const { priceChart, periodsFor } = await import("../src/lib/price-chart.mjs");
+  check(
+    "a price chart offers only the periods its record fills, and what is left over as «الكل»",
+    [30, 22, 63, 70, 140, 260].map((n) => periodsFor(n).map((p) => `${p.id}:${p.sessions}`).join(" ")),
+    ["m1:22 all:30", "m1:22", "m1:22 all:63", "m1:22 m3:66", "m1:22 m3:66 m6:130 all:140", "m1:22 m3:66 m6:130 y1:260"],
+  );
+  const drawn = priceChart([{ d: "a", c: 100 }, { d: "b", c: 110 }, { d: "c", c: 95 }, { d: "d", c: 105 }]);
+  check(
+    "a price chart reads its period's change, high and low, runs left to right and draws a flat record",
+    [drawn.stats.pct, drawn.stats.high, drawn.stats.highDay, drawn.stats.low, drawn.stats.lowDay, drawn.xy[0][0] < drawn.xy[3][0], drawn.xy[1][1] < drawn.xy[2][1], drawn.dates.map((m) => m.d).join(""), priceChart([{ d: "a", c: 5 }, { d: "b", c: 5 }]).xy.every(([px, py]) => Number.isFinite(px) && Number.isFinite(py)), priceChart([{ d: "a", c: 5 }])],
+    [5, 110, "b", 95, "c", true, true, "abcd", true, null],
+  );
 }
 
 // A photo dry run writes nothing, `--apply` included (a review of 2026-11-01: it wrote the saved photograph and its

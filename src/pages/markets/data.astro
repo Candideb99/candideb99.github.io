@@ -35,7 +35,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
     {featured.length > 0 && (
       <section class="featured" aria-label="أبرز الأرقام">
         {featured.map((q) => (
-          <div class="featured__cell"><QuoteCard quote={q} href={`#${q.group}`} /></div>
+          <div class="featured__cell"><QuoteCard quote={q} /></div>
         ))}
       </section>
     )}

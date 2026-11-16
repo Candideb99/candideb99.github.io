@@ -25,7 +25,7 @@ export interface Quote {
   currency: string | null;
   source: string;
   stale: boolean;
-  /** Daily closes, oldest first, up to thirty trading days. */
+  /** Daily closes, oldest first, up to a year of sessions (`HISTORY_SESSIONS`, pipeline/lib/quotes.mjs). */
   history: { d: string; c: number }[];
 }
 
@@ -183,3 +183,12 @@ export function sparkline(q: Quote, width = 96, height = 28, pad = 1.5): { point
   const points = values.map((v, i) => `${(pad + i * stepX).toFixed(1)},${(height - pad - ((v - min) / span) * (height - 2 * pad)).toFixed(1)}`).join(" ");
   return { points, days: values.length };
 }
+
+/** An instrument's own page: its price, its closes over the periods the record fills, its group. */
+export function quoteHref(q: Pick<Quote, "id">): string {
+  return `/markets/data/${q.id}/`;
+}
+
+/** The strip's order when it carries every instrument (the front's moving line): the Arab markets, what their readers
+ *  watch next (oil and gold), the currencies, the world's indices, the bonds and bitcoin. */
+export const STRIP_GROUPS: Group[] = ["arab", "commodities", "fx", "world", "rates", "crypto"];

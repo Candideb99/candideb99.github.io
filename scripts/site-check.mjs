@@ -15,7 +15,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
-import { bareFigures } from "./site-furniture.mjs";
+import { bareFigures, interactiveFaults } from "./site-furniture.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -72,6 +72,8 @@ const broken = new Map();
 
 for (const page of pages) {
   const html = readFileSync(page, "utf8");
+  // A chart's note and switches and the front's figure cards (interactiveFaults(), scripts/site-furniture.mjs).
+  for (const what of interactiveFaults(html)) fault(page, what);
   const rel = path.relative(DIST, page).replace(/\\/g, "/");
   // A redirect stub (<meta http-equiv="refresh">) is not a page a reader reads, but it must land on one: on 2026-09-27
   // eleven forwarded tag addresses pointed at a doubly encoded path («%25D9…») that was never built.

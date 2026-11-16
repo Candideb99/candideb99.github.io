@@ -131,7 +131,9 @@ const ogImage = new URL(image ?? "/og-default.png", site.url).toString();
     -->
     <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
     <Masthead active={section} compact={path !== "/"} />
-    <MarketStrip omit={quotesShown} />
+    {/* The front runs no «آخر الأخبار» line, so its market strip is the page's one moving line and carries every
+        instrument; on every other page the news line moves under a still strip of eight (2026-11-16). */}
+    <MarketStrip omit={quotesShown} moving={path === "/"} />
     {latestNews.length > 0 && <Ticker items={latestNews} label="آخر الأخبار" lead="time" />}
     <main id="main">
       <slot />

@@ -1,0 +1,92 @@
+---
+/**
+ * The motion of the site's moving lines, once per page: «آخر الأخبار» (Ticker.astro) and, on the front, the market
+ * strip (MarketStrip.astro with `moving`). It was Ticker.astro's own script until 2026-11-16, unchanged in what it
+ * does, now run for every element marked `data-ticker`, whose scroll box is marked `data-ticker-viewport` and whose
+ * twice-printed list `data-ticker-list`; `data-ticker-speed` gives pixels a second (60 when absent).
+ *
+ * A line holds under the pointer and under keyboard focus, and under a finger: a touch stops it, a swipe scrolls it
+ * by hand, and it moves on a few seconds after the finger lifts. Without JavaScript, or for a reader who asked for
+ * reduced motion, it stands still and scrolls by hand.
+ */
+---
+
+<script is:inline>
+  (function () {
+    if (window.__kzMarquee) return;
+    window.__kzMarquee = true;
+    function run(wrap) {
+      var vp = wrap.querySelector("[data-ticker-viewport]");
+      var list = wrap.querySelector("[data-ticker-list]");
+      if (!vp || !list) return;
+      // A link reached by the keyboard is brought fully into view, the line moving or still: the browser leaves a
+      // half-shown link where it is, and the strip had stopped with the focused headline 156px past its edge (2026-11-09).
+      vp.addEventListener("focusin", function (e) {
+        if (e.target && e.target.scrollIntoView) e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
+      });
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      // The list is printed twice; one period is the distance from the first item to its duplicate (the items' widths
+      // plus their gaps), measured again once the web fonts are in, since the fallback face sets a different width.
+      var items = list.children;
+      var n = items.length / 2;
+      function period() {
+        return n >= 1 && items[n] ? Math.abs(items[n].getBoundingClientRect().left - items[0].getBoundingClientRect().left) : list.scrollWidth / 2;
+      }
+      var half = period();
+      if (half < 200) return;
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { half = period(); });
+      // …and again when the width crosses a type step (720px changes the strip's size: 4112 against 4134px, so every
+      // wrap after a phone was turned jumped 22px, 2026-10-29).
+      var measuring;
+      window.addEventListener("resize", function () {
+        clearTimeout(measuring);
+        measuring = setTimeout(function () { var p = period(); if (p >= 200) { half = p; pos = pos % half; } }, 200);
+      });
+      // The line is scrolled by whole pixels, not transformed: text on a moving compositing layer blurs at fractional
+      // positions. At the end of one period the scroll position jumps back by exactly that period and the loop is
+      // seamless. In a right-to-left page the content overflows leftwards, so the scroll position runs negative.
+      var speed = Number(wrap.getAttribute("data-ticker-speed")) || 60;
+      var pos = 0;
+      var hover = false;
+      var focus = false;
+      var touch = false;
+      var touchTimer = null;
+      var last = null;
+      function held() { return hover || focus || touch; }
+      // Wherever the reader left it by hand is where it moves on from.
+      function adopt() {
+        pos = Math.abs(vp.scrollLeft) % half;
+        last = null;
+      }
+      // Only a mouse hovers: a tap fires an emulated mouseenter with no mouseleave until the next tap elsewhere, and the
+      // strip stood still after a finger had left it (2026-10-29).
+      vp.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") hover = true; });
+      vp.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hover = false; adopt(); } });
+      vp.addEventListener("focusin", function () { focus = true; });
+      vp.addEventListener("focusout", function () { focus = false; adopt(); });
+      vp.addEventListener("touchstart", function () { touch = true; clearTimeout(touchTimer); }, { passive: true });
+      function released() {
+        clearTimeout(touchTimer);
+        touchTimer = setTimeout(function () { touch = false; adopt(); }, 3000);
+      }
+      vp.addEventListener("touchend", released, { passive: true });
+      // A touch the browser takes over (a long press opens the link menu) ends in touchcancel, never touchend.
+      vp.addEventListener("touchcancel", released, { passive: true });
+      wrap.classList.add("ticker--moving");
+      function frame(now) {
+        if (!held() && !document.hidden) {
+          if (last !== null) pos += ((now - last) / 1000) * speed;
+          last = now;
+          if (pos >= half) pos -= half;
+          vp.scrollLeft = -Math.round(pos);
+        } else {
+          last = null;
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    function init() { [].forEach.call(document.querySelectorAll("[data-ticker]"), run); }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+  })();
+</script>

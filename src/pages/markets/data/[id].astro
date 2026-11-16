@@ -1,0 +1,147 @@
+---
+/**
+ * One instrument's page (2026-11-16): what the board says of it in a row, opened out. Its price and the day's move,
+ * its closes as a line over the periods the record fills (PriceChart.astro), the closes as a table, the rest of its
+ * group, and the latest stories that name it in their headlines. Everything is read from markets.json, written before
+ * every build; the page says, as the board does, that prices are delayed and for reading, not trading.
+ */
+import Base from "@layouts/Base.astro";
+import PriceChart from "@components/PriceChart.astro";
+import MarketBoard from "@components/MarketBoard.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
+import { getArticles } from "@lib/articles";
+import { formatDate, timeAgo } from "@lib/format";
+import site from "@data/site.json";
+
+export function getStaticPaths() {
+  return board.quotes.map((q) => ({ params: { id: q.id }, props: { quote: q } }));
+}
+interface Props {
+  quote: Quote;
+}
+const { quote: q } = Astro.props;
+const dir = direction(q);
+const peers = board.quotes.filter((p) => p.group === q.group && p.id !== q.id);
+// The newest closes first, a month of them: the line above carries the rest.
+const closes = [...(q.history ?? [])].reverse().slice(0, 22);
+const num = (v: number) => v.toLocaleString("en-US", { minimumFractionDigits: q.decimals, maximumFractionDigits: q.decimals }) + (q.unit === "%" ? "%" : "");
+const dayMove = (i: number) => {
+  const prev = closes[i + 1];
+  if (!prev) return null;
+  const v = q.changeMode === "abs" ? closes[i].c - prev.c : prev.c ? ((closes[i].c - prev.c) / Math.abs(prev.c)) * 100 : 0;
+  const text = Math.abs(v).toFixed(2);
+  return { dir: /^[0.]+$/.test(text) ? "flat" : v > 0 ? "up" : "down", text: (/^[0.]+$/.test(text) ? "" : v > 0 ? "+" : "−") + text + (q.changeMode === "abs" ? "" : "%") };
+};
+// Stories whose headline names the instrument, as a whole word: «النفط» in a headline is not Brent's page's business,
+// «برنت» is. Two or more, or the module is left out.
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const names = [...new Set([q.name, q.short])].filter((n) => n.length >= 3);
+const named = new RegExp(`(?:^|[\\s«(،])(?:[وبلفك]|ال|لل)?(?:${names.map(escape).join("|")})(?=$|[\\s»)،.:؛])`);
+const news = (await getArticles()).filter((a) => a.data.kind === "news" && named.test(a.data.title)).slice(0, 4);
+const subtitle = [q.note, q.unit && q.unit !== "%" ? q.unit : null].filter(Boolean).join(" · ");
+const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر والتغير اليومي ومسار الإغلاق، من لوحة أسواق خازندار. أسعار مؤجّلة وللاطلاع.`;
+---
+
+<Base title={q.name} description={description} path={`/markets/data/${q.id}/`} section="markets" quotesShown={[q.id]} printed={news.map((a) => a.id)}>
+  <section class="wrap block inst">
+    <header class="page-head">
+      <p class="page-head__section"><a href="/markets/data/">لوحة الأسواق</a> <span aria-hidden="true">›</span> <a href={`/markets/data/#${q.group}`}>{GROUP_NAMES[q.group]}</a></p>
+      <h1 class="page-title">{q.name}</h1>
+      {subtitle && <p class="inst__sub ui">{subtitle}</p>}
+      <p class:list={["inst__quote", "ui", { "is-stale": q.stale }]}>
+        <bdi class="inst__price" dir="ltr">{formatPrice(q)}</bdi>
+        {dir !== "none" && (
+          <span class={`inst__move inst__move--${dir}`}>
+            <span class="visually-hidden">{DIRECTION_LABEL[dir]}</span>
+            <bdi dir="ltr"><span class="mark-dir" data-dir={dir} aria-hidden="true"></span>{q.changeMode === "abs" ? formatMove(q) : formatChange(q)}</bdi>
+            {q.changeMode !== "abs" && <bdi dir="ltr">({formatPct(q)})</bdi>}
+          </span>
+        )}
+      </p>
+      <p class="inst__when ui">
+        {q.stale ? "آخر سعر وصل إلى اللوحة: " : "السعر في "}{whenLabel(q)} {site.timeZoneLabel}، والتغير عن إغلاق الجلسة السابقة.
+        {board.updatedAt && <span> حُدّثت اللوحة <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time>.</span>}
+      </p>
+    </header>
+
+    <PriceChart quote={q} />
+
+    <div class="inst__lower">
+      {closes.length > 1 && (
+        <section class="inst__closes" aria-labelledby="closes-head">
+          <h2 id="closes-head" class="module__head">آخر الإغلاقات</h2>
+          <table class="closes ui">
+            <thead>
+              <tr><th scope="col">الجلسة</th><th scope="col">الإغلاق</th><th scope="col">التغير</th></tr>
+            </thead>
+            <tbody>
+              {closes.map((p, i) => {
+                const m = dayMove(i);
+                return (
+                  <tr>
+                    <th scope="row"><bdi>{formatDate(`${p.d}T12:00:00Z`, { weekday: false })}</bdi></th>
+                    <td><bdi dir="ltr">{num(p.c)}</bdi></td>
+                    <td class={m ? `closes__move--${m.dir}` : undefined}>{m ? <bdi dir="ltr">{m.text}</bdi> : "—"}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+      )}
+      {peers.length > 0 && (
+        <div class="inst__peers">
+          <MarketBoard variant="group" ids={peers.map((p) => p.id)} title={`من ${GROUP_NAMES[q.group]}`} id="peers" />
+        </div>
+      )}
+    </div>
+
+    <p class="note ui">المصدر: {board.source}؛ أسعار مؤجّلة وللاطلاع لا للتداول. الإغلاق هو آخر سعر في جلسة السوق نفسها{q.group === "commodities" ? "، والعقد هو أقرب عقد آجل" : ""}.</p>
+
+    {news.length >= 2 && (
+      <section class="inst__news" aria-labelledby="inst-news-head">
+        <h2 id="inst-news-head" class="module__head">{q.name} في الأخبار</h2>
+        <div class="cards" style={`--n:${news.length}`}>
+          {news.map((a) => (
+            <StoryCard article={a} variant="card" showSection={false} showExcerpt={!a.data.image} />
+          ))}
+        </div>
+      </section>
+    )}
+  </section>
+</Base>
+
+<style>
+  .inst__sub { margin-top: 0.2rem; font-size: var(--fs-sm); color: var(--ink-3); }
+  .inst__quote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 1rem; margin-top: 0.7rem; }
+  .inst__price { font-size: var(--t-display); font-weight: 700; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .inst__move { display: inline-flex; gap: 0.5rem; font-size: var(--t-head); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .inst__move--up { color: var(--up); }
+  .inst__move--down { color: var(--down); }
+  .inst__move--flat { color: var(--ink-3); }
+  .inst__quote.is-stale .inst__price, .inst__quote.is-stale .inst__move { color: var(--ink-3); }
+  .inst__when { margin-top: 0.4rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); }
+  .inst__when time { color: inherit; }
+
+  .inst__lower { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 0; align-items: start; margin-top: clamp(1.75rem, 3.5vw, 2.5rem); }
+  .inst__closes { padding-inline-end: var(--col-gap); }
+  .inst__peers { padding-inline-start: var(--col-gap); border-inline-start: 1px solid var(--rule); }
+  .inst__lower > :only-child { grid-column: 1 / -1; padding-inline: 0; border-inline-start: 0; }
+  .closes { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
+  .closes th, .closes td { padding: 0.32rem 0; border-top: 1px solid var(--rule); text-align: start; font-weight: 500; }
+  .closes thead th { border-top: 0; font-size: var(--fs-xs); font-weight: 700; color: var(--ink-3); }
+  .closes td { text-align: end; padding-inline-start: 0.75rem; white-space: nowrap; }
+  .closes thead th:not(:first-child) { text-align: end; }
+  .closes tbody th { color: var(--ink-2); }
+  .closes__move--up { color: var(--up); font-weight: 700 !important; }
+  .closes__move--down { color: var(--down); font-weight: 700 !important; }
+  .closes__move--flat { color: var(--ink-3); }
+  .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: var(--measure); }
+  .inst__news { margin-top: clamp(2rem, 4vw, 3rem); }
+  @media (max-width: 899px) {
+    .inst__lower { grid-template-columns: 1fr; row-gap: 2rem; }
+    .inst__closes { padding-inline-end: 0; }
+    .inst__peers { padding-inline-start: 0; border-inline-start: 0; }
+  }
+</style>

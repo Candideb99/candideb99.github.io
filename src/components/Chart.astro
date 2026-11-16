@@ -117,9 +117,21 @@ const barW = Math.max(6, Math.min(CAP, (slot * 0.62 - barGap * (chart.series.len
 const groupW = barW * chart.series.length + barGap * (chart.series.length - 1);
 const lineEndLabel = chart.series.length <= 3;
 const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as const);
+
+// What the reader's pointer, finger or keyboard gets (2026-11-16, the owner on DW's and Sky News's charts: "should the
+// website have colorful interactive graphs"): the name of a series in the legend lights that series and fades the
+// others, and a category under the pointer shows every series' value for it in one note. The script at the foot of
+// this file reads the note's text from here, already escaped and isolated; with no script the chart is the same
+// drawing with its native tooltips and its table. A chart of one series that prints every value on its mark gets no
+// note (`plain`): over horizontal bars it only said again the name and the figure printed under it.
+const tips = JSON.stringify({
+  cats: chart.categories.map((c) => isolateNumbers(c)),
+  series: chart.series.map((s) => ({ name: isolateNumbers(s.name), values: s.values.map((v) => label(v)) })),
+});
+const plain = chart.series.length === 1 && (horizontal || showValueLabels);
 ---
 
-<figure id={id} class={`chart${compact ? " chart--compact" : ""}${narrow ? " chart--narrow" : ""}${horizontal ? " chart--hbars" : ""}`} role="group" aria-labelledby={`${id}-title`}>
+<figure id={id} data-chart data-tips={tips} data-plain={plain ? "" : undefined} class={`chart${compact ? " chart--compact" : ""}${narrow ? " chart--narrow" : ""}${horizontal ? " chart--hbars" : ""}`} role="group" aria-labelledby={`${id}-title`}>
   <figcaption class="chart__head">
     {chart.title && (
       <h3 id={`${id}-title`} class="chart__title">
@@ -132,7 +144,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   {chart.series.length > 1 && (
     <ul class="chart__legend ui" aria-label="سلاسل البيانات">
       {chart.series.map((s, si) => (
-        <li><span class="chart__swatch" style={`background:${colors[si]}`} aria-hidden="true"></span><Fragment set:html={isolateNumbers(s.name)} /></li>
+        <li><button type="button" class="chart__key" data-s={si} aria-pressed="false"><span class="chart__swatch" style={`background:${colors[si]}`} aria-hidden="true"></span><Fragment set:html={isolateNumbers(s.name)} /></button></li>
       ))}
     </ul>
   )}
@@ -140,7 +152,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   {horizontal ? (
     <div class:list={["hbars", { "hbars--negative": hasNegative, "hbars--multi": chart.series.length > 1 }]} role="img" aria-label={chart.title ?? "رسم بياني"}>
       {chart.categories.map((c, i) => (
-        <div class="hbars__row">
+        <div class="hbars__row" data-i={i}>
           <p class="hbars__label" set:html={isolateNumbers(c)} />
           <div class="hbars__plot" style={hasNegative ? `--zero:${zero.toFixed(2)}%` : undefined}>
             {chart.series.map((s, si) => {
@@ -148,7 +160,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
               const start = Math.min(pos(v), zero);
               const width = Math.abs(pos(v) - zero);
               return (
-                <div class="hbars__slot" title={`${c} — ${s.name}: ${label(v)}`}>
+                <div class="hbars__slot" data-s={si} title={`${c} — ${s.name}: ${label(v)}`}>
                   {v !== 0 && <span class={`hbars__bar ${v < 0 ? "is-neg" : "is-pos"}`} style={`inset-inline-start:${start.toFixed(2)}%;width:${Math.max(width, 0.6).toFixed(2)}%;background:${colors[si]}`}></span>}
                   <span class="hbars__value" style={v < 0 ? `inset-inline-end:${(100 - start).toFixed(2)}%` : `inset-inline-start:${(start + width).toFixed(2)}%`}><bdi dir="ltr">{markValue(v)}</bdi></span>
                 </div>
@@ -181,7 +193,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
               const top = Math.min(y(v), zeroY);
               const h = Math.max(1, Math.abs(y(v) - zeroY));
               return (
-                <g class="chart__mark">
+                <g class="chart__mark" data-s={si} data-i={i}>
                   <title>{`${chart.categories[i]} — ${s.name}: ${label(v)}`}</title>
                   <rect x={gx} y={top} width={barW} height={h} fill={colors[si]} class={v < 0 ? "is-below" : undefined} />
                   {showValueLabels && (
@@ -198,10 +210,10 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
             const d = pts.map(([px, py], i) => `${i === 0 ? "M" : "L"}${px.toFixed(1)} ${py.toFixed(1)}`).join(" ");
             const last = pts[pts.length - 1];
             return (
-              <g class="chart__series">
+              <g class="chart__series" data-s={si}>
                 <path d={d} fill="none" stroke={colors[si]} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathLength="1" class="chart__line" />
                 {pts.map(([px, py], i) => (
-                  <g class="chart__mark">
+                  <g class="chart__mark" data-i={i}>
                     <title>{`${chart.categories[i]} — ${s.name}: ${label(s.values[i])}`}</title>
                     <circle cx={px} cy={py} r="4.5" fill={colors[si]} stroke="var(--paper)" stroke-width="2" />
                   </g>
@@ -212,6 +224,13 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
               </g>
             );
           })}
+
+        {/* One strip per category over the whole plot, so the pointer need not find a 9px dot or a thin column; a line
+            chart also gets a hairline through the category it is on. */}
+        {chart.type === "line" && <line class="chart__guide" y1={PAD.top} y2={PAD.top + plotH} x1="0" x2="0" />}
+        {chart.categories.map((_, i) => (
+          <rect class="chart__hit" data-i={i} data-x={(x(i) + slot / 2).toFixed(1)} x={x(i)} y={PAD.top - 8} width={slot} height={plotH + 8} fill="transparent" />
+        ))}
       </svg>
       {/* The categories as text under the plot, each under its own column or point: whole, wrapped to as many lines as
           they need at the site's small size. The drawing is announced by its title; the table below carries the data. */}
@@ -243,13 +262,15 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
     </table>
   </details>}
 
+  <div class="chart__tip ui" role="status" hidden></div>
+
   <p class="chart__source ui">
     {chart.source ? `المصدر: ${chart.source}. ` : ""}الرسم من إعداد خازندار اعتماداً على أرقام المصدر.
   </p>
 </figure>
 
 <style>
-  .chart { margin: 1.5rem 0 1.75rem; max-width: var(--measure); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 0.8rem 0 0.9rem; }
+  .chart { position: relative; margin: 1.5rem 0 1.75rem; max-width: var(--measure); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 0.8rem 0 0.9rem; }
   /* The unit reads as the title's subtitle, under it: at the far end of the title's line it floated away from it. */
   .chart__head { display: block; }
   .chart__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; }
@@ -257,6 +278,11 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   .chart__legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; margin-top: 0.6rem; font-size: var(--fs-sm); font-weight: 500; color: var(--ink-2); }
   .chart__legend li { display: inline-flex; align-items: center; gap: 0.45rem; }
   .chart__swatch { width: 0.75rem; height: 0.75rem; display: inline-block; }
+  /* A series' name is its switch: under the pointer or the keyboard it lights its series, pressed it keeps it lit. */
+  .chart__key { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 1.75rem; padding: 0.1rem 0.5rem; margin-inline-start: -0.5rem; border: 1px solid transparent; border-radius: 999px; background: none; font: inherit; color: inherit; cursor: pointer; transition: opacity 0.15s, border-color 0.15s; }
+  .chart__key:hover, .chart__key[aria-pressed="true"] { border-color: var(--rule); color: var(--ink); }
+  .chart__key[aria-pressed="true"] { background: var(--paper-2); }
+  .chart__key.is-dim { opacity: 0.45; }
   .chart__svg { width: 100%; height: auto; margin-top: 0.6rem; font-family: var(--font-ui); }
   .chart__gridline { stroke: var(--rule); stroke-width: 1; }
   .chart__baseline { stroke: var(--ink-3); stroke-width: 1; }
@@ -272,6 +298,23 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
      rather than break between its joined letters. */
   .chart__cats li { padding-inline: 0.1rem; font-family: var(--font-ui); font-size: var(--fs-xs); line-height: 1.35; color: var(--ink); text-align: center; direction: rtl; unicode-bidi: plaintext; }
   .chart__mark:hover rect, .chart__mark:hover circle { filter: brightness(0.85); }
+  /* Lit and faded marks. A faded one keeps a third of its ink, so the whole picture stays readable behind the one the
+     reader chose. */
+  .chart__mark, .chart__series, .hbars__slot { transition: opacity 0.15s; }
+  .chart__mark.is-dim, .chart__series.is-dim, .hbars__slot.is-dim { opacity: 0.3; }
+  .chart__mark.is-on circle { stroke: var(--ink); stroke-width: 1.5; }
+  .chart__guide { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 3; visibility: hidden; pointer-events: none; }
+  .chart__guide.is-on { visibility: visible; }
+  .chart__hit { cursor: crosshair; }
+  /* The note: the category, then each series' value, on paper with an ink rule, where the pointer is. */
+  .chart__tip { position: absolute; z-index: 2; top: 0; left: 0; max-width: min(16rem, 80%); padding: 0.45rem 0.65rem; background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 2px 10px rgb(0 0 0 / 0.12); font-size: var(--fs-sm); line-height: 1.5; color: var(--ink); pointer-events: none; }
+  .chart__tip[hidden] { display: none; }
+  .chart__tip :global(.chart__tip-cat) { display: block; font-weight: 700; }
+  .chart__tip :global(.chart__tip-row) { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+  .chart__tip :global(.chart__tip-row.is-dim) { opacity: 0.45; }
+  .chart__tip :global(.chart__tip-row i) { flex: none; width: 0.6rem; height: 0.6rem; }
+  .chart__tip :global(.chart__tip-row b) { margin-inline-start: auto; padding-inline-start: 0.75rem; font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart__mark, .chart__series, .hbars__slot, .chart__key { transition: none; } }
 
   /* Horizontal bars: the name whole above its bar, the bar from its start (or from zero when values fall below it),
      the value at its end in ink; no grid and no scale, every bar being labelled. Room is kept beside the plot for the
@@ -296,7 +339,7 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
   .chart__data thead th { font-weight: 700; color: var(--ink-2); border-bottom-color: var(--ink); }
   .chart__source { margin-top: 0.6rem; font-size: var(--fs-xs); color: var(--ink-3); }
 
-  .chart--compact { margin: 0; max-width: none; border-top: 0; border-bottom: 0; padding: 0; }
+  .chart--compact { position: relative; margin: 0; max-width: none; border-top: 0; border-bottom: 0; padding: 0; }
   .chart--compact .chart__title { font-size: var(--t-list); line-height: 1.45; }
   .chart--compact .chart__unit { margin-top: 0.1rem; }
   .chart--compact .chart__title a { text-decoration: none; }
@@ -314,3 +357,100 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
     .chart--narrow .chart__tick, .chart--narrow .chart__value { font-size: 14px; }
   }
 </style>
+
+<script is:inline>
+  // The charts' interaction, once per page however many charts it prints. Nothing here draws: it only lights, fades
+  // and shows the note whose text the page already carries (data-tips).
+  (function () {
+    if (window.__kzCharts) return;
+    window.__kzCharts = true;
+    var COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
+    function setup(fig) {
+      var tips;
+      try { tips = JSON.parse(fig.getAttribute("data-tips") || ""); } catch (e) { return; }
+      var tip = fig.querySelector(".chart__tip");
+      var plain = fig.hasAttribute("data-plain");
+      var guide = fig.querySelector(".chart__guide");
+      var keys = [].slice.call(fig.querySelectorAll(".chart__key"));
+      var marks = [].slice.call(fig.querySelectorAll(".chart__series, .chart__mark, .hbars__slot")).map(function (el) {
+        var s = el.closest("[data-s]"), i = el.closest("[data-i]");
+        return {
+          el: el,
+          s: s ? Number(s.getAttribute("data-s")) : -1,
+          i: i && !el.classList.contains("chart__series") ? Number(i.getAttribute("data-i")) : -1,
+          // A line keeps its whole run when one category is under the pointer; columns and bars fade.
+          fades: !el.classList.contains("chart__series") && !el.querySelector("circle"),
+        };
+      });
+      var pinned = -1, hovered = -1, cat = -1;
+      // The native tooltips would stand over the note.
+      [].forEach.call(fig.querySelectorAll(".chart__mark > title"), function (t) { t.remove(); });
+      [].forEach.call(fig.querySelectorAll(".hbars__slot[title]"), function (el) { el.removeAttribute("title"); });
+      function paint() {
+        var s = hovered >= 0 ? hovered : pinned;
+        marks.forEach(function (m) {
+          var offSeries = s >= 0 && m.s !== s;
+          var offCat = cat >= 0 && m.fades && m.i !== cat;
+          m.el.classList.toggle("is-dim", offSeries || offCat);
+          m.el.classList.toggle("is-on", cat >= 0 && m.i === cat && !offSeries);
+        });
+        keys.forEach(function (k) {
+          var ks = Number(k.getAttribute("data-s"));
+          k.classList.toggle("is-dim", s >= 0 && ks !== s);
+          k.setAttribute("aria-pressed", String(pinned === ks));
+        });
+      }
+      function show(i, target) {
+        cat = i;
+        var s = hovered >= 0 ? hovered : pinned;
+        var html = '<span class="chart__tip-cat">' + tips.cats[i] + "</span>";
+        tips.series.forEach(function (ser, si) {
+          html += '<span class="chart__tip-row' + (s >= 0 && s !== si ? " is-dim" : "") + '">' +
+            (tips.series.length > 1 ? '<i style="background:' + COLORS[si] + '"></i><span>' + ser.name + "</span>" : "") +
+            '<b><bdi dir="ltr">' + ser.values[i] + "</bdi></b></span>";
+        });
+        if (plain) { paint(); return; }
+        tip.innerHTML = html;
+        tip.hidden = false;
+        var box = fig.getBoundingClientRect(), at = target.getBoundingClientRect();
+        if (guide && target.hasAttribute("data-x")) {
+          guide.setAttribute("x1", target.getAttribute("data-x"));
+          guide.setAttribute("x2", target.getAttribute("data-x"));
+          guide.classList.add("is-on");
+        }
+        // Centred over the category, above it, kept inside the chart's own box.
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        var left = Math.max(0, Math.min(at.left - box.left + at.width / 2 - w / 2, box.width - w));
+        var top = at.top - box.top - h - 6;
+        if (top < 0) top = at.bottom - box.top + 6;
+        tip.style.transform = "translate(" + Math.round(left) + "px," + Math.round(top) + "px)";
+        paint();
+      }
+      function hide() {
+        cat = -1;
+        tip.hidden = true;
+        if (guide) guide.classList.remove("is-on");
+        paint();
+      }
+      [].forEach.call(fig.querySelectorAll(".chart__hit, .hbars__row"), function (el) {
+        var i = Number(el.getAttribute("data-i"));
+        el.addEventListener("pointerenter", function () { show(i, el); });
+        el.addEventListener("pointerdown", function () { show(i, el); });
+        el.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hide(); });
+      });
+      keys.forEach(function (k) {
+        var ks = Number(k.getAttribute("data-s"));
+        k.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") { hovered = ks; paint(); } });
+        k.addEventListener("pointerleave", function () { hovered = -1; paint(); });
+        k.addEventListener("focus", function () { if (k.matches(":focus-visible")) { hovered = ks; paint(); } });
+        k.addEventListener("blur", function () { hovered = -1; paint(); });
+        k.addEventListener("click", function () { pinned = pinned === ks ? -1 : ks; hovered = -1; paint(); });
+      });
+      // A finger has no leave: a touch anywhere else puts the note away.
+      document.addEventListener("pointerdown", function (e) { if (cat >= 0 && !fig.contains(e.target)) hide(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && (cat >= 0 || pinned >= 0)) { pinned = -1; hide(); } });
+    }
+    function init() { [].forEach.call(document.querySelectorAll("figure[data-chart]"), setup); }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+  })();
+</script>

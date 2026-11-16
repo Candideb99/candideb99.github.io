@@ -1,68 +1,89 @@
 ---
 /**
- * The market strip under the section bar, the way the business dailies' sites run theirs: eight
- * reference numbers (STRIP_IDS), still, in the furniture face, each as its move on the day (the level is the
- * tooltip); a yield and an exchange rate print their level before the move, the number they are read by
- * (`stripShowsLevel()`). Every item links to the board.
+ * The market strip under the section bar, the way the business dailies' sites run theirs. Two forms:
+ *
+ * - still, on every page but the front: eight reference numbers (STRIP_IDS) in the furniture face, each as its move on
+ *   the day (the level is the tooltip); a yield and an exchange rate print their level before the move, the number
+ *   they are read by (`stripShowsLevel()`). The moving line on those pages is «آخر الأخبار», directly under it.
+ * - `moving`, on the front, which runs no news line (2026-11-16, the owner on Sky News Arabia's and Argaam's bars:
+ *   "should we make the markets bar moving and shows more info"): every instrument of the board, group by group,
+ *   each with its level and its move, as one moving line (Marquee.astro). Two moving lines stacked on the other pages
+ *   would be noise, so the strip stays still there.
+ *
+ * Every item links to its instrument's own page. The label keeps saying how old the prices are: the line moves, the
+ * prices are the last refresh's.
  */
-import { board, quotes, STRIP_IDS, formatPrice, formatMove, direction, whenLabel, DIRECTION_LABEL, stripShowsLevel } from "@lib/markets";
+import { board, quotes, STRIP_IDS, STRIP_GROUPS, formatPrice, formatMove, direction, whenLabel, DIRECTION_LABEL, stripShowsLevel, quoteHref } from "@lib/markets";
 import site from "@data/site.json";
 import { timeAgo } from "@lib/format";
+import Marquee from "./Marquee.astro";
 interface Props {
   /** Instruments the page prints itself (a subject's own prices, the full board): one price line per page. */
   omit?: string[];
+  /** The front's form: every instrument, each with its level, moving. */
+  moving?: boolean;
 }
-const { omit = [] } = Astro.props;
+const { omit = [], moving = false } = Astro.props;
 // The strip is the site's one price line (the owner, 2026-10-19): no module repeats it, and a page that prints an
 // instrument itself (the oil page's Brent, the board on /markets/data/) leaves it out here.
-const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
+const items = moving
+  ? STRIP_GROUPS.flatMap((g) => board.quotes.filter((q) => q.group === g && !omit.includes(q.id)))
+  : quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
+// A moving line is printed twice so its loop has no seam; the second printing is for the eye only.
+const printings = moving ? [false, true] : [false];
 ---
 
 {items.length > 0 && (
-  <div class="markets-wrap">
+  <div class:list={["markets-wrap", { "markets-wrap--moving": moving }]} data-ticker={moving ? "" : undefined} data-ticker-speed={moving ? "45" : undefined}>
     <div class="wrap markets ui" role="region" aria-label="الأسواق">
       {/* The label carries the update time under «الأسواق»: a strip reading برنت −5.5% beside a headline saying «يهبط 7.4%»
           did not say the two were taken hours apart (the critique of 2026-11-09). It did so on a phone only, with «حُدّث منذ …»
           at the strip's end elsewhere, until 2026-11-15: once the two exchange rates printed their level that end took the
           room of the eighth item (the pound's rate ran 51px past the list's edge at 1366px and wider). */}
       <a class="markets__label" href="/markets/data/">الأسواق{board.updatedAt && <span class="markets__label-time"> <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}</a>
-      <ul class="markets__list">
-        {items.map((q) => {
-          const dir = direction(q);
-          return (
-            <li class="markets__item" data-id={q.id}>
-              <a class={q.stale ? "q q--stale" : "q"} href="/markets/data/" title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}، التغير عن إغلاق الجلسة السابقة، ${whenLabel(q)} ${site.timeZoneLabel}`}>
-                <span class="q__name">{q.short}</span>
-                {(stripShowsLevel(q) || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
-                {dir !== "none" && (
-                  <span class="visually-hidden">{DIRECTION_LABEL[dir]}</span>
-                )}
-                {dir !== "none" && (
-                  <bdi class={`q__move q__move--${dir}`}>
-                    <span class="q__arrow mark-dir" data-dir={dir} aria-hidden="true"></span>
-                    {formatMove(q)}
-                  </bdi>
-                )}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <div class="markets__viewport" data-ticker-viewport={moving ? "" : undefined}>
+        <ul class="markets__list" data-ticker-list={moving ? "" : undefined}>
+          {printings.map((copy) => items.map((q) => {
+            const dir = direction(q);
+            return (
+              <li class="markets__item" data-id={q.id} aria-hidden={copy ? "true" : undefined}>
+                <a class={q.stale ? "q q--stale" : "q"} href={quoteHref(q)} tabindex={copy ? -1 : undefined} title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}، التغير عن إغلاق الجلسة السابقة، ${whenLabel(q)} ${site.timeZoneLabel}`}>
+                  <span class="q__name">{q.short}</span>
+                  {(moving || stripShowsLevel(q) || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
+                  {dir !== "none" && (
+                    <span class="visually-hidden">{DIRECTION_LABEL[dir]}</span>
+                  )}
+                  {dir !== "none" && (
+                    <bdi class={`q__move q__move--${dir}`}>
+                      <span class="q__arrow mark-dir" data-dir={dir} aria-hidden="true"></span>
+                      {formatMove(q)}
+                    </bdi>
+                  )}
+                </a>
+              </li>
+            );
+          }))}
+        </ul>
+      </div>
     </div>
   </div>
 )}
+{moving && items.length > 0 && <Marquee />}
 
 <style>
   .markets-wrap { border-bottom: 1px solid var(--rule); background: var(--paper); }
   .markets { display: flex; align-items: center; gap: 0.75rem; min-height: 2.1rem; }
   .markets__label { flex: none; display: grid; min-inline-size: var(--strip-label); font-weight: 700; font-size: var(--fs-xs); line-height: 1.25; color: var(--green); text-decoration: none; padding-block: 0.3rem; padding-inline-end: 0.75rem; border-inline-end: 1px solid var(--rule); }
   .markets__label:hover { text-decoration: underline; }
-  /* position: relative keeps the hidden ارتفاع/انخفاض words inside the scrolling list; without it
+  /* position: relative keeps the hidden ارتفاع/انخفاض words inside the scrolling box; without it
      they are placed against the page and pushed every phone page 505px wide (found 2026-09-22). */
-  .markets__list { position: relative; display: flex; align-items: center; flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .markets__list::-webkit-scrollbar { display: none; }
+  .markets__viewport { position: relative; flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .markets__viewport::-webkit-scrollbar { display: none; }
+  .markets__list { display: flex; align-items: center; width: max-content; }
   .markets__item { flex: none; padding-inline: 0.55rem; border-inline-start: 1px solid var(--rule); }
   .markets__item:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  /* In the moving line every item is alike, the first and the seam's included: the period is measured item to item. */
+  .markets-wrap--moving .markets__item, .markets-wrap--moving .markets__item:first-child { padding-inline: 0.8rem; border-inline-start: 1px solid var(--rule); }
   .q { display: inline-flex; align-items: baseline; gap: 0.35rem; padding-block: 0.4rem; font-size: var(--fs-xs); line-height: 1.4; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
   .q:hover .q__name { color: var(--green); text-decoration: underline; }
   .q__name { font-weight: 700; color: var(--ink); }
@@ -79,11 +100,11 @@ const items = quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
   @media (max-width: 719px) {
     .markets { gap: 0.6rem; min-height: 2rem; }
   }
-  /* The eight fit one line from 1366px. Below it the Nasdaq gives way (the S&P 500 stays) so the rest fit: measured
+  /* The still eight fit one line from 1366px. Below it the Nasdaq gives way (the S&P 500 stays) so the rest fit: measured
      2026-11-09 at 1240px, the last item ran 20px past the list's edge, and 59px once «دولار/جنيه مصري» was named in full.
      Since 2026-11-15 the two exchange rates print their level (+70px) and the update time sits under the label. A phone's
-     strip scrolls and keeps all eight; so does a tablet's, which never held them. */
+     strip scrolls and keeps all eight; so does a tablet's, which never held them. The moving line keeps every item. */
   @media (min-width: 720px) and (max-width: 1365px) {
-    .markets__item[data-id="ndq"] { display: none; }
+    .markets-wrap:not(.markets-wrap--moving) .markets__item[data-id="ndq"] { display: none; }
   }
 </style>

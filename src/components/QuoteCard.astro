@@ -4,13 +4,14 @@
  * a small line, the way the Journal's market-data widget prints its indices. Used in the
  * الأسواق في لمحة band on the markets section and for the headline numbers of the data page.
  */
-import { formatPrice, formatMove, direction, DIRECTION_LABEL, sparkline, whenLabel, type Quote } from "@lib/markets";
+import { formatPrice, formatMove, direction, DIRECTION_LABEL, sparkline, whenLabel, quoteHref, type Quote } from "@lib/markets";
 
 interface Props {
   quote: Quote;
   href?: string;
 }
-const { quote: q, href = "/markets/data/" } = Astro.props;
+// A card leads to its instrument's own page (2026-11-16); it led to the board, or to the group's table on it.
+const { quote: q, href = quoteHref(q) } = Astro.props;
 const dir = direction(q);
 const spark = sparkline(q, 96, 28);
 const stroke = dir === "up" ? "var(--up)" : dir === "down" ? "var(--down)" : "var(--ink-3)";

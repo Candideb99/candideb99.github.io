@@ -30,8 +30,12 @@ interface Props {
   chart?: Article;
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
+  /** «بالأرقام», the band of figure cards, runs under this block (FigureCards.astro). On a phone the page is one
+      column and this list would stand directly over the band, two modules of figures in a row, so it is left to the
+      wide layouts, where it closes the numbers column level with the other two. */
+  band?: boolean;
 }
-const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
+const { secondary, digest, picks, figures, chart, photoIds, band = false } = Astro.props;
 ---
 
 <section class="wrap front" aria-label="آخر الأخبار والأرقام">
@@ -84,7 +88,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
       </section>
     )}
     {figures.length > 0 && (
-      <section class="module figures" aria-labelledby="figures-head">
+      <section class:list={["module", "figures", { "figures--wide": band }]} aria-labelledby="figures-head">
         <h2 id="figures-head" class="module__head">أرقام اليوم</h2>
         <ul class="figures__list">
           {figures.map((f) => (
@@ -174,6 +178,7 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
     .front__top { padding-inline-end: 0; border-inline-end: 0; }
     .front__side { padding-inline-start: 0; margin-top: 1.5rem; }
     .front__secondary { grid-template-columns: 1fr; }
+    .figures--wide { display: none; }
     .front__secondary > :global(.card) { padding-block: 0.7rem; border-top: 1px solid var(--rule); }
     .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
     .front__secondary > :global(.card--photo) { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 0.75rem; align-items: start; }

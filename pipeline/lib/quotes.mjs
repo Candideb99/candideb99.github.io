@@ -215,9 +215,13 @@ export function recordedPrev(inst, quote, record = []) {
 
 /**
  * An instrument's daily closes for its line: the stored record, the fresh closes over it, and the quote's own session,
- * the last thirty sessions. A stored point on a day the market holds no session is dropped: a price dated by its own day
+ * the last `HISTORY_SESSIONS`. A stored point on a day the market holds no session is dropped: a price dated by its own day
  * rather than its session's had left Sunday "closes" in Brent's line that no bar of Yahoo's ever replaced.
  */
+/** A year of sessions (thirty until 2026-11-16): an instrument's own page draws its closes over a month, three and six
+ *  months and a year, each offered once the record fills it; the first refresh brings the three months Yahoo answers with. */
+export const HISTORY_SESSIONS = 260;
+
 export function mergeHistory(inst, old = [], fresh = [], quote = null) {
   const byDate = new Map();
   const usable = (p) => p && Number.isFinite(p.c) && isSessionDay(p.d, inst);
@@ -226,7 +230,7 @@ export function mergeHistory(inst, old = [], fresh = [], quote = null) {
   // A feed that answers with the price alone still adds its session's point.
   if (quote && Number.isFinite(quote.price) && isSessionDay(quote.session, inst)) byDate.set(quote.session, quote.price);
   const round = (v) => Number(v.toFixed(inst.decimals + 2));
-  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-30).map(([d, c]) => ({ d, c: round(c) }));
+  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-HISTORY_SESSIONS).map(([d, c]) => ({ d, c: round(c) }));
 }
 
 export function withChange(inst, quote) {

@@ -1,0 +1,80 @@
+---
+/**
+ * «بالأرقام»: the front's band of figure cards (2026-11-16, the owner on Sky News Arabia's «إنفوغرافيك» strip: "should
+ * the website have colorful interactive graphs or infographics like these"). Their posters are drawn by designers;
+ * ours are drawn by this file from what a story already carries, its «الأرقام» box: the headline over three of its
+ * figures, each large over its label, on the house green. No model call and no picture is made for it.
+ *
+ * A card is a story's own, so it is placed like any other module (index.astro): a story on a card is printed nowhere
+ * else on the front; «أرقام اليوم» in the numbers column takes one number each from other stories.
+ */
+import type { Article } from "@lib/articles";
+import { articleHref } from "@lib/articles";
+import { kindLabel } from "@lib/sections";
+import { headline, isolateNumbers } from "@lib/bidi";
+import { timeAgo } from "@lib/format";
+
+interface Card {
+  article: Article;
+  facts: { label: string; value: string }[];
+}
+interface Props {
+  cards: Card[];
+}
+const { cards } = Astro.props;
+---
+
+<section class="wrap row figcards" aria-labelledby="figcards-head">
+  <div class="section-head">
+    <h2 id="figcards-head">بالأرقام</h2>
+  </div>
+  <ul class="figcards__list" style={`--n:${cards.length}`}>
+    {cards.map(({ article, facts }) => (
+      <li class="figcard">
+        <p class="figcard__meta ui">
+          <span>{kindLabel(article.data.kind, article.data.section)}</span>
+          <time datetime={article.data.publishedAt} data-relative>{timeAgo(article.data.publishedAt)}</time>
+        </p>
+        <h3 class="figcard__title"><a href={articleHref(article)} set:html={headline(article.data.title)} /></h3>
+        <dl class="figcard__facts">
+          {facts.map((f) => (
+            <div class="figcard__fact">
+              <dt class="figcard__label ui" set:html={isolateNumbers(f.label)} />
+              <dd class="figcard__value" set:html={isolateNumbers(f.value)} />
+            </div>
+          ))}
+        </dl>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .figcards__list { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--col-gap); margin: 0; padding: 0; list-style: none; }
+  /* The plate: the house green as a field, as the section bar is, with the paper's colour as its ink; in the dark
+     theme the same two tokens give dark figures on the lighter green. */
+  .figcard { position: relative; display: flex; flex-direction: column; padding: 1.1rem 1.2rem 1.2rem; background: var(--green); color: var(--paper); transition: background-color 0.15s; }
+  .figcard:hover { background: var(--green-deep); }
+  .figcard__meta { display: flex; justify-content: space-between; gap: 0.75rem; font-size: var(--fs-xs); font-weight: 700; opacity: 0.85; }
+  .figcard__meta time { font-weight: 500; white-space: nowrap; }
+  .figcard__title { margin-top: 0.3rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
+  .figcard__title a { color: inherit; text-decoration: none; }
+  /* The headline is the link and the whole plate is its target. */
+  .figcard__title a::after { content: ""; position: absolute; inset: 0; }
+  .figcard__title a:focus-visible { outline: none; }
+  .figcard:has(a:focus-visible) { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .figcard__facts { margin: 0.8rem 0 0; display: grid; }
+  /* Value over label, the label first in the markup as a definition list requires (as the «الأرقام» box does). */
+  .figcard__fact { display: flex; flex-direction: column-reverse; padding-block: 0.6rem; border-top: 1px solid color-mix(in srgb, var(--paper) 35%, transparent); }
+  .figcard__value { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: var(--t-lead); line-height: 1.2; font-variant-numeric: tabular-nums lining-nums; }
+  .figcard__label { font-size: var(--fs-sm); font-weight: 500; line-height: 1.45; opacity: 0.9; }
+
+  @media (max-width: 719px) {
+    /* On a phone the cards run in one row the thumb pulls sideways, each stopping at its edge; the next card's edge
+       shows, so the row reads as more than one. */
+    .figcards__list { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+    .figcards__list::-webkit-scrollbar { display: none; }
+    .figcard { scroll-snap-align: start; }
+  }
+  @media (prefers-reduced-motion: reduce) { .figcard { transition: none; } }
+</style>

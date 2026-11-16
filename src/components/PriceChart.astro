@@ -1,0 +1,244 @@
+---
+/**
+ * An instrument's closes as a line the reader can question (2026-11-16, the owner on CNBC Arabia's market pages:
+ * "it shows extensive markets info and historical development, should we have something like this?"): the periods the
+ * record can fill as buttons, the close of any session under the pointer or finger, and the period's change, high and
+ * low beside it. Drawn from the daily closes the board already keeps (`history` in markets.json); nothing is fetched
+ * in the browser. The geometry is `priceChart()` (src/lib/price-chart.mjs), the same function here and in the script
+ * below, so a period chosen by the reader draws as the build would have drawn it. With no script the page shows the
+ * longest period, its figures and the table of closes.
+ */
+import { priceChart, periodsFor } from "@lib/price-chart.mjs";
+import { formatShortDate, formatDate } from "@lib/format";
+import type { Quote } from "@lib/markets";
+
+interface Props {
+  quote: Quote;
+}
+const { quote: q } = Astro.props;
+const closes = (q.history ?? []).filter((p) => Number.isFinite(p.c) && /^\d{4}-\d{2}-\d{2}$/.test(p.d));
+const periods = periodsFor(closes.length);
+// The longest period opens the page: the history is what the page is for.
+const open = periods[periods.length - 1];
+const shown = closes.slice(-open.sessions);
+const chart = priceChart(shown, { decimals: q.decimals });
+const noon = (d: string) => `${d}T12:00:00Z`;
+const day = (d: string) => formatShortDate(noon(d));
+const num = (v: number, decimals = q.decimals) => v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+const suffix = q.unit === "%" ? "%" : "";
+const signed = (v: number, text: string) => (/^[0.,]+$/.test(text) ? text : (v > 0 ? "+" : v < 0 ? "−" : "") + text);
+// A yield's change is read in points, everything else in per cent, as the board prints the day's move.
+const periodMove = (s: NonNullable<typeof chart>["stats"]) =>
+  q.changeMode === "abs" ? signed(s.change, Math.abs(s.change).toFixed(2)) : s.pct === null ? "" : `${signed(s.pct, Math.abs(s.pct).toFixed(2))}%`;
+const dirOf = (v: number) => (Math.abs(v) < 1e-9 ? "flat" : v > 0 ? "up" : "down");
+const data = JSON.stringify({
+  c: closes.map((p) => p.c),
+  d: closes.map((p) => day(p.d)),
+  decimals: q.decimals,
+  suffix,
+  abs: q.changeMode === "abs",
+  periods: periods.map((p) => ({ id: p.id, sessions: p.sessions })),
+});
+---
+
+{chart && (
+  <section class="pchart" data-pchart data-series={data} data-dir={dirOf(chart.stats.change)} aria-labelledby="pchart-head">
+    <div class="pchart__top">
+      <h2 id="pchart-head" class="module__head">مسار الإغلاق اليومي</h2>
+      {periods.length > 1 && (
+        <div class="pchart__periods ui" role="group" aria-label="الفترة">
+          {periods.map((p) => (
+            <button type="button" class="pchart__period" data-period={p.id} aria-pressed={p.id === open.id ? "true" : "false"}>{p.label}</button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="pchart__plot">
+      <svg class="pchart__svg" viewBox={`0 0 ${chart.width} ${chart.height}`} preserveAspectRatio="none" role="img" aria-label={`مسار إغلاق ${q.name} من ${formatDate(noon(chart.stats.from), { weekday: false })} إلى ${formatDate(noon(chart.stats.to), { weekday: false })}`}>
+        <g class="pchart__grid">
+          {chart.ticks.map((t) => <line x1="0" x2={chart.width} y1={t.y} y2={t.y} vector-effect="non-scaling-stroke" />)}
+        </g>
+        <path class="pchart__area" d={chart.area} />
+        <path class="pchart__line" d={chart.line} fill="none" vector-effect="non-scaling-stroke" />
+        <line class="pchart__guide" x1="0" x2="0" y1={chart.PAD.top} y2={chart.height - chart.PAD.bottom} vector-effect="non-scaling-stroke" />
+      </svg>
+      {/* The scale and the dates are text over the drawing, at the site's own sizes: inside a stretched drawing they
+          would stretch with it. */}
+      <ol class="pchart__ticks ui" aria-hidden="true">
+        {chart.ticks.map((t) => <li style={`top:${((t.y / chart.height) * 100).toFixed(2)}%`}><bdi dir="ltr">{num(t.v, chart.stepDecimals)}{suffix}</bdi></li>)}
+      </ol>
+      <span class="pchart__dot" hidden></span>
+      <div class="pchart__tip ui" role="status" hidden></div>
+    </div>
+    <ol class="pchart__dates ui" aria-hidden="true">
+      {chart.dates.map((m) => <li style={`left:${m.pct}%`}><bdi>{day(m.d)}</bdi></li>)}
+    </ol>
+
+    <dl class="pchart__stats">
+      <div class="pchart__stat">
+        <dt class="ui">التغير في الفترة</dt>
+        <dd class="ui" data-stat="move" data-dir={dirOf(chart.stats.change)}><bdi dir="ltr">{periodMove(chart.stats)}</bdi></dd>
+      </div>
+      <div class="pchart__stat">
+        <dt class="ui">أعلى إغلاق</dt>
+        <dd class="ui"><bdi dir="ltr" data-stat="high">{num(chart.stats.high)}{suffix}</bdi> <span class="pchart__when" data-stat="highDay">{day(chart.stats.highDay)}</span></dd>
+      </div>
+      <div class="pchart__stat">
+        <dt class="ui">أدنى إغلاق</dt>
+        <dd class="ui"><bdi dir="ltr" data-stat="low">{num(chart.stats.low)}{suffix}</bdi> <span class="pchart__when" data-stat="lowDay">{day(chart.stats.lowDay)}</span></dd>
+      </div>
+      <div class="pchart__stat">
+        <dt class="ui">الجلسات</dt>
+        <dd class="ui"><bdi dir="ltr" data-stat="sessions">{chart.stats.sessions}</bdi> <span class="pchart__when">منذ <span data-stat="from">{day(chart.stats.from)}</span></span></dd>
+      </div>
+    </dl>
+  </section>
+)}
+
+<script>
+  import { priceChart } from "@lib/price-chart.mjs";
+
+  for (const root of document.querySelectorAll<HTMLElement>("[data-pchart]")) {
+    let series: { c: number[]; d: string[]; decimals: number; suffix: string; abs: boolean; periods: { id: string; sessions: number }[] };
+    try { series = JSON.parse(root.dataset.series ?? ""); } catch { continue; }
+    const plot = root.querySelector<HTMLElement>(".pchart__plot")!;
+    const svg = root.querySelector<SVGSVGElement>(".pchart__svg")!;
+    const tip = root.querySelector<HTMLElement>(".pchart__tip")!;
+    const dot = root.querySelector<HTMLElement>(".pchart__dot")!;
+    const guide = root.querySelector<SVGLineElement>(".pchart__guide")!;
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>(".pchart__period")];
+    const num = (v: number, decimals = series.decimals) => v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    const signed = (v: number, text: string) => (/^[0.,]+$/.test(text) ? text : (v > 0 ? "+" : v < 0 ? "−" : "") + text);
+    const dirOf = (v: number) => (Math.abs(v) < 1e-9 ? "flat" : v > 0 ? "up" : "down");
+    const set = (name: string, text: string) => { const el = root.querySelector(`[data-stat="${name}"]`); if (el) el.textContent = text; };
+    let from = 0;
+    let chart: ReturnType<typeof priceChart> = null;
+
+    function draw(sessions: number) {
+      from = Math.max(0, series.c.length - sessions);
+      const closes = series.c.slice(from).map((c, i) => ({ c, d: series.d[from + i] }));
+      chart = priceChart(closes, { decimals: series.decimals });
+      if (!chart) return;
+      svg.querySelector(".pchart__line")!.setAttribute("d", chart.line);
+      svg.querySelector(".pchart__area")!.setAttribute("d", chart.area);
+      svg.querySelector(".pchart__grid")!.innerHTML = chart.ticks.map((t) => `<line x1="0" x2="${chart!.width}" y1="${t.y}" y2="${t.y}" vector-effect="non-scaling-stroke"/>`).join("");
+      const h = chart.height;
+      const decimals = chart.stepDecimals;
+      root.querySelector(".pchart__ticks")!.innerHTML = chart.ticks.map((t) => `<li style="top:${((t.y / h) * 100).toFixed(2)}%"><bdi dir="ltr">${num(t.v, decimals)}${series.suffix}</bdi></li>`).join("");
+      root.querySelector(".pchart__dates")!.innerHTML = chart.dates.map((m) => `<li style="left:${m.pct}%"><bdi>${m.d}</bdi></li>`).join("");
+      const s = chart.stats;
+      const dir = dirOf(s.change);
+      root.dataset.dir = dir;
+      const move = root.querySelector<HTMLElement>('[data-stat="move"]');
+      if (move) {
+        move.dataset.dir = dir;
+        move.innerHTML = `<bdi dir="ltr">${series.abs ? signed(s.change, Math.abs(s.change).toFixed(2)) : s.pct === null ? "" : signed(s.pct, Math.abs(s.pct).toFixed(2)) + "%"}</bdi>`;
+      }
+      set("high", num(s.high) + series.suffix);
+      set("highDay", s.highDay);
+      set("low", num(s.low) + series.suffix);
+      set("lowDay", s.lowDay);
+      set("sessions", String(s.sessions));
+      set("from", s.from);
+      hide();
+    }
+
+    function show(clientX: number) {
+      if (!chart) return;
+      const box = plot.getBoundingClientRect();
+      const ux = ((clientX - box.left) / box.width) * chart.width;
+      let i = 0;
+      for (let k = 1; k < chart.xy.length; k++) if (Math.abs(chart.xy[k][0] - ux) < Math.abs(chart.xy[i][0] - ux)) i = k;
+      const [px, py] = chart.xy[i];
+      guide.setAttribute("x1", String(px));
+      guide.setAttribute("x2", String(px));
+      guide.classList.add("is-on");
+      dot.hidden = false;
+      dot.style.left = `${(px / chart.width) * 100}%`;
+      dot.style.top = `${(py / chart.height) * 100}%`;
+      const c = chart.points[i].c;
+      const first = chart.points[0].c;
+      const since = series.abs ? signed(c - first, Math.abs(c - first).toFixed(2)) : first ? signed(c - first, Math.abs(((c - first) / Math.abs(first)) * 100).toFixed(2)) + "%" : "";
+      tip.innerHTML = `<span class="pchart__tip-day">${chart.points[i].d}</span><b><bdi dir="ltr">${num(c)}${series.suffix}</bdi></b>${i ? `<span class="pchart__tip-since"><bdi dir="ltr">${since}</bdi> منذ بداية الفترة</span>` : ""}`;
+      tip.hidden = false;
+      const w = tip.offsetWidth;
+      const left = Math.max(0, Math.min((px / chart.width) * box.width - w / 2, box.width - w));
+      tip.style.transform = `translate(${Math.round(left)}px, 0)`;
+    }
+    function hide() {
+      tip.hidden = true;
+      dot.hidden = true;
+      guide.classList.remove("is-on");
+    }
+
+    plot.addEventListener("pointermove", (e) => show(e.clientX));
+    plot.addEventListener("pointerdown", (e) => show(e.clientX));
+    plot.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hide(); });
+    document.addEventListener("pointerdown", (e) => { if (!plot.contains(e.target as Node)) hide(); });
+    for (const b of buttons) {
+      b.addEventListener("click", () => {
+        const p = series.periods.find((x) => x.id === b.dataset.period);
+        if (!p) return;
+        for (const o of buttons) o.setAttribute("aria-pressed", String(o === b));
+        draw(p.sessions);
+      });
+    }
+    const open = series.periods.find((p) => p.id === buttons.find((b) => b.getAttribute("aria-pressed") === "true")?.dataset.period) ?? series.periods[series.periods.length - 1];
+    draw(open.sessions);
+  }
+</script>
+
+<style>
+  .pchart { --line: var(--ink-3); }
+  .pchart[data-dir="up"] { --line: var(--up); }
+  .pchart[data-dir="down"] { --line: var(--down); }
+  .pchart__top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.9rem; }
+  .pchart__top .module__head { border-bottom: 0; margin-bottom: 0; flex: none; }
+  .pchart__periods { display: flex; gap: 0.25rem; }
+  .pchart__period { min-height: 2rem; padding: 0.2rem 0.7rem; border: 1px solid transparent; border-radius: 999px; background: none; font: inherit; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); cursor: pointer; white-space: nowrap; }
+  .pchart__period:hover { color: var(--ink); border-color: var(--rule); }
+  .pchart__period[aria-pressed="true"] { color: var(--paper); background: var(--green); }
+
+  /* Physical sides here on purpose: the drawing runs left to right in a right-to-left page, its scale at the right.
+     The plot keeps room at its end for the scale's figures, which sit on their gridlines outside the line's run. */
+  .pchart__plot { position: relative; height: clamp(13rem, 32vw, 20rem); margin-right: 4rem; touch-action: pan-y; cursor: crosshair; }
+  .pchart__svg { display: block; width: 100%; height: 100%; direction: ltr; overflow: visible; }
+  .pchart__grid :global(line) { stroke: var(--rule); stroke-width: 1; }
+  .pchart__line { stroke: var(--line); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .pchart__area { fill: var(--line); opacity: 0.08; }
+  .pchart__guide { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 3; visibility: hidden; }
+  .pchart__guide.is-on { visibility: visible; }
+  .pchart__ticks { position: absolute; inset-block: 0; left: 100%; width: 4rem; margin: 0; padding: 0; list-style: none; direction: ltr; }
+  .pchart__ticks :global(li) { position: absolute; left: 0.4rem; transform: translateY(-50%); font-size: var(--fs-xs); line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pchart__dot { position: absolute; width: 0.6rem; height: 0.6rem; margin: -0.3rem 0 0 -0.3rem; border-radius: 50%; background: var(--line); box-shadow: 0 0 0 2px var(--paper); pointer-events: none; }
+  .pchart__dot[hidden], .pchart__tip[hidden] { display: none; }
+  .pchart__tip { position: absolute; top: 0; left: 0; z-index: 2; display: grid; padding: 0.4rem 0.6rem; background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 2px 10px rgb(0 0 0 / 0.12); font-size: var(--fs-sm); line-height: 1.45; color: var(--ink); white-space: nowrap; pointer-events: none; }
+  .pchart__tip :global(.pchart__tip-day), .pchart__tip :global(.pchart__tip-since) { font-size: var(--fs-xs); color: var(--ink-3); }
+  .pchart__tip :global(b) { font-size: var(--fs-data); font-variant-numeric: tabular-nums; }
+  /* The dates run with the drawing, left to right, each centred under its session; the first and last keep inside. */
+  .pchart__dates { position: relative; height: 1.4rem; margin: 0.35rem 4rem 0 0; padding: 0; list-style: none; direction: ltr; }
+  .pchart__dates :global(li) { position: absolute; top: 0; transform: translateX(-50%); font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
+  .pchart__dates :global(li:first-child) { transform: none; }
+  .pchart__dates :global(li:last-child) { transform: translateX(-100%); }
+
+  .pchart__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 1rem 0 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .pchart__stat { padding: 0.6rem var(--col-gap) 0.65rem; border-inline-start: 1px solid var(--rule); min-width: 0; }
+  .pchart__stat:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .pchart__stat dt { font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.4; }
+  .pchart__stat dd { margin: 0.1rem 0 0; font-size: var(--fs-data); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .pchart__stat dd[data-dir="up"] { color: var(--up); }
+  .pchart__stat dd[data-dir="down"] { color: var(--down); }
+  .pchart__when { display: block; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); }
+  @media (max-width: 719px) {
+    .pchart__top { flex-wrap: wrap; row-gap: 0.4rem; padding-bottom: 0.5rem; }
+    .pchart__plot { margin-right: 3.4rem; }
+    .pchart__ticks { width: 3.4rem; }
+    .pchart__dates { margin-right: 3.4rem; }
+    /* Three dates on a phone, not five: «5 نوفمبر» ran into «16 نوفمبر» at 375px. */
+    .pchart__dates :global(li:nth-child(even)) { display: none; }
+    .pchart__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pchart__stat:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+    .pchart__stat:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+  }
+</style>

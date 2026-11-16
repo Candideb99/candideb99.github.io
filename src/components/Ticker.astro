@@ -22,6 +22,7 @@ import { articleHref } from "@lib/articles";
 import { kindLabel } from "@lib/sections";
 import { isolateNumbers } from "@lib/bidi";
 import { timeAgo } from "@lib/format";
+import Marquee from "./Marquee.astro";
 
 interface Props {
   items: Article[];
@@ -37,8 +38,8 @@ const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
   <div class="ticker-wrap" data-ticker>
     <div class="wrap ticker" role="region" aria-label={label}>
       <span class="ticker__label ui">{label}</span>
-      <div class="ticker__viewport">
-        <ul class="ticker__list">
+      <div class="ticker__viewport" data-ticker-viewport>
+        <ul class="ticker__list" data-ticker-list>
           {items.map((a) => (
             <li class="ticker__item">
               {lead === "time"
@@ -61,83 +62,7 @@ const { items, label = "آخر الأخبار", lead = "time" } = Astro.props;
   </div>
 )}
 
-<script is:inline>
-  (function () {
-    var wrap = document.querySelector("[data-ticker]");
-    if (!wrap) return;
-    var vp = wrap.querySelector(".ticker__viewport");
-    var list = wrap.querySelector(".ticker__list");
-    if (!vp || !list) return;
-    // A headline reached by the keyboard is brought fully into view, the strip moving or still: the browser leaves a
-    // half-shown link where it is, and the strip had stopped with the focused headline 156px past its edge (2026-11-09).
-    vp.addEventListener("focusin", function (e) {
-      if (e.target && e.target.scrollIntoView) e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
-    });
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // The list is printed twice; one period is the distance from the first headline to its
-    // duplicate (the items' widths plus their gaps), measured again once the web fonts are in,
-    // since the fallback face sets a different width.
-    var items = list.children;
-    var n = items.length / 2;
-    function period() {
-      return n >= 1 && items[n] ? Math.abs(items[n].getBoundingClientRect().left - items[0].getBoundingClientRect().left) : list.scrollWidth / 2;
-    }
-    var half = period();
-    if (half < 200) return;
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { half = period(); });
-    // …and again when the width crosses a type step (720px changes the strip's size: 4112 against 4134px, so every
-    // wrap after a phone was turned jumped 22px, 2026-10-29).
-    var measuring;
-    window.addEventListener("resize", function () {
-      clearTimeout(measuring);
-      measuring = setTimeout(function () { var p = period(); if (p >= 200) { half = p; pos = pos % half; } }, 200);
-    });
-    // The strip is scrolled by whole pixels, not transformed: text on a moving compositing layer
-    // blurs at fractional positions. Sixty pixels a second; at the end of one period the scroll
-    // position jumps back by exactly that period and the loop is seamless. In a right-to-left
-    // page the content overflows leftwards, so the scroll position runs negative.
-    var speed = 60;
-    var pos = 0;
-    var hover = false;
-    var focus = false;
-    var touch = false;
-    var touchTimer = null;
-    var last = null;
-    function held() { return hover || focus || touch; }
-    // Wherever the reader left it by hand is where it moves on from.
-    function adopt() {
-      pos = Math.abs(vp.scrollLeft) % half;
-      last = null;
-    }
-    // Only a mouse hovers: a tap fires an emulated mouseenter with no mouseleave until the next tap elsewhere, and the
-    // strip stood still after a finger had left it (2026-10-29).
-    vp.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") hover = true; });
-    vp.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hover = false; adopt(); } });
-    vp.addEventListener("focusin", function () { focus = true; });
-    vp.addEventListener("focusout", function () { focus = false; adopt(); });
-    vp.addEventListener("touchstart", function () { touch = true; clearTimeout(touchTimer); }, { passive: true });
-    function released() {
-      clearTimeout(touchTimer);
-      touchTimer = setTimeout(function () { touch = false; adopt(); }, 3000);
-    }
-    vp.addEventListener("touchend", released, { passive: true });
-    // A touch the browser takes over (a long press opens the link menu) ends in touchcancel, never touchend.
-    vp.addEventListener("touchcancel", released, { passive: true });
-    wrap.classList.add("ticker--moving");
-    function frame(now) {
-      if (!held() && !document.hidden) {
-        if (last !== null) pos += ((now - last) / 1000) * speed;
-        last = now;
-        if (pos >= half) pos -= half;
-        vp.scrollLeft = -Math.round(pos);
-      } else {
-        last = null;
-      }
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  })();
-</script>
+<Marquee />
 
 <style>
   .ticker-wrap { border-bottom: 1px solid var(--rule); background: var(--paper-2); }

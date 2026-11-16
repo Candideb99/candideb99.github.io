@@ -2,6 +2,7 @@
 import Base from "@layouts/Base.astro";
 import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
+import FigureCards from "@components/FigureCards.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { DESKS, desksOf } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
@@ -97,6 +98,23 @@ const sameFigure = (a: { value: string; label?: string }, b: { value: string; la
   for (const w of x) if (y.has(w)) shared++;
   return !x.size || !y.size || shared * 2 >= Math.min(x.size, y.size);
 };
+// «بالأرقام», the band of figure cards under the first screen (2026-11-16, FigureCards.astro): a story with three
+// telling figures or more is drawn as a card of its own, its headline over three of them in the box's own order. The
+// band runs with two cards or more. A card's story is placed, so it is printed nowhere below, and «أرقام اليوم» in
+// the column above (one number each from other stories) is chosen after it: without that list the numbers column
+// ended 400px above the centre column at 1366px (measured the day the band was built).
+const goodFact = (f: { label?: string; value: string }) => figureScore(f.value) >= 0 && (f.label ?? "").length > 0 && (f.label ?? "").length <= 48 && !isMarketQuote(`${f.label ?? ""} ${f.value}`);
+const cards = unplaced(articles)
+  .filter((a) => a.data.kind !== "explainer" && citable(a))
+  .map((a) => {
+    const facts = a.data.keyFacts.filter(goodFact).filter((f, i, all) => all.findIndex((g) => sameFigure(g, f)) === i);
+    const top = new Set([...facts].sort((x, y) => figureScore(y.value) - figureScore(x.value)).slice(0, 3));
+    return { article: a, facts: facts.filter((f) => top.has(f)) };
+  })
+  .filter((c) => c.facts.length === 3)
+  .slice(0, 3);
+if (cards.length < 2) cards.length = 0;
+place(cards.map((c) => c.article));
 const figures = unplaced(articles)
   .filter((a) => a.data.kind !== "explainer" && citable(a))
   .slice(0, 8)
@@ -199,8 +217,9 @@ const jsonLd = {
     <>
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
-        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} band={cards.length > 0} />
       </div>
+      {cards.length > 0 && <FigureCards cards={cards} />}
     </>
   ) : (
     <section class="wrap block">
