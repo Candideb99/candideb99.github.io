@@ -703,6 +703,11 @@ function chatEnv() {
   // With a subscription token, never the API key too: Claude Code uses a key ahead of a token, and the chat would bill
   // the API (the newsroom drops the key the same way, llm.mjs claudeCliEnv()).
   else if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
+  // 2026-11-17 (the owner: "did you take care of similar risks so no one can take over my claude secret"): the chat
+  // reads files made from strangers' pages (evidence/, articles), so Claude Code strips its own credential from every
+  // command it runs. A probe that day found the shell already refused to print the token or read .env without approval;
+  // this keeps the token out of a command's reach even if a command is ever allowed.
+  env.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB = "1";
   return env;
 }
 const CHAT_RULES = `You are the site assistant for خازندار, an automated Arabic economics newspaper owned by Ahmed.

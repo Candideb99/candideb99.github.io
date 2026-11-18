@@ -75,3 +75,16 @@ try {
 } finally {
   globalThis.fetch = originalFetch;
 }
+
+// The control room's chat reads text made from strangers' pages: its commands never see the Claude credential, its
+// newsroom keys are dropped, and .env is barred to its Read tool (2026-11-17).
+{
+  const { readFileSync } = await import("node:fs");
+  const room = readFileSync(new URL("./control-room.mjs", import.meta.url), "utf8");
+  const chatEnvBody = room.slice(room.indexOf("function chatEnv()"), room.indexOf("const CHAT_RULES"));
+  assert.match(chatEnvBody, /env\.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB = "1";\s*return env;/, "the chat's commands must not inherit the Claude token");
+  assert.match(chatEnvBody, /_KEY\|_TOKEN\|_SECRET/, "the chat must not carry the newsroom's keys");
+  assert.match(room, /"Read\(\.\/\.env\)"/, "the chat may not read .env");
+  assert.match(readFileSync(new URL("../pipeline/lib/llm.mjs", import.meta.url), "utf8"), /"--tools", ""/, "the newsroom's Claude calls run without tools");
+  console.log("ok  The chat's commands and the newsroom's model calls cannot reach the keys");
+}
