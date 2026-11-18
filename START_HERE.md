@@ -98,8 +98,8 @@ you ever need it.
 
 ## 2d. The control room — the editor's desk
 
-Double-click **`OPEN_CONTROL_ROOM.cmd`**. Four places in the left rail — **Desk**, **Stories**,
-**Settings**, **Change the site** — and the Desk opens first. It says, before anything else, that the
+Double-click **`OPEN_CONTROL_ROOM.cmd`**. Three places in the left rail — **Desk**, **Stories**,
+**Settings** — and the Desk opens first. It says, before anything else, that the
 newsroom is running on its own: the next automatic run, the last one, how many stories are live, and
 whether anything waits for you. Under that, **every part of the paper**: each section with today's
 and this week's count and its last story, so you can see at a glance that nothing is being neglected
@@ -127,7 +127,7 @@ each story's place in a *Where* column, and **Make it the lead** overrides the f
 when you want a story on top. The section is chosen by the editor model from the filing guide in
 `src/data/sections.json` (what belongs where, and the confusable cases); when it still gets one
 wrong, **Move to…** on the story's row re-files it in one click, live in a minute. If the same
-mistake keeps coming back, tell the *Change the site* tab and the guide gets a line.
+mistake keeps coming back, tell Claude Code and the guide gets a line.
 
 **Visitors.** Cloudflare → Workers & Pages → khazendar → Metrics → *View Web Analytics*: visits, pages,
 countries, referrers — free, no cookies, nothing installed on readers.
@@ -162,7 +162,7 @@ will not come back on the next run). **Publish everything above** does them all.
 
 **Refused by the copy desk in the last run.** Folded away under the drafts: the stories that were
 written and then refused, with the reason in Arabic. A source that keeps being refused is worth
-telling the *Change the site* tab about.
+telling Claude Code about.
 
 **Stories.** Every published story with where it sits, its score and its sources. The **⋯** menu on a
 row holds everything you can do to it: open it on the site, make it the lead, move it to another
@@ -178,7 +178,7 @@ whether every model is still free and available — nothing to do there unless i
 (Settings → Usage, or `/usage` inside Claude Code). The desk shows the other half: how many of
 today's stories Claude wrote.
 
-**Change the site.** A chat for changing how the paper *looks and works* — a font size, a new source,
+**Change the site.** Out of the menu since 18 November (Settings → Status keeps a link to it). A chat for changing how the paper *looks and works* — a font size, a new source,
 a rule the copy desk keeps applying wrongly. It is not for running the paper; the Desk is. It can
 change anything and cannot publish: what it changed is listed underneath with Publish / Preview / Undo.
 

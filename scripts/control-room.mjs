@@ -997,7 +997,7 @@ h2 .n{font-size:12.5px;font-weight:600;color:var(--paper);background:var(--ink);
 .light{display:flex;align-items:flex-start;gap:8px;color:var(--ink-2);line-height:1.35}.light i{flex:none;width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--rule)}
 .light.ok i{background:var(--green)}.light.no i{background:var(--red)}.light.warn i{background:var(--amber)}
 /* content */
-main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%}
+main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%;min-width:0}
 .pane{display:none}.pane.on{display:block}
 /* status band */
 .band{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
@@ -1025,6 +1025,30 @@ main{padding:32px var(--gutter) 64px;max-width:1520px;width:100%}
 .cov .c{font-size:13px;color:var(--ink-2);margin-top:6px}.cov .c b{color:var(--ink);font-weight:600}
 .cov .quiet .c{color:var(--amber)}
 .hubs{display:flex;gap:26px;flex-wrap:wrap;padding:12px 0 0;font-size:13px;color:var(--ink-2)}.hubs b{color:var(--ink);font-weight:600}
+/* the desk's alert, figures and folded detail */
+.alert{margin-top:14px;padding:12px 16px;background:var(--amber-tint);border:1px solid #e6d7a3;border-inline-start:3px solid var(--amber);border-radius:3px}
+.alert b{display:block;margin-bottom:4px}.alert ul{margin:0 0 6px;padding-inline-start:18px;color:var(--ink-2)}.alert li{margin:2px 0}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr)}
+.tiles > div{padding:2px 14px 14px 0;border-inline-end:1px solid var(--rule-2);margin-inline-end:14px}
+.tiles > div:last-child{border:0;margin:0}
+.tiles .v{font-size:24px;line-height:1.2;font-weight:600}.tiles .v.sm{font-size:17px;line-height:1.7}.tiles .warn .v{color:var(--amber)}
+.tiles .k{font-size:13px;color:var(--ink);margin-top:2px}.tiles .d{font-size:12.5px;color:var(--ink-3)}
+.tiles + .cov{border-top:1px solid var(--rule);padding-top:4px}
+details.fold{border-bottom:1px solid var(--rule-2)}
+details.fold > summary{cursor:pointer;padding:11px 0;font-weight:600;font-size:14px;list-style:none;display:flex;align-items:center;gap:8px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary::before{content:"";width:6px;height:6px;border-inline-end:1.6px solid var(--ink-3);border-bottom:1.6px solid var(--ink-3);transform:rotate(-45deg);transition:transform var(--t);flex:none}
+details.fold[open] > summary::before{transform:rotate(45deg)}
+details.fold > summary span{font-weight:400;color:var(--ink-3);font-size:13px}
+details.fold > .in{padding:0 0 14px 14px}
+details.fold ul.plain{margin:0;padding-inline-start:18px;font-size:13.5px;color:var(--ink-2)}details.fold ul.plain li{margin:4px 0}
+.folds{margin-top:36px;border-top:1px solid var(--rule)}
+/* settings' own tabs */
+.subnav{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--rule);margin-bottom:24px}
+.subnav button{background:none;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--ink-2);padding:9px 14px;margin-bottom:-1px}
+.subnav button:hover{background:var(--paper-2);color:var(--ink)}
+.subnav button.on{color:var(--ink);font-weight:600;border-bottom-color:var(--green)}
+.sub{display:none;max-width:760px}.sub.on{display:block}
 /* two-column desk */
 .cols{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:56px;align-items:start;margin-top:36px}
 @media (max-width:1180px){.cols{grid-template-columns:1fr}}
@@ -1115,7 +1139,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   .rail .mark{font-size:26px;margin:0 8px 0 0}.rail .sub{display:none}.rail .foot{display:none}
   main{padding:20px 16px 48px}
   .band{grid-template-columns:1fr 1fr}.band > div{border:0;margin:0;padding:12px 0}
-  .cov{grid-template-columns:1fr 1fr 1fr}
+  .sched li{grid-template-columns:1fr;gap:0}.sched li span:last-child{white-space:normal}
+  .cov{grid-template-columns:1fr 1fr 1fr}.tiles{grid-template-columns:1fr 1fr}.tiles > div{border:0;margin:0}
   .draft{grid-template-columns:1fr}.draft img,.draft .noimg{width:100%;height:160px}
   table.list th:nth-child(3),table.list td:nth-child(3),table.list th:nth-child(4),table.list td:nth-child(4){display:none}
   .bar input[type=text]{min-width:0;width:100%}
@@ -1127,7 +1152,6 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <a class="nav on" data-tab="desk" href="#desk">${ICON.desk}<span>Desk</span></a>
   <a class="nav" data-tab="stories" href="#stories">${ICON.stories}<span>Stories</span></a>
   <a class="nav" data-tab="set" href="#set">${ICON.settings}<span>Settings</span></a>
-  <a class="nav" data-tab="chat" href="#chat">${ICON.change}<span>Change the site</span></a>
   <div class="foot">
     <div class="light" id="deploy-light"><i></i><span>Checking the last deploy…</span></div>
     <a href="${LIVE}" target="_blank">${ICON.out}<span>Open the live site</span></a>
@@ -1156,36 +1180,40 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <span class="m">A publish that could not reach GitHub, or changes saved on this laptop and not sent yet. Until they are sent, readers do not have them; a change to the site's code is checked first.</span>
   </div>
 
-  <p class="m" id="checks" style="margin:10px 0 0"></p>
-  <details id="lessons-box" style="display:none;margin:6px 0 0"><summary class="m" id="lessons-sum"></summary><ol class="m" id="lessons-list" style="margin:6px 0 0;padding-inline-start:20px"></ol></details>
-  <p class="m" id="models-used" style="margin:10px 0 0"></p>
-  <h2>Every part of the paper</h2>
+  <div class="alert" id="needs" style="display:none"><b>Needs you</b><ul id="needs-list"></ul><a class="m" href="${REPO_URL}/issues" target="_blank">Open the list on GitHub →</a></div>
+
+  <div id="drafts-wrap" style="display:none">
+    <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
+    <div id="drafts"></div>
+    <div id="drafts-all" style="display:none;margin-top:12px"><button class="go" onclick="publishAll()">Publish everything above</button></div>
+  </div>
+
+  <h2>Write something now</h2>
+  <div class="get">
+    <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
+    <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button></div>
+    <p class="m" style="margin:2px 0 0">Each is written as a draft and waits here for your approval. Four news stories take about half an hour; the others 10–15 minutes.</p>
+  </div>
+
+  <h2>This week</h2>
+  <div class="tiles" id="tiles"></div>
   <div class="cov" id="cov"></div>
   <div class="hubs" id="hubs"></div>
 
   <h2>Latest on the site <a href="#stories" class="m" style="font-weight:400;margin-inline-start:10px">every story, with search →</a></h2>
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="latest"></tbody></table>
 
-  <div class="cols">
-    <div>
-      <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
-      <div id="drafts"><div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for below will appear here for approval first.</div></div>
-      <div id="drafts-all" style="display:none;margin-top:12px"><button class="go" onclick="publishAll()">Publish everything above</button></div>
-    </div>
-    <div>
-      <h2>Need something now?</h2>
-      <div class="get">
-        <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
-        <div class="row"><button class="quiet" onclick="run('dry')">Test one story (dry run)</button><span class="m">Uses the local controller and reports the result without saving an article.</span></div>
-        <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label></div>
-        <div class="row"><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button><button class="quiet" onclick="run('feature')" title="Stopped on 19 October; runs only when you press this">In depth (في العمق, stopped)</button><button class="quiet" onclick="run('pull')">Sync from GitHub</button></div>
-        <p class="m" style="margin:2px 0 0">These write drafts for your approval. News takes about half an hour for four stories; the others 10–15 minutes.</p>
-      </div>
-      <h2>What runs on its own</h2>
-      <ul class="sched" id="sched"></ul>
-      <p class="m" style="margin-top:10px">All of it in the cloud, whether this laptop is on or not. The paper's sections are balanced by rule: a section with nothing for three days takes the next good story.</p>
-      <div id="rejected-box" style="display:none"><h2>Not published from the last run</h2><div id="rejected" class="m"></div></div>
-    </div>
+  <div class="folds">
+    <details class="fold" id="rejected-box" style="display:none"><summary>Not published from the last run <span id="rejected-n"></span></summary><div class="in m" id="rejected"></div></details>
+    <details class="fold"><summary>What runs on its own <span>the cloud's schedule</span></summary><div class="in"><ul class="sched" id="sched"></ul><p class="m" style="margin:10px 0 0">All of it in the cloud, whether this laptop is on or not. A section with nothing for three days takes the next good story.</p></div></details>
+    <details class="fold" id="checks-box" style="display:none"><summary>The checks in detail <span>daily, no Claude unless something is wrong</span></summary><div class="in"><ul class="plain" id="checks"></ul></div></details>
+    <details class="fold" id="lessons-box" style="display:none"><summary><b id="lessons-sum" style="font-weight:600"></b></summary><div class="in"><ol class="m" id="lessons-list" style="margin:0;padding-inline-start:20px"></ol></div></details>
+    <details class="fold"><summary>Other tools <span>a dry run, a sync, the stopped «في العمق»</span></summary><div class="in get">
+      <div class="row"><button class="quiet sm" onclick="run('dry')">Test one story (dry run)</button><span class="m">Reports the result without saving an article.</span></div>
+      <div class="row"><button class="quiet sm" onclick="run('pull')">Sync from GitHub</button><span class="m">Takes the cloud's newest stories onto this laptop.</span></div>
+      <div class="row"><button class="quiet sm" onclick="run('feature')">In depth (في العمق)</button><span class="m">Stopped on 19 October; runs only when you press this.</span></div>
+      <p class="m" id="models-used" style="margin:6px 0 0"></p>
+    </div></details>
   </div>
 </section>
 
@@ -1201,25 +1229,31 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   </div>
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="live"></tbody></table>
   <p id="f-more" style="display:none;margin:14px 0 0"><button class="quiet" onclick="showMore()">Show more</button> <span class="m" id="f-more-note"></span></p>
-  <p class="m" style="margin-top:14px"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, a reading beside them, a second story, «الأخبار في سطور», the top stories, or its section page (and الأحدث). The section blocks lower on the front page are not shown here. Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p>
+  <details class="fold" style="margin-top:14px"><summary>What «Where» means</summary><p class="in m" style="margin:0"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, a reading beside them, a second story, «الأخبار في سطور», the top stories, or its section page (and الأحدث). The section blocks lower on the front page are not shown here. Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p></details>
 </section>
 
 <!-- ================================ SETTINGS ================================ -->
 <section class="pane" id="pane-set">
-  <h2>Right now</h2>
-  <div id="now" class="dots" style="font-size:15px;margin-bottom:8px">checking…</div>
-  <div class="grid2">
-    <div class="set">
+  <div class="subnav" id="setnav"><button type="button" data-sub="status" class="on">Status</button><button type="button" data-sub="publish">Publishing</button><button type="button" data-sub="model">AI model</button><button type="button" data-sub="keys">Keys</button></div>
+    <div class="sub on" data-sub="status">
+      <h2>Right now</h2>
+      <div id="now" class="dots" style="font-size:15px;margin-bottom:8px">checking…</div>
+      <h2>Is everything switched on?</h2>
+      <div id="switches" class="m dots">checking…</div>
+      <p class="m" style="margin-top:22px">The chat that changes the site's code left the menu on 18 November; it is still <a href="#chat">here</a> if it is ever wanted.</p>
+    </div>
+    <div class="sub set" data-sub="publish">
       <h2>Who decides what goes live</h2>
       <label><span>The automatic runs in the cloud</span>
         <select id="reviewSel"><option value="0">Publish on their own — the paper never waits for me</option><option value="1">Write drafts and wait — I approve every story from the desk</option></select></label>
       <button class="go" onclick="saveReview()">Apply</button> <span class="m" id="reviewsaved"></span>
       <p class="m">Runs you start from the desk always wait for you. This is only about the cloud.</p>
+    </div>
+    <div class="sub set" data-sub="model">
+      <h2>Who writes the website</h2>
+      <p class="m">One provider chooses, writes, checks and edits the stories. The others wait, their keys kept.</p>
 
-      <h2>Who controls &amp; writes the website</h2>
-      <p class="m">The active AI provider controls story selection, writing, fact-checking, and the copy desk. When one provider is active, all other providers stay in <b>idle mode</b> on standby with their credentials preserved.</p>
-
-      <label><span>Active AI Controller</span>
+      <label><span>Provider</span>
         <select id="activeProvider" onchange="onProviderChange()">
           <option value="codex">ChatGPT subscription — Codex (no API bill)</option>
           <option value="gemini">Google Gemini</option>
@@ -1247,7 +1281,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
-      <label id="effortRow"><span>How hard Claude thinks when it chooses photographs (effort; writing runs at Claude's default, since at Extra the writer outran its time limit; Max is not offered, it uses up the plan fastest)</span>
+      <label id="effortRow"><span>How hard Claude thinks when it chooses photographs <span class="m">— writing stays at Claude's default: at Extra the writer ran out of time. Max is not offered; it uses up the plan fastest.</span></span>
         <select id="claudeEffort">
           <option value="low">Low</option>
           <option value="medium">Medium</option>
@@ -1256,7 +1290,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
-      <label><span>Model for the "Change the site" chat</span>
+      <label style="display:none"><span>Model for the site-change chat</span>
         <select id="chatModel">
           <option value="">Default (same as newsroom)</option>
           <option value="claude-opus-5-5">Claude Opus 5.5</option>
@@ -1265,12 +1299,15 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </select>
       </label>
 
-      <button class="go" id="applyWriters" onclick="saveWriters()">Apply Controller &amp; Model</button> <span class="m" id="writersaved"></span>
+      <button class="go" id="applyWriters" onclick="saveWriters()">Apply</button> <span class="m" id="writersaved"></span>
       <button class="quiet" type="button" onclick="saveWriters(true)">Use locally for testing</button>
-      <p class="m">Apply updates this laptop and GitHub cloud runs. Use locally for testing changes this laptop only; start a dry run from the Desk to preview a story.</p>
-
-      <h2>API Keys &amp; Credentials Vault</h2>
+      <p class="m">Apply changes this laptop and the cloud's runs. «Use locally for testing» changes this laptop only.</p>
+    </div>
+    <div class="sub set" data-sub="keys">
+      <h2>The provider in use</h2>
+      <p style="margin:0 0 12px"><label style="font-weight:400;display:flex;gap:8px;align-items:center;margin:0"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Send a key I save to GitHub too, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
       <div id="keystatus" style="display:none"></div>
+      <div id="keys-active">
 
       <div class="keycard" id="card_codex">
         <div class="khead">
@@ -1377,7 +1414,10 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </div>
       </div>
 
-      <h3 style="margin:18px 0 4px">Photo libraries</h3>
+      </div>
+      <details class="fold" id="keys-idle" style="margin-bottom:8px"><summary>Other providers <span>not in use, their keys kept</span></summary></details>
+
+      <h2>Photo libraries</h2>
       <p class="m" style="margin:0 0 8px">Free keys that widen the picture desk's search. Unsplash: sign in at unsplash.com/developers, create an app, and paste its Access Key here.</p>
       <div class="keycard" id="card_pexels">
         <div class="khead">
@@ -1400,10 +1440,9 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
         </div>
       </div>
 
-      <p style="margin-top:14px"><label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k_gh" checked style="width:auto;margin:0"> Also send it to GitHub, so the cloud can use it</label> <span class="m" id="k_note"></span></p>
     </div>
-    <div class="set">
-      <h2>The newspaper</h2>
+    <div class="sub set" data-sub="publish">
+      <h2>The site's details</h2>
       <label><span>Contact email <span class="m">— AdSense will not approve the site without one</span></span><input type="email" id="contactEmail" value="${esc(current.contactEmail)}"></label>
       <label><span>Publisher name</span><input type="text" id="publisher" value="${esc(current.publisher)}"></label>
       <label><span>AdSense publisher id <span class="m">— looks like ca-pub-1234567890</span></span><input type="text" id="adsenseClient" value="${esc(current.adsenseClient)}"></label>
@@ -1411,17 +1450,13 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <label><span>Visible to search engines?</span>
         <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
       <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
-
-      <h2>Is everything switched on?</h2>
-      <div id="switches" class="m dots">checking…</div>
     </div>
-  </div>
 </section>
 
 <!-- ================================ CHAT ================================ -->
 <section class="pane" id="pane-chat">
   <h2>Change the site</h2>
-  <p class="m" style="margin:0 0 12px">For changing how the paper <b>looks and works</b> — the design, a page, the newsroom's rules, its sources. Running the paper is done on the Desk. Arabic or English: <i>"الخط صغير في الموبايل"</i>, <i>"add the Saudi central bank feed"</i>, <i>"why does the copy desk keep refusing Al Jazeera stories?"</i></p>
+  <p class="m" style="margin:0 0 12px"><a href="#set">← Settings</a> · For changing how the paper <b>looks and works</b> — the design, a page, the newsroom's rules, its sources. Running the paper is done on the Desk. Arabic or English: <i>"الخط صغير في الموبايل"</i>, <i>"add the Saudi central bank feed"</i>, <i>"why does the copy desk keep refusing Al Jazeera stories?"</i></p>
   <div id="thread"><div class="empty" id="thread-empty">Ask below. The answer appears right here, in this thread, usually within a minute — with a line for each thing it does on the way.</div></div>
   <div class="ask"><textarea id="msg" placeholder="Type here, then press Enter…"></textarea><button class="go" id="send" onclick="ask()">Send</button></div>
   <div class="chg" id="changes" style="display:none">
@@ -1468,6 +1503,11 @@ document.querySelectorAll('.rail a.nav').forEach(function(a){a.onclick=function(
 show((location.hash||'#desk').slice(1));
 window.addEventListener('hashchange',function(){show((location.hash||'#desk').slice(1))});
 
+// ---- settings' own tabs (the owner, 2026-11-18: "organize other categories like settings")
+function showSub(name){document.querySelectorAll('#setnav button').forEach(function(b){b.classList.toggle('on',b.dataset.sub===name)});document.querySelectorAll('#pane-set .sub').forEach(function(d){d.classList.toggle('on',d.dataset.sub===name)});try{sessionStorage.setItem('desk-sub',name)}catch(e){}}
+document.querySelectorAll('#setnav button').forEach(function(b){b.onclick=function(){showSub(b.dataset.sub)}});
+try{var sub0=sessionStorage.getItem('desk-sub');if(sub0&&document.querySelector('#setnav button[data-sub="'+sub0+'"]'))showSub(sub0)}catch(e){}
+
 // ---- state
 var LIVE=[],wasRunning=false,timer=null;
 function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){try{render(s);}catch(e){console.error('Render error:',e);}clearTimeout(timer);timer=setTimeout(refresh,s&&s.job&&s.job.running?3000:20000)}).catch(function(err){console.error('State fetch error:',err);timer=setTimeout(refresh,5000)})}
@@ -1484,7 +1524,7 @@ function render(s){
       var id=esc(m.id).replace(/^claude-cli\\//,'Claude ').replace(/^gemini\\//,'Gemini ').replace(/^openai\\//,'OpenAI ').replace(/^qwen\\//,'Qwen ').replace(/^openrouter\\//,'OpenRouter ').replace(/:free$/,'');
       return '<code>'+id+'</code> ×'+m.n;
     });
-    used.innerHTML=cleanList.length?'Wrote the last 24 h: '+cleanList.join(' · '):'';
+    used.innerHTML=cleanList.length?'Models that wrote the last 24 h: '+cleanList.join(' · '):'';
   }
   var quietCut=Date.now()-72*36e5;
   var NEWS=['economy','markets','energy','companies','technology'];
@@ -1508,12 +1548,14 @@ function render(s){
   var ndEl = document.getElementById('n-drafts');
   if (ndEl) ndEl.textContent=s.drafts.length;
   var dEl = document.getElementById('drafts');
-  setHtml(dEl,s.drafts.length?s.drafts.map(draft).join(''):'<div class="empty">Nothing waits for you. The newsroom is publishing on its own; anything you ask for on the right appears here for approval first.</div>');
+  setHtml(dEl,s.drafts.map(draft).join(''));
+  var dwEl=document.getElementById('drafts-wrap');if(dwEl)dwEl.style.display=s.drafts.length?'block':'none';
   var daEl = document.getElementById('drafts-all');
   if (daEl) daEl.style.display=s.drafts.length>1?'block':'none';
   var rej=(s.lastRun&&s.lastRun.report||[]).filter(function(x){return /^rejected|^skip|^held|^error|^deferred/.test(x.outcome||'')});
   var rbEl = document.getElementById('rejected-box');
   if (rbEl) rbEl.style.display=rej.length?'block':'none';
+  var rnEl=document.getElementById('rejected-n');if(rnEl)rnEl.textContent=rej.length?rej.length+' stor'+(rej.length===1?'y':'ies'):'';
   var rjEl = document.getElementById('rejected');
   if (rjEl) rjEl.innerHTML=rej.map(function(x){return '<p><span class="ar" style="display:block;font-size:15px;color:var(--ink)">'+esc(x.title||x.headline||'')+'</span>'+esc((x.outcome||'').replace(/^rejected (after revision|by critic after revision \\(\\d+\\)): /,'').slice(0,200))+'</p>'}).join('');
   LIVE = s.live;
@@ -1531,12 +1573,27 @@ function renderChecks(s){
     if(q.styleFaultsPerStory!=null)parts.push('<b>Style faults</b> '+q.styleFaultsPerStory+' a story'+(b&&b.styleFaultsPerStory!=null?' (last week '+b.styleFaultsPerStory+')':''))}
   if(h){var ph=h.photos||{};parts.push('<b>Photos</b> '+(ph.pending||(ph.redo&&ph.redo.length)?(ph.pending||0)+' being checked'+(ph.redo&&ph.redo.length?', '+ph.redo.length+' replaced':''):'all in place'));
     if(h.owner&&h.owner.length)parts.push('<b style="color:var(--amber)">Needs you: '+h.owner.map(esc).join('; ')+'</b>')}
-  document.getElementById('checks').innerHTML=parts.length?'Daily checks, no Claude unless something is wrong: '+parts.join(' · '):'';
+  // Figures first, the sentences folded under «The checks in detail» (the owner, 2026-11-18: "it has a lot of text which
+  // is confusing"); what waits for him stands alone in the amber box.
+  var tile=function(v,k,d,warn){return '<div'+(warn?' class="warn"':'')+'><div class="v'+(typeof v==='number'?'':' sm')+'">'+v+'</div><div class="k">'+k+'</div><div class="d">'+(d||'&nbsp;')+'</div></div>'},tiles=[];
+  if(q){var o2=q.outcomes||{},p2=q.precheck||{},s2=q.secondLook||{},held=(p2.held||0)+(o2.correctionsStuck||0);
+    tiles.push(tile(p2.checked||0,'stories checked before publication',(p2.clean||0)+' clean · '+(p2.repaired||0)+' repaired'));
+    tiles.push(tile(o2.repairedBeforePublication||0,'errors fixed before readers saw them',''));
+    tiles.push(tile(s2.corrected||0,'corrected after publication',(s2.read||0)+' read a second time'));
+    tiles.push(tile(held,'held or left unresolved',held?'see the checks in detail, below':'nothing stuck',held>0))}
+  if(h){var p3=h.photos||{},busyPh=(p3.pending||0)+((p3.redo&&p3.redo.length)||0);tiles.push(busyPh?tile(busyPh,'photographs being checked',p3.redo&&p3.redo.length?p3.redo.length+' replaced':''):tile('All in place','photographs',''))}
+  setHtml(document.getElementById('tiles'),tiles.join(''));
+  var own=(h&&h.owner)||[],canary=Boolean(s.quality&&s.quality.evidence&&s.quality.evidence.canary&&s.quality.evidence.canary.alarm);
+  document.getElementById('needs').style.display=own.length||canary?'block':'none';
+  setHtml(document.getElementById('needs-list'),own.map(function(x){var t=String(x).replace(/^خازندار:\\s*/,'');return '<li>'+esc(t.charAt(0).toUpperCase()+t.slice(1))+'</li>'}).join('')+(canary?'<li>The fact-check missed planted errors</li>':''));
+  parts=parts.filter(function(p){return p.indexOf('Needs you:')<0});
+  var E0=s.quality&&s.quality.evidence;
+  if(E0&&E0.vsNone){var n0=E0.vsNone,d0=E0.lastDecision;parts.push('<b>Do the lessons help?</b> '+(n0.e>=20?'<b>proven</b>':'not proven yet')+': better in '+n0.better+' paired stories, worse in '+n0.worse+' (evidence ×'+n0.e.toFixed(1)+', 20 proves)');if(d0)parts.push('<b>Weekly decision</b> '+esc(d0.at.slice(0,10))+': '+({promote:'the lessons were promoted',revert:'reverted to the last approved lessons',keep:'kept, unproven',frozen:'frozen, the fact-check is in doubt'}[d0.decision]||esc(d0.decision)))}
+  document.getElementById('checks-box').style.display=parts.length?'block':'none';
+  setHtml(document.getElementById('checks'),parts.map(function(p){return '<li>'+p+'</li>'}).join(''));
   var L=s.lessons,act=L&&L.lessons?L.lessons.filter(function(l){return l.status==='active'}):[];
-  var E=s.quality&&s.quality.evidence;
-  if(E&&E.vsNone){var n=E.vsNone,d=E.lastDecision;document.getElementById('checks').innerHTML+=' · <b>Do the lessons help?</b> '+(n.e>=20?'<b>proven</b>':'not proven yet')+': better in '+n.better+' paired stories, worse in '+n.worse+' (evidence ×'+n.e.toFixed(1)+', 20 proves)'+(d?' · <b>Weekly decision</b> '+esc(d.at.slice(0,10))+': '+({promote:'the lessons were promoted',revert:'reverted to the last approved lessons',keep:'kept, unproven',frozen:'frozen, the fact-check is in doubt'}[d.decision]||esc(d.decision)):'')+(E.canary&&E.canary.alarm?' · <b style="color:var(--amber)">The fact-check missed planted errors</b>':'')}
   document.getElementById('lessons-box').style.display=act.length?'block':'none';
-  if(act.length){document.getElementById('lessons-sum').innerHTML='<b>What the newsroom has learned</b>: '+act.length+' lessons from '+((L.used||[]).length)+' mistakes it printed and corrected; the writer reads them before every story';
+  if(act.length){document.getElementById('lessons-sum').innerHTML='What the newsroom has learned <span>'+act.length+' lessons from '+((L.used||[]).length)+' corrected mistakes; the writer reads them before every story</span>';
     document.getElementById('lessons-list').innerHTML=act.sort(function(a,b){return b.seen-a.seen}).map(function(l){return '<li>'+esc(l.rule)+' <span style="color:var(--ink-3)">('+esc(l.class)+', seen '+l.seen+'×)</span></li>'}).join('')}
 }
 function draft(a){var writer=(a.models&&a.models.writer)?String(a.models.writer).split('→').pop().trim().split('/').pop():'';return '<div class="draft">'+(a.image?'<img src="'+esc(a.image)+'" alt="">':'<div class="noimg">no photo</div>')+'<div><h3>'+esc(a.title)+'</h3><p>'+esc(a.subtitle)+'</p><div class="meta">'+esc(SECTION[a.section]||a.section)+' · '+esc(KIND[a.kind]||a.kind)+' · '+scoreTag(a.score)+' '+esc(a.verdict)+(a.hasChart?' · chart':'')+(a.hasTable?' · table':'')+' · '+a.sources.length+' sources'+(a.committed?' · from the cloud':'')+(writer?' · <span style="opacity:0.75" title="Writer: '+esc(a.models.writer)+'">'+esc(writer)+'</span>':'')+'</div><div class="acts"><button class="quiet sm" data-file="'+esc(a.file)+'" onclick="openPreview(this.dataset.file)">Read it</button><button class="go sm" data-file="'+esc(a.file)+'" onclick="publish(this.dataset.file)">Publish</button><button class="danger sm" data-file="'+esc(a.file)+'" data-slug="'+esc(a.slug)+'" onclick="discard(this.dataset.file,this.dataset.slug)">Discard</button></div></div></div>'}
@@ -1679,8 +1736,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   if(nowEl)nowEl.innerHTML=
     '<p><b>This laptop:</b> '+esc(curName)+' ('+esc(curModel)+')</p>'+
     '<p><b>Cloud controller:</b> '+(known?esc(provNames[cloud.activeProvider]||cloud.activeProvider)+' ('+esc(cloud.newsroomModel)+')':'<span class="no">unknown: GitHub did not answer this laptop (check the network, or run gh auth login)</span>')+'</p>'+
-    '<p><b>The cloud runs:</b> '+(!known?'unknown':PAUSED?'are <span class="no">paused</span>':cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>'+
-    '<p><b>Providers Status:</b> '+provSummary.join(' · ')+'</p>';
+    '<p><b>The cloud runs:</b> '+(!known?'unknown':PAUSED?'are <span class="no">paused</span>':cloud.review?'write drafts and wait for you':'publish on their own')+'.</p>';
 
   var pSel = document.getElementById('activeProvider');
   if (pSel) pSel.value = h.activeProvider;
@@ -1691,7 +1747,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
   for (var id in h.providers) {
     var pr = h.providers[id];
     var card = document.getElementById('card_' + id);
-    if (card) card.className = 'keycard' + (pr.active ? ' active' : '');
+    if (card) { card.className = 'keycard' + (pr.active ? ' active' : ''); var home = document.getElementById(pr.active ? 'keys-active' : 'keys-idle'); if (home && card.parentNode !== home) home.appendChild(card); }
     var b = document.getElementById('badge_' + id);
     if (b) {
       b.className = 'badge ' + (pr.active ? 'active' : 'idle');
@@ -1753,7 +1809,7 @@ function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(f
       dot(h.ghOk, 'This laptop can talk to GitHub', h.ghOk ? 'gh is signed in' : 'GitHub did not answer: check the network, or run gh auth login') +
       dot(known ? cloud.editorOn && cloud.hasKey : null, 'The daily editor', !known ? 'unknown: GitHub did not answer' : !cloud.editorOn ? 'switched off' : cloud.hasKey ? 'switched on with active key' : 'switched on but has no key, so it skips') +
       (h.editorReal ? dot(h.editorReal.working, 'The daily editor is actually doing work', 'its last run took ' + h.editorReal.seconds + 's' + (h.editorReal.working ? '' : ' — a real round takes minutes')) : '') +
-      dot(h.chatReady, 'The "Change the site" tab', h.chatReady ? (h.chatMode === 'claude' ? 'ready (Claude Code)' : 'answers questions only (' + esc(curName) + '): changing the site needs Claude Code with a Claude token') : h.chatMode === 'claude' ? 'needs Claude Code installed and a Claude token or key' : 'needs an active key');
+      '';
   }
 }).catch(function(err){ console.error('Health fetch failed:', err); });}
 loadHealth();
