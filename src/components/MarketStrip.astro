@@ -10,10 +10,17 @@
  *   each with its level and its move, as one moving line (Marquee.astro). Two moving lines stacked on the other pages
  *   would be noise, so the strip stays still there.
  *
+ * The moving line's look, 2026-11-18 (the owner: "does the moving markets prices bar needs better look?"). It was the
+ * still strip set in motion: 28 instruments in one unbroken run of 12.5px figures, nothing saying where the Arab indices
+ * end and the currencies begin, its label plain text beside the green plate «آخر الأخبار» wears on every other page, and
+ * items cut hard at both edges. Now each group opens with its name on a green rule, the label is the same green plate
+ * as the news line's, the figures are a size up and of equal width (tabular), and the line fades at its two edges.
+ * The still strip is unchanged.
+ *
  * Every item links to its instrument's own page. The label keeps saying how old the prices are: the line moves, the
  * prices are the last refresh's.
  */
-import { board, quotes, STRIP_IDS, STRIP_GROUPS, formatPrice, formatMove, direction, whenLabel, DIRECTION_LABEL, stripShowsLevel, quoteHref } from "@lib/markets";
+import { board, quotes, STRIP_IDS, STRIP_GROUPS, GROUP_NAMES, formatPrice, formatMove, direction, whenLabel, DIRECTION_LABEL, stripShowsLevel, quoteHref } from "@lib/markets";
 import site from "@data/site.json";
 import { timeAgo } from "@lib/format";
 import Marquee from "./Marquee.astro";
@@ -31,6 +38,8 @@ const items = moving
   : quotes(STRIP_IDS.filter((id) => !omit.includes(id)));
 // A moving line is printed twice so its loop has no seam; the second printing is for the eye only.
 const printings = moving ? [false, true] : [false];
+// In the moving line the first instrument of each group carries the group's name.
+const opens = (i: number) => moving && (i === 0 || items[i - 1].group !== items[i].group);
 ---
 
 {items.length > 0 && (
@@ -43,10 +52,11 @@ const printings = moving ? [false, true] : [false];
       <a class="markets__label" href="/markets/data/">الأسواق{board.updatedAt && <span class="markets__label-time"> <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time></span>}</a>
       <div class="markets__viewport" data-ticker-viewport={moving ? "" : undefined}>
         <ul class="markets__list" data-ticker-list={moving ? "" : undefined}>
-          {printings.map((copy) => items.map((q) => {
+          {printings.map((copy) => items.map((q, i) => {
             const dir = direction(q);
             return (
-              <li class="markets__item" data-id={q.id} aria-hidden={copy ? "true" : undefined}>
+              <li class="markets__item" data-id={q.id} data-group-start={opens(i) ? "" : undefined} aria-hidden={copy ? "true" : undefined}>
+                {opens(i) && <span class="markets__group">{GROUP_NAMES[q.group]}</span>}
                 <a class={q.stale ? "q q--stale" : "q"} href={quoteHref(q)} tabindex={copy ? -1 : undefined} title={`${q.name}${q.note ? ` (${q.note})` : ""}: ${formatPrice(q)}، التغير عن إغلاق الجلسة السابقة، ${whenLabel(q)} ${site.timeZoneLabel}`}>
                   <span class="q__name">{q.short}</span>
                   {(moving || stripShowsLevel(q) || dir === "none") && <bdi class="q__price">{formatPrice(q)}</bdi>}
@@ -84,6 +94,18 @@ const printings = moving ? [false, true] : [false];
   .markets__item:first-child { padding-inline-start: 0; border-inline-start: 0; }
   /* In the moving line every item is alike, the first and the seam's included: the period is measured item to item. */
   .markets-wrap--moving .markets__item, .markets-wrap--moving .markets__item:first-child { padding-inline: 0.8rem; border-inline-start: 1px solid var(--rule); }
+  /* The moving line (the front). The label is the news line's green plate, the same green in both schemes. */
+  .markets-wrap--moving .markets { min-height: 2.4rem; gap: 0; }
+  .markets-wrap--moving .markets__label { align-self: stretch; align-content: center; text-align: center; color: #fcfcf9; background: #0f5c3c; padding: 0.25rem 0.6rem; border-inline-end: 0; }
+  .markets-wrap--moving .markets__label-time { color: #cfe3d8; }
+  .markets-wrap--moving .markets__viewport { -webkit-mask-image: linear-gradient(to right, transparent, #000 1.5rem, #000 calc(100% - 1.5rem), transparent); mask-image: linear-gradient(to right, transparent, #000 1.5rem, #000 calc(100% - 1.5rem), transparent); }
+  .markets-wrap--moving .markets__item { display: inline-flex; align-items: baseline; gap: 0.7rem; }
+  .markets-wrap--moving .markets__item[data-group-start] { border-inline-start: 2px solid var(--green); }
+  /* A phone's line shows one or two instruments at a time: the group keeps its green rule and gives its name's room to them. */
+  @media (max-width: 719px) { .markets__group { display: none; } }
+  .markets__group { font-weight: 700; font-size: var(--fs-xs); color: var(--green); white-space: nowrap; }
+  .markets-wrap--moving .q { font-size: var(--fs-sm); gap: 0.45rem; font-variant-numeric: tabular-nums; }
+  .markets-wrap--moving .q__price { color: var(--ink); }
   .q { display: inline-flex; align-items: baseline; gap: 0.35rem; padding-block: 0.4rem; font-size: var(--fs-xs); line-height: 1.4; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
   .q:hover .q__name { color: var(--green); text-decoration: underline; }
   .q__name { font-weight: 700; color: var(--ink); }

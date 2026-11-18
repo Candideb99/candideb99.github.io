@@ -1634,6 +1634,24 @@ if (spawnSync("git", ["--version"]).status === 0) {
   // bare, «البالغ 5-7%» drew «%7-5» in the results and «737-10» «10-737»). The copy must print what the site prints.
   // Node reads the TypeScript module directly; the address is built so the gate's name check does not refuse a ".ts" import.
   const { isolateNumbers, RUN_PATTERN } = await import(new URL("../src/lib/bidi.ts", import.meta.url).href);
+  // The label above a headline (2026-11-18): a story no sub-topic of its own section claims takes the subject its
+  // headline opens with from another section's list (half the company stories carried no label), never one named far
+  // down the headline, and the label's page lists the story.
+  {
+    const { kickerOf, topicArticles, getTopic } = await import(new URL("../src/lib/topics.ts", import.meta.url).href);
+    const story = (section, title, tags = []) => ({ data: { section, title, tags, publishedAt: "2026-11-18T08:00:00Z" } });
+    const oilMajor = story("companies", "أرباح «بي بي» البريطانية تقفز إلى أعلى مستوى منذ 18 عاماً");
+    const airport = story("economy", "مطار الرياض يستأنف الرحلات الأحد عبر صالتين بعد أسبوعين من التوقف");
+    const wage = story("economy", "مصر ترفع الحد الأدنى لأجور القطاع الخاص 21% إلى 8500 جنيه");
+    const park = story("companies", "ذراع «جيه دي دوت كوم» تنشئ مجمعاً لوجستياً في أبوظبي يُتوقع أن يوفر ألف وظيفة");
+    const worldBank = story("economy", "البنك الدولي يقرّ برنامجاً جديداً لدعم شبكات الأمان");
+    const all = [oilMajor, airport, wage, park, worldBank];
+    check(
+      "a story takes its label from its own section's list, else from the subject its headline opens with, and that page lists it",
+      [kickerOf(oilMajor)?.href, kickerOf(airport)?.href, kickerOf(wage)?.label, kickerOf(park), kickerOf(worldBank), topicArticles(all, "energy", getTopic("energy", "oil")).includes(oilMajor)],
+      ["/topics/energy/oil/", "/topics/companies/aviation/", "سوق العمل", undefined, undefined, true],
+    );
+  }
   const page = readFileSync("src/pages/search.astro", "utf8");
   const block = page.match(/\/\/ isolate:start([\s\S]*?)\/\/ isolate:end/)?.[1] ?? "";
   const escapeBlock = page.match(/function escape\(text\) \{[\s\S]*?\n    \}/)?.[0] ?? "";

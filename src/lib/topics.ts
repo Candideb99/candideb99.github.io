@@ -28,7 +28,8 @@
  * عقارات section on every Arab business site), investment (FDI, economic zones, the Gulf's money abroad; Asharq's
  * تمويل واستثمار) and fintech (wallets, tokenised assets). 22 in all.
  */
-import topicsData from "@data/topics.json";
+// A relative address with its type, so Node reads this module as it stands (the self-test, scripts/pipeline-selftest.mjs).
+import topicsData from "../data/topics.json" with { type: "json" };
 import { canonicalTag, normalizeArabic } from "./tag-map.mjs";
 import type { Article } from "./articles";
 
@@ -169,8 +170,50 @@ function readTopicArticles(articles: Article[], section: string, topic: Topic): 
   const about = (a: Article) =>
     a.data.tags.slice(0, 2).some((t) => own.has(normalizeArabic(canonicalTag(t)))) ||
     [...own].some((t) => termPattern(t).test(readable(mainClause(a.data.title), topic)));
-  return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && about(a)));
+  // …and every story whose label above the headline leads here from another section (`borrowedTopic`): a label's page
+  // lists the story it stands over.
+  return articles.filter((a) => (a.data.section === section && hit(a, topic) !== null) || (own.size > 0 && about(a)) || borrowedTopic(a)?.topic === topic);
 }
+
+/**
+ * A story no sub-topic of its own section claims takes the subject its headline names from another section's list
+ * (2026-11-18, the owner: "does the category types make sense or need better categorization?"). Counted that day: 44 of
+ * 88 company stories and 52 of 204 economy stories carried no label, because a section is divided along one line
+ * (companies by industry, economy by theme) and the story's subject sat on another section's line: an oil major's
+ * results (the subject «النفط» is energy's), an airport's reopening filed under economy («الطيران والنقل» is
+ * companies'), a chip maker's buy-back. One page per subject already listed some of them there; now the label says so.
+ * Only a term in the headline's main clause counts, the earliest winning: a tag far down or a cause clause names a
+ * side of the story, and a label from it would be the «weird category» of 2026-10-20. The article page's trail keeps
+ * to the story's own section (`subTopicOf`).
+ */
+function borrowedTopic(article: Article): { section: string; topic: Topic } | undefined {
+  if (borrowed.has(article)) return borrowed.get(article);
+  let best: { section: string; topic: Topic } | undefined;
+  if (TOPICS[article.data.section] && !subTopicOf(article)) {
+    let bestAt = Infinity;
+    let bestLength = 0;
+    for (const [section, list] of Object.entries(TOPICS)) {
+      if (section === article.data.section) continue;
+      for (const topic of list) {
+        const title = readable(mainClause(article.data.title), topic);
+        for (const term of [...topic.match, ...(topic.titleMatch ?? [])]) {
+          if (normalizeArabic(term).length < 2) continue;
+          const m = termPattern(term).exec(title);
+          // …and only among the headline's first four words, where its subject stands: further on, «يوفر ألف وظيفة»
+          // had put a logistics park under the labour market and «بعبور الأسمدة» a UN appeal under industry.
+          if (m && title.slice(0, m.index).trim().split(/\s+/).filter(Boolean).length < 4 && (m.index < bestAt || (m.index === bestAt && term.length > bestLength))) {
+            best = { section, topic };
+            bestAt = m.index;
+            bestLength = term.length;
+          }
+        }
+      }
+    }
+  }
+  borrowed.set(article, best);
+  return best;
+}
+const borrowed = new WeakMap<Article, { section: string; topic: Topic } | undefined>();
 
 /**
  * The one sub-topic a story sits under in its section's taxonomy, for the trail on its page (الطاقة ›
@@ -200,8 +243,9 @@ export function subTopicOf(article: Article): Topic | undefined {
  * keeps its file among the tag chips.
  */
 export function kickerOf(article: Article): { label: string; href: string } | undefined {
-  const topic = subTopicOf(article);
-  return topic ? { label: topic.short ?? topic.name, href: topicHref(article.data.section, topic.id) } : undefined;
+  const own = subTopicOf(article);
+  const found = own ? { section: article.data.section, topic: own } : borrowedTopic(article);
+  return found ? { label: found.topic.short ?? found.topic.name, href: topicHref(found.section, found.topic.id) } : undefined;
 }
 
 /** The sub-topics of a section with their story counts, in the taxonomy's order. */
