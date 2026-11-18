@@ -10,7 +10,7 @@ import { getArticles, pickLead, chartOfTheDay, hoursOld, repeatedEvents, firstPi
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { headline } from "@lib/bidi";
-import { timeAgo, countLabel } from "@lib/format";
+import { timeAgo } from "@lib/format";
 import { isMarketQuote } from "@lib/markets";
 import site from "@data/site.json";
 
@@ -176,15 +176,18 @@ const lines = sectionPools
 if (lines.length < 2) lines.length = 0;
 lines.forEach((l) => l.story && place([l.story]));
 
-// الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk its count, its
-// last update and one story of the last week no module above has printed (it reprinted 11 of 12). A desk with no such
-// story is left out: three of four desks had printed a count alone over blank paper (the critique of 9 November).
+// الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk one story of the
+// last week no module above has printed (it reprinted 11 of 12). A desk with no such story is left out: three of four
+// desks had printed a count alone over blank paper (the critique of 9 November). The line «356 مادة · آخر تحديث منذ
+// يومين» under each desk's name went on 2026-11-18 (the owner: "is this professional to mention how many materials
+// inside? i think better remove it"): a running total is the archive's bookkeeping, no desk's front prints one, and
+// the update time only repeated the age printed under the story.
 const desks = DESKS.map((d) => {
   const inDesk = news.filter((a) => desksOf(a).some((x) => x.id === d.id));
   const story = unplaced(inDesk).find((a) => hoursOld(a) < LINE_HOURS);
   if (story) place([story]);
-  return { ...d, count: inDesk.length, latest: inDesk[0], story };
-}).filter((d) => d.count > 0 && d.story);
+  return { ...d, story };
+}).filter((d) => d.story);
 
 // The hubs: analyses and explainers run as text in ruled columns, which also tells the reader at a
 // glance that these are argument and concept pieces, not news reports; the readings shown beside the
@@ -283,9 +286,6 @@ const jsonLd = {
         {desks.map((d) => (
           <div class="desk">
             <h3 class="desk__name"><a href={`/tags/${encodeURIComponent(d.name)}/`}>{d.name}</a></h3>
-            <p class="desk__count ui">
-              <bdi>{countLabel(d.count)}</bdi> · آخر تحديث <time datetime={d.latest.data.publishedAt} data-relative>{timeAgo(d.latest.data.publishedAt)}</time>
-            </p>
             {d.story && (
               <p class="desk__story">
                 <a href={articleHref(d.story)} set:html={headline(d.story.data.title)} />
@@ -366,7 +366,6 @@ const jsonLd = {
   .desk__name { font-family: var(--font-title); font-weight: 700; font-size: var(--t-section); line-height: 1.3; color: var(--green); }
   .desk__name a { text-decoration: none; }
   .desk__name a:hover { color: var(--green-deep); text-decoration: underline; }
-  .desk__count { margin-top: 0.15rem; font-size: var(--fs-xs); color: var(--ink-3); }
   .desk__story { position: relative; margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .desk__story a { text-decoration: none; }
   .desk__story a:hover { color: var(--green); }
