@@ -85,6 +85,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
   const calls = [];
   const judgePrompts = [];
   const verifyPrompts = [];
+  const plannerPrompts = [];
   const inlined = [];
   const saved = [];
   const restore = withStandIns({
@@ -111,6 +112,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
       let data;
       if (system.includes("choosing stock photographs")) {
         calls.push("planner");
+        plannerPrompts.push(user);
         if (plan === "throw") throw new Error("Claude failed for role writer");
         data = plan;
       } else if (system.includes("You name places")) {
@@ -153,7 +155,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
     // IMAGES_SELFTEST_LOG=1 prints the desk's own log for every case.
     const log = process.env.IMAGES_SELFTEST_LOG ? (line) => console.log(`      ${line}`) : () => {};
     const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir, onError: (error) => errors.push(error) });
-    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, saved, errors };
+    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, plannerPrompts, saved, errors };
   } finally {
     restore();
   }
@@ -1209,6 +1211,21 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   const atHq = await scenario({ draft: jpmDraft, plan: jpmPlan, world: { "JPMorgan Chase headquarters": [hq] }, judge: (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("270 Park")(titles) : 0), verify: () => "RIGHT" });
   check("the brand pass also looks at the company's head office, and its name over the door runs", [atHq.searched.includes("JPMorgan Chase headquarters"), atHq.image?.title], [true, hq.title]);
   check("an entrance names the company as its own", [namesCompany(hq, "JPMorgan Chase"), namesCompany({ title: "Chase Lake entrance.jpg" }, "JPMorgan Chase")], [true, false]);
+
+  // The owner, 2026-11-19, on the IMF's staff agreement with Egypt run as text ("yes, change the rule"): a world body's own
+  // news has the brand pass too, its name or seal over its own headquarters' entrance, and its loan finances the treasury,
+  // so no port is searched as its place.
+  const imfDraft = { title: "صندوق النقد يتفق مع مصر على مراجعتين تتيحان لها 2.3 مليار دولار", subtitle: "المبلغ يشمل الشريحة الأخيرة من برنامج قيمته 8 مليارات دولار", lede: "توصّل فريق خبراء صندوق النقد الدولي إلى اتفاق مع مصر.", body: "فقرة.", tags: ["صندوق النقد الدولي", "مصر"], regions: ["مصر والمغرب العربي"], kind: "news", section: "economy", imageQueries: [] };
+  const imfHq = file("International Monetary Fund (IMF) (53844898894).jpg", { description: "Washington, DC", categories: "CC-BY-2.0|International Monetary Fund headquarters", date: "2024-06-21" });
+  const imfPlan = { queries: ["Egyptian pounds"], place: ["Egypt", "Egyptian"], people: [], focus: "subject", places: [], place_queries: [], company: { name: "International Monetary Fund", headline: "صندوق النقد", also: ["IMF"] }, brand_queries: ["International Monetary Fund headquarters"] };
+  const imf = await scenario({ draft: imfDraft, plan: imfPlan, world: { "International Monetary Fund headquarters": [imfHq] }, judge: (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("53844898894")(titles) : 0), verify: () => "RIGHT" });
+  const planner = imf.plannerPrompts[0] ?? "";
+  check(
+    "a world body's own news: the planner may name it for the brand pass, a loan to the state has no port for its place, and its entrance runs",
+    [planner.includes("or ONE world body's own (the IMF"), planner.includes("an IMF programme, trade figures"), planner.includes("a tranche or a programme review of the IMF"), imf.image?.title, imf.judgePrompts.some((p) => p.includes("ONE company's or ONE world body's own news"))],
+    [true, false, true, imfHq.title, true],
+  );
+  check("the IMF's headquarters names it as its own, and «IMF» alone does not", [namesBrand(imfHq, ["International Monetary Fund", "IMF"]), namesBrand({ title: "IMF.jpg" }, ["International Monetary Fund", "IMF"])], [true, false]);
 
   // The owner, 2026-11-07: "i bet there are many free to use photos of jp morgan, why the search results were so limited?"
   // Its brand's other names count, its own Commons categories are browsed, this year's photographs are asked for first,
