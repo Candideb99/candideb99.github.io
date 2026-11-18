@@ -17435,6 +17435,62 @@
           ]
         }
       ]
+    },
+    "imf-egypt-final-review-staff-agreement-13639a": {
+      "at": "2026-11-18T20:51:48.241Z",
+      "title": "صندوق النقد يتفق مع مصر على مراجعتين تتيحان لها 2.3 مليار دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 28,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "egypt-gdp-growth-slows-first-quarter-fca261": {
+      "at": "2026-11-18T21:15:41.279Z",
+      "title": "نمو الاقتصاد المصري يتباطأ إلى 4.9% في الربع الأول من السنة المالية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 20,
+            "weak": 8,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

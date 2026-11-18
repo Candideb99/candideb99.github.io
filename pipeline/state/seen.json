@@ -1,798 +1,6 @@
 {
   "version": 1,
   "items": {
-    "d5a60c1b33d7fcd4": {
-      "at": "2026-10-26T05:10:06.308Z",
-      "decision": "published",
-      "slug": "sabic-returns-to-profit-third-quarter-92d313",
-      "title": "Sabic returns to profit in third quarter as revenue rises despite regional conflict"
-    },
-    "22ca231891e63f91": {
-      "at": "2026-10-26T05:10:06.308Z",
-      "decision": "published",
-      "slug": "sabic-returns-to-profit-third-quarter-92d313",
-      "title": "أرباح سابك تفوق التوقعات وتسجل أعلى مستوياتها في عامين"
-    },
-    "18071cef20568730": {
-      "at": "2026-10-26T05:10:06.308Z",
-      "decision": "published",
-      "slug": "sabic-returns-to-profit-third-quarter-92d313",
-      "title": "\"سابك\" تسجل ارتفاعا 40% في الأرباح المعدلة جراء التميز التشغيلي"
-    },
-    "de333e15e6f66534": {
-      "at": "2026-10-26T05:10:06.308Z",
-      "decision": "published",
-      "slug": "sabic-returns-to-profit-third-quarter-92d313",
-      "title": "أسعار البيع تدفع \"سابك\" لتحقيق أرباح فصلية ضعف التوقعات"
-    },
-    "086df9e6bd49747e": {
-      "at": "2026-10-25T23:32:30.805Z",
-      "decision": "published",
-      "slug": "bahri-contract-three-crude-tankers-saudi-9dd9dc",
-      "title": "«البحري» السعودية توقع عقداً لبناء 3 ناقلات نفط عملاقة بـ451 مليون دولار"
-    },
-    "7a7542cea703fa21": {
-      "at": "2026-10-25T23:32:30.805Z",
-      "decision": "published",
-      "slug": "bahri-contract-three-crude-tankers-saudi-9dd9dc",
-      "title": "\"البحري\" توقع عقدا لبناء 3 ناقلات نفط في السعودية بـ 1.7 مليار ريال"
-    },
-    "004e918ea494c054": {
-      "at": "2026-10-25T23:49:14.011Z",
-      "decision": "published",
-      "slug": "audi-plans-first-us-factory-georgia-f7d7c3",
-      "title": "Audi to Build Factory in Georgia, Trump Says"
-    },
-    "a35937ae917bc5a9": {
-      "at": "2026-10-25T23:49:14.011Z",
-      "decision": "published",
-      "slug": "audi-plans-first-us-factory-georgia-f7d7c3",
-      "title": "«أودي» تدافع عن استثمارها المرتقب في أميركا بـ4 مليارات دولار رغم الانتقادات"
-    },
-    "a4dafb4ffd3d8ff3": {
-      "at": "2026-10-25T23:49:14.011Z",
-      "decision": "published",
-      "slug": "audi-plans-first-us-factory-georgia-f7d7c3",
-      "title": "Volkswagen to build $4bn Audi SUV factory in US despite job cuts at home"
-    },
-    "7613017bb69d9fb6": {
-      "at": "2026-10-25T23:49:14.011Z",
-      "decision": "published",
-      "slug": "audi-plans-first-us-factory-georgia-f7d7c3",
-      "title": "ترمب: «آودي» تعتزم استثمار 4.2 مليار دولار لبناء أول مصنع لها بأميركا"
-    },
-    "5888c5be6e2345aa": {
-      "at": "2026-10-25T23:49:14.011Z",
-      "decision": "published",
-      "slug": "audi-plans-first-us-factory-georgia-f7d7c3",
-      "title": "Audi defends plans for a $4 billion Georgia plant amid VW restructuring, tariffs"
-    },
-    "7253b71c23affc34": {
-      "at": "2026-10-25T23:59:49.592Z",
-      "decision": "published",
-      "slug": "egypt-world-bank-mining-charter-gdp-e12932",
-      "title": "مصر تعلن عن ميثاق وطني لتطوير قطاع التعدين بالشراكة مع البنك الدولي"
-    },
-    "97514d1641f08292": {
-      "at": "2026-10-25T23:59:49.592Z",
-      "decision": "published",
-      "slug": "egypt-world-bank-mining-charter-gdp-e12932",
-      "title": "Egypt, World Bank launch partnership to develop mining sector"
-    },
-    "caeacf2dba05967f": {
-      "at": "2026-10-26T05:19:01.418Z",
-      "decision": "published",
-      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
-      "title": "السعودية وسنغافورة ترتبان لتخزين النفط الخام بدءاً من 2027"
-    },
-    "95503fa17ce7caad": {
-      "at": "2026-10-26T05:19:01.418Z",
-      "decision": "published",
-      "slug": "saudi-singapore-crude-storage-jurong-caverns-14f6a5",
-      "title": "متي تبدأ السعودية تخزين النفط الخام في سنغافورة؟"
-    },
-    "641696419a78b390": {
-      "at": "2026-10-26T05:23:57.949Z",
-      "decision": "rejected",
-      "title": "Musk'tan 40 milyar dolarlık hamle: Yapay zekâ için dev borçlanma",
-      "strikes": 1
-    },
-    "443921a561a9cf6b": {
-      "at": "2026-10-26T05:23:57.949Z",
-      "decision": "rejected",
-      "title": "ماسك يعلن إغلاق تمويل بـ40 مليار دولار لشراء الرقائق",
-      "strikes": 1
-    },
-    "df98bea0a55a4512": {
-      "at": "2026-10-26T05:23:57.949Z",
-      "decision": "rejected",
-      "title": "Musk says SpaceX landed a $40 billion debt deal — and forecasts doom for some AI rivals",
-      "strikes": 1
-    },
-    "dd38ab92e3e248f9": {
-      "at": "2026-10-26T05:23:57.949Z",
-      "decision": "rejected",
-      "title": "SpaceX closes $40 billion debt deal for AI chips, Elon Musk says",
-      "strikes": 1
-    },
-    "21ddf71d5f3af362": {
-      "at": "2026-10-26T05:33:39.438Z",
-      "decision": "published",
-      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
-      "title": "البرازيل أمام اختبار ثقة المستثمرين بعد فوز لولا"
-    },
-    "52798fd7325a61c3": {
-      "at": "2026-10-26T05:33:39.438Z",
-      "decision": "published",
-      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
-      "title": "EM Stocks Fall Before Key Earnings, Brazil in Focus as Lula Wins"
-    },
-    "c39de0f103a5e6c6": {
-      "at": "2026-10-26T05:33:39.438Z",
-      "decision": "published",
-      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
-      "title": "Lula Wins Brazil's Presidential Election, Real Futures, Japan ETF Slide"
-    },
-    "b6011b0c33ac4528": {
-      "at": "2026-10-26T05:33:39.438Z",
-      "decision": "published",
-      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
-      "title": "Brazil Markets Brace for Rout on Lula’s Improbable Election Win"
-    },
-    "edd2782c8e936910": {
-      "at": "2026-10-26T05:33:39.438Z",
-      "decision": "published",
-      "slug": "brazil-markets-brace-for-selloff-after-lula-win-fe29f4",
-      "title": "Lula kazandı, Brezilya fonunda yüzde 16'lık düşüş"
-    },
-    "9c9861ffcbc70050": {
-      "at": "2026-10-26T08:00:47.137Z",
-      "decision": "published",
-      "slug": "banque-du-caire-ipo-priced-top-range-0e7362",
-      "title": "Banque Du Caire Says IPO Priced at Top End of Range"
-    },
-    "5b5a074e8215a1d4": {
-      "at": "2026-10-26T08:00:47.137Z",
-      "decision": "published",
-      "slug": "banque-du-caire-ipo-priced-top-range-0e7362",
-      "title": "تغطية شريحة الطرح الخاص لبنك القاهرة تقفز إلى 19.8 مرة والسعر النهائي 5.30 جنيه"
-    },
-    "e131a61a5560d0f0": {
-      "at": "2026-10-26T08:00:47.137Z",
-      "decision": "published",
-      "slug": "banque-du-caire-ipo-priced-top-range-0e7362",
-      "title": "رئيس البورصة: تغطية طرح بنك القاهرة 6 مرات تؤكد ثقة المؤسسات الدولية في الاقتصاد المصري"
-    },
-    "9939d78be2c9467d": {
-      "at": "2026-10-26T08:11:40.480Z",
-      "decision": "published",
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "Oil price falls back as traders remain focused on Middle East conflict"
-    },
-    "ad95efe296dfdb97": {
-      "at": "2026-10-26T08:11:40.480Z",
-      "decision": "published",
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "Oil declines after Trump rules out imminent attack on Iran"
-    },
-    "07193f6630657b36": {
-      "at": "2026-10-26T08:11:40.480Z",
-      "decision": "published",
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "تراجع أسعار النفط بنحو 2% لكن خام برنت فوق 114 دولارًا"
-    },
-    "4979e76fd917b81b": {
-      "at": "2026-10-26T08:11:40.480Z",
-      "decision": "published",
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "Oil prices fall to $114.5 as Mideast de-escalation hopes ease supply concerns"
-    },
-    "5902f60665f792bb": {
-      "at": "2026-10-26T08:11:40.480Z",
-      "decision": "published",
-      "slug": "brent-falls-trump-rules-out-iran-strike-778d21",
-      "title": "Oil slides over 2% as traders weigh Saudi attack risks, demand destruction"
-    },
-    "5e785effd919e795": {
-      "at": "2026-10-26T08:19:37.592Z",
-      "decision": "published",
-      "slug": "alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494",
-      "title": "Alpha Dhabi deepens AI investments with $1bn commitment"
-    },
-    "2ce8ec06440aed06": {
-      "at": "2026-10-26T08:19:37.592Z",
-      "decision": "published",
-      "slug": "alpha-dhabi-1-billion-alpha-wave-ai-fund-4b7494",
-      "title": "\"ألفا ظبي القابضة\" تستثمر مليار دولار في صندوق \"ألفا ويف 3\""
-    },
-    "94197c3be7fc536c": {
-      "at": "2026-10-26T13:27:19.982Z",
-      "decision": "published",
-      "slug": "saudi-trade-surplus-widens-august-2026-122212",
-      "title": "Saudi imports hold up despite Houthi shipping attacks"
-    },
-    "38c40be18b7b5e27": {
-      "at": "2026-10-26T13:27:19.982Z",
-      "decision": "published",
-      "slug": "saudi-trade-surplus-widens-august-2026-122212",
-      "title": "Saudi Arabia’s trade surplus widens 17.8% to $4.16bn in August: GASTAT"
-    },
-    "4dc3f9fac2c03425": {
-      "at": "2026-10-26T13:27:19.982Z",
-      "decision": "published",
-      "slug": "saudi-trade-surplus-widens-august-2026-122212",
-      "title": "صادرات السعودية تتراجع 11.5% في أغسطس بفعل انخفاض إمدادات النفط وسلع إعادة التصدير"
-    },
-    "014511e3d047065b": {
-      "at": "2026-10-26T13:27:19.982Z",
-      "decision": "published",
-      "slug": "saudi-trade-surplus-widens-august-2026-122212",
-      "title": "صادرات السعودية غير النفطية تبلغ أعلى مستوى في 4 أشهر خلال أغسطس"
-    },
-    "e072400b49ef4716": {
-      "at": "2026-10-26T13:37:18.398Z",
-      "decision": "published",
-      "slug": "saudi-tasi-jumps-biggest-daily-gain-498504",
-      "title": "«مؤشر السوق السعودية» يقفز 3.4 % مسجلاً أكبر مكاسب يومية منذ عام"
-    },
-    "d6721facdf5df489": {
-      "at": "2026-10-26T13:37:18.398Z",
-      "decision": "published",
-      "slug": "saudi-tasi-jumps-biggest-daily-gain-498504",
-      "title": "الأسهم السعودية ترتد من قاع 2021... والسيولة تختبر صمود المكاسب"
-    },
-    "a0232a326845a74e": {
-      "at": "2026-10-26T13:54:39.793Z",
-      "decision": "published",
-      "slug": "anthropic-public-ipo-filing-rival-spacex-8c0f73",
-      "title": "Anthropic Is Said to Plan Public Filing for Mega-IPO Monday"
-    },
-    "e80885f8cb86c362": {
-      "at": "2026-10-26T13:54:39.793Z",
-      "decision": "published",
-      "slug": "anthropic-public-ipo-filing-rival-spacex-8c0f73",
-      "title": "What’s Riding on Anthropic Going Public? Nearly Everything."
-    },
-    "5afa7463f9db74dc": {
-      "at": "2026-10-26T13:54:39.793Z",
-      "decision": "published",
-      "slug": "anthropic-public-ipo-filing-rival-spacex-8c0f73",
-      "title": "Anthropic IPO: Claude maker plans public filing today, eyes stock market debut rivaling SpaceX"
-    },
-    "b7ae0be75a82315a": {
-      "at": "2026-10-26T20:44:48.924Z",
-      "decision": "published",
-      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
-      "title": "Brazilian Markets Convulse After Unexpected Election Result"
-    },
-    "a99b22e35ba3c1ea": {
-      "at": "2026-10-26T20:44:48.924Z",
-      "decision": "published",
-      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
-      "title": "One-Day Wipeout Tops 60% For the Hardest-Hit Brazilian Stocks"
-    },
-    "d9d686981e7b71b1": {
-      "at": "2026-10-26T20:44:48.924Z",
-      "decision": "published",
-      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
-      "title": "Brazil’s real sinks after Lula’s re-election victory"
-    },
-    "02de069ddb8b7ae5": {
-      "at": "2026-10-26T20:44:48.924Z",
-      "decision": "published",
-      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
-      "title": "Lula’s surprise victory triggers worst rout in decades for Brazilian markets"
-    },
-    "c4bba32c0dfafff1": {
-      "at": "2026-10-26T20:44:48.924Z",
-      "decision": "published",
-      "slug": "brazil-real-stocks-plunge-lula-victory-da493b",
-      "title": "Lula Win Derails $6 Billion in Equity Sales as Banks Reel"
-    },
-    "c33366983bc91327": {
-      "at": "2026-10-26T20:55:32.275Z",
-      "decision": "published",
-      "slug": "egypt-dendera-solar-financing-term-sheet-001b37",
-      "title": "مصر توقع اتفاقا مبدئيا لتمويل مشروع طاقة شمسية بقيمة 650 مليون دولار"
-    },
-    "b0bebca5a6e5931e": {
-      "at": "2026-10-26T20:55:32.275Z",
-      "decision": "published",
-      "slug": "egypt-dendera-solar-financing-term-sheet-001b37",
-      "title": "توقيع 3 اتفاقيات لتمويل مشروع “دندرة” للطاقة الشمسية بـ650 مليون دولار"
-    },
-    "1ed0b89cb870dc01": {
-      "at": "2026-10-26T21:09:45.216Z",
-      "decision": "published",
-      "slug": "apollo-buys-stake-in-mubadala-capital-e5bc9c",
-      "title": "Apollo takes minority stake in Abu Dhabi’s Mubadala Capital"
-    },
-    "95b1aa3cce2b73c4": {
-      "at": "2026-10-26T21:09:45.216Z",
-      "decision": "published",
-      "slug": "apollo-buys-stake-in-mubadala-capital-e5bc9c",
-      "title": "«مبادلة كابيتال» تعزز خطط توسعها العالمي باستثمار استراتيجي من «أبولو»"
-    },
-    "ad397c4eed22dd62": {
-      "at": "2026-10-26T21:09:45.216Z",
-      "decision": "published",
-      "slug": "apollo-buys-stake-in-mubadala-capital-e5bc9c",
-      "title": "Apollo to buy nearly 10% stake in Abu Dhabi-backed alternative asset manager Mubadala Capital"
-    },
-    "78b56fb395bede5d": {
-      "at": "2026-10-27T00:45:06.581Z",
-      "decision": "published",
-      "slug": "european-gas-prices-highest-since-2022-868625",
-      "title": "European gas prices hit nearly $110 per MWh, highest since 2022"
-    },
-    "09d5c035db84929d": {
-      "at": "2026-10-27T00:45:06.581Z",
-      "decision": "published",
-      "slug": "european-gas-prices-highest-since-2022-868625",
-      "title": "EU gas prices hit highest level since 2022"
-    },
-    "70ebc9a0ef10e13b": {
-      "at": "2026-10-27T00:45:06.581Z",
-      "decision": "published",
-      "slug": "european-gas-prices-highest-since-2022-868625",
-      "title": "أسعار الغاز الأوروبي تتجاوز 97 يورو لأول مرة منذ 2022"
-    },
-    "f4769f0cc6863886": {
-      "at": "2026-10-27T00:54:36.639Z",
-      "decision": "published",
-      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
-      "title": "باكستان ترفع الفائدة 50 نقطة أساس إلى 12 % لاحتواء مخاطر التضخم"
-    },
-    "9676140a22e5d836": {
-      "at": "2026-10-27T00:54:36.639Z",
-      "decision": "published",
-      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
-      "title": "Pakistan Raises Rates as Middle East Conflict Fans Inflation"
-    },
-    "8bb161534de7b15c": {
-      "at": "2026-10-27T00:54:36.639Z",
-      "decision": "published",
-      "slug": "pakistan-raises-key-rate-to-12-percent-8e0b9f",
-      "title": "Pakistan raises key rate to 12% as Gulf conflict stokes inflation risks"
-    },
-    "daa1dcae60504680": {
-      "at": "2026-10-27T01:04:35.385Z",
-      "decision": "published",
-      "slug": "libya-icao-airspace-restrictions-lifted-11-years-254ef4",
-      "title": "Libya says international aviation restrictions lifted after 11 years"
-    },
-    "f18e1a74859afc61": {
-      "at": "2026-10-27T01:04:35.385Z",
-      "decision": "published",
-      "slug": "libya-icao-airspace-restrictions-lifted-11-years-254ef4",
-      "title": "Libya says int'l aviation restrictions removed after 11 years"
-    },
-    "8b93d23f350ab9a1": {
-      "at": "2026-10-27T01:14:55.569Z",
-      "decision": "published",
-      "slug": "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a",
-      "title": "TAQA prices $1.75 billion dual-tranche bond offering, orderbook over three times oversubscribed"
-    },
-    "0cc420bc99468df6": {
-      "at": "2026-10-27T01:14:55.569Z",
-      "decision": "published",
-      "slug": "taqa-prices-dual-tranche-bonds-oversubscribed-a32e1a",
-      "title": "\"طاقة\" الإماراتية تنجح في تسعير إصدار سندات من شريحتين"
-    },
-    "6a4e4e3b39f864f0": {
-      "at": "2026-10-27T08:04:35.222Z",
-      "decision": "rejected",
-      "title": "Dubai Firm’s $543 Million IPO Covered Within Minutes Despite War",
-      "strikes": 1
-    },
-    "19432c9a8077a17d": {
-      "at": "2026-10-27T08:04:35.222Z",
-      "decision": "rejected",
-      "title": "DIP Holding to raise up to $543 million in UAE’s first IPO of 2026",
-      "strikes": 1
-    },
-    "0a0f0327e89846f5": {
-      "at": "2026-10-27T08:04:35.223Z",
-      "decision": "rejected",
-      "title": "Dubai Investments seeks to raise $543m from first UAE IPO this year",
-      "strikes": 1
-    },
-    "ca54f495d240f42a": {
-      "at": "2026-10-27T08:04:35.223Z",
-      "decision": "rejected",
-      "title": "بلومبرغ: تغطية اكتتاب شركة \"DIP\" القابضة خلال دقائق",
-      "strikes": 1
-    },
-    "034f9f5db416b0bd": {
-      "at": "2026-10-27T08:19:10.837Z",
-      "decision": "rejected",
-      "title": "China’s Industrial Profits Surge Most in Three Months on Oil",
-      "strikes": 1
-    },
-    "a5074b4185becdb5": {
-      "at": "2026-10-27T08:19:10.837Z",
-      "decision": "rejected",
-      "title": "China industrial profits post strongest growth in three months as tech boom widens economic divide",
-      "strikes": 1
-    },
-    "6c46ccece38271ac": {
-      "at": "2026-10-27T08:19:10.837Z",
-      "decision": "rejected",
-      "title": "نمو أرباح الشركات الصناعية الكبرى في الصين 15.5% خلال 9 أشهر",
-      "strikes": 1
-    },
-    "7b8f8070514fe58f": {
-      "at": "2026-10-27T08:19:10.837Z",
-      "decision": "rejected",
-      "title": "نمو أرباح الشركات الصناعية الصينية بأقوى وتيرة منذ يونيو",
-      "strikes": 1
-    },
-    "3746a47909b885f8": {
-      "at": "2026-10-27T08:19:10.837Z",
-      "decision": "rejected",
-      "title": "Çin'de sanayi kârları Eylül'de en hızlı artışı kaydetti",
-      "strikes": 1
-    },
-    "e6ae5a0da9fe6e63": {
-      "at": "2026-10-27T08:34:22.903Z",
-      "decision": "rejected",
-      "title": "Aldar reports 25% jump in Q3 net profit amid launch of new projects",
-      "strikes": 1
-    },
-    "96af2f57ffc315ed": {
-      "at": "2026-10-27T08:34:22.903Z",
-      "decision": "rejected",
-      "title": "أرباح ومبيعات قوية.. 26 مليار درهم إيرادات \"الدار\" في 9 أشهر",
-      "strikes": 1
-    },
-    "1bba7662ea67f4d8": {
-      "at": "2026-10-27T09:25:52.414Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-filing-reveals-revenue-losses-5fc0da",
-      "title": "Four takeaways from Anthropic’s potentially record-breaking stock market filing"
-    },
-    "ddc27eb31ade82bf": {
-      "at": "2026-10-27T09:25:52.414Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-filing-reveals-revenue-losses-5fc0da",
-      "title": "‘Bold but sane’: what we learnt from Anthropic’s 240,000-word IPO filing"
-    },
-    "2ea4893669d7c271": {
-      "at": "2026-10-27T09:25:52.414Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-filing-reveals-revenue-losses-5fc0da",
-      "title": "«أنثروبيك» تمهّد لطرح عام قد يصل إلى 100 مليار دولار"
-    },
-    "82fb69f06c1d923f": {
-      "at": "2026-10-27T09:25:52.414Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-filing-reveals-revenue-losses-5fc0da",
-      "title": "أنثروبيك تتقدم بطلب لطرح أسهمها للاكتتاب العام للمرة الأولى"
-    },
-    "9df73703408fc688": {
-      "at": "2026-10-27T09:25:52.414Z",
-      "decision": "published",
-      "slug": "anthropic-ipo-filing-reveals-revenue-losses-5fc0da",
-      "title": "Anthropic files for historic IPO, targeting valuation of up to $1.75T"
-    },
-    "05ccf3c638ec5065": {
-      "at": "2026-10-27T09:41:39.245Z",
-      "decision": "published",
-      "slug": "aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8",
-      "title": "Aldar revenue up despite UAE property sales slump"
-    },
-    "df6bc266221b3906": {
-      "at": "2026-10-27T09:41:39.245Z",
-      "decision": "published",
-      "slug": "aldar-nine-month-profit-rises-uae-sales-fall-ba8ef8",
-      "title": "7.1 مليارات درهم أرباح الدار العقارية خلال 9 أشهر بنمو 19 %"
-    },
-    "dc8978be4917b37d": {
-      "at": "2026-10-27T09:56:15.676Z",
-      "decision": "published",
-      "slug": "saudi-tadawul-group-q3-profit-falls-9b2148",
-      "title": "Saudi bourse operator’s profit falls after slower trading"
-    },
-    "e856f2c53eff0f9d": {
-      "at": "2026-10-27T09:56:15.676Z",
-      "decision": "published",
-      "slug": "saudi-tadawul-group-q3-profit-falls-9b2148",
-      "title": "تراجع أرباح «مجموعة تداول» السعودية 41.8 % في الربع الثالث"
-    },
-    "35151182351a6c04": {
-      "at": "2026-10-27T15:42:19.627Z",
-      "decision": "published",
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "جماعة أنصار الله تعلن استهداف منشآت سعودية من بينها وزارة الدفاع ومصفاة رأس تنورة ومطار أبها"
-    },
-    "cbd16a90256b88df": {
-      "at": "2026-10-27T15:42:19.627Z",
-      "decision": "published",
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "الحوثيون يستهدفون الرياض ومطار أبها والتحالف يؤكد اعتراض صواريخ ومسيّرات"
-    },
-    "a56bbaff735f2fd2": {
-      "at": "2026-10-27T15:42:19.627Z",
-      "decision": "published",
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "Middle East War: Saudi Arabia intercepts Houthi missiles, drones as Iran talks continue"
-    },
-    "6bacbf3bd2343ab7": {
-      "at": "2026-10-27T15:42:19.627Z",
-      "decision": "published",
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "Middle East latest: Saudi Arabia intercepts Houthi missiles fired at Riyadh"
-    },
-    "cb6cab5a9dc4cd92": {
-      "at": "2026-10-27T15:42:19.627Z",
-      "decision": "published",
-      "slug": "houthis-claim-ras-tanura-refinery-strike-7d3679",
-      "title": "Ras Tanura Fire Follows Attacks on Aramco Offices and Near Shaybah Field"
-    },
-    "78d6b2e8b1491828": {
-      "at": "2026-10-27T15:59:48.282Z",
-      "decision": "published",
-      "slug": "saudi-commercial-transactions-law-age-15-5712f9",
-      "title": "تشريع جديد يوسّع قاعدة الممارسين للتجارة ويدعم رواد الأعمال في السعودية"
-    },
-    "3a42bea6b95776cb": {
-      "at": "2026-10-27T15:59:48.282Z",
-      "decision": "published",
-      "slug": "saudi-commercial-transactions-law-age-15-5712f9",
-      "title": "Saudi Arabia approves 271-article Commercial Transactions Law to modernize business framework"
-    },
-    "d493391340dd2c85": {
-      "at": "2026-10-27T15:59:48.282Z",
-      "decision": "published",
-      "slug": "saudi-commercial-transactions-law-age-15-5712f9",
-      "title": "السعودية تقر نظاما لتطوير بيئة الأعمال يسمح لمن بلغ 15 عاما بالتجارة"
-    },
-    "f61f88b90469ca96": {
-      "at": "2026-10-27T16:14:45.610Z",
-      "decision": "published",
-      "slug": "qatar-expands-active-asset-management-initiative-576de3",
-      "title": "Qatar bulks up stock market fund to attract investment"
-    },
-    "bd23ff3a94590454": {
-      "at": "2026-10-27T16:14:45.610Z",
-      "decision": "published",
-      "slug": "qatar-expands-active-asset-management-initiative-576de3",
-      "title": "Doha Investment expands Qatar’s Active Asset Management Initiative to QR5bn"
-    },
-    "76f16c064d0a4050": {
-      "at": "2026-10-27T16:28:38.289Z",
-      "decision": "published",
-      "slug": "political-pressure-fed-moves-near-term-rates-387cc7",
-      "title": "Jawboning the Fed: Do Markets Listen When Administrations Talk?"
-    },
-    "19c4e1bd6d263c1d": {
-      "at": "2026-10-28T06:09:58.247Z",
-      "decision": "published",
-      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
-      "title": "النفط يرتفع فوق 115 دولاراً مجدداً وسط ترقب تطورات التوترات مع إيران"
-    },
-    "1dacb80b8b6408da": {
-      "at": "2026-10-28T06:09:58.247Z",
-      "decision": "published",
-      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
-      "title": "أسعار النفط ترتفع و\"برنت\" يتجاوز 115 دولاراً للبرميل"
-    },
-    "c35162dc66d163d0": {
-      "at": "2026-10-28T06:09:58.247Z",
-      "decision": "published",
-      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
-      "title": "النفط يرتفع فوق 115 دولارا وسط ترقب لانتخابات تحدد مسار الحرب"
-    },
-    "b34e644940b0798f": {
-      "at": "2026-10-28T06:09:58.247Z",
-      "decision": "published",
-      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
-      "title": "Oil Prices Climb as Houthi Attacks Reignite Saudi Supply Fears"
-    },
-    "58be9458fc9f6acd": {
-      "at": "2026-10-28T06:09:58.247Z",
-      "decision": "published",
-      "slug": "brent-rises-iran-washington-houthi-attacks-1c1e85",
-      "title": "النفط يرتفع بعد هجوم حوثي جديد وأوبك+ على أعتاب قرار الأحد"
-    },
-    "d9a625bdcc57e3fd": {
-      "at": "2026-10-28T06:19:16.192Z",
-      "decision": "published",
-      "slug": "uae-canada-sign-cepa-trade-deal-081371",
-      "title": "UAE, Canada explore $15 billion in trade and investment deals across four strategic sectors"
-    },
-    "404dcb5831d2eb3b": {
-      "at": "2026-10-28T06:19:16.192Z",
-      "decision": "published",
-      "slug": "uae-canada-sign-cepa-trade-deal-081371",
-      "title": "Canada, UAE sign major trade deal amid tensions with US"
-    },
-    "75f7eca637b78177": {
-      "at": "2026-10-28T06:19:16.192Z",
-      "decision": "published",
-      "slug": "uae-canada-sign-cepa-trade-deal-081371",
-      "title": "Sheikh Khaled attends dinner hosted by Canada's PM during official visit"
-    },
-    "fb0a34be7db0328b": {
-      "at": "2026-10-28T06:19:16.192Z",
-      "decision": "published",
-      "slug": "uae-canada-sign-cepa-trade-deal-081371",
-      "title": "Abu Dhabi Crown Prince and Canada Prime Minister discuss strengthening UAE-Canada strategic partnership in key sectors"
-    },
-    "b91d0825bbea759c": {
-      "at": "2026-10-28T06:19:19.737Z",
-      "decision": "rejected",
-      "title": "\"اتصالات\" تسجل أداء قياسياً خلال التسعة أشهر الأولى من عام 2026",
-      "strikes": 1
-    },
-    "af1c73b1baee9833": {
-      "at": "2026-10-28T06:19:19.738Z",
-      "decision": "rejected",
-      "title": "etisalat delivers record 9M 2026 results as consolidated net profit surges 46 percent to $4.68 billion",
-      "strikes": 1
-    },
-    "a04c558ad650bd1e": {
-      "at": "2026-10-28T06:19:19.738Z",
-      "decision": "rejected",
-      "title": "17.2 مليار درهم أرباح اتصالات الموحدة في 9 أشهر بنمو46%",
-      "strikes": 1
-    },
-    "7037363b4407af32": {
-      "at": "2026-10-28T06:32:03.213Z",
-      "decision": "published",
-      "slug": "almarai-enters-red-meat-market-hboor-6db774",
-      "title": "«المراعي» السعودية تدخل سوق اللحوم الحمراء باستثمار 133 مليون دولار"
-    },
-    "e401c96e19edbd29": {
-      "at": "2026-10-28T06:32:03.213Z",
-      "decision": "published",
-      "slug": "almarai-enters-red-meat-market-hboor-6db774",
-      "title": "\"المراعي\" تستثمر نصف مليار ريال لدخول سوق اللحوم الحمراء"
-    },
-    "e106ffb468fd6a28": {
-      "at": "2026-10-28T08:46:59.207Z",
-      "decision": "published",
-      "slug": "qatarenergy-extends-force-majeure-edison-italy-e4653e",
-      "title": "QatarEnergy extends cancellations of LNG supply to Italy"
-    },
-    "75046242df0a9c1b": {
-      "at": "2026-10-28T08:46:59.207Z",
-      "decision": "published",
-      "slug": "qatarenergy-extends-force-majeure-edison-italy-e4653e",
-      "title": "3 شحنات إضافية من الغاز القَطري تتأثر بتعليق الإمدادات لإيطاليا"
-    },
-    "fec99f2dc3378196": {
-      "at": "2026-10-28T08:52:01.730Z",
-      "decision": "rejected",
-      "title": "«البحري» السعودية ترفع أرباحها 587 % إلى 2.66 مليار دولار خلال 9 أشهر",
-      "strikes": 1
-    },
-    "d7a68e7d393c5a29": {
-      "at": "2026-10-28T08:52:01.730Z",
-      "decision": "rejected",
-      "title": "ارتفاع أسعار النقل يقفز بأرباح \"البحري\" الفصلية بأكثر من 890%",
-      "strikes": 1
-    },
-    "b76094dff53abcc1": {
-      "at": "2026-10-28T08:59:12.001Z",
-      "decision": "published",
-      "slug": "sk-hynix-shares-jump-record-quarterly-profit-93f73e",
-      "title": "«إس كيه هاينكس» تسجل أرباحاً فصلية قياسية بدعم من طفرة الذكاء الاصطناعي"
-    },
-    "d512bfe3607842c4": {
-      "at": "2026-10-28T08:59:12.001Z",
-      "decision": "published",
-      "slug": "sk-hynix-shares-jump-record-quarterly-profit-93f73e",
-      "title": "SK Hynix Profit Beat Adds Fuel to AI Rebound Trade"
-    },
-    "2aef064fd9421537": {
-      "at": "2026-10-28T08:59:12.001Z",
-      "decision": "published",
-      "slug": "sk-hynix-shares-jump-record-quarterly-profit-93f73e",
-      "title": "إيرادات “إس كيه هاينكس” تقفز بأكثر من 300% بدعم من الطلب على رقائق الذاكرة"
-    },
-    "2c6e15bb8737305f": {
-      "at": "2026-10-28T08:59:12.001Z",
-      "decision": "published",
-      "slug": "sk-hynix-shares-jump-record-quarterly-profit-93f73e",
-      "title": "SK Hynix shares jump 11% after record quarterly profit, outperforming broader market"
-    },
-    "6230a6a67a6bad90": {
-      "at": "2026-10-28T08:59:12.001Z",
-      "decision": "published",
-      "slug": "sk-hynix-shares-jump-record-quarterly-profit-93f73e",
-      "title": "Tech stocks soar as SK hynix adds to rising AI confidence"
-    },
-    "6f76e59bc2b5ee54": {
-      "at": "2026-10-28T13:21:06.093Z",
-      "decision": "published",
-      "slug": "bahri-q3-profit-jumps-freight-rates-cb125d",
-      "title": "Bahri Profit Hits $1.36 Billion as the World Scrambles for Tankers"
-    },
-    "4dc3a1da87f84423": {
-      "at": "2026-10-28T13:21:06.093Z",
-      "decision": "published",
-      "slug": "bahri-q3-profit-jumps-freight-rates-cb125d",
-      "title": "أرباح \"البحري\" السعودية القياسية تتسارع.. الهوامش والنقد يختبران النمو"
-    },
-    "a6eb5f257f528d13": {
-      "at": "2026-10-28T13:21:06.093Z",
-      "decision": "published",
-      "slug": "bahri-q3-profit-jumps-freight-rates-cb125d",
-      "title": "Bahri’s quarterly profit jumps 891% as freight rates climb"
-    },
-    "69e1ddc55657ca48": {
-      "at": "2026-10-28T13:35:52.352Z",
-      "decision": "published",
-      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
-      "title": "Jio’s Blockbuster I.P.O. Gives India’s Investors a Lift"
-    },
-    "adfb7816f66fd106": {
-      "at": "2026-10-28T13:35:52.352Z",
-      "decision": "published",
-      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
-      "title": "Ambani’s $130bn Jio soars in India’s biggest listing"
-    },
-    "e601e8d00db8272c": {
-      "at": "2026-10-28T13:35:52.352Z",
-      "decision": "published",
-      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
-      "title": "Reliance’s Jio soars on market debut after Indian record $3.1bn IPO"
-    },
-    "b6934bd34877cd20": {
-      "at": "2026-10-28T13:35:52.352Z",
-      "decision": "published",
-      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
-      "title": "Ambani’s Jio emerges as India's second-most valuable firm after IPO"
-    },
-    "7b956926a420b476": {
-      "at": "2026-10-28T13:35:52.352Z",
-      "decision": "published",
-      "slug": "jio-platforms-shares-jump-india-record-ipo-281437",
-      "title": "Jio shares surge 21% in market debut after blockbuster India IPO"
-    },
-    "70f1521b5096620f": {
-      "at": "2026-10-28T13:51:49.049Z",
-      "decision": "published",
-      "slug": "adnoc-drilling-dividend-rise-record-profit-3f9d4a",
-      "title": "ADNOC Drilling posts $1.07 billion nine-month profit"
-    },
-    "0b50a0ebe6e3da66": {
-      "at": "2026-10-28T13:51:49.049Z",
-      "decision": "published",
-      "slug": "adnoc-drilling-dividend-rise-record-profit-3f9d4a",
-      "title": "ADNOC Drilling eyes 22.5 percent dividend rise to $1.225 billion in 2026 as profit hits record, nine-month revenue reaches $3.7 billion"
-    },
-    "7bc29a3b311c83d4": {
-      "at": "2026-10-28T20:38:36.935Z",
-      "decision": "published",
-      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
-      "title": "Fed holds interest rates steady in last decision before midterms"
-    },
-    "2f78cb68a8abdf01": {
-      "at": "2026-10-28T20:38:36.935Z",
-      "decision": "published",
-      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
-      "title": "معارضتان في «الفيدرالي» تطالبان برفع الفائدة الأميركية"
-    },
-    "240e3ee658b1f8d9": {
-      "at": "2026-10-28T20:38:36.935Z",
-      "decision": "published",
-      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
-      "title": "Fed Leaves Rates Unchanged, Cook and Hammack Dissent"
-    },
-    "847a7abc2726921c": {
-      "at": "2026-10-28T20:38:36.935Z",
-      "decision": "published",
-      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
-      "title": "Federal Reserve issues FOMC statement"
-    },
-    "3bac0903fd26fde8": {
-      "at": "2026-10-28T20:38:36.935Z",
-      "decision": "published",
-      "slug": "fed-holds-rates-two-dissents-hike-ae3a21",
-      "title": "Fed holds rates days before US midterms as two officials push for another hike"
-    },
     "6291c4542e8ed10e": {
       "at": "2026-10-28T20:44:55.077Z",
       "decision": "rejected",
@@ -6232,6 +5440,90 @@
       "decision": "published",
       "slug": "jensen-huang-weighs-nvidia-ceo-return-29d418",
       "title": "Jensen Huang might be plotting a return and more of the latest Nvidia drama"
+    },
+    "16d1eb0fdfb6dc1e": {
+      "at": "2026-11-18T20:51:48.264Z",
+      "decision": "published",
+      "slug": "imf-egypt-final-review-staff-agreement-13639a",
+      "title": "صندوق النقد يتيح لمصر 2.3 مليار دولار بعد الاتفاق على المراجعتين الثامنة والأخيرة"
+    },
+    "7dcfb46be3cd993e": {
+      "at": "2026-11-18T20:51:48.264Z",
+      "decision": "published",
+      "slug": "imf-egypt-final-review-staff-agreement-13639a",
+      "title": "صندوق النقد يعلن التوصل إلى اتفاق على مستوى الخبراء بشأن المراجعة الثامنة لمصر"
+    },
+    "7631a0181056e97a": {
+      "at": "2026-11-18T20:51:48.264Z",
+      "decision": "published",
+      "slug": "imf-egypt-final-review-staff-agreement-13639a",
+      "title": "صندوق النقد يتوصل لاتفاق على مستوى الخبراء مع مصر تمهيدا لصرف 2.3 مليار دولار"
+    },
+    "1b6538df3e88a615": {
+      "at": "2026-11-18T20:51:48.264Z",
+      "decision": "published",
+      "slug": "imf-egypt-final-review-staff-agreement-13639a",
+      "title": "صندوق النقد يتوصل إلى اتفاق مع مصر لمنحها 2.3 مليار دولار - تفاصيل"
+    },
+    "b89b7db210cf3cc6": {
+      "at": "2026-11-18T20:51:48.264Z",
+      "decision": "published",
+      "slug": "imf-egypt-final-review-staff-agreement-13639a",
+      "title": "صندوق النقد يتوصل لاتفاق على مستوى الخبراء مع مصر للمراجعة الأخيرة للبرنامج"
+    },
+    "54a6882c3e767f71": {
+      "at": "2026-11-18T21:02:44.623Z",
+      "decision": "rejected",
+      "title": "Fed Minutes Leave Door Open to Larger December Rate Hike",
+      "strikes": 1
+    },
+    "736ae71449ddd199": {
+      "at": "2026-11-18T21:02:44.623Z",
+      "decision": "rejected",
+      "title": "محضر الفيدرالي: شبه إجماع على الحاجة إلى رفع الفائدة",
+      "strikes": 1
+    },
+    "e2c2b4bdc4fe901a": {
+      "at": "2026-11-18T21:02:44.623Z",
+      "decision": "rejected",
+      "title": "Fed Minutes Show Almost All Officials Expect More Rate Hikes",
+      "strikes": 1
+    },
+    "dbea10a75a84833c": {
+      "at": "2026-11-18T21:02:44.623Z",
+      "decision": "rejected",
+      "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026",
+      "strikes": 1
+    },
+    "3a261481b7465902": {
+      "at": "2026-11-18T21:02:44.623Z",
+      "decision": "rejected",
+      "title": "Fed officials expect more rate hikes, worry about AI impact on inflation, minutes show",
+      "strikes": 1
+    },
+    "7ee2119414d7f273": {
+      "at": "2026-11-18T21:15:41.301Z",
+      "decision": "published",
+      "slug": "egypt-gdp-growth-slows-first-quarter-fca261",
+      "title": "نمو الاقتصاد المصري يتباطأ إلى 4.9 % في الربع الأول"
+    },
+    "6e3546d33b42f3d5": {
+      "at": "2026-11-18T21:15:41.301Z",
+      "decision": "published",
+      "slug": "egypt-gdp-growth-slows-first-quarter-fca261",
+      "title": "Egypt’s GDP grows by 4.9% in Q1 FY 2026/27: Planning Minister"
+    },
+    "6bb4b659fa9075cb": {
+      "at": "2026-11-18T21:15:41.301Z",
+      "decision": "published",
+      "slug": "egypt-gdp-growth-slows-first-quarter-fca261",
+      "title": "Egypt’s economy grows 4.9 percent in Q1 FY2026/27 as Suez Canal activity jumps 47.5 percent"
+    },
+    "78772485699ca26b": {
+      "at": "2026-11-18T21:15:41.301Z",
+      "decision": "published",
+      "slug": "egypt-gdp-growth-slows-first-quarter-fca261",
+      "title": "اقتصاد مصر ينمو 4.9% في الربع الأول من سنتها المالية"
     }
   }
 }

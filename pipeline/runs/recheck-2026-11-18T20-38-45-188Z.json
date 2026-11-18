@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-18T20:38:45.188Z",
+  "durationSec": 64,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "egypt-raises-private-sector-minimum-wage-1092c6",
+      "title": "مصر ترفع الحد الأدنى لأجور القطاع الخاص 21% إلى 8500 جنيه",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 29,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 12850,
+    "completionTokens": 8414,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2711,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 12850,
+        "read": 0,
+        "out": 8414,
+        "usd": 0.2711
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[20:38:46] second look: 1 to read now (1 published pieces not yet read; 272 read clean before publication and left out of the audit sample)",
+    "[20:39:49] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1511 in=12850 read=0 out=8414 attempt=1 ms=59684",
+    "[20:39:49] egypt-raises-private-sector-minimum-wage-1092c6: 31 of 31 sentences checked · 29 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}
