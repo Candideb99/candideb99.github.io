@@ -17795,6 +17795,34 @@
           "noted": []
         }
       ]
+    },
+    "eu-forecast-gulf-outlook-hormuz-disruption-359322": {
+      "at": "2026-11-19T17:40:24.593Z",
+      "title": "المفوضية الأوروبية: آفاق اقتصادات الخليج تتراجع بوضوح مع تعطل الملاحة في هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 25,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

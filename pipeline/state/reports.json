@@ -57,11 +57,11 @@
       "tries": 2
     },
     "ec-forecast": {
-      "edition": 202604,
-      "label": "Spring 2026 Economic Forecast",
-      "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts/spring-2026-economic-forecast-slowdown-growth-energy-shock-drives-inflation_en",
-      "at": "2026-10-18T22:34:48.933Z",
-      "outcome": "starting point",
+      "edition": 202609,
+      "label": "Autumn 2026 Economic Forecast",
+      "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts/autumn-2026-economic-forecast-shows-continued-growth-amid-higher-inflation_en",
+      "at": "2026-11-19T17:40:24.606Z",
+      "outcome": "published eu-forecast-gulf-outlook-hormuz-disruption-359322",
       "tries": 0
     },
     "de-gd": {
@@ -124,9 +124,9 @@
       "edition": 202609,
       "label": "International trade in goods for Saudi Arabia in September 2026",
       "url": "https://www.stats.gov.sa/en/statistics-tabs?tab=436312&category=123481#",
-      "at": "2026-11-15T15:42:33.614Z",
+      "at": "2026-11-19T17:40:26.272Z",
       "outcome": "retry",
-      "tries": 1
+      "tries": 2
     },
     "sa-gdp": {
       "edition": 202606,
