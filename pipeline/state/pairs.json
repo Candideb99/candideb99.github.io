@@ -2909,6 +2909,56 @@
         ],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-19T10:26:58.928Z",
+      "slug": "iea-hormuz-oil-flows-two-million-2035-e573c4",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 18,
+        "notFound": 3,
+        "checked": 21,
+        "words": 327,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 6,
+        "supported": 25,
+        "notFound": 1,
+        "checked": 29,
+        "words": 417,
+        "keyFacts": 4,
+        "classes": [
+          "scope",
+          "scope"
+        ],
+        "programmatic": 2
+      },
+      "none": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 6,
+        "supported": 25,
+        "notFound": 1,
+        "checked": 29,
+        "words": 417,
+        "keyFacts": 4,
+        "classes": [
+          "scope",
+          "scope"
+        ],
+        "programmatic": 2
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "mode": "recheck",
-  "startedAt": "2026-11-09T06:46:09.842Z",
+  "startedAt": "2026-11-19T10:14:22.606Z",
   "durationSec": 1,
   "read": 0,
   "corrected": 0,
@@ -17,6 +17,6 @@
     "correctionsEditorCalls": 0
   },
   "log": [
-    "[06:46:10] second look: 0 to read now (0 published pieces not yet read; 228 read clean before publication and left out of the audit sample)"
+    "[10:14:23] second look: 0 to read now (0 published pieces not yet read; 276 read clean before publication and left out of the audit sample)"
   ]
 }

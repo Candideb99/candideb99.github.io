@@ -1,0 +1,526 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-19T10:14:23.505Z",
+  "durationSec": 2533,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "وكالة الطاقة: أزمة هرمز أفقدت السوق 2.8 مليار برميل وقد تخفض الطلب على النفط 4% بحلول 2035",
+      "section": "energy",
+      "importance": 9,
+      "sources": [
+        "https://asharqbusiness.com/power/156985/%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%D8%A9-%D8%AA%D8%AA%D9%88%D9%82%D8%B9-%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D9%84%D8%B7%D9%84%D8%A8-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%86%D9%81%D8%B7-%D8%A8%D8%B3%D8%A8%D8%A8-%D8%AD%D8%B1%D8%A8-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86/",
+        "https://www.ft.com/content/1e00aad2-0007-4328-8492-0fea09aa69ad?syn-25a6b1a6=1",
+        "https://www.aljazeera.net/ebusiness/2026/11/19/%d9%88%d9%83%d8%a7%d9%84%d8%a9-%d8%a7%d9%84%d8%b7%d8%a7%d9%82%d8%a9-%d8%a3%d8%b2%d9%85%d8%a9-%d9%85%d8%b6%d9%8a%d9%82-%d9%87%d8%b1%d9%85%d8%b2-%d8%a3%d9%83%d8%a8%d8%b1-%d8%aa%d9%87%d8%af%d9%8a%d8%af",
+        "https://www.snabusiness.com/article/1905761-%D9%88%D9%83%D8%A7%D9%84%D8%A9-%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9-%D8%AD%D8%B1%D8%A8-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D8%B3%D8%AA%D8%AE%D9%81%D8%B6-%D8%A7%D9%84%D8%B7%D9%84%D8%A8-%D8%A7%D9%84%D9%86%D9%81%D8%B7-4-%D8%A8%D8%AD%D9%84%D9%88%D9%84-2035"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يقدم انحسار العبور إلى مليوني برميل كأنه توقع أساسي، والمصدر 4 يصفه بأنه «السيناريو المتطرف» المشروط باستمرار النظر إلى المضيق مصدراً للمخاطر. ويغيب عن المقال أن الشرق الأوسط يبقى أكبر مصدر للنفط حتى في هذه الحالة، فيظن القارئ أن صادرات الخليج ستنهار.",
+              "repair": "إضافة «في سيناريو متطرف» إلى العنوان أو الفرعي، ووضع الشرط في المقدمة، وإيراد بقاء الشرق الأوسط أكبر المصدرين في الفقرة الثانية."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل المقال السبب (القيود الإيرانية، المصدر 3) والآلية (مصادر بديلة وخطوط أنابيب، المصدر 4). لكنه يغفل حجم الصدمة (2.8 مليار برميل و60 مليار متر مكعب، المصدر 1)، والعاقبة على المستهلكين (المصدر 3)، ومقارنة 97 مليوناً بـ101 مليون في سيناريو السياسات المعلنة. أما «لماذا يهمّ» فيربط سيناريوهين مختلفين بلا سند.",
+              "repair": "إضافة الفاقد التراكمي، وتحمّل المستهلكين حصة متزايدة من الكلفة، ونسبة «أكثر من 4%» مع مقارنتها الصحيحة، وإعادة كتابة الصندوق باستدلال من سيناريو واحد."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (انحسار العبور) يتطوّر في الفقرات الثلاث الأولى، وهذا سليم. لكن قسم «الطلب على النفط في سيناريو جديد» يضم فقرتين عن الطاقة المحلية والحصول على الكهرباء لا عن الطلب. والختام بـ«لكن الوكالة تخشى» يقيم تقابلاً ضعيفاً مع فقرة الاستثمار في الشمس والرياح.",
+              "repair": "جمع فقرتي الطاقة المحلية والاستثمار المتجدد في سياق تنويع الإمدادات، وإبقاء القسم للطلب وحده، وجعل خطر الإتاحة في الاقتصادات الناشئة عاقبةً تُروى مع تحمّل المستهلكين الكلفة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«تحول المشترين» فاعل مخترع. وتقدير المليوني برميل فقد شرطه في العنوان والمقدمة. ومقارنة 97 مليوناً في 2035 بـ102.3 مليون في 2026 تخلط أساساً زمنياً بسيناريو، والمصدر 1 يقارنها بـ101 مليون في السياسات المعلنة. ثم «إغلاق المضيق» (المصدر 4) يجاور «قيوداً مشددة» (المصدر 3) بلا توحيد.",
+              "repair": "حذف «المشترين»، وإبقاء الشرط حيثما طُبع الرقم، وتصحيح المقارنة، واستعمال وصف واحد لحال المضيق منسوب إلى مصدره."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان الفاعل (وكالة الطاقة)، والمكان (هرمز)، والرقم (مليونا برميل يومياً)، والأفق (2035)، والوصف (السيناريو المتطرف)، والقيد الأهم (بقاء الشرق الأوسط أكبر مصدّر). والمقدمة تحمل الشرط «إذا استمر النظر إلى المضيق مصدراً للمخاطر لفترة أطول» ومقارنة 20 مليوناً قبل الحرب.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تحمل المسودة السبب (القيود الإيرانية، المصدر 3)، وحجم الصدمة (2.8 مليار برميل و60 مليار متر مكعب، المصدر 1)، وتحمّل المستهلكين الكلفة، وتقييم بيرول. لكن قسم الطلب يغفل أن السيناريو الجديد «استجابة للأزمة» (المصدر 4). ومقدمات الصندوق صحيحة، غير أن استدلاله يبدّل «مصادر بديلة» بـ«منافذ بديلة» لنفط الخليج ويجزم بأنها «تعوض» ما كان يعبر المضيق.",
+              "repair": "إضافة «استجابةً لأزمة هرمز» في تعريف حالة الاستجابة الإضافية، وإعادة كتابة الصندوق بآلية المصدرين 2 و4 (أنابيب تتجاوز المضيق وموردون بدلاء يحتاجون إلى وقت واستثمار) من دون فعل جازم ولا تعويض كامل."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان (انحسار العبور) يتطور في الفقرة الأولى، لكن ما يشرحه مبعثر: رأي الوكالة في موازنة السوق من دون المضيق (المصدر 2) معزول في فقرة من جملة واحدة بعد بيرول، وتنويع المصادر وتفضيل الطاقة المحلية متروكان في آخر المقال تحت عنوان «من يتحمل الكلفة» تسبقهما «وفي المقابل».",
+              "repair": "جمع فقرة فايننشال تايمز وفقرة تنويع المصادر والطاقة المحلية مع الفقرة الأولى، وحذف «وفي المقابل»، وقصر القسم الأخير على المستهلكين والاقتصادات الناشئة، أو ضمّه إلى ما قبله إن بقي فقرة واحدة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "صُححت المقارنة: 97 مليوناً مقابل «ما يزيد قليلاً على 101 مليون» للعام نفسه، أي «بأكثر من 4%». وبقي الشرط مع الرقم في المقدمة. أما الصندوق فيقول «ينتقل» و«تعوض» حيث يقول المصدر 4 «قد يجري اللجوء إلى مصادر بديلة»، وصندوق الأرقام لا يحمل رقم العنوان ولا شرطه.",
+              "repair": "إعادة «قد» وصيغة «مصادر بديلة» إلى الصندوق، وإضافة مليوني برميل يومياً في 2035 مع شرطه إلى صندوق الأرقام."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "استدلال يتجاوز مقدماته في «لماذا يهمّ»: «فإن تصدير نفط الخليج ينتقل إلى خطوط أنابيب ومنافذ بديلة تتطلب استثماراً ووقتاً قبل أن تعوض ما كان يعبر المضيق». يقول المصدر 4 «فقد يجري اللجوء إلى مصادر بديلة والاستثمار في خطوط أنابيب تتجاوز المضيق»، و«المصادر البديلة» موردون آخرون لا «منافذ» لتصدير نفط الخليج. ولا يقول أي مصدر إن هذه البدائل «تعوض» ما كان يعبر المضيق، كما أن الفعل الجازم «ينتقل» يُسقط احتمال «قد». الإصلاح: «إذا بقي هرمز مصدراً للمخاطر، فإن موازنة السوق من دونه تمر عبر خطوط أنابيب تتجاوزه وموردين بدلاء يحتاجون إلى وقت واستثمار، وإلى أن يكتمل ذلك يدفع المستهلكون ثمن نقص الإمدادات» (المصادر 2 و3 و4).",
+        "البناء (المشكلتان 6 و9 من المراجعة السابقة ما زالتا قائمتين بصورة جديدة): عنوان القسم «من يتحمل الكلفة» يعلو فقرة عن «تفضيلاً متزايداً لمصادر الطاقة المتاحة محلياً» وعن الاستثمار في الشمس والرياح، وهذا ليس موضوعه. وعبارة «وفي المقابل» تقيم تقابلاً لا يسنده أي مصدر. الإصلاح: نقل الفقرة إلى جانب الفقرة الأولى، لأن تنويع مصادر الإمداد وطرق التجارة (المصدر 4) هو آلية العنوان نفسه، وحذف «وفي المقابل»، وإبقاء القسم الأخير للمستهلكين والاقتصادات الناشئة. ويبقى القسم عندها فقرة واحدة، فإما أن تُضم إلى ما قبلها ويُحذف عنوانه، وإما أن يتسع لفقرتين.",
+        "العنوان بلا متن مجمَّع: «وبحسب صحيفة «فايننشال تايمز» البريطانية، قالت الوكالة إن موازنة أسواق النفط ممكنة من دون استعادة التدفقات عبر المضيق» فقرة من جملة واحدة معزولة بعد كلام بيرول، مع أنها تشرح مباشرة ما يعنيه انحسار العبور (المصدر 2). الإصلاح: ضمّها إلى الفقرة الأولى بعد جملة خطوط الأنابيب وقبل «لكنها تتوقع أن تظل منطقة الشرق الأوسط أكبر مصدر…».",
+        "صندوق «الأرقام» لا يزال يخلو من رقم العنوان، وهذا ما طلبته المراجعة السابقة. الإصلاح: إضافة «العبور في السيناريو المتطرف 2035: لا يتجاوز مليوني برميل يومياً (إذا ظل المضيق مصدراً للمخاطر)». وتقدير «الطلب العالمي على النفط في 2026» خلفية لا رقم الحدث، فيُرفع من الصندوق ويبقى في النص.",
+        "انقطاع صلة قسم الطلب بالأزمة: «تعجّل فيه الحكومات التحول إلى الكهرباء وتحسين كفاءة الطاقة». يربط المصدر 4 السيناريو صراحة بأن تتخذ الحكومات هذه الإجراءات «استجابة للأزمة»، ويقول المصدر 1 إن الأزمة «قد تخفض الطلب العالمي على النفط بأكثر من 4%». الإصلاح: «تعجّل فيه الحكومات، استجابةً لأزمة هرمز، التحول إلى الكهرباء…». وعنوان القسم «بحلول 2035» لا يتسع لرقم 2050، فيصير «الطلب على النفط والغاز في السيناريو الجديد».",
+        "صياغة العنوان الفرعي: في «تقدير تصفه الوكالة بالسيناريو المتطرف لعام 2035» يتعلق «لعام 2035» بالسيناريو لا بالتقدير. الإصلاح: «في سيناريو تصفه الوكالة بالمتطرف بحلول 2035، يبقى فيه الشرق الأوسط أكبر مصدّر للنفط إلى الأسواق العالمية».",
+        "تحمل المسودة السبب (القيود الإيرانية، المصدر 3)، وحجم الصدمة (2.8 مليار برميل و60 مليار متر مكعب، المصدر 1)، وتحمّل المستهلكين الكلفة، وتقييم بيرول. لكن قسم الطلب يغفل أن السيناريو الجديد «استجابة للأزمة» (المصدر 4). ومقدمات الصندوق صحيحة، غير أن استدلاله يبدّل «مصادر بديلة» بـ«منافذ بديلة» لنفط الخليج ويجزم بأنها «تعوض» ما كان يعبر المضيق. — إضافة «استجابةً لأزمة هرمز» في تعريف حالة الاستجابة الإضافية، وإعادة كتابة الصندوق بآلية المصدرين 2 و4 (أنابيب تتجاوز المضيق وموردون بدلاء يحتاجون إلى وقت واستثمار) من دون فعل جازم ولا تعويض كامل.",
+        "عنصر العنوان (انحسار العبور) يتطور في الفقرة الأولى، لكن ما يشرحه مبعثر: رأي الوكالة في موازنة السوق من دون المضيق (المصدر 2) معزول في فقرة من جملة واحدة بعد بيرول، وتنويع المصادر وتفضيل الطاقة المحلية متروكان في آخر المقال تحت عنوان «من يتحمل الكلفة» تسبقهما «وفي المقابل». — جمع فقرة فايننشال تايمز وفقرة تنويع المصادر والطاقة المحلية مع الفقرة الأولى، وحذف «وفي المقابل»، وقصر القسم الأخير على المستهلكين والاقتصادات الناشئة، أو ضمّه إلى ما قبله إن بقي فقرة واحدة.",
+        "صُححت المقارنة: 97 مليوناً مقابل «ما يزيد قليلاً على 101 مليون» للعام نفسه، أي «بأكثر من 4%». وبقي الشرط مع الرقم في المقدمة. أما الصندوق فيقول «ينتقل» و«تعوض» حيث يقول المصدر 4 «قد يجري اللجوء إلى مصادر بديلة»، وصندوق الأرقام لا يحمل رقم العنوان ولا شرطه. — إعادة «قد» وصيغة «مصادر بديلة» إلى الصندوق، وإضافة مليوني برميل يومياً في 2035 مع شرطه إلى صندوق الأرقام."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "إذا استمر النظر إلى هرمز مصدراً للمخاطر قد يجري اللجوء إلى مصادر بديلة والاستثمار في خطوط أنابيب تتجاوز المضيق، فلا يتجاوز العبور مليوني برميل يومياً بحلول 2035",
+          "source": 4
+        },
+        {
+          "fact": "موازنة أسواق النفط ممكنة دون استعادة التدفقات عبر المضيق لكنها تتطلب وقتاً واستثمارات",
+          "source": 2
+        },
+        {
+          "fact": "تواجه دول الخليج صعوبات في تصدير النفط منذ فرضت إيران قيوداً مشددة على الملاحة في المضيق",
+          "source": 3
+        },
+        {
+          "fact": "المستهلكون يتحملون حصة متزايدة من تكاليف أزمة الطاقة مع تراجع قدرة العالم على امتصاص أثر النزاع في الإمدادات",
+          "source": 3
+        }
+      ],
+      "slug": "iea-hormuz-oil-flows-two-million-2035-e573c4",
+      "title": "وكالة الطاقة: النفط العابر لهرمز قد ينحسر إلى مليوني برميل يومياً",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة نتائجها علناً مرتين سنوياً",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://aawsat.com/node/5343067",
+        "https://asharqbusiness.com/financial-markets/156981/%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%B3%D9%88%D9%82-%D8%AA%D9%84%D8%B2%D9%85-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%A8%D9%84%D9%82%D8%A7%D8%A1%D8%A7%D8%AA-%D8%B9%D9%84%D9%86%D9%8A%D8%A9-%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9-%D8%A7%D9%84%D9%86%D8%AA%D8%A7%D8%A6%D8%AC/",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%A7%D9%82/%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%B3%D9%88%D9%82-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D9%84%D8%B2%D9%85-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%AC%D8%A9-%D8%A8%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A7%D8%AA-%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD-%D9%85%D8%B1%D8%AA%D9%8A%D9%86-%D8%B3%D9%86%D9%88%D9%8A%D8%A7-16619"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يقول «تلزم الشركات المدرجة»، بينما الإلزام يقتصر على السوق الرئيسية بحسب المصادر الثلاثة، ولا يذكر العنوان ولا العنوان الفرعي ولا المتن متى يبدأ التطبيق. البلد والجهة واضحان في العنوان.",
+              "repair": "إضافة «في السوق الرئيسية» إلى العنوان الفرعي، وإضافة موعد البدء «اعتباراً من نتائج العام المالي 2026» إلى المقدمة."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الهدف المعلن (رفع جودة المعلومات ودعم القرارات) والآلية (الانتقال من ممارسة اختيارية إلى إلزام) حاضران. أما خلفية «رابع حزمة منذ تولي السديري» (SOURCE 2) فغائبة، وموعد التطبيق غائب. صندوق «لماذا يهمّ» يبني استنتاجاً محدوداً ومدعوماً من آلية دعوة كبار المساهمين ومهلة الساعات الثلاث، وهو تضييق انفراد فئة محدودة بشرح الإدارة.",
+              "repair": "إدراج رقم الحزمة مع تعريف السديري بصفته رئيس الهيئة، وإدراج موعد البدء."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو الإلزام بلقاءين علنيين، والمتن يطوّره مباشرة بعد المقدمة: المواعيد، ثم الحضور، ثم آلية التسجيل، ثم النشر. هذا جيد. لكن القسم الأخير يجمع مسار الاستطلاع ورأيين لوسيلتين إعلاميتين وسطراً عن المؤشر تحت عنوان فرعي لا يصف إلا الأول، فينتهي التقرير على رقم لا صلة له بالحدث.",
+              "repair": "نقل أثر القرار على وظائف علاقات المستثمرين إلى فقرة الهدف، وحذف سطر «تاسي»، وختم القسم بالخلفية التنظيمية (الاستطلاع ثم الاعتماد ثم الحزمة الرابعة)."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «بعد صدور التعميم» تفترض تسلسلاً زمنياً لا يدعمه أي مصدر. وجملة «فيعرض المسؤولون أرقام شركاتهم... بدل أن يُترك ذلك لتقدير كل إدارة» ملحقة بقول الهيئة حتى تبدو كأنها من كلامها، وهي في الواقع صياغة الكاتب لما وصفته SOURCE 2. المهل (خمسة أيام عمل، ثلاثة أيام للتسجيل، ثلاث ساعات للنشر، 30 مساهماً) مطابقة للمصادر.",
+              "repair": "حذف سطر المؤشر، وفصل جملة العرض أمام جمهور مفتوح عن قول الهيئة أو إسنادها إلى «الشرق بلومبرغ» بصيغة الانتقال من ممارسة اختيارية."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يذكر البلد والجهة («هيئة السوق السعودية»)، والعنوان الفرعي يحصر الإلزام في السوق الرئيسية ويحدد بدءه بنتائج 2026، والمقدمة تنص على «مرتين سنوياً على الأقل».",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "الهدف المعلن (رفع جودة المعلومات ودعم القرارات الاستثمارية) منسوب إلى الهيئة. والتحول من ممارسة اختيارية إلى متطلب تنظيمي مذكور كما في SOURCE 2. والخلفية حاضرة: الاستطلاع في 29 سبتمبر والحزمة الرابعة منذ تولي السديري. ولا تقدم المصادر ردود فعل من السوق. أما صندوق «لماذا يهمّ» فيبني من آلية دعوة كبار المساهمين ومهلة الساعات الثلاث استنتاجاً محدوداً: الشركات قليلة التغطية تخضع للمعيار نفسه، وتضيق فترة انفراد فئة محدودة بشرح الإدارة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو الإلزام بلقاءين علنيين، والمتن يطوّره بعد المقدمة مباشرة: المواعيد، ثم المشاركون، ثم الحضور، ثم النشر، ثم الخلفية. لكن الفقرة الأولى والثانية تكرران ما قالته المقدمة («وهذا حد أدنى…»، «ويعني موعد البدء…»). وفقرة النشر تلحق بقول الهيئة شرحاً يكرره الصندوق.",
+              "repair": "حذف الجملتين المكررتين وذيل «فيطّلع من لم يحضر…»، وإضافة الإعلان المسبق عن موعد اللقاء ووسيلته إلى فقرة الحضور."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "المهل والأرقام مطابقة للمصادر: خمسة أيام عمل، وثلاثة أيام للتسجيل، وثلاث ساعات للنشر، و30 مساهماً، و29 سبتمبر، و30 يوماً. لكن «يعتمدها مجلسها ويصدر التعميم استناداً إلى قراره» تنسب إصدار التعميم إلى المجلس، وعنوان «عند غياب المحللين» في الصندوق يغيّر شرط «أقل من محللَين خلال ثلاثة أيام عمل».",
+              "repair": "«فأصدرت الهيئة التعميم استناداً إلى قرار مجلسها»، وتصحيح عنوان الصندوق إلى الشرط كما ورد في SOURCE 2 وSOURCE 3."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "إسناد الفعل إلى غير صاحبه: «قبل أن يعتمدها مجلسها ويصدر التعميم استناداً إلى قراره» تجعل المجلس هو مصدر التعميم، وتجعل مرجعه قرار المجلس نفسه. والمصدران SOURCE 1 وSOURCE 2 يقولان إن الهيئة أصدرت التعميم استناداً إلى قرار مجلسها. الإصلاح: «ثم أقرّها مجلس الهيئة، فأصدرت الهيئة التعميم استناداً إلى قراره».",
+        "شرح الكاتب ملحق بكلام الهيئة: في «وقالت الهيئة إن ذلك يضمن إتاحة المعلومات لجميع المستثمرين، فيطّلع من لم يحضر اللقاء على ما عرضته الإدارة فيه بعد ساعات من انعقاده» يبدو الجزء الثاني من قول الهيئة، وهو ليس في أي مصدر. كما يكرره صندوق «لماذا يهمّ» («ويصل التسجيل الكامل إلى بقية المستثمرين خلال ثلاث ساعات»). الإصلاح: الاكتفاء بـ«وقالت الهيئة إن ذلك يضمن إتاحة المعلومات لجميع المستثمرين» وترك الاستنتاج للصندوق.",
+        "تكرار ما قالته المقدمة: «على الأقل» و«اعتباراً من نشر القوائم المالية السنوية للعام المالي 2026» واردتان في المقدمة، ثم يعيدهما المتن في «وهذا حد أدنى، فللشركة أن تعقد لقاءات أكثر» و«ويعني موعد البدء أن أول لقاء إلزامي سيأتي بعد إعلان الشركات نتائجها السنوية المقبلة». وعبارة «أي خارج ساعات التداول» تشرح «بعد إغلاق السوق» لقارئ يعرف معناها. الإصلاح: حذف الجمل الثلاث.",
+        "إجراء مُسقط من فقرة الحضور: المصادر الثلاثة (SOURCE 1 وSOURCE 2 وSOURCE 3) تلزم الشركات بالإعلان مسبقاً عن مواعيد اللقاءات على مواقعها الإلكترونية، مع تحديد وسيلة انعقادها وآلية التسجيل. والمسودة لا تذكر إلا آلية التسجيل. الإصلاح: «وتعلن الشركة مسبقاً على موقعها موعد اللقاء ووسيلة انعقاده، وتوفر آلية للتسجيل تتيح المشاركة للجميع».",
+        "دقة صندوق الأرقام: في «الحد الأدنى للقاءات سنوياً: مرتان على الأقل» تكرار، والأصح أن تكون القيمة «مرتان». وعنوان «كبار المساهمين المدعوون عند غياب المحللين» يغيّر الشرط. فالمصدران SOURCE 2 وSOURCE 3 يشترطان عدم تسجيل محللَين اثنين على الأقل خلال ثلاثة أيام عمل، لا غياب المحللين كلياً. الإصلاح: «عدد كبار المساهمين المدعوين إذا سجّل أقل من محللَين خلال 3 أيام عمل».",
+        "الجديد في العنوان هو الإلزام بلقاءين علنيين، والمتن يطوّره بعد المقدمة مباشرة: المواعيد، ثم المشاركون، ثم الحضور، ثم النشر، ثم الخلفية. لكن الفقرة الأولى والثانية تكرران ما قالته المقدمة («وهذا حد أدنى…»، «ويعني موعد البدء…»). وفقرة النشر تلحق بقول الهيئة شرحاً يكرره الصندوق. — حذف الجملتين المكررتين وذيل «فيطّلع من لم يحضر…»، وإضافة الإعلان المسبق عن موعد اللقاء ووسيلته إلى فقرة الحضور.",
+        "المهل والأرقام مطابقة للمصادر: خمسة أيام عمل، وثلاثة أيام للتسجيل، وثلاث ساعات للنشر، و30 مساهماً، و29 سبتمبر، و30 يوماً. لكن «يعتمدها مجلسها ويصدر التعميم استناداً إلى قراره» تنسب إصدار التعميم إلى المجلس، وعنوان «عند غياب المحللين» في الصندوق يغيّر شرط «أقل من محللَين خلال ثلاثة أيام عمل». — «فأصدرت الهيئة التعميم استناداً إلى قرار مجلسها»، وتصحيح عنوان الصندوق إلى الشرط كما ورد في SOURCE 2 وSOURCE 3."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "إذا لم يسجّل محللان ماليان على الأقل خلال ثلاثة أيام عمل، تلتزم الشركة بدعوة أكبر 30 مساهماً فيها إلى اللقاء.",
+          "source": 3
+        },
+        {
+          "fact": "تلتزم الشركات بنشر العرض التقديمي والتسجيل الكامل لكل لقاء على مواقعها خلال ثلاث ساعات كحد أقصى من انتهائه.",
+          "source": 3
+        },
+        {
+          "fact": "اشترطت الهيئة توفير آلية تسجيل وحضور تتيح المشاركة للجميع.",
+          "source": 1
+        },
+        {
+          "fact": "يحوّل القرار اللقاءات من ممارسة اختيارية متفاوتة بين الشركات إلى متطلب تنظيمي يشمل جميع شركات السوق الرئيسية.",
+          "source": 2
+        }
+      ],
+      "slug": "saudi-cma-mandates-twice-yearly-earnings-calls-2128b5",
+      "title": "هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة نتائجها علناً مرتين سنوياً",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "تضرر مقر صندوق الاستثمارات العامة في الرياض بعد هجوم صاروخي حوثي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://www.bbc.com/arabic/articles/cq98x3geznjzo",
+        "https://www.agbi.com/oil-and-gas/2026/11/saudi-crown-prince-meets-us-officials-as-houthis-target-riyadh/",
+        "https://www.aljazeera.net/news/2026/11/19/%d9%87%d8%ac%d9%88%d9%85-%d8%ad%d9%88%d8%ab%d9%8a-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d8%b1%d9%8a%d8%a7%d8%b6-%d9%88%d8%a7%d9%84%d8%ad%d9%88%d8%ab%d9%8a%d9%88%d9%86-%d9%8a%d8%b9%d9%84%d9%86%d9%88%d9%86",
+        "https://www.thenationalnews.com/news/gulf/2026/11/19/saudi-sovereign-wealth-fund-tower-in-riyadh-damaged-in-houthi-strike/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان الحدث وبلده (الرياض)، والمقدمة تعرّف الصندوق بأنه صندوق الثروة السيادي السعودي. لكن السطر الأول «مصادر:» يخفي أن الناقل هو رويترز، ولا تقول المقدمة إن حجم الضرر ما زال قيد الحصر عند البرج تحديداً.",
+              "repair": "«رويترز: تضرر برج صندوق الاستثمارات العامة السعودي في هجوم حوثي على الرياض»، مع إبقاء أن الأضرار يجري حصرها (SOURCE 1, SOURCE 4)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة عناصر سياق. أولها إعلان الحوثيين استهداف المركز المالي والمطار (SOURCE 1, SOURCE 2)، وهو غائب. وثانيها سوابق ضرب أهداف اقتصادية: مبنى أرامكو الأسبوع الماضي وهجوم أكتوبر على المطار الذي قتل 14 شخصاً وعلّق الرحلات أسبوعين (SOURCE 1, SOURCE 3)، وهي غائبة. وثالثها أثر الهجمات على الفعاليات، وهو حاضر. أما صندوق «لماذا يهمّ» فيكرر العنوان الفرعي بشرط مستقبلي لما وقع فعلاً.",
+              "repair": "يُضاف إعلان الحوثيين المنسوب إليهم وسابقتا أرامكو والمطار، ويُعاد بناء «لماذا يهمّ» على أن الأهداف المعلنة هي البنية التي تقوم عليها استضافة الفعاليات، مع شرط استمرار الحملة ستة أشهر."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الخبر الجديد في العنوان هو تضرر برج الصندوق، ولا يرد ذكره بعد المقدمة. والفقرة الأولى من المتن تكرر المقدمة، واعتراضات الخميس الأخرى منفصلة عن الهجوم الرئيسي بقسم عن الفعاليات والمطار.",
+              "repair": "الترتيب المقترح: المقدمة، ثم فقرة تجمع الضرر وإعلان الحوثيين عن هدف المركز المالي وسابقة أرامكو، ثم بقية هجمات الخميس وغارات صنعاء، ثم الفعاليات والمطار مع هجوم أكتوبر، ثم الحملة المتوقعة وباب المندب."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الاقتباس المنسوب إلى بيان التحالف يتضمن عبارة من صياغة «بي بي سي». و«ذمار» مع ربط المنصة بالرياض رواية الجزيرة وحدها، و«ذا ناشيونال» تقول صعدة. ولقب «الركن» غير وارد في المصادر.",
+              "repair": "تُحذف علامات الاقتباس وتُنسب العبارة إلى سياقها، وتُنسب رواية المنصة إلى مصدرها أو تُحذف المحافظة، ويُكتب «اللواء تركي المالكي»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد (السعودية) والمكان (الرياض) والناقل (رويترز)، وتعرّف المقدمة البرج بأنه مقر صندوق الثروة السيادي السعودي. ويوضح المتن أن حجم الضرر لم يُعرف وأن الجماعة لم تتبنَّ هجوم الخميس، فلا يقول العنوان أكثر مما تقوله المصادر.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصادر تقدم ثلاثة عناصر سياق، والمسودة تحملها كلها: إعلان سريع استهداف المركز المالي والمطار (SOURCE 1)، وسابقتا أرامكو وهجوم أكتوبر على المطار (SOURCE 1، SOURCE 3)، وأثر الهجمات على الفعاليات (SOURCE 1، SOURCE 4). ويُفهم من التقرير أيضاً ما يأتي بعد ذلك: توقع أن تمتد الحملة ستة أشهر (SOURCE 1). أما صندوق «لماذا يهمّ» فيبني على مقدمتين: الأهداف المعلنة، والفعاليات التي أُلغيت أو أُجّلت. ويستنتج منهما، بشرط استمرار الحملة، أن ما تبقى من جدول الفعاليات معرّض للمصير نفسه، وهو استنتاج محدود ومتناسب مع الوقائع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يعود المتن إلى خبر العنوان مباشرة بعد المقدمة: الضرر، ثم إعلان الحوثيين عن المركز المالي، ثم سابقة أرامكو. وتليه بقية هجمات الخميس، ثم المطار والفعاليات، ثم الحملة. لكن الفقرة الأولى تعيد ما قالته المقدمة: «التقييم الأولي أظهر سقوط حطام ووقوع أضرار مادية».",
+              "repair": "تُحذف الجملة المكررة ويُكتفى بالجديد: ضحايا لم يُعرف عددهم، ولم يتضح ما إذا كان الصاروخ قد اعتُرض."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 4 صواريخ باليستية، و60 موقعاً، و14 قتيلاً، و26 قتيلاً منهم 23، وحتى ستة أشهر. والتواريخ صحيحة: هجوم فجر الخميس، وإعلان سريع مساء الأربعاء، وتأجيل كأس آسيا إلى ديسمبر 2027. والنسبة سليمة، ومحافظة المنصة المختلف عليها حُذفت.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "لا يزال جزء من الملاحظة 4 السابقة قائماً، وهو التكرار. تقول المقدمة إن «حطام صاروخ أُطلق من اليمن باتجاه العاصمة تسبب في أضرار مادية يجري حصرها»، ثم تعيد الفقرة الأولى من المتن المعنى نفسه: «وأشار التحالف إلى أن التقييم الأولي أظهر سقوط حطام ووقوع أضرار مادية من دون أن يحدد طبيعتها أو حجمها». الجديد الوحيد في تلك الجملة أن المالكي لم يوضح هل اعتُرض الصاروخ (SOURCE 4). الإصلاح: تُحذف جملة التحالف المكررة وتُكتب الفقرة هكذا: «ولم يُعرف على الفور حجم الأضرار التي لحقت بالبرج، ولا ما إذا كان الهجوم قد أوقع ضحايا، بحسب صحيفة «ذا ناشيونال» الإماراتية. ولم يوضح المتحدث باسم التحالف اللواء تركي المالكي، في بيان نشره على منصة «إكس»، ما إذا كان الصاروخ قد اعتُرض».",
+        "صياغة غير سلسة في «ولا هل أوقع الهجوم ضحايا» و«ولم يوضح... هل اعتُرض الصاروخ». الأفصح في الحالتين «ما إذا كان»: «ولا ما إذا كان الهجوم قد أوقع ضحايا»، و«ما إذا كان الصاروخ قد اعتُرض».",
+        "صندوق «الأرقام»: البند «مصادر رويترز بشأن تضرر برج الصندوق: 3 مصادر» يصف طريقة نقل الخبر، وليس رقماً من الحدث نفسه. يُخرج من الصندوق، ويبقى في المقدمة حيث هو («نقلاً عن ثلاثة مصادر»).",
+        "يعود المتن إلى خبر العنوان مباشرة بعد المقدمة: الضرر، ثم إعلان الحوثيين عن المركز المالي، ثم سابقة أرامكو. وتليه بقية هجمات الخميس، ثم المطار والفعاليات، ثم الحملة. لكن الفقرة الأولى تعيد ما قالته المقدمة: «التقييم الأولي أظهر سقوط حطام ووقوع أضرار مادية». — تُحذف الجملة المكررة ويُكتفى بالجديد: ضحايا لم يُعرف عددهم، ولم يتضح ما إذا كان الصاروخ قد اعتُرض."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "أعلن المتحدث العسكري باسم الحوثيين يحيى سريع مساء الأربعاء استهداف مطار الملك خالد الدولي والمركز المالي في الرياض بصواريخ كروز",
+          "source": 1
+        },
+        {
+          "fact": "أدت الهجمات المتكررة إلى إلغاء أو تأجيل فعاليات اقتصادية ورياضية بينها مؤتمر مبادرة مستقبل الاستثمار",
+          "source": 1
+        },
+        {
+          "fact": "أعلن الاتحاد الآسيوي لكرة القدم تأجيل كأس آسيا من مطلع 2027 إلى ديسمبر من العام نفسه",
+          "source": 4
+        },
+        {
+          "fact": "نقلت رويترز عن مسؤولين غربيين أن الرياض تتوقع استمرار حملتها مدة قد تصل إلى ستة أشهر وقد تمتد إلى 2027",
+          "source": 1
+        }
+      ],
+      "slug": "pif-tower-riyadh-damaged-houthi-missile-7f64d9",
+      "title": "رويترز: برج صندوق الاستثمارات العامة السعودي يتضرر في هجوم حوثي على الرياض",
+      "score": 8,
+      "image": "photo"
+    }
+  ],
+  "llm": {
+    "calls": 75,
+    "failures": 1,
+    "promptTokens": 1310454,
+    "completionTokens": 273318,
+    "cacheReadTokens": 399331,
+    "costUsd": 12.8346,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 75
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 85122,
+        "read": 0,
+        "out": 2494,
+        "usd": 0.7308
+      },
+      "desk": {
+        "calls": 18,
+        "in": 135498,
+        "read": 177151,
+        "out": 67373,
+        "usd": 2.4666
+      },
+      "writer": {
+        "calls": 14,
+        "in": 212383,
+        "read": 179910,
+        "out": 92696,
+        "usd": 3.5891
+      },
+      "critic": {
+        "calls": 11,
+        "in": 149331,
+        "read": 42270,
+        "out": 48197,
+        "usd": 2.1669
+      },
+      "checker": {
+        "calls": 5,
+        "in": 43005,
+        "read": 0,
+        "out": 37063,
+        "usd": 1.0854
+      },
+      "vision": {
+        "calls": 26,
+        "in": 285784,
+        "read": 0,
+        "out": 25495,
+        "usd": 2.7958
+      }
+    }
+  },
+  "log": [
+    "[10:55:04] image: tier 4, the story's point and its subject: missile interception over Riyadh | Patriot missile launch Saudi | Saudi civil defense | PIF Tower Riyadh | Patriot missile Saudi Arabia | missile interception (home: Saudi Arabia, Saudi, Riyadh)",
+    "[10:55:05] pexels \"PIF Tower Riyadh\": 8 usable",
+    "[10:55:05] pexels \"missile interception\": 8 usable",
+    "[10:55:05] pexels \"Saudi civil defense\": 8 usable",
+    "[10:55:05] pexels \"missile interception over Riyadh\": 8 usable",
+    "[10:55:05] commons \"missile interception over Riyadh\": 0 usable of 0",
+    "[10:55:05] pexels \"Patriot missile launch Saudi\": 8 usable",
+    "[10:55:05] pexels \"Patriot missile Saudi Arabia\": 8 usable",
+    "[10:55:06] openverse \"missile interception over Riyadh\": 0 usable of 0",
+    "[10:55:06] openverse \"Patriot missile launch Saudi\": 0 usable of 0",
+    "[10:55:06] openverse \"Saudi civil defense\": 0 usable of 0",
+    "[10:55:06] commons \"over Riyadh\": 12 usable of 24",
+    "[10:55:06] image: dropped \"His Royal Highness, Amir Saud Ibn Abdul Aziz, Riyadh Train.jpg\" — dated 1951, an archival picture",
+    "[10:55:06] image: dropped \"Riyadh Patrol DVIDS61849.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[10:55:06] image: dropped \"U.S. forces transfer Riyadh Train Station back to Iraqis DVIDS141396.j\" — soldiers or a patrol, and the story is not about the military",
+    "[10:55:12] openverse \"PIF Tower Riyadh\": 0 usable of 1",
+    "[10:55:12] openverse \"Patriot missile Saudi Arabia\": 1 usable of 1",
+    "[10:55:12] openverse \"missile interception\": 10 usable of 20",
+    "[10:55:16] openverse \"launch Patriot Saudi\": 0 usable of 0",
+    "[10:55:16] openverse \"PIF Tower\": 0 usable of 1",
+    "[10:55:23] openverse \"over Riyadh\": 10 usable of 20",
+    "[10:55:23] image: dropped \"Flying over Riyadh\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Series of missile launchers displayed at historic Belgrade Fortress in\" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"Ostrich courier\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Powerful fighter jet soaring through clouds with visible missiles.\" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Detailed view of a military missile mounted on an aircraft wing at an \" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"English Electric Lightning F53 [ZF581]\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"The drive home\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Aircraft tail with missile at Aero India in Bengaluru. Detailed close-\" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"Taufique during 8 Ball\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Close-up of a missile mounted on a military aircraft wing at an airsho\" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"Detailed view of military aircraft and missile in outdoor museum exhib\" — a warship or weapon, and the story is not about the military",
+    "[10:55:23] image: dropped \"Tantawi! Hand over power to the people! سلم السلطة للشعب يا طنطاوي\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Dramatic capture of a fighter jet releasing flares at an airshow.\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Light plays\" — names too little of missile, interception",
+    "[10:55:23] image: dropped \"Power lines in the desert\" — names too little of missile, interception",
+    "[10:55:23] commons \"Patriot missile launch Saudi\": 0 usable of 0",
+    "[10:55:23] openverse \"defense Saudi\": 5 usable of 20",
+    "[10:55:23] commons \"launch Patriot Saudi\": 0 usable of 0",
+    "[10:55:24] commons \"Patriot missile\": 14 usable of 24",
+    "[10:55:24] image: dropped \"Flickr - Government Press Office (GPO) - Patriot missiles being launch\" — dated 1991, an archival picture",
+    "[10:55:24] image: dropped \"210716-M-VR873-1132 - MIM-104 Patriot at exercise Talisman Sabre 21 (I\" — soldiers or a patrol, and the story is not about the military",
+    "[10:55:24] image: dropped \"210716-M-VR873-1135 - MIM-104 Patriot at exercise Talisman Sabre 21 (I\" — soldiers or a patrol, and the story is not about the military",
+    "[10:55:24] image: dropped \"MIM-104 Patriot LS Fassberg-2019.JPG\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"MIM-104 Patriot TP Rostock 2016.JPG\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"MIM-104 Patriot LS front Rostock 2025.JPG\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"MIM-104 Patriot LS Access Panel Pwr Sply.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"Nederlandse MIM-104 Patriot Diyarbakır.jpg\" — dated 1991, an archival picture",
+    "[10:55:24] image: dropped \"MIM-104 Patriot LS prepared to move Rostock 2016.JPG\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"Blue Light Mile Dresden City Festival 2024 - MIM-104 PATRIOT anti-airc\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"Blue Light Mile Dresden City Festival 2024 - MIM-104 PATRIOT anti-airc\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"Saudi military personnel participate in a ceremonial parade outdoors.\" — names too little of missile, launch",
+    "[10:55:24] image: dropped \"Majestic Saudi Arabian flag illuminated against the night sky, surroun\" — names too little of missile, launch",
+    "[10:55:24] image: dropped \"Saudi Arabian flag waves against blue sky amid traditional architectur\" — names too little of missile, launch",
+    "[10:55:24] image: dropped \"A vintage US Army missile on display in an outdoor museum setting, cap\" — a warship or weapon, and the story is not about the military",
+    "[10:55:24] image: dropped \"A rocket ascends into the sky, leaving a trail of smoke against the cl\" — names too little of missile, launch",
+    "[10:55:25] commons \"Saudi civil defense\": 7 usable of 12",
+    "[10:55:25] image: dropped \"Rapid Repair, Ready Response- 378th ECES partners with RSAF for E-ADR \" — a warship or weapon, and the story is not about the military",
+    "[10:55:25] image: dropped \"Convair C-131D Samaritan MATS in flight.jpg\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Eagle Resolve 2017 170330-A-WQ129-100.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:25] image: dropped \"Rehearsal-60th Presidential Inauguration (8828735).jpg\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"President Trump's First 100 Days: 35\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Road roller compacting dirt on highway construction in Saudi Arabia.\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"G-20 Leaders 2013\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Old propeller airplane on an airport tarmac seen through a chain-link \" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"G20 2012 heads of government - Caricatures\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Concrete tetrapods lining the industrial coastline for erosion control\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"G20 2013 Heads of Government - Caricatures\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"G-20 Leaders 2013\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"A Portuguese Air Force helicopter flying against a clear blue sky abov\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Top-down view of yellow fire trucks and equipment on a city street dur\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Humanitarian workers protest for safety in Idlib, Syria.\" — names too little of civil, defense",
+    "[10:55:25] image: dropped \"Protest in Idlib, Syria with participants advocating for social issues\" — names too little of civil, defense",
+    "[10:55:25] commons \"PIF Tower Riyadh\": 7 usable of 21",
+    "[10:55:25] image: dropped \"King Abdullah Financial District 184713.jpg\" — another frame of a series a published story runs",
+    "[10:55:25] image: dropped \"King Abdullah Financial District Riyadh 2014.JPG\" — names too little of pif, tower",
+    "[10:55:25] image: dropped \"Vibrant city skyline captured at night, showcasing beautifully lit mod\" — names too little of pif, tower",
+    "[10:55:25] image: dropped \"Skyline view of Riyadh's modern architecture with distinctive skyscrap\" — names too little of pif, tower",
+    "[10:55:25] image: dropped \"Dramatic aerial twilight view of Riyadh city skyline with lit streets.\" — names too little of pif, tower",
+    "[10:55:25] image: dropped \"A vibrant nighttime cityscape featuring King Fahd National Library in \" — names too little of pif, tower",
+    "[10:55:26] commons \"Patriot missile Saudi Arabia\": 6 usable of 6",
+    "[10:55:26] image: dropped \"Explosive ordnance disposal technicians inspect the remains of an Iraq\" — dated 1991, an archival picture",
+    "[10:55:26] image: dropped \"Bahrain’s Crown Prince signs the purchase of Patriot missile.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:26] image: dropped \"191022-D-AP390-3121.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:26] image: dropped \"191022-D-AP390-3114.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:26] image: dropped \"191022-D-AP390-3153.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:26] image: dropped \"US and Bahrain on Abqaiq–Khurais attack.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:26] image: dropped \"Today, 17 years ago...\" — names too little of missile",
+    "[10:55:26] image: dropped \"Saudi military personnel participate in a ceremonial parade outdoors.\" — names too little of missile",
+    "[10:55:26] image: dropped \"Majestic Saudi Arabian flag illuminated against the night sky, surroun\" — names too little of missile",
+    "[10:55:26] image: dropped \"Detailed close-up of the Saudi Arabian flag showcasing the elegant Ara\" — names too little of missile",
+    "[10:55:26] image: dropped \"Saudi Arabian flag waves against blue sky amid traditional architectur\" — names too little of missile",
+    "[10:55:26] image: dropped \"A large crowd gathers outdoors under sunny conditions in Saudi Arabia.\" — names too little of missile",
+    "[10:55:26] image: dropped \"Aerial cityscape view featuring a mosque and mountains in Saudi Arabia\" — names too little of missile",
+    "[10:55:26] image: dropped \"Aerial view of a mosque nestled in the rocky mountains of Makkah, Saud\" — names too little of missile",
+    "[10:55:27] commons \"missile interception\": 9 usable of 24",
+    "[10:55:27] image: dropped \"Arrow missile trinity.jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"White Sands Missile Range Museum-43 (8326956357).jpg\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"US Navy 021121-N-0000X-006 he Aries ballistic missile target is seen t\" — dated 2002, an archival picture",
+    "[10:55:27] image: dropped \"US Navy 021121-N-0000X-004 A developmental Standard Missile-3 (SM-3), \" — dated 2002, an archival picture",
+    "[10:55:27] image: dropped \"US Navy 021121-N-0000X-002 A developmental Standard Missile-3 (SM-3), \" — dated 2002, an archival picture",
+    "[10:55:27] image: dropped \"Two PAC-2 Patriot Missiles Intercept Cruise Missile Surrogate (7275213\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"Nov. 20, 2012 - David's Sling Weapons System Stunner Missile intercept\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"US Navy 071106-N-0000X-003 A threat representative target is launched \" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"Supreme Commander 2 - Tactical Missile Intercept\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"Б-396 Tango class submarine\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Detailed view of armaments on a Turkish military aircraft displayed at\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"High-resolution image of a military anti-aircraft vehicle in a studio \" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Russian surface-to-air missile system S-300 PMU2 Favorit. Комплекс С-3\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"Detailed image of a military vehicle equipped with advanced radar and \" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Lockheed AC-130A Spectre\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Detailed view of a military rocket launcher showcased outdoors, showca\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Northrup F-89 Scorpion front cockpit\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"A detailed view of a naval warship's open missile launcher bays showin\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"Beriev A-50, Sukhoi Su-27\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Detailed view of missile launcher and radar on a naval military ship a\" — a warship or weapon, and the story is not about the military",
+    "[10:55:27] image: dropped \"PH-15 Bristol (Newportville / Croydon) Nike Base\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Lockheed AC-130A Spectre\" — names too little of missile, interception",
+    "[10:55:27] image: dropped \"Operatie-active-fence-Installatie-van-het-Nederlandse-Patriot-luchtver\" — taken in Netherlands, which the story does not name",
+    "[10:55:27] image: thumbnail HTTP 403 for https://live.staticflickr.com/4330/36267063546_a0ff2c0072_n.jpg",
+    "[10:55:40] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=886 in=11505 read=0 out=1130 attempt=1 ms=11971",
+    "[10:55:40] image: \"KAFD 59.jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[10:55:41] image: thumbnail HTTP 403 for https://live.staticflickr.com/3201/3078174796_0924d9215a_n.jpg",
+    "[10:55:58] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1394 in=11341 read=0 out=1624 attempt=1 ms=16870",
+    "[10:55:58] image: \"KAFD seen from North east side of Riyadh City.jpg\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[10:55:58] image: an illustration of the story's own subject, to set beside the photograph held: civil defense",
+    "[10:55:59] pexels \"civil defense\": 8 usable",
+    "[10:56:05] commons \"civil defense\": 7 usable of 24",
+    "[10:56:07] openverse \"civil defense\": 10 usable of 20",
+    "[10:56:07] image: dropped \"Close-up image of various riot control devices used in military settin\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Police officers in riot gear line the street during a protest. Crowd o\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Civil Defense meeting, 1959\" — dated 1959, an archival picture",
+    "[10:56:07] image: dropped \"Firefighters in uniforms and fire trucks responding to an emergency on\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Top-down view of yellow fire trucks and equipment on a city street dur\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Humanitarian workers protest for safety in Idlib, Syria.\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Protest in Idlib, Syria with participants advocating for social issues\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Riot police equipped with shields and rifles during a protest in an ur\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Police officers in helmets and shields confronted by crowd of photogra\" — names too little of civil, defense",
+    "[10:56:07] image: dropped \"Group of unidentified men and women at swearing in ceremony of Boston \" — soldiers or a patrol, and the story is not about the military",
+    "[10:56:07] image: thumbnail HTTP 403 for https://live.staticflickr.com/7273/7599588998_46091ab568_n.jpg",
+    "[10:56:08] image: thumbnail HTTP 403 for https://live.staticflickr.com/8637/15278460113_745bb1dc68_n.jpg",
+    "[10:56:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/8561/15897271692_04014413c3_n.jpg",
+    "[10:56:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=186 in=12184 read=0 out=368 attempt=1 ms=4814",
+    "[10:56:16] image: vision rejected all candidates (fallback pass) (No candidate fits the Houthi strike on the PIF tower in Riyadh's financial district. 1 is an old Geiger-counter close-up. 2 and 6 are Swiss bunker interiors. 3 is a Bulgarian emergency bus with a flag and Cyrillic lettering. 4 is a phone photo of a Russian TV alert screen. 5 is an amateur dashcam still of a Doha street. All are unrelated, place-specific or amateur.)",
+    "[10:56:28] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1026 in=10616 read=0 out=1208 attempt=1 ms=12876",
+    "[10:56:28] image: of 4 photographs of the story's topic, \"KAFD 59.jpg\" is chosen over the one held",
+    "[10:56:36] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=547 in=8413 read=0 out=617 attempt=1 ms=7250",
+    "[10:56:36] image: second check (claude-cli/claude-opus-5-5) RIGHT \"KAFD 59.jpg\": The frame shows the Public Investment Fund Tower itself in Riyadh's financial district, the building the story says was ",
+    "[10:56:36] published \"رويترز: برج صندوق الاستثمارات العامة السعودي يتضرر في هجوم حوثي على الرياض\" -> pif-tower-riyadh-damaged-houthi-missile-7f64d9"
+  ]
+}

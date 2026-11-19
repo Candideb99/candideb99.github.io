@@ -17615,6 +17615,102 @@
           "noted": []
         }
       ]
+    },
+    "iea-hormuz-oil-flows-two-million-2035-e573c4": {
+      "at": "2026-11-19T10:26:58.911Z",
+      "title": "وكالة الطاقة: النفط العابر لهرمز قد ينحسر إلى مليوني برميل يومياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-cma-mandates-twice-yearly-earnings-calls-2128b5": {
+      "at": "2026-11-19T10:42:49.784Z",
+      "title": "هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة نتائجها علناً مرتين سنوياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "pif-tower-riyadh-damaged-houthi-missile-7f64d9": {
+      "at": "2026-11-19T10:56:36.239Z",
+      "title": "رويترز: برج صندوق الاستثمارات العامة السعودي يتضرر في هجوم حوثي على الرياض",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 0,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 8,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ونشر المتحدث باسم التحالف اللواء تركي المالكي البيان على منصة «إكس»، ولم يوضح فيه هل اعتُرض الصاروخ.",
+              "quote": "وقال المتحدث باسم التحالف إن تقييما أوليا أظهر سقوط شظايا ووقوع أضرار مادية بعد اعتراض صاروخ أطلقه الحوثيون على الرياض، كما أعلن اعتراض وتدمير صاروخ كروز أطلق باتجاه المنطقة الجنوبية.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": []
