@@ -65,6 +65,8 @@ check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ ti
   ], ["Uzbekistan", null, "Thailand"]);
   const kenyan = { title: "المركزي الكيني يثبت الفائدة", tags: ["كينيا"], regions: ["أفريقيا"] };
   check("a Kenyan story keeps Nairobi and refuses Accra", [placedAbroad({ title: "Nairobi central business district.jpg" }, kenyan), placedAbroad({ title: "Accra Makola market.jpg" }, kenyan)], [null, "Ghana"]);
+  const mozambican = { title: "موزمبيق تعدل موازنتها", tags: ["موزمبيق"], regions: ["أفريقيا"] };
+  check("a Mozambican story keeps Maputo and refuses Harare; Hong Kong is China's", [placedAbroad({ title: "Maputo port.jpg" }, mozambican), placedAbroad({ title: "Harare street.jpg" }, mozambican), placedAbroad({ title: "Hong Kong skyline.jpg" }, { title: "أسهم هونغ كونغ تتراجع", tags: ["هونغ كونغ"] })], [null, "Zimbabwe", null]);
 }
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 

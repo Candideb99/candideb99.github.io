@@ -409,6 +409,7 @@ const STORY_COUNTRIES = {
   "الأرجنتين": "Argentina", "تشيلي": "Chile", "كولومبيا": "Colombia", "بيرو": "Peru",
   "كينيا": "Kenya", "غانا": "Ghana", "إثيوبيا": "Ethiopia", "تنزانيا": "Tanzania", "أوغندا": "Uganda", "رواندا": "Rwanda", "أنغولا": "Angola", "زامبيا": "Zambia",
   "السنغال": "Senegal", "ساحل العاج": "Ivory Coast", "كوت ديفوار": "Ivory Coast", "موريتانيا": "Mauritania", "جنوب إفريقيا": "South Africa",
+  "موزمبيق": "Mozambique", "زيمبابوي": "Zimbabwe", "الكونغو": "DR Congo", "الكاميرون": "Cameroon", "بوتسوانا": "Botswana", "ناميبيا": "Namibia", "هونغ كونغ": "China",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
@@ -420,6 +421,7 @@ const STORY_STEMS = [
   ["الأرجنتيني", "Argentina"], ["التشيلي", "Chile"], ["الكولومبي", "Colombia"], ["البيروفي", "Peru"], ["الأذربيجاني", "Azerbaijan"],
   ["جنوب أفريقي", "South Africa"], ["جنوب إفريقي", "South Africa"], ["الكيني", "Kenya"], ["الغاني", "Ghana"], ["الإثيوبي", "Ethiopia"], ["التنزاني", "Tanzania"],
   ["الأوغندي", "Uganda"], ["الرواندي", "Rwanda"], ["الأنغولي", "Angola"], ["الزامبي", "Zambia"], ["السنغالي", "Senegal"], ["الإيفواري", "Ivory Coast"], ["الموريتاني", "Mauritania"],
+  ["الموزمبيقي", "Mozambique"], ["الزيمبابوي", "Zimbabwe"], ["الكونغولي", "DR Congo"], ["الكاميروني", "Cameroon"], ["البوتسواني", "Botswana"], ["الناميبي", "Namibia"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -430,7 +432,7 @@ const PHOTO_PLACES = {
   Egypt: ["Egypt", "Cairo", "Alexandria", "Suez", "Port Said"], Qatar: ["Qatar", "Doha", "Ras Laffan"], Kuwait: ["Kuwait"], Oman: ["Oman", "Muscat"], Bahrain: ["Bahrain", "Manama"],
   Iraq: ["Iraq", "Baghdad", "Basra"], Iran: ["Iran", "Tehran"], Jordan: ["Jordan", "Amman"], Lebanon: ["Lebanon", "Beirut"], Syria: ["Syria", "Damascus"], Yemen: ["Yemen", "Aden"],
   Israel: ["Israel", "Eilat", "Haifa", "Tel Aviv"], Turkey: ["Turkey", "Istanbul", "Ankara"], Morocco: ["Morocco", "Casablanca", "Rabat"], Algeria: ["Algeria", "Algiers"], Tunisia: ["Tunisia"], Libya: ["Libya", "Tripoli"], Sudan: ["Sudan", "Khartoum"],
-  China: ["China", "Shanghai", "Beijing", "Shenzhen", "Guangzhou"], Japan: ["Japan", "Tokyo", "Yokohama", "Osaka"], India: ["India", "Mumbai", "New Delhi"], "South Korea": ["South Korea", "Seoul", "Busan"], Pakistan: ["Pakistan", "Karachi"],
+  China: ["China", "Shanghai", "Beijing", "Shenzhen", "Guangzhou", "Hong Kong"], Japan: ["Japan", "Tokyo", "Yokohama", "Osaka"], India: ["India", "Mumbai", "New Delhi"], "South Korea": ["South Korea", "Seoul", "Busan"], Pakistan: ["Pakistan", "Karachi"],
   Indonesia: ["Indonesia", "Jakarta"], Malaysia: ["Malaysia", "Kuala Lumpur"], Singapore: ["Singapore"], Russia: ["Russia", "Moscow", "Saint Petersburg"], Ukraine: ["Ukraine", "Kyiv", "Kiev"],
   Germany: ["Germany", "Berlin", "Hamburg", "Frankfurt", "Munich"], France: ["France", "Paris", "Marseille"], "United Kingdom": ["United Kingdom", "England", "Scotland", "Wales", "London", "Solent", "Southampton"],
   Italy: ["Italy", "Rome", "Milan"], Spain: ["Spain", "Madrid", "Barcelona"], Netherlands: ["Netherlands", "Rotterdam", "Amsterdam"], Belgium: ["Belgium", "Brussels", "Antwerp"], Austria: ["Austria", "Vienna", "Schwechat"], Switzerland: ["Switzerland", "Geneva", "Zurich", "Vevey"],
@@ -442,7 +444,8 @@ const PHOTO_PLACES = {
   Thailand: ["Thailand", "Bangkok"], Argentina: ["Argentina", "Buenos Aires"], Chile: ["Chile", "Santiago de Chile"], Colombia: ["Colombia", "Bogotá", "Bogota"], Peru: ["Peru", "Lima"],
   Kenya: ["Kenya", "Nairobi", "Mombasa"], Ghana: ["Ghana", "Accra"], Ethiopia: ["Ethiopia", "Addis Ababa"], Tanzania: ["Tanzania", "Dar es Salaam"], Uganda: ["Uganda", "Kampala"],
   Rwanda: ["Rwanda", "Kigali"], Angola: ["Angola", "Luanda"], Zambia: ["Zambia", "Lusaka"], Senegal: ["Senegal", "Dakar"], "Ivory Coast": ["Ivory Coast", "Côte d'Ivoire", "Cote d'Ivoire", "Abidjan"],
-  Mauritania: ["Mauritania", "Nouakchott"],
+  Mauritania: ["Mauritania", "Nouakchott"], Mozambique: ["Mozambique", "Maputo"], Zimbabwe: ["Zimbabwe", "Harare"], "DR Congo": ["Democratic Republic of the Congo", "DR Congo", "Kinshasa", "Lubumbashi"],
+  Cameroon: ["Cameroon", "Douala", "Yaoundé"], Botswana: ["Botswana", "Gaborone"], Namibia: ["Namibia", "Windhoek", "Walvis Bay"],
 };
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const PHOTO_PLACE_RE = Object.entries(PHOTO_PLACES).map(([country, names]) => [country, new RegExp(`(?<![A-Za-z])(?:${names.map(escapeRe).join("|")})(?![A-Za-z])`)]);
@@ -457,7 +460,7 @@ const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vi
 const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];
 const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
 const LATIN_AMERICA = ["Mexico", "Brazil", "Argentina", "Chile", "Colombia", "Peru"];
-const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania"];
+const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia"];
 const MIDDLE_EAST = [...GULF, "Egypt", "Jordan", "Lebanon", "Syria", "Yemen", "Israel", "Turkey"];
 const PLACE_STEMS = [
   ["الخليج", GULF], ["خليجي", GULF], ["هرمز", ["Iran", "Oman", "United Arab Emirates"]], ["الحوثي", ["Yemen"]], ["باب المندب", ["Yemen"]],

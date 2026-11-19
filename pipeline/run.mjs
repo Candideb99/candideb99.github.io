@@ -113,8 +113,9 @@ const REJECT_RETRY_HOURS = 12;
  * from each of the busiest current feeds, Asharq Business, BBC Arabic and Al Riyadh among them; 720 gives those back.
  * Each candidate line is about 300 characters, so the editor reads about 36,000 more. 785 the same evening, when
  * eleven Indonesian and African feeds joined (in Indonesian and French among them): they took 65 places, given back.
+ * 830 the same night, for China's state media and seven more African feeds (47 items at most by their maxItems).
  */
-const CANDIDATE_CAP = 785;
+const CANDIDATE_CAP = 830;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
