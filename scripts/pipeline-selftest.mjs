@@ -380,6 +380,17 @@ check(
   [[...countriesNamed("مصرف البحرين المركزي يبقي الفائدة")], [...countriesNamed("تأسيس شركة مشتركة للتركيز على يمنح العراقيل")], [...countriesNamed("توقعات النمو للسعودية")], [...countriesNamed("المملكة المتحدة ترفع الضرائب")], [...countriesNamed("عمّان ترفع أسعار الوقود")]],
   [["بحرين"], [], ["سعود"], ["بريطان"], ["اردن"]],
 );
+// The regions whose press joined on 2026-11-19: their countries are read, so two of their central banks are two events
+// (the old reader knew none of them and merged a Kazakh and an Uzbek rate rise, a Philippine and a Thai cut).
+check(
+  "Central and Southeast Asia's and Latin America's countries are read, «سنغافورة» too, and two of their decisions are two events",
+  [
+    [...countriesNamed("المركزي الكازاخستاني يرفع الفائدة")], [...countriesNamed("سنغافورة تسجل نمواً")], [...countriesNamed("البيزو الأرجنتيني يهبط")], [...countriesNamed("بيروت تعلن")],
+    Boolean(repeatsRecent("المركزي الكازاخستاني يرفع الفائدة 1% في أول زيادة منذ مارس 2025", ["المركزي الأوزبكي يرفع الفائدة إلى 14% في أول زيادة منذ أبريل"])),
+    Boolean(repeatsRecent("المركزي الفلبيني يخفض الفائدة 0.25% للمرة الثالثة هذا العام", ["المركزي التايلاندي يخفض الفائدة 0.25% للمرة الثالثة هذا العام"])),
+  ],
+  [["كازاخستان"], ["سنغافور"], ["ارجنتين"], ["لبنان"], false, false],
+);
 check(
   "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
   [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],
@@ -1580,6 +1591,11 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ungroundedNumbers("نما الاقتصاد 3.5% وأنتج 2500000 برميل", ["اقتصاد ایران ۳/۵ درصد رشد کرد و تولید به ۲.۵ میلیون بشکه رسید"]),
     [...sourceNumbers("گزارش تاریخ ۱۴۰۵/۰۸/۰۳ و نرخ 1,000 و 4,500")].filter((n) => n.includes(".")),
   ], [[], [], []]);
+  // Spanish and Portuguese scale words (2026-11-19): «1,2 bilhão» is the story's 1200 million.
+  check("a story's 1200 million stands in a Portuguese «1,2 bilhão» and 3500 million in a Spanish «3.500 millones»", [
+    ungroundedNumbers("باع المركزي البرازيلي 1200 مليون دولار", ["o BC vendeu US$ 1,2 bilhão no mercado à vista"]),
+    ungroundedNumbers("خسرت «بيمكس» 3500 مليون دولار و450 مليار بيزو", ["Pemex perdió 3.500 millones de dólares y 450 mil millones de pesos"]),
+  ], [[], []]);
 
   // A quote from a Persian source is found when it comes back in Arabic letters (ي، ك), with Western digits, or with a
   // space where the source has a zero-width non-joiner; a changed figure is still not found.

@@ -243,8 +243,14 @@ export function sourceNumbers(text) {
   const persian = /[پچژگکی]/.test(normalized);
   if (persian) for (const m of normalized.matchAll(/(?<![\d/])(\d+)\/(\d{1,2})(?![\d/])/g)) add(Number(`${m[1]}.${m[2]}`));
   // A count in words of scale («4 bin», «1,2 milyar», «۲ هزار»), so a story's 4000 or 1200 million stands in it.
-  const SCALE = { bin: 1e3, milyon: 1e6, milyar: 1e9, trilyon: 1e12, "هزار": 1e3, "میلیون": 1e6, "میلیارد": 1e9 };
-  for (const m of normalized.matchAll(/(?<![\d.,/])(\d+(?:[.,/]\d+)?)\s*(bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد)(?![\p{L}])/giu)) {
+  // Spanish and Portuguese since 2026-11-19, when Bloomberg Línea and El Financiero joined Brazil's central bank:
+  // «3.500 millones», «1,2 bilhão», «450 mil millones»; a Spanish «billón» is a million millions (long scale).
+  const SCALE = {
+    bin: 1e3, milyon: 1e6, milyar: 1e9, trilyon: 1e12, "هزار": 1e3, "میلیون": 1e6, "میلیارد": 1e9,
+    "mil millones": 1e9, millones: 1e6, "millón": 1e6, billones: 1e12, "billón": 1e12,
+    "milhões": 1e6, "milhão": 1e6, "bilhões": 1e9, "bilhão": 1e9, "trilhões": 1e12, "trilhão": 1e12, mil: 1e3,
+  };
+  for (const m of normalized.matchAll(/(?<![\d.,/])(\d+(?:[.,/]\d+)?)\s*(bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد|mil millones|millones|millón|billones|billón|milhões|milhão|bilhões|bilhão|trilhões|trilhão|mil)(?![\p{L}])/giu)) {
     const [whole, fraction] = m[1].split(/[.,/]/);
     const decimal = fraction != null && (fraction.length <= 2 || m[1].includes("/") || (m[1].includes(",") && fraction.length !== 3));
     const value = decimal ? Number(`${whole}.${fraction}`) : Number(m[1].replace(/[.,/]/g, ""));

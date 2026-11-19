@@ -403,12 +403,19 @@ const STORY_COUNTRIES = {
   "النرويج": "Norway", "السويد": "Sweden", "فنلندا": "Finland", "الدنمارك": "Denmark", "بولندا": "Poland",
   "جرينلاند": "Greenland", "غرينلاند": "Greenland", "كندا": "Canada", "المكسيك": "Mexico", "البرازيل": "Brazil",
   "أستراليا": "Australia", "نيجيريا": "Nigeria", "جنوب أفريقيا": "South Africa",
+  // The regions whose own press joined the sources on 2026-11-19.
+  "كازاخستان": "Kazakhstan", "أوزبكستان": "Uzbekistan", "تركمانستان": "Turkmenistan", "قيرغيزستان": "Kyrgyzstan", "طاجيكستان": "Tajikistan", "أذربيجان": "Azerbaijan",
+  "الفلبين": "Philippines", "فيتنام": "Vietnam", "تايلاند": "Thailand",
+  "الأرجنتين": "Argentina", "تشيلي": "Chile", "كولومبيا": "Colombia", "بيرو": "Peru",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
   ["أمريك", "United States"], ["أميرك", "United States"], ["ترامب", "United States"], ["ترمب", "United States"], ["الاحتياطي الفيدرالي", "United States"], ["وول ستريت", "United States"],
   ["سعودي", "Saudi Arabia"], ["إماراتي", "United Arab Emirates"], ["مصري", "Egypt"], ["قطري", "Qatar"], ["كويتي", "Kuwait"], ["عماني", "Oman"], ["عراقي", "Iraq"], ["إيراني", "Iran"],
   ["الصيني", "China"], ["الياباني", "Japan"], ["الهندي", "India"], ["الروسي", "Russia"], ["أوكراني", "Ukraine"], ["ألماني", "Germany"], ["فرنسي", "France"], ["بريطاني", "United Kingdom"], ["كندي", "Canada"], ["التركي", "Turkey"],
+  ["أسترالي", "Australia"], ["برازيلي", "Brazil"], ["مكسيكي", "Mexico"], ["إندونيسي", "Indonesia"], ["ماليزي", "Malaysia"], ["سنغافوري", "Singapore"],
+  ["كازاخستاني", "Kazakhstan"], ["الكازاخي", "Kazakhstan"], ["الأوزبكي", "Uzbekistan"], ["الفلبيني", "Philippines"], ["الفيتنامي", "Vietnam"], ["التايلاندي", "Thailand"],
+  ["الأرجنتيني", "Argentina"], ["التشيلي", "Chile"], ["الكولومبي", "Colombia"], ["البيروفي", "Peru"], ["الأذربيجاني", "Azerbaijan"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -426,6 +433,9 @@ const PHOTO_PLACES = {
   Norway: ["Norway", "Oslo"], Sweden: ["Sweden", "Stockholm", "Gothenburg"], Finland: ["Finland", "Helsinki"], Denmark: ["Denmark", "Copenhagen"], Poland: ["Poland", "Warsaw"],
   Greenland: ["Greenland", "Ilulissat"], Canada: ["Canada", "Ontario", "Alberta", "Quebec", "Toronto", "Vancouver"], Mexico: ["Mexico"], Brazil: ["Brazil", "Rio de Janeiro", "São Paulo"],
   Australia: ["Australia", "Western Australia", "Queensland", "New South Wales", "Sydney", "Melbourne", "Kwinana"], Nigeria: ["Nigeria", "Lagos"], "South Africa": ["South Africa", "Johannesburg", "Cape Town"],
+  Kazakhstan: ["Kazakhstan", "Astana", "Almaty"], Uzbekistan: ["Uzbekistan", "Tashkent", "Samarkand"], Turkmenistan: ["Turkmenistan", "Ashgabat"], Kyrgyzstan: ["Kyrgyzstan", "Bishkek"],
+  Tajikistan: ["Tajikistan", "Dushanbe"], Azerbaijan: ["Azerbaijan", "Baku"], Philippines: ["Philippines", "Manila"], Vietnam: ["Vietnam", "Viet Nam", "Hanoi", "Ho Chi Minh City"],
+  Thailand: ["Thailand", "Bangkok"], Argentina: ["Argentina", "Buenos Aires"], Chile: ["Chile", "Santiago de Chile"], Colombia: ["Colombia", "Bogotá", "Bogota"], Peru: ["Peru", "Lima"],
 };
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const PHOTO_PLACE_RE = Object.entries(PHOTO_PLACES).map(([country, names]) => [country, new RegExp(`(?<![A-Za-z])(?:${names.map(escapeRe).join("|")})(?![A-Za-z])`)]);
@@ -436,7 +446,10 @@ const GULF = ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrai
 const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland"];
 const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland"];
 const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland"];
-const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", "Indonesia", "Malaysia", "Singapore"];
+const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vietnam", "Thailand"];
+const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];
+const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
+const LATIN_AMERICA = ["Mexico", "Brazil", "Argentina", "Chile", "Colombia", "Peru"];
 const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa"];
 const MIDDLE_EAST = [...GULF, "Egypt", "Jordan", "Lebanon", "Syria", "Yemen", "Israel", "Turkey"];
 const PLACE_STEMS = [
@@ -445,6 +458,7 @@ const PLACE_STEMS = [
   ["شرق-غرب", ["Saudi Arabia"]], ["الشرق-الغرب", ["Saudi Arabia"]], ["شرق غرب", ["Saudi Arabia"]],
   ["أوروب", EUROPE], ["الاتحاد الأوروبي", EU], ["اليورو", EURO_AREA], ["آسيا", ASIA], ["آسيوي", ASIA],
   ["أفريقي", AFRICA], ["إفريقي", AFRICA], ["الشرق الأوسط", MIDDLE_EAST], ["المغرب العربي", ["Morocco", "Algeria", "Tunisia", "Libya"]],
+  ["جنوب شرق آسيا", SOUTHEAST_ASIA], ["آسيا الوسطى", CENTRAL_ASIA], ["أمريكا اللاتينية", LATIN_AMERICA], ["أميركا اللاتينية", LATIN_AMERICA], ["اللاتينية", LATIN_AMERICA],
 ];
 /** A world body's or a company's own building is at home on its stories: OPEC in Vienna and its members'
  *  oil fields, the ECB in Frankfurt, Nestlé at Vevey. A curated list, like the desks; a company missing from

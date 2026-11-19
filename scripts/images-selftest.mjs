@@ -54,6 +54,16 @@ check("a file from Cairo, Illinois is abroad for an Egyptian story", placedAbroa
 check("«Cairo, IL» and «Alexandria, Virginia» are American", [placedAbroad({ title: "Old Cairo Junior High School, Pine Street, Cairo, IL.jpg" }, egyptStory), placedAbroad({ title: "Alexandria, Virginia waterfront.jpg" }, egyptStory)], ["United States", "United States"]);
 check("Egypt's own Cairo and Alexandria stay home", [placedAbroad({ title: "Cairo Tower, Cairo, Egypt.jpg" }, egyptStory), placedAbroad({ title: "Corniche of Alexandria.jpg" }, egyptStory)], [null, null]);
 check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ title: "Tbilisi, Georgia old town.jpg" }, egyptStory), null);
+// The regions whose press joined on 2026-11-19: a Kazakh story refuses Tashkent and keeps Almaty, a Philippine one
+// refuses Bangkok (the old lists knew none of these countries, so no photograph was ever placed abroad for them).
+{
+  const kazakh = { title: "المركزي الكازاخستاني يرفع الفائدة إلى 18%", tags: ["كازاخستان"], regions: ["آسيا"] };
+  const philippine = { title: "الفلبين ترفع الفائدة للمرة الثانية", tags: ["الفلبين"], regions: ["آسيا"] };
+  check("Central and Southeast Asia's countries place a photograph", [
+    placedAbroad({ title: "Tashkent City business district.jpg" }, kazakh), placedAbroad({ title: "Almaty financial centre.jpg" }, kazakh),
+    placedAbroad({ title: "Bangkok stock exchange building.jpg" }, philippine),
+  ], ["Uzbekistan", null, "Thailand"]);
+}
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 
 // ---------------------------------------------------------------------------------------------------------------

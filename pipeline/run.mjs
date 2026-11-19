@@ -108,8 +108,12 @@ const REJECT_RETRY_HOURS = 12;
  * publishes between two runs. 600 since 2026-10-25, when sixteen Turkish, Iranian and Indian feeds joined (at most 172
  * items between them, by their maxItems): measured that Sunday (641 fresh items, 141 of them new), they took 132 of 450
  * places and left the current feeds 318 where they had held all 450; at 600 every new item fits beside 459 current ones.
+ * 720 since 2026-11-19, when 21 feeds from Southeast Asia, Australia, Central Asia, Latin America, Korea and Japan
+ * joined: measured that afternoon (1,007 fresh items before, 1,131 after), they took 118 of 600 places, about three
+ * from each of the busiest current feeds, Asharq Business, BBC Arabic and Al Riyadh among them; 720 gives those back.
+ * Each candidate line is about 300 characters, so the editor reads about 36,000 more.
  */
-const CANDIDATE_CAP = 600;
+const CANDIDATE_CAP = 720;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
