@@ -17823,6 +17823,110 @@
           "noted": []
         }
       ]
+    },
+    "anthropic-shares-jump-nasdaq-debut-gulf-gains-b2ca35": {
+      "at": "2026-11-19T21:03:41.321Z",
+      "title": "سهم «أنثروبيك» الأمريكية للذكاء الاصطناعي يقلّص مكاسب أول يوم تداول إلى 17%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 31,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [],
+            "removed": [
+              {
+                "sentence": "وسيتسع المعروض من الأسهم على مراحل.",
+                "said": "unsourced"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "saudi-minimum-top-up-tax-multinationals-2027-902f67": {
+      "at": "2026-11-19T21:15:39.476Z",
+      "title": "السعودية تطبق من 2027 ضريبة تكميلية على أرباح الشركات متعددة الجنسيات",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 20,
+            "checked": 20,
+            "supported": 18,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "والمعدل الفعلي هو ما يتحمله الكيان من ضريبة قياساً إلى أرباحه.",
+                "reason": "definition"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
+    },
+    "imf-raises-uae-2026-growth-forecast-e34808": {
+      "at": "2026-11-19T21:38:17.305Z",
+      "title": "صندوق النقد يرفع توقعه لاقتصاد الإمارات في 2026 إلى نمو 0.2%",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 22,
+            "checked": 22,
+            "supported": 21,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

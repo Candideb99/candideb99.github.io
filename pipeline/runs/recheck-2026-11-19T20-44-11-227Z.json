@@ -1,0 +1,81 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-19T20:44:11.227Z",
+  "durationSec": 61,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-cma-mandates-twice-yearly-earnings-calls-2128b5",
+      "title": "هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة نتائجها علناً مرتين سنوياً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 21,
+        "checked": 21,
+        "supported": 18,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "iea-hormuz-oil-flows-two-million-2035-e573c4",
+      "title": "وكالة الطاقة: النفط العابر لهرمز قد ينحسر إلى مليوني برميل يومياً",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 23,
+        "checked": 23,
+        "supported": 22,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 16563,
+    "completionTokens": 14952,
+    "cacheReadTokens": 0,
+    "costUsd": 0.4315,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 16563,
+        "read": 0,
+        "out": 14952,
+        "usd": 0.4315
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[20:44:11] second look: 2 to read now (2 published pieces not yet read; 281 read clean before publication and left out of the audit sample)",
+    "[20:44:12] iea-hormuz-oil-flows-two-million-2035-e573c4:   source https://www.ft.com/content/1e00aad2-0007-4328-8492-0fea09aa69ad?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[20:44:14] saudi-cma-mandates-twice-yearly-earnings-calls-2128b5:   source https://finance.yahoo.com/quote/%5ETASI.SR/: a market quote of its moment, with no copy saved at publication",
+    "[20:45:09] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2807 in=8445 read=0 out=7143 attempt=1 ms=54879",
+    "[20:45:09] saudi-cma-mandates-twice-yearly-earnings-calls-2128b5: 21 of 21 sentences checked · 18 supported · 1 without a source · 0 confirmed error(s) · 2 listed for a person",
+    "[20:45:12] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2911 in=8118 read=0 out=7809 attempt=1 ms=59017",
+    "[20:45:12] iea-hormuz-oil-flows-two-million-2035-e573c4: 23 of 23 sentences checked · 22 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}
