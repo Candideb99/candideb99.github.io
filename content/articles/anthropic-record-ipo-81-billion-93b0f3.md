@@ -47,7 +47,15 @@ chart:
         - 956.4
         - 23.6
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Dario_Amodei_at_TechCrunch_Disrupt_2023_01.jpg/1280px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01.jpg
+  width: 1280
+  height: 853
+  alt: داريو أمودي خلال مؤتمر تك كرانش ديسربت عام 2023
+  credit: TechCrunch · CC BY 2.0 · ويكيميديا كومنز
+  license: CC BY 2.0
+  licenseUrl: https://creativecommons.org/licenses/by/2.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3ADario_Amodei_at_TechCrunch_Disrupt_2023_01.jpg
 sources:
   - name: بلومبرغ
     nameEn: Bloomberg
@@ -77,7 +85,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v72
 quality:

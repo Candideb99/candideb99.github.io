@@ -460,133 +460,136 @@
       "read": 8,
       "confirmedPerStory": 0.13,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-19",
+      "published": 13,
+      "news": 11,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 3,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-15T15:04:03.025Z",
+  "updatedAt": "2026-11-19T16:38:57.220Z",
   "week": {
-    "published": 98,
-    "news": 83,
-    "revisedShare": 0.99,
+    "published": 60,
+    "news": 52,
+    "revisedShare": 1,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.66,
-    "corrections": 3,
+    "styleWarningsPerStory": 0.33,
+    "corrections": 1,
     "usefulness": {
       "withLessons": {
-        "stories": 65,
-        "words": 451,
-        "keyFacts": 3.8
+        "stories": 43,
+        "words": 429,
+        "keyFacts": 3.4
       },
       "control": {
-        "stories": 18,
-        "words": 449,
-        "keyFacts": 3.6
+        "stories": 9,
+        "words": 454,
+        "keyFacts": 3.7
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 75,
-      "repaired": 17,
-      "held": 0,
-      "errorsFound": 19,
-      "unsourcedCut": 1,
-      "heldTitles": []
+      "checked": 58,
+      "clean": 53,
+      "repaired": 4,
+      "held": 1,
+      "errorsFound": 5,
+      "unsourcedCut": 0,
+      "heldTitles": [
+        "وكالة الطاقة الدولية: استهلاك مراكز البيانات للكهرباء قد يتضاعف بحلول 2030"
+      ]
     },
     "outcomes": {
-      "repairedBeforePublication": 19,
-      "correctionsVerifiedClean": 3,
+      "repairedBeforePublication": 4,
+      "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
-      "heldBeforePublication": 0,
+      "heldBeforePublication": 1,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 48,
-      "clean": 32,
-      "corrected": 3,
+      "read": 25,
+      "clean": 16,
+      "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 13,
+      "listed": 8,
       "unverifiable": 0,
-      "confirmedPerStory": 0.06,
+      "confirmedPerStory": 0.04,
       "withLessons": {
-        "read": 36,
-        "confirmedPerStory": 0.08
+        "read": 20,
+        "confirmedPerStory": 0.05
       },
       "claudeWithout": {
-        "read": 12,
+        "read": 5,
         "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
-      "written": 40,
-      "refused": 6,
-      "callsPerStory": 25.3,
-      "tokensPerStory": 506386,
-      "costPerStory": 4.09,
+      "written": 49,
+      "refused": 5,
+      "callsPerStory": 25.1,
+      "tokensPerStory": 490296,
+      "costPerStory": 3.96,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "second look: attribution errors",
-        "stories": 2,
-        "examples": [
-          "dip-holding-shares-rise-dubai-debut-da4063: قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
-          "irgc-hormuz-closed-three-tankers-mines-92bbd3: ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات."
-        ]
-      }
-    ]
+    "recurring": []
   },
   "weekBefore": {
-    "published": 89,
-    "news": 72,
+    "published": 99,
+    "news": 82,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.83,
+    "styleWarningsPerStory": 0.9,
     "corrections": 2,
     "usefulness": {
       "withLessons": {
-        "stories": 61,
-        "words": 470,
-        "keyFacts": 4.2
+        "stories": 66,
+        "words": 474,
+        "keyFacts": 4.1
       },
       "control": {
-        "stories": 10,
-        "words": 394,
-        "keyFacts": 2.5
+        "stories": 15,
+        "words": 449,
+        "keyFacts": 3.5
       }
     },
     "precheck": {
-      "checked": 82,
-      "clean": 72,
-      "repaired": 10,
+      "checked": 92,
+      "clean": 73,
+      "repaired": 19,
       "held": 0,
-      "errorsFound": 11,
-      "unsourcedCut": 2,
+      "errorsFound": 21,
+      "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 11,
-      "correctionsVerifiedClean": 1,
+      "repairedBeforePublication": 21,
+      "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 37,
-      "clean": 30,
-      "corrected": 1,
-      "stands": 1,
+      "read": 42,
+      "clean": 33,
+      "corrected": 2,
+      "stands": 0,
       "refused": 0,
-      "listed": 5,
+      "listed": 7,
       "unverifiable": 0,
       "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 27,
-        "confirmedPerStory": 0.04
+        "read": 32,
+        "confirmedPerStory": 0.06
       },
       "claudeWithout": {
         "read": 10,
-        "confirmedPerStory": 0.1
+        "confirmedPerStory": 0
       }
     },
     "runs": {
@@ -598,16 +601,7 @@
       "costPerStory": null,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "second look: figure errors",
-        "stories": 2,
-        "examples": [
-          "oil-falls-iran-hormuz-two-day-offer-c40213: تراجعت أسعار النفط بأكثر من 3% في التعاملات المبكرة يوم الإثنين، بعدما عززت المحادثات بوساطة قطرية الآمال في اختراق دبلو",
-          "brent-rebounds-us-strike-qeshm-island-382dd6: وأفاد موقع «أرابيان غلف بزنس إنسايت» (AGBI) المتخصص في أخبار أعمال الخليج بأن دوي خمسة انفجارات سُمع في أنحاء الجزيرة، و"
-        ]
-      }
-    ]
+    "recurring": []
   },
   "lessons": {
     "version": 72,
@@ -665,7 +659,7 @@
     }
   },
   "evidence": {
-    "pairs": 62,
+    "pairs": 65,
     "vsKept": {
       "n": 0,
       "better": 0,

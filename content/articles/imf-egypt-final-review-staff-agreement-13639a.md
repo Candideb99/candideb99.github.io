@@ -31,7 +31,15 @@ regions:
 readingMinutes: 4
 chart: null
 table: null
-image: null
+image:
+  url: https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/11_International_Monetary_Fund_IMF_in_Washington_DC_USA_-_Creative_Commons_CC-BY.jpg/1280px-11_International_Monetary_Fund_IMF_in_Washington_DC_USA_-_Creative_Commons_CC-BY.jpg
+  width: 1280
+  height: 853
+  alt: شعار صندوق النقد الدولي على مقره في واشنطن
+  credit: Marek Ślusarczyk (Tupungato) Photo portfolio · CC BY 3.0 · ويكيميديا كومنز
+  license: CC BY 3.0
+  licenseUrl: https://creativecommons.org/licenses/by/3.0
+  pageUrl: https://commons.wikimedia.org/wiki/File%3A11_International_Monetary_Fund_IMF_in_Washington_DC_USA_-_Creative_Commons_CC-BY.jpg
 sources:
   - name: الشرق بلومبرغ
     nameEn: Asharq Business
@@ -61,7 +69,7 @@ models:
   editor: claude-cli/claude-opus-5-5
   writer: claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5
   critic: claude-cli/claude-opus-5-5
-  vision: null
+  vision: claude-cli/claude-opus-5-5
   desk: claude-cli/claude-opus-5-5
   lessons: v72
 quality:
