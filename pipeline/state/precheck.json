@@ -17927,6 +17927,34 @@
           "noted": []
         }
       ]
+    },
+    "imf-uae-2027-growth-hinges-hormuz-b73a68": {
+      "at": "2026-11-19T22:17:15.798Z",
+      "title": "صندوق النقد يربط نمو الإمارات في 2027 بانحسار الحرب وقيود هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 25,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [
