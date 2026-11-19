@@ -34,7 +34,7 @@ try {
 
 const { pickImage } = await import("./lib/images.mjs");
 const { extractArticle } = await import("./lib/extract.mjs");
-const { photoKey } = await import("./lib/photo-key.mjs");
+const { photoKey, usedPhotos } = await import("./lib/photo-key.mjs");
 const { writeJsonAtomic } = await import("./lib/util.mjs");
 const { PHOTO_SEARCHES } = await import("./lib/health.mjs");
 
@@ -91,19 +91,25 @@ const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".md")).sor
 /** The photographs published now, read again before every story: another run writing at the same time (the newsroom, a
  *  second batch by hand) is seen before this one picks, not after. With this run's own picks, which a dry run never writes. */
 const picked = new Set();
-async function usedNow() {
-  const used = new Set(picked);
+async function publishedPhotos() {
+  const out = [];
   for (const file of await readdir(ARTICLES_DIR)) {
     if (!file.endsWith(".md")) continue;
     const raw = await readFile(path.join(ARTICLES_DIR, file), "utf8").catch(() => "");
     const url = raw.match(/^image:\r?\n  url: (\S+)/m)?.[1];
-    if (url) used.add(url);
+    const at = Date.parse(raw.match(/^publishedAt: ['"]?([^'"\s]+)/m)?.[1] ?? "");
+    if (url) out.push({ url, at });
   }
-  return used;
+  return out;
+}
+/** As the story being pictured (`at`, its own date) sees them: one run a month or three before or after it may come back. */
+async function usedNow(at = Date.now()) {
+  return usedPhotos(await publishedPhotos(), at, [...picked]);
 }
 if (APPLY) {
   const saved = JSON.parse(await readFile(APPLY, "utf8"));
-  const taken = new Set([...(await usedNow())].map(photoKey));
+  // A saved pick is written only where no story runs it at all.
+  const taken = new Set([...(await publishedPhotos()).map((p) => p.url), ...picked].map(photoKey));
   let written = 0;
   for (const entry of saved.picks ?? []) {
     if (ONLY.size && !ONLY.has(entry.slug)) continue;
@@ -181,8 +187,8 @@ for (const file of files) {
   let image = null;
   let failed = false;
   try {
-    const used = await usedNow();
-    const exclude = AS_NEW ? new Set([...used].filter((u) => u !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
+    const used = await usedNow(Date.parse(data.publishedAt ?? "") || Date.now());
+    const exclude = AS_NEW ? new Set([...used].filter((u) => String(u).replace(/^(?:photo|rested):/, "") !== own && !String(u).startsWith("title:") && !String(u).startsWith("series"))) : used;
     // A handout is kept on the site (lib/images.mjs handoutTier()); a dry run keeps nothing.
     image = await pickImage({ draft, story, log, exclude, sources, photoDir: DRY_RUN ? null : path.join(process.cwd(), "public", "photos", "handouts"), onError: () => (failed = true) });
   } catch (error) {

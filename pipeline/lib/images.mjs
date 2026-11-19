@@ -9,7 +9,7 @@ import { claudeEffort } from "./claude-effort.mjs";
 // The house spellings the copy desk keeps («أمريكي»، «ترامب») hold under photographs too.
 import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchPublic, readCapped } from "./util.mjs";
-import { photoKey } from "./photo-key.mjs";
+import { photoKey, PHOTO_REST_DAYS, SHOOT_REST_DAYS } from "./photo-key.mjs";
 import { countriesNamed } from "./regions.mjs";
 
 /**
@@ -845,6 +845,26 @@ function inUsedSeries(exclude, title) {
   const name = key.slice(key.indexOf(":") + 1);
   return key.startsWith("series:") ? exclude.has(`series:${name}`) || exclude.has(`series0:${name}`) : exclude.has(`series:${name}`);
 }
+/**
+ * A frame of a shoot another story ran SHOOT_REST_DAYS or more ago (usedPhotos(), findImage()): it may run, after the
+ * unused photographs of the same pass, since a reader may still meet both stories on one subject page.
+ */
+function inRestedShoot(exclude, image) {
+  const key = seriesKey(image.title);
+  if (key && exclude.has(`rested-${key}`)) return true;
+  const id = Number(String(photoKey(image.url)).match(/^pexels:(\d+)$/)?.[1]);
+  if (!id) return false;
+  for (const k of exclude) {
+    const m = typeof k === "string" ? k.match(/^shootfree:key:pexels:(\d+)$/) : null;
+    if (m && Number(m[1]) !== id && Math.abs(Number(m[1]) - id) <= PEXELS_SHOOT) return true;
+  }
+  return false;
+}
+/**
+ * The photographs other stories ran PHOTO_REST_DAYS or more ago that this story's searches found and that passed every
+ * test of the search (collect()), by identity; findImage() shows them to a judge only when nothing else was found.
+ */
+const RESTED = new Map();
 /** The file name a Commons address carries («…/thumb/d/dc/Central_business_district_1%2C_New_Administrative_Capital.jpg/…»). */
 export function commonsFileTitle(url) {
   const m = String(url ?? "").match(/\/commons\/(?:thumb\/)?[0-9a-f]\/[0-9a-f]{2}\/([^/?#]+)/);
@@ -926,7 +946,10 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
     let taken = 0;
     for (const image of list) {
       const key = `key:${photoKey(image.url)}`;
-      if (seen.has(image.url) || seen.has(`title:${image.title}`) || seen.has(key)) continue;
+      // A photograph another story ran PHOTO_REST_DAYS ago or more goes through every test below and is then set aside for
+      // the last pass (RESTED), unless this story's judges or checks already refused it (`title:`).
+      const resting = seen.has(`rested:${key}`) && !seen.has(`title:${image.title}`) && !seen.has(`found:${key}`);
+      if ((seen.has(image.url) || seen.has(`title:${image.title}`) || seen.has(key)) && !resting) continue;
       if (inUsedSeries(seen, image.title)) {
         log(`image: dropped "${String(image.title).slice(0, 70)}" — another frame of a series a published story runs`);
         seen.add(image.url);
@@ -1032,10 +1055,21 @@ export async function collect(queries, log, { perQuery = 6, max = 8, exclude = n
       const company = theirNames.length === 1 && ofTheirs === 1 && /\b(?:and|with|meets?|&)\b/i.test(String(image.title ?? "")) ? -3 : 0;
       const withPeople = (ofTheirs >= 2 ? 6 : ofTheirs === 1 ? 2 : 0) + company;
       // Relevance weighs as much as the newest year: a fitting 2019 tanker comes before a 2026 beach.
+      const score = 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image);
+      if (resting) {
+        seen.add(`found:${key}`);
+        exclude.add(`found:${key}`);
+        RESTED.set(key, { ...image, query, ...(category ? { category: query } : {}), home, score, theirs: ofTheirs > 0 });
+        log(`image: set aside "${String(image.title).slice(0, 70)}" — another story ran it ${PHOTO_REST_DAYS} days or more ago; it may run again only if nothing else is found`);
+        continue;
+      }
       added += 1;
       if (taken >= share) continue;
       taken += 1;
-      candidates.push({ ...image, query, ...(category ? { category: query } : {}), home, score: 6 * relevant + recencyScore(image) + (image.width >= 1600 ? 1 : 0) + (home ? 4 : 0) + (atThePlace ? 4 : 0) + withPeople + liveliness(image) });
+      // Another frame of a shoot a story ran SHOOT_REST_DAYS ago or more comes after the pass's unused photographs.
+      const rested = inRestedShoot(seen, image);
+      if (rested) log(`image: "${String(image.title).slice(0, 70)}" is another frame of a shoot a story ran ${SHOOT_REST_DAYS} days or more ago; it comes after the unused ones`);
+      candidates.push({ ...image, query, ...(category ? { category: query } : {}), home, score: score - (rested ? 8 : 0) });
     }
     return added;
     };
@@ -2138,7 +2172,8 @@ function pexelsShoot(exclude, url) {
   if (!id) return false;
   for (const k of exclude) {
     const m = typeof k === "string" ? k.match(/^key:pexels:(\d+)$/) : null;
-    if (m && Math.abs(Number(m[1]) - id) <= PEXELS_SHOOT) return true;
+    // A shoot another story ran SHOOT_REST_DAYS ago or more is free again (usedPhotos()); its photograph itself is not.
+    if (m && Math.abs(Number(m[1]) - id) <= PEXELS_SHOOT && !exclude.has(`shootfree:${k}`)) return true;
   }
   return false;
 }
@@ -2396,11 +2431,25 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   // The photographs other stories already run, before this story's passes add their refusals: each by its own identity
   // (photoKey(): a Commons file under any address or width), and by the series it belongs to (seriesKey): a frame of the
   // same scene by the same photographer is the same picture to a reader.
-  for (const url of [...exclude]) {
+  // A photograph another story ran a while ago comes marked (usedPhotos(), photo-key.mjs): «photo:» SHOOT_REST_DAYS ago or
+  // more, the photograph alone is out and its shoot's other frames may run after the unused ones; «rested:»
+  // PHOTO_REST_DAYS ago or more, the photograph itself may run again in the last pass (reused(), below).
+  for (const entry of [...exclude]) {
+    if (typeof entry !== "string") continue;
+    const marked = entry.match(/^(photo|rested):(.+)$/);
+    const url = marked ? marked[2] : entry;
     if (!/^(?:https?:)?\//.test(url)) continue;
-    exclude.add(`key:${photoKey(url)}`);
+    const key = `key:${photoKey(url)}`;
+    exclude.add(url);
+    exclude.add(key);
     const series = seriesKey(commonsFileTitle(url));
-    if (series) exclude.add(series);
+    if (!marked) {
+      if (series) exclude.add(series);
+      continue;
+    }
+    exclude.add(`shootfree:${key}`);
+    if (series) exclude.add(`rested-${series}`);
+    if (marked[1] === "rested") exclude.add(`rested:${key}`);
   }
   const used = new Set(exclude);
   const civilian = civilianStory(draft);
@@ -2469,6 +2518,23 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     if (spokesman) return spokesman;
     if (amateur.held) log(`image: no professional photograph was found; the snapshot held back runs as the last resort: "${String(amateur.held.title ?? "").slice(0, 60)}"`);
     return amateur.held;
+  };
+  // Nothing new was found: a photograph another story ran PHOTO_REST_DAYS ago or more that this story's searches found and
+  // that passed every test of its search (collect()'s RESTED), best first, before a story runs without one (the owner,
+  // 2026-11-19: "Yes, 30 and 90 days"). Never one this story's judges or checks refused, nor one another story ran since.
+  const reused = async () => {
+    const found = [...exclude].filter((x) => typeof x === "string" && x.startsWith("found:key:")).map((x) => RESTED.get(x.slice("found:".length))).filter(Boolean);
+    if (!found.length) return null;
+    // The country rule of the pass that found it: the story's own people are theirs wherever they stood (peoplePhoto()).
+    const candidates = found.filter((c) => c.theirs || atHome([c], draft, log).length).sort((a, b) => b.score - a.score);
+    if (!candidates.length) return null;
+    log(`image: nothing new was found; ${candidates.length} photograph(s) other stories ran ${PHOTO_REST_DAYS} days or more ago may run again: ${candidates.map((c) => String(c.title ?? "").slice(0, 50)).join(" | ")}`);
+    const free = new Set(candidates.flatMap((c) => [c.url, `key:${photoKey(c.url)}`]));
+    const again = new Set([...used, ...(exclude.hard ?? [])].filter((x) => !free.has(x)));
+    for (const x of exclude) if (typeof x === "string" && x.startsWith("title:")) again.add(x);
+    const image = await twoLooks({ candidates, draft, story, log, exclude: again, relaxed: false, known, side, amateur });
+    if (image) log(`image: a photograph another story ran ${PHOTO_REST_DAYS} days or more ago runs again: "${String(image.title ?? "").slice(0, 60)}"`);
+    return image;
   };
   // A real photograph before a stand-in from nowhere (the owner, 2026-11-15, shown a stock close-up of vegetables beside
   // two fruit markets in Taif and a street market in old Jeddah under Saudi inflation, asked whether a clear but amateur
@@ -2615,7 +2681,7 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     const image = await hubPhoto({ hub, draft, story, log, exclude, desk });
     if (image) return image;
   }
-  if (!queries.length) return lastAmateur();
+  if (!queries.length) return (await reused()) ?? lastAmateur();
   const last = await lastResort({ draft, story, log, exclude, known, side });
   if (last) return homeSnapshot(last) ?? last;
   // A snapshot of the story's own subject in its own country, before the illustration from elsewhere is looked for.
@@ -2627,7 +2693,7 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   const again = new Set([...used, ...(exclude.hard ?? [])]);
   const scene = await neutralScene({ draft, story, log, exclude: again, queries, place, fronts });
   for (const x of again) exclude.add(x);
-  return scene ?? lastAmateur();
+  return scene ?? (await reused()) ?? lastAmateur();
 }
 
 /**

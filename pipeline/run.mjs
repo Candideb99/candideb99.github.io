@@ -38,6 +38,7 @@ import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { nothingNewSince, relatedRecent, repeatsRecent } from "./lib/events.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
+import { usedPhotos } from "./lib/photo-key.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, recentNews, serializeArticle, weekStories } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -251,7 +252,8 @@ async function collectEvidence(story, candidates) {
  * 25 September, the Treasury's sign on 17 October).
  */
 const RUN_IMAGES = new Set();
-const usedImages = (existing) => new Set([...existing.map((a) => a.imageUrl).filter(Boolean), ...RUN_IMAGES]);
+// Each published photograph with its story's date: one another story ran a month or three ago may come back (usedPhotos()).
+const usedImages = (existing) => usedPhotos(existing.map((a) => ({ url: a.imageUrl, at: Date.parse(a.publishedAt ?? "") })), Date.now(), [...RUN_IMAGES]);
 
 /**
  * The Arabic copy desk runs on every draft before the critic sees it: it rewrites translationese
