@@ -1,162 +1,6 @@
 {
   "version": 1,
   "items": {
-    "6291c4542e8ed10e": {
-      "at": "2026-10-28T20:44:55.077Z",
-      "decision": "rejected",
-      "title": "World Bank raises 2026 commodity price forecast to 23 percent as energy costs surge",
-      "strikes": 1
-    },
-    "d77d8f49cf803ef6": {
-      "at": "2026-10-28T20:44:55.078Z",
-      "decision": "rejected",
-      "title": "Energy prices to climb 32% this year as global shocks mount, World Bank says",
-      "strikes": 1
-    },
-    "a714392c53c5648f": {
-      "at": "2026-10-28T20:44:55.078Z",
-      "decision": "rejected",
-      "title": "Global commodity prices projected to surge 23% in 2026 on Middle East conflict: World Bank",
-      "strikes": 1
-    },
-    "ac6da08cb03dc367": {
-      "at": "2026-10-28T20:44:55.078Z",
-      "decision": "rejected",
-      "title": "البنك الدولي يحذر من تفاقم انعدام الأمن الغذائي مع ارتفاع أسعار السلع",
-      "strikes": 1
-    },
-    "f748fdfce9e55029": {
-      "at": "2026-10-28T20:44:55.078Z",
-      "decision": "rejected",
-      "title": "World Bank sees commodity prices up 23% in 2026 due to Middle East war, other shocks",
-      "strikes": 1
-    },
-    "ed4040f2c9609697": {
-      "at": "2026-10-28T20:58:02.580Z",
-      "decision": "published",
-      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
-      "title": "قطر والإمارات تثبتان أسعار الفائدة بالتزامن مع قرار «الفيدرالي»"
-    },
-    "7215f3da1080cf50": {
-      "at": "2026-10-28T20:58:02.580Z",
-      "decision": "published",
-      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
-      "title": "UAE keeps interest rate at 3.9 percent as Fed votes 10-2 to hold amid elevated inflation"
-    },
-    "2f980c886154f113": {
-      "at": "2026-10-28T20:58:02.580Z",
-      "decision": "published",
-      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
-      "title": "مصرف الإمارات المركزي يبقي على سعر الفائدة عند 3.9%"
-    },
-    "e28a144b29264d11": {
-      "at": "2026-10-28T20:58:02.580Z",
-      "decision": "published",
-      "slug": "uae-central-bank-holds-base-rate-after-fed-63bcb3",
-      "title": "UAE keeps key interest rate unchanged in October, mirroring US Fed move"
-    },
-    "18597e1d532bf612": {
-      "at": "2026-10-29T01:16:55.311Z",
-      "decision": "published",
-      "slug": "world-bank-raises-commodity-price-forecasts-2026-9559f0",
-      "title": "البنك الدولي يتوقع ارتفاع أسعار الطاقة 32% هذا العام"
-    },
-    "020e91d1864a9868": {
-      "at": "2026-10-29T01:16:55.311Z",
-      "decision": "published",
-      "slug": "world-bank-raises-commodity-price-forecasts-2026-9559f0",
-      "title": "البنك الدولي يتوقع 91 دولارًا متوسطًا سعريًا لخام برنت في 2026"
-    },
-    "e71cae616e81b43e": {
-      "at": "2026-10-29T01:16:55.311Z",
-      "decision": "published",
-      "slug": "world-bank-raises-commodity-price-forecasts-2026-9559f0",
-      "title": "البنك الدولي: أسعار الغذاء تقفز 10% في 2026 والقمح يرتفع 28%"
-    },
-    "beab1e23170669c6": {
-      "at": "2026-10-29T01:16:55.311Z",
-      "decision": "published",
-      "slug": "world-bank-raises-commodity-price-forecasts-2026-9559f0",
-      "title": "Dünya Bankası, emtia fiyatlarının 2026'da artmasını bekliyor"
-    },
-    "2a46ce53717526d2": {
-      "at": "2026-10-29T01:16:55.311Z",
-      "decision": "published",
-      "slug": "world-bank-raises-commodity-price-forecasts-2026-9559f0",
-      "title": "البنك الدولي: أسعار السلع الأولية تقفز 23% في 2026"
-    },
-    "737a6f6f2b252d2e": {
-      "at": "2026-10-29T01:21:37.699Z",
-      "decision": "rejected",
-      "title": "«إس تي سي» ترفع أرباحها التشغيلية إلى 3 مليارات دولار خلال 9 أشهر",
-      "strikes": 1
-    },
-    "7efddc476ca6c6ba": {
-      "at": "2026-10-29T01:21:37.699Z",
-      "decision": "rejected",
-      "title": "stc group’s nine-month operating profit rises 4.1% to SAR 11.3 billion",
-      "strikes": 1
-    },
-    "4e6ad4323d5eb6ef": {
-      "at": "2026-10-29T01:21:37.699Z",
-      "decision": "rejected",
-      "title": "stc تحقق إيرادات قياسية بـ60.1 مليار ريال في أول 9 أشهر من 2026",
-      "strikes": 1
-    },
-    "7cb136c0136e738f": {
-      "at": "2026-10-29T01:21:37.699Z",
-      "decision": "rejected",
-      "title": "stc group delivers 4.1 percent growth in operating profit to $3.01 billion in 9M 2026",
-      "strikes": 1
-    },
-    "0c5c00fc73a3b53a": {
-      "at": "2026-10-29T01:35:13.234Z",
-      "decision": "published",
-      "slug": "iraq-syria-discuss-banias-oil-exports-6a6a92",
-      "title": "العراق وسوريا يبحثان تصدير مليوني برميل نفط يومياً عبر بانياس"
-    },
-    "e42e934d46da991b": {
-      "at": "2026-10-29T01:35:13.234Z",
-      "decision": "published",
-      "slug": "iraq-syria-discuss-banias-oil-exports-6a6a92",
-      "title": "العراق وسوريا يبحثان سبل تطوير التعاون الاقتصادي والنفطي"
-    },
-    "facda83899425b21": {
-      "at": "2026-10-29T01:35:13.234Z",
-      "decision": "published",
-      "slug": "iraq-syria-discuss-banias-oil-exports-6a6a92",
-      "title": "العراق وسوريا يبحثان تصدير مليوني برميل يوميا عبر بانياس"
-    },
-    "188fa13287c822a7": {
-      "at": "2026-10-29T01:52:25.898Z",
-      "decision": "published",
-      "slug": "alphabet-shares-fall-after-earnings-miss-7ca1aa",
-      "title": "\"ألفابت\" تخيب توقعات الإيرادات رغم طفرة الحوسبة السحابية"
-    },
-    "5525c8574c19905f": {
-      "at": "2026-10-29T01:52:25.898Z",
-      "decision": "published",
-      "slug": "alphabet-shares-fall-after-earnings-miss-7ca1aa",
-      "title": "Why Alphabet’s stock could see its worst drop in years after the latest results"
-    },
-    "7341444ed617a181": {
-      "at": "2026-10-29T01:52:25.898Z",
-      "decision": "published",
-      "slug": "alphabet-shares-fall-after-earnings-miss-7ca1aa",
-      "title": "Alphabet shares fall after revenue miss, cash burn worsens"
-    },
-    "167ae0f3656ed7c1": {
-      "at": "2026-10-29T01:52:25.898Z",
-      "decision": "published",
-      "slug": "alphabet-shares-fall-after-earnings-miss-7ca1aa",
-      "title": "Alphabet sinks 10% as it holds 2026 capex unchanged, expects significant increase in 2027"
-    },
-    "e991065791552aaa": {
-      "at": "2026-10-29T01:52:25.898Z",
-      "decision": "published",
-      "slug": "alphabet-shares-fall-after-earnings-miss-7ca1aa",
-      "title": "Alphabet's revenue jumps 25% to $127.6B in Q3"
-    },
     "48a65e2245420cd0": {
       "at": "2026-10-29T08:37:40.222Z",
       "decision": "published",
@@ -5524,6 +5368,66 @@
       "decision": "published",
       "slug": "egypt-gdp-growth-slows-first-quarter-fca261",
       "title": "اقتصاد مصر ينمو 4.9% في الربع الأول من سنتها المالية"
+    },
+    "ccfad00fd7a44c07": {
+      "at": "2026-11-19T02:51:43.425Z",
+      "decision": "published",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "title": "Anthropic Prices at $83 a Share in Record-Sized Offering"
+    },
+    "5590de02373bc9cf": {
+      "at": "2026-11-19T02:51:43.425Z",
+      "decision": "published",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "title": "Anthropic raises $81.3bn in biggest IPO of all time"
+    },
+    "64d4bb67d42a1972": {
+      "at": "2026-11-19T02:51:43.425Z",
+      "decision": "published",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "title": "Anthropic raises $81bn in record IPO"
+    },
+    "e7e7004326907be4": {
+      "at": "2026-11-19T02:51:43.425Z",
+      "decision": "published",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "title": "\"أنثروبيك\" تجمع 107.3 مليار دولار في أكبر طرح أولي بتاريخ الأسواق"
+    },
+    "854b673585421c42": {
+      "at": "2026-11-19T02:51:43.425Z",
+      "decision": "published",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "title": "Claude maker Anthropic prices record $81.34B IPO at $83 per share"
+    },
+    "0efc17d183cafa8c": {
+      "at": "2026-11-19T03:06:06.064Z",
+      "decision": "published",
+      "slug": "saudi-delta-energy-pakistan-gas-pipeline-mou-c91252",
+      "title": "Saudi energy company signs $30bn pipeline deal"
+    },
+    "bea0b3cc8f5d6206": {
+      "at": "2026-11-19T03:06:06.064Z",
+      "decision": "published",
+      "slug": "saudi-delta-energy-pakistan-gas-pipeline-mou-c91252",
+      "title": "استثمارات محتملة بـ30 مليار دولار.. \"دلتا السعودية للطاقة\" تستكشف تطوير قطاع الغاز في باكستان"
+    },
+    "93da05c1f354ac52": {
+      "at": "2026-11-19T03:15:55.545Z",
+      "decision": "published",
+      "slug": "waller-urges-fed-half-point-december-hike-59d613",
+      "title": "والر يطالب «الفيدرالي» برفع الفائدة 50 نقطة أساس في ديسمبر"
+    },
+    "d1dcb0f3a0078c23": {
+      "at": "2026-11-19T03:15:55.545Z",
+      "decision": "published",
+      "slug": "waller-urges-fed-half-point-december-hike-59d613",
+      "title": "‘Shock people’ with 50-bps rate hike: Fed's Waller issues warning as AI adds to inflation worries"
+    },
+    "eff69984a5ddf6da": {
+      "at": "2026-11-19T03:15:55.545Z",
+      "decision": "published",
+      "slug": "waller-urges-fed-half-point-december-hike-59d613",
+      "title": "Fed governor favors half-point rate hike in December unless Fed signals January increase"
     }
   }
 }

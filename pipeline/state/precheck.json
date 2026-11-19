@@ -17519,6 +17519,102 @@
           "noted": []
         }
       ]
+    },
+    "anthropic-record-ipo-81-billion-93b0f3": {
+      "at": "2026-11-19T02:51:43.414Z",
+      "title": "أنثروبيك تجمع 81.3 مليار دولار في أكبر طرح أولي بالتاريخ",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 32,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-delta-energy-pakistan-gas-pipeline-mou-c91252": {
+      "at": "2026-11-19T03:06:06.054Z",
+      "title": "دلتا السعودية للطاقة تدرس مشاريع غاز بنحو 30 مليار دولار في باكستان",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 11,
+            "checked": 11,
+            "supported": 9,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 9,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقال متحدث باسم الشركة، التابعة لمجموعة دلتا الدولية الخاصة ومقرها جدة، في تصريحات أوردتها منصة «أرابيان غلف بزنس إنسايت» (AGBI)، إن الخط سينقل الغاز من تركمانستان عبر أفغانستان إلى جوادر لتسهيل تصديره إلى الهند وأوروبا.",
+              "quote": "وأكدت الشركتان أن البرنامج منفصل عن مشروع خط أنابيب الغاز بين تركمانستان وأفغانستان وباكستان والهند (TAPI)، ولا يعتمد على إمدادات الغاز التركمانية.",
+              "source": "An-Nahar",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "waller-urges-fed-half-point-december-hike-59d613": {
+      "at": "2026-11-19T03:15:55.535Z",
+      "title": "والر يدعو الفيدرالي إلى رفع الفائدة 50 نقطة أساس في ديسمبر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 19,
+            "weak": 4,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": []

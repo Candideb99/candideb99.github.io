@@ -2861,6 +2861,54 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-19T02:51:43.426Z",
+      "slug": "anthropic-record-ipo-81-billion-93b0f3",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 31,
+        "notFound": 0,
+        "checked": 34,
+        "words": 527,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 4,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 29,
+        "words": 470,
+        "keyFacts": 6,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 4,
+        "supported": 25,
+        "notFound": 0,
+        "checked": 29,
+        "words": 470,
+        "keyFacts": 6,
+        "classes": [
+          "attribution"
+        ],
+        "programmatic": 1
+      }
     }
   ]
 }
