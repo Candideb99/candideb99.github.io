@@ -40,13 +40,15 @@ export function photoKey(url) {
  * How long a used photograph rests before it may run again (the owner, 2026-11-19, on the Anthropic IPO story run as text
  * while Commons held eight photographs of Dario Amodei at TechCrunch Disrupt 2023, each dropped because two September
  * stories ran one frame of that shoot: "we will run out of free photos this way, how can we still re-use photos we used
- * before but in a way that the reader does not notice?", then "Yes, 30 and 90 days"). A reader notices a repeat where two
- * stories stand side by side: the front, a section, a subject page, «اقرأ أيضاً». Another frame of a shoot may run once the
- * story that runs one is SHOOT_REST_DAYS old, after the shoot's unused photographs of every other kind; the same
+ * before but in a way that the reader does not notice?", then "Yes, 30 and 90 days", and the same day "should we make it
+ * shorter like 14 and 30 days? since we are relying on free photos only?", "Yes, make it 14 and 30 days"). A reader
+ * meets two stories side by side on the front and the section pages, which turn over within days; «اقرأ أيضاً» prints
+ * headlines only, and a listing prints one photograph once (firstPictures(), src/lib/articles.ts). Another frame of a
+ * shoot may run once the story that runs one is SHOOT_REST_DAYS old, after the pass's unused photographs; the same
  * photograph once it is PHOTO_REST_DAYS old, and only as the last pass before a story runs without one (findImage()).
  */
-export const SHOOT_REST_DAYS = 30;
-export const PHOTO_REST_DAYS = 90;
+export const SHOOT_REST_DAYS = 14;
+export const PHOTO_REST_DAYS = 30;
 const DAY = 24 * 60 * 60 * 1000;
 
 /**
@@ -90,4 +92,23 @@ export function sharedPhotos(stories) {
     else last.set(key, { slug: s.slug, at: s.at });
   }
   return out;
+}
+
+/**
+ * The ids of the stories in a listing that print their photograph: the first in the listing's order to carry each one,
+ * under any of its addresses (firstPictures(), src/lib/articles.ts). A photograph that runs again 30 days on would
+ * otherwise print twice on its subject's page when the two stories store it at two widths or hosts.
+ * @param {{ id: string, url?: string | null }[]} items
+ * @returns {Set<string>}
+ */
+export function firstOfEachPhoto(items) {
+  const seen = new Set();
+  const ids = new Set();
+  for (const { id, url } of items) {
+    const key = photoKey(url);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    ids.add(id);
+  }
+  return ids;
 }

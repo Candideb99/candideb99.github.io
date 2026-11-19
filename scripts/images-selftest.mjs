@@ -1484,22 +1484,22 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
 }
 
 // The owner, 2026-11-19, on the Anthropic IPO run as text while eight photographs of Dario Amodei at TechCrunch Disrupt
-// 2023 were dropped because two September stories ran one frame each ("Yes, 30 and 90 days"): another frame of a shoot
-// may run once the story that ran one is 30 days old, the same photograph once it is 90 days old, and only as the last
-// pass before none.
+// 2023 were dropped because two September stories ran one frame each ("Yes, 30 and 90 days", then "Yes, make it 14 and 30
+// days"): another frame of a shoot may run once the story that ran one is 14 days old, the same photograph once it is 30
+// days old, and only as the last pass before none.
 {
-  const { usedPhotos, sharedPhotos } = await import("../pipeline/lib/photo-key.mjs");
+  const { usedPhotos, sharedPhotos, firstOfEachPhoto } = await import("../pipeline/lib/photo-key.mjs");
   const day = 24 * 60 * 60 * 1000;
   const now = Date.parse("2026-11-19T03:00:00Z");
   const at = (n) => `https://upload.wikimedia.org/wikipedia/commons/a/ab/Rest_${n}.jpg`;
   const thumb4 = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rest_4.jpg/1280px-Rest_4.jpg";
   const used = usedPhotos(
     [
-      { url: at(1), at: now - 10 * day },
-      { url: at(2), at: now - 45 * day },
-      { url: at(3), at: now - 120 * day },
-      { url: at(4), at: now - 120 * day },
-      { url: thumb4, at: now - 10 * day },
+      { url: at(1), at: now - 5 * day },
+      { url: at(2), at: now - 20 * day },
+      { url: at(3), at: now - 40 * day },
+      { url: at(4), at: now - 40 * day },
+      { url: thumb4, at: now - 5 * day },
       { url: "/photos/handouts/abc.jpg", at: now - 200 * day },
       { url: at(6), at: NaN },
       { url: at(7), at: now - 200 * day },
@@ -1508,29 +1508,34 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     [at(7)],
   );
   check(
-    "a used photograph rests by its youngest use: its shoot 30 days, itself 90; a handout, an undated story and a run's own pick stay out",
+    "a used photograph rests by its youngest use: its shoot 14 days, itself 30; a handout, an undated story and a run's own pick stay out",
     [used.has(at(1)), used.has(`photo:${at(2)}`), used.has(`rested:${at(3)}`), used.has(thumb4), used.has("/photos/handouts/abc.jpg"), used.has(at(6)), used.has(at(7)), used.size],
     [true, true, true, true, true, true, true, 7],
   );
   const story = (slug, days) => ({ slug, at: now + days * day, image: { url: at(9) } });
-  check("one photograph on two stories 90 days apart is no repeat; a third 20 days after the second is", sharedPhotos([story("a", 0), story("b", 100), story("c", 120)]), [{ slug: "c", keeps: "b" }]);
+  check("one photograph on two stories 30 days apart is no repeat; a third 10 days after the second is", sharedPhotos([story("a", 0), story("b", 35), story("c", 45)]), [{ slug: "c", keeps: "b" }]);
+  check(
+    "a listing prints a photograph once under any of its addresses",
+    [...firstOfEachPhoto([{ id: "new", url: thumb4 }, { id: "old", url: at(4) }, { id: "other", url: at(1) }, { id: "none", url: null }])],
+    ["new", "other"],
+  );
 
   const amodei = { ...developers, title: "أنثروبيك تجمع 81.3 مليار دولار في أكبر طرح أولي بالتاريخ", tags: ["أنثروبيك"], regions: ["الأمريكتان"] };
   const plan = planFor({ queries: [], place: ["United States"], people: [{ name: "Dario Amodei", ar: "داريو أمودي", headline: "أنثروبيك" }], focus: "people" });
   const ran = file("Dario Amodei at TechCrunch Disrupt 2023 03.jpg", { date: "2023-09-20" });
   const other = file("Dario Amodei at TechCrunch Disrupt 2023 05.jpg", { date: "2023-09-20" });
   const frame = (days) => scenario({ draft: amodei, plan, world: { "Dario Amodei": [other] }, judge: (titles) => (titles.length ? 1 : 0), verify: () => "RIGHT", exclude: usedPhotos([{ url: ran.url, at: Date.now() - days * day }]) });
-  const [month, fortnight] = [await frame(45), await frame(10)];
-  check("another frame of a shoot runs once the story that ran one is 30 days old, never before", [month.image?.title, fortnight.image?.title ?? null], [other.title, null]);
+  const [fortnight, week] = [await frame(20), await frame(5)];
+  check("another frame of a shoot runs once the story that ran one is 14 days old, never before", [fortnight.image?.title, week.image?.title ?? null], [other.title, null]);
 
   const tankers = { ...developers, title: "أسعار شحن ناقلات النفط ترتفع إلى أعلى مستوى في عام", tags: ["النفط"], regions: ["عالمي"], imageQueries: [] };
   const tankerPlan = planFor({ queries: ["oil tanker"], place: [] });
   const rested = file("Crude oil tanker at sea.jpg", { date: "2024-03-01" });
   const fresh = file("Oil tanker sailing at dawn.jpg", { date: "2025-03-01" });
   const again = (days, world) => scenario({ draft: tankers, plan: tankerPlan, world, judge: (titles) => (titles.length ? 1 : 0), verify: () => "GENERIC_OK", exclude: usedPhotos([{ url: rested.url, at: Date.now() - days * day }]) });
-  const [old, young, beside] = [await again(120, { "oil tanker": [rested] }), await again(60, { "oil tanker": [rested] }), await again(120, { "oil tanker": [rested, fresh] })];
+  const [old, young, beside] = [await again(40, { "oil tanker": [rested] }), await again(20, { "oil tanker": [rested] }), await again(40, { "oil tanker": [rested, fresh] })];
   check(
-    "the same photograph runs again 90 days on, only when nothing else is found; never at 60 days",
+    "the same photograph runs again 30 days on, only when nothing else is found; never at 20 days",
     [old.image?.title, young.image?.title ?? null, beside.image?.title, beside.judgePrompts.some((p) => p.includes("Crude oil tanker"))],
     [rested.title, null, fresh.title, false],
   );

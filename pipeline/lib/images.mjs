@@ -2521,7 +2521,7 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
   };
   // Nothing new was found: a photograph another story ran PHOTO_REST_DAYS ago or more that this story's searches found and
   // that passed every test of its search (collect()'s RESTED), best first, before a story runs without one (the owner,
-  // 2026-11-19: "Yes, 30 and 90 days"). Never one this story's judges or checks refused, nor one another story ran since.
+  // 2026-11-19: "Yes, make it 14 and 30 days"). Never one this story's judges or checks refused, nor one another story ran since.
   const reused = async () => {
     const found = [...exclude].filter((x) => typeof x === "string" && x.startsWith("found:key:")).map((x) => RESTED.get(x.slice("found:".length))).filter(Boolean);
     if (!found.length) return null;

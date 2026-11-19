@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
 import { canonicalTag, isFileTag, subjectOfTag } from "./topics";
+import { firstOfEachPhoto } from "../../pipeline/lib/photo-key.mjs";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -82,18 +83,12 @@ export function articleHref(article: Article): string {
  * A picture is printed once per page even when two stories share it (the picture desk falls back to the same
  * Commons illustration of a sector): the ids of the stories that print theirs, the first in the page's order to carry
  * each file. Later ones run as text. Until 2026-09-27 only the front page kept the rule, and a topic page printed
- * one tanker twice.
+ * one tanker twice. A picture is its photograph, not its address (photoKey(): a Commons file at another width, a Flickr
+ * photograph and its Commons copy): since 2026-11-19 the picture desk may run a photograph again after 30 days, and a
+ * subject page lists both stories.
  */
 export function firstPictures(order: (Article | undefined)[]): Set<string> {
-  const seen = new Set<string>();
-  const ids = new Set<string>();
-  for (const a of order) {
-    const url = a?.data.image?.url;
-    if (!a || !url || seen.has(url)) continue;
-    seen.add(url);
-    ids.add(a.id);
-  }
-  return ids;
+  return firstOfEachPhoto(order.flatMap((a) => (a ? [{ id: a.id, url: a.data.image?.url }] : [])));
 }
 
 // Words a headline shares with any other and that say nothing about the event.
