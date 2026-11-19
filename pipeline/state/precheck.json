@@ -17711,7 +17711,222 @@
           ]
         }
       ]
+    },
+    "trump-xi-putin-refined-fuel-supply-pledge-4aa238": {
+      "at": "2026-11-19T11:54:48.052Z",
+      "title": "ترامب وشي وبوتين يعتزمون زيادة إنتاج المشتقات النفطية وإمداداتها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 9,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "orascom-aqaba-amman-desalination-groundbreaking-30d184": {
+      "at": "2026-11-19T12:02:07.677Z",
+      "title": "«أوراسكوم» المصرية تضع حجر الأساس لمشروع تحلية مياه في الأردن بـ7 مليارات دولار",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 8,
+            "checked": 8,
+            "supported": 6,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "euro-area-inflation-four-percent-october-energy-19b999": {
+      "at": "2026-11-19T12:24:48.208Z",
+      "title": "تضخم منطقة اليورو يرتفع إلى 4% في أكتوبر بدفع من أسعار الطاقة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 31,
+            "weak": 7,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
-  "held": []
+  "held": [
+    {
+      "slug": "iea-data-centre-electricity-double-2030-830dea",
+      "at": "2026-11-19T12:14:50.915Z",
+      "title": "وكالة الطاقة الدولية: استهلاك مراكز البيانات للكهرباء قد يتضاعف بحلول 2030",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": false,
+      "repairs": 3,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 31,
+            "checked": 31,
+            "supported": 28,
+            "weak": 2,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 17,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وتُظهر بيانات الوكالة أن الشحنات السنوية لخوادم الذكاء الاصطناعي ارتفعت ثمانية عشر ضعفاً منذ 2020، وقد تتبعت بصور الأقمار الصناعية إنشاء 93 مركزاً كبيراً مخصصاً للذكاء الاصطناعي حول العالم، زادت قدرتها عشرة أضعاف خلال العامين الماضيين لتبلغ 17 غيغاواط.",
+              "quote": "Its analysis suggests that the world’s datacentre capacity has climbed tenfold in the last 24 months to 17GW.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": "The source attributes the tenfold rise to 17GW to the world's datacentre capacity, not to the capacity of the 93 tracked AI centres."
+            }
+          ],
+          "noted": [],
+          "refused": [
+            "جمل طويلة جداً (1): «وتُظهر بيانات الوكالة أن الشحنات السنوية لخوادم الذكاء الاصطناعي ارتفعت ثمانية عشر…»؛ اقسم كل جملة تتجاوز 40 كلمة إلى جملتين، فكرة واحدة في كل جملة."
+          ],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 19,
+              "field": "body",
+              "class": "internal",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويشير تحليلها إلى أن قدرة مراكز البيانات في العالم زادت عشرة أضعاف خلال العامين الماضيين لتبلغ 17 غيغاواط.",
+              "quote": "وتبلغ قدرة مراكز البيانات القائمة في العالم حالياً 120 غيغاواط، يقع 80% منها في الصين والولايات المتحدة والاتحاد الأوروبي.",
+              "source": "the story itself",
+              "sourceN": 0,
+              "correction": "The story itself puts existing world data-centre capacity at 120 GW, so 17 GW cannot be world capacity; the tenfold rise to 17 GW refers to the capacity of the large AI centres tracked by satellite."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 3,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 31,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 19,
+              "field": "body",
+              "class": "scope",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "ويشير تحليلها إلى أن قدرة هذه المراكز زادت عشرة أضعاف خلال العامين الماضيين لتبلغ 17 غيغاواط.",
+              "quote": "Its analysis suggests that the world’s datacentre capacity has climbed tenfold in the last 24 months to 17GW.",
+              "source": "The Guardian",
+              "sourceN": 2,
+              "correction": "The source gives the tenfold rise to 17 GW as the world's datacentre capacity, not the capacity of the 93 tracked AI centres."
+            }
+          ],
+          "noted": []
+        }
+      ],
+      "held": "1 proved error(s) left after 3 repair(s)",
+      "unresolved": [
+        {
+          "id": 19,
+          "field": "body",
+          "class": "scope",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "sentence": "ويشير تحليلها إلى أن قدرة هذه المراكز زادت عشرة أضعاف خلال العامين الماضيين لتبلغ 17 غيغاواط.",
+          "quote": "Its analysis suggests that the world’s datacentre capacity has climbed tenfold in the last 24 months to 17GW.",
+          "source": "The Guardian",
+          "sourceN": 2,
+          "correction": "The source gives the tenfold rise to 17 GW as the world's datacentre capacity, not the capacity of the 93 tracked AI centres."
+        }
+      ]
+    }
+  ]
 }
