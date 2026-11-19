@@ -98,6 +98,47 @@ async function setEnvKey(name, value) {
   if (value) process.env[name] = value;
   else delete process.env[name];
 }
+// ------------------------------------------------------------------ the contact form's inbox
+// Readers' messages are kept on the site's host (functions/api/contact.js, Cloudflare KV) and read from here through
+// functions/api/inbox.js, which answers only to a key this desk draws once and keeps in .env; the owner pastes the
+// same key into Cloudflare as the INBOX_KEY secret («Copy the key» in the Messages pane). Never logged or printed.
+const INBOX_URL = process.env.KHAZENDAR_INBOX_URL || `${site.url}/api/inbox`;
+async function inboxKey() {
+  let key = loadEnv().KHAZENDAR_INBOX_KEY ?? "";
+  if (!/^[\w-]{32,}$/.test(key)) {
+    key = randomBytes(32).toString("hex");
+    await setEnvKey("KHAZENDAR_INBOX_KEY", key);
+  }
+  return key;
+}
+/** One request to the inbox: `{ status, data }`, or `{ error }` when the site did not answer. */
+async function inboxCall(method, query = "") {
+  const key = await inboxKey();
+  try {
+    const res = await fetch(`${INBOX_URL}${query}`, { method, headers: { authorization: `Bearer ${key}` }, redirect: "error", signal: AbortSignal.timeout(15000) });
+    const data = await res.json().catch(() => null);
+    return { status: res.status, data };
+  } catch {
+    return { error: "The live site did not answer. Check the connection and try again." };
+  }
+}
+/** What the Messages pane shows: the messages, or which step of the one-time setup is still open. */
+async function inboxState() {
+  const r = await inboxCall("GET");
+  if (r.error) return { error: r.error };
+  // No endpoint yet: the static site answers its own 404 page, which is not JSON.
+  if (r.status === 404 || (!r.data && r.status < 500)) return { setup: "deploy" };
+  if (r.status === 401 || (r.status === 503 && r.data?.setup?.includes("INBOX_KEY"))) return { setup: "key", note: r.status === 401 ? "The site holds a different key from this control room's: paste this one again as INBOX_KEY." : "" };
+  if (r.status === 503 && r.data?.setup?.includes("MESSAGES")) return { setup: "store" };
+  if (r.status !== 200 || !Array.isArray(r.data?.messages)) return { error: `The inbox answered ${r.status}. Try again in a minute.` };
+  const titles = new Map((await allArticles()).map((a) => [a.slug, a.title]));
+  const messages = r.data.messages
+    .filter((m) => m && typeof m.key === "string" && typeof m.at === "string")
+    .map((m) => ({ key: m.key, at: m.at, topic: String(m.topic ?? "other"), name: String(m.name ?? ""), email: String(m.email ?? ""), message: String(m.message ?? ""), country: String(m.country ?? ""), story: String(m.story ?? ""), storyTitle: titles.get(m.story) ?? "" }))
+    .sort((a, b) => (a.at < b.at ? 1 : -1));
+  return { messages, checkedAt: new Date().toISOString() };
+}
+
 /** A secret goes to GitHub over stdin, never as an argument, so it never shows in a process list. */
 function ghSecret(name, value) {
   const r = spawnSync("gh", ["secret", "set", name, "--repo", REPO], { input: value, encoding: "utf8", shell: false, windowsHide: true });
@@ -944,6 +985,7 @@ async function siteChanges() {
 
 // ------------------------------------------------------------------------ page
 const ICON = {
+  mail: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M3 5.5l7 5.5 7-5.5"/></svg>',
   desk: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="15" height="13" rx="1.5"/><path d="M6 8h8M6 11.5h5"/></svg>',
   stories: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg>',
   settings: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h9M15 6h2M3 14h2M8 14h9"/><circle cx="13" cy="6" r="2"/><circle cx="6" cy="14" r="2"/></svg>',
@@ -1083,6 +1125,21 @@ td.t .meta{font-size:12.5px;color:var(--ink-3);margin-top:2px}
 .score.hi{background:var(--green-tint);color:var(--green-deep)}.score.lo{background:var(--red-tint);color:var(--red)}
 td.src details summary{cursor:pointer;font-size:13px;color:var(--green);list-style:none}
 td.src ul{margin:6px 0 0;padding-inline-start:16px;font-size:12.5px;max-width:420px}
+/* messages from the site's contact form */
+.rail a.nav b.new{margin-inline-start:auto;font-size:12px;font-weight:600;color:#fff;background:var(--green);border-radius:9px;padding:0 7px;line-height:18px}
+.msg{max-width:820px;padding:16px 0;border-bottom:1px solid var(--rule-2)}
+.msg:first-child{border-top:1px solid var(--ink)}
+.msg .who{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.msg .who b{font-weight:600}.msg .who .m{margin-inline-start:auto;font-size:12.5px;white-space:nowrap}
+.msg .chip.correction{background:var(--amber-tint);color:var(--amber);font-weight:600}
+.msg .chip.business{background:var(--green-tint);color:var(--green-deep);font-weight:600}
+.msg .about{margin:8px 0 0;font-size:13px;color:var(--ink-3)}
+.msg .about a{font-family:var(--ar);font-size:16px;unicode-bidi:plaintext}
+.msg .text{margin:10px 0 12px;white-space:pre-wrap;word-wrap:break-word;line-height:1.7;unicode-bidi:plaintext;text-align:start}
+.msg .text.rtl{font-family:var(--ar);font-size:17px;line-height:1.85}
+.msg .acts{display:flex;gap:8px;align-items:center}
+.msg.fresh .who b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-inline-end:8px;vertical-align:1px}
+.steps{max-width:760px;margin:0;padding-inline-start:20px}.steps li{margin:10px 0;line-height:1.55}.steps li.done{color:var(--ink-3)}
 /* actions menu */
 .menu{position:relative}
 .menu summary{list-style:none;cursor:pointer;width:32px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);background:#fff}
@@ -1151,6 +1208,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <div class="sub">Control room</div>
   <a class="nav on" data-tab="desk" href="#desk">${ICON.desk}<span>Desk</span></a>
   <a class="nav" data-tab="stories" href="#stories">${ICON.stories}<span>Stories</span></a>
+  <a class="nav" data-tab="messages" href="#messages">${ICON.mail}<span>Messages</span><b class="new" id="n-msgs" style="display:none"></b></a>
   <a class="nav" data-tab="set" href="#set">${ICON.settings}<span>Settings</span></a>
   <div class="foot">
     <div class="light" id="deploy-light"><i></i><span>Checking the last deploy…</span></div>
@@ -1230,6 +1288,18 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <table class="list"><thead><tr><th>Story</th><th>Where</th><th>Score</th><th>Sources</th><th></th></tr></thead><tbody id="live"></tbody></table>
   <p id="f-more" style="display:none;margin:14px 0 0"><button class="quiet" onclick="showMore()">Show more</button> <span class="m" id="f-more-note"></span></p>
   <details class="fold" style="margin-top:14px"><summary>What «Where» means</summary><p class="in m" style="margin:0"><b>Where</b> is the story's place right now: the front page's lead, one of the four cover stories, a reading beside them, a second story, «الأخبار في سطور», the top stories, or its section page (and الأحدث). The section blocks lower on the front page are not shown here. Nothing is ever archived away — every story keeps its page, its section's older pages and its topic page for good, as the big dailies do.</p></details>
+</section>
+
+<!-- ================================ MESSAGES ================================ -->
+<section class="pane" id="pane-messages">
+  <h2 style="margin-top:0">Messages <span class="n" id="msgs-count" style="display:none"></span></h2>
+  <p class="m" id="msgs-hint" style="margin:0 0 18px">What readers send from the site's «تواصل معنا» page, newest first. They are kept on the site's host, not on this laptop.</p>
+  <div class="bar" id="msgs-bar" style="display:none">
+    <select id="msgs-topic" onchange="renderMessages()"><option value="">every subject</option><option value="correction">corrections</option><option value="suggestion">notes and suggestions</option><option value="business">ads and partnerships</option><option value="other">other</option></select>
+    <button class="quiet sm" onclick="loadMessages(true)">Check now</button>
+    <span class="m" id="msgs-when"></span>
+  </div>
+  <div id="msgs"><p class="empty">Loading…</p></div>
 </section>
 
 <!-- ================================ SETTINGS ================================ -->
@@ -1497,8 +1567,66 @@ var fmtStory=function(iso){if(!iso)return '–';var d=new Date(iso);if(isNaN(d))
 // actions menu or sources list snapped shut every twenty seconds, every three during a job.
 var setHtml=function(el,html){if(!el||el.__html===html)return;el.innerHTML=html;el.__html=html};
 
+// ---- messages from the site's contact form (functions/api/contact.js keeps them, /messages reads them)
+var MSGS=null,MSG_TOPIC={correction:'Correction',suggestion:'Note or suggestion',business:'Ads and partnerships',other:'Other'};
+var msgSeen=function(){try{return localStorage.getItem('desk-msgs-seen')||''}catch(e){return ''}};
+var MSG_SEEN_AT=msgSeen();
+function msgBadge(){var b=document.getElementById('n-msgs');if(!b)return;var seen=msgSeen();var n=MSGS&&MSGS.messages?MSGS.messages.filter(function(m){return m.at>seen}).length:0;b.textContent=n;b.style.display=n?'':'none'}
+// Opening the pane marks what is there as read; the dots stay on the ones that were new until the next visit.
+// A click on the rail shows the pane twice (the click, then the address's change): only the first is an opening.
+var MSG_OPEN=false;
+function openMessages(){if(MSG_OPEN)return;MSG_OPEN=true;MSG_SEEN_AT=msgSeen();if(MSGS&&MSGS.messages&&MSGS.messages.length){try{localStorage.setItem('desk-msgs-seen',MSGS.messages[0].at)}catch(e){}}msgBadge();renderMessages();loadMessages(false)}
+function loadMessages(manual){
+  if(manual)document.getElementById('msgs-when').textContent='Checking…';
+  return fetch('/messages').then(function(r){return r.json()}).then(function(d){
+    MSGS=d;
+    if(document.getElementById('pane-messages').classList.contains('on')&&d.messages&&d.messages.length){try{localStorage.setItem('desk-msgs-seen',d.messages[0].at)}catch(e){}}
+    msgBadge();renderMessages();
+  }).catch(function(){MSGS={error:'The control room did not answer.'};renderMessages()});
+}
+function msgSetup(d){
+  var s=d.setup,li=function(done,html){return '<li'+(done?' class="done"':'')+'>'+(done?'✓ ':'')+html+'</li>'};
+  var cf='Cloudflare → Workers &amp; Pages → <b>khazendar</b> → Settings';
+  return '<div class="alert" style="margin:0 0 18px"><b>One-time setup</b><br><span class="m">The form is built; the site\\'s host needs a place to keep the messages and a key so only this control room can read them. About three minutes, once.</span></div>'+
+    '<ol class="steps">'+
+    li(s!=='deploy','The form\\'s code is on the live site.'+(s==='deploy'?' <b>Not yet</b>: it goes out with the next publish of the site\\'s code.':''))+
+    li(s==='store','In '+cf+' → Variables and Secrets, add a <b>Secret</b> named <code>INBOX_KEY</code>. Its value is this control room\\'s key: <button class="quiet sm" onclick="copyInboxKey(this)">Copy the key</button> then paste it there.')+
+    li(false,'In Cloudflare → Storage &amp; Databases → KV, create a namespace named <code>khazendar-messages</code>. Then in '+cf+' → Bindings, add a <b>KV namespace</b> binding: variable name <code>MESSAGES</code>, that namespace.')+
+    li(false,'In Cloudflare → Deployments, press <b>Retry deployment</b> on the newest one (a binding or a secret takes effect on the next deployment), then <button class="quiet sm" onclick="loadMessages(true)">Check again</button>')+
+    '</ol>'+(d.note?'<p class="m">'+esc(d.note)+'</p>':'');
+}
+function copyInboxKey(btn){post('/messages/key').then(function(r){return r.json()}).then(function(d){return navigator.clipboard.writeText(d.key)}).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy the key'},2500)}).catch(function(){btn.textContent='Could not copy'})}
+function renderMessages(){
+  var box=document.getElementById('msgs'),bar=document.getElementById('msgs-bar'),count=document.getElementById('msgs-count');
+  if(!box||!MSGS)return;
+  if(MSGS.setup){bar.style.display='none';count.style.display='none';setHtml(box,msgSetup(MSGS));return}
+  if(MSGS.error){bar.style.display='flex';document.getElementById('msgs-when').textContent='';setHtml(box,'<p class="empty">'+esc(MSGS.error)+'</p>');return}
+  var all=MSGS.messages||[],topic=document.getElementById('msgs-topic').value;
+  var list=topic?all.filter(function(m){return (m.topic||'other')===topic}):all;
+  bar.style.display='flex';count.style.display=all.length?'':'none';count.textContent=all.length;
+  document.getElementById('msgs-when').textContent='Checked '+new Date(MSGS.checkedAt||Date.now()).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  setHtml(box,list.length?list.map(function(m){
+    var t=m.topic||'other',subject='Re: '+(m.storyTitle||'your message to Khazendar');
+    return '<div class="msg'+(m.at>MSG_SEEN_AT?' fresh':'')+'">'+
+      '<div class="who"><b>'+esc(m.name||'No name given')+'</b>'+(m.email?'<a href="mailto:'+esc(m.email)+'?subject='+encodeURIComponent(subject)+'">'+esc(m.email)+'</a>':'<span class="m">no reply address</span>')+'<span class="chip '+esc(t)+'">'+esc(MSG_TOPIC[t]||t)+'</span><span class="m">'+esc(fmtStory(m.at))+(m.country?' · '+esc(m.country):'')+'</span></div>'+
+      (m.story?'<p class="about">About <a href="'+esc(LIVE_URL+'/articles/'+m.story+'/')+'" target="_blank">'+esc(m.storyTitle||m.story)+'</a></p>':'')+
+      '<p class="text'+(rtl(m.message)?' rtl':'')+'" dir="auto">'+esc(m.message)+'</p>'+
+      '<div class="acts">'+(m.email?'<a class="m" href="mailto:'+esc(m.email)+'?subject='+encodeURIComponent(subject)+'">Reply by email</a>':'')+'<button class="danger sm" style="margin-inline-start:auto" data-key="'+esc(m.key)+'" onclick="deleteMessage(this)">Delete</button></div></div>';
+  }).join(''):'<p class="empty">'+(all.length?'Nothing under this subject.':'No messages yet.')+'</p>');
+}
+function deleteMessage(btn){
+  if(!confirm('Delete this message for good?'))return;
+  btn.disabled=true;
+  post('/messages/delete',{key:btn.dataset.key}).then(function(r){if(!r.ok)throw 0;
+    // Taken off the list here: the host's own list can name a deleted message for up to a minute.
+    MSGS.messages=MSGS.messages.filter(function(m){return m.key!==btn.dataset.key});msgBadge();renderMessages();
+  }).catch(function(){btn.disabled=false;alert('Could not delete it. Try again.')});
+}
+// The rail's count stays current while the desk is open: once now, then every ten minutes.
+loadMessages(false);setInterval(function(){loadMessages(false)},600000);
+
 // ---- navigation
-function show(tab){document.querySelectorAll('.rail a.nav').forEach(function(a){a.classList.toggle('on',a.dataset.tab===tab)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+tab)});if(tab==='chat')document.getElementById('msg').focus()}
+function show(tab){document.querySelectorAll('.rail a.nav').forEach(function(a){a.classList.toggle('on',a.dataset.tab===tab)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+tab)});if(tab==='chat')document.getElementById('msg').focus();if(tab==='messages')openMessages();else MSG_OPEN=false}
 document.querySelectorAll('.rail a.nav').forEach(function(a){a.onclick=function(e){e.preventDefault();location.hash=a.dataset.tab;show(a.dataset.tab)}});
 show((location.hash||'#desk').slice(1));
 window.addEventListener('hashchange',function(){show((location.hash||'#desk').slice(1))});
@@ -2298,6 +2426,16 @@ const server = http.createServer(async (req, res) => {
       await writeFile(SITE_FILE, `${JSON.stringify(saved.next, null, 2)}\n`, "utf8");
       commitAndPush("publish settings", ["src/data/site.json"], "settings: from the control room");
       return text(200, "Saved and publishing — live in about a minute.");
+    }
+    // ---- readers' messages (the site's contact form)
+    if (url.pathname === "/messages" && req.method === "GET") return json(await inboxState());
+    // The key leaves the desk only on this press, to the owner's clipboard, for Cloudflare's INBOX_KEY secret.
+    if (url.pathname === "/messages/key" && req.method === "POST") return json({ key: await inboxKey() });
+    if (url.pathname === "/messages/delete" && req.method === "POST") {
+      const { key } = await body(req);
+      if (!/^msg:\d{13}:[0-9a-f]{8}$/.test(String(key ?? ""))) return text(400, "Not a message.");
+      const r = await inboxCall("DELETE", `?key=${encodeURIComponent(key)}`);
+      return r.status === 200 ? text(200, "Deleted.") : text(502, r.error ?? "The site did not delete it.");
     }
     // ---- chat
     if (url.pathname === "/chat/events") {

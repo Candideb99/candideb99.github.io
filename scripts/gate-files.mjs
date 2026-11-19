@@ -33,6 +33,8 @@ export function gateFiles(root) {
   walk(root, "src", () => true, out);
   walk(root, "pipeline", (f) => f.endsWith(".mjs"), out);
   walk(root, "scripts", (f) => f.endsWith(".mjs"), out);
+  // The site's Cloudflare Pages Functions (the contact form's endpoint and inbox), held by scripts/contact-selftest.mjs.
+  walk(root, "functions", (f) => f.endsWith(".js"), out);
   for (const f of ["astro.config.mjs", "package.json", "tsconfig.json"]) if (existsSync(path.join(root, f))) out.push(f);
   return out.sort();
 }

@@ -1,6 +1,5 @@
 ---
 import Base from "@layouts/Base.astro";
-import site from "@data/site.json";
 import { sections } from "@lib/sections";
 ---
 
@@ -33,9 +32,7 @@ import { sections } from "@lib/sections";
       <p>
         خازندار لا يقدّم نصائح استثمارية ولا بيانات أسواق حيّة، ولا ينشر آراء. وهو يعمل آلياً بلا تدخل بشري في التحرير اليومي، ما يعني أن الخطأ ممكن رغم طبقات التدقيق؛ لذلك يعرض مصادره كاملة في أسفل كل مقال، وعند أي تعارض يُعتدّ بالمصدر الأصلي. راجع صفحة <a href="/methodology/">المصادر والمنهجية</a> لتفاصيل أكثر.
       </p>
-      {site.contactEmail && (
-        <p>للملاحظات والتصحيحات: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
-      )}
+      <p>للملاحظات والتصحيحات: <a href="/contact/">تواصل معنا</a>.</p>
     </div>
   </article>
 </Base>

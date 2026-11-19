@@ -105,6 +105,13 @@ const pictures = spawnSync(process.execPath, [path.join("scripts", "images-selft
 if (pictures.status !== 0) fail("the picture desk (scripts/images-selftest.mjs)", pictures.stdout + pictures.stderr);
 console.log(`[ok] the picture desk passes its known cases (${seconds(t)})`);
 
+// 1e. The contact form's endpoint and inbox (functions/api, Cloudflare Pages Functions, which no build here runs)
+// decide their known cases correctly (scripts/contact-selftest.mjs, 2026-11-19).
+t = Date.now();
+const contact = spawnSync(process.execPath, [path.join("scripts", "contact-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (contact.status !== 0) fail("the contact form (scripts/contact-selftest.mjs)", contact.stdout + contact.stderr);
+console.log(`[ok] the contact form's endpoint and inbox pass their known cases (${seconds(t)})`);
+
 // 2 and 3. The type check and the production build, as the project runs them.
 for (const [name, command] of [["astro check", "npm run check"], ["npm run build", "npm run build"]]) {
   t = Date.now();

@@ -247,6 +247,9 @@ const jsonLd = [articleLd, breadcrumbLd];
         {/* A paper reading's source is the paper itself, outside the site: it was headed «مواد ذات صلة في خازندار» over
             an arXiv address and noted as a «شرح» (2026-11-09). Its facts are checked before publication as a story's are. */}
         <Sources sources={sources} explainer={isHub && d.kind !== "paper"} credit={!isHub} />
+        {/* The way to report an error, where a reader who found one is: the contact form opens on this story as a
+            correction (contact.astro reads `story`). */}
+        <p class="report ui" data-pagefind-ignore>وجدت خطأً في هذا المقال؟ <a href={`/contact/?story=${d.slug}`} rel="nofollow">أبلغنا عنه</a></p>
       </div>
       {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
           put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
@@ -374,6 +377,10 @@ const jsonLd = [articleLd, breadcrumbLd];
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
   /* The correction note: a ruled line under the text, like اقرأ أيضاً, never a box. */
   .corrections { max-width: var(--measure); margin-top: 1.5rem; padding-block: 0.6rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .report { max-width: var(--measure); margin-top: 1rem; font-size: var(--fs-sm); color: var(--ink-3); }
+  .report a { color: var(--green); font-weight: 700; text-decoration: none; }
+  .report a:hover { text-decoration: underline; }
+  @media (pointer: coarse) { .report a { display: inline-flex; align-items: center; min-height: var(--tap); } }
   .corrections__head { font-weight: 700; font-size: var(--fs-xs); color: var(--green); margin-bottom: 0.25rem; }
   .corrections__item { font-family: var(--font-body); font-size: var(--n-text); line-height: 1.8; color: var(--ink-2); }
   .corrections__item time { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); margin-inline-end: 0.5rem; }
