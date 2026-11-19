@@ -27,7 +27,7 @@ tags:
   - الجنيه المصري
   - الطروحات الحكومية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 6
 chart:
   type: bar

@@ -14,19 +14,31 @@ for (const d of DESKS) {
 
 export const DESK_NAMES = DESKS.map((d) => d.name);
 
+/**
+ * A desk that was split, read as every desk it became: «مصر والمغرب العربي» was Egypt's and the Maghreb's until
+ * 2026-11-19 (the owner: "then make egypt away from maghreb?"; 48 of its 57 stories that month were Egypt's). A story
+ * filed under it by a run that checked out the code before the split, or published before it, goes to both, and
+ * groundedRegions() keeps the one its headline, dek or lede names.
+ */
+const SPLIT_DESKS = new Map([["مصر والمغرب العربي", ["مصر", "المغرب العربي"]]]);
+
 /** An alias must stand as a whole word in the tag (a nisba ending is allowed: المصرية, الإماراتي); "مصرف" is not "مصر". */
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const wholeWord = new Map(DESKS.flatMap((d) => d.match.map((m) => [m, new RegExp(`(?<!\\p{L})${escapeRe(m)}(?:ي|ية)?(?!\\p{L})`, "u")])));
 
-/** Canonical desk names for a list of region tags, in the writer's order (the first is the story's main region), each once; unknown tags are dropped. */
-export function canonicalRegions(tags) {
+/**
+ * Canonical desk names for a list of region tags, in the writer's order (the first is the story's main region), each
+ * once; unknown tags are dropped. `cap` is three; groundedRegions() caps after grounding, since a split desk's two
+ * names had pushed a story's third region out before either was grounded (the dry run of 2026-11-19).
+ */
+export function canonicalRegions(tags, { cap = 3 } = {}) {
   const out = [];
   for (const raw of Array.isArray(tags) ? tags : []) {
     const tag = String(raw).trim();
-    const d = byTag.get(tag) || DESKS.find((x) => x.match.some((m) => wholeWord.get(m).test(tag)));
-    if (d && !out.includes(d.name)) out.push(d.name);
+    const names = SPLIT_DESKS.get(tag) ?? [(byTag.get(tag) || DESKS.find((x) => x.match.some((m) => wholeWord.get(m).test(tag))))?.name];
+    for (const name of names) if (name && !out.includes(name)) out.push(name);
   }
-  return out.slice(0, 3);
+  return out.slice(0, cap);
 }
 
 /**
@@ -39,12 +51,14 @@ export function canonicalRegions(tags) {
  * One place, one desk (2026-10-19, the owner's check of the whole site): the third Arab desk had been «الشرق الأوسط», the
  * region the Gulf and Egypt desks beside it belong to, and half its stories were Gulf stories tagged with the wider
  * region too. It is «المشرق وإيران وتركيا», what the other two do not hold; the region as a whole names no desk, and
- * Hormuz, the mouth of the Gulf, is the Gulf desk's.
+ * Hormuz, the mouth of the Gulf, is the Gulf desk's. Egypt and the Maghreb were one desk until 2026-11-19 (SPLIT_DESKS).
  */
 const PLACES = {
   // Not «تداول» or «مبادلة»: they are also the words for trading and swapping.
   "الخليج": ["خليجي", "سعودي", "إماراتي", "قطري", "كويتي", "بحريني", "عماني", "الرياض", "جدة", "الدمام", "أبوظبي", "أبو ظبي", "دبي", "الشارقة", "الفجيرة", "عجمان", "الدوحة", "المنامة", "مسقط", "أرامكو", "أدنوك", "سابك", "ينبع", "هرمز", "رأس تنورة", "رأس لفان", "جازان", "الخفجي", "نيوم", "مجلس التعاون", "صندوق الاستثمارات العامة", "جهاز قطر للاستثمار", "قطر للطاقة"],
-  "مصر والمغرب العربي": ["مصري", "مغربي", "جزائري", "تونسي", "ليبي", "موريتاني", "القاهرة", "الإسكندرية", "السويس", "بورسعيد", "الدار البيضاء", "الرباط", "طنجة"],
+  "مصر": ["مصري", "القاهرة", "الإسكندرية", "السويس", "بورسعيد", "السخنة", "العلمين", "الغردقة", "أسوان", "الجيزة", "شرم الشيخ", "العاصمة الإدارية"],
+  // Not «طرابلس»: Lebanon has one too.
+  "المغرب العربي": ["مغاربي", "مغربي", "جزائري", "تونسي", "ليبي", "موريتاني", "الدار البيضاء", "الرباط", "طنجة", "مراكش", "وهران", "صفاقس", "بنغازي", "مصراتة", "نواكشوط"],
   "المشرق وإيران وتركيا": ["إيراني", "عراقي", "تركي", "إسرائيلي", "أردني", "لبناني", "سوري", "يمني", "فلسطيني", "طهران", "بغداد", "البصرة", "كردستان", "الحوثي", "البحر الأحمر", "باب المندب", "غزة", "الضفة الغربية", "القدس", "المستوطنات", "أنقرة", "إسطنبول", "بيروت", "دمشق", "تل أبيب"],
 };
 const normalizePlace = (s) => String(s ?? "").replace(/[ً-ٰٟـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
@@ -189,9 +203,10 @@ export function countriesNamed(text) {
  * The story's regions held to where its event happens: an Arab desk stays only when the headline, dek or lede names
  * one of its places, and joins when the headline names one the writer left out; a story left with none is the world
  * desk's. The other regions (Europe, the Americas, Asia, Africa, the world) all fold into the site's العالم and pass.
+ * A split desk's old name (SPLIT_DESKS) is read as both its desks, so a story keeps the one it names.
  */
 export function groundedRegions(regions, { title = "", subtitle = "", lede = "" } = {}) {
-  const canon = canonicalRegions(regions);
+  const canon = canonicalRegions(regions, { cap: Infinity });
   const text = [title, subtitle, lede].join("\n");
   const kept = canon.filter((r) => !DESK_PLACES.has(r) || namesDesk(r, text));
   for (const desk of DESK_PLACES.keys()) if (!kept.includes(desk) && namesDesk(desk, title)) kept.push(desk);

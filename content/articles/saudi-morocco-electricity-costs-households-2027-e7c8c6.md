@@ -28,7 +28,7 @@ tags:
   - الموازنة
 regions:
   - الخليج
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 5
 chart: null
 table:

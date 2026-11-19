@@ -26,7 +26,7 @@ tags:
   - الأسهم الصغيرة والمتوسطة
   - القطاعات الصناعية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart:
   type: bar

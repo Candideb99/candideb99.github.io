@@ -27,7 +27,7 @@ tags:
   - قبرص
   - شرق المتوسط
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - أوروبا
 readingMinutes: 5
 chart: null

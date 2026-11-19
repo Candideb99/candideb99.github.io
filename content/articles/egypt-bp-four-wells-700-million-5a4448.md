@@ -25,7 +25,7 @@ tags:
   - مصر
   - الاستكشاف والإنتاج
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - أوروبا
 readingMinutes: 1
 chart: null

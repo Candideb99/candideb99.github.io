@@ -25,7 +25,7 @@ tags:
   - EGX30
   - التطوير العقاري
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

@@ -16,7 +16,7 @@ tags:
   - الغاز الطبيعي
   - الدين الخارجي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

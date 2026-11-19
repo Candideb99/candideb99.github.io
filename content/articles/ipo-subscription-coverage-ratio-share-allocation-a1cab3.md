@@ -22,7 +22,7 @@ tags:
   - الاكتتاب العام
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

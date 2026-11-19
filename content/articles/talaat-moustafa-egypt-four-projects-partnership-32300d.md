@@ -27,7 +27,7 @@ tags:
   - البورصة المصرية
   - الشراكة بين القطاعين العام والخاص
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

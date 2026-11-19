@@ -23,7 +23,7 @@ tags:
   - مصر
   - تكلفة الفرصة البديلة
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart: null
 table: null

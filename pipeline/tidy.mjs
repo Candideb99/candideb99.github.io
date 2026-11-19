@@ -15,7 +15,7 @@
  * correction note and no update stamp: no fact of the story changes. Run it after any change to those rules, and after
  * a correction takes a pasted item out of a story (its tags go with it).
  *
- *   node pipeline/tidy.mjs [--dry-run] [--slugs=a,b]
+ *   node pipeline/tidy.mjs [--dry-run] [--slugs=a,b] [--only=regions|box|tags|spelling,…]
  */
 import { isDeepStrictEqual } from "node:util";
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -31,6 +31,9 @@ const SPELLED = ["title", "subtitle", "lede", "whyItMatters"];
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
 const ONLY = new Set((args.find((a) => a.startsWith("--slugs="))?.slice(8) ?? "").split(",").map((s) => s.trim()).filter(Boolean));
+// `--only=regions` (or box, tags, spelling, comma-separated) applies those rules alone: a desk's change of 2026-11-19
+// moved the stories' regions without putting 35 bodies through the spelling table at the same time.
+const PARTS = new Set((args.find((a) => a.startsWith("--only="))?.slice(7) ?? "box,tags,regions,spelling").split(",").map((s) => s.trim()).filter(Boolean));
 const dir = path.join(process.cwd(), "content", "articles");
 
 /** The front matter with one top-level key's block replaced (a list in block or flow form, or a scalar). */
@@ -53,12 +56,12 @@ for (const file of (await readdir(dir)).filter((f) => f.endsWith(".md")).sort())
   const facts = Array.isArray(data.keyFacts) ? data.keyFacts : [];
   const tags = Array.isArray(data.tags) ? data.tags : [];
   const regions = Array.isArray(data.regions) ? data.regions : [];
-  const kept = boxFacts(facts, kind);
-  const nextFacts = kept.map((f) => ({ ...f, label: fixNames(f.label), value: fixNames(f.value) }));
-  const nextText = Object.fromEntries(SPELLED.filter((f) => typeof data[f] === "string").map((f) => [f, fixNames(data[f])]));
-  const body = fixNames(match[2]);
-  const nextTags = cleanTags(tags, storyText({ ...data, body: match[2] }));
-  const nextRegions = groundedRegions(regions, data);
+  const kept = PARTS.has("box") ? boxFacts(facts, kind) : facts;
+  const nextFacts = PARTS.has("box") || PARTS.has("spelling") ? kept.map((f) => (PARTS.has("spelling") ? { ...f, label: fixNames(f.label), value: fixNames(f.value) } : f)) : facts;
+  const nextText = PARTS.has("spelling") ? Object.fromEntries(SPELLED.filter((f) => typeof data[f] === "string").map((f) => [f, fixNames(data[f])])) : {};
+  const body = PARTS.has("spelling") ? fixNames(match[2]) : match[2];
+  const nextTags = PARTS.has("tags") ? cleanTags(tags, storyText({ ...data, body: match[2] })) : tags;
+  const nextRegions = PARTS.has("regions") ? groundedRegions(regions, data) : regions;
   const changes = [];
   let front = `${match[1]}\n`;
   if (kept.length !== facts.length) {

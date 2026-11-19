@@ -4,9 +4,9 @@ import Cover from "@components/Cover.astro";
 import Front from "@components/Front.astro";
 import FigureCards from "@components/FigureCards.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { DESKS, desksOf } from "@lib/regions";
+import { deskStories } from "@lib/regions";
 import { analysisLabel } from "@lib/analysis";
-import { getArticles, pickLead, chartOfTheDay, hoursOld, repeatedEvents, firstPictures, type Article } from "@lib/articles";
+import { getArticles, pickLead, chartOfTheDay, hoursOld, onTheSameTopic, repeatedEvents, firstPictures, type Article } from "@lib/articles";
 import { newsSections, getSection, sectionHref, moreLabel } from "@lib/sections";
 import { articleHref } from "@lib/articles";
 import { headline } from "@lib/bidi";
@@ -176,18 +176,21 @@ const lines = sectionPools
 if (lines.length < 2) lines.length = 0;
 lines.forEach((l) => l.story && place([l.story]));
 
-// الأخبار بحسب المنطقة, the four desks readers see, as a way in rather than a fourth printing: each desk one story of the
+// الأخبار بحسب المنطقة, the five desks readers see, as a way in rather than a fourth printing: each desk one story of the
 // last week no module above has printed (it reprinted 11 of 12). A desk with no such story is left out: three of four
 // desks had printed a count alone over blank paper (the critique of 9 November). The line «356 مادة · آخر تحديث منذ
 // يومين» under each desk's name went on 2026-11-18 (the owner: "is this professional to mention how many materials
 // inside? i think better remove it"): a running total is the archive's bookkeeping, no desk's front prints one, and
-// the update time only repeated the age printed under the story.
-const desks = DESKS.map((d) => {
-  const inDesk = news.filter((a) => desksOf(a).some((x) => x.id === d.id));
-  const story = unplaced(inDesk).find((a) => hoursOld(a) < LINE_HOURS);
-  if (story) place([story]);
-  return { ...d, story };
-}).filter((d) => d.story);
+// the update time only repeated the age printed under the story. And one running story is shown once (2026-11-19: the
+// Revolutionary Guard at Hormuz under two desks): a desk passes over a story «اقرأ أيضاً» would tie to one a desk
+// before it shows (`onTheSameTopic()`, `deskStories()` in lib/regions.ts).
+const runningWith = new Map<string, Set<string>>();
+const sameRunningStory = (shown: Article, candidate: Article) => {
+  if (!runningWith.has(shown.id)) runningWith.set(shown.id, new Set(onTheSameTopic(shown, articles, { n: articles.length, days: 8 }).map((a) => a.id)));
+  return runningWith.get(shown.id)!.has(candidate.id);
+};
+const desks = deskStories(unplaced(news).filter((a) => hoursOld(a) < LINE_HOURS), sameRunningStory);
+desks.forEach((d) => place([d.story]));
 
 // The hubs: analyses and explainers run as text in ruled columns, which also tells the reader at a
 // glance that these are argument and concept pieces, not news reports; the readings shown beside the
@@ -362,7 +365,7 @@ const jsonLd = {
   .lines__more { position: relative; z-index: 1; font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.35rem; margin-block: -0.35rem; }
   .lines__more:hover { color: var(--green); text-decoration: underline; }
 
-  /* The desks: a region's name in green Amiri, its count and last update, and at most one story not printed above. */
+  /* The desks: a region's name in green Amiri over one story not printed above. */
   .desk__name { font-family: var(--font-title); font-weight: 700; font-size: var(--t-section); line-height: 1.3; color: var(--green); }
   .desk__name a { text-decoration: none; }
   .desk__name a:hover { color: var(--green-deep); text-decoration: underline; }

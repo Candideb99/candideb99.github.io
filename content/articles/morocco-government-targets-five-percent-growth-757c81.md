@@ -27,7 +27,7 @@ tags:
   - الدين العام
   - النمو الاقتصادي
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 3
 chart: null
 table: null

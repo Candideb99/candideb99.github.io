@@ -27,7 +27,7 @@ tags:
   - أسواق الأسهم
   - إيقاف التداول
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

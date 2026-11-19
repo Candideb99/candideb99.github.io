@@ -27,7 +27,7 @@ tags:
   - الصناعات الغذائية
   - إسبانيا
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - أوروبا
 readingMinutes: 1
 chart: null

@@ -25,7 +25,7 @@ tags:
   - الدعم الاجتماعي
   - التغطية الصحية
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 2
 chart:
   type: bar

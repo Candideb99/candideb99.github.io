@@ -27,7 +27,7 @@ tags:
   - سوق العمل
   - المجلس القومي للأجور
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

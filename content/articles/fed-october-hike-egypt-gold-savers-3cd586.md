@@ -27,7 +27,7 @@ tags:
   - التضخم
   - النفط
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - عالمي
 readingMinutes: 4
 chart:

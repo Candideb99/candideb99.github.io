@@ -27,7 +27,7 @@ tags:
   - القطاع المالي غير المصرفي
   - الادخار
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

@@ -27,7 +27,7 @@ tags:
   - التعدين
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - أفريقيا
 readingMinutes: 2
 chart: null

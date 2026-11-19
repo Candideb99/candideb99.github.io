@@ -16,7 +16,7 @@ tags:
   - الصناعات التحويلية
   - فرنسا
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 1
 chart: null
 table: null

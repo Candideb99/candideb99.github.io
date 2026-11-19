@@ -16,7 +16,7 @@ tags:
   - كوفبيك
   - إيجاس
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

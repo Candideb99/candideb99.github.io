@@ -25,7 +25,7 @@ tags:
   - الاتصالات
   - أسعار الخدمات
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

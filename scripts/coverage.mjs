@@ -31,8 +31,9 @@ import { DESK_NAMES, canonicalRegions, countriesNamed, countryText, placeRe } fr
 
 const DAY = 86_400_000;
 
-// The site's three Arab desks (src/data/regions.json); the other desks fold into العالم on the site.
-const ARAB = ["الخليج", "مصر والمغرب العربي", "المشرق وإيران وتركيا"];
+// The site's four Arab desks (src/data/regions.json; Egypt and the Maghreb one desk until 2026-11-19, and
+// canonicalRegions() reads that old name as both); the other desks fold into العالم on the site.
+const ARAB = ["الخليج", "مصر", "المشرق وإيران وتركيا", "المغرب العربي"];
 for (const desk of ARAB) if (!DESK_NAMES.includes(desk)) throw new Error(`coverage: «${desk}» is no longer a desk in regions.json`);
 
 /**

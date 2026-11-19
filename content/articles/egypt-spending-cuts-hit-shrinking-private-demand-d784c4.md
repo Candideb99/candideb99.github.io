@@ -23,7 +23,7 @@ tags:
   - مؤشر مديري المشتريات
   - الإنفاق الحكومي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart: null
 table:

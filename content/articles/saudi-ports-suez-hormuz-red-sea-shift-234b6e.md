@@ -28,7 +28,7 @@ tags:
   - الهيئة العامة للموانئ
 regions:
   - الخليج
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 5
 chart: null
 table:

@@ -1,15 +1,17 @@
 /**
- * The paper's regional desks as readers see them: three Arab desks and one for the world. The writers file
+ * The paper's regional desks as readers see them: four Arab desks and one for the world. The writers file
  * every story under the finer regions of `src/data/regions.json` (shared with the pipeline, whose photo desk
  * reads them for geography), and this file folds them for the site, so the front's "by region" block and the
  * desk pages never split one region across spellings (أمريكا / أميركا الشمالية / الولايات المتحدة).
  *
- * Four, not eight (the owner, 2026-09-24: an Americas desk is odd on an Arab economics site): الخليج،
- * مصر والمغرب العربي، المشرق وإيران وتركيا، and العالم for Europe, the Americas, Asia, Africa and the world market. The third was
- * «الشرق الأوسط» until 2026-10-19, the region the other two belong to (half its stories were the Gulf's too).
+ * Five, not nine (the owner, 2026-09-24: an Americas desk is odd on an Arab economics site): الخليج، مصر،
+ * المشرق وإيران وتركيا، المغرب العربي، and العالم for Europe, the Americas, Asia, Africa and the world market. The
+ * third was «الشرق الأوسط» until 2026-10-19, the region the other two belong to (half its stories were the Gulf's
+ * too); Egypt and the Maghreb were one desk until 2026-11-19, when Egypt held 48 of its 57 stories of the month
+ * (Al Arabiya runs مصر and المغرب العربي apart).
  */
-import desks from "@data/regions.json";
-import type { Article } from "./articles";
+// A relative address with its type, so Node can read this module in the self-test (as topics.ts).
+import desks from "../data/regions.json" with { type: "json" };
 
 export interface Desk {
   id: string;
@@ -18,7 +20,7 @@ export interface Desk {
 }
 
 const RAW: Desk[] = desks as Desk[];
-const ARAB = new Set(["gulf", "egypt-maghreb", "mena"]);
+const ARAB = new Set(["gulf", "egypt", "mena", "maghreb"]);
 const abroad = RAW.filter((d) => !ARAB.has(d.id));
 
 export const DESKS: Desk[] = [
@@ -51,12 +53,34 @@ export function deskOf(tag: string): Desk | undefined {
   return byTag.get(tag.trim());
 }
 
+/** What the desks read of a story: its id and its regions. */
+interface Filed {
+  id: string;
+  data: { regions: string[] };
+}
+
 /** The desks a story belongs to, in the desks' order, each once. */
-export function desksOf(article: Article): Desk[] {
+export function desksOf(article: Pick<Filed, "data">): Desk[] {
   const found = new Set<Desk>();
   for (const tag of article.data.regions) {
     const d = deskOf(tag);
     if (d) found.add(d);
   }
   return DESKS.filter((d) => found.has(d));
+}
+
+/**
+ * One story for each desk of the front's «الأخبار بحسب المنطقة», from `pool` (newest first): each desk, in the desks'
+ * order, takes its newest story that no desk before it shows and that is not on the running story one of them shows
+ * (`sameStory(shown, candidate)`). A desk with none is left out. The owner, 2026-11-19, with a screenshot of the
+ * block: the Revolutionary Guard at Hormuz stood under الخليج and again under المشرق وإيران وتركيا, two stories of one
+ * running story, since Hormuz is the Gulf's place and Iran the Mashriq's and each war story carries both desks.
+ */
+export function deskStories<T extends Filed>(pool: T[], sameStory: (shown: T, candidate: T) => boolean): Array<Desk & { story: T }> {
+  const out: Array<Desk & { story: T }> = [];
+  for (const desk of DESKS) {
+    const story = pool.find((a) => desksOf(a).some((d) => d.id === desk.id) && !out.some((o) => o.story.id === a.id || sameStory(o.story, a)));
+    if (story) out.push({ ...desk, story });
+  }
+  return out;
 }

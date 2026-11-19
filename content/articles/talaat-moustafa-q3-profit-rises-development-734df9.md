@@ -26,7 +26,7 @@ tags:
   - البورصة المصرية
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart:
   type: bar

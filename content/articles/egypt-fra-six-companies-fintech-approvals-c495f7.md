@@ -19,7 +19,7 @@ tags:
   - التمويل الاستهلاكي
   - تمويل المشروعات
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

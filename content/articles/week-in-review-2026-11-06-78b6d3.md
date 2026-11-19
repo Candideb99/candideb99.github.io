@@ -17,7 +17,7 @@ tags:
 regions:
   - الأمريكتان
   - الخليج
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 8
 chart: null
 table:

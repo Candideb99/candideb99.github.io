@@ -26,7 +26,7 @@ tags:
   - الجنيه الذهب
 regions:
   - عالمي
-  - مصر والمغرب العربي
+  - مصر
   - الأمريكتان
 readingMinutes: 2
 chart: null

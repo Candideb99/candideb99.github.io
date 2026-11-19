@@ -29,7 +29,7 @@ tags:
 regions:
   - الخليج
   - أوروبا
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

@@ -21,7 +21,7 @@ tags:
   - إس آند بي غلوبال
   - التضخم
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

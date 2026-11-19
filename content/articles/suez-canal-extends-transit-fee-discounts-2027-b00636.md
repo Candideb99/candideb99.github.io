@@ -15,7 +15,7 @@ tags:
   - البحر الأحمر
   - ناقلات النفط
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - عالمي
 readingMinutes: 1
 chart: null

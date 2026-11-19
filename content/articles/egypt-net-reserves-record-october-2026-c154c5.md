@@ -23,7 +23,7 @@ tags:
   - تحويلات المصريين بالخارج
   - الذهب
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart:
   type: line

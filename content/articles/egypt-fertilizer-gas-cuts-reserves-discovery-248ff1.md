@@ -27,7 +27,7 @@ tags:
   - موبكو
   - الاحتياطي الدولي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart: null
 table: null

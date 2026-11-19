@@ -28,7 +28,7 @@ tags:
   - أسعار الفائدة
 regions:
   - عالمي
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

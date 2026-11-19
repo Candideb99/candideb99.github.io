@@ -27,7 +27,7 @@ tags:
   - الدين العام
   - حرب إيران
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

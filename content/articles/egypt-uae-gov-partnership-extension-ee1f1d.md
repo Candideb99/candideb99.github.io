@@ -15,7 +15,7 @@ tags:
   - قمة AIM
 regions:
   - الخليج
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/The_Government_District%2C_New_Capital_2.jpg/1280px-The_Government_District%2C_New_Capital_2.jpg

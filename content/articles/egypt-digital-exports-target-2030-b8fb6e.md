@@ -27,7 +27,7 @@ tags:
   - مراكز البيانات
   - التعهيد
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

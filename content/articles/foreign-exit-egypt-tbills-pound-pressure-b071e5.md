@@ -27,7 +27,7 @@ tags:
   - الإنتربنك
   - الاستثمار الأجنبي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 5
 chart:
   type: bar

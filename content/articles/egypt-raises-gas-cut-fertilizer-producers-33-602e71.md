@@ -27,7 +27,7 @@ tags:
   - البورصة المصرية
   - الغاز المسال
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart:
   type: bar

@@ -27,7 +27,7 @@ tags:
   - الأسهم
   - رأس المال السوقي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart:
   type: bar

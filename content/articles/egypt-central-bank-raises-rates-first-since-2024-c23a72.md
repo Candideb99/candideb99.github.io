@@ -25,7 +25,7 @@ tags:
   - التضخم
   - الدين العام
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

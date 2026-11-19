@@ -27,7 +27,7 @@ tags:
   - الدعم الاجتماعي
   - فوزي لقجع
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 4
 chart: null
 table: null

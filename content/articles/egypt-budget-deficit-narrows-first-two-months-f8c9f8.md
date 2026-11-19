@@ -27,7 +27,7 @@ tags:
   - الإيرادات الضريبية
   - الدين العام
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

@@ -25,7 +25,7 @@ tags:
   - التصنيف الائتماني
   - وزارة التخطيط
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

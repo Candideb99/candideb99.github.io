@@ -27,7 +27,7 @@ tags:
   - أسعار المستهلكين
   - السياسة النقدية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table:

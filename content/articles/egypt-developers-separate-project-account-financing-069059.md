@@ -25,7 +25,7 @@ tags:
   - التمويل المصرفي
   - الهيئة العامة للرقابة المالية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 5
 chart: null
 table: null

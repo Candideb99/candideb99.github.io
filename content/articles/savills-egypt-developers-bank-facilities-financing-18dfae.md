@@ -25,7 +25,7 @@ tags:
   - صناديق الاستثمار العقاري
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

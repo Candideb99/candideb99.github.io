@@ -22,7 +22,7 @@ tags:
   - الاكتتاب العام
   - بناء سجل الأوامر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

@@ -24,7 +24,7 @@ tags:
   - الشحن البحري
   - باب المندب
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart: null
 table: null

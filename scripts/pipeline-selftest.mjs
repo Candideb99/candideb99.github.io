@@ -785,6 +785,18 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("charts: a total that is not the sum of the others stays (a rate of the whole beside its groups)", normalizeChart(bars(["المعدل الإجمالي", "السعوديون", "السعوديات"], [3, 6.5, 9.6]))?.categories.length, 3);
   check("desks: the ECB's hike stays off the Middle East desk though the war is its cause", groundedRegions(["الشرق الأوسط", "أوروبا"], { title: "المركزي الأوروبي يرفع الفائدة إلى 2.5%", lede: "رفع البنك الفائدة لاحتواء التضخم الناجم عن أسعار النفط جراء الحرب في الشرق الأوسط" }), ["أوروبا"]);
   check("desks: a Saudi headline joins the Gulf desk", groundedRegions(["عالمي"], { title: "كيف يتجاوز خط الشرق-الغرب السعودي مضيق هرمز؟" }), ["عالمي", "الخليج"]);
+  // Egypt and the Maghreb, one desk until 2026-11-19: the old name goes to the desk the story names, and its two names
+  // never push a story's third region out.
+  check(
+    "desks: the old Egypt-and-Maghreb desk becomes the one the story names, keeping its other regions",
+    [
+      groundedRegions(["مصر والمغرب العربي"], { title: "المغرب يقر توجهات موازنة 2027 لدعم القدرة الشرائية" }),
+      groundedRegions(["مصر والمغرب العربي"], { title: "المركزي المصري يرفع الفائدة 1% في أول زيادة منذ مارس 2024" }),
+      groundedRegions(["مصر والمغرب العربي", "أوروبا", "آسيا"], { title: "مصر تبيع سندات دولية بملياري دولار", lede: "باعت مصر سندات دولية لمستثمرين في أوروبا وآسيا" }),
+      groundedRegions(["مصر"], { title: "ليبيا تستأنف الضخ من حقل الشرارة", lede: "استأنفت ليبيا الضخ من الحقل جنوب طرابلس" }),
+    ],
+    [["المغرب العربي"], ["مصر"], ["مصر", "أوروبا", "آسيا"], ["المغرب العربي"]],
+  );
   // ONE STORY: a second event brought in by a joint is refused.
   const stitched = styleIssues({ title: "مصر تنشئ مركز بيانات بمليار دولار", subtitle: "", lede: "أعلنت مصر خطة لمركز بيانات.", body: "وقالت الوزارة إن المرحلة الأولى تبدأ العام المقبل.\n\nوفي التاريخ نفسه، أعلنت «جوجل» استثماراً في فنلندا.", whyItMatters: "", keyFacts: [] }).issues;
   check("a second event stitched in is refused", stitched.some((i) => i.startsWith("خبر ثانٍ ملحق")), true);
@@ -1650,6 +1662,25 @@ if (spawnSync("git", ["--version"]).status === 0) {
       "a story takes its label from its own section's list, else from the subject its headline opens with, and that page lists it",
       [kickerOf(oilMajor)?.href, kickerOf(airport)?.href, kickerOf(wage)?.label, kickerOf(park), kickerOf(worldBank), topicArticles(all, "energy", getTopic("energy", "oil")).includes(oilMajor)],
       ["/topics/energy/oil/", "/topics/companies/aviation/", "سوق العمل", undefined, undefined, true],
+    );
+  }
+  // The front's region block (2026-11-19): five desks, Egypt apart from the Maghreb, and one running story shown once
+  // (the Revolutionary Guard at Hormuz had stood under الخليج and again under المشرق وإيران وتركيا).
+  {
+    const { DESKS, deskStories } = await import(new URL("../src/lib/regions.ts", import.meta.url).href);
+    const story = (id, regions) => ({ id, data: { regions } });
+    const hormuzSank = story("hormuz-sank", ["الخليج", "المشرق وإيران وتركيا"]);
+    const hormuzClosed = story("hormuz-closed", ["الخليج", "المشرق وإيران وتركيا"]);
+    const iraqGas = story("iraq-gas", ["المشرق وإيران وتركيا"]);
+    const cairoRates = story("cairo-rates", ["مصر"]);
+    const libyaOil = story("libya-oil", ["المغرب العربي"]);
+    const hormuz = new Set(["hormuz-sank", "hormuz-closed"]);
+    const sameStory = (a, b) => hormuz.has(a.id) && hormuz.has(b.id);
+    const shown = deskStories([hormuzSank, hormuzClosed, cairoRates, iraqGas, libyaOil], sameStory);
+    check(
+      "the region block: five desks, Egypt apart from the Maghreb, and a desk passes over the running story another desk shows",
+      [DESKS.map((d) => d.name), shown.map((d) => `${d.name}:${d.story.id}`)],
+      [["الخليج", "مصر", "المشرق وإيران وتركيا", "المغرب العربي", "العالم"], ["الخليج:hormuz-sank", "مصر:cairo-rates", "المشرق وإيران وتركيا:iraq-gas", "المغرب العربي:libya-oil"]],
     );
   }
   const page = readFileSync("src/pages/search.astro", "utf8");

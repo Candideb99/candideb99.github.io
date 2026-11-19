@@ -21,7 +21,7 @@ tags:
   - إيني
   - وودسايد
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

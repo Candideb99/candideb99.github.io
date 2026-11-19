@@ -23,7 +23,7 @@ tags:
   - المجال الجوي
   - وزارة النقل الليبية
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 2
 chart: null
 table: null

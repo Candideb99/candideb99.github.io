@@ -27,7 +27,7 @@ tags:
   - الصناعة التحويلية
   - صندوق النقد الدولي
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart:
   type: bar

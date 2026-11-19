@@ -27,7 +27,7 @@ tags:
   - مصر
   - السياسة النقدية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

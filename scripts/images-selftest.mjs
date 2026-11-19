@@ -49,7 +49,7 @@ check(
   offeredSourcePhotos([{ ogImage: "https://x.test/logo.png" }, { ogImage: "https://x.test/a.jpg", sourceNameEn: "A" }, { ogImage: "https://x.test/a.jpg" }, { ogImage: "/relative.jpg" }]).map((p) => p.url),
   ["https://x.test/a.jpg"],
 );
-const egyptStory = { title: "مسودة قانون مصرية تلزم المطورين العقاريين بحساب لكل مشروع", tags: ["مصر", "القطاع العقاري"], regions: ["مصر والمغرب العربي"] };
+const egyptStory = { title: "مسودة قانون مصرية تلزم المطورين العقاريين بحساب لكل مشروع", tags: ["مصر", "القطاع العقاري"], regions: ["مصر"] };
 check("a file from Cairo, Illinois is abroad for an Egyptian story", placedAbroad({ title: "Old Cairo Junior High School, Cairo, Illinois.jpg" }, egyptStory), "United States");
 check("«Cairo, IL» and «Alexandria, Virginia» are American", [placedAbroad({ title: "Old Cairo Junior High School, Pine Street, Cairo, IL.jpg" }, egyptStory), placedAbroad({ title: "Alexandria, Virginia waterfront.jpg" }, egyptStory)], ["United States", "United States"]);
 check("Egypt's own Cairo and Alexandria stay home", [placedAbroad({ title: "Cairo Tower, Cairo, Egypt.jpg" }, egyptStory), placedAbroad({ title: "Corniche of Alexandria.jpg" }, egyptStory)], [null, null]);
@@ -167,7 +167,7 @@ const developers = {
   lede: "تلزم المسودة كل مطور عقاري في مصر بحساب مستقل لكل مشروع.",
   body: "فقرة من المتن.",
   tags: ["مصر", "القطاع العقاري"],
-  regions: ["مصر والمغرب العربي"],
+  regions: ["مصر"],
   kind: "news",
   section: "economy",
   imageQueries: [],
@@ -716,7 +716,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
 {
   const port = file("Port of Tanger Med container terminal, Morocco.jpg", { categories: "Port of Tanger Med|Ports of Morocco" });
   const souk = file("Shoppers at a vegetable market in Casablanca, Morocco.jpg", { categories: "Markets in Casablanca" });
-  const morocco = { ...developers, title: "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031", tags: ["المغرب", "النمو الاقتصادي"], regions: ["مصر والمغرب العربي"] };
+  const morocco = { ...developers, title: "الحكومة المغربية تستهدف نمواً بمتوسط 5% سنوياً بين 2027 و2031", tags: ["المغرب", "النمو الاقتصادي"], regions: ["المغرب العربي"] };
   const plan = planFor({ queries: ["vegetable market Morocco"], place: ["Morocco", "Casablanca"], places: ["Tanger Med"], place_queries: ["Tanger Med"], message: "Morocco promises faster growth and more household support", message_queries: ["shoppers market Casablanca"] });
   const world = { "Tanger Med": [port], "shoppers market Casablanca": [souk], "vegetable market Morocco": [souk] };
   const says = await scenario({ draft: morocco, plan, world, judge: (titles) => ({ choice: titles.length ? 1 : 0, says: titles[0] === souk.title }), verify: () => "GENERIC_OK" });
@@ -898,7 +898,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("the headline's governor and parliament lead; the State Council's head is a side figure", [split.lead.map((p) => p.name), split.side.map((p) => p.name)], [["Naji Issa", "Aguila Saleh"], ["Mohamed Takala"]]);
   check("words the headline does not carry make no one its subject", headlinePeople(title, [{ name: "Mohamed Takala", ar: "محمد تكالة", headline: "المجلس الأعلى للدولة" }]).lead.length, 0);
   check("an Arabic surname in the headline is enough", headlinePeople("أردوغان يعلن حزمة لدعم الليرة", [{ name: "Recep Tayyip Erdoğan", ar: "رجب طيب أردوغان", headline: "" }]).lead.length, 1);
-  const libya = { ...developers, title, subtitle: "تكليف فوزي أبوخزام بتسيير مهام المصرف مؤقتاً، ورئيس مجلس الدولة يؤيد التكليف", tags: ["ليبيا", "مصرف ليبيا المركزي"], regions: ["مصر والمغرب العربي"] };
+  const libya = { ...developers, title, subtitle: "تكليف فوزي أبوخزام بتسيير مهام المصرف مؤقتاً، ورئيس مجلس الدولة يؤيد التكليف", tags: ["ليبيا", "مصرف ليبيا المركزي"], regions: ["المغرب العربي"] };
   const issa = file("ناجي عيسى مع جيرمي برنت.jpg", { date: "2025-02-11" });
   const takala = file("Mohammed Takala - 2023.jpg", { date: "2023-11-20" });
   const r = await scenario({
@@ -1215,7 +1215,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   // The owner, 2026-11-19, on the IMF's staff agreement with Egypt run as text ("yes, change the rule"): a world body's own
   // news has the brand pass too, its name or seal over its own headquarters' entrance, and its loan finances the treasury,
   // so no port is searched as its place.
-  const imfDraft = { title: "صندوق النقد يتفق مع مصر على مراجعتين تتيحان لها 2.3 مليار دولار", subtitle: "المبلغ يشمل الشريحة الأخيرة من برنامج قيمته 8 مليارات دولار", lede: "توصّل فريق خبراء صندوق النقد الدولي إلى اتفاق مع مصر.", body: "فقرة.", tags: ["صندوق النقد الدولي", "مصر"], regions: ["مصر والمغرب العربي"], kind: "news", section: "economy", imageQueries: [] };
+  const imfDraft = { title: "صندوق النقد يتفق مع مصر على مراجعتين تتيحان لها 2.3 مليار دولار", subtitle: "المبلغ يشمل الشريحة الأخيرة من برنامج قيمته 8 مليارات دولار", lede: "توصّل فريق خبراء صندوق النقد الدولي إلى اتفاق مع مصر.", body: "فقرة.", tags: ["صندوق النقد الدولي", "مصر"], regions: ["مصر"], kind: "news", section: "economy", imageQueries: [] };
   const imfHq = file("International Monetary Fund (IMF) (53844898894).jpg", { description: "Washington, DC", categories: "CC-BY-2.0|International Monetary Fund headquarters", date: "2024-06-21" });
   const imfPlan = { queries: ["Egyptian pounds"], place: ["Egypt", "Egyptian"], people: [], focus: "subject", places: [], place_queries: [], company: { name: "International Monetary Fund", headline: "صندوق النقد", also: ["IMF"] }, brand_queries: ["International Monetary Fund headquarters"] };
   const imf = await scenario({ draft: imfDraft, plan: imfPlan, world: { "International Monetary Fund headquarters": [imfHq] }, judge: (titles, prompt) => (prompt.includes("THE COMPANY'S OWN BRAND") ? pickTitle("53844898894")(titles) : 0), verify: () => "RIGHT" });

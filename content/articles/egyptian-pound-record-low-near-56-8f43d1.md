@@ -28,7 +28,7 @@ tags:
   - الأموال الساخنة
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart:
   type: bar

@@ -27,7 +27,7 @@ tags:
   - المناطق الاستثمارية
   - العقارات
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - الخليج
 readingMinutes: 3
 chart: null

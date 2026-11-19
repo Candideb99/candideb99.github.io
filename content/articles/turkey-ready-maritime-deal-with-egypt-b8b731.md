@@ -16,8 +16,8 @@ tags:
   - التنقيب عن الغاز
 regions:
   - المشرق وإيران وتركيا
-  - مصر والمغرب العربي
-  - أوروبا
+  - مصر
+  - المغرب العربي
 readingMinutes: 3
 chart: null
 table: null

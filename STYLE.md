@@ -333,7 +333,7 @@ Egypt and the Maghreb). Ten Gulf, Egyptian and Moroccan feeds joined the newsroo
 السابع، مصراوي، هسبريس، AGBI، Arabian Business، Gulf Times، Saudi Gazette، Daily News Egypt; `regionalNotes` in
 `pipeline/sources.json` lists the ones that failed). The editor is told a weighty Arab decision, release,
 result or deal goes ahead of a comparable foreign story, aiming at about half the day; each run takes at least
-one worthy story from الخليج or مصر والمغرب العربي until the day holds eight (`ARAB_DAILY`); every feed gets its
+one worthy story from الخليج, مصر or المغرب العربي (one desk until 2026-11-19) until the day holds eight (`ARAB_DAILY`); every feed gets its
 turn in the editor's list of 300 (`CANDIDATE_CAP`) instead of the busiest filling it; and the day's gold,
 dollar and share price tables are left out before the editor reads (`SERVICE_ITEM`).
 

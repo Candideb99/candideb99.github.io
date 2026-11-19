@@ -21,7 +21,7 @@ tags:
   - وزارة الصناعة
   - جهاز حماية المنافسة
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

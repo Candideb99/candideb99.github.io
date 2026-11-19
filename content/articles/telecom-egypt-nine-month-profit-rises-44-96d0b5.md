@@ -25,7 +25,7 @@ tags:
   - مصر
   - الاتصالات
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart:
   type: bar

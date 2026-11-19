@@ -25,7 +25,7 @@ tags:
   - الدين العام
   - منتدى مصر 2026
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart: null
 table: null

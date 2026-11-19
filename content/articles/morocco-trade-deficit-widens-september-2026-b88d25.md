@@ -27,7 +27,7 @@ tags:
   - الفوسفات
   - واردات الطاقة
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
 readingMinutes: 3
 chart:
   type: bar

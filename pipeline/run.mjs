@@ -36,6 +36,7 @@ import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
 import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { nothingNewSince, relatedRecent, repeatsRecent } from "./lib/events.mjs";
+import { DESK_NAMES } from "./lib/regions.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
 import { usedPhotos } from "./lib/photo-key.mjs";
@@ -110,7 +111,7 @@ const REJECT_RETRY_HOURS = 12;
  */
 const CANDIDATE_CAP = 600;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
-const ARAB_REGIONS = ["الخليج", "مصر والمغرب العربي"];
+const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
 /**
  * Price-service items: the Egyptian and Gulf sites post the day's gold, dollar and share prices many times a
@@ -1624,7 +1625,7 @@ function runWeekly() {
 const FEATURE_DAYS = 45;
 const FEATURE_REST_DAYS = 21;
 /** The regional desks are shelves, not files: too broad to tell as one story. */
-const REGION_TAGS = new Set(["الخليج", "مصر والمغرب العربي", "الشرق الأوسط", "أوروبا", "الأمريكتان", "آسيا", "أفريقيا", "عالمي"]);
+const REGION_TAGS = new Set([...DESK_NAMES, "مصر والمغرب العربي", "الشرق الأوسط"]);
 
 /**
  * «في العمق», the weekly in-depth piece (the owner's Task 5, 2026-09-24, after reading الشرق الأوسط beside

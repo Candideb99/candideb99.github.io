@@ -23,7 +23,7 @@ tags:
   - البنك المركزي المصري
   - مصر
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table:

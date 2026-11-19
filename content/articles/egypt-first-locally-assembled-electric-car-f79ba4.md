@@ -25,7 +25,7 @@ tags:
   - مصر
   - المكون المحلي
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - آسيا
 readingMinutes: 4
 chart: null

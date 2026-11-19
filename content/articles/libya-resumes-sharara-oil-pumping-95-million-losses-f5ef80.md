@@ -23,7 +23,7 @@ tags:
   - مصفاة الزاوية
   - النفط
 regions:
-  - مصر والمغرب العربي
+  - المغرب العربي
   - أفريقيا
 readingMinutes: 1
 chart: null

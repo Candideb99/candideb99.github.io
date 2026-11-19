@@ -17,7 +17,7 @@ tags:
   - سويز
 regions:
   - المشرق وإيران وتركيا
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 1
 chart: null
 table: null

@@ -25,7 +25,7 @@ tags:
   - مصر للألومنيوم
   - البنك الأهلي المصري
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

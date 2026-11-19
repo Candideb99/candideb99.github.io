@@ -25,7 +25,7 @@ tags:
   - البورصة المصرية
   - الطروحات الحكومية
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 2
 chart: null
 table: null

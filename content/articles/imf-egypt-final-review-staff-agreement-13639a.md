@@ -27,7 +27,7 @@ tags:
   - التخارج من الأصول
   - البنك المركزي المصري
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 4
 chart: null
 table: null

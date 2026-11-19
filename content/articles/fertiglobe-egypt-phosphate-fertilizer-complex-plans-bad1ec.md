@@ -18,7 +18,7 @@ tags:
   - أدنوك
   - الأسمدة الفوسفاتية
 regions:
-  - مصر والمغرب العربي
+  - مصر
   - الخليج
 readingMinutes: 1
 chart: null

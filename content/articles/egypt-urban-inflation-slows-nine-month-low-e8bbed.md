@@ -27,7 +27,7 @@ tags:
   - البنك المركزي المصري
   - الجنيه المصري
 regions:
-  - مصر والمغرب العربي
+  - مصر
 readingMinutes: 3
 chart:
   type: line
