@@ -405,6 +405,7 @@ check(
   [[...countriesNamed("الميتيكال الموزمبيقي يتراجع")], [...countriesNamed("المركزي الكونغولي يرفع الفائدة")], Boolean(repeatsRecent("موزمبيق تعدل موازنتها بإضافة 3.5 مليار ميتيكال", ["زامبيا تعدل موازنتها بإضافة 3.5 مليار كواشا"]))],
   [["موزمبيق"], ["كونغول"], false],
 );
+check("Poland is read (Notes from Poland joined the same night)", [...countriesNamed("المركزي البولندي يخفض الفائدة")], ["بولند"]);
 check(
   "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
   [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],
