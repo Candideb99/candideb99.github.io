@@ -391,6 +391,15 @@ check(
   ],
   [["كازاخستان"], ["سنغافور"], ["ارجنتين"], ["لبنان"], false, false],
 );
+// Africa's, the same evening, by the country and by its adjective («الكيني», «الجنوب أفريقي»), never «الأفغاني» as Ghana.
+check(
+  "Africa's countries are read by name and adjective, and a Kenyan and a Ghanaian cut are two events",
+  [
+    [...countriesNamed("المركزي الكيني يثبت الفائدة")], [...countriesNamed("الراند الجنوب أفريقي يهبط")], [...countriesNamed("ساحل العاج تجمع 55 مليار فرنك")], [...countriesNamed("الأفغاني يتراجع")],
+    Boolean(repeatsRecent("المركزي الكيني يخفض الفائدة 0.25% للمرة الثالثة هذا العام", ["المركزي الغاني يخفض الفائدة 0.25% للمرة الثالثة هذا العام"])),
+  ],
+  [["كين"], ["جنوب افريق"], ["ايفوار"], [], false],
+);
 check(
   "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
   [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],
@@ -1595,6 +1604,11 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check("a story's 1200 million stands in a Portuguese «1,2 bilhão» and 3500 million in a Spanish «3.500 millones»", [
     ungroundedNumbers("باع المركزي البرازيلي 1200 مليون دولار", ["o BC vendeu US$ 1,2 bilhão no mercado à vista"]),
     ungroundedNumbers("خسرت «بيمكس» 3500 مليون دولار و450 مليار بيزو", ["Pemex perdió 3.500 millones de dólares y 450 mil millones de pesos"]),
+  ], [[], []]);
+  // Indonesian and French, the same day: «Rp6 juta» is 6000000, «219 620 milliards» groups its thousands with a space.
+  check("a story's 6000000 stands in an Indonesian «Rp6 juta», 2.82 trillion in «Rp2,82 triliun», 219620 billion in a French «219 620 milliards»", [
+    ungroundedNumbers("يقترح رفع الأجر الأدنى إلى 6000000 روبية وارتفع الربح إلى 2.82 تريليون روبية", ["UMP diusulkan jadi Rp6 juta; laba naik jadi Rp2,82 triliun"]),
+    ungroundedNumbers("بلغت المعاملات 219620 مليار فرنك و832.9 مليار درهم", ["GIM-UEMOA : 219 620 milliards de FCFA ; les actifs atteignent 832,9 milliards de dirhams"]),
   ], [[], []]);
 
   // A quote from a Persian source is found when it comes back in Arabic letters (ي، ك), with Western digits, or with a

@@ -63,6 +63,8 @@ check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ ti
     placedAbroad({ title: "Tashkent City business district.jpg" }, kazakh), placedAbroad({ title: "Almaty financial centre.jpg" }, kazakh),
     placedAbroad({ title: "Bangkok stock exchange building.jpg" }, philippine),
   ], ["Uzbekistan", null, "Thailand"]);
+  const kenyan = { title: "المركزي الكيني يثبت الفائدة", tags: ["كينيا"], regions: ["أفريقيا"] };
+  check("a Kenyan story keeps Nairobi and refuses Accra", [placedAbroad({ title: "Nairobi central business district.jpg" }, kenyan), placedAbroad({ title: "Accra Makola market.jpg" }, kenyan)], [null, "Ghana"]);
 }
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 

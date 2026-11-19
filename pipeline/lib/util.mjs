@@ -244,13 +244,22 @@ export function sourceNumbers(text) {
   if (persian) for (const m of normalized.matchAll(/(?<![\d/])(\d+)\/(\d{1,2})(?![\d/])/g)) add(Number(`${m[1]}.${m[2]}`));
   // A count in words of scale («4 bin», «1,2 milyar», «۲ هزار»), so a story's 4000 or 1200 million stands in it.
   // Spanish and Portuguese since 2026-11-19, when Bloomberg Línea and El Financiero joined Brazil's central bank:
-  // «3.500 millones», «1,2 bilhão», «450 mil millones»; a Spanish «billón» is a million millions (long scale).
+  // «3.500 millones», «1,2 bilhão», «450 mil millones»; a Spanish «billón» is a million millions (long scale). The
+  // same day Indonesian («Rp2,82 triliun», «3,5 juta», «miliar», «ribu») and French («832,9 milliards»).
   const SCALE = {
     bin: 1e3, milyon: 1e6, milyar: 1e9, trilyon: 1e12, "هزار": 1e3, "میلیون": 1e6, "میلیارد": 1e9,
     "mil millones": 1e9, millones: 1e6, "millón": 1e6, billones: 1e12, "billón": 1e12,
     "milhões": 1e6, "milhão": 1e6, "bilhões": 1e9, "bilhão": 1e9, "trilhões": 1e12, "trilhão": 1e12, mil: 1e3,
+    ribu: 1e3, juta: 1e6, miliar: 1e9, triliun: 1e12, milliards: 1e9, milliard: 1e9, millions: 1e6, million: 1e6, mille: 1e3,
   };
-  for (const m of normalized.matchAll(/(?<![\d.,/])(\d+(?:[.,/]\d+)?)\s*(bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد|mil millones|millones|millón|billones|billón|milhões|milhão|bilhões|bilhão|trilhões|trilhão|mil)(?![\p{L}])/giu)) {
+  const SCALE_WORDS = "bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد|mil millones|millones|millón|billones|billón|milhões|milhão|bilhões|bilhão|trilhões|trilhão|milliards|milliard|millions|million|mille|mil|ribu|juta|miliar|triliun";
+  // French groups thousands with a space, often a narrow or non-breaking one («219 620 milliards de FCFA», «1 234,5»).
+  for (const m of normalized.matchAll(new RegExp(`(?<![\\d.,])(\\d{1,3}(?:[ \\u00A0\\u202F]\\d{3})+)(?:,(\\d+))?(?![\\d])(?:\\s*(${SCALE_WORDS})(?![\\p{L}]))?`, "giu"))) {
+    const value = Number(`${m[1].replace(/[   ]/g, "")}${m[2] ? `.${m[2]}` : ""}`);
+    add(value);
+    if (m[3]) add(value * SCALE[m[3].toLowerCase()]);
+  }
+  for (const m of normalized.matchAll(new RegExp(`(?<![\\d.,/])(\\d+(?:[.,/]\\d+)?)\\s*(${SCALE_WORDS})(?![\\p{L}])`, "giu"))) {
     const [whole, fraction] = m[1].split(/[.,/]/);
     const decimal = fraction != null && (fraction.length <= 2 || m[1].includes("/") || (m[1].includes(",") && fraction.length !== 3));
     const value = decimal ? Number(`${whole}.${fraction}`) : Number(m[1].replace(/[.,/]/g, ""));

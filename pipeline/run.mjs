@@ -111,9 +111,10 @@ const REJECT_RETRY_HOURS = 12;
  * 720 since 2026-11-19, when 21 feeds from Southeast Asia, Australia, Central Asia, Latin America, Korea and Japan
  * joined: measured that afternoon (1,007 fresh items before, 1,131 after), they took 118 of 600 places, about three
  * from each of the busiest current feeds, Asharq Business, BBC Arabic and Al Riyadh among them; 720 gives those back.
- * Each candidate line is about 300 characters, so the editor reads about 36,000 more.
+ * Each candidate line is about 300 characters, so the editor reads about 36,000 more. 785 the same evening, when
+ * eleven Indonesian and African feeds joined (in Indonesian and French among them): they took 65 places, given back.
  */
-const CANDIDATE_CAP = 720;
+const CANDIDATE_CAP = 785;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
