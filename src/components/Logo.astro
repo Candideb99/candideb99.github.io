@@ -16,13 +16,15 @@ interface Props {
 }
 const { part = "lockup", height = 96, class: className = "", eager = false } = Astro.props;
 const width = Math.round((LOGO.width / LOGO.height) * height);
+// The lockup is two images, not a <picture>: a <source> media query cannot see the reader's own choice of theme
+// (data-theme on <html>, 2026-11-20), so global.css shows the one that matches (.logo__light, .logo__dark).
 ---
 
 {part === "lockup" ? (
-  <picture class={`logo logo--lockup ${className}`}>
-    <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
-    <img src="/logo.svg" width={width} height={height} alt={`${site.name} — ${site.tagline}`} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : "auto"} />
-  </picture>
+  <span class={`logo logo--lockup ${className}`}>
+    <img class="logo__light" src="/logo.svg" width={width} height={height} alt={`${site.name} — ${site.tagline}`} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : "auto"} />
+    <img class="logo__dark" src="/logo-dark.svg" width={width} height={height} alt={`${site.name} — ${site.tagline}`} loading={eager ? "eager" : "lazy"} decoding="async" />
+  </span>
 ) : (
   <img class={`logo logo--mark ${className}`} src="/favicon.svg" width={height} height={height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
 )}

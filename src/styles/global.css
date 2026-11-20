@@ -139,8 +139,28 @@
   :root { --fs-xs: 0.8125rem; --fs-sm: 0.875rem; }
 }
 
+/* The dark theme follows the device unless the reader chose a theme with the masthead's switch (ThemeToggle.astro,
+   2026-11-20: the owner asked for a night mode readers can turn on themselves). The choice is `data-theme` on <html>,
+   set from localStorage by Base.astro's head before the first paint; the two blocks below must stay identical. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="dark"] {
+  --paper: #171716;
+  --paper-2: #1f1f1d;
+  --ink: #ebeae4;
+  --ink-2: #c6c5bd;
+  --ink-3: #9a9992;
+  --rule: #353532;
+  --green: #67c096;
+  --green-deep: #8ad3b0;
+  --up: #67c096;
+  --down: #e2796d;
+  --chart-1: #3aa273;
+  --chart-2: #6c8acf;
+  --chart-3: #ba8b1a;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #171716;
     --paper-2: #1f1f1d;
     --ink: #ebeae4;
@@ -156,6 +176,15 @@
     --chart-2: #6c8acf;
     --chart-3: #ba8b1a;
   }
+}
+
+/* The logo's lettering: dark green on paper, paper-coloured in the dark theme (Logo.astro). */
+.logo__dark { display: none !important; }
+:root[data-theme="dark"] .logo__light { display: none !important; }
+:root[data-theme="dark"] .logo__dark { display: block !important; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo__light { display: none !important; }
+  :root:not([data-theme="light"]) .logo__dark { display: block !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }

@@ -121,6 +121,10 @@ for (const s of sections) {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
         <span>بحث</span>
       </a>
+      {/* The reader's own night mode (2026-11-20); without a choice the site follows the device. */}
+      <button type="button" class="masthead__theme" data-theme-toggle aria-pressed="false" aria-label="الوضع الليلي" title="الوضع الليلي">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" /></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -180,6 +184,11 @@ for (const s of sections) {
             <li><a href="/calendar/">الأجندة الاقتصادية</a></li>
             <li><a href="/tags/">الملفات والمناطق</a></li>
           </ul>
+          <button type="button" class="menu__theme" data-theme-toggle aria-pressed="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" /></svg>
+            <span>الوضع الليلي</span>
+            <span class="menu__switch" aria-hidden="true"></span>
+          </button>
         </div>
       </details>
     </div>
@@ -234,6 +243,24 @@ for (const s of sections) {
     link?.scrollIntoView({ block: "nearest", inline: "nearest" });
   });
 
+  // Night mode: the reader's choice is kept as data-theme on <html> and in localStorage (read before the first paint by
+  // Base.astro's head); with no choice the site follows the device. A switch shows pressed while the page is dark.
+  const root = document.documentElement;
+  const deviceDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : deviceDark.matches);
+  const toggles = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+  const syncToggles = () => toggles.forEach((b) => b.setAttribute("aria-pressed", String(isDark())));
+  syncToggles();
+  deviceDark.addEventListener("change", syncToggles);
+  toggles.forEach((b) =>
+    b.addEventListener("click", () => {
+      const next = isDark() ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("khazendar-theme", next); } catch {}
+      syncToggles();
+    }),
+  );
+
   // The phone menu is a native disclosure; it also closes on Escape (focus back on its button) and on
   // a tap anywhere outside it.
   const menu = document.querySelector<HTMLDetailsElement>("[data-menu]");
@@ -274,6 +301,10 @@ for (const s of sections) {
   .masthead__tools > a:hover, .masthead__tools > a:focus-visible { color: var(--green); }
   .masthead__search { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink) !important; }
   .masthead__search:hover, .masthead__search:focus-visible { color: var(--green) !important; }
+
+  /* The night-mode switch: an icon among the tools, a finger's target, green while the page is dark. */
+  .masthead__theme { display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); min-height: var(--tap); margin-block: -0.7rem; margin-inline: -0.6rem; padding: 0; border: 0; background: none; color: var(--ink-2); cursor: pointer; }
+  .masthead__theme:hover, .masthead__theme:focus-visible, .masthead__theme[aria-pressed="true"] { color: var(--green); }
 
   .brand { grid-area: brand; display: block; min-width: 0; line-height: 0; }
   .brand:focus-visible { outline-offset: 4px; }
@@ -346,6 +377,13 @@ for (const s of sections) {
   .menu__list a { display: block; padding-block: 0.62rem; border-top: 1px solid var(--rule); font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink); text-decoration: none; }
   .menu__list a:hover, .menu__list a:focus-visible { color: var(--green); }
   .menu__list a[aria-current="page"] { color: var(--green); }
+  /* The night-mode row closes the menu: a labelled switch, as a phone's settings print one. */
+  .menu__theme { display: flex; align-items: center; gap: 0.6rem; width: 100%; min-height: var(--tap); margin-top: 0.6rem; padding: 0.4rem 0 0; border: 0; border-top: 1px solid var(--rule); background: none; font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); color: var(--ink); text-align: start; cursor: pointer; }
+  .menu__theme:hover, .menu__theme:focus-visible { color: var(--green); }
+  .menu__switch { position: relative; margin-inline-start: auto; width: 2.4rem; height: 1.35rem; border-radius: 1rem; background: var(--rule); transition: background 0.15s var(--ease-out); }
+  .menu__switch::after { content: ""; position: absolute; top: 0.175rem; inset-inline-start: 0.175rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--paper); transition: inset-inline-start 0.15s var(--ease-out); }
+  .menu__theme[aria-pressed="true"] .menu__switch { background: var(--green); }
+  .menu__theme[aria-pressed="true"] .menu__switch::after { inset-inline-start: 1.225rem; }
 
   /* The section panel: a paper box the size of its content, never wider than the bar, hung under its
      own section (the script above sets inset-inline-start on hover), ruled between its columns and
