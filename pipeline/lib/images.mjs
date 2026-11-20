@@ -188,6 +188,33 @@ const arabicWords = (s) =>
     .map((w) => w.replace(/^(?:و|ف|ب|ل|ك)?(?:ال)?/, ""))
     .filter((w) => w.length >= 2);
 
+/** The same reading with nothing taken off: a person's, an office's or a group's own words, compared as written. */
+const plainWords = (s) =>
+  String(s ?? "")
+    .replace(/[ً-ٰٟـ]/g, "")
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ة/g, "ه")
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((w) => w.length >= 2);
+
+/**
+ * Every form a headline's words can be read in: each word as written, and with an attached و ف, then ب ك ل, then the
+ * article taken off in turn («وبوتين» → «بوتين», «لوزير» → «وزير», «للبنك» → «بنك»). A quoted word is matched against
+ * these as it is written, or without its own article (`inForms()`). Until 2026-11-20 both sides lost one clitic letter
+ * (arabicWords()), so a name that itself begins with one («بوتين»، «لاغارد»، «كروغر») never met its own form after «و»:
+ * «ترامب وبوتين» left Putin a side figure, never pictured; found on the first «الفكر الاقتصادي» piece, whose desk called
+ * Krueger absent from «… في دراسة كارد وكروغر؟».
+ */
+const headlineForms = (s) => {
+  const forms = new Set();
+  for (const w of plainWords(s)) {
+    for (const f of [w, w.replace(/^[وف]/, ""), w.replace(/^[وف]?[بكل]/, ""), w.replace(/^[وف]?[بكل]?ال/, ""), w.replace(/^[وف]?لل/, "")]) if (f.length >= 2) forms.add(f);
+  }
+  return forms;
+};
+const inForms = (forms, word) => forms.has(word) || (word.startsWith("ال") && word.length > 4 && forms.has(word.slice(2)));
+
 /**
  * The planner's people split by the headline (the owner, 2026-10-24, on a Libyan central bank story whose headline was the
  * parliament accepting the governor's resignation, run with the head of the State Council, named only in its standfirst:
@@ -196,17 +223,17 @@ const arabicWords = (s) =>
  * speak for) or their Arabic surname; everyone else is a side figure, never pictured alone.
  */
 export function headlinePeople(title, people) {
-  const have = new Set(arabicWords(title));
+  const have = headlineForms(title);
   const listed = (Array.isArray(people) ? people : [])
     .map((p) => (p && typeof p === "object" ? p : { name: p }))
     .map((p) => ({ name: String(p.name ?? "").trim(), ar: String(p.ar ?? "").trim(), headline: String(p.headline ?? "").trim() }))
     .filter((p) => PERSON_NAME.test(p.name))
     .slice(0, 3);
   const inHeadline = (p) => {
-    const quoted = arabicWords(p.headline);
-    if (quoted.length && quoted.every((w) => have.has(w))) return true;
-    const surname = arabicWords(p.ar).pop();
-    return Boolean(surname && surname.length >= 3 && have.has(surname));
+    const quoted = plainWords(p.headline);
+    if (quoted.length && quoted.every((w) => inForms(have, w))) return true;
+    const surname = plainWords(p.ar).pop();
+    return Boolean(surname && surname.length >= 3 && inForms(have, surname));
   };
   const lead = listed.filter(inHeadline);
   // An Arabic name is two to five words and not the headline's words for the office (a planner once gave «رئاسة البرلمان
@@ -230,21 +257,24 @@ export function groundedClaimant(draft, claimant, sources = []) {
   if (!claimant || typeof claimant !== "object") return null;
   const p = { name: String(claimant.name ?? "").trim(), ar: String(claimant.ar ?? "").trim(), headline: String(claimant.headline ?? "").trim() };
   if (!PERSON_NAME.test(p.name)) return null;
-  const have = new Set(arabicWords(draft?.title));
-  const group = arabicWords(p.headline);
-  if (!group.length || !group.every((w) => have.has(w))) return null;
+  const have = headlineForms(draft?.title);
+  const group = plainWords(p.headline);
+  if (!group.length || !group.every((w) => inForms(have, w))) return null;
   const texts = [storyText(draft ?? {}, 20000), ...(sources ?? []).map((s) => String(s?.text ?? ""))].join("\n");
   // A name is found whole or as its first and last words side by side («يحيى سريع» for «يحيى سريع»; «Yahya Saree»).
   const spans = (words) => (words.length >= 2 ? [words.join(" "), `${words[0]} ${words[words.length - 1]}`] : []);
-  const arabicText = ` ${arabicWords(texts).join(" ")} `;
+  // The story's words as written; an attached و ف ب ك ل or the article may stand before the name's first word
+  // («وبهزاد…»), never taken off the name itself (headlineForms(), 2026-11-20).
+  const arabicText = ` ${plainWords(texts).join(" ")} `;
+  const inText = (span) => new RegExp(` (?:[وف]?[بكل]?(?:ال)?)${escapeRe(span)} `, "u").test(arabicText);
   // An apostrophe is dropped on both sides: «Sare'e» and «Saree» are one spelling here.
   const latin = (s) => fold(s).replace(/['’ʿʾ`]/g, "").replace(/[^a-z]+/g, " ").trim();
   const latinText = ` ${latin(texts)} `;
   // A rank the planner put before the name is not the name: «العميد يحيى سريع» must find «يحيى سريع» (the review of
   // 2026-11-06).
-  const arName = arabicWords(p.ar);
-  while (arName.length > 2 && CLAIMANT_RANK.has(arName[0])) arName.shift();
-  const named = spans(arName).some((s) => arabicText.includes(` ${s} `)) || spans(latin(p.name).split(" ")).some((s) => latinText.includes(` ${s} `));
+  const arName = plainWords(p.ar);
+  while (arName.length > 2 && CLAIMANT_RANK.has(arName[0].replace(/^ال/, ""))) arName.shift();
+  const named = spans(arName).some(inText) || spans(latin(p.name).split(" ")).some((s) => latinText.includes(` ${s} `));
   return named ? p : null;
 }
 

@@ -913,6 +913,20 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("the headline's governor and parliament lead; the State Council's head is a side figure", [split.lead.map((p) => p.name), split.side.map((p) => p.name)], [["Naji Issa", "Aguila Saleh"], ["Mohamed Takala"]]);
   check("words the headline does not carry make no one its subject", headlinePeople(title, [{ name: "Mohamed Takala", ar: "محمد تكالة", headline: "المجلس الأعلى للدولة" }]).lead.length, 0);
   check("an Arabic surname in the headline is enough", headlinePeople("أردوغان يعلن حزمة لدعم الليرة", [{ name: "Recep Tayyip Erdoğan", ar: "رجب طيب أردوغان", headline: "" }]).lead.length, 1);
+  // A name that itself begins with ب ل ك ف و, after «و» (2026-11-20): both sides had lost one letter, so «وبوتين» read
+  // «بوتين» and «بوتين» read «وتين», and Putin, Lagarde, Krueger were side figures; «كارد» and «وارد» both read «ارد».
+  const leads = (title, p) => headlinePeople(title, [p]).lead.length;
+  check(
+    "a name after «و» that begins with a clitic's letter is the headline's person; an office after «ل» too; «كارد» is not «وارد»",
+    [
+      leads("ترامب وبوتين يبحثان العقوبات على النفط", { name: "Vladimir Putin", ar: "فلاديمير بوتين", headline: "بوتين" }),
+      leads("باول ولاغارد يحذران من عودة التضخم", { name: "Christine Lagarde", ar: "كريستين لاغارد", headline: "" }),
+      leads("لماذا لم يُفقِد رفعُ الحد الأدنى للأجور العمالَ وظائفهم في دراسة كارد وكروغر؟", { name: "Alan Krueger", ar: "آلان كروغر", headline: "كروغر" }),
+      leads("صندوق النقد يسلّم رسالة لوزير المالية المصري", { name: "Ahmed Kouchouk", ar: "أحمد كجوك", headline: "وزير المالية" }),
+      leads("الدولار وارد من الخارج بكثافة", { name: "David Card", ar: "ديفيد كارد", headline: "" }),
+    ],
+    [1, 1, 1, 1, 0],
+  );
   const libya = { ...developers, title, subtitle: "تكليف فوزي أبوخزام بتسيير مهام المصرف مؤقتاً، ورئيس مجلس الدولة يؤيد التكليف", tags: ["ليبيا", "مصرف ليبيا المركزي"], regions: ["المغرب العربي"] };
   const issa = file("ناجي عيسى مع جيرمي برنت.jpg", { date: "2025-02-11" });
   const takala = file("Mohammed Takala - 2023.jpg", { date: "2023-11-20" });
@@ -1687,6 +1701,10 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check("«Isna» the town and a photographer called Tasnim are no agencies", [stampedSource({ categories: "Isna|Temples in Egypt" }), stampedSource({ artist: "Tasnim Ahmed" })], ["", ""]);
   // A rank in the planner's Arabic name, and the spokesman listed among the story's people too (the same review).
   check("«العميد يحيى سريع» finds «يحيى سريع» in the story", groundedClaimant(houthi, { ...saree, ar: "العميد يحيى سريع" })?.name, "Yahya Saree");
+  // A group whose name begins with a clitic's letter, after «و» in the headline (2026-11-20): «وكتائب» had read «كتائب»
+  // and the quoted «كتائب» «تائب».
+  const kataib = { ...houthi, title: "الجيش العراقي وكتائب حزب الله يتبادلان الاتهامات بعد هجوم على حقل غاز", lede: "قال المسؤول الأمني في كتائب حزب الله أبو علي العسكري إن الكتائب لم تنفذ الهجوم." };
+  check("a group named after «و» whose name begins with «ك» is the headline's group", groundedClaimant(kataib, { name: "Abu Ali al-Askari", ar: "أبو علي العسكري", headline: "كتائب حزب الله" })?.name, "Abu Ali al-Askari");
   const stampedFile = { title: "2026. Yahya Saree.jpg", categories: "2025 in Yemen|Photos from Tasnim News Agency" };
   const withSpokesman = photoRules({ draft: houthi, image: stampedFile, people: ["Yahya Saree"], known: ["Yahya Saree"], thumbnail: "data:image/jpeg;base64,AAAA", claimant: "Yahya Saree" });
   const without = photoRules({ draft: houthi, image: { title: "Ras Tanura.jpg" }, thumbnail: "data:image/jpeg;base64,AAAA" });
