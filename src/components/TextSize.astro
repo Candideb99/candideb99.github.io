@@ -16,6 +16,9 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
   <input id="textsize-range" class="textsize__range" type="range" min={TEXT_SIZE_MIN} max={TEXT_SIZE_MAX} step="1" value="20" />
   <span class="textsize__glyph textsize__glyph--large" aria-hidden="true">أ</span>
   <output class="textsize__value" for="textsize-range" aria-hidden="true">20</output>
+  {/* Back to the house size in one tap (the owner, 2026-11-20: "what happens to font size if the user wants to reset it
+      to default?"; until then the reader had to drag back to the exact number). Shown only while the size differs. */}
+  <button type="button" class="textsize__reset" hidden>الحجم الأصلي</button>
 </div>
 
 <script is:inline define:vars={{ key: TEXT_SIZE_KEY, min: TEXT_SIZE_MIN, max: TEXT_SIZE_MAX }}>
@@ -24,6 +27,7 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
     if (!root) return;
     var range = root.querySelector("input");
     var out = root.querySelector("output");
+    var reset = root.querySelector(".textsize__reset");
     // The house size on this screen (the token, without the reader's choice), so the control starts where the text is.
     var probe = document.createElement("span");
     probe.style.fontSize = "var(--n-body)";
@@ -36,6 +40,7 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
       range.value = String(px);
       out.textContent = String(px);
       range.setAttribute("aria-valuetext", px + " بكسل");
+      reset.hidden = px === base;
     }
     show(saved && saved >= min && saved <= max ? saved : base);
     range.addEventListener("input", function () {
@@ -44,6 +49,12 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
       document.documentElement.style.setProperty("--reader-size", px + "px");
       // The house size is no choice to remember: a reader back at it follows the house size if it changes.
       try { px === base ? localStorage.removeItem(key) : localStorage.setItem(key, String(px)); } catch (e) {}
+    });
+    reset.addEventListener("click", function () {
+      show(base);
+      document.documentElement.style.removeProperty("--reader-size");
+      try { localStorage.removeItem(key); } catch (e) {}
+      range.focus();
     });
     root.hidden = false;
   })();
@@ -59,4 +70,6 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
   /* 44px tall, the track drawn in its middle: a 16px slider was too small a target for a finger (2026-11-10). */
   .textsize__range { inline-size: 7.5rem; block-size: var(--tap); accent-color: var(--green); margin: 0; cursor: pointer; }
   .textsize__value { min-inline-size: 1.6em; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); text-align: end; }
+  .textsize__reset { min-block-size: var(--tap); padding: 0 0.4rem; border: 0; background: none; font: inherit; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .textsize__reset[hidden] { display: none; }
 </style>
