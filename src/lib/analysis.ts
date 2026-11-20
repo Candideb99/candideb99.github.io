@@ -5,6 +5,7 @@
  * Street" apart from their other columns. The defence desk went with the defence section, 2026-10-19.
  */
 import type { Article } from "./articles";
+import { EXPLAINER_KINDS } from "./sections";
 
 export interface Desk {
   id: string;
@@ -40,6 +41,23 @@ export function analysisDesk(article: Article, all: Article[]): Desk | null {
   }
   const top = [...counts.entries()].sort((x, y) => y[1] - x[1])[0];
   return top ? { id: top[0], label: ANALYSIS_DESKS[top[0]] } : { id: "general", label: "تحليل" };
+}
+
+/** The page that lists every week's review (src/pages/analysis/weekly.astro). */
+export const WEEKLY_HREF = "/analysis/weekly/";
+
+/**
+ * The page a piece of the paper's own leads to from its label: an analysis's desk, the week's review's own page, an
+ * explainer's kind; undefined for news and for a reading with no list of its own («في العمق», an analysis no desk
+ * claims), which keep their section (2026-11-20, the owner: "check the analysis page design and organization too"). On
+ * the analysis section's page every card's label had led back to that same page, and the week's review had no page.
+ */
+export function readingHref(article: Article, all: Article[]): string | undefined {
+  const kind = EXPLAINER_KINDS.find((k) => k.kind === article.data.kind);
+  if (kind) return `/explainers/kind/${kind.id}/`;
+  if (article.data.kind === "weekly") return WEEKLY_HREF;
+  const desk = analysisDesk(article, all);
+  return desk && ANALYSIS_DESKS[desk.id] ? `/analysis/desk/${desk.id}/` : undefined;
 }
 
 /** The kicker text for a story's kind: the analysis desk, the weekly, or nothing for news. */

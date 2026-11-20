@@ -15,7 +15,7 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
 import { getArticles, related, articleHref, stripStories } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
 import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
-import { analysisLabel, analysisDesk, ANALYSIS_DESKS } from "@lib/analysis";
+import { analysisLabel, readingHref } from "@lib/analysis";
 import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
 import { cardSizes, thumbnailUrl } from "@lib/wikimedia";
@@ -83,19 +83,8 @@ const sectionLabel = analysisLabel(article, all) ?? kindLabel(d.kind, d.section)
 // A piece of the paper's own (an analysis, the week's review, an explainer, a paper reading) is named by its kind over
 // its headline, on a page head's 3px ink rule, where a news story carries its subject: an analysis had been told from
 // news only by a 13.76px label in its date line, under a tag such as «الدار» (the critique of 2026-10-19). The kind
-// leads to its own list: the analysis desk, or the explainers' kind.
-const desk = analysisDesk(article, all);
-const kindHead = isHub
-  ? {
-      label: sectionLabel,
-      href:
-        d.kind === "explainer" ? "/explainers/kind/concepts/"
-        : d.kind === "idea" ? "/explainers/kind/thought/"
-        : d.kind === "paper" ? "/explainers/kind/papers/"
-        : desk && ANALYSIS_DESKS[desk.id] ? `/analysis/desk/${desk.id}/`
-        : sectionHref(d.section),
-    }
-  : undefined;
+// leads to its own list: the analysis desk, the week's review's page, or the explainers' kind (readingHref()).
+const kindHead = isHub ? { label: sectionLabel, href: readingHref(article, all) ?? sectionHref(d.section) } : undefined;
 const trail = [
   { name: "الرئيسية", url: "/" },
   { name: sec.name, url: sectionHref(d.section) },

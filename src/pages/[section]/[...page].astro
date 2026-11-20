@@ -2,7 +2,7 @@
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { analysisLabel, liveDesks } from "@lib/analysis";
+import { analysisLabel, liveDesks, WEEKLY_HREF } from "@lib/analysis";
 import { menuTopics, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
 import { getArticles, getArticlesBySection, firstPictures } from "@lib/articles";
@@ -20,7 +20,9 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     // «مدخل إلى الاقتصاد» has its own page, set out by kind (src/pages/explainers/index.astro, 2026-11-20), and no
     // pages by date: its kinds' pages keep every piece.
     if (section.id === "explainers") continue;
-    const articles = await getArticlesBySection(section.id);
+    // The week's review is a series of its own (WEEKLY_HREF, 2026-11-20): its newest edition has a block on the first
+    // page and every edition its own page, so the pages by date are the daily analyses.
+    const articles = (await getArticlesBySection(section.id)).filter((a) => section.id !== "analysis" || a.data.kind !== "weekly");
     routes.push(
       ...paginate(articles, {
         params: { section: section.id },
@@ -67,9 +69,13 @@ const everything = first ? await getArticles() : [];
 const topics = first && !HUB_SECTIONS.has(section.id) ? menuTopics(everything, section.id) : [];
 const divisions: { href: string; name: string }[] =
   first && section.id === "analysis" ? liveDesks(everything).map((desk) => ({ href: `/analysis/desk/${desk.id}/`, name: desk.label })) : [];
+// «حصاد الأسبوع» (2026-11-20, the owner: "check the analysis page design and organization too"): its three editions had
+// stood among the daily analyses, the eleventh card of the first page, with no page of their own. Its newest edition
+// now has a block under the top stories, with the way to all of them.
+const weekly = first && section.id === "analysis" ? everything.find((a) => a.data.kind === "weekly") : undefined;
 ---
 
-<Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id} printed={page.data.map((a) => a.id)}>
+<Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id} printed={[...page.data, ...(weekly ? [weekly] : [])].map((a) => a.id)}>
   <section class="wrap block" data-section={section.id}>
     <header class="page-head">
       <h1 class="page-title">{section.name}</h1>
@@ -106,6 +112,15 @@ const divisions: { href: string; name: string }[] =
               </div>
             )}
           </div>
+        )}
+        {weekly && (
+          <section class="section-page__series" aria-labelledby="series-weekly">
+            <div class="section-head">
+              <h2 id="series-weekly"><a href={WEEKLY_HREF}>حصاد الأسبوع</a></h2>
+              <a class="more" href={WEEKLY_HREF}>كل حلقات حصاد الأسبوع</a>
+            </div>
+            <StoryCard article={weekly} variant="lead" level={3} showSection={false} />
+          </section>
         )}
         {rest.length > 0 && (
           <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
@@ -165,6 +180,9 @@ const divisions: { href: string; name: string }[] =
     .section-page__top--text .section-page__beside > :global(.card:nth-child(n + 4)) { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
   }
   .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+  /* The week's review: a block of its own between the day's analyses and the older ones, its head the series' name. */
+  .section-page__series { margin-top: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .section-page__series :global(.card) { max-width: 64rem; }
   .page-head__link { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
   .page-head__link:hover { text-decoration: underline; }
   /* The lead runs like the cover (StoryCard.astro: the headline across the block, the summary beside the photograph);

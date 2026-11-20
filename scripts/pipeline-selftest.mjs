@@ -1921,6 +1921,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ],
     [1, 0, 1, 0, 1, 0],
   );
+  // A card's label that leads to the page it is printed on (2026-11-20): every analysis card's desk led back to /analysis/.
+  {
+    const { selfLabelLinks } = await import("./site-furniture.mjs");
+    const card = (href) => `<article class="card"><p class="meta card__meta"><a href="${href}">تحليل الطاقة</a><time>منذ يوم</time></p></article>`;
+    check("the site check finds a card's label leading to its own page, and passes one leading to its desk", [selfLabelLinks(card("/analysis/"), "/analysis/").length, selfLabelLinks(card("/analysis/desk/energy/"), "/analysis/").length], [1, 0]);
+  }
   // …and the chart's note, built in the reader's browser where no site check reads it, takes the values as the build
   // isolated them, never inside a left-to-right run of its own.
   {

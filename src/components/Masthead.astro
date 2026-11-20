@@ -92,7 +92,8 @@ for (const s of sections) {
     if (desks.length) columns.push({ head: "بحسب المجال", links: desks });
     const pieces = analyses.slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
     if (pieces.length) columns.push({ head: "أحدث التحليلات", links: pieces, wide: true });
-    columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل التحليلات" }] });
+    // The week's review has a page of its own since 2026-11-20 (src/pages/analysis/weekly.astro).
+    columns.push({ head: "المزيد", links: [{ href: "/analysis/weekly/", text: "حصاد الأسبوع" }, { href: sectionHref(s.id), text: "كل التحليلات" }] });
   } else if (s.id === "explainers") {
     columns.push({ head: "الأنواع", links: EXPLAINER_KINDS.map((k) => ({ href: `/explainers/kind/${k.id}/`, text: k.name })) });
     const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "idea" || a.data.kind === "paper").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));

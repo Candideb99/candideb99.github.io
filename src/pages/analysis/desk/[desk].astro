@@ -7,7 +7,7 @@
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles } from "@lib/articles";
-import { ANALYSIS_DESKS, analysisDesk, analysisLabel, liveDesks } from "@lib/analysis";
+import { ANALYSIS_DESKS, analysisDesk, liveDesks } from "@lib/analysis";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -38,14 +38,15 @@ const siblings = liveDesks(all).filter((d) => d.id !== desk);
       {siblings.length > 0 && (
         <p class="page-head__topics ui">
           <span class="page-head__topics-label">المجالات:</span>
-          {siblings.map((d) => <a href={`/analysis/desk/${d.id}/`}>{d.label}</a>)}
+          {siblings.map((d, i) => <>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={`/analysis/desk/${d.id}/`}>{d.label}</a></>)}
         </p>
       )}
     </header>
     {n > 0 && (
       <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>
+        {/* No label under each card: every one of them is this page's desk, its name the page's title (2026-11-20). */}
         {items.map((a) => (
-          <StoryCard article={a} variant="text" showSection label={analysisLabel(a, all)} showExcerpt />
+          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
         ))}
       </div>
     )}

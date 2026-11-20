@@ -1,0 +1,33 @@
+---
+/**
+ * «حصاد الأسبوع», every edition, newest first (2026-11-20, the owner: "check the analysis page design and organization
+ * too"): the week's review had no page of its own, and its editions were found only by paging through the daily
+ * analyses. Its newest edition also stands in a block of its own on the analysis section's first page
+ * ([section]/[...page].astro); every edition's label leads here (readingHref(), src/lib/analysis.ts).
+ */
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+import { WEEKLY_HREF } from "@lib/analysis";
+
+const items = (await getArticles()).filter((a) => a.data.kind === "weekly");
+const n = items.length;
+const intro = "كل جمعة: أبرز ما جرى في الاقتصاد والأسواق خلال الأسبوع، وما يُنتظر في الأيام المقبلة.";
+---
+
+<Base title="حصاد الأسبوع" description={intro} path={WEEKLY_HREF} section="analysis">
+  <section class="wrap block" data-section="analysis">
+    <header class="page-head">
+      <p class="page-head__section ui"><a href="/analysis/">تحليلات</a></p>
+      <h1 class="page-title">حصاد الأسبوع</h1>
+      <p class="page-intro">{intro}{n === 0 && <span> لم يُنشر حصاد بعد.</span>}</p>
+    </header>
+    {n > 0 && (
+      <div class="cols cols--rows" style="--n:3">
+        {items.map((a) => (
+          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>

@@ -77,6 +77,21 @@ export function readingFaults(html) {
   return out;
 }
 
+/**
+ * A card's label that leads to the page the card is printed on (2026-11-20): on the analysis section's page every
+ * card's «تحليل الطاقة» or «حصاد الأسبوع» led back to /analysis/, where the reader already was, never to the desk's
+ * or the series' own page (readingHref(), src/lib/analysis.ts). `path` is the page's own address, «/analysis/».
+ */
+export function selfLabelLinks(html, path) {
+  const out = [];
+  for (const m of html.matchAll(/<p class="meta card__meta"[^>]*>([\s\S]*?)<\/p>/g)) {
+    for (const a of m[1].matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([^<]*)<\/a>/g)) {
+      if (a[1] === path) out.push(`a card's label «${a[2].trim()}» leads to the page it is printed on`);
+    }
+  }
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

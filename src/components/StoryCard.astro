@@ -1,6 +1,7 @@
 ---
 import type { Article } from "@lib/articles";
-import { articleHref } from "@lib/articles";
+import { articleHref, getArticles } from "@lib/articles";
+import { readingHref } from "@lib/analysis";
 import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { dek, timeAgo } from "@lib/format";
@@ -37,6 +38,9 @@ const href = articleHref(article);
 const summary = dek(subtitle, article.data.lede);
 const Heading = level === 2 ? "h2" : "h3";
 const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
+// The label leads to the piece's own list (its desk, the week's review, its kind), else its section: on the analysis
+// section's page every card's «تحليل الطاقة» had led back to that page (2026-11-20). The list of stories is cached.
+const labelHref = showSection ? (readingHref(article, await getArticles()) ?? sectionHref(section)) : "";
 ---
 
 <article class={`card card--${variant}${hasPhoto ? " card--photo" : ""} ${className}`} data-section={section}>
@@ -52,7 +56,7 @@ const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     {(showSection || showTime) && (
       <p class="meta card__meta">
-        {showSection && <a href={sectionHref(section)}>{label ?? kindLabel(kind, section)}</a>}
+        {showSection && <a href={labelHref}>{label ?? kindLabel(kind, section)}</a>}
         {showTime && <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>}
       </p>
     )}
