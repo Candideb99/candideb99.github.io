@@ -4,7 +4,7 @@ import { articleHref, getArticles } from "@lib/articles";
 import { analysisLabel, readingHref } from "@lib/analysis";
 import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
-import { dek, timeAgo } from "@lib/format";
+import { dek, formatTime, timeAgo } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
 
@@ -19,6 +19,8 @@ interface Props {
   showSection?: boolean;
   showExcerpt?: boolean;
   showTime?: boolean;
+  /** The hour in the paper's zone («14:29») in place of the age, for a list under a dated head (/latest/). */
+  clock?: boolean;
   /** Replaces the kind or section name in the meta line (the analysis desk, e.g. تحليل الطاقة). */
   label?: string;
   /** Heading level for the title, so lists stay a valid outline. */
@@ -31,7 +33,7 @@ interface Props {
   sizes?: string;
   class?: string;
 }
-const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, level = 3, showPhoto = true, showTopic = false, label, sizes, class: className = "" } = Astro.props;
+const { article, variant = "card", eager = false, showSection = true, showExcerpt = variant === "lead", showTime = true, clock = false, level = 3, showPhoto = true, showTopic = false, label, sizes, class: className = "" } = Astro.props;
 const kicker = showTopic ? kickerOf(article) : undefined;
 const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const href = articleHref(article);
@@ -59,7 +61,7 @@ const labelHref = showSection ? (readingHref(article, await getArticles()) ?? se
         {/* An analysis by its desk when no label is passed (topic and file pages, 2026-11-20): it printed «تحليل» over a
             link that already led to the desk. */}
         {showSection && <a href={labelHref}>{label ?? analysisLabel(article, await getArticles()) ?? kindLabel(kind, section)}</a>}
-        {showTime && <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>}
+        {showTime && (clock ? <time datetime={publishedAt}>{formatTime(publishedAt)}</time> : <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>)}
       </p>
     )}
   </div>

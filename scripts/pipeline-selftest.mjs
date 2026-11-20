@@ -1971,6 +1971,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // The latest page (2026-11-20): under a day's head a line prints its hour, never the date again or an age.
+  {
+    const { latestPageFaults } = await import("./site-furniture.mjs");
+    const day = (times) => `<section class="latest__day"><h2 class="latest__date ui">الأربعاء 21 أكتوبر 2026</h2>${times.map((t) => `<article class="card"><p class="meta card__meta"><a href="/economy/">الاقتصاد</a><time datetime="x">${t}</time></p></article>`).join("")}</section>`;
+    check("the site check finds a date or an age under a day's head, and passes hours", [latestPageFaults(day(["21 أكتوبر 2026", "منذ يوم"])).length, latestPageFaults(day(["14:29", "09:05"])).length], [1, 0]);
+  }
   // A file's page (2026-11-20): a file of one story and a page of more than twenty fail; twenty with a pager pass.
   {
     const { filePageFaults } = await import("./site-furniture.mjs");

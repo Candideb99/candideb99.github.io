@@ -10,12 +10,14 @@ import type { Page } from "astro";
 interface Props {
   page: Page<unknown>;
   label: string;
+  /** Held to a list's 56rem measure (the latest page, a file), so «أقدم» stands under the list and not at the page's edge. */
+  narrow?: boolean;
 }
-const { page, label } = Astro.props;
+const { page, label, narrow = false } = Astro.props;
 ---
 
 {page.lastPage > 1 && (
-  <nav class="pager" aria-label={label}>
+  <nav class:list={["pager", { "pager--narrow": narrow }]} aria-label={label}>
     {page.url.prev ? <a class="pager__step" href={page.url.prev} rel="prev">أحدث</a> : <span class="pager__step pager__step--off" aria-hidden="true">أحدث</span>}
     <p class="pager__count ui">صفحة <bdi>{page.currentPage}</bdi> من <bdi>{page.lastPage}</bdi></p>
     {page.url.next ? <a class="pager__step" href={page.url.next} rel="next">أقدم</a> : <span class="pager__step pager__step--off" aria-hidden="true">أقدم</span>}
@@ -24,6 +26,7 @@ const { page, label } = Astro.props;
 
 <style>
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+  .pager--narrow { max-width: 56rem; }
   .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
   .pager__step:hover { border-color: var(--green); }
   .pager__step--off { visibility: hidden; }

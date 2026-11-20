@@ -189,6 +189,21 @@ export function filePageFaults(html) {
   return out;
 }
 
+/**
+ * The latest page (2026-11-20, the owner: "check the latest news page design and organization too"): a line under a
+ * day's head prints its hour («14:29»), never its date again («21 أكتوبر 2026» under «الأربعاء 21 أكتوبر 2026», on every
+ * line of the older pages) or its age («منذ يوم» under a head naming the day).
+ */
+export function latestPageFaults(html) {
+  const out = [];
+  let lines = 0;
+  for (const day of html.matchAll(/<section class="latest__day"[\s\S]*?<\/section>/g)) {
+    for (const t of day[0].matchAll(/<p class="meta card__meta"[^>]*>[\s\S]*?<time[^>]*>([^<]*)<\/time>/g)) if (!/^\d{2}:\d{2}$/.test(t[1].trim())) lines++;
+  }
+  if (lines) out.push(`${lines} line(s) under a day's head printing a date or an age, not the hour`);
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),
