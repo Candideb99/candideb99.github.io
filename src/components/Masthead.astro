@@ -27,7 +27,7 @@
  * get plain links and the same taxonomy on the section pages.
  */
 import site from "@data/site.json";
-import { sections, sectionHref, newsSections } from "@lib/sections";
+import { EXPLAINER_KINDS, sections, sectionHref, newsSections } from "@lib/sections";
 import { formatDate } from "@lib/format";
 import { todayIso } from "@lib/calendar";
 import { getArticles, articleHref } from "@lib/articles";
@@ -94,7 +94,7 @@ for (const s of sections) {
     if (pieces.length) columns.push({ head: "أحدث التحليلات", links: pieces, wide: true });
     columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل التحليلات" }] });
   } else if (s.id === "explainers") {
-    columns.push({ head: "الأنواع", links: [{ href: "/explainers/kind/concepts/", text: "شروح مبسّطة" }, { href: "/explainers/kind/thought/", text: "الفكر الاقتصادي" }, { href: "/explainers/kind/papers/", text: "قراءات في أوراق بحثية" }] });
+    columns.push({ head: "الأنواع", links: EXPLAINER_KINDS.map((k) => ({ href: `/explainers/kind/${k.id}/`, text: k.name })) });
     const pieces = articles.filter((a) => a.data.kind === "explainer" || a.data.kind === "idea" || a.data.kind === "paper").slice(0, 4).map((a) => ({ href: articleHref(a), text: a.data.title, title: true }));
     if (pieces.length) columns.push({ head: "أحدث المواد", links: pieces, wide: true });
     columns.push({ head: "المزيد", links: [{ href: sectionHref(s.id), text: "كل المواد" }] });

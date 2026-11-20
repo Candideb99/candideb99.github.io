@@ -54,7 +54,8 @@ const browse = Object.entries(TOPICS)
       <nav class="search__browse" aria-labelledby="browse-head">
         <h2 id="browse-head" class="module__head">أو تصفّح المواضيع</h2>
         <ul class="search__browse-list">
-          {browse.map((x) => <li><a href={x.href}>{x.name}</a> <bdi class="ui">{x.count}</bdi></li>)}
+          {/* The ten subjects we write about most, by name: their counts were the archive's bookkeeping (2026-11-20). */}
+          {browse.map((x) => <li><a href={x.href}>{x.name}</a></li>)}
         </ul>
       </nav>
     )}

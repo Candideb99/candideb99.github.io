@@ -124,9 +124,11 @@ const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as 
 // this file reads the note's text from here, already escaped and isolated; with no script the chart is the same
 // drawing with its native tooltips and its table. A chart of one series that prints every value on its mark gets no
 // note (`plain`): over horizontal bars it only said again the name and the figure printed under it.
+// A value goes through isolateNumbers() like the names (2026-11-20): it was set whole in one left-to-right run, so a value
+// with an Arabic unit read from the right as «مليار درهم 29.9», and it reached the note unescaped.
 const tips = JSON.stringify({
   cats: chart.categories.map((c) => isolateNumbers(c)),
-  series: chart.series.map((s) => ({ name: isolateNumbers(s.name), values: s.values.map((v) => label(v)) })),
+  series: chart.series.map((s) => ({ name: isolateNumbers(s.name), values: s.values.map((v) => isolateNumbers(label(v))) })),
 });
 const plain = chart.series.length === 1 && (horizontal || showValueLabels);
 ---
@@ -255,7 +257,7 @@ const plain = chart.series.length === 1 && (horizontal || showValueLabels);
         {chart.categories.map((c, i) => (
           <tr>
             <th scope="row" set:html={isolateNumbers(c)} />
-            {chart.series.map((s) => <td><bdi dir="ltr">{label(s.values[i])}</bdi></td>)}
+            {chart.series.map((s) => <td set:html={isolateNumbers(label(s.values[i]))} />)}
           </tr>
         ))}
       </tbody>
@@ -407,7 +409,7 @@ const plain = chart.series.length === 1 && (horizontal || showValueLabels);
         tips.series.forEach(function (ser, si) {
           html += '<span class="chart__tip-row' + (s >= 0 && s !== si ? " is-dim" : "") + '">' +
             (tips.series.length > 1 ? '<i style="background:' + COLORS[si] + '"></i><span>' + ser.name + "</span>" : "") +
-            '<b><bdi dir="ltr">' + ser.values[i] + "</bdi></b></span>";
+            "<b>" + ser.values[i] + "</b></span>";
         });
         if (plain) { paint(); return; }
         tip.innerHTML = html;

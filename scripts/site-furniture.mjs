@@ -66,6 +66,9 @@ export function readingFaults(html) {
   for (const m of html.matchAll(/<p class="(cover__dek|cover__reading-dek|digest__text|card__summary)"[^>]*>([\s\S]*?)<\/p>/g)) {
     if (/(?:…|\.\.\.)$/.test(text(m[2]))) out.push(`a summary cut off with «…» (${m[1]}): «${text(m[2]).slice(-50)}»`);
   }
+  // Arabic words set inside a left-to-right run read backwards from the right: a chart table's «29.9 مليار درهم» read
+  // «مليار درهم 29.9» (2026-11-20). An isolation holds a figure or a Latin run, never Arabic letters («٪» is a sign).
+  for (const m of html.matchAll(/<bdi dir="ltr"[^>]*>([^<]*[ء-ي][^<]*)<\/bdi>/g)) out.push(`Arabic words inside a left-to-right isolation: «${m[1].trim().slice(0, 50)}»`);
   for (const m of html.matchAll(/<p class="worked__working"[^>]*>([\s\S]*?)<\/p>/g)) {
     for (const run of m[1].matchAll(/<bdi dir="ltr"[^>]*>([\s\S]*?)<\/bdi>/g)) {
       if (/[=÷×]/.test(run[1])) out.push(`a worked sum printed left to right as one run, the mirror of its formula: «${text(run[1])}»`);

@@ -20,7 +20,7 @@ This file holds only what every session needs. The dated notes (what the owner s
 | `market-data.md` | `markets.mjs`, `calendar.mjs`, `quotes`, `context`, the market components | the board's moves, the price line a story gets, the calendar |
 | `fact-check.md` | `factcheck`, `precheck`, `snapshots`, `recheck` | the check before publication, the saved evidence, recovery without a person |
 | `loops-and-lessons.md` | `lessons`, `paired`, `evidence`, `health`, the morning round | the second look, the lessons and how they are proved, the stress test |
-| `site.md` | everything in `src/`, DESIGN.md, the site checks | type scale, front page, masthead, menus, sections, the site's own bugs |
+| `site.md`, `site-2.md` | everything in `src/`, DESIGN.md, the site checks | type scale, front page, masthead, menus, sections, the site's own bugs |
 | `models-and-usage.md` | `llm.mjs`, the provider modules | providers, effort levels and their tests, the Claude CLI, what the plan costs |
 | `operations.md` | the control room, the gate, sync, the workflows | the gate, deploys, schedules, the control room, security |
 | `audits-1-october.md`, `audits-2-31-october.md`, `audits-3-november.md` | any script in `pipeline/` or `scripts/` | what each audit fixed across desks, and what it looked at and left |

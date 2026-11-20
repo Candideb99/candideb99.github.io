@@ -13,6 +13,18 @@ export const sections = sectionsData as Section[];
 export const HUB_SECTIONS = new Set(["analysis", "explainers"]);
 export const newsSections = sections.filter((s) => !HUB_SECTIONS.has(s.id));
 
+/**
+ * The kinds of «مدخل إلى الاقتصاد», in the order its page sets them out: each has its own page
+ * (src/pages/explainers/kind/[kind].astro), its block on the section's page (src/pages/explainers/index.astro, with the
+ * `take` newest) and its line in the section bar's panel. One list, read by all three.
+ */
+export const EXPLAINER_KINDS = [
+  { id: "concepts", kind: "explainer", name: "شروح مبسّطة", all: "كل الشروح المبسّطة", take: 6, intro: "مفاهيم الاقتصاد من أولها: ما هي، وكيف تُقاس، ولماذا تهمّك." },
+  // «الفكر الاقتصادي», not «أفكار اقتصادية», which the owner read as business or project ideas (2026-11-20).
+  { id: "thought", kind: "idea", name: "الفكر الاقتصادي", all: "كل حلقات الفكر الاقتصادي", take: 3, intro: "كل أسبوع فكرة من أفكار علم الاقتصاد ومن قالها: كيف تعمل، وما الذي غيّرته، وأين يختلف الاقتصاديون فيها، مشروحة بخبر من أخبار الأسبوع." },
+  { id: "papers", kind: "paper", name: "قراءات في أوراق بحثية", all: "كل القراءات", take: 3, intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة: ماذا تسأل، وماذا تجد، وما حدودها." },
+] as const;
+
 /** The label a story carries in a meta line: its kind when the kind is a hub, else its section. */
 export function kindLabel(kind: string, section: string): string {
   if (kind === "explainer") return "شرح مبسّط";

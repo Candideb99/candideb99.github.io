@@ -1,0 +1,61 @@
+---
+/**
+ * «مدخل إلى الاقتصاد», set out by what a reader comes for (the owner, 2026-11-20: "https://khazendar.pages.dev/explainers/
+ * could be buggy since i am not sure it has the best design or organization. also do we need these types tags ... if
+ * redundant then remove it"). Until then it was a news section's page ([section]/[...page].astro): all three kinds in
+ * one stream, newest first, six pages by date, each piece's kind in small type at its foot, and above them a row
+ * «الأنواع» with each kind's count, the only place on the page that told the kinds apart. A lesson does not age like
+ * news: a reader looking for the week's economist (one piece among 61) or a paper reading paged through dates. Now the
+ * newest piece of any kind leads, and each kind follows as a block under its own name with its newest pieces and the
+ * link to all of them (EXPLAINER_KINDS, src/lib/sections.ts), so the block heads are the kinds and the row went, counts
+ * and all. The kinds' own pages keep every piece; the section has no pages by date.
+ */
+import Base from "@layouts/Base.astro";
+import StoryCard from "@components/StoryCard.astro";
+import { getArticles } from "@lib/articles";
+import { EXPLAINER_KINDS, getSection } from "@lib/sections";
+
+const section = getSection("explainers");
+const pieces = (await getArticles()).filter((a) => a.data.section === "explainers" && EXPLAINER_KINDS.some((k) => k.kind === a.data.kind));
+const lead = pieces[0];
+const blocks = EXPLAINER_KINDS.map((k) => ({ ...k, items: pieces.filter((a) => a !== lead && a.data.kind === k.kind).slice(0, k.take) })).filter((b) => b.items.length > 0);
+const printed = [lead, ...blocks.flatMap((b) => b.items)].filter(Boolean).map((a) => a.id);
+---
+
+<Base title={section.name} description={`${section.name} في خازندار: ${section.description}`} path="/explainers/" section="explainers" printed={printed}>
+  <section class="wrap block" data-section="explainers">
+    <header class="page-head">
+      <h1 class="page-title">{section.name}</h1>
+      <p class="page-intro">{section.description}</p>
+    </header>
+    {lead ? (
+      <div class="hub__lead">
+        <StoryCard article={lead} variant="lead" level={2} eager />
+      </div>
+    ) : (
+      <p class="hub__empty ui">لم تُنشر مواد في هذا القسم بعد.</p>
+    )}
+  </section>
+  {blocks.map((b) => (
+    <section class="wrap hub__kind" data-section="explainers" aria-labelledby={`kind-${b.id}`}>
+      <div class="section-head">
+        <h2 id={`kind-${b.id}`}><a href={`/explainers/kind/${b.id}/`}>{b.name}</a></h2>
+        <a class="more" href={`/explainers/kind/${b.id}/`}>{b.all}</a>
+      </div>
+      {/* Three columns whatever the count, so a kind with one piece (the weekly economist, at first) keeps a card's
+          measure instead of one line across the page. */}
+      <div class="cols cols--rows" style="--n:3">
+        {b.items.map((a) => (
+          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
+        ))}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .hub__lead { max-width: 56rem; }
+  .hub__empty { color: var(--ink-3); }
+  /* Air between the kinds, tight within each, as between the front's blocks. */
+  .hub__kind { padding-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+</style>

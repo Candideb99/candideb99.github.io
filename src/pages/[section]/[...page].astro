@@ -2,7 +2,7 @@
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { analysisDesk, analysisLabel, liveDesks } from "@lib/analysis";
+import { analysisLabel, liveDesks } from "@lib/analysis";
 import { menuTopics, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
 import { getArticles, getArticlesBySection, firstPictures } from "@lib/articles";
@@ -17,6 +17,9 @@ import { cardSizes } from "@lib/wikimedia";
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const routes = [];
   for (const section of sections) {
+    // «مدخل إلى الاقتصاد» has its own page, set out by kind (src/pages/explainers/index.astro, 2026-11-20), and no
+    // pages by date: its kinds' pages keep every piece.
+    if (section.id === "explainers") continue;
     const articles = await getArticlesBySection(section.id);
     routes.push(
       ...paginate(articles, {
@@ -53,23 +56,17 @@ const pics = firstPictures(first ? [lead, ...beside, ...rest] : rest);
 // A lead without a photograph runs across the page with the stories beside it as a ruled row under it.
 const textLead = first && lead && !lead.data.image && beside.length > 0;
 const title = first ? section.name : `${section.name} — صفحة ${page.currentPage}`;
-// The sub-topics we are writing about (menuTopics, 2026-10-19), with their counts; the hubs list their own divisions
-// the same way (the owner's check of the section pages, 2026-10-19: on a phone the analysis desks and the explainers'
-// two kinds were reachable only from a piece's label). «الأسواق في لمحة», six quote cards under the markets lead, went
-// the same day at his choice: the market strip above it is the site's one price line.
+// The sub-topics we are writing about (menuTopics, 2026-10-19); the analysis hub lists its desks the same way (the
+// owner's check of the section pages, 2026-10-19: on a phone the desks were reachable only from a piece's label, and the
+// phone menu lists sections only). No counts since 2026-11-20 (the owner, of the explainers' «الأنواع» row with its
+// counts: "do we need these types tags ... if redundant then remove it also check other website section for similar
+// redundant stuff"): a count is the archive's bookkeeping, as on the front's region block he cleared on 18 November;
+// the names are the way in. «الأسواق في لمحة», six quote cards under the markets lead, went on 2026-10-19 at his choice:
+// the market strip above it is the site's one price line.
 const everything = first ? await getArticles() : [];
 const topics = first && !HUB_SECTIONS.has(section.id) ? menuTopics(everything, section.id) : [];
-const divisions: { href: string; name: string; count: number }[] = !first
-  ? []
-  : section.id === "analysis"
-    ? liveDesks(everything).map((desk) => ({ href: `/analysis/desk/${desk.id}/`, name: desk.label, count: everything.filter((a) => analysisDesk(a, everything)?.id === desk.id).length }))
-    : section.id === "explainers"
-      ? [
-          { href: "/explainers/kind/concepts/", name: "شروح مبسّطة", count: everything.filter((a) => a.data.kind === "explainer").length },
-          { href: "/explainers/kind/thought/", name: "الفكر الاقتصادي", count: everything.filter((a) => a.data.kind === "idea").length },
-          { href: "/explainers/kind/papers/", name: "قراءات في أوراق بحثية", count: everything.filter((a) => a.data.kind === "paper").length },
-        ].filter((k) => k.count > 0)
-      : [];
+const divisions: { href: string; name: string }[] =
+  first && section.id === "analysis" ? liveDesks(everything).map((desk) => ({ href: `/analysis/desk/${desk.id}/`, name: desk.label })) : [];
 ---
 
 <Base title={title} description={`${section.name} في خازندار: ${section.description}`} path={page.url.current} section={section.id} printed={page.data.map((a) => a.id)}>
@@ -81,13 +78,13 @@ const divisions: { href: string; name: string; count: number }[] = !first
       {topics.length > 0 && (
         <p class="page-head__topics ui">
           <span class="page-head__topics-label">المواضيع:</span>
-          {topics.map((t) => <a href={topicHref(section.id, t.topic.id)}>{t.topic.name} <bdi>{t.count}</bdi></a>)}
+          {topics.map((t, i) => <>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={topicHref(section.id, t.topic.id)}>{t.topic.name}</a></>)}
         </p>
       )}
       {divisions.length > 0 && (
         <p class="page-head__topics ui">
-          <span class="page-head__topics-label">{section.id === "analysis" ? "المجالات:" : "الأنواع:"}</span>
-          {divisions.map((v) => <a href={v.href}>{v.name} <bdi>{v.count}</bdi></a>)}
+          <span class="page-head__topics-label">المجالات:</span>
+          {divisions.map((v, i) => <>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={v.href}>{v.name}</a></>)}
         </p>
       )}
     </header>

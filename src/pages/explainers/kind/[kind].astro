@@ -1,33 +1,27 @@
 ---
 /**
  * The kinds of مدخل إلى الاقتصاد on their own pages: the plain explainers of concepts, one economist's idea a week
- * («الفكر الاقتصادي», 2026-11-20), and the readings of open-access research papers.
+ * («الفكر الاقتصادي», 2026-11-20), and the readings of open-access research papers. Every piece of a kind is here; the
+ * section's page shows each kind's newest (EXPLAINER_KINDS, src/lib/sections.ts).
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { getArticles } from "@lib/articles";
-
-export const KINDS = {
-  concepts: { kind: "explainer", name: "شروح مبسّطة", intro: "مفاهيم الاقتصاد من أولها: ما هي، وكيف تُقاس، ولماذا تهمّك." },
-  // «الفكر الاقتصادي», not «أفكار اقتصادية», which the owner read as business or project ideas (2026-11-20).
-  thought: { kind: "idea", name: "الفكر الاقتصادي", intro: "كل أسبوع فكرة من أفكار علم الاقتصاد ومن قالها: كيف تعمل، وما الذي غيّرته، وأين يختلف الاقتصاديون فيها، مشروحة بخبر من أخبار الأسبوع." },
-  papers: { kind: "paper", name: "قراءات في أوراق بحثية", intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة: ماذا تسأل، وماذا تجد، وما حدودها." },
-} as const;
+import { EXPLAINER_KINDS } from "@lib/sections";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
-  return Object.entries(KINDS).map(([id, k]) => ({ params: { kind: id }, props: { id, ...k, items: articles.filter((a) => a.data.kind === k.kind) } }));
+  return EXPLAINER_KINDS.map((k) => ({ params: { kind: k.id }, props: { id: k.id, name: k.name, intro: k.intro, items: articles.filter((a) => a.data.kind === k.kind) } }));
 }
 
 interface Props {
   id: string;
-  kind: string;
   name: string;
   intro: string;
   items: Awaited<ReturnType<typeof getArticles>>;
 }
 const { id, name, intro, items } = Astro.props;
-const others = Object.entries(KINDS).filter(([k]) => k !== id);
+const others = EXPLAINER_KINDS.filter((k) => k.id !== id);
 const n = items.length;
 ---
 
@@ -37,17 +31,15 @@ const n = items.length;
       <p class="page-head__section ui"><a href="/explainers/">مدخل إلى الاقتصاد</a></p>
       <h1 class="page-title">{name}</h1>
       <p class="page-intro">{intro} {n === 0 && <span>لم تُنشر مواد من هذا النوع بعد.</span>}</p>
-      <p class="page-head__topics ui"><span class="page-head__topics-label">أيضاً:</span> {others.map(([k, o], i) => (<>{i > 0 && "، "}<a href={`/explainers/kind/${k}/`}>{o.name}</a></>))}</p>
+      {/* A dot of its own between the names: as a flex row's own item, a «، » had printed with a space before it. */}
+      <p class="page-head__topics ui"><span class="page-head__topics-label">أيضاً:</span> {others.map((o, i) => (<>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={`/explainers/kind/${o.id}/`}>{o.name}</a></>))}</p>
     </header>
     {n > 0 && (
       <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>
         {items.map((a) => (
-          <StoryCard article={a} variant="text" showSection showExcerpt />
+          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
         ))}
       </div>
     )}
   </section>
 </Base>
-
-<style>
-</style>

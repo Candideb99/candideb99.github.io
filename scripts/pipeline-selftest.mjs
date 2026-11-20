@@ -1915,9 +1915,18 @@ if (spawnSync("git", ["--version"]).status === 0) {
       readingFaults(`<p class="digest__text">${isolateNumbers("يتوقع الصندوق أن ينمو الناتج 5.4% في 2027 إذا انحسرت الحرب.")}</p>`).length,
       readingFaults(`<p class="worked__working"><bdi dir="ltr">(96.75 − 83) ÷ 83 × 100 = 16.6%</bdi></p>`).length,
       readingFaults(`<p class="worked__working">${isolateNumbers("(96.75 − 83) ÷ 83 × 100 = 16.6%")}</p>`).length,
+      // A chart table's value with its Arabic unit (2026-11-20): one left-to-right run read «مليار درهم 29.9».
+      readingFaults(`<td><bdi dir="ltr">29.9 مليار درهم</bdi></td>`).length,
+      readingFaults(`<td>${isolateNumbers("29.9 مليار درهم")}</td><bdi dir="ltr">0.4٪</bdi>`).length,
     ],
-    [1, 0, 1, 0],
+    [1, 0, 1, 0, 1, 0],
   );
+  // …and the chart's note, built in the reader's browser where no site check reads it, takes the values as the build
+  // isolated them, never inside a left-to-right run of its own.
+  {
+    const chartSource = readFileSync(path.join("src", "components", "Chart.astro"), "utf8");
+    check("the chart's note and table print a value isolated by the build, not as one left-to-right run", [/<bdi dir="ltr">' \+ ser\.values/.test(chartSource), /values: s\.values\.map\(\(v\) => isolateNumbers\(label\(v\)\)\)/.test(chartSource), /<td set:html=\{isolateNumbers\(label\(/.test(chartSource)], [false, true, true]);
+  }
   // The interactive parts (2026-11-16): a chart's note must match what can be pointed at, a chart of several series
   // needs a switch for each, and a figure card three figures and a story printed once on its page.
   const { interactiveFaults } = await import("./site-furniture.mjs");
