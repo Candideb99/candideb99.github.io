@@ -1,0 +1,742 @@
+{
+  "about": "The catalogue of «الفكر الاقتصادي» (kind idea): one economist's idea a week, chosen by the idea editor from the field with the fewest pieces that a recent story can peg (pipeline/lib/ideas.mjs, run.mjs runIdea). Every source is read by the newsroom's own reader (robots honoured) and is the only material the piece's facts about the idea may come from; a source that stops answering is skipped, and an idea whose sources give too little text is passed over. Hosts that refuse Anthropic by name (CEPR, ECLAC) or wall readers (the IMF, Britannica) are not used. `anchor` takes the passage around that phrase from a long text. The owner asked for it on 2026-11-20: a famous economist each week, his findings and their effects, across micro, macro, development, institutional and plural economics.",
+  "fields": {
+    "micro": "الاقتصاد الجزئي",
+    "macro": "الاقتصاد الكلي والسياسة النقدية",
+    "finance": "النقود والتمويل",
+    "trade": "التجارة الدولية",
+    "development": "اقتصاد التنمية والنمو",
+    "institutional": "الاقتصاد المؤسسي",
+    "behavioral": "الاقتصاد السلوكي",
+    "labor": "العمل والتوزيع",
+    "public": "المالية العامة والبيئة",
+    "schools": "المدارس والفكر الاقتصادي"
+  },
+  "ideas": [
+    {
+      "id": "akerlof-lemons",
+      "field": "micro",
+      "school": "neo-Keynesian microeconomics of information",
+      "economists": [{ "ar": "جورج أكرلوف", "en": "George Akerlof" }],
+      "year": 1970,
+      "work": "The Market for 'Lemons': Quality Uncertainty and the Market Mechanism",
+      "idea": "When sellers know more about quality than buyers, good goods leave the market and prices fall to the value of the bad ones (asymmetric information, adverse selection).",
+      "pegs": "used goods, insurance, bank lending and loan quality, IPO pricing and disclosure, opaque markets",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2001/popular-information/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Akerlof.html" },
+        { "url": "https://en.wikipedia.org/wiki/The_Market_for_Lemons" }
+      ]
+    },
+    {
+      "id": "nash-equilibrium",
+      "field": "micro",
+      "school": "game theory",
+      "economists": [{ "ar": "جون ناش", "en": "John Nash" }],
+      "year": 1950,
+      "work": "Equilibrium Points in n-Person Games",
+      "idea": "In a strategic situation each player's best choice depends on what the others choose; an equilibrium is where no one gains by changing course alone, which can leave everyone worse off than cooperation would (the prisoner's dilemma, cartels).",
+      "pegs": "OPEC+ output decisions and cheating on quotas, price wars, tariff retaliation, auctions",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1994/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/GameTheory.html" },
+        { "url": "https://en.wikipedia.org/wiki/Nash_equilibrium" }
+      ]
+    },
+    {
+      "id": "hotelling-rule",
+      "field": "micro",
+      "school": "resource economics",
+      "economists": [{ "ar": "هارولد هوتلينغ", "en": "Harold Hotelling" }],
+      "year": 1931,
+      "work": "The Economics of Exhaustible Resources",
+      "idea": "An owner of a finite resource such as oil keeps it in the ground unless its net price is expected to rise at the rate of interest; extraction is an investment decision between oil under the ground and money in the bank.",
+      "pegs": "Gulf oil output decisions, OPEC+ cuts, spare capacity, oil price expectations, interest rates and oil",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Hotelling%27s_rule" },
+        { "url": "https://en.wikipedia.org/wiki/Harold_Hotelling" }
+      ]
+    },
+    {
+      "id": "spence-signalling",
+      "field": "micro",
+      "school": "economics of information",
+      "economists": [{ "ar": "مايكل سبنس", "en": "Michael Spence" }],
+      "year": 1973,
+      "work": "Job Market Signaling",
+      "idea": "A party who knows more can prove it only by a costly action the others cannot afford to copy: a degree for a worker, a dividend or a share buyback for a company.",
+      "pegs": "dividends, share buybacks, credit ratings, company guidance, IPO lock-ups",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2001/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Signalling_(economics)" }
+      ]
+    },
+    {
+      "id": "keynes-demand",
+      "field": "macro",
+      "school": "Keynesian",
+      "economists": [{ "ar": "جون ماينارد كينز", "en": "John Maynard Keynes" }],
+      "year": 1936,
+      "work": "The General Theory of Employment, Interest and Money",
+      "idea": "Output and employment are set by total spending, which can stay too low for years; when households and firms spend less, government spending can fill the gap, and each unit spent can raise income by more than itself (the multiplier).",
+      "pegs": "government stimulus, budget spending cuts or increases, recessions, Gulf public spending",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Keynes.html" },
+        { "url": "https://www.econlib.org/library/Enc/KeynesianEconomics.html" },
+        { "url": "https://en.wikipedia.org/wiki/Fiscal_multiplier" }
+      ]
+    },
+    {
+      "id": "friedman-money",
+      "field": "macro",
+      "school": "monetarist",
+      "economists": [{ "ar": "ميلتون فريدمان", "en": "Milton Friedman" }],
+      "year": 1963,
+      "work": "A Monetary History of the United States (with Anna Schwartz); the quantity theory restated",
+      "idea": "Inflation is always and everywhere a monetary phenomenon: lasting price rises come from money growing faster than output, so it is the central bank that ends them.",
+      "pegs": "high inflation, money supply growth, central banks printing money, Egypt or Turkey inflation",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Friedman.html" },
+        { "url": "https://www.econlib.org/library/Enc/Monetarism.html" },
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1976/press-release/" }
+      ]
+    },
+    {
+      "id": "phillips-curve",
+      "field": "macro",
+      "school": "Keynesian against monetarist",
+      "economists": [{ "ar": "ويليام فيليبس", "en": "William Phillips" }, { "ar": "إدموند فيلبس", "en": "Edmund Phelps" }],
+      "year": 1958,
+      "work": "The Relation between Unemployment and the Rate of Change of Money Wage Rates (Phillips); Phelps's and Friedman's critique of 1967-68",
+      "idea": "Lower unemployment came with faster wage and price growth, but the trade-off holds only until people expect the inflation: in the long run there is no lasting gain in jobs from higher inflation.",
+      "pegs": "Fed decisions weighing jobs against inflation, labour market data, wage growth",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/PhillipsCurve.html" },
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2006/popular-information/" }
+      ]
+    },
+    {
+      "id": "taylor-rule",
+      "field": "macro",
+      "school": "New Keynesian monetary policy",
+      "economists": [{ "ar": "جون تايلور", "en": "John Taylor" }],
+      "year": 1993,
+      "work": "Discretion versus Policy Rules in Practice",
+      "idea": "A central bank's rate can be read as a rule: the neutral rate plus inflation, plus half the gap between inflation and its target, plus half the output gap; a rate far below the rule's means policy is loose.",
+      "pegs": "Fed, ECB or Arab central bank rate decisions, debates on whether rates are too high or low",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Taylor_rule" },
+        { "url": "https://en.wikipedia.org/wiki/John_B._Taylor" }
+      ]
+    },
+    {
+      "id": "kydland-prescott-credibility",
+      "field": "macro",
+      "school": "new classical",
+      "economists": [{ "ar": "فين كيدلاند", "en": "Finn Kydland" }, { "ar": "إدوارد بريسكوت", "en": "Edward Prescott" }],
+      "year": 1977,
+      "work": "Rules Rather than Discretion: The Inconsistency of Optimal Plans",
+      "idea": "A government that can always change course is tempted to inflate after people have set wages and prices, and people know it; so a central bank that is independent and bound to a target gets lower inflation at no cost in jobs.",
+      "pegs": "central bank independence, governors dismissed or pressured, Turkey's or Egypt's central bank, inflation targets",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2004/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Dynamic_inconsistency" }
+      ]
+    },
+    {
+      "id": "fisher-real-rates",
+      "field": "macro",
+      "school": "neoclassical monetary",
+      "economists": [{ "ar": "إرفينغ فيشر", "en": "Irving Fisher" }],
+      "year": 1930,
+      "work": "The Theory of Interest; The Debt-Deflation Theory of Great Depressions (1933)",
+      "idea": "The interest rate that matters is the real one, the nominal rate less expected inflation; and when prices fall, debts grow heavier in real terms, so falling prices can deepen a slump.",
+      "pegs": "bond yields against inflation, negative real rates, savers losing to inflation, deflation risk in China",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Fisher.html" },
+        { "url": "https://en.wikipedia.org/wiki/Fisher_equation" },
+        { "url": "https://en.wikipedia.org/wiki/Debt_deflation" }
+      ]
+    },
+    {
+      "id": "mundell-trilemma",
+      "field": "finance",
+      "school": "open-economy macroeconomics",
+      "economists": [{ "ar": "روبرت مونديل", "en": "Robert Mundell" }],
+      "year": 1963,
+      "work": "Capital Mobility and Stabilization Policy under Fixed and Flexible Exchange Rates (with Marcus Fleming)",
+      "idea": "A country cannot have a fixed exchange rate, free movement of capital and its own interest-rate policy all at once; it must give up one of the three.",
+      "pegs": "Gulf central banks following the Fed, currency pegs, Egypt's float, capital controls",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1999/press-release/" },
+        { "url": "https://en.wikipedia.org/wiki/Impossible_trinity" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Mundell.html" }
+      ]
+    },
+    {
+      "id": "fama-shiller-markets",
+      "field": "finance",
+      "school": "efficient markets against behavioural finance",
+      "economists": [{ "ar": "يوجين فاما", "en": "Eugene Fama" }, { "ar": "روبرت شيلر", "en": "Robert Shiller" }],
+      "year": 1970,
+      "work": "Efficient Capital Markets (Fama, 1970); Do Stock Prices Move Too Much? (Shiller, 1981)",
+      "idea": "Prices quickly take in all public news, so no one beats the market for long (Fama); yet over years prices swing far more than the dividends behind them, so they can be predicted and bubbles form (Shiller). Both won the same prize.",
+      "pegs": "stock market rallies and crashes, bubbles, AI stocks, index funds, Saudi or Egyptian bourse swings",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2013/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Efficient-market_hypothesis" }
+      ]
+    },
+    {
+      "id": "diamond-dybvig-runs",
+      "field": "finance",
+      "school": "banking theory",
+      "economists": [{ "ar": "دوغلاس دايموند", "en": "Douglas Diamond" }, { "ar": "فيليب ديبفيغ", "en": "Philip Dybvig" }, { "ar": "بن برنانكي", "en": "Ben Bernanke" }],
+      "year": 1983,
+      "work": "Bank Runs, Deposit Insurance, and Liquidity",
+      "idea": "Banks turn short deposits into long loans, which makes them useful and fragile at once: if depositors fear others will withdraw, all rush to withdraw and even a sound bank fails; deposit insurance and a lender of last resort stop the run.",
+      "pegs": "bank deposit flight, Lebanon's banks, deposit guarantees, central bank liquidity support, bank failures",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2022/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Diamond%E2%80%93Dybvig_model" }
+      ]
+    },
+    {
+      "id": "modigliani-miller",
+      "field": "finance",
+      "school": "corporate finance",
+      "economists": [{ "ar": "فرانكو موديلياني", "en": "Franco Modigliani" }, { "ar": "ميرتون ميلر", "en": "Merton Miller" }],
+      "year": 1958,
+      "work": "The Cost of Capital, Corporation Finance and the Theory of Investment",
+      "idea": "In a world without taxes and frictions a company's value does not depend on whether it is financed by debt or shares; so the real reasons for a firm's choices are taxes, bankruptcy costs and what the choice signals.",
+      "pegs": "companies issuing bonds or sukuk, rights issues, share buybacks, leverage, dividend policy",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Modigliani%E2%80%93Miller_theorem" },
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1990/press-release/" }
+      ]
+    },
+    {
+      "id": "minsky-instability",
+      "field": "finance",
+      "school": "post-Keynesian",
+      "economists": [{ "ar": "هايمان مينسكي", "en": "Hyman Minsky" }],
+      "year": 1986,
+      "work": "Stabilizing an Unstable Economy; The Financial Instability Hypothesis (1992)",
+      "idea": "Stability breeds instability: calm years lead borrowers and lenders to take on more debt, from loans they can repay to loans that need rising prices, until a small shock turns into a crash.",
+      "pegs": "debt build-ups, credit booms, market crashes, leveraged investors, property bubbles",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Hyman_Minsky" },
+        { "url": "https://en.wikipedia.org/wiki/Financial_instability_hypothesis" }
+      ]
+    },
+    {
+      "id": "maqrizi-money",
+      "field": "finance",
+      "school": "Arab-Islamic economic thought",
+      "economists": [{ "ar": "تقي الدين المقريزي", "en": "Taqi al-Din al-Maqrizi" }],
+      "year": 1405,
+      "work": "إغاثة الأمة بكشف الغمة",
+      "idea": "In Mamluk Egypt's famines and price crises, al-Maqrizi blamed less the harvests than bad government and the flooding of the market with copper coins in place of gold and silver: debased money, he argued, is what made prices soar.",
+      "pegs": "Egyptian pound, inflation in Egypt, money printing, currency debasement, gold as savings",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Al-Maqrizi" },
+        { "url": "https://ar.wikipedia.org/wiki/%D8%AA%D9%82%D9%8A_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D9%85%D9%82%D8%B1%D9%8A%D8%B2%D9%8A" },
+        { "url": "https://ar.wikipedia.org/wiki/%D8%A5%D8%BA%D8%A7%D8%AB%D8%A9_%D8%A7%D9%84%D8%A3%D9%85%D8%A9_%D8%A8%D9%83%D8%B4%D9%81_%D8%A7%D9%84%D8%BA%D9%85%D8%A9" }
+      ]
+    },
+    {
+      "id": "ricardo-comparative-advantage",
+      "field": "trade",
+      "school": "classical",
+      "economists": [{ "ar": "ديفيد ريكاردو", "en": "David Ricardo" }],
+      "year": 1817,
+      "work": "On the Principles of Political Economy and Taxation, chapter 7",
+      "idea": "Two countries gain from trade even when one makes everything more cheaply, if each specialises in what it gives up least to make (comparative, not absolute, advantage).",
+      "pegs": "trade agreements, tariffs, Gulf trade deals, export diversification",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Ricardo.html" },
+        { "url": "https://en.wikipedia.org/wiki/Comparative_advantage" }
+      ]
+    },
+    {
+      "id": "prebisch-singer",
+      "field": "trade",
+      "school": "structuralist, dependency",
+      "economists": [{ "ar": "راؤول بريبيش", "en": "Raúl Prebisch" }, { "ar": "هانز سنغر", "en": "Hans Singer" }],
+      "year": 1950,
+      "work": "The Economic Development of Latin America and its Principal Problems (Prebisch); The Distribution of Gains between Investing and Borrowing Countries (Singer)",
+      "idea": "Over the long run the prices of raw materials fall against the prices of manufactured goods, so countries that export commodities must sell ever more to buy the same imports; hence their case for industrialising.",
+      "pegs": "commodity exporters, oil or cotton prices, Gulf diversification, African commodity economies, terms of trade",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Prebisch%E2%80%93Singer_hypothesis" },
+        { "url": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Prebisch" }
+      ]
+    },
+    {
+      "id": "krugman-new-trade",
+      "field": "trade",
+      "school": "new trade theory",
+      "economists": [{ "ar": "بول كروغمان", "en": "Paul Krugman" }],
+      "year": 1979,
+      "work": "Increasing Returns, Monopolistic Competition, and International Trade",
+      "idea": "Much trade is between similar countries in similar goods because making more of one thing lowers its cost; industries cluster where they start, so where a car or chip industry settles is partly history and policy.",
+      "pegs": "industrial zones, car or chip factories, Gulf industrial strategy, China's exports of the same goods others make",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2008/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/New_trade_theory" }
+      ]
+    },
+    {
+      "id": "stolper-samuelson",
+      "field": "trade",
+      "school": "neoclassical trade",
+      "economists": [{ "ar": "وولفغانغ ستولبر", "en": "Wolfgang Stolper" }, { "ar": "بول سامويلسون", "en": "Paul Samuelson" }],
+      "year": 1941,
+      "work": "Protection and Real Wages",
+      "idea": "Trade raises a country's income as a whole but has losers inside it: a tariff raises the pay of the factor used most in the protected industry and lowers the other's, which is why trade fights are fights between groups at home.",
+      "pegs": "tariffs on Chinese goods, protection of local industry, who pays for a tariff, factory workers and trade",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Stolper%E2%80%93Samuelson_theorem" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Samuelson.html" }
+      ]
+    },
+    {
+      "id": "dutch-disease",
+      "field": "trade",
+      "school": "open-economy development",
+      "economists": [{ "ar": "ماكس كوردن", "en": "W. Max Corden" }, { "ar": "بيتر نيري", "en": "J. Peter Neary" }],
+      "year": 1982,
+      "work": "Booming Sector and De-Industrialisation in a Small Open Economy",
+      "idea": "A resource boom raises the currency's real value and pulls workers and capital to the booming sector and to services, so a country's other exporters and factories shrink: wealth from gas or oil can hollow out industry.",
+      "pegs": "oil windfalls, gas discoveries, Gulf or Egypt exports outside oil, currency strength after a boom",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Dutch_disease" }
+      ]
+    },
+    {
+      "id": "lewis-dual-economy",
+      "field": "development",
+      "school": "classical development economics",
+      "economists": [{ "ar": "آرثر لويس", "en": "W. Arthur Lewis" }],
+      "year": 1954,
+      "work": "Economic Development with Unlimited Supplies of Labour",
+      "idea": "A poor economy has a large traditional sector where extra workers add little; a modern sector can hire them at a near-constant wage and grow on its profits, until the surplus labour runs out and wages start to rise (the turning point).",
+      "pegs": "Egypt's informal economy, rural migration, factory jobs, China's wages, labour-intensive industry",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1979/press-release/" },
+        { "url": "https://en.wikipedia.org/wiki/Dual-sector_model" }
+      ]
+    },
+    {
+      "id": "sen-entitlements",
+      "field": "development",
+      "school": "capability approach",
+      "economists": [{ "ar": "أمارتيا سن", "en": "Amartya Sen" }],
+      "year": 1981,
+      "work": "Poverty and Famines: An Essay on Entitlement and Deprivation",
+      "idea": "Famines often happen with enough food in the country: people starve when their wages or what they can sell no longer buy food, so a famine is a collapse of the means to buy, not only of supply.",
+      "pegs": "food prices and subsidies, bread prices in Egypt, wheat imports, food insecurity, cash support programmes",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1998/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Sen.html" },
+        { "url": "https://en.wikipedia.org/wiki/Amartya_Sen", "anchor": "Poverty and Famines" }
+      ]
+    },
+    {
+      "id": "banerjee-duflo-kremer-trials",
+      "field": "development",
+      "school": "experimental development economics",
+      "economists": [{ "ar": "أبهيجيت بانيرجي", "en": "Abhijit Banerjee" }, { "ar": "إستير دوفلو", "en": "Esther Duflo", "f": true }, { "ar": "مايكل كريمر", "en": "Michael Kremer" }],
+      "year": 2019,
+      "work": "Field experiments on fighting poverty",
+      "idea": "Big questions about poverty can be broken into small ones answered by randomised trials, as medicine tests a drug: which programme keeps children in school or improves health, measured against a group that did not get it.",
+      "pegs": "cash transfer programmes, subsidies reform, social protection in Egypt or Morocco, World Bank programmes",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2019/popular-information/" }
+      ]
+    },
+    {
+      "id": "solow-growth",
+      "field": "development",
+      "school": "neoclassical growth",
+      "economists": [{ "ar": "روبرت سولو", "en": "Robert Solow" }],
+      "year": 1956,
+      "work": "A Contribution to the Theory of Economic Growth",
+      "idea": "More machines raise output, but each extra machine adds less; so lasting growth in income per person comes from better technology, not from investment alone, and poorer countries can grow faster as they catch up.",
+      "pegs": "GDP growth figures, investment-led growth, Gulf megaprojects, productivity",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1987/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Solow.html" },
+        { "url": "https://en.wikipedia.org/wiki/Solow%E2%80%93Swan_model" }
+      ]
+    },
+    {
+      "id": "romer-ideas",
+      "field": "development",
+      "school": "endogenous growth",
+      "economists": [{ "ar": "بول رومر", "en": "Paul Romer" }],
+      "year": 1990,
+      "work": "Endogenous Technological Change",
+      "idea": "Ideas, unlike machines, can be used by everyone at once, so an economy that invests in research and knowledge can keep growing; markets make too few ideas on their own, which justifies support for research.",
+      "pegs": "AI investment, research and development spending, technology funds, Gulf knowledge-economy plans",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2018/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Endogenous_growth_theory" }
+      ]
+    },
+    {
+      "id": "rentier-state",
+      "field": "development",
+      "school": "political economy",
+      "economists": [{ "ar": "حسين مهدوي", "en": "Hossein Mahdavy" }, { "ar": "حازم الببلاوي", "en": "Hazem Beblawi" }],
+      "year": 1970,
+      "work": "The Patterns and Problems of Economic Development in Rentier States (Mahdavy, 1970); The Rentier State (Beblawi and Luciani, 1987)",
+      "idea": "A state that lives on rent from abroad, such as oil revenue, does not need to tax its citizens and so spends instead of bargaining with them; the economy organises itself around distributing the rent rather than producing.",
+      "pegs": "Gulf budgets and oil revenue, VAT or income taxes in the Gulf, public sector jobs, diversification plans",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Rentier_state" },
+        { "url": "https://en.wikipedia.org/wiki/Hazem_el-Beblawi" },
+        { "url": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D8%B2%D9%85_%D8%A7%D9%84%D8%A8%D8%A8%D9%84%D8%A7%D9%88%D9%8A" }
+      ]
+    },
+    {
+      "id": "coase-transaction-costs",
+      "field": "institutional",
+      "school": "new institutional economics",
+      "economists": [{ "ar": "رونالد كوس", "en": "Ronald Coase" }],
+      "year": 1937,
+      "work": "The Nature of the Firm (1937); The Problem of Social Cost (1960)",
+      "idea": "Using the market costs something (finding partners, bargaining, enforcing contracts), so firms exist to do inside what would cost more to buy outside; where those costs are small, people bargain their way to an efficient outcome whoever holds the rights.",
+      "pegs": "mergers and acquisitions, companies buying suppliers, outsourcing, privatisation",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1991/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Coase.html" },
+        { "url": "https://en.wikipedia.org/wiki/Theory_of_the_firm" }
+      ]
+    },
+    {
+      "id": "north-institutions",
+      "field": "institutional",
+      "school": "new institutional economics, economic history",
+      "economists": [{ "ar": "دوغلاس نورث", "en": "Douglass North" }],
+      "year": 1990,
+      "work": "Institutions, Institutional Change and Economic Performance",
+      "idea": "Institutions are the rules of the game, formal laws and informal customs, and they decide whether people invest and trade; they change slowly and depend on the path history took, which is why rich and poor countries stay apart.",
+      "pegs": "economic reforms, investment laws, property rights, business climate reforms in Egypt or the Gulf",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1993/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/North.html" }
+      ]
+    },
+    {
+      "id": "acemoglu-johnson-robinson",
+      "field": "institutional",
+      "school": "institutional political economy",
+      "economists": [{ "ar": "دارون عجم أوغلو", "en": "Daron Acemoglu" }, { "ar": "سايمون جونسون", "en": "Simon Johnson" }, { "ar": "جيمس روبنسون", "en": "James Robinson" }],
+      "year": 2001,
+      "work": "The Colonial Origins of Comparative Development",
+      "idea": "Countries differ in wealth mostly because of their institutions: inclusive ones that protect property and spread opportunity, or extractive ones that serve a few; colonial history planted both kinds, and they last.",
+      "pegs": "governance reforms, investment climate, economic reforms tied to IMF programmes, why some countries grow",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2024/popular-information/" }
+      ]
+    },
+    {
+      "id": "ostrom-commons",
+      "field": "institutional",
+      "school": "Bloomington school",
+      "economists": [{ "ar": "إلينور أوستروم", "en": "Elinor Ostrom", "f": true }],
+      "year": 1990,
+      "work": "Governing the Commons",
+      "idea": "A shared resource such as a fishery, pasture or water source is not doomed to be overused, nor must it be privatised or run by the state: its users often manage it well themselves under rules they make and enforce.",
+      "pegs": "Nile water, fisheries, groundwater, shared gas fields, climate cooperation",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2009/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Elinor_Ostrom", "anchor": "Governing the Commons" }
+      ]
+    },
+    {
+      "id": "veblen-conspicuous",
+      "field": "institutional",
+      "school": "original institutionalism",
+      "economists": [{ "ar": "ثورستين فيبلن", "en": "Thorstein Veblen" }],
+      "year": 1899,
+      "work": "The Theory of the Leisure Class",
+      "idea": "Some goods are bought to show status, so their demand can rise with their price; consumption is social display, not only the satisfaction of needs.",
+      "pegs": "luxury goods sales, gold jewellery demand, premium brands, luxury real estate",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Veblen.html" },
+        { "url": "https://en.wikipedia.org/wiki/Conspicuous_consumption" }
+      ]
+    },
+    {
+      "id": "polanyi-embedded",
+      "field": "institutional",
+      "school": "economic sociology, heterodox",
+      "economists": [{ "ar": "كارل بولاني", "en": "Karl Polanyi" }],
+      "year": 1944,
+      "work": "The Great Transformation",
+      "idea": "Markets were always embedded in society; when land, labour and money are treated as pure commodities, society pushes back with protection (the double movement), which explains waves of regulation and protectionism.",
+      "pegs": "protectionism, backlash against markets, labour protections, price controls",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/The_Great_Transformation_(book)" },
+        { "url": "https://en.wikipedia.org/wiki/Karl_Polanyi" }
+      ]
+    },
+    {
+      "id": "kahneman-tversky-prospect",
+      "field": "behavioral",
+      "school": "behavioural economics",
+      "economists": [{ "ar": "دانيال كانيمان", "en": "Daniel Kahneman" }, { "ar": "عاموس تفيرسكي", "en": "Amos Tversky" }],
+      "year": 1979,
+      "work": "Prospect Theory: An Analysis of Decision under Risk",
+      "idea": "People weigh losses more than equal gains and judge outcomes against a reference point, so they sell winners too early, hold losers too long and take risks to avoid a sure loss.",
+      "pegs": "investors panic-selling, retail investors in Gulf or Egyptian bourses, gold buying in fear",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2002/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Prospect_theory" }
+      ]
+    },
+    {
+      "id": "thaler-nudges",
+      "field": "behavioral",
+      "school": "behavioural economics",
+      "economists": [{ "ar": "ريتشارد ثالر", "en": "Richard Thaler" }],
+      "year": 2008,
+      "work": "Mental accounting (1985); Nudge (with Cass Sunstein, 2008)",
+      "idea": "People keep money in mental accounts and let defaults decide for them; how a choice is framed changes what they choose, so a well-set default (automatic enrolment in savings) can do more than a subsidy.",
+      "pegs": "pension reforms, savings schemes, subsidy reforms, consumer behaviour",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2017/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Mental_accounting" }
+      ]
+    },
+    {
+      "id": "simon-bounded-rationality",
+      "field": "behavioral",
+      "school": "Carnegie school",
+      "economists": [{ "ar": "هربرت سايمون", "en": "Herbert Simon" }],
+      "year": 1955,
+      "work": "A Behavioral Model of Rational Choice",
+      "idea": "People and firms cannot compute the best choice among all options; they search until they find one good enough (satisficing), which explains rules of thumb in companies and governments.",
+      "pegs": "company decision-making, rules of thumb in policy, managers' targets",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1978/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Simon.html" },
+        { "url": "https://en.wikipedia.org/wiki/Bounded_rationality" }
+      ]
+    },
+    {
+      "id": "goldin-women-work",
+      "field": "labor",
+      "school": "economic history, labour economics",
+      "economists": [{ "ar": "كلوديا غولدين", "en": "Claudia Goldin", "f": true }],
+      "year": 1990,
+      "work": "Understanding the Gender Gap; Career and Family (2021)",
+      "idea": "Women's work did not rise steadily with growth: it fell as economies industrialised and rose again with services and education (a U shape); today's pay gap comes mostly from the cost of children to careers, not from different pay for the same job.",
+      "pegs": "women's labour participation in Saudi Arabia or Egypt, Vision 2030 jobs data, pay gaps",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2023/popular-information/" }
+      ]
+    },
+    {
+      "id": "card-krueger-minimum-wage",
+      "field": "labor",
+      "school": "empirical labour economics, natural experiments",
+      "economists": [{ "ar": "ديفيد كارد", "en": "David Card" }, { "ar": "آلان كروغر", "en": "Alan Krueger" }],
+      "year": 1994,
+      "work": "Minimum Wages and Employment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania",
+      "idea": "Comparing fast-food restaurants on both sides of a state border, a higher minimum wage did not cut jobs as the textbook predicted; natural experiments can answer such questions where laboratories cannot.",
+      "pegs": "minimum wage increases in Egypt or elsewhere, labour laws, wage policy",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2021/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Minimum_wage" }
+      ]
+    },
+    {
+      "id": "becker-human-capital",
+      "field": "labor",
+      "school": "Chicago school",
+      "economists": [{ "ar": "غاري بيكر", "en": "Gary Becker" }],
+      "year": 1964,
+      "work": "Human Capital",
+      "idea": "Education and training are investments: people give up income now for higher pay later, so schooling can be weighed by its return like a machine or a bond.",
+      "pegs": "education spending, skills programmes, youth unemployment, graduates' wages",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1992/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/HumanCapital.html" }
+      ]
+    },
+    {
+      "id": "kuznets-inequality",
+      "field": "labor",
+      "school": "empirical growth",
+      "economists": [{ "ar": "سايمون كوزنتس", "en": "Simon Kuznets" }],
+      "year": 1955,
+      "work": "Economic Growth and Income Inequality",
+      "idea": "Kuznets built the national accounts behind GDP and warned it does not measure welfare; he also suggested inequality first rises then falls as a country industrialises, a curve later evidence has disputed.",
+      "pegs": "GDP releases and what they miss, inequality data, growth with or without jobs",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Kuznets_curve" },
+        { "url": "https://en.wikipedia.org/wiki/Simon_Kuznets" }
+      ]
+    },
+    {
+      "id": "search-unemployment",
+      "field": "labor",
+      "school": "search and matching",
+      "economists": [{ "ar": "بيتر دايموند", "en": "Peter Diamond" }, { "ar": "ديل مورتنسن", "en": "Dale Mortensen" }, { "ar": "كريستوفر بيساريدس", "en": "Christopher Pissarides" }],
+      "year": 1985,
+      "work": "Search and matching models of the labour market",
+      "idea": "Jobs and workers take time and effort to find each other, so vacancies and unemployment exist side by side; benefits, regulations and matching services change how long people stay unemployed.",
+      "pegs": "unemployment figures, job vacancies, US payrolls, Saudisation and job matching",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2010/popular-information/" }
+      ]
+    },
+    {
+      "id": "ibn-khaldun-taxes",
+      "field": "public",
+      "school": "Arab-Islamic economic thought",
+      "economists": [{ "ar": "ابن خلدون", "en": "Ibn Khaldun" }],
+      "year": 1377,
+      "work": "المقدمة",
+      "idea": "At the start of a dynasty taxes are low and yield much; as rulers raise rates to pay for luxury, people work and trade less and the revenue falls: high rates can shrink what the treasury collects (an idea Arthur Laffer credited to him).",
+      "pegs": "tax increases or cuts, VAT in the Gulf, Egypt's tax revenue, budget deficits",
+      "sources": [
+        { "url": "https://en.wikipedia.org/wiki/Laffer_curve", "anchor": "Ibn Khaldun" },
+        { "url": "https://en.wikipedia.org/wiki/Ibn_Khaldun", "anchor": "economic" },
+        { "url": "https://ar.wikisource.org/wiki/%D9%85%D9%82%D8%AF%D9%85%D8%A9_%D8%A7%D8%A8%D9%86_%D8%AE%D9%84%D8%AF%D9%88%D9%86_-_%D8%A7%D9%84%D8%AC%D8%B2%D8%A1_%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB", "anchor": "في الجباية وسبب قلتها" }
+      ]
+    },
+    {
+      "id": "pigou-externalities",
+      "field": "public",
+      "school": "welfare economics",
+      "economists": [{ "ar": "آرثر بيغو", "en": "Arthur Pigou" }],
+      "year": 1920,
+      "work": "The Economics of Welfare",
+      "idea": "When a buyer or seller does not pay the full cost of what they do (pollution, congestion, harm to health), the market makes too much of it; a tax equal to that cost corrects it.",
+      "pegs": "excise taxes on sugary drinks or tobacco in the Gulf, carbon taxes, fuel taxes, pollution",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Pigou.html" },
+        { "url": "https://www.econlib.org/library/Enc/Externalities.html" },
+        { "url": "https://en.wikipedia.org/wiki/Pigouvian_tax" }
+      ]
+    },
+    {
+      "id": "buchanan-public-choice",
+      "field": "public",
+      "school": "public choice, Virginia school",
+      "economists": [{ "ar": "جيمس بيوكانن", "en": "James Buchanan" }],
+      "year": 1962,
+      "work": "The Calculus of Consent (with Gordon Tullock)",
+      "idea": "Politicians and officials pursue their own interests as people do in markets, so governments fail as markets do: spending that serves organised groups grows, and rules on budgets matter more than good intentions.",
+      "pegs": "budget deficits, fiscal rules, subsidies that are hard to remove, debt ceilings",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1986/press-release/" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Buchanan.html" },
+        { "url": "https://www.econlib.org/library/Enc/PublicChoice.html" }
+      ]
+    },
+    {
+      "id": "samuelson-public-goods",
+      "field": "public",
+      "school": "neoclassical public finance",
+      "economists": [{ "ar": "بول سامويلسون", "en": "Paul Samuelson" }],
+      "year": 1954,
+      "work": "The Pure Theory of Public Expenditure",
+      "idea": "Some goods, such as defence, lighthouses or basic research, serve everyone at once and no one can be kept from them, so private markets supply too little of them and the state pays through taxes.",
+      "pegs": "infrastructure spending, public investment, research funding, flood defences",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/PublicGoods.html" },
+        { "url": "https://en.wikipedia.org/wiki/Public_good_(economics)" }
+      ]
+    },
+    {
+      "id": "nordhaus-climate",
+      "field": "public",
+      "school": "environmental economics",
+      "economists": [{ "ar": "ويليام نوردهاوس", "en": "William Nordhaus" }],
+      "year": 1992,
+      "work": "The DICE model of climate and the economy",
+      "idea": "Climate change is a cost that emitters impose on everyone; models joining the climate and the economy can price it, and a carbon price that rises over time is the cheapest way to cut emissions.",
+      "pegs": "carbon prices, climate summits, oil demand forecasts, EU carbon border tax, Gulf energy transition",
+      "sources": [
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/2018/popular-information/" },
+        { "url": "https://en.wikipedia.org/wiki/Carbon_price" }
+      ]
+    },
+    {
+      "id": "smith-division-of-labour",
+      "field": "schools",
+      "school": "classical",
+      "economists": [{ "ar": "آدم سميث", "en": "Adam Smith" }],
+      "year": 1776,
+      "work": "An Inquiry into the Nature and Causes of the Wealth of Nations",
+      "idea": "Wealth grows from the division of labour, which the size of the market limits; people serve one another by pursuing their own interest through exchange, though Smith also warned of merchants conspiring against the public.",
+      "pegs": "productivity, market size, monopolies and cartels, competition rules",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Smith.html" },
+        { "url": "https://plato.stanford.edu/entries/smith-moral-political/", "anchor": "Wealth of Nations" }
+      ]
+    },
+    {
+      "id": "marx-capital",
+      "field": "schools",
+      "school": "Marxian",
+      "economists": [{ "ar": "كارل ماركس", "en": "Karl Marx" }],
+      "year": 1867,
+      "work": "Capital, Volume I",
+      "idea": "Profit comes from the gap between what workers produce and what they are paid; competition drives firms to replace workers with machines, which Marx argued lowers the rate of profit and makes crises part of capitalism.",
+      "pegs": "automation and jobs, AI replacing workers, profit shares, labour disputes",
+      "sources": [
+        { "url": "https://plato.stanford.edu/entries/marx/", "anchor": "Capital" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Marx.html" }
+      ]
+    },
+    {
+      "id": "hayek-knowledge",
+      "field": "schools",
+      "school": "Austrian",
+      "economists": [{ "ar": "فريدريش هايك", "en": "Friedrich Hayek" }],
+      "year": 1945,
+      "work": "The Use of Knowledge in Society",
+      "idea": "The knowledge needed to run an economy is scattered among millions of people; prices gather it and tell everyone what is scarce, which no planner can do, so a price fixed by decree hides the signal.",
+      "pegs": "price controls, fuel price setting in Egypt, subsidies, central planning, exchange rate controls",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Essays/hykKnw.html" },
+        { "url": "https://www.econlib.org/library/Enc/bios/Hayek.html" },
+        { "url": "https://www.nobelprize.org/prizes/economic-sciences/1974/press-release/" }
+      ]
+    },
+    {
+      "id": "schumpeter-creative-destruction",
+      "field": "schools",
+      "school": "Schumpeterian, evolutionary",
+      "economists": [{ "ar": "جوزيف شومبيتر", "en": "Joseph Schumpeter" }],
+      "year": 1942,
+      "work": "Capitalism, Socialism and Democracy",
+      "idea": "Capitalism grows by creative destruction: entrepreneurs bring new products and methods that ruin old firms and jobs, and that churn, not steady competition on price, is the engine of growth.",
+      "pegs": "AI disrupting industries, startups and old firms, electric cars against carmakers, bankruptcies",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Enc/bios/Schumpeter.html" },
+        { "url": "https://www.econlib.org/library/Enc/CreativeDestruction.html" }
+      ]
+    },
+    {
+      "id": "bastiat-seen-unseen",
+      "field": "schools",
+      "school": "French liberal school",
+      "economists": [{ "ar": "فريدريك باستيا", "en": "Frédéric Bastiat" }],
+      "year": 1850,
+      "work": "Ce qu'on voit et ce qu'on ne voit pas (What Is Seen and What Is Not Seen)",
+      "idea": "A policy's visible effects are counted and its unseen ones forgotten: the glazier paid to fix a broken window is seen, the shoes the owner would have bought are not (the broken-window fallacy).",
+      "pegs": "reconstruction spending after war or disaster, subsidies, job-creation claims of megaprojects",
+      "sources": [
+        { "url": "https://www.econlib.org/library/Bastiat/basEss1.html" },
+        { "url": "https://en.wikipedia.org/wiki/Parable_of_the_broken_window" }
+      ]
+    }
+  ]
+}

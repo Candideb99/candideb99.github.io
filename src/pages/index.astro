@@ -46,9 +46,12 @@ place(cover);
 // «في العمق» (the weekly in-depth piece, 2026-09-24) takes the research reading's place for its first three
 // days: the column is three readings wide by design (three columns on a tablet).
 const freshFeature = articles.find((a) => a.data.kind === "feature" && Date.now() - Date.parse(a.data.publishedAt) < 3 * 864e5);
+// The week's idea («الفكر الاقتصادي», 2026-11-20) takes the explainer's place for its first two days, as «في العمق» takes the
+// paper's: the explainer comes daily, the idea once a week.
+const freshIdea = articles.find((a) => a.data.kind === "idea" && Date.now() - Date.parse(a.data.publishedAt) < 2 * 864e5);
 const readings = [
   ...articles.filter((a) => a.data.kind === "weekly" || a.data.kind === "analysis").slice(0, 1),
-  ...articles.filter((a) => a.data.kind === "explainer").slice(0, 1),
+  ...(freshIdea ? [freshIdea] : articles.filter((a) => a.data.kind === "explainer").slice(0, 1)),
   ...(freshFeature ? [freshFeature] : articles.filter((a) => a.data.kind === "paper").slice(0, 1)),
 ];
 place(readings);
@@ -105,7 +108,7 @@ const sameFigure = (a: { value: string; label?: string }, b: { value: string; la
 // ended 400px above the centre column at 1366px (measured the day the band was built).
 const goodFact = (f: { label?: string; value: string }) => figureScore(f.value) >= 0 && (f.label ?? "").length > 0 && (f.label ?? "").length <= 48 && !isMarketQuote(`${f.label ?? ""} ${f.value}`);
 const cards = unplaced(articles)
-  .filter((a) => a.data.kind !== "explainer" && citable(a))
+  .filter((a) => a.data.kind !== "explainer" && a.data.kind !== "idea" && citable(a))
   .map((a) => {
     const facts = a.data.keyFacts.filter(goodFact).filter((f, i, all) => all.findIndex((g) => sameFigure(g, f)) === i);
     const top = new Set([...facts].sort((x, y) => figureScore(y.value) - figureScore(x.value)).slice(0, 3));
@@ -116,7 +119,7 @@ const cards = unplaced(articles)
 if (cards.length < 2) cards.length = 0;
 place(cards.map((c) => c.article));
 const figures = unplaced(articles)
-  .filter((a) => a.data.kind !== "explainer" && citable(a))
+  .filter((a) => a.data.kind !== "explainer" && a.data.kind !== "idea" && citable(a))
   .slice(0, 8)
   .flatMap((a) => {
     const best = [...a.data.keyFacts]
@@ -199,7 +202,7 @@ const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
   { id: "explainers", kind: "explainer", more: "كل المواد" },
 ]
-  .map((h) => ({ ...h, section: getSection(h.id), items: unplaced(articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && a.data.kind === "paper") || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature")))).slice(0, 4) }))
+  .map((h) => ({ ...h, section: getSection(h.id), items: unplaced(articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && (a.data.kind === "paper" || a.data.kind === "idea")) || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature")))).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
 
 // A picture is printed once per page even when two stories share it.

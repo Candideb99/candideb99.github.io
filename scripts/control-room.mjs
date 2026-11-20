@@ -53,6 +53,7 @@ const SCHEDULE = [
   { what: "News stories", when: "every 3 hours, at :23 (GitHub keeps about four a day)", utc: null },
   { what: "Morning fill-in: one more news round when the morning has a gap (news-fill.yml)", when: "mornings, 06:00-10:30 UTC, once the last round started 2.5 hours ago", utc: null },
   { what: "An explainer", when: "daily", utc: "05:41" },
+  { what: "An economist's idea (الفكر الاقتصادي)", when: "Wednesdays", utc: "10:29" },
   { what: "An analysis", when: "daily", utc: "14:07" },
   { what: "A research paper", when: "Tuesdays and Fridays", utc: "09:31" },
   { what: "The week's review", when: "Fridays", utc: "15:37" },
@@ -393,7 +394,9 @@ function placeOnFront(live) {
   put([lead, ...byImp(unplaced(all).filter((a) => a !== lead && a.format !== "short").slice(0, 12)).slice(0, 4)], (i) => (i === 0 ? "lead" : `cover ${i + 1}`));
   const hub = (kinds) => live.filter((a) => kinds.includes(a.kind)).sort((x, y) => Date.parse(y.publishedAt) - Date.parse(x.publishedAt));
   const freshFeature = hub(["feature"]).find((a) => hours(a) < 72);
-  put([...hub(["weekly", "analysis"]).slice(0, 1), ...hub(["explainer"]).slice(0, 1), ...(freshFeature ? [freshFeature] : hub(["paper"]).slice(0, 1))], "reading");
+  // The week's idea takes the explainer's place for its first two days (index.astro freshIdea).
+  const freshIdea = hub(["idea"]).find((a) => hours(a) < 48);
+  put([...hub(["weekly", "analysis"]).slice(0, 1), ...(freshIdea ? [freshIdea] : hub(["explainer"]).slice(0, 1)), ...(freshFeature ? [freshFeature] : hub(["paper"]).slice(0, 1))], "reading");
   put(byImp(unplaced(all).filter((a) => a.format !== "short").slice(0, 8)).slice(0, 2), "secondary");
   put(unplaced(all).slice(0, 7), "digest");
   put(byImp(unplaced(all).filter((a) => hours(a) < 72 && a.format !== "short")).slice(0, 4), "top list");
@@ -405,7 +408,7 @@ function coverage(live) {
   const rows = {};
   for (const id of NEWS_SECTIONS) rows[id] = { id, name: SECTION_NAME[id], day: 0, week: 0, last: null };
   // «في العمق» is stopped (the owner, 2026-10-19): no row of its own, which read "last 36 days ago" as if it were late.
-  for (const k of ["explainer", "analysis", "paper", "weekly"]) rows[k] = { id: k, name: { explainer: "Explainers", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review" }[k], day: 0, week: 0, last: null };
+  for (const k of ["explainer", "idea", "analysis", "paper", "weekly"]) rows[k] = { id: k, name: { explainer: "Explainers", idea: "Economists' ideas", analysis: "Analyses", paper: "Paper readings", weekly: "Week's review" }[k], day: 0, week: 0, last: null };
   for (const a of live) {
     const key = a.kind === "news" ? a.section : a.kind;
     const r = rows[key];
@@ -1249,7 +1252,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <h2>Write something now</h2>
   <div class="get">
     <div class="row"><button class="quiet" onclick="run('news')">News stories</button><label>in <select id="newsSection"><option value="">all sections</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option></select></label><label><select id="limit"><option>1</option><option>2</option><option selected>4</option><option>6</option><option>8</option></select> stories</label></div>
-    <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button></div>
+    <div class="row"><button class="quiet" onclick="run('explainer')">An explainer</button><button class="quiet" onclick="run('idea')">An economist's idea</button><button class="quiet" onclick="run('analysis')">An analysis</button><label>of <select id="analysisSection"><option value="">the week</option><option value="economy">الاقتصاد only</option><option value="markets">الأسواق only</option><option value="energy">الطاقة only</option></select></label><button class="quiet" onclick="run('paper')">A research paper</button><button class="quiet" onclick="run('weekly')">The week's review</button></div>
     <p class="m" style="margin:2px 0 0">Each is written as a draft and waits here for your approval. Four news stories take about half an hour; the others 10–15 minutes.</p>
   </div>
 
@@ -1280,7 +1283,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   <div class="bar">
     <input type="text" id="f-q" placeholder="Search a headline…" oninput="filterLive()">
     <select id="f-section" onchange="filterLive()"><option value="">every section</option><option value="economy">الاقتصاد</option><option value="markets">الأسواق</option><option value="energy">الطاقة</option><option value="companies">الشركات</option><option value="technology">التكنولوجيا</option><option value="analysis">تحليلات</option><option value="explainers">مدخل</option></select>
-    <select id="f-kind" onchange="filterLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
+    <select id="f-kind" onchange="filterLive()"><option value="">every kind</option><option value="news">news</option><option value="analysis">analysis</option><option value="explainer">explainer</option><option value="idea">economist's idea</option><option value="paper">paper</option><option value="weekly">weekly</option><option value="feature">in depth</option></select>
     <select id="f-month" onchange="filterLive()"><option value="">any month</option></select>
     <select id="f-where" onchange="filterLive()"><option value="">anywhere</option><option value="front">on the front page</option><option value="section">section pages only</option></select>
     <span class="m" id="f-count"></span>
@@ -1552,7 +1555,7 @@ var link=function(u){u=String(u==null?'':u).trim();return /^https?:/i.test(u)?u:
 var LIVE_URL=${JSON.stringify(LIVE)};
 var SECTION=${JSON.stringify(SECTION_NAME)};
 var DOTS=${JSON.stringify(ICON.dots)};
-var KIND={news:'news',explainer:'explainer',analysis:'analysis',paper:'paper reading',weekly:'weekly review',feature:'in depth'};
+var KIND={news:'news',explainer:'explainer',idea:'economist’s idea',analysis:'analysis',paper:'paper reading',weekly:'weekly review',feature:'in depth'};
 var WHERE={lead:'Front page · the lead','cover 2':'Front page · cover 2','cover 3':'Front page · cover 3','cover 4':'Front page · cover 4','cover 5':'Front page · cover 5',reading:'Front page · beside the cover',secondary:'Front page · second story',digest:'Front page · الأخبار في سطور','top list':'Front page · top stories',section:'Section page',hub:'Its hub'};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var rtl=function(s){return /[\\u0600-\\u06FF]/.test(s)};
@@ -2157,6 +2160,7 @@ const server = http.createServer(async (req, res) => {
         dry: ["test one story", [SYNC, ["node", ["pipeline/run.mjs", "--dry-run", "--limit=1"]]]],
         news: ["news stories", [SYNC, ["node", ["pipeline/run.mjs", "--draft", `--limit=${limit}`]]]],
         explainer: ["an explainer", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=explainer"]]]],
+        idea: ["an economist's idea (الفكر الاقتصادي)", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=idea"]]]],
         analysis: ["an analysis", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=analysis"]]]],
         paper: ["a research paper", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=paper"]]]],
         weekly: ["the week's review", [SYNC, ["node", ["pipeline/run.mjs", "--draft", "--mode=weekly"]]]],

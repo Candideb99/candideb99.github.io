@@ -22,7 +22,10 @@ const NUMBER_SRC = String.raw`(?:(?<=^|[\s(\[«"'،])[+\-−])?\d(?:[\d.,]*\d)?(
 // Digits before a word join it, hyphened or not («3D», «10-year»): «(10-year Treasury yield)» had split at the hyphen.
 // A spaced «&» or dash joins a run only between two Latin words («Johnson & Johnson», «Brent - WTI»); before an Arabic
 // word it belongs to the Arabic line, or «Apple & غوغل» drew its «&» on the wrong side (a review of 2026-10-31).
-const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:\s+(?:[&\-–]\s+)?[\p{Script=Latin}\p{M}0-9][\p{Script=Latin}\p{M}0-9'’.\-&]*)*\)?`;
+// A colon, comma or semicolon between two Latin words keeps the run whole: split there, the original title an idea
+// piece prints, «(The Market for Lemons: Quality Uncertainty and the Market Mechanism)», drew its halves swapped
+// (2026-11-20); before an Arabic word the mark stays on the Arabic line.
+const LATIN_SRC = String.raw`(?<![&\p{Script=Latin}\p{M}0-9])\(?(?:\d+-?(?=\p{Script=Latin}))?\p{Script=Latin}[\p{Script=Latin}\p{M}0-9'’.\-&]*(?:[:,;]?\s+(?:[&\-–]\s+)?[\p{Script=Latin}\p{M}0-9][\p{Script=Latin}\p{M}0-9'’.\-&]*)*\)?`;
 const RUN = new RegExp(`(${LATIN_SRC})|(${NUMBER_SRC})`, "gu");
 
 /**

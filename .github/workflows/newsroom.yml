@@ -22,13 +22,15 @@ on:
     - cron: "13 6 * * 1"
     # The reports desk (pipeline/lib/reports.mjs, 2026-10-18): new editions of the flagship reports, read from their own pages.
     - cron: "17 8 * * *"
+    # «الفكر الاقتصادي» (pipeline/lib/ideas.mjs, 2026-11-20): one economist's idea a week, Wednesdays.
+    - cron: "29 10 * * 3"
   workflow_dispatch:
     inputs:
       mode:
-        description: news, explainer, analysis, paper, weekly, feature (في العمق), reports (the flagship reports), recheck (the second look) or lessons-test
+        description: news, explainer, idea (الفكر الاقتصادي), analysis, paper, weekly, feature (في العمق), reports (the flagship reports), recheck (the second look) or lessons-test
         default: news
         type: choice
-        options: [news, explainer, analysis, paper, weekly, feature, reports, recheck, lessons-test]
+        options: [news, explainer, idea, analysis, paper, weekly, feature, reports, recheck, lessons-test]
       limit:
         description: maximum stories to publish
         default: "4"
@@ -97,9 +99,10 @@ jobs:
             elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
             elif [ "$SCHEDULE" = "13 6 * * 1" ]; then mode=lessons-test;
             elif [ "$SCHEDULE" = "17 8 * * *" ]; then mode=reports;
+            elif [ "$SCHEDULE" = "29 10 * * 3" ]; then mode=idea;
             else mode=news; fi
           fi
-          case "$mode" in news|explainer|analysis|paper|weekly|feature|reports|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
+          case "$mode" in news|explainer|idea|analysis|paper|weekly|feature|reports|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           review=""
           if [ "$REVIEW" = "1" ]; then review=1; fi
           echo "review=$review" >> "$GITHUB_OUTPUT"

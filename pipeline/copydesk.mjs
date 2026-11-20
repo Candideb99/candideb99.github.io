@@ -98,7 +98,7 @@ for (const a of queue) {
     body: a.body,
   };
   const data = a.doc.toJS();
-  const kind = data.kind === "explainer" ? "explainer" : data.kind === "paper" ? "paper" : data.kind === "analysis" || data.kind === "weekly" || data.kind === "feature" ? "analysis" : "news";
+  const kind = data.kind === "explainer" || data.kind === "idea" ? "explainer" : data.kind === "paper" ? "paper" : data.kind === "analysis" || data.kind === "weekly" || data.kind === "feature" ? "analysis" : "news";
   const sources = (data.sources ?? []).flatMap((s) => [s.name, s.nameEn]).filter(Boolean);
   let result;
   try {

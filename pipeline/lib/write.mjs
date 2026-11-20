@@ -768,6 +768,124 @@ ${EXPLAINER_SCHEMA}`;
   return { draft, model };
 }
 
+/** Word bounds of an idea piece (lede + body): the brief asks for 600-850; the validator tolerates a margin. */
+export const IDEA_WORDS = { minWords: 480, maxWords: 1000, target: 650 };
+
+const IDEA_SCHEMA = `{
+  "title": "Arabic title: the question the idea answers, as given, ending with «؟» and naming the economist; polish its words, never change what it asks",
+  "subtitle": "Arabic dek, one plain sentence (max 160 chars): the idea's answer with who found it and when («في 1970 بيّن…»، «رأى ابن خلدون في «المقدمة» أن…»); a statement of its own, never a reply to the headline, never what the piece does",
+  "slug": "english-kebab-case-slug",
+  "lede": "2-3 sentences, under 60 words: the fact of this week's story that the idea explains, with its figure and its day or date as the story gives them, then the puzzle it leaves; the economist enters in the body",
+  "body": "Markdown after the lede, ${IDEA_WORDS.target - 100}-${IDEA_WORDS.target + 150} words: the plan's path, one '## ' subhead per step, at most three subheads, each a short sentence with its verb in words the reader already has, at most one a question; its last paragraph, under no subhead, answers the headline and says what the idea shows about this week's story. No bullet lists, no recap, no list of things to watch",
+  "key_facts": [{"label": "a term the piece teaches", "value": "its meaning in one short line, as a textbook defines it"}],
+  ${LESSON_SCHEMA},
+  "why_it_matters": "", always empty,
+  "tags": ["3-5 Arabic tags: the economist, the idea's name, the field, the story's subject"],
+  "regions": ["1-2 region names, only from: ${REGION_NAMES}"],
+  "image_queries": ["1-3 short English search terms for a photograph on Wikimedia Commons: first the economist's own name as a portrait search («John Maynard Keynes»); then the subject of the week's story at work, the way the news agencies picture it; never a chart, a book cover or an abstract concept"]
+}
+The key facts print under the heading «مفاهيم أساسية»: the two to four terms the piece really teaches, each defined in one line as a textbook defines it.`;
+
+/** One reference source as the idea's writer and planner read it: its name, its title and its text, numbered. */
+const referenceBlock = (s, i) => `REFERENCE ${i + 1}: ${s.sourceNameEn} — "${s.title}"\n${s.text}`;
+
+/**
+ * The researcher's plan of an idea piece (the explainer's method, planExplainer, 2026-11-08): the idea as its author
+ * stated it, the path from the week's puzzle to it, the one calculation and figure, what it changed and what has been
+ * disputed since, and what stays out, chiefly the life story that would make the page a wiki.
+ */
+async function planIdea({ idea, topic, references, relatedArticles, log }) {
+  const user = `Plan a piece for «الفكر الاقتصادي» in خازندار before anyone writes it: one economist's idea, explained through a story of this week. Work as a historian of economic thought who knows the idea's literature and its critics, and as a popular-science writer who makes it clear to anyone without making it less true.
+THE QUESTION (it will be the headline, and stays): ${topic.question_ar}
+THE EDITOR'S SHORT ANSWER (correct it where the references say otherwise): ${topic.answer_ar ?? ""}
+THE IDEA: ${idea.economists.map((e) => `${e.ar} (${e.en})`).join("، ")}, ${idea.year}, ${idea.work}. ${idea.idea}
+ITS SCHOOL: ${idea.school}
+WHAT THE EDITOR SAW IN THE STORY: ${topic.link_ar ?? ""}
+
+REFERENCES on the idea, read by the newsroom. Every fact about the economist, the work, its date, what it claims, the evidence for it and who disputed it comes from them, as they state it; standard economics needs no source.
+${references.map(referenceBlock).join("\n\n")}
+
+THIS WEEK'S STORIES (every fact of these weeks comes from them, with its figure exactly as they give it):
+${relatedArticles.map(relatedBlock).join("\n\n")}
+
+Work it out in this order:
+1. THE IDEA: what the economist claimed, in one plain sentence, as the references state it (never the popular distortion), with the question the economist was answering in his or her own time.
+2. THE PICTURE: one everyday situation that works the way the idea works, and where it stops matching.
+3. THE PATH: two or three questions a curious reader asks on the way from the week's puzzle to the idea and back (the page has three steps at most), each raised by the answer to the one before; for each, the bridge (the sentence that turns what the reader has just learned into this question), its answer in one sentence, the term of the field it needs, if any (Arabic and English, a name the field really uses), and the facts it needs from the references or the stories. One step is WHAT IT CHANGED AND WHAT IS DISPUTED: what the idea changed in economics or in policy, and what later evidence or another school says against it, with who says it, from the references; an idea told as settled truth, or a rival school told as a caricature, misleads.
+4. THE NUMBERS: the one calculation a specialist would make to show the idea (on the stories' figures where they serve, otherwise small round numbers said to be an illustration), and the one figure (supply and demand, money flowing in and out, or a chain of causes) that shows the mechanism, if one does.
+5. LEFT OUT: what in the references is true but not on the path, each named. The life story stays out: one sentence on who the economist was is all the piece needs, never schooling, posts, prizes or honours.
+6. THE ENDING: the answer to the headline in one plain sentence, and what the idea shows about this week's story, in the story's facts only, never what the economist would say of it.
+7. THE SPECIALIST'S CHECK: anything above a historian of thought or a specialist of the field would call wrong or too simple, with the correct statement.
+Return one JSON object, in Arabic except a term's English: {"idea": "...", "picture": {"situation": "...", "limit": "..."}, "path": [{"bridge": "...", "question": "...", "answer": "...", "term": "Arabic (English): its relation or measure, or null", "facts": ["..."]}], "calculation": "...", "figure": "...", "left_out": ["..."], "ending": "...", "checks": ["..."]}`;
+  const { data } = await chat({
+    role: "planner",
+    system: WRITER_SYSTEM,
+    user,
+    temperature: 0.3,
+    maxTokens: 6000,
+    log,
+    validate: (d) => {
+      if (!d?.idea || !Array.isArray(d.path) || d.path.length < 2 || d.path.length > 3) throw new Error("plan needs the idea and a path of two or three questions, each with its bridge");
+    },
+  });
+  log(`idea plan: ${String(data.idea).slice(0, 160)}`);
+  for (const [i, step] of data.path.entries()) log(`  plan step ${i + 1}: ${String(step?.bridge ?? "").slice(0, 120)} → ${String(step?.question ?? "").slice(0, 120)}`);
+  for (const item of data.left_out ?? []) log(`  plan leaves out: ${String(item).slice(0, 120)}`);
+  return data;
+}
+
+/**
+ * Writes the week's idea piece: the idea, not the person, told from the week's puzzle to the idea and back, written from
+ * the references the newsroom read and the week's stories (lib/ideas.mjs). An explainer's lesson in form (its worked
+ * example, its figure, its glossary), so the same desk, checks and site parts serve it.
+ */
+export async function writeIdea({ idea, topic, references, relatedArticles, log, today = new Date() }) {
+  const plan = await planIdea({ idea, topic, references, relatedArticles, log }).catch((error) => {
+    log(`idea plan failed: ${String(error.message).slice(0, 140)}`);
+    return null;
+  });
+  const user = `Write this week's piece of «الفكر الاقتصادي» for خازندار: one economist's idea, explained through a story of this week.
+THE QUESTION (the headline): ${topic.question_ar}
+THE IDEA: ${idea.economists.map((e) => `${e.ar} (${e.en})`).join("، ")}, ${idea.year}, ${idea.work}. ${idea.idea}
+ITS SCHOOL: ${idea.school}
+Today (UTC): ${new Date(today).toISOString().slice(0, 10)}
+${plan ? `\nTHE PLAN, worked out by a researcher before writing (write from it):\n${JSON.stringify(plan, null, 1)}\n` : ""}
+REFERENCES on the idea. Every fact about the economist, the work, its date, what it claims, its evidence and its critics comes from them, as they state it.
+${references.map(referenceBlock).join("\n\n")}
+
+THIS WEEK'S STORIES, the first being the one to open on. Every fact of these weeks (a price, a figure, a date, a decision, a name) comes from them, attributed as they attribute it.
+${relatedArticles.map(relatedBlock).join("\n\n")}
+
+HOW TO WRITE IT
+- THE IDEA, NOT THE PERSON: the economist enters with one sentence of who he or she was and when, then the idea takes over; no schooling, posts, prizes, honours or praise («عبقري»، «أعظم»، «عملاق»). What would make the page an encyclopedia entry is the life story; what makes it worth reading is the idea, how it works, what it changed and what is disputed.
+- Explain it as the best popular-science writers explain economics: a reader with no economics follows every sentence, and a student of the field finds it worth reading (the owner, 2026-11-08: "think like a researcher when writing this section, or think like pop-science writer who simplifies for audience but still true to the subject and science").
+- ${plan ? "WRITE FROM THE PLAN" : "PLAN BEFORE WRITING: the idea in one sentence, one everyday picture, the path of two or three questions from the week's puzzle to the idea, what it changed and what is disputed, and what to leave out. Then write"}: the path is the body, in its order, one subheaded step per question, each opening with its bridge; what the plan leaves out stays out.
+- FAIR TO THE DEBATE: say what the idea changed and what later evidence or another school says against it, naming who, as the references give it. Never present one school as the only truth, never a rival as a caricature.
+- WORDS: the economist's own words go in «» only where an Arabic reference carries them verbatim (Ibn Khaldun's, al-Maqrizi's); an English-language author's words are reported in your own Arabic, never quoted in «». The work's title in Arabic where Arab universities use one, with its original once in parentheses.
+- TERMS arrive in the step that needs them: the thing first in plain words, then its name in the Arabic that Arab universities use, with its English once in parentheses; one new term in a sentence at most; a term is a name the field really uses, never one coined to have something to teach.
+- FIGURES: only the stories' facts a step needs, exactly as they give them; a round-number illustration once at most, said to be one. The worked example ("worked") is the one calculation that shows the idea; "hypothetical" for round numbers made up; null when no calculation helps. The figure ("diagram") shows the mechanism; null when none fits.
+- THE WEEK'S STORY opens the piece and closes it: the lede gives its fact and the puzzle; the last paragraph says what the idea shows about it, in the story's facts only. Never claim the economist said anything about today's events, and never retell the story.
+- House rules: a subhead is a short sentence with a verb, at most one a question; «لا X، بل Y» once at most and never in the dek; one idea said once; no recap, no advice, no bullet lists; the text never names a student, a course, a lesson or a textbook.
+LENGTH: ${IDEA_WORDS.target - 50}-${IDEA_WORDS.target + 200} words in the lede and body together.
+Return one JSON object exactly in this shape:
+${IDEA_SCHEMA}`;
+  const { data, model } = await chat({
+    role: "writer",
+    system: WRITER_SYSTEM,
+    user,
+    temperature: 0.4,
+    maxTokens: 9000,
+    log,
+    validate: (d) => {
+      ensureTags(d, [idea.economists[0].ar]);
+      validateDraft(d, { ...IDEA_WORDS, whyBox: false });
+    },
+  });
+  const draft = normalizeDraft(data, { kind: "explainer" });
+  if (plan) draft.lessonPlan = plan;
+  return { draft, model };
+}
+
 /** Word bounds of a house analysis (lede + body) for validateDraft: the brief asks for 600-900; the validator tolerates a margin.
  *  700-1000 under four fixed sections until 2026-10-23, when an audit found all 12 analyses on that one template. */
 export const ANALYSIS_WORDS = { minWords: 450, maxWords: 1300, target: 650 };

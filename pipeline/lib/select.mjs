@@ -183,6 +183,39 @@ Return JSON: {"question_ar":"<the question, ending in «؟», at most 14 words>"
   return { topic: data, related: matchTitles(data.peg_titles, recentArticles, 3), model };
 }
 
+const IDEA_SYSTEM = `You are the editor of «الفكر الاقتصادي», the weekly page of خازندار, an Arabic economics publication, that explains one economist's idea through a story of the week. You answer with one JSON object only.`;
+
+/**
+ * Picks this week's idea (lib/ideas.mjs, the owner, 2026-11-20): one of the candidates, the ideas of the fields the
+ * section has covered least, that a story of the last week shows at work, and the reader's question that story raises
+ * and the idea answers. Returns { topic: { id, question_ar, answer_ar, link_ar, peg_titles }, idea, related, model }.
+ */
+export async function selectIdea({ candidates, recentArticles, fieldNames = {}, counts = {}, log, chatWith = chat }) {
+  const user = `This week's خازندار news (exact title — lede):
+${recentArticles.map((a) => `- ${a.title} — ${truncate(a.lede ?? "", 200)}`).join("\n")}
+
+THE CANDIDATE IDEAS (from the fields the page has covered least; pieces so far per field: ${Object.entries(counts).map(([f, n]) => `${fieldNames[f] ?? f} ${n}`).join("، ")}):
+${candidates.map((i) => `[${i.id}] ${fieldNames[i.field] ?? i.field} — ${i.economists.map((e) => e.en).join(", ")} (${i.year}), ${i.work}: ${i.idea} News it can explain: ${i.pegs}.`).join("\n")}
+
+Choose ONE candidate and ONE or TWO stories of the list that show it AT WORK: the idea explains why something in the story happens or what it means, as a specialist would see at once; a shared word or a loose theme is not enough. Of two candidates with a good story, take the one from the field with fewer pieces, then the one a reader of that story would find most illuminating.
+Then write THE QUESTION, the headline: what the idea answers, in a reader's everyday Arabic, ending «؟», naming the economist as Arab readers know him or her (the family name, or the known name: «كينز»، «ابن خلدون»); never a term the piece has to teach, never a colon hinge. The form, never the subject: «لماذا طردت النقود الرديئة النقود الجيدة من الأسواق كما لاحظ غريشام؟»، «لماذا يقلّ نصيب الطعام من إنفاق الأسرة كلما زاد دخلها كما وجد إنغل؟».
+Return JSON: {"id": "<the candidate's id exactly>", "question_ar": "<at most 16 words, ending «؟»>", "answer_ar": "<the idea's answer in one plain Arabic sentence>", "link_ar": "<one Arabic sentence: what in the story the idea explains, in the story's own facts>", "peg_titles": ["<1-2 exact titles from the list; the first is the story the piece opens on>"]}`;
+  const { data, model } = await chatWith({
+    role: "editor",
+    system: IDEA_SYSTEM,
+    user,
+    temperature: 0.4,
+    maxTokens: 2000,
+    log,
+    validate: (d) => {
+      if (!candidates.some((i) => i.id === d?.id)) throw new Error("id names no candidate");
+      if (!d?.question_ar || !/؟\s*$/.test(String(d.question_ar).trim())) throw new Error("question_ar must be a question ending «؟»");
+      if (!matchTitles(d.peg_titles, recentArticles, 2).length) throw new Error("peg_titles names no story of the list");
+    },
+  });
+  return { topic: data, idea: candidates.find((i) => i.id === data.id), related: matchTitles(data.peg_titles, recentArticles, 2), model };
+}
+
 const ANALYSIS_SYSTEM = `You are the analysis editor of خازندار, an Arabic economics publication. Once a day you commission one house analysis: a piece that connects several of Khazendar's own recent stories and answers the reader's question "what does this mean for us?". You answer with one JSON object only.`;
 
 /** Titles compared loosely: models drop punctuation, quotes and diacritics when they copy a title back. */

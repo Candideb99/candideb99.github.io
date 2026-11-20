@@ -11,6 +11,7 @@
  *   node pipeline/run.mjs --mode=paper      # one plain-Arabic reading of a recent open-access research paper
  *   node pipeline/run.mjs --mode=weekly     # the week's review from the paper's own stories (Fridays)
  *   node pipeline/run.mjs --mode=feature    # «في العمق», the in-depth piece on one running file (Sundays)
+ *   node pipeline/run.mjs --mode=idea       # «الفكر الاقتصادي», one economist's idea through a story of the week (Wednesdays)
  *
  * Every model call goes to Claude on the owner's subscription: CLAUDE_CODE_OAUTH_TOKEN from the environment
  * or from .env (see lib/env.mjs and lib/llm.mjs).
@@ -26,8 +27,8 @@ import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
-import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectPaper, selectStories } from "./lib/select.mjs";
-import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writePaperReading, writeWeekly } from "./lib/write.mjs";
+import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
+import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
 import { READOUT, readoutRoute, structural } from "./lib/style.mjs";
@@ -45,6 +46,7 @@ import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeR
 import { usage as llmUsage } from "./lib/llm.mjs";
 import { USER_AGENT, domainOf, fetchPublic, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
+import { IDEA_MIN_CHARS, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "./lib/ideas.mjs";
 import { coveredBy, latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
 
 const root = process.cwd();
@@ -954,8 +956,11 @@ function internalSources(articles, { withText = false } = {}) {
  * against (the stories that raised an explainer's question, the related stories for an analysis, the research paper's text for a
  * paper reading); `sources` is what is filed.
  */
-async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report, notes = null, replace = null }) {
-  const deskKind = kind === "explainer" ? "explainer" : kind === "paper" ? "paper" : "analysis";
+async function finishHubPiece({ kind, section, draft: firstDraft, sources, checkSources, recentTitles, wordLimits, story, headlineHint, headline, models, existing, report, notes = null, replace = null, idea = null }) {
+  // An idea piece («الفكر الاقتصادي», 2026-11-20) is a lesson in form: desked, checked and revised as an explainer is, judged
+  // by its own rubric, and checked before publication, since its facts about the economist and the idea must hold.
+  const lesson = lessonKind(kind);
+  const deskKind = lesson === "explainer" ? "explainer" : kind === "paper" ? "paper" : "analysis";
   const desk = await copyDeskPass(firstDraft, { kind: deskKind, sources: checkSources ?? [] });
   let draft = desk.draft;
   const deskModel = desk.model;
@@ -963,11 +968,11 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // pass after the first (2026-11-08). A test piece's revision had swapped «إذا كان لدى مصر دولارات أكثر من أي وقت مضى،
   // فلماذا تقتصد الحكومة فيها؟» for an abstract question its body then answered, and the owner found the body
   // "disassociated from the headline".
-  const heldTitle = kind === "explainer" ? draft.title : null;
+  const heldTitle = lesson === "explainer" ? draft.title : null;
   const keepTitle = (d) => (heldTitle && d ? { ...d, title: heldTitle } : d);
   // A reading's headline is held against the last four days' news too, never only against its own kind's.
   const newsTitles = (existing ?? []).filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 96).map((a) => a.title);
-  const flags = { [kind]: true, newsTitles };
+  const flags = { [kind]: true, [lesson]: true, newsTitles };
   let checks = programmaticChecks(draft, checkSources, { ...flags, recentTitles });
   log(`checks ${kind} "${draft.title}": ${checks.metrics.words} words, ${checks.issues.length} issues, ${checks.warnings.length} warnings`);
   // A lesson part dropped for its figures is said by name: two explainers of 9 and 10 November ran without their worked
@@ -992,14 +997,14 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // and its mend as problems to cut; never a reason to reject the piece.
   // An analysis that wanders (more than three subheads, a lede past 75 words: lib/style.mjs structural(), 2026-11-11)
   // goes the same way: to its revision and its mend, never a rejection.
-  const offPlan = (c) => (kind === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : kind === "analysis" ? structural(c.warnings) : []);
+  const offPlan = (c) => (lesson === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : kind === "analysis" ? structural(c.warnings) : []);
   // The same gate as a news story: out untouched only on "publish" at 6 or more with clean checks.
   const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok && !offPlan(checks).length;
   if (!straightOut) {
     const issues = [...checks.issues, ...offPlan(checks), ...review.issues];
     if (!issues.length) issues.push(`المحرر أعطى المسودة ${review.score}/10 (${review.verdict})${review.summary ? `: ${review.summary}` : ""}؛ راجع الدقة والعزو والعربية.`);
     const reviewed = draft;
-    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind, notes });
+    const revision = await reviseArticle({ draft, sources: checkSources, issues, log, wordLimits, kind: lesson, notes });
     // The desk reads the revised body, as a news story's (2026-10-24): it had read a hub piece's body only in the first
     // draft, so the text that went out was the reviser's and the mender's, never desked, in 40 of the 45 hub pieces then
     // published (the AI-agents reading: «مقيّمون بشريون»، «سقف أعلى»، «تجد الورقة» written after the desk had passed).
@@ -1028,7 +1033,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     const mendIssues = [...(finalReview.verdict === "revise" ? finalReview.issues : []), ...offPlan(checks)];
     if (mendIssues.length) {
       try {
-        const mend = await reviseArticle({ draft, sources: checkSources, issues: mendIssues, log, wordLimits, kind, notes, settled: issues });
+        const mend = await reviseArticle({ draft, sources: checkSources, issues: mendIssues, log, wordLimits, kind: lesson, notes, settled: issues });
         // As a news story's mend: a figure the revision took out does not come back (restoredFigures()).
         const revisedDraft = draft;
         const recheck = (d) => {
@@ -1094,6 +1099,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
     sources,
     image,
     deskedAt: deskModel ? isoNow() : null,
+    idea,
     models: { editor: models.editor, writer: writerModel, critic: finalReview.model, vision: image?.model ?? null, desk: deskModel },
     // The verdict and summary are the last review's, written before any mend: `mended` says so (2026-10-23; the record
     // had read as unfixed faults the published text no longer had).
@@ -1170,6 +1176,63 @@ function runExplainer() {
       existing,
       report,
     });
+  });
+}
+
+/**
+ * «الفكر الاقتصادي», once a week (lib/ideas.mjs; the owner, 2026-11-20): one economist's idea from the fields the page has
+ * covered least, opened and closed on a story of the last seven days, written from reference texts the newsroom reads
+ * itself (pipeline/ideas.json) and checked against them and the story. An idea whose references give too little text is
+ * passed over, up to three times; the catalogue keeps it for another week.
+ */
+function runIdea() {
+  return runHub("idea", "explainers", async (report) => {
+    const existing = await loadExistingArticles();
+    const catalogue = await loadIdeas();
+    const week = existing.filter((a) => a.kind === "news" && !a.draft && hoursSince(a.publishedAt) < 24 * 7).slice(0, 60);
+    const counts = fieldCounts(catalogue, existing);
+    let candidates = ideaCandidates(catalogue, existing);
+    log(`idea candidates: ${candidates.length} (${[...new Set(candidates.map((i) => i.field))].join(", ")}); pieces per field: ${Object.entries(counts).map(([f, n]) => `${f} ${n}`).join(", ")}`);
+    if (week.length < 3 || !candidates.length) {
+      log(week.length < 3 ? "not enough news this week to open an idea on" : "every idea of the catalogue has run");
+      return { report, published: 0 };
+    }
+    for (let attempt = 1; attempt <= 3 && candidates.length; attempt += 1) {
+      const { topic, idea, related, model: editorModel } = await selectIdea({ candidates, recentArticles: week, fieldNames: catalogue.fields, counts, log });
+      log(`idea [${idea.id}] ${idea.economists.map((e) => e.en).join(", ")}: ${topic.question_ar}; opens on "${related[0]?.title}"`);
+      log(`  link: ${String(topic.link_ar ?? "").slice(0, 200)}`);
+      const references = await readIdeaSources(idea, { log });
+      const chars = references.reduce((n, s) => n + s.text.length, 0);
+      log(`idea references: ${references.length} of ${idea.sources.length} read, ${chars} chars`);
+      if (chars < IDEA_MIN_CHARS) {
+        log(`  too little reference text (${chars} < ${IDEA_MIN_CHARS}); passing over [${idea.id}] this week`);
+        candidates = candidates.filter((i) => i.id !== idea.id);
+        continue;
+      }
+      const { draft, model: writerModel } = await writeIdea({ idea, topic, references, relatedArticles: related, log });
+      const { chart: dataChart } = await pickDataChart({ draft, log });
+      if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
+      const stories = internalSources(related, { withText: true });
+      return finishHubPiece({
+        kind: "idea",
+        section: "explainers",
+        draft,
+        sources: [...references.map(({ text, summary, ...s }) => s), ...internalSources(related)],
+        checkSources: [...references, ...stories],
+        recentTitles: existing.filter((a) => a.kind === "idea" || a.kind === "explainer").map((a) => a.title),
+        // No wordLimits: the reviser then writes as the explainer's does (WRITER_SYSTEM, not the analyst's), within the
+        // validator's default bounds, which hold IDEA_WORDS' range.
+        story: { angle: topic.question_ar },
+        headlineHint: idea.economists[0].en,
+        headline: topic.question_ar,
+        models: { editor: editorModel, writer: writerModel },
+        existing,
+        report,
+        idea: ideaRecord(idea, catalogue.fields),
+      });
+    }
+    report.push({ headline: "", section: "explainers", outcome: "skipped: too little reference text for three ideas" });
+    return { report, published: 0 };
   });
 }
 
@@ -1811,7 +1874,7 @@ function runReports() {
 }
 
 /** News runs through runHub like the hub modes: an editor that fails outright still leaves a report and the outputs. */
-const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature, reports: runReports, rewrite: () => runHub("rewrite", "explainers", runRewrite) };
+const RUNNERS = { news: () => runHub("news", "news", runNews), explainer: runExplainer, idea: runIdea, analysis: runAnalysis, paper: runPaper, weekly: runWeekly, feature: runFeature, reports: runReports, rewrite: () => runHub("rewrite", "explainers", runRewrite) };
 
 async function main() {
   const started = Date.now();

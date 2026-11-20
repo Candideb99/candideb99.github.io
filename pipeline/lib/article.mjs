@@ -62,11 +62,12 @@ export function readingMinutes(draft) {
 
 /** The kinds of piece the newsroom files: news stories, explainers, house analyses and readings of research papers. */
 // «في العمق» (feature) joined on 2026-09-24; its first test run was lost at this very line, after passing every check.
-export const KINDS = new Set(["news", "explainer", "analysis", "paper", "weekly", "feature"]);
+// «الفكر الاقتصادي» (idea) joined on 2026-11-20: one economist's idea a week (lib/ideas.mjs).
+export const KINDS = new Set(["news", "explainer", "idea", "analysis", "paper", "weekly", "feature"]);
 
 /** Serializes an article as Markdown with YAML frontmatter. `kind` is "news" (default), "explainer", "analysis" or "paper". */
 /** `pending: true` writes the article as a draft: it stays out of the built site until the editor publishes it. */
-export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt, pending = false, deskedAt = null, format = "full" }) {
+export function serializeArticle({ draft, slug, section, sources, image, models, quality, kind = "news", publishedAt, pending = false, deskedAt = null, format = "full", idea = null }) {
   if (!KINDS.has(kind)) throw new Error(`unknown article kind "${kind}" (${[...KINDS].join(", ")})`);
   const frontmatter = {
     title: draft.title,
@@ -89,6 +90,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     // An explainer's worked example and diagram (lib/lesson.mjs), drawn by the site; nothing for other pieces.
     ...(draft.worked ? { worked: draft.worked } : {}),
     ...(draft.diagram ? { diagram: draft.diagram } : {}),
+    // An idea piece's record from the catalogue (lib/ideas.mjs ideaRecord): who, when, which field; the field map counts it.
+    ...(kind === "idea" && idea ? { idea } : {}),
     image: image
       ? {
           url: image.url,
@@ -164,6 +167,9 @@ export async function loadExistingArticles() {
         imageUrl: data.image?.url ?? null,
         sourceUrls: (data.sources ?? []).map((s) => s.url).filter(Boolean),
         quality: data.quality && typeof data.quality === "object" ? data.quality : null,
+        // An idea piece's catalogue entry and field (lib/ideas.mjs): never run twice, and the field map counts it.
+        ideaId: data.idea?.id ?? null,
+        ideaField: data.idea?.field ?? null,
       });
     } catch {
       /* ignore malformed file */

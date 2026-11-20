@@ -14,6 +14,7 @@
     "newsroom": "node pipeline/run.mjs",
     "newsroom:dry": "node pipeline/run.mjs --dry-run",
     "newsroom:explainer": "node pipeline/run.mjs --mode=explainer",
+    "newsroom:idea": "node pipeline/run.mjs --mode=idea",
     "newsroom:analysis": "node pipeline/run.mjs --mode=analysis",
     "newsroom:paper": "node pipeline/run.mjs --mode=paper",
     "newsroom:weekly": "node pipeline/run.mjs --mode=weekly",

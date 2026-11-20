@@ -13,7 +13,7 @@ This file holds only what every session needs. The dated notes (what the owner s
 | Note in `.claude/rules/` | Loads with | Holds |
 |---|---|---|
 | `writing-news-1.md`, `writing-news-2.md` | the writer, desk, critic, style and editor modules, `run.mjs`, STYLE.md | news depth, short stories, headlines, the spine, machine habits, construction, joined prose |
-| `writing-hub-pieces.md` | the same modules, `lesson.mjs`, the lesson components | explainers, analyses, paper readings, the weekly, «في العمق» (stopped) |
+| `writing-hub-pieces.md`, `writing-hub-pieces-2.md` | the same modules, `lesson.mjs`, `ideas.mjs`, the lesson components | explainers, analyses, paper readings, the weekly, «في العمق» (stopped), «الفكر الاقتصادي» |
 | `labels-and-corrections.md` | `keyfacts`, `tags`, `regions`, `tidy`, `correct`, `rechart`, the topic files | the «الأرقام» box, tags, regions, one page per subject, corrections, chart forms |
 | `pictures-1-foundations.md`, `pictures-2-people-brands.md`, `pictures-3-november.md` | `images`, `commons`, `photolibs`, the picture scripts, `Photo.astro` | the cascade, every picture rule and the owner's ruling behind it, what the free libraries lack |
 | `sources-and-coverage.md` | `sources.json`, `reports.json`, `feeds`, `extract`, `reports`, `select` | which outlets and why, ownership labels, the reports desk, politics that moves money, world coverage |

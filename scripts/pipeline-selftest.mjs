@@ -36,6 +36,8 @@ import { canonicalRegions, countriesNamed, groundedRegions, unplacedActors } fro
 import { styleIssues, bareNameInDek, structural, WRITER_ONLY, READOUT, tableReadout, figureCount, readoutRoute, unjoinedParagraphs, subjectFirstSpeech } from "../pipeline/lib/style.mjs";
 import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
 import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
+import { IDEA_HOSTS, IDEA_SOURCE_CHARS, excerpt, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "../pipeline/lib/ideas.mjs";
+import { selectIdea } from "../pipeline/lib/select.mjs";
 import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
@@ -583,6 +585,57 @@ check(
   check("a figure in the headline cannot be cut", cutToSources({ ...base, title: "هجوم حوثي يوقع 36 جريحاً" }, sources), null);
   check("a stitch in the lede cannot be cut", cutToSources({ ...base, lede: `${base.lede} وفي التاريخ نفسه، أعلنت شركة طيران خفض رحلاتها.` }, sources), null);
   check("a clean draft has nothing to cut", cutToSources({ ...base, body: "ارتفع خام برنت إلى 111.2 دولار للبرميل بعد الهجوم.", keyFacts: [] }, sources), null);
+}
+
+// «الفكر الاقتصادي» (the owner, 2026-11-20): one economist's idea a week, from the fields the page has covered least,
+// written from reference texts the newsroom reads itself (pipeline/lib/ideas.mjs).
+{
+  const catalogue = await loadIdeas();
+  const ids = catalogue.ideas.map((i) => i.id);
+  const hosts = catalogue.ideas.flatMap((i) => i.sources.map((s) => new URL(s.url).host));
+  check(
+    "the ideas catalogue: unique ids, every field known, ten fields, every idea with a source on a host the desk names",
+    [new Set(ids).size === ids.length, catalogue.ideas.every((i) => i.field in catalogue.fields), Object.keys(catalogue.fields).length >= 10, catalogue.ideas.every((i) => i.sources.length > 0 && i.economists.every((e) => e.ar && e.en)), hosts.every((h) => h in IDEA_HOSTS)],
+    [true, true, true, true, true],
+  );
+  check("every field of the catalogue has ideas to give", Object.keys(catalogue.fields).every((f) => catalogue.ideas.some((i) => i.field === f)), true);
+  const toy = { fields: { a: "أ", b: "ب", c: "ج" }, ideas: ["a1", "a2", "b1", "c1", "c2", "c3"].map((id) => ({ id, field: id[0] })) };
+  const ran = [{ kind: "idea", ideaId: "a1", ideaField: "a" }, { kind: "idea", ideaId: "b1", ideaField: "b" }, { kind: "explainer" }];
+  check("the field map counts the published idea pieces per field", fieldCounts(toy, ran), { a: 1, b: 1, c: 0 });
+  check(
+    "the editor sees the least covered field first, a whole field at a time, never an idea already run",
+    [ideaCandidates(toy, ran, { min: 2 }).map((i) => i.id), ideaCandidates(toy, ran, { min: 4 }).map((i) => i.id), ideaCandidates(toy, [...ran, ...["a2", "c1", "c2", "c3"].map((ideaId) => ({ kind: "idea", ideaId }))], { min: 2 }).map((i) => i.id)],
+    [["c1", "c2", "c3"], ["c1", "c2", "c3", "a2"], []],
+  );
+  const long = `${"Opening words of an encyclopedia entry. ".repeat(600)}The Market for Lemons appeared in 1970. ${"Later text. ".repeat(2000)}`;
+  const cut = excerpt(long, "Market for Lemons", 3000);
+  check("a long text is cut around its anchor, within the cap; without one, from its start", [cut.includes("The Market for Lemons appeared in 1970."), cut.length <= 3000, excerpt(long, null, 3000).startsWith("Opening words"), excerpt("short", "x", 3000)], [true, true, true, "short"]);
+  const read = async (url) => (url.includes("fails") ? { ok: false, reason: "http-404" } : { ok: true, title: "Prize", text: long });
+  const refs = await readIdeaSources({ work: "w", sources: [{ url: "https://www.nobelprize.org/a/", anchor: "Market for Lemons" }, { url: "https://en.wikipedia.org/fails" }, { url: "https://ar.wikipedia.org/wiki/x" }] }, { read });
+  check(
+    "the references: a page that fails is left out, each named by its host, Arabic by its host, cut to the cap, marked as a reference",
+    [refs.length, refs[0].sourceName, refs[0].lang, refs[1].lang, refs[0].kind, refs[0].text.includes("Market for Lemons"), refs.every((r) => r.text.length <= IDEA_SOURCE_CHARS)],
+    [2, "جائزة نوبل", "en", "ar", "reference", true, true],
+  );
+  check("an idea piece is read as a lesson by the desk and the checks", [lessonKind("idea"), lessonKind("paper")], ["explainer", "paper"]);
+  check("an idea piece's box is its glossary, as an explainer's", boxFacts([{ label: "الاختيار العكسي", value: "خروج السلع الجيدة من سوق لا يميّز المشتري فيه الجودة" }], "idea").length, 1);
+  const akerlof = catalogue.ideas.find((i) => i.id === "akerlof-lemons");
+  const record = ideaRecord(akerlof, catalogue.fields);
+  const md = serializeArticle({ draft: { title: "س؟", subtitle: "د", lede: "ل", body: "ب", keyFacts: [], whyItMatters: "", tags: [], regions: [] }, slug: "s", section: "explainers", kind: "idea", sources: [], image: null, models: {}, quality: {}, idea: record });
+  check("the file keeps the kind and the catalogue's record, which the field map reads", [/\nkind: idea\n/.test(md), /\n {2}id: akerlof-lemons\n/.test(md), /fieldName: الاقتصاد الجزئي/.test(md), record.economists[0].en], [true, true, true, "George Akerlof"]);
+  check("a woman economist is marked, so the page's label agrees", ideaRecord(catalogue.ideas.find((i) => i.id === "ostrom-commons"), catalogue.fields).economists[0].f, true);
+  // The editor's answer is held in code: a candidate's id, a question, a story of the list.
+  const week = [{ title: "طرح بنك القاهرة يغطى 42% في يومه الأول", lede: "ل" }];
+  const pick = (data) => selectIdea({ candidates: [akerlof], recentArticles: week, chatWith: async ({ validate }) => { validate(data); return { data, model: "stand-in" }; } }).then((r) => r.idea.id, (e) => e.message.split(" ")[0]);
+  check(
+    "the idea editor: an id off the list, a statement for a headline, or no story of the week is refused",
+    [await pick({ id: "akerlof-lemons", question_ar: "لماذا يتردد المشتري كما رأى أكرلوف؟", peg_titles: [week[0].title] }), await pick({ id: "keynes-demand", question_ar: "س؟", peg_titles: [week[0].title] }), await pick({ id: "akerlof-lemons", question_ar: "أكرلوف والليمون", peg_titles: [week[0].title] }), await pick({ id: "akerlof-lemons", question_ar: "س؟", peg_titles: ["عنوان آخر"] })],
+    ["akerlof-lemons", "id", "question_ar", "peg_titles"],
+  );
+  // An idea piece's plan names its centre `idea`, an explainer's `insight`: a figure the plan carries there is on the plan.
+  const planned = { title: "لماذا يتردد المشتري كما رأى أكرلوف؟", subtitle: "د", lede: "يتردد المشترون في سوق السيارات المستعملة.", body: "وجد أكرلوف أن 45% من المشترين يدفعون سعراً وسطاً.", keyFacts: [], whyItMatters: "", tags: ["أكرلوف"], regions: [], lessonPlan: { idea: "يدفع 45% من المشترين سعراً وسطاً", path: [{ bridge: "", question: "", answer: "", facts: [] }] } };
+  const planChecks = programmaticChecks(planned, [{ sourceNameEn: "Wikipedia", title: "t", lang: "en", text: "45% of buyers pay an average price." }], { explainer: true, minWords: 0 });
+  check("a figure an idea piece's plan carries in its `idea` is on the plan", planChecks.warnings.some((w) => w.startsWith("خارج الخطة")), false);
 }
 
 // 3. The lessons' lint: harmful rules refused, good ones kept.
@@ -1693,11 +1746,13 @@ if (spawnSync("git", ["--version"]).status === 0) {
     runs("(10-year Treasury yield)"), runs("مؤشر S&P 500."), runs("شركة Apple Inc. أعلنت"), runs("عائد U.S. Treasury اليوم"),
     runs("العام المالي 2026/27 في 2026-09-19 تراجع −3.5%"), runs("ارتفع 5% - وهو أعلى"),
     runs("شراكة Apple & غوغل"), runs("شركة Johnson & Johnson الأمريكية"), runs("فارق Brent - WTI اتسع"), runs("أرباح e& ترتفع"),
+    runs("بعنوان (The Market for Lemons: Quality Uncertainty). وكان"), runs("كتابه (Capitalism, Socialism and Democracy) عام"), runs("شركة Apple: أعلنت"), runs("أسهم Apple، وغوغل"),
   ], [
     "إلى [17]. وتقول", "بين [3.75%-4%] الشهر", "عند [4.82 - 5.30] جنيه", "(تقدير [Kpler])",
     "[(10-year Treasury yield)]", "مؤشر [S&P 500].", "شركة [Apple Inc]. أعلنت", "عائد [U.S. Treasury] اليوم",
     "العام المالي [2026/27] في [2026-09-19] تراجع [−3.5%]", "ارتفع [5%] - وهو أعلى",
     "شراكة [Apple] & غوغل", "شركة [Johnson & Johnson] الأمريكية", "فارق [Brent - WTI] اتسع", "أرباح [e&] ترتفع",
+    "بعنوان [(The Market for Lemons: Quality Uncertainty)]. وكان", "كتابه [(Capitalism, Socialism and Democracy)] عام", "شركة [Apple]: أعلنت", "أسهم [Apple]، وغوغل",
   ]);
   const patterns = (file) => [...readFileSync(file, "utf8").matchAll(/const (NUMBER_SRC|LATIN_SRC) = (String\.raw`[^`]+`)/g)].map((m) => m.slice(1).join("="));
   check("the headlines' isolation (bidi.ts) uses the article bodies' patterns", patterns("src/lib/bidi.ts"), patterns("src/lib/rehype-isolate-numbers.mjs"));

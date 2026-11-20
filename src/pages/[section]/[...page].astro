@@ -66,6 +66,7 @@ const divisions: { href: string; name: string; count: number }[] = !first
     : section.id === "explainers"
       ? [
           { href: "/explainers/kind/concepts/", name: "شروح مبسّطة", count: everything.filter((a) => a.data.kind === "explainer").length },
+          { href: "/explainers/kind/thought/", name: "الفكر الاقتصادي", count: everything.filter((a) => a.data.kind === "idea").length },
           { href: "/explainers/kind/papers/", name: "قراءات في أوراق بحثية", count: everything.filter((a) => a.data.kind === "paper").length },
         ].filter((k) => k.count > 0)
       : [];

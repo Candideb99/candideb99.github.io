@@ -131,7 +131,18 @@ const articles = defineCollection({
     subtitle: z.string().default(""),
     slug: z.string(),
     section: z.enum(["economy", "markets", "energy", "companies", "technology", "analysis", "explainers"]),
-    kind: z.enum(["news", "explainer", "analysis", "paper", "weekly", "feature"]).default("news"),
+    kind: z.enum(["news", "explainer", "idea", "analysis", "paper", "weekly", "feature"]).default("news"),
+    /** «الفكر الاقتصادي» (kind idea, 2026-11-20): the idea's record from pipeline/ideas.json, never a model's words. */
+    idea: z
+      .object({
+        id: z.string(),
+        field: z.string(),
+        fieldName: z.string().default(""),
+        economists: z.array(z.object({ ar: z.string(), en: z.string(), f: z.boolean().optional() })).default([]),
+        year: z.number().optional(),
+        work: z.string().optional(),
+      })
+      .optional(),
     /** "short": a short news story (150-250 words, no boxes; pipeline/lib/editorial.mjs SHORT_STORY), never the cover's lead. */
     format: z.enum(["full", "short"]).default("full"),
     publishedAt: isoString,

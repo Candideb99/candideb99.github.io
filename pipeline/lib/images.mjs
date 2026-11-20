@@ -1227,7 +1227,7 @@ const STAMPING_SOURCE = /\b(?:tasnim ?news|tasnimnews|mehr ?news|mehrnews|fars ?
 export function stampedSource(image) {
   return String(`${image?.categories ?? ""} ${image?.credit ?? ""} ${image?.artist ?? ""}`).match(STAMPING_SOURCE)?.[0] ?? "";
 }
-const CONCEPT_KINDS = new Set(["explainer", "paper", "analysis", "weekly", "feature"]);
+const CONCEPT_KINDS = new Set(["explainer", "idea", "paper", "analysis", "weekly", "feature"]);
 /** The same two faults as the second check and the audit read them (one text, not two copies). */
 export function glanceFaults(kind) {
   return `a frame that does not read at a glance (a close-up of a part such as pipes, risers, valves, cables or gauges; a view straight down or from an odd angle; a texture; equipment only a specialist would recognise)${CONCEPT_KINDS.has(kind) ? "; a government's or an institution's building front for this piece, which explains or analyses a concept, unless it is a central bank's own building under its own decision on rates" : ""}`;

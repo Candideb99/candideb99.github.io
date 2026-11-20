@@ -33,9 +33,15 @@ const all = await getArticles();
 const { Content } = await render(article);
 const d = article.data;
 const sec = getSection(d.section);
-const isHub = d.kind === "explainer" || d.kind === "analysis" || d.kind === "paper" || d.kind === "weekly" || d.kind === "feature";
-/** An explainer reads as a simplified textbook lesson: figure, explanation, worked example, then the official data. */
-const lesson = d.kind === "explainer";
+const isHub = d.kind === "explainer" || d.kind === "idea" || d.kind === "analysis" || d.kind === "paper" || d.kind === "weekly" || d.kind === "feature";
+/** An explainer reads as a simplified textbook lesson: figure, explanation, worked example, then the official data. An
+    idea piece («الفكر الاقتصادي», 2026-11-20) is one in form, with its worked example, figure and glossary. */
+const lesson = d.kind === "explainer" || d.kind === "idea";
+/** An idea piece's line under its dek: whose idea, when, and the field, from the catalogue's record (never a model's). */
+const ideaLabel = (d.idea?.economists.length ?? 0) > 1 ? "أصحاب الفكرة" : d.idea?.economists[0]?.f ? "صاحبة الفكرة" : "صاحب الفكرة";
+const ideaLine = d.kind === "idea" && d.idea?.economists.length
+  ? `${d.idea.economists.map((e) => e.ar).join(" و")}${d.idea.year ? ` (${d.idea.year})` : ""}${d.idea.fieldName ? ` · ${d.idea.fieldName}` : ""}`
+  : "";
 // Its figure and worked example print after the paragraph that leads into each (lib/lesson-layout.mjs), cut into the
 // body's rendered HTML; a part nothing leads into keeps its default place, the figure before the text, the example after.
 const lessonPieces = lesson && article.rendered?.html ? placeLessonParts(article.rendered.html, { diagram: d.diagram, worked: d.worked }) : null;
@@ -84,6 +90,7 @@ const kindHead = isHub
       label: sectionLabel,
       href:
         d.kind === "explainer" ? "/explainers/kind/concepts/"
+        : d.kind === "idea" ? "/explainers/kind/thought/"
         : d.kind === "paper" ? "/explainers/kind/papers/"
         : desk && ANALYSIS_DESKS[desk.id] ? `/analysis/desk/${desk.id}/`
         : sectionHref(d.section),
@@ -144,6 +151,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       {/* A search result prints the dek, as the desks' search pages print a story's standfirst: Pagefind's own excerpt
           opened on the headline's last words and ran on into the photo caption (2026-10-19). */}
       {d.subtitle && <p class="article__dek" data-pagefind-weight="4" data-pagefind-meta="summary" set:html={isolateNumbers(d.subtitle)} />}
+      {ideaLine && <p class="article__idea ui" set:html={`<span class="article__idea-label">${ideaLabel}:</span> ${isolateNumbers(ideaLine)}`} />}
       {/* Two lines on purpose: where the story sits and who wrote it, then when. The hour and the reading time are
           each kept whole, so a phone never leaves «بتوقيت القاهرة» or «دقيقتا قراءة» alone on a line (2026-09-24). */}
       <div class="article__meta" data-pagefind-ignore>
@@ -187,7 +195,7 @@ const jsonLd = [articleLd, breadcrumbLd];
     <div class="article__layout">
       <div class="article__main">
         {d.lede && <p class="article__lede" set:html={isolateNumbers(d.lede)} />}
-        <KeyFacts facts={d.keyFacts} placement="inline" terms={d.kind === "explainer"} />
+        <KeyFacts facts={d.keyFacts} placement="inline" terms={lesson} />
         {/* A chart's title elsewhere on the site links here (`#story-chart`): the reader who clicked a chart lands on
             the chart, not on a headline and a photograph that do not name it (the owner, 2026-09-28). */}
         {d.chart && !lesson && <Chart chart={d.chart} id="story-chart" />}
@@ -246,7 +254,8 @@ const jsonLd = [articleLd, breadcrumbLd];
         )}
         {/* A paper reading's source is the paper itself, outside the site: it was headed «مواد ذات صلة في خازندار» over
             an arXiv address and noted as a «شرح» (2026-11-09). Its facts are checked before publication as a story's are. */}
-        <Sources sources={sources} explainer={isHub && d.kind !== "paper"} credit={!isHub} />
+        {/* An idea piece lists its references and the week's stories under «المصادر», as a reading lists its paper. */}
+        <Sources sources={sources} explainer={isHub && d.kind !== "paper" && d.kind !== "idea"} credit={!isHub} />
         {/* The way to report an error, where a reader who found one is: the contact form opens on this story as a
             correction (contact.astro reads `story`). */}
         <p class="report ui" data-pagefind-ignore>وجدت خطأً في هذا المقال؟ <a href={`/contact/?story=${d.slug}`} rel="nofollow">أبلغنا عنه</a></p>
@@ -254,7 +263,7 @@ const jsonLd = [articleLd, breadcrumbLd];
       {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
           put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
       <aside class="article__side">
-        <KeyFacts facts={d.keyFacts} placement="side" terms={d.kind === "explainer"} />
+        <KeyFacts facts={d.keyFacts} placement="side" terms={lesson} />
         {sideRelated.length > 0 && (
           <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">
             <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
@@ -334,6 +343,9 @@ const jsonLd = [articleLd, breadcrumbLd];
     margin-top: 0.7rem;
     max-width: 44rem;
   }
+  /* An idea piece's author and year, under its dek: furniture in the house green, never a box. */
+  .article__idea { margin-top: 0.45rem; font-size: var(--fs-sm); color: var(--ink-2); }
+  .article__idea :global(.article__idea-label) { font-weight: 700; color: var(--green); }
   .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); display: grid; gap: 0.2rem; }
   /* The share row at the start and the reader's text size at the end, on one line where they fit. */
   .article__tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 1.5rem; }

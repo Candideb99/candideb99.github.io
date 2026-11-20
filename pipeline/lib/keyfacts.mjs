@@ -146,11 +146,11 @@ export function figureOnly(value, label = "") {
 
 /**
  * The facts a piece's box keeps. For every kind but an explainer, the figures only (see above); an explainer's box is
- * its glossary and keeps every entry with a value. Order is kept.
+ * its glossary and keeps every entry with a value, as an idea piece's («الفكر الاقتصادي», 2026-11-20). Order is kept.
  */
 export function boxFacts(facts, kind = "news") {
   const list = (Array.isArray(facts) ? facts : []).filter((f) => f && String(f.value ?? "").trim());
-  return kind === "explainer" ? list : list.filter((f) => isFigure(f.value, f.label));
+  return kind === "explainer" || kind === "idea" ? list : list.filter((f) => isFigure(f.value, f.label));
 }
 
 /** The writers' instruction for the box (one sentence of the schema notes). */
