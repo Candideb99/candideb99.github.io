@@ -1909,7 +1909,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
     samples.map((s) => searchIsolate(s) === isolateNumbers(s)),
     samples.map(() => true),
   );
-  check("the search page is handed the site's pattern and isolates titles and standfirsts", [/define:vars=\{\{ runSource \}\}/.test(page), /isolate\(meta\.title\)/.test(page), /isolate\(meta\.summary\)/.test(page)], [true, true, true]);
+  check("the search page is handed the site's pattern and isolates titles and standfirsts", [/define:vars=\{\{[^}]*\brunSource\b[^}]*\}\}/.test(page), /isolate\(meta\.title\)/.test(page), /isolate\(meta\.summary\)/.test(page)], [true, true, true]);
   // The site check reads an Arabic source's title to its own end: its first «</span>» could be a held word's inside an
   // isolation («10-year»), and the isolated figure read as bare (a review of 2026-11-10).
   const { bareFigures } = await import("./site-furniture.mjs");
@@ -2186,7 +2186,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const script = readFileSync(path.join("src", "pages", "search.astro"), "utf8").match(/<script is:inline[^>]*>([\s\S]*?)<\/script>/)[1];
   const element = () => {
     const listeners = {};
-    return { hidden: false, dataset: {}, setAttribute() {}, addEventListener: (type, fn) => (listeners[type] ??= []).push(fn), fire: (type) => (listeners[type] ?? []).forEach((fn) => fn({ preventDefault() {} })) };
+    return { hidden: false, dataset: {}, setAttribute(name, value) { this[name] = value; }, addEventListener: (type, fn) => (listeners[type] ??= []).push(fn), fire: (type) => (listeners[type] ?? []).forEach((fn) => fn({ preventDefault() {} })) };
   };
   const items = [];
   const list = {
@@ -2205,20 +2205,42 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const input = { ...element(), value: "", form };
   const more = element();
   const status = { innerHTML: "" };
-  const nodes = { ".search__clear": element(), ".search__status": status, ".search__sort": { ...element(), querySelectorAll: () => buttons }, ".search__list": list, ".search__more": more };
+  const pageLabel = { textContent: "" };
+  const pageLink = { textContent: "", href: "", setAttribute(name, value) { this[name] = value; } };
+  const pageLine = { hidden: true, querySelector: (s) => (s === "a" ? pageLink : pageLabel) };
+  const nodes = { ".search__clear": element(), ".search__status": status, ".search__sort": { ...element(), querySelectorAll: () => buttons }, ".search__list": list, ".search__more": more, ".search__page": pageLine };
   // Each search waits until the test answers it; a held result's text, until the test releases it.
   const searches = [];
   const held = [];
-  const pagefind = { init: async () => {}, search: (q) => new Promise((resolve) => searches.push({ q, resolve })) };
+  // A quoted (whole-word) search is answered at once from `wholeWords` (none by default, so a loose search stands) and
+  // recorded in `wholeAsked`; a loose one waits for the test.
+  const wholeWords = {};
+  const wholeAsked = [];
+  const pagefind = {
+    init: async () => {},
+    search: (q) => {
+      if (q.startsWith('"')) {
+        wholeAsked.push(q);
+        return Promise.resolve({ results: wholeWords[q] ?? [] });
+      }
+      return new Promise((resolve) => searches.push({ q, resolve }));
+    },
+  };
   const result = (n, hold = false) => {
     const data = { url: `/x/${n}/`, meta: { title: `t${n}` } };
-    return { words: [1, 2, 3, 4], data: () => (hold ? new Promise((resolve) => held.push(() => resolve(data))) : Promise.resolve(data)) };
+    return { id: `r${n}`, words: [1, 2, 3, 4], data: () => (hold ? new Promise((resolve) => held.push(() => resolve(data))) : Promise.resolve(data)) };
   };
   const settle = async () => {
     for (let i = 0; i < 20; i += 1) await new Promise((resolve) => setImmediate(resolve));
   };
   // `runSource` is the site's pattern, which the page is handed at build time (define:vars); absent, results print plain.
-  new Function("document", "history", "location", "__pagefind", "runSource", script.replace('import("/pagefind/pagefind.js")', "__pagefind()"))({ getElementById: () => input, querySelector: (s) => nodes[s] }, { replaceState() {} }, { pathname: "/search/", search: "" }, async () => pagefind, undefined);
+  // `spellings` is handed in the same way (the house spelling table); the pages a query can name come from
+  // /search-pages.json, served here by a stand-in `fetch`.
+  const { NAME_FIXES } = await import("../pipeline/lib/spellings.mjs");
+  const spellings = NAME_FIXES.map(([re, to]) => [re.source, re.flags, to]);
+  const pages = [["النفط", "m", "النفط", "/topics/energy/oil/"], ["دونالد ترامب", "f", "دونالد ترامب"], ["ترامب", "f", "دونالد ترامب"]];
+  const servePages = async (url) => ({ json: async () => (url === "/search-pages.json" ? pages : []) });
+  new Function("document", "history", "location", "__pagefind", "runSource", "spellings", "fetch", script.replace('import("/pagefind/pagefind.js")', "__pagefind()"))({ getElementById: () => input, querySelector: (s) => nodes[s] }, { replaceState() {} }, { pathname: "/search/", search: "" }, async () => pagefind, undefined, spellings, servePages);
   input.value = "النفط";
   form.fire("submit");
   await settle();
@@ -2241,10 +2263,43 @@ if (spawnSync("git", ["--version"]).status === 0) {
   input.value = "البنوك";
   form.fire("submit");
   await settle();
-  const pictured = (n, meta) => ({ words: [1, 2, 3, 4], data: () => Promise.resolve({ url: `/x/p${n}/`, meta: { title: `p${n}`, ...meta } }) });
+  const pictured = (n, meta) => ({ id: `p${n}`, words: [1, 2, 3, 4], data: () => Promise.resolve({ url: `/x/p${n}/`, meta: { title: `p${n}`, ...meta } }) });
   searches[2].resolve({ results: [pictured(1, { image: "/logo.svg" }), pictured(2, { image: "/logo.svg", thumb: "https://upload.wikimedia.org/a.jpg" })] });
   await settle();
   check("a search result's thumbnail is the story's own photograph, never the page's first picture", items.map((item) => item.classList.contains("search__item--photo")), [false, true]);
+  // One whole word is searched whole, and loosely only when nothing matches it whole (2026-11-20: «أبل» listed «أبلغت»
+  // first, «تسلا» «التسليمات»); several words stay loose; the query is respelled in the house spelling («ترمب» found 11
+  // stories, «ترامب» 135) and the count says so; a query that names a page offers it, with or without «ال».
+  const ask = async (q) => {
+    input.value = q;
+    form.fire("submit");
+    await settle();
+    return searches.at(-1);
+  };
+  wholeWords['"أبل"'] = [result(201)];
+  const loose = await ask("أبل");
+  loose.resolve({ results: [result(200), result(201), result(202)] });
+  await settle();
+  const apple = [wholeAsked.at(-1), items.length, status.innerHTML];
+  const typing = await ask("النف");
+  typing.resolve({ results: [result(210), result(211)] });
+  await settle();
+  const partial = [wholeAsked.at(-1), items.length];
+  const spelt = await ask("ترمب");
+  spelt.resolve({ results: [result(300), result(301)] });
+  await settle();
+  const fileLine = [pageLine.hidden, pageLabel.textContent, pageLink.textContent, pageLink.href];
+  const wholeBeforePhrase = wholeAsked.length;
+  const phrase = await ask("التضخم في مصر");
+  const phraseWhole = wholeAsked.length - wholeBeforePhrase;
+  const phraseOrder = buttons.map((b) => b["aria-pressed"]);
+  const subjectLine = (await ask("نفط"), [pageLine.hidden, pageLabel.textContent, pageLink.href]);
+  const wordOrder = buttons.map((b) => b["aria-pressed"]);
+  check("the search keeps one word's whole-word matches, loose while it is typed; respells the query; keeps several words loose and most relevant first; offers the page a query names", [
+    loose.q, apple, partial, spelt.q, wholeAsked.at(-2), status.innerHTML, fileLine, phrase.q, phraseOrder, subjectLine, wordOrder, phraseWhole,
+  ], [
+    "أبل", ['"أبل"', 1, "نتيجة واحدة"], ['"النف"', 2], "ترامب", '"ترامب"', "نتيجتان عن «ترامب»", [false, "صفحة الملف:", "دونالد ترامب", `/tags/${encodeURIComponent("دونالد ترامب")}/`], "التضخم في مصر", ["false", "true"], [false, "صفحة الموضوع:", "/topics/energy/oil/"], ["true", "false"], 0,
+  ]);
 }
 
 // A field Yahoo leaves empty is no price (a review of 2026-11-01: `regularMarketPrice: null` was read as 0 and reached

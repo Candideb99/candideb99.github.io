@@ -3,8 +3,13 @@ import Base from "@layouts/Base.astro";
 import { RUN_PATTERN } from "@lib/bidi";
 import { getArticles } from "@lib/articles";
 import { TOPICS, topicArticles, topicHref } from "@lib/topics";
+import { NAME_FIXES } from "../../pipeline/lib/spellings.mjs";
 // The site's own pattern for figures and Latin runs, handed to the page's plain script (src/lib/bidi.ts).
 const runSource = RUN_PATTERN.source;
+// The house spelling table (pipeline/lib/spellings.mjs, the copy desk's own), handed to the script, which respells a
+// query before searching it (2026-11-20): «ترمب», as Asharq Al-Awsat writes it, found 11 stories where «ترامب» finds 135,
+// and «غوغل» 5 where «جوجل» finds 10.
+const spellings = (NAME_FIXES as [RegExp, string][]).map(([re, to]) => [re.source, re.flags, to]);
 // A way in when there is nothing to show yet or nothing was found: the standing subjects we write about most (the
 // critique of 2026-11-09: an empty search offered nothing to try next).
 const articles = await getArticles();
@@ -46,6 +51,8 @@ const browse = Object.entries(TOPICS)
           <button type="button" data-order="relevance" aria-pressed="false">الأكثر صلة</button>
         </p>
       </div>
+      {/* The page the query names: its subject's, file's, region's or section's own page, where its stories are kept. */}
+      <p class="search__page ui" hidden><span class="search__page-label"></span> <a href="/"></a></p>
       <ol class="search__list"></ol>
       {/* Twenty at a time, and the rest a tap away: «110 نتائج، تُعرض أول 20» had no way to the other ninety. */}
       <button type="button" class="search__more" hidden>المزيد من النتائج</button>
@@ -62,7 +69,7 @@ const browse = Object.entries(TOPICS)
   </section>
 </Base>
 
-<script is:inline define:vars={{ runSource }}>
+<script is:inline define:vars={{ runSource, spellings }}>
   // Plain script on purpose: the Pagefind bundle is generated after the build and must not be touched by the bundler.
   (function () {
     var PAGE = 20;
@@ -79,10 +86,72 @@ const browse = Object.entries(TOPICS)
     var list = document.querySelector(".search__list");
     var more = document.querySelector(".search__more");
     var browse = document.querySelector(".search__browse");
+    var pageLine = document.querySelector(".search__page");
     // The subjects show while there is nothing to list: before a search, and when one finds nothing.
     function offer(show) {
       if (browse) browse.hidden = !show;
     }
+    // respell:start
+    // The query in the house spelling (pipeline/lib/spellings.mjs, handed in as `spellings`), so «ترمب» finds the stories
+    // written «ترامب». A browser without the rules' lookbehind searches what was typed.
+    var SPELL = [];
+    try {
+      if (typeof spellings !== "undefined" && spellings) SPELL = spellings.map(function (s) { return [new RegExp(s[0], s[1]), s[2]]; });
+    } catch (error) { SPELL = []; }
+    function respell(q) {
+      return SPELL.reduce(function (out, s) { return out.replace(s[0], s[1]); }, q);
+    }
+    // The pages a query can name (/search-pages.json, built with the site), read on the first search, and matched with
+    // the names as tag-map.mjs's normalizeArabic() reads them, with and without «ال».
+    var PAGES = null;
+    function pagesList() {
+      if (PAGES) return Promise.resolve(PAGES);
+      return fetch("/search-pages.json")
+        .then(function (r) { return r.json(); })
+        .then(function (list) { PAGES = new Map(list.map(function (p) { return [p[0], p]; })); return PAGES; })
+        .catch(function () { PAGES = new Map(); return PAGES; });
+    }
+    var KIND = { m: "صفحة الموضوع:", q: "صفحة القسم:", r: "صفحة المنطقة:", f: "صفحة الملف:" };
+    function pageKey(s) {
+      return String(s == null ? "" : s).replace(/[ً-ْٰـ]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/\s+/g, " ").trim().toLowerCase();
+    }
+    function namedPage(map, q) {
+      var k = pageKey(q);
+      if (!k) return null;
+      return map.get(k) || map.get("ال" + k) || (k.indexOf("ال") === 0 ? map.get(k.slice(2)) : null) || null;
+    }
+    // The line waits for the list, and is drawn only if the query is still the one it was read for.
+    function showPage(q, id) {
+      if (!pageLine) return;
+      if (!q) { pageLine.hidden = true; return; }
+      pagesList().then(function (map) {
+        if (id !== current) return;
+        var p = namedPage(map, q);
+        pageLine.hidden = !p;
+        if (!p) return;
+        pageLine.querySelector(".search__page-label").textContent = KIND[p[1]] || "";
+        var a = pageLine.querySelector("a");
+        a.textContent = p[2];
+        a.setAttribute("href", p[3] || "/tags/" + encodeURIComponent(p[2]) + "/");
+      });
+    }
+    // One whole word is searched as a whole word: Pagefind cuts the last word to its stem and matches it as the start of
+    // longer words, so «أبل» listed «أبلغت» and «الإبلاغ» first, «تسلا» «تسلل» and «التسليمات», «مصر» «مصرف» (55, 103 and
+    // 204 results against 9, 13 and 124 whole-word ones, 2026-11-20). A word still being typed has no whole-word match and
+    // keeps the loose one; several words stay loose, since quoted they are one exact phrase («التضخم في مصر»: 51 to 4).
+    // The whole-word search only decides which stories stay: its count of matches is one a page (277 of «النفط»'s 288),
+    // which would have sent nearly every story under «ذكر عابر», so the loose search's counts and order are kept.
+    function find(pf, q, options) {
+      if (/\s|"/.test(q)) return pf.search(q, options);
+      return Promise.all([pf.search(q, options), pf.search('"' + q + '"', options)]).then(function (both) {
+        var loose = both[0];
+        var exact = both[1];
+        if (!exact || !exact.results || !exact.results.length) return loose;
+        var whole = new Set(exact.results.map(function (r) { return r.id; }));
+        return { results: loose.results.filter(function (r) { return whole.has(r.id); }) };
+      });
+    }
+    // respell:end
     var pagefind = null;
     var timer;
     // Every search gets a number, and an answer that arrives after a newer search has started is dropped.
@@ -91,7 +160,18 @@ const browse = Object.entries(TOPICS)
     var entries = [];
     var shown = 0;
     var params = new URLSearchParams(location.search);
-    var order = params.get("order") === "relevance" ? "relevance" : "date";
+    // The order the reader chose (a tap, or the address's `order`), else the query's own: one word newest first, several
+    // words most relevant first (2026-11-20). Newest first, «التضخم في مصر» (the kind of search the box's own example asks)
+    // opened on gold, Waller and the euro area, stories that only carry both words; by relevance, on Egypt's three
+    // inflation stories, and «ميزانية السعودية» on the Saudi budget deficit. One word keeps the order of 19 October.
+    var chosen = params.get("order") === "relevance" || params.get("order") === "date" ? params.get("order") : "";
+    var order = "date";
+    function orderFor(q) {
+      return chosen || (words(q).length > 1 ? "relevance" : "date");
+    }
+    function pressed() {
+      sort.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.order === order)); });
+    }
     function escape(text) {
       return String(text == null ? "" : text).replace(/[&<>"]/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -201,8 +281,13 @@ const browse = Object.entries(TOPICS)
         "</div></li>"
       );
     }
+    // The query as searched, when the house spelling changed it («ترمب» → «ترامب»): the count says what it counts.
+    var respelled = "";
+    function about() {
+      return respelled ? " عن «" + escape(respelled) + "»" : "";
+    }
     function tally() {
-      say(counted(entries.length) + (shown < entries.length ? "، تُعرض <bdi>" + shown + "</bdi>" : ""));
+      say(counted(entries.length) + about() + (shown < entries.length ? "، تُعرض <bdi>" + shown + "</bdi>" : ""));
       more.hidden = shown >= entries.length;
     }
     // The next twenty, read and listed; after a tap on «المزيد» focus moves to the first of them. They are listed only
@@ -236,14 +321,18 @@ const browse = Object.entries(TOPICS)
     function address(q) {
       // The search and its order live in the address, so a search can be shared or bookmarked.
       if (!history.replaceState) return;
-      var query = q ? "?q=" + encodeURIComponent(q) + (order === "relevance" ? "&order=relevance" : "") : "";
+      var query = q ? "?q=" + encodeURIComponent(q) + (chosen ? "&order=" + chosen : "") : "";
       history.replaceState(null, "", location.pathname + query);
     }
     function run() {
-      var q = input.value.trim();
+      var asked = input.value.trim();
+      var q = respell(asked);
       var id = ++current;
       clear.hidden = !input.value;
-      address(q);
+      order = orderFor(q);
+      pressed();
+      address(asked);
+      showPage(q, id);
       if (!q) {
         reset();
         say("");
@@ -252,11 +341,12 @@ const browse = Object.entries(TOPICS)
       }
       load().then(function (pf) {
         if (!pf || id !== current) return;
-        return pf.search(q, order === "date" ? { sort: { date: "desc" } } : {}).then(function (search) {
+        return find(pf, q, order === "date" ? { sort: { date: "desc" } } : {}).then(function (search) {
           if (id !== current) return;
           reset();
+          respelled = q !== asked ? q : "";
           if (!search.results.length) {
-            say("لا نتائج. جرّب كلمة أخرى أو اسم مؤسسة.");
+            say("لا نتائج" + about() + ". جرّب كلمة أخرى أو اسم مؤسسة.");
             offer(true);
             return;
           }
@@ -280,8 +370,7 @@ const browse = Object.entries(TOPICS)
     sort.querySelectorAll("button").forEach(function (b) {
       b.addEventListener("click", function () {
         if (b.dataset.order === order) return;
-        order = b.dataset.order;
-        sort.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        chosen = b.dataset.order;
         run();
       });
     });
@@ -302,7 +391,7 @@ const browse = Object.entries(TOPICS)
       timer = setTimeout(run, 180);
     });
     if (form) form.addEventListener("submit", function (e) { e.preventDefault(); clearTimeout(timer); run(); });
-    sort.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.order === order)); });
+    pressed();
     var initial = params.get("q");
     if (initial) {
       input.value = initial;
@@ -374,6 +463,13 @@ const browse = Object.entries(TOPICS)
   .search__sort button { min-height: 2.75rem; padding-inline: 0.45rem; font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; color: var(--ink-3); background: none; border: 0; cursor: pointer; }
   .search__sort button:hover { color: var(--ink); }
   .search__sort button[aria-pressed="true"] { color: var(--green); font-weight: 700; }
+  /* The page the query names: a ruled line over the results, as «اقرأ أيضاً» runs inside a story. */
+  .search__page { margin-top: 0.5rem; padding-block: 0.55rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); font-size: var(--fs-sm); color: var(--ink-3); }
+  .search__page[hidden] { display: none; }
+  .search__page-label { font-weight: 700; margin-inline-end: 0.25rem; }
+  .search__page a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); color: var(--green); text-decoration: none; }
+  .search__page a:hover { text-decoration: underline; }
+  @media (pointer: coarse) { .search__page a { display: inline-flex; align-items: center; min-height: var(--tap); } }
   .search :global(.search__list) { display: grid; gap: 1rem; margin-top: 0.5rem; }
   .search :global(.search__item) { position: relative; border-top: 1px solid var(--rule); padding-top: 0.9rem; }
   .search :global(.search__title) { font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.4; text-decoration: none; }
