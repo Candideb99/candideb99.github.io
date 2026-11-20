@@ -120,6 +120,39 @@ export function pageHeadFaults(html) {
   return out;
 }
 
+/**
+ * The foot of an article page (2026-11-20, the owner: "check the article pages design and organization too"): a story
+ * the piece cites as its source printed again in «اقرأ أيضاً» (the line in the text or the list beside it), «المزيد من …»
+ * or the «آخر الأخبار» strip (53 of the 86 hub pieces built on our stories); «خازندار» as the source's name on a line
+ * under «مواد ذات صلة في خازندار», the heading's own word (280 lines); and the note under the list calling a piece that is
+ * not an explainer «هذا الشرح» (40 pages).
+ */
+export function articleFootFaults(html) {
+  const out = [];
+  // A rail with nothing in it still drew its rule down the page beside the text (21 short stories, the same night).
+  if (/<aside class="article__side"[^>]*>\s*(?:<!--[\s\S]*?-->\s*)*<\/aside>/.test(html)) out.push("an empty side column ruled beside the text");
+  const sources = html.match(/<section class="sources"[\s\S]*?<\/section>/)?.[0];
+  if (!sources) return out;
+  const links = (s) => [...s.matchAll(/href="(\/articles\/[^"#?]+?)\/?"/g)].map((m) => m[1]);
+  const cited = new Set(links(sources));
+  const places = [
+    ["«اقرأ أيضاً» in the text", /<aside class="also"[\s\S]*?<\/aside>/],
+    ["«اقرأ أيضاً» beside the text", /<section class="side-related"[\s\S]*?<\/section>/],
+    ["«المزيد من …»", /<section class="wrap--article article__more"[\s\S]*?<\/section>/],
+    ["the «آخر الأخبار» strip", /<ul class="ticker__list"[\s\S]*?<\/ul>/],
+  ];
+  for (const [where, re] of places) {
+    for (const href of links(html.match(re)?.[0] ?? "")) if (cited.has(href)) out.push(`a story the piece cites printed again in ${where}: ${href}/`);
+  }
+  if (sources.includes("مواد ذات صلة في خازندار")) {
+    const named = (sources.match(/<span class="sources__name[^"]*"[^>]*>\s*خازندار\s*<\/span>/g) ?? []).length;
+    if (named) out.push(`«خازندار» named as the source on ${named} line(s) under «مواد ذات صلة في خازندار»`);
+  }
+  const kind = html.match(/<p class="article__kind"[^>]*>([\s\S]*?)<\/p>/)?.[1]?.replace(/<[^>]+>/g, "").trim();
+  if (kind && kind !== "شرح مبسّط" && /<p class="sources__note"[^>]*>[\s\S]*?هذا الشرح/.test(sources)) out.push(`the note under «${kind}» calls it «هذا الشرح»`);
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

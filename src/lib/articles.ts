@@ -61,9 +61,20 @@ export function pickLead(articles: Article[], now = Date.now()): Article | undef
  * 2026-10-19 (the owner's check of the article pages) it scored the same section and any shared tag, a country
  * included, and always filled four places: Qatar's defence plant was followed by the Bank of Cairo's IPO and the World
  * Bank's Gulf forecast by Syria's reconstruction fund. A page with nothing related prints no «اقرأ أيضاً».
+ * Never a story the piece cites as its source (2026-11-20, the owner: "check the article pages design and organization
+ * too"): an analysis or an explainer is written from stories of ours, listed at its foot under «مواد ذات صلة في
+ * خازندار», and the same running topic put them in «اقرأ أيضاً» again, on 53 of the 86 such pieces.
  */
 export function related(article: Article, all: Article[], count = 4): Article[] {
-  return onTheSameTopic(article, all, { n: count, days: 60 });
+  const exclude = new Set(citedStories(article, all).map((a) => a.id));
+  return onTheSameTopic(article, all, { n: count, days: 60, exclude });
+}
+
+/** The stories of ours a piece cites as its sources (an analysis, an explainer, the week's review; never a news story,
+ *  whose sources are other outlets'), as its foot lists them. */
+export function citedStories(article: Article, all: Article[]): Article[] {
+  const cited = new Set(article.data.sources.filter((s) => s.url.startsWith("/")).map((s) => s.url.replace(/\/?$/, "/")));
+  return cited.size ? all.filter((a) => cited.has(articleHref(a))) : [];
 }
 
 /**

@@ -5,7 +5,7 @@ import { DESK_NAMES, groundedRegions } from "./regions.mjs";
 const REGION_NAMES = DESK_NAMES.join("، ");
 import { chat, reusedSystem } from "./llm.mjs";
 import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS, followUpBrief, followUpNotesBrief } from "./editorial.mjs";
-import { boxFacts, figureOnly, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
+import { boxFacts, figureOnly, FIGURES_RULE, isFigure, repeatsTable } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
 import { labelLine, quotedOutletsBlock } from "./outlets.mjs";
 import { fixNames } from "./copydesk.mjs";
@@ -547,9 +547,11 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
     diagram: kind === "explainer" ? normalizeDiagram(d.diagram) : null,
   };
   // The box never repeats the piece's own table: in the week's review five of six values sat again in «أرقام الأسبوع»,
-  // and 21 of the 44 pieces with both printed two or more values twice (the audit of 2026-10-31).
+  // and 21 of the 44 pieces with both printed two or more values twice (the audit of 2026-10-31). A cell keeps its sign
+  // and leaves its unit to the column's head, so a value is also the table's when a row carries its figures under a word
+  // of its label (`repeatsTable()`, 2026-11-20).
   const cells = new Set((draft.table?.rows ?? []).flat().map((c) => normalizeDigits(String(c)).replace(/\s+/g, " ").trim()));
-  if (cells.size) draft.keyFacts = draft.keyFacts.filter((f) => !cells.has(normalizeDigits(String(f.value)).replace(/\s+/g, " ").trim()));
+  if (cells.size) draft.keyFacts = draft.keyFacts.filter((f) => !cells.has(normalizeDigits(String(f.value)).replace(/\s+/g, " ").trim()) && !repeatsTable(f, draft.table?.rows));
   // A tag the story never mentions files it under a subject it does not cover, and a region named only as a cause
   // puts it on a desk it is not about (the audit of 2026-09-27; lib/tags.mjs, lib/regions.mjs).
   draft.tags = cleanTags(Array.isArray(d.tags) ? d.tags : [], taggedText(draft)).slice(0, 6);

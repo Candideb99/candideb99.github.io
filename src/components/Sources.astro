@@ -7,6 +7,7 @@
 import { formatShortDate } from "@lib/format";
 import { safeHref } from "@lib/safe-url.mjs";
 import { escapeHtml, isolateNumbers } from "@lib/bidi";
+import site from "@data/site.json";
 
 interface Props {
   /** `url` is empty for an internal source whose article has since been retired: it is named, not linked. */
@@ -20,8 +21,21 @@ interface Props {
   /** The sentence under the list, for a page that is not a story (the agenda: its sources are schedules, read by
    *  code, and a source may carry a `detail`, printed beside its address). */
   note?: string;
+  /** The article's kind, which the note under a hub piece's list names (an analysis is no «شرح»). */
+  kind?: string;
 }
-const { explainer = false, credit = false, note } = Astro.props;
+const { explainer = false, credit = false, note, kind } = Astro.props;
+/** The note under a hub piece's list says what the piece is (2026-11-20, the owner: "check the article pages design and
+ *  organization too"): «كُتب هذا الشرح» closed every hub piece, 36 analyses, 3 weeks' reviews and the in-depth piece
+ *  among them. */
+const hubNote =
+  kind === "analysis" ? "كُتب هذا التحليل آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
+  : kind === "explainer" ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
+  : "كُتبت هذه المادة آلياً بنماذج لغوية ثم رُوجعت ببرنامج تدقيق مستقل. ";
+/** Under «مواد ذات صلة في خازندار» every line was a story of ours and printed «خازندار» as its source's name, the
+ *  heading's own word again (280 lines on 89 pages, 2026-11-20): such a line gives its headline and date alone. A list
+ *  that mixes ours with other sources (an idea piece's «المصادر») keeps every name. */
+const ours = (s: { name: string; url: string }) => explainer && s.name.trim() === site.name && (s.url === "" || s.url.startsWith("/"));
 // An address that is not a web page is named, not linked, like a retired internal source (lib/safe-url.mjs).
 const sources = Astro.props.sources.map((s) => ({ ...s, url: safeHref(s.url) ?? "" }));
 function host(url: string) {
@@ -61,8 +75,8 @@ const Fold = oneLine ? "details" : "div";
     {sources.length > 0 ? (
       <ol class="sources__list">
         {sources.map((s) => (
-          <li class="sources__item">
-            <span class="sources__name ui">{s.name}</span>
+          <li class:list={["sources__item", { "sources__item--ours": ours(s) }]}>
+            {!ours(s) && <span class="sources__name ui">{s.name}</span>}
             {s.url ? (
               <a class="sources__title" href={s.url} rel={s.url.startsWith("/") ? undefined : "noopener nofollow"} target={s.url.startsWith("/") ? undefined : "_blank"}>
                 <bdi lang={titleLang(s)} set:html={titleHtml(s.title)} />
@@ -86,7 +100,7 @@ const Fold = oneLine ? "details" : "div";
     {note ?? (
       <>
         {explainer
-          ? "كُتب هذا الشرح آلياً بنماذج لغوية ثم رُوجع ببرنامج تدقيق مستقل. "
+          ? hubNote
           : "كُتب هذا المقال آلياً استناداً إلى المصادر أعلاه حصراً، ورُوجعت وقائعه وأرقامه ببرنامج تدقيق مستقل قبل النشر. "}
         عند أي تعارض يُعتدّ بالمصدر الأصلي.
       </>
@@ -118,6 +132,9 @@ const Fold = oneLine ? "details" : "div";
     .sources__item { grid-template-columns: minmax(0, 1fr); }
     .sources__host { grid-column: 1; }
   }
+  /* A story of ours under «مواد ذات صلة في خازندار»: no name column, its headline and date at the list's full width. */
+  .sources__item--ours { grid-template-columns: minmax(0, 1fr); }
+  .sources__item--ours .sources__host { grid-column: 1; }
   /* The credit line (a news story): a rule over it, the label in bold, the outlets in the reading face, and the fold's
      handle in the furniture face, in the house green, as the chart's «البيانات» fold is. */
   .sources__fold { border-top: 1px solid var(--rule); padding-top: 0.75rem; }

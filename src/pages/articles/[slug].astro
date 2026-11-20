@@ -12,7 +12,7 @@ import WorkedExample from "@components/WorkedExample.astro";
 import Share from "@components/Share.astro";
 import TextSize from "@components/TextSize.astro";
 import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
-import { getArticles, related, articleHref, stripStories } from "@lib/articles";
+import { getArticles, related, citedStories, articleHref, stripStories } from "@lib/articles";
 import { getSection, sectionHref, kindLabel, moreLabel, allLabel } from "@lib/sections";
 import { subTopicOf, topicHref, tagHref, kickerOf } from "@lib/topics";
 import { analysisLabel, readingHref } from "@lib/analysis";
@@ -62,8 +62,9 @@ const sideRelated = more.slice(1);
 // (related, or in the «آخر الأخبار» strip above). The side column's «الأحدث» (the five newest stories) went on 2026-10-19
 // at the owner's choice: 17 of its 20 headlines on the pages checked were already in the strip at the top of the page.
 // The strip leaves out what «اقرأ أيضاً» prints (2026-10-31: 55 pages ran a story in both).
-const printed = more.map((a) => a.id);
-const onPage = new Set([...more, ...stripStories(all, path, printed)].map((a) => a.id));
+// The stories a hub piece cites are printed at its foot, so the strip and «المزيد من …» leave them out too (2026-11-20).
+const printed = [...more, ...citedStories(article, all)].map((a) => a.id);
+const onPage = new Set([...printed, ...stripStories(all, path, printed).map((a) => a.id)]);
 const moreFromSection = all.filter((a) => a.data.section === d.section && a.id !== article.id && !onPage.has(a.id)).slice(0, 4);
 // Internal sources point at the paper's own stories; one that has since been retired is named, not linked.
 const known = new Set(all.map(articleHref));
@@ -244,26 +245,30 @@ const jsonLd = [articleLd, breadcrumbLd];
         {/* A paper reading's source is the paper itself, outside the site: it was headed «مواد ذات صلة في خازندار» over
             an arXiv address and noted as a «شرح» (2026-11-09). Its facts are checked before publication as a story's are. */}
         {/* An idea piece lists its references and the week's stories under «المصادر», as a reading lists its paper. */}
-        <Sources sources={sources} explainer={isHub && d.kind !== "paper" && d.kind !== "idea"} credit={!isHub} />
+        <Sources sources={sources} explainer={isHub && d.kind !== "paper" && d.kind !== "idea"} credit={!isHub} kind={d.kind} />
         {/* The way to report an error, where a reader who found one is: the contact form opens on this story as a
             correction (contact.astro reads `story`). */}
         <p class="report ui" data-pagefind-ignore>وجدت خطأً في هذا المقال؟ <a href={`/contact/?story=${d.slug}`} rel="nofollow">أبلغنا عنه</a></p>
       </div>
       {/* Other stories' headlines stay out of this story's search entry (data-pagefind-ignore below): the «الأحدث» rail
           put the five newest headlines in every article, so «مضيق هرمز» matched all 147 (2026-09-24). */}
-      <aside class="article__side">
-        <KeyFacts facts={d.keyFacts} placement="side" terms={lesson} />
-        {sideRelated.length > 0 && (
-          <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">
-            <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
-            <div class="side-related__list">
-              {sideRelated.map((a) => (
-                <StoryCard article={a} variant="text" showExcerpt={false} />
-              ))}
-            </div>
-          </section>
-        )}
-      </aside>
+      {/* The rail only when it holds something: a short story with no box and nothing related drew its rule down the page
+          beside an empty column (21 stories, 2026-11-20). */}
+      {(d.keyFacts.length > 0 || sideRelated.length > 0) && (
+        <aside class="article__side">
+          <KeyFacts facts={d.keyFacts} placement="side" terms={lesson} />
+          {sideRelated.length > 0 && (
+            <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">
+              <h2 id="side-related-title" class="module__head">اقرأ أيضاً</h2>
+              <div class="side-related__list">
+                {sideRelated.map((a) => (
+                  <StoryCard article={a} variant="text" showExcerpt={false} />
+                ))}
+              </div>
+            </section>
+          )}
+        </aside>
+      )}
     </div>
   </article>
 

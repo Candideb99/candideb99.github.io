@@ -361,6 +361,20 @@ for (const [name, checks] of [
   check("the writer's box goes through the spelling table and keeps figures only", box.map((f) => f.value), ["2.22 مليون برميل", "3 أنظمة"]);
   const both = normalizeDraft({ title: "t", key_facts: [{ label: "الفائدة على الإيداع", value: "20%" }, { label: "التضخم", value: "12.5%" }], table: { title: "أرقام الأسبوع", columns: ["المؤشر", "القيمة"], rows: [["الفائدة على الإيداع", "20%"], ["سعر برنت", "113 دولاراً"], ["الذهب", "3890 دولاراً"]] } });
   check("the box never repeats a value its own table prints (the week's review, 2026-10-30)", both.keyFacts.map((f) => f.value), ["12.5%"]);
+  // …nor its figure where the cell keeps the sign and leaves the unit to the column's head (the US deficit, 2026-11-13);
+  // a figure no row carries, a number where the row has a percentage, and a row about something else stay (2026-11-20).
+  const signed = normalizeDraft({
+    title: "t",
+    key_facts: [
+      { label: "عجز الموازنة في أكتوبر", value: "404 مليارات دولار" },
+      { label: "زيادة العجز السنوية في أكتوبر", value: "42%" },
+      { label: "عجز أكتوبر بعد تعديلات التقويم", value: "285 مليار دولار" },
+      { label: "الإيرادات الجمركية في أكتوبر", value: "12 مليار دولار" },
+      { label: "السفن العابرة في الأسبوع", value: "773 سفينة" },
+    ],
+    table: { title: "بنود الموازنة الاتحادية في أكتوبر", columns: ["البند", "أكتوبر (مليار دولار)", "التغير السنوي (%)"], rows: [["العجز", "404", "+42%"], ["النفقات", "773", "+12%"]] },
+  });
+  check("the box drops a figure its own table prints with a sign and the unit in the head, and keeps the rest", signed.keyFacts.map((f) => f.value), ["285 مليار دولار", "12 مليار دولار", "773 سفينة"]);
 }
 
 // 2. A story is not written twice: a retry of the same event, or the same event from another outlet.
@@ -1940,6 +1954,22 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const { selfLabelLinks } = await import("./site-furniture.mjs");
     const card = (href) => `<article class="card"><p class="meta card__meta"><a href="${href}">تحليل الطاقة</a><time>منذ يوم</time></p></article>`;
     check("the site check finds a card's label leading to its own page, and passes one leading to its desk", [selfLabelLinks(card("/analysis/"), "/analysis/").length, selfLabelLinks(card("/analysis/desk/energy/"), "/analysis/").length], [1, 0]);
+  }
+  // An article's foot (2026-11-20): a hub piece's cited story printed again in «اقرأ أيضاً», «خازندار» named on every line
+  // under «مواد ذات صلة في خازندار», and an analysis's note calling it «هذا الشرح». The old foot fails four times.
+  {
+    const { articleFootFaults } = await import("./site-furniture.mjs");
+    const cite = `<li class="sources__item"><span class="sources__name ui">خازندار</span><a class="sources__title" href="/articles/imf-raises-uae/"><bdi>صندوق النقد يرفع توقعه</bdi></a></li>`;
+    const citeNew = `<li class="sources__item sources__item--ours"><a class="sources__title" href="/articles/imf-raises-uae/"><bdi>صندوق النقد يرفع توقعه</bdi></a></li>`;
+    const page = ({ also, side, item, note }) =>
+      `<p class="article__kind"><a href="/analysis/desk/economy/">تحليل اقتصادي</a></p><aside class="also" data-also><a class="also__link" href="${also}">x</a></aside>` +
+      `<section class="sources" aria-labelledby="sources-title"><div class="sources__body"><h2 id="sources-title" class="module__head">مواد ذات صلة في خازندار</h2><ol class="sources__list">${item}</ol></div><p class="sources__note">${note} آلياً بنماذج لغوية.</p></section>` +
+      `<section class="side-related"><h2>اقرأ أيضاً</h2><a href="${side}">y</a></section>`;
+    check("the site check finds a cited story printed again, the site named on its lines and a wrong kind in the note, and passes the new foot", [
+      articleFootFaults(page({ also: "/articles/imf-raises-uae/", side: "/articles/imf-raises-uae/", item: cite, note: "كُتب هذا الشرح" })).length,
+      articleFootFaults(page({ also: "/articles/gold-week/", side: "/articles/oil-week/", item: citeNew, note: "كُتب هذا التحليل" })).length,
+    ], [4, 0]);
+    check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
   // A page head's row (2026-11-20): the topic pages' copy ran its names together, a news section's sentence named the
   // sub-topics its row names, and a dot set as an item of its own wrapped to open a line (/technology/ at 375px). The old

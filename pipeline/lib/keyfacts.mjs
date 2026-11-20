@@ -153,5 +153,45 @@ export function boxFacts(facts, kind = "news") {
   return kind === "explainer" || kind === "idea" ? list : list.filter((f) => isFigure(f.value, f.label));
 }
 
+const TABLE_STOP = new Set(["التي", "الذي", "بعد", "قبل", "على", "إلى", "عن", "مع", "خلال", "منذ", "نحو", "أكثر", "أقل", "مليار", "مليارات", "مليون", "ملايين", "ألف", "آلاف", "دولار", "دولارات", "جنيه", "ريال", "درهم", "يورو", "نسبة", "قيمة"]);
+const latinDigits = (s) => String(s ?? "").replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).replace(/[۰-۹]/g, (d) => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
+/** A text's figures as a table prints them: no sign, no thousands comma, a percentage marked as one; a lone digit says
+ *  too little to tie a box value to a cell («8 إصدارات», «3 أشهر»). */
+const figuresOf = (s) =>
+  [...latinDigits(s).matchAll(/(\d+(?:[.,]\d+)*)\s*(%)?/g)]
+    .map((m) => ({ n: m[1].replace(/,(?=\d{3}(?:\D|$))/g, ""), pct: Boolean(m[2]) }))
+    .filter((f) => f.pct || f.n.length > 1)
+    .map((f) => `${f.n}${f.pct ? "%" : ""}`);
+/** A text's content words, with the article and a clinging و، ف، ب، ل، ك taken off. */
+const contentWords = (s) =>
+  new Set(
+    String(s ?? "")
+      .replace(/[«»"()،:؛.\-–]/g, " ")
+      .split(/\s+/)
+      .map((w) => w.replace(/^[وف]?(?:[بلك]?ال|لل)/, "").replace(/^[وف](?=...)/, ""))
+      .filter((w) => w.length >= 3 && !TABLE_STOP.has(w)),
+  );
+
+/**
+ * Does the piece's own table already print this box fact (2026-11-20, the owner: "check the article pages design and
+ * organization too")? A cell holds the bare figure, its unit in the column's head and its sign kept («404» under
+ * «أكتوبر (مليار دولار)» for «404 مليارات دولار», «+42%» for «42%»), so the exact comparison of 2026-10-31 let 11 of the
+ * 31 pieces published since with both print a figure twice (the US budget deficit: five of its six values). A fact
+ * repeats a row that carries every figure it gives (a percentage only as a percentage) and shares a word with its
+ * label; a fact whose figures no row carries, or whose row is about something else, stays.
+ */
+export function repeatsTable(fact, rows) {
+  const figures = figuresOf(fact?.value);
+  if (!figures.length || !Array.isArray(rows)) return false;
+  const label = contentWords(fact?.label);
+  return rows.some((row) => {
+    const cells = (Array.isArray(row) ? row : []).map(String);
+    const printed = new Set(cells.flatMap(figuresOf));
+    if (!figures.every((f) => printed.has(f))) return false;
+    const words = contentWords(cells.join(" "));
+    return [...label].some((w) => words.has(w));
+  });
+}
+
 /** The writers' instruction for the box (one sentence of the schema notes). */
 export const FIGURES_RULE = "The key facts print under the heading «الأرقام», so every value is a figure: a number with its unit (an amount, a rate, a price, a count, a share, a duration), or a credit rating, opening with the number or its measure word («نحو 70%»، «أكثر من 4,000 وظيفة»، «حتى 7%»), in Arabic. A name, a place, a company, a date, a weekday, a decision, a description or a sentence about a figure («تجاوزت 100 دولار هذا الأسبوع»، «أدنى مستوى في 13 عاماً») is not a key fact however important it is: it stays in the text, and code drops it from the box. The label says exactly what the figure measures, and every figure in the box belongs to the headline's event. A vote is printed whole, both sides («التصويت: 10 مقابل 2»), never one side («أصوات تأييد التثبيت: 10 أصوات»). A forecast's label says it is one («المتوقع»، «توقعات»), and every label names its period (a month, a quarter, a year), never «الشهر الماضي». Give only as many key facts as the material has figures, at most six, and none when it has none.";
