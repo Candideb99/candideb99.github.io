@@ -510,6 +510,23 @@ bdi.latin--short, bdi.latin .nb { white-space: nowrap; }
   .has-motion .photo img.will-settle, .has-motion .will-settle .chart__mark rect, .has-motion .will-settle .hbars__bar { transform: none !important; }
   .has-motion .will-settle .chart__line { stroke-dashoffset: 0 !important; }
 }
+/* Paper is always light: a reader in the dark theme printed light-grey ink on white (2026-11-20), and the page's moving
+   and pressing parts (the pinned bar, the price and news strips, sharing, the text-size control) mean nothing on paper. */
+@media print {
+  :root, :root[data-theme] {
+    color-scheme: light;
+    --paper: #fff; --paper-2: #f3f3ee; --ink: #141414; --ink-2: #454442; --ink-3: #6a6965; --rule: #d6d5ce;
+    --green: #0f5c3c; --green-deep: #0a4530; --up: #0f5c3c; --down: #a3271f;
+    --chart-1: #0c764d; --chart-2: #2f4f8f; --chart-3: #b07a12;
+  }
+  /* As specific as the dark theme's own logo rules, and later, so they win. */
+  :root[data-theme] .logo__dark, :root:not([data-theme]) .logo__dark { display: none !important; }
+  :root[data-theme] .logo__light, :root:not([data-theme]) .logo__light { display: block !important; }
+  .masthead__nav, .masthead__tools, .markets-wrap, .ticker-wrap, .share, .textsize, .skip-link { display: none !important; }
+}
+/* A theme switch changes every colour at once: the links and chips that fade on hover would otherwise follow a beat
+   late (Masthead.astro sets this class for one frame around the switch). */
+.theme-switching *, .theme-switching *::before, .theme-switching *::after { transition: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }

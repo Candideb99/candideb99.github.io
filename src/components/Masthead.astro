@@ -267,7 +267,10 @@ for (const s of sections) {
   toggles.forEach((b) =>
     b.addEventListener("click", () => {
       const next = isDark() ? "light" : "dark";
+      root.classList.add("theme-switching");
       root.dataset.theme = next;
+      void root.offsetWidth;
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("theme-switching")));
       try { localStorage.setItem("khazendar-theme", next); } catch {}
       syncToggles();
     }),
