@@ -40,7 +40,7 @@ import { nothingNewSince, relatedRecent, repeatsRecent } from "./lib/events.mjs"
 import { DESK_NAMES } from "./lib/regions.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
-import { usedPhotos } from "./lib/photo-key.mjs";
+import { photoFree, usedPhotos } from "./lib/photo-key.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, recentNews, serializeArticle, weekStories } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
@@ -1087,7 +1087,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   }
   // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade. A piece written
   // again under its own address keeps its photograph, and is pictured only when it had none.
-  const image = TEXT_ONLY || replace?.hasImage ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
+  // «مدخل إلى الاقتصاد» runs no photograph (the owner, 2026-11-20): its figures carry the page (photoFree(), photo-key.mjs).
+  const image = TEXT_ONLY || replace?.hasImage || photoFree(section) ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
   if (image?.url) RUN_IMAGES.add(image.url);
   const slug = replace?.slug ?? buildSlug(draft, { headlineHint });
   let markdown = serializeArticle({

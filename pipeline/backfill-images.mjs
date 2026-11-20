@@ -20,6 +20,7 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
 import { ARTICLES_DIR } from "./lib/article.mjs";
+import { photoFree } from "./lib/photo-key.mjs";
 
 const root = process.cwd();
 try {
@@ -163,6 +164,8 @@ for (const file of files) {
   if (!match) continue;
   const data = YAML.parse(match[1]);
   if (ONLY.size && !ONLY.has(data.slug)) continue;
+  // «مدخل إلى الاقتصاد» carries no photograph (the owner, 2026-11-20; photoFree()): never filled, never re-picked.
+  if (photoFree(data.section)) continue;
   const redo = REDO.has(data.slug);
   if (data.image && !redo) continue;
   // A photo being replaced stays excluded: a re-pick is never the same picture (2026-09-27, the gravity audit's

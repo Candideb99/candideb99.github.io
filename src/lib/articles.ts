@@ -1,7 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
 import { canonicalTag, isFileTag, subjectOfTag } from "./topics";
-import { firstOfEachPhoto } from "../../pipeline/lib/photo-key.mjs";
+import { firstOfEachPhoto, photoFree } from "../../pipeline/lib/photo-key.mjs";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -14,7 +14,12 @@ export async function getArticles(): Promise<Article[]> {
   // KHAZENDAR_SHOW_DRAFTS=1 so the editor can read a draft as it will look before approving it.
   const showDrafts = process.env.KHAZENDAR_SHOW_DRAFTS === "1";
   const all = await getCollection("articles", ({ data }) => showDrafts || !data.draft);
-  cache = all.sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
+  // «مدخل إلى الاقتصاد» prints no photograph, a piece published with one included (the owner, 2026-11-20: "i do not
+  // think we need pictures in the intro to economy part"; photoFree(), pipeline/lib/photo-key.mjs): every page, card,
+  // search thumbnail and preview image reads it from here.
+  cache = all
+    .map((a) => (photoFree(a.data.section) && a.data.image ? { ...a, data: { ...a.data, image: undefined } } : a))
+    .sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
   return cache;
 }
 

@@ -38,6 +38,7 @@ import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
 import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
 import { IDEA_HOSTS, IDEA_SOURCE_CHARS, excerpt, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "../pipeline/lib/ideas.mjs";
 import { selectIdea } from "../pipeline/lib/select.mjs";
+import { photoFree } from "../pipeline/lib/photo-key.mjs";
 import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
@@ -636,6 +637,20 @@ check(
   const planned = { title: "لماذا يتردد المشتري كما رأى أكرلوف؟", subtitle: "د", lede: "يتردد المشترون في سوق السيارات المستعملة.", body: "وجد أكرلوف أن 45% من المشترين يدفعون سعراً وسطاً.", keyFacts: [], whyItMatters: "", tags: ["أكرلوف"], regions: [], lessonPlan: { idea: "يدفع 45% من المشترين سعراً وسطاً", path: [{ bridge: "", question: "", answer: "", facts: [] }] } };
   const planChecks = programmaticChecks(planned, [{ sourceNameEn: "Wikipedia", title: "t", lang: "en", text: "45% of buyers pay an average price." }], { explainer: true, minWords: 0 });
   check("a figure an idea piece's plan carries in its `idea` is on the plan", planChecks.warnings.some((w) => w.startsWith("خارج الخطة")), false);
+}
+
+// «مدخل إلى الاقتصاد» carries no photograph (the owner, 2026-11-20: "i do not think we need pictures in the intro to economy
+// part"): the newsroom picks none, the morning round fills none, and the site prints none, the published ones included.
+{
+  const source = (file) => readFileSync(file, "utf8");
+  check(
+    "the explainers section runs no photograph, in the newsroom, the morning round and the site; the news sections and analyses do",
+    [photoFree("explainers"), photoFree("economy"), photoFree("analysis"), photoFree(undefined),
+      /photoFree\(section\) \? null : await pickImage/.test(source("pipeline/run.mjs")),
+      /if \(photoFree\(data\.section\)\) continue;/.test(source("pipeline/backfill-images.mjs")),
+      /photoFree\(a\.data\.section\) && a\.data\.image \? \{ \.\.\.a, data: \{ \.\.\.a\.data, image: undefined \} \}/.test(source("src/lib/articles.ts"))],
+    [true, false, false, false, true, true, true],
+  );
 }
 
 // 3. The lessons' lint: harmful rules refused, good ones kept.

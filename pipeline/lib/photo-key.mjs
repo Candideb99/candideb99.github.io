@@ -112,3 +112,15 @@ export function firstOfEachPhoto(items) {
   }
   return ids;
 }
+
+/**
+ * The sections whose pieces carry no photograph: «مدخل إلى الاقتصاد» (explainers, economists' ideas, paper readings). The
+ * owner, 2026-11-20, on the first «الفكر الاقتصادي» piece and its fast-food photograph: "i do not think we need pictures in
+ * the intro to economy part ... we can only rely on graphs, tables, mathematics, analysis etc ... the intro to economy
+ * section should not be treated as normal news section articles". The newsroom picks none for them (run.mjs), the
+ * morning round never fills one (backfill-images.mjs), and the site prints none, the published pieces' included
+ * (src/lib/articles.ts), so their figures, tables and worked examples carry the page. One list for all three.
+ */
+export const PHOTO_FREE_SECTIONS = new Set(["explainers"]);
+/** @param {string | undefined | null} section */
+export const photoFree = (section) => PHOTO_FREE_SECTIONS.has(String(section ?? ""));
