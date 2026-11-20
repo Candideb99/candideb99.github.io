@@ -153,6 +153,42 @@ export function articleFootFaults(html) {
   return out;
 }
 
+/**
+ * A subject's page and the labels on any page (2026-11-20, the owner: "check the topic pages design and organization
+ * too"): a lead without a photograph while one of the next three stories carries one (9 of 24 subject pages; a section
+ * page has led on a photographed story since 2026-11-10), an analysis labelled with the bare «تحليل» where its desk is
+ * known (a card or an archive line), and an archive month after the newest printed open (النفط's ran a phone page to
+ * 15,700px).
+ */
+export function topicPageFaults(html) {
+  const out = [];
+  const leadAt = html.search(/<div class="(?:topic-top__lead|section-page__lead)"/);
+  if (leadAt >= 0) {
+    const cards = [...html.slice(leadAt).matchAll(/<article class="card[\s\S]*?<\/article>/g)].map((m) => m[0]);
+    if (cards.length > 1 && !/<img\b/.test(cards[0]) && cards.slice(1, 4).some((c) => /<img\b/.test(c))) out.push("a lead without a photograph while one of the next three stories carries one");
+  }
+  const bare = [...html.matchAll(/<p class="meta (?:card__meta|topic-month__meta)"[^>]*>([\s\S]*?)<\/p>/g)].filter((m) => /<a\b[^>]*>\s*تحليل\s*<\/a>/.test(m[1])).length;
+  if (bare) out.push(`${bare} analysis label(s) reading the bare «تحليل», not the desk`);
+  const months = [...html.matchAll(/<(section|details) class="topic-month"([^>]*)>/g)];
+  const open = months.slice(1).filter((m) => m[1] === "section" || /\bopen\b/.test(m[2])).length;
+  if (open) out.push(`${open} archive month(s) after the newest printed open`);
+  return out;
+}
+
+/**
+ * A file's page (2026-11-20, the owner: "check the file pages design and organization too"): a file of one story, the
+ * story a reader came from by its chip (617 of 907 file pages), and a page of more than twenty stories («العالم» printed
+ * its 363 on one, 1.1 MB). Files run in pages of twenty from two stories (src/pages/tags/[tag]/[...page].astro).
+ */
+export function filePageFaults(html) {
+  const out = [];
+  const items = (html.match(/<li class="thread__item"/g) ?? []).length;
+  if (!items) return out;
+  if (items > 20) out.push(`a file printing ${items} stories on one page`);
+  if (items === 1 && !/<nav class="pager"/.test(html)) out.push("a file of one story");
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

@@ -1,0 +1,31 @@
+---
+/**
+ * The steps between the pages of a list (a section, a file): «أحدث» and «أقدم» on either side of «صفحة 2 من 5». One
+ * component since 2026-11-20, when the files took pages too; it had been the section page's own. The missing step (no
+ * newer page on page 1, no older on the last) keeps its place so the count stays centred, but is not drawn: a grey
+ * boxed «أحدث» looked like a button that did nothing (2026-10-19).
+ */
+import type { Page } from "astro";
+
+interface Props {
+  page: Page<unknown>;
+  label: string;
+}
+const { page, label } = Astro.props;
+---
+
+{page.lastPage > 1 && (
+  <nav class="pager" aria-label={label}>
+    {page.url.prev ? <a class="pager__step" href={page.url.prev} rel="prev">أحدث</a> : <span class="pager__step pager__step--off" aria-hidden="true">أحدث</span>}
+    <p class="pager__count ui">صفحة <bdi>{page.currentPage}</bdi> من <bdi>{page.lastPage}</bdi></p>
+    {page.url.next ? <a class="pager__step" href={page.url.next} rel="next">أقدم</a> : <span class="pager__step pager__step--off" aria-hidden="true">أقدم</span>}
+  </nav>
+)}
+
+<style>
+  .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
+  .pager__step:hover { border-color: var(--green); }
+  .pager__step--off { visibility: hidden; }
+  .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
+</style>

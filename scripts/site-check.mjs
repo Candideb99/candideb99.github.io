@@ -15,7 +15,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
-import { articleFootFaults, bareFigures, interactiveFaults, pageHeadFaults, readingFaults, selfLabelLinks } from "./site-furniture.mjs";
+import { articleFootFaults, bareFigures, filePageFaults, interactiveFaults, pageHeadFaults, readingFaults, selfLabelLinks, topicPageFaults } from "./site-furniture.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -84,6 +84,11 @@ for (const page of pages) {
   // A hub piece's cited stories printed again, its list naming the site on every line, its note naming the wrong kind
   // (articleFootFaults(), 2026-11-20).
   for (const what of articleFootFaults(html)) fault(page, what);
+  // A lead without a photograph beside photographed stories, a bare «تحليل» label, an archive month left open
+  // (topicPageFaults(), 2026-11-20).
+  for (const what of topicPageFaults(html)) fault(page, what);
+  // A file of one story, or a file page of more than twenty (filePageFaults(), 2026-11-20).
+  for (const what of filePageFaults(html)) fault(page, what);
   // A redirect stub (<meta http-equiv="refresh">) is not a page a reader reads, but it must land on one: on 2026-09-27
   // eleven forwarded tag addresses pointed at a doubly encoded path («%25D9…») that was never built.
   if (/http-equiv=["']refresh["']/i.test(html) && html.length < 2000) {

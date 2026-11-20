@@ -18,6 +18,7 @@ import LinkRow from "@components/LinkRow.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { getArticles, firstPictures, articleHref } from "@lib/articles";
 import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections";
+import { analysisLabel, readingHref } from "@lib/analysis";
 import { menuTopics, topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
 import { quotes, TOPIC_QUOTE_IDS } from "@lib/markets";
 import { countLabel, formatShortDate, formatMonth } from "@lib/format";
@@ -45,10 +46,17 @@ const sec = getSection(section);
 const n = items.length;
 const countWord = countLabel(n);
 // The neighbours we are writing about (menuTopics), never an empty page.
-const siblings = menuTopics(await getArticles(), section).map((t) => t.topic).filter((t) => t.id !== topic.id);
+const all = await getArticles();
+const siblings = menuTopics(all, section).map((t) => t.topic).filter((t) => t.id !== topic.id);
 
 const prices = quotes(TOPIC_QUOTE_IDS[`${section}/${topic.id}`] ?? []);
-const [lead, ...after] = items;
+// The lead is the newest story with a photograph among the first four, as on a section page since 2026-11-10; the
+// stories it passes over come next, newest first. Until 2026-11-20 (the owner: "check the topic pages design and
+// organization too") the newest led whatever it was, and 9 of the 24 subjects opened on a text-only headline beside or
+// above photographed stories (البنوك والتمويل، الذكاء الاصطناعي، الرقائق، التكنولوجيا المالية…).
+const leadAt = items.slice(0, 4).findIndex((a) => a.data.image);
+const ordered = leadAt > 0 ? [items[leadAt], ...items.filter((_, i) => i !== leadAt)] : items;
+const [lead, ...after] = ordered;
 // Beside the lead: the subject's prices, or the next three stories. A small subject keeps every story up there.
 const beside = prices.length > 0 ? [] : after.slice(0, after.length <= 5 ? after.length : 3);
 const rest = after.slice(beside.length);
@@ -111,24 +119,27 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
           </div>
         )}
 
+        {/* The archive by month, the newest month open and the older ones folded under their heads (2026-11-20): open,
+            النفط's 154 headlines ran a phone page to 15,700px, and every subject grows by the month. */}
         {months.length > 0 && (
           <section class="topic-archive" aria-labelledby="topic-archive-head">
             <h2 id="topic-archive-head" class="visually-hidden">أرشيف {topic.name}</h2>
-            {months.map((m) => (
-              <section class="topic-month" aria-label={m.name}>
-                <h3 class="module__head">{m.name}</h3>
+            {months.map((m, i) => (
+              <details class="topic-month" open={i === 0}>
+                <summary class="topic-month__head"><h3 class="module__head">{m.name}</h3><span class="topic-month__toggle ui" aria-hidden="true"><span class="topic-month__show">عرض</span><span class="topic-month__hide">إخفاء</span></span></summary>
                 <ol class="topic-month__list">
                   {m.items.map((a) => (
                     <li class="topic-month__item">
                       <a class="topic-month__title" href={articleHref(a)} set:html={headline(a.data.title)} />
                       <p class="meta topic-month__meta">
-                        {a.data.section !== section && <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>}
+                        {/* A hub piece by its desk or kind, leading to that list, as every card labels it (readingHref()). */}
+                        {a.data.section !== section && <a href={readingHref(a, all) ?? sectionHref(a.data.section)}>{analysisLabel(a, all) ?? kindLabel(a.data.kind, a.data.section)}</a>}
                         <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
                       </p>
                     </li>
                   ))}
                 </ol>
-              </section>
+              </details>
             ))}
           </section>
         )}
@@ -161,6 +172,16 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
   .topic-month__title { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
   .topic-month__title:hover { color: var(--green); }
   .topic-month__meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
+  /* A month's head is its fold's handle: the month in the module head's green, «عرض» or «إخفاء» at the line's end in the
+     furniture face, as the sources' «عرض الروابط» is; no browser triangle. */
+  .topic-month__head { display: block; position: relative; cursor: pointer; list-style: none; }
+  .topic-month__head::-webkit-details-marker { display: none; }
+  .topic-month__head :global(.module__head) { padding-inline-end: 4rem; }
+  .topic-month__toggle { position: absolute; inset-inline-end: 0; top: 0.35rem; font-size: var(--fs-xs); font-weight: 700; color: var(--green); white-space: nowrap; }
+  .topic-month__head:hover .topic-month__toggle { text-decoration: underline; text-underline-offset: 0.2em; }
+  .topic-month__hide, .topic-month[open] .topic-month__show { display: none; }
+  .topic-month[open] .topic-month__hide { display: inline; }
+  @media (pointer: coarse) { .topic-month__head :global(.module__head) { padding-top: 0.5rem; } .topic-month__toggle { top: 0.85rem; } }
   @media (max-width: 1023px) {
     .topic-top { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
     .topic-top__lead { padding-inline-end: 0; }

@@ -6,15 +6,24 @@
  * One page per subject (2026-09-27): a tag that is a curated sub-topic's subject («النفط»، «أسعار النفط»، «التضخم»), a
  * section's name («الطاقة») or a second spelling of a running story («هرمز») has no file of its own; its old address
  * forwards to the one page (astro.config.mjs `redirects`, from lib/tag-map.mjs), so every old link still lands.
+ *
+ * Since 2026-11-20 (the owner: "check the file pages design and organization too") a file is two stories or more (a
+ * regional desk always; lib/files.ts): 617 of the 907 file pages had held only the story a reader came from by its chip.
+ * And a file runs in pages of twenty, as a section does: «العالم» listed its 363 stories on one page, 1.1 MB of HTML and
+ * 80,800px on a phone, «الخليج» 266.
  */
+import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import Pager from "@components/Pager.astro";
+import type { Article } from "@lib/articles";
 import { getArticles, allTags, firstPictures } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
 import { isFileTag } from "@lib/topics";
-import { formatShortDate, formatTime, timeAgo } from "@lib/format";
+import { FILE_MIN } from "@lib/files";
+import { formatShortDate, formatTime } from "@lib/format";
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const articles = await getArticles();
   const files = allTags(articles);
   // Every regional desk has a file too, gathered from the stories' regions (a story tagged
@@ -25,42 +34,51 @@ export async function getStaticPaths() {
     if (merged.size) files.set(desk.name, [...merged.values()].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt)));
   }
   const desks = new Set(DESKS.map((d) => d.name));
-  return [...files.entries()].filter(([tag]) => desks.has(tag) || isFileTag(tag)).map(([tag, items]) => ({ params: { tag }, props: { tag, items } }));
-}
+  return [...files.entries()]
+    .filter(([tag, items]) => desks.has(tag) || (isFileTag(tag) && items.length >= FILE_MIN))
+    .flatMap(([tag, items]) => paginate(items, { params: { tag }, props: { tag }, pageSize: 20 }));
+};
 
-const { tag, items } = Astro.props;
-const n = items.length;
-const pics = firstPictures(items);
-/** "مادة واحدة", "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
-const countLabel = n === 1 ? "مادة واحدة" : n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
+interface Props {
+  tag: string;
+  page: Page<Article>;
+}
+const { tag, page } = Astro.props;
+const first = page.currentPage === 1;
+const n = page.total;
+const pics = firstPictures(page.data);
+/** "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
+const countLabel = n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
 const countObject = n === 2 ? "مادتين" : countLabel;
-const latest = items[0];
 ---
 
-<Base title={`ملف: ${tag}`} description={n === 1 ? `ملف خازندار عن ${tag}: مادة واحدة حتى الآن` : `ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={`/tags/${encodeURIComponent(tag)}/`} printed={items.map((a) => a.id)}>
+<Base title={first ? `ملف: ${tag}` : `ملف: ${tag} — صفحة ${page.currentPage}`} description={`ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={page.url.current} printed={page.data.map((a) => a.id)}>
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">{tag}</h1>
+      {/* No «آخر تحديث» since 2026-11-20: the newest story's date and hour stand in the margin right under it, the repeat
+          the owner cleared from the front's region block on 18 November. */}
       <p class="page-intro">
-        {n === 1 ? <span>مادة واحدة عن {tag} حتى الآن.</span> : <span>ملف يجمع <bdi>{countObject}</bdi> عن {tag}، من الأحدث إلى الأقدم.</span>}
-        {latest && <span> آخر تحديث <time datetime={latest.data.publishedAt} data-relative>{timeAgo(latest.data.publishedAt)}</time>.</span>}
+        <span>ملف يجمع <bdi>{countObject}</bdi> عن {tag}، من الأحدث إلى الأقدم.</span>
         <a class="thread__intro-link" href="/tags/">كل الملفات</a>
       </p>
     </header>
 
-    <ol class="thread" aria-label={`مواد الملف: ${tag}`}>
-      {items.map((a, i) => (
+    <ol class:list={["thread", { "thread--first": first }]} aria-label={`مواد الملف: ${tag}`}>
+      {page.data.map((a, i) => (
         <li class="thread__item">
           <div class="thread__when ui">
             <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
             <span class="thread__time">{formatTime(a.data.publishedAt)}</span>
           </div>
           <div class="thread__body">
-            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} showPhoto={pics.has(a.id)} eager={i < 2} sizes={i === 0 ? "160px" : undefined} />
+            <StoryCard article={a} variant="list" level={2} showExcerpt showTime={false} showPhoto={pics.has(a.id)} eager={first && i < 2} sizes={first && i === 0 ? "160px" : undefined} />
           </div>
         </li>
       ))}
     </ol>
+
+    <Pager page={page} label="صفحات الملف" />
   </section>
 </Base>
 
@@ -71,8 +89,9 @@ const latest = items[0];
   .thread__when { display: grid; align-content: start; gap: 0.1rem; padding-top: 0.25rem; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-2); border-inline-end: 1px solid var(--rule); }
   .thread__time { font-weight: 500; color: var(--ink-3); }
   .thread__body { min-width: 0; }
-  .thread__item:first-child .thread__body :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
-  .thread__item:first-child .thread__body :global(.card--list .card__photo) { flex-basis: 10rem; width: 10rem; }
+  /* The file's newest story leads its first page only. */
+  .thread--first .thread__item:first-child .thread__body :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
+  .thread--first .thread__item:first-child .thread__body :global(.card--list .card__photo) { flex-basis: 10rem; width: 10rem; }
   .thread__intro-link { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; }
   .thread__intro-link:hover { text-decoration: underline; }
 

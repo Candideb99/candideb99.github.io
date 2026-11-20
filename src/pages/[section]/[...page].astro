@@ -3,6 +3,7 @@ import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import LinkRow from "@components/LinkRow.astro";
+import Pager from "@components/Pager.astro";
 import { analysisLabel, liveDesks, WEEKLY_HREF } from "@lib/analysis";
 import { menuTopics, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
@@ -127,21 +128,7 @@ const weekly = first && section.id === "analysis" ? everything.find((a) => a.dat
       </div>
     )}
 
-    {page.lastPage > 1 && (
-      <nav class="pager" aria-label="صفحات القسم">
-        {page.url.prev ? (
-          <a class="pager__step" href={page.url.prev} rel="prev">أحدث</a>
-        ) : (
-          <span class="pager__step pager__step--off" aria-hidden="true">أحدث</span>
-        )}
-        <p class="pager__count ui">صفحة <bdi>{page.currentPage}</bdi> من <bdi>{page.lastPage}</bdi></p>
-        {page.url.next ? (
-          <a class="pager__step" href={page.url.next} rel="next">أقدم</a>
-        ) : (
-          <span class="pager__step pager__step--off" aria-hidden="true">أقدم</span>
-        )}
-      </nav>
-    )}
+    <Pager page={page} label="صفحات القسم" />
   </section>
 </Base>
 
@@ -184,13 +171,6 @@ const weekly = first && section.id === "analysis" ? everything.find((a) => a.dat
      the photograph's column only when there is one: a lead without a photo kept the two columns and left half its block
      blank (2026-09-27). */
 
-  .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); padding-top: 0.9rem; }
-  .pager__step { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sm); color: var(--green); text-decoration: none; padding: 0.4rem 0.8rem 0.3rem; border: 1px solid var(--rule); }
-  .pager__step:hover { border-color: var(--green); }
-  /* No newer page before the first, no older after the last: the step keeps its place, so the count stays centred,
-     but is not drawn; a grey boxed «أحدث» on page 1 looked like a button that did nothing (2026-10-19). */
-  .pager__step--off { visibility: hidden; }
-  .pager__count { font-size: var(--fs-sm); color: var(--ink-3); }
 
   @media (max-width: 1023px) {
     .section-page__top { grid-template-columns: 1fr; row-gap: 1.25rem; }

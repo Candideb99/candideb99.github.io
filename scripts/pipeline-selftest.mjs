@@ -1971,6 +1971,21 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // A file's page (2026-11-20): a file of one story and a page of more than twenty fail; twenty with a pager pass.
+  {
+    const { filePageFaults } = await import("./site-furniture.mjs");
+    const thread = (n, pager = false) => `<ol class="thread">${'<li class="thread__item">x</li>'.repeat(n)}</ol>${pager ? '<nav class="pager"></nav>' : ""}`;
+    check("the site check finds a file of one story and a file page of 363, and passes a page of twenty", [filePageFaults(thread(1)).length, filePageFaults(thread(363)).length, filePageFaults(thread(20, true)).length, filePageFaults(thread(1, true)).length], [1, 1, 0, 0]);
+  }
+  // A subject's page (2026-11-20): a lead without a photograph beside photographed stories, a bare «تحليل» label, and an
+  // archive month after the newest printed open. The old page fails three times; the new one passes.
+  {
+    const { topicPageFaults } = await import("./site-furniture.mjs");
+    const card = (img, label = "") => `<article class="card">${img ? '<img src="/a.jpg" alt="">' : ""}<h3 class="card__title">x</h3><p class="meta card__meta">${label}</p></article>`;
+    const oldPage = `<div class="topic-top__lead">${card(false)}</div><div class="topic-top__beside">${card(true, '<a href="/analysis/desk/energy/">تحليل</a>')}${card(true)}</div><section class="topic-archive"><section class="topic-month" aria-label="نوفمبر 2026"></section><section class="topic-month" aria-label="أكتوبر 2026"></section></section>`;
+    const newPage = `<div class="topic-top__lead">${card(true)}</div><div class="topic-top__beside">${card(false, '<a href="/analysis/desk/energy/">تحليل الطاقة</a>')}${card(true)}</div><section class="topic-archive"><details class="topic-month" open></details><details class="topic-month"></details></section>`;
+    check("the site check finds a text-only lead beside photographs, a bare «تحليل» and an open older month, and passes the new page", [topicPageFaults(oldPage).length, topicPageFaults(newPage).length], [3, 0]);
+  }
   // A page head's row (2026-11-20): the topic pages' copy ran its names together, a news section's sentence named the
   // sub-topics its row names, and a dot set as an item of its own wrapped to open a line (/technology/ at 375px). The old
   // technology head fails twice, the first dots once; LinkRow's items, and the analysis hub's sentence, pass.

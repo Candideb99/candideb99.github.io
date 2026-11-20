@@ -20,6 +20,7 @@ import { formatDate, formatHijri, formatTime, readingLabel, excerpt } from "@lib
 import { headline, isolateNumbers } from "@lib/bidi";
 import { cardSizes, thumbnailUrl } from "@lib/wikimedia";
 import { safeHref } from "@lib/safe-url.mjs";
+import { hasPage } from "@lib/files";
 import { placeLessonParts } from "@lib/lesson-layout.mjs";
 import site from "@data/site.json";
 
@@ -53,7 +54,8 @@ const more = related(article, all, 4);
 const kicker = isHub ? undefined : kickerOf(article);
 // The story's tags as links, each to its one page (lib/topics.ts); two tags of one subject («النفط», «أسعار النفط») would
 // be two chips to the same page, so only the first of them is printed.
-const pills = d.tags.map((tag) => ({ tag, href: tagHref(tag) })).filter((p, i, all) => all.findIndex((q) => q.href === p.href) === i);
+// …and only a tag that leads to a page (lib/files.ts, 2026-11-20): a tag no other story carries has none.
+const pills = d.tags.filter((tag) => hasPage(tag, all)).map((tag) => ({ tag, href: tagHref(tag) })).filter((p, i, list) => list.findIndex((q) => q.href === p.href) === i);
 const path = articleHref(article);
 // «اقرأ أيضاً» runs once inside the text (the first related story, moved after the third paragraph) and the rest in the
 // side column; until 2026-10-19 the side list opened with the same story again, under the same label.
@@ -235,7 +237,7 @@ const jsonLd = [articleLd, breadcrumbLd];
             ))}
           </aside>
         )}
-        {d.tags.length > 0 && (
+        {pills.length > 0 && (
           <p class="tags">
             {pills.map((p) => (
               <a class="pill" href={p.href}>{p.tag}</a>

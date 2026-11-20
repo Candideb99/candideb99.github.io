@@ -1,7 +1,7 @@
 ---
 import type { Article } from "@lib/articles";
 import { articleHref, getArticles } from "@lib/articles";
-import { readingHref } from "@lib/analysis";
+import { analysisLabel, readingHref } from "@lib/analysis";
 import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { dek, timeAgo } from "@lib/format";
@@ -56,7 +56,9 @@ const labelHref = showSection ? (readingHref(article, await getArticles()) ?? se
     {showExcerpt && summary && <p class="card__summary" set:html={isolateNumbers(summary)} />}
     {(showSection || showTime) && (
       <p class="meta card__meta">
-        {showSection && <a href={labelHref}>{label ?? kindLabel(kind, section)}</a>}
+        {/* An analysis by its desk when no label is passed (topic and file pages, 2026-11-20): it printed «تحليل» over a
+            link that already led to the desk. */}
+        {showSection && <a href={labelHref}>{label ?? analysisLabel(article, await getArticles()) ?? kindLabel(kind, section)}</a>}
         {showTime && <time datetime={publishedAt} data-relative>{timeAgo(publishedAt)}</time>}
       </p>
     )}
