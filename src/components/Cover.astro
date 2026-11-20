@@ -23,7 +23,7 @@ import { articleHref } from "@lib/articles";
 import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { analysisLabel } from "@lib/analysis";
-import { excerpt, timeAgo } from "@lib/format";
+import { dek as dekOf, timeAgo } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
 import StoryCard from "./StoryCard.astro";
@@ -47,7 +47,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
     <div class="cover__slides">
     {stories.map((a, i) => {
       const d = a.data;
-      const summary = excerpt(d.subtitle || d.lede, 160);
+      const summary = dekOf(d.subtitle, d.lede);
       const href = articleHref(a);
       const withPhoto = Boolean(d.image) && photoIds.has(a.id);
       const kicker = kickerOf(a);
@@ -99,7 +99,7 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
           const analysis = a.data.kind === "analysis" || a.data.kind === "weekly";
           // «في العمق» keeps the longer dek and its date like the analysis, without taking the lead's size.
           const dated = analysis || a.data.kind === "feature";
-          const dek = excerpt(a.data.subtitle || a.data.lede, dated ? 100 : 70);
+          const dek = dekOf(a.data.subtitle, a.data.lede);
           return (
             <article class={`cover__reading${analysis ? " cover__reading--lead" : ""}`} data-section={a.data.section}>
               <span class="kicker">{analysisLabel(a, all) ?? kindLabel(a.data.kind, a.data.section)}</span>

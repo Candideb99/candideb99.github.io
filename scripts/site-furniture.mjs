@@ -54,6 +54,26 @@ export function interactiveFaults(html) {
   return out;
 }
 
+/**
+ * What a reader meets broken in a sentence or a sum (2026-11-20, the owner's two questions of that night): a summary on
+ * a card, the cover or the digest cut off with «…» (every dek is one whole sentence; dek() in src/lib/format.ts prints
+ * it whole), and an explainer's worked sum printed as one left-to-right run, the mirror of its formula in words above it
+ * (WorkedExample.astro: each figure is isolated, the sum reads from the right). Read from built HTML.
+ */
+export function readingFaults(html) {
+  const out = [];
+  const text = (s) => s.replace(/<[^>]+>/g, "").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ").trim();
+  for (const m of html.matchAll(/<p class="(cover__dek|cover__reading-dek|digest__text|card__summary)"[^>]*>([\s\S]*?)<\/p>/g)) {
+    if (/(?:…|\.\.\.)$/.test(text(m[2]))) out.push(`a summary cut off with «…» (${m[1]}): «${text(m[2]).slice(-50)}»`);
+  }
+  for (const m of html.matchAll(/<p class="worked__working"[^>]*>([\s\S]*?)<\/p>/g)) {
+    for (const run of m[1].matchAll(/<bdi dir="ltr"[^>]*>([\s\S]*?)<\/bdi>/g)) {
+      if (/[=÷×]/.test(run[1])) out.push(`a worked sum printed left to right as one run, the mirror of its formula: «${text(run[1])}»`);
+    }
+  }
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

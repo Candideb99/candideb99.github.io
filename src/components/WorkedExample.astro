@@ -32,7 +32,12 @@ function fmt(v: number): string {
 const withUnit = (v: number, unit = "") => (unit === "%" ? `${fmt(v)}%` : unit ? `${fmt(v)} ${unit}` : fmt(v));
 const [a, b] = worked.terms.map((t) => fmt(t.value));
 const r = fmt(worked.result.value);
-// The working, left to right as figures are written in an Arabic page.
+// The working reads as its formula above it reads, from the right, in the line of an Arabic page, each figure isolated
+// as every figure on the site is (isolateNumbers()). Until 2026-11-20 the whole working was one left-to-right run, the
+// mirror of its formula: the market price stood on the right of the formula's subtraction and on the left of the
+// working's, and a reader starting from the right met «16.6% = 100 × 83 ÷ (83 − 96.75)» (the owner, on the Anthropic
+// IPO explainer: "i think there might be a bug here when using numbers and calculations? ... should we use arabic
+// numbers and from right to left?"). The digits stay Western: every Arabic outlet the newsroom reads prints them.
 const working =
   worked.op === "difference" ? `${a} − ${b} = ${r}`
   : worked.op === "sum" ? `${worked.terms.map((t) => fmt(t.value)).join(" + ")} = ${r}`
@@ -54,7 +59,7 @@ const working =
       </div>
     ))}
   </dl>
-  <p class="worked__working"><bdi dir="ltr">{working}</bdi></p>
+  <p class="worked__working" set:html={isolateNumbers(working)} />
   <p class="worked__result">
     <span set:html={isolateNumbers(worked.result.label)} />
     <strong set:html={isolateNumbers(withUnit(worked.result.value, worked.result.unit))} />

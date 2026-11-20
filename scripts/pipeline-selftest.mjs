@@ -1905,6 +1905,19 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [bareFigures(sourceLine(isolateNumbers("عائد سندات 10-year الأمريكية يرتفع إلى 4.2%"))).length, bareFigures(`<a class="sources__title" href="https://x.test/"><bdi>${isolateNumbers("أرباح 9.5 مليارات")}</bdi></a> <span class="sources__host ui"></span>`).length, bareFigures(sourceLine("عائد 10 سنوات")).length],
     [0, 0, 1],
   );
+  // A summary cut off with «…» and a worked sum printed left to right as one run (2026-11-20, the owner's two questions
+  // on the Anthropic IPO explainer and the readings beside the cover): the old components printed both.
+  const { readingFaults } = await import("./site-furniture.mjs");
+  check(
+    "the site check finds a cut summary and a worked sum printed left to right, and passes a whole dek and a sum that reads from the right",
+    [
+      readingFaults(`<p class="cover__reading-dek">${isolateNumbers("في مطلع التسعينيات وجد اقتصاديا العمل ديفيد كارد وآلان كروغر أن رفع…")}</p>`).length,
+      readingFaults(`<p class="digest__text">${isolateNumbers("يتوقع الصندوق أن ينمو الناتج 5.4% في 2027 إذا انحسرت الحرب.")}</p>`).length,
+      readingFaults(`<p class="worked__working"><bdi dir="ltr">(96.75 − 83) ÷ 83 × 100 = 16.6%</bdi></p>`).length,
+      readingFaults(`<p class="worked__working">${isolateNumbers("(96.75 − 83) ÷ 83 × 100 = 16.6%")}</p>`).length,
+    ],
+    [1, 0, 1, 0],
+  );
   // The interactive parts (2026-11-16): a chart's note must match what can be pointed at, a chart of several series
   // needs a switch for each, and a figure card three figures and a story printed once on its page.
   const { interactiveFaults } = await import("./site-furniture.mjs");

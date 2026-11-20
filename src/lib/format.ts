@@ -117,6 +117,24 @@ export function stripMarkdown(text: string): string {
     .trim();
 }
 
+/**
+ * A story's summary as a card, the cover and the digest print it: its dek whole, else the lede's first sentence whole.
+ * Never a sentence cut off with «…» (the owner, 2026-11-20, on the readings beside the cover: "is this also a bug when
+ * leaving the sentence incomplete by having 3 dots? was it better to summarize these sentences instead of leaving
+ * incomplete sentences with dots?"). Every dek is already that summary, one sentence (all 693 published; the median
+ * 100 characters for news, 117-126 for the hub pieces, the longest 205), and the cards had cut it to a room of 70 to
+ * 200 characters, so most readings and a quarter of the news cards ended mid-sentence. `excerpt()` stays for what no
+ * reader sees as a sentence (a page's description for search engines).
+ */
+export function dek(subtitle?: string, lede?: string): string {
+  const own = stripMarkdown(subtitle ?? "");
+  if (own) return own;
+  const text = stripMarkdown(lede ?? "");
+  // The first sentence: a full stop, a question or an exclamation mark before a space or the end, so a decimal point
+  // («5.4%») never ends it.
+  return (text.match(/^.*?[.؟!](?=\s|$)/u)?.[0] ?? text).trim();
+}
+
 export function excerpt(text: string, max = 180): string {
   const clean = stripMarkdown(text);
   if (clean.length <= max) return clean;

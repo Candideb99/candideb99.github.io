@@ -3,7 +3,7 @@ import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { kickerOf } from "@lib/topics";
 import { kindLabel, sectionHref } from "@lib/sections";
-import { excerpt, timeAgo } from "@lib/format";
+import { dek, timeAgo } from "@lib/format";
 import { headline, isolateNumbers } from "@lib/bidi";
 import Photo from "./Photo.astro";
 
@@ -34,7 +34,7 @@ const { article, variant = "card", eager = false, showSection = true, showExcerp
 const kicker = showTopic ? kickerOf(article) : undefined;
 const { title, subtitle, section, publishedAt, kind, image } = article.data;
 const href = articleHref(article);
-const summary = excerpt(subtitle || article.data.lede, variant === "lead" ? 200 : 120);
+const summary = dek(subtitle, article.data.lede);
 const Heading = level === 2 ? "h2" : "h3";
 const hasPhoto = Boolean(image) && showPhoto && variant !== "text";
 ---
