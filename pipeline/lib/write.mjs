@@ -3,7 +3,7 @@ import { DESK_NAMES, groundedRegions } from "./regions.mjs";
 /** The region names a writer may give, read from src/data/regions.json (2026-10-20: the list was written into six
  *  schemas and still offered «الشرق الأوسط» a day after that desk became «المشرق وإيران وتركيا»). */
 const REGION_NAMES = DESK_NAMES.join("، ");
-import { chat } from "./llm.mjs";
+import { chat, reusedSystem } from "./llm.mjs";
 import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, SHORT_STORY, SHORT_WORDS, followUpBrief, followUpNotesBrief } from "./editorial.mjs";
 import { boxFacts, figureOnly, FIGURES_RULE, isFigure } from "./keyfacts.mjs";
 import { cleanTags, storyText as taggedText } from "./tags.mjs";
@@ -1356,3 +1356,7 @@ export function missingAuthors(draft, authors) {
     return !(parts.length > 1 ? parts.slice(1) : parts).some((p) => prose.includes(p));
   });
 }
+
+// The house prompts a story sends again within minutes (draft, revision, mend; the analysis desk beside its writer):
+// cached for five minutes, every other call uncached (the prompt cache, lib/llm.mjs, 2026-11-20).
+reusedSystem(WRITER_SYSTEM, ANALYST_SYSTEM, FEATURE_SYSTEM, PAPER_SYSTEM);

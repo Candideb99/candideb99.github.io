@@ -165,16 +165,42 @@ const CLI_ROOTS = [
 const CLI_BIN = CLI_ROOTS.map((root) => path.join(root, "bin", "claude.exe")).find((p) => existsSync(p));
 const CLI_JS = CLI_BIN ? undefined : CLI_ROOTS.map((root) => path.join(root, "cli.js")).find((p) => existsSync(p));
 
-function claudeCliEnv() {
+/**
+ * The prompt cache (2026-11-20; the owner, after a round's cost was shown to him: "Yes, look" for real token savings).
+ * Claude Code caches a call's whole prompt, system and message, and on a Claude subscription it writes that cache for an
+ * hour, which costs twice what the same tokens cost read fresh. Fitted exactly over the run reports' 132 role totals:
+ * $8 a million for what a call writes, $0.20 for what it reads back, $20 for output; and what the newsroom writes was
+ * 58% of a news round's cost, nearly all of it a message sent once and never read again. A cache earns its write only
+ * where a long system prompt is sent again within minutes: the writer's and the copy desk's house rules, which a story's
+ * draft, revision and mend send again and read back on almost every call. The module that holds such a prompt
+ * registers it (reusedSystem()); it is cached for five minutes ($5 a million to write), and every other call caches
+ * nothing ($4): the picture desk's one-line system prompts are under the 512 tokens a cache needs and its bulk is a
+ * message never sent twice, and the editor's, the critic's, the desk notes' and the fact-check's prompts are not read
+ * back often enough to pay for writing them. Replayed over every call of four full news rounds: $13.06 a round before,
+ * $10.06 after (23% less), the same answers (the cache changes the price, never the reply); checked live the same day
+ * through chat(): a registered prompt written at $5.00 a million and read back on the next call, any other at $3.99 with
+ * nothing written. scripts/llm-selftest.mjs.
+ */
+const REUSED_SYSTEMS = new Set();
+export function reusedSystem(...texts) {
+  for (const text of texts) if (typeof text === "string" && text) REUSED_SYSTEMS.add(text);
+}
+/** "5m" for a registered house prompt, "off" for every other call. */
+export const promptCache = (system) => (REUSED_SYSTEMS.has(system) ? "5m" : "off");
+
+export function claudeCliEnv(system = "") {
   const env = { ...process.env };
   const oauth = env.CLAUDE_CODE_OAUTH_TOKEN;
   for (const key of Object.keys(env)) {
-    if (/^CLAUDECODE$|^CLAUDE_/.test(key) || key === "ANTHROPIC_BASE_URL" || key === "ANTHROPIC_AUTH_TOKEN") delete env[key];
+    // A cache setting inherited from a shell or a session would undo the choice below.
+    if (/^CLAUDECODE$|^CLAUDE_/.test(key) || /^(?:DISABLE|ENABLE|FORCE)_PROMPT_CACHING/.test(key) || key === "ANTHROPIC_BASE_URL" || key === "ANTHROPIC_AUTH_TOKEN") delete env[key];
   }
   if (oauth) {
     env.CLAUDE_CODE_OAUTH_TOKEN = oauth;
     delete env.ANTHROPIC_API_KEY;
   }
+  if (promptCache(system) === "5m") env.CLAUDE_CODE_PROMPT_CACHE_TTL = "5m";
+  else env.DISABLE_PROMPT_CACHING = "1";
   return env;
 }
 
@@ -215,7 +241,7 @@ async function callClaudeCli({ model, system, user, images = [], timeoutMs, effo
   let result;
   try {
   result = await new Promise((resolve, reject) => {
-    const child = spawn(CLI_BIN ?? (CLI_JS ? process.execPath : "claude"), CLI_BIN ? args : CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(), cwd: os.tmpdir() });
+    const child = spawn(CLI_BIN ?? (CLI_JS ? process.execPath : "claude"), CLI_BIN ? args : CLI_JS ? [CLI_JS, ...args] : args, { shell: false, windowsHide: true, env: claudeCliEnv(system), cwd: os.tmpdir() });
     let out = "";
     let err = "";
     const timer = setTimeout(() => {

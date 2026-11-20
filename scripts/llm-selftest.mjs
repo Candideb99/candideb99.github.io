@@ -88,3 +88,30 @@ try {
   assert.match(readFileSync(new URL("../pipeline/lib/llm.mjs", import.meta.url), "utf8"), /"--tools", ""/, "the newsroom's Claude calls run without tools");
   console.log("ok  The chat's commands and the newsroom's model calls cannot reach the keys");
 }
+
+// The prompt cache (2026-11-20): a Claude subscription made Claude Code write every call's whole prompt to an hour's
+// cache at twice the price of reading it fresh, though nearly nothing was read back. Only the house prompts a story sends
+// again within minutes are cached now, for five minutes; every other call caches nothing; a cache setting inherited
+// from a shell or a desktop session never decides it.
+{
+  const { claudeCliEnv, promptCache } = await import("../pipeline/lib/llm.mjs");
+  const { WRITER_SYSTEM } = await import("../pipeline/lib/write.mjs");
+  const { DESK_SYSTEM } = await import("../pipeline/lib/copydesk.mjs");
+  const inherited = { ENABLE_PROMPT_CACHING_1H: "1", FORCE_PROMPT_CACHING_5M: "1", DISABLE_PROMPT_CACHING_OPUS: "1", CLAUDE_CODE_PROMPT_CACHE_TTL: "1h" };
+  Object.assign(process.env, inherited);
+  try {
+    const writer = claudeCliEnv(WRITER_SYSTEM);
+    const desk = claudeCliEnv(DESK_SYSTEM);
+    const picture = claudeCliEnv("You are a strict newspaper picture editor. Answer with one JSON object only.");
+    assert.equal(writer.CLAUDE_CODE_PROMPT_CACHE_TTL, "5m", "the writer's house prompt is cached for five minutes");
+    assert.equal(writer.DISABLE_PROMPT_CACHING, undefined);
+    assert.equal(desk.CLAUDE_CODE_PROMPT_CACHE_TTL, "5m", "the copy desk's house prompt is cached for five minutes");
+    assert.equal(picture.DISABLE_PROMPT_CACHING, "1", "a prompt not sent again is not cached");
+    assert.equal(picture.CLAUDE_CODE_PROMPT_CACHE_TTL, undefined);
+    for (const env of [writer, desk, picture]) for (const key of ["ENABLE_PROMPT_CACHING_1H", "FORCE_PROMPT_CACHING_5M", "DISABLE_PROMPT_CACHING_OPUS"]) assert.equal(env[key], undefined, `${key} inherited`);
+    assert.equal(promptCache(`${WRITER_SYSTEM}\nfor this story only`), "off", "a prompt that changes per call is not the house prompt");
+  } finally {
+    for (const key of Object.keys(inherited)) delete process.env[key];
+  }
+  console.log("ok  Only the house prompts a story sends again are cached, for five minutes; every other Claude call caches nothing");
+}

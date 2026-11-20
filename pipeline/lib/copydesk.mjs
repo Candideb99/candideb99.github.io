@@ -14,7 +14,7 @@
  * had to come back in its own field), so the guard now counts figures and names across the whole story:
  * a fact may leave a place where it repeats, never the story.
  */
-import { chat } from "./llm.mjs";
+import { chat, reusedSystem } from "./llm.mjs";
 import { EDITORIAL_CRAFT } from "./editorial.mjs";
 import { arabicRatio, normalizeDigits, wordCount } from "./util.mjs";
 import { ARAB_OUTLET_NAMES, BANNED, WRITER_ONLY, contentWords, styleIssues } from "./style.mjs";
@@ -48,6 +48,8 @@ WHAT YOU NEVER CHANGE
 - Structure. Keep a concise opening, normally two or three sentences. Regroup and reorder the body's sentences into coherent paragraphs when needed, bringing an existing qualification or explanation close to the claim it clarifies. There is no compulsory second/third paragraph formula. Keep the actual chronology, attribution and every unique fact. Preserve any "## " subheads and blank lines between the resulting paragraphs. Shorten only by removing repetition; no markdown links, no URLs.
 
 You answer with one JSON object and nothing else.`;
+// Sent again after every pass of a story's text: cached for five minutes (the prompt cache, lib/llm.mjs, 2026-11-20).
+reusedSystem(DESK_SYSTEM);
 
 const EXAMPLES = `EXAMPLES (before → after)
 - إدارة أمريكية تعلن عن مستردات بقيمة 500 دولار لمستخدمي أوباماكير قبل الانتخابات → واشنطن تعيد 500 دولار للمشتركين في «أوباماكير» قبل الانتخابات
