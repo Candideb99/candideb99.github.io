@@ -324,7 +324,9 @@ const { stories, readings = [], photoIds, interval = 6000, all = [] } = Astro.pr
   .cover__tab.is-on::before { background: var(--green); }
   .cover__tab-num { font-size: 1.4em; line-height: 1; margin-inline-end: 0.3rem; color: var(--ink-3); }
   .cover__tab.is-on .cover__tab-num { color: var(--green); }
-  .cover__tab-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
+  /* The whole headline, however many lines. A clamp cut it at four lines with «…» (that day's third headline at 1280px,
+     2026-11-20, the night the owner asked about sentences cut with dots); a long one now makes the row a line taller. */
+  .cover__tab-title { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
   .cover__tab.is-on .cover__tab-title { color: var(--ink); }
   .cover__tab:hover .cover__tab-title { color: var(--green); }
   .cover__tab:focus-visible { outline-offset: -2px; }

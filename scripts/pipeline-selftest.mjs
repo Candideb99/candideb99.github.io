@@ -1921,6 +1921,20 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ],
     [1, 0, 1, 0, 1, 0],
   );
+  // Nothing a reader reads is cut by a style either (2026-11-20): the cover's numbered row clamped its headlines at four
+  // lines and cut that day's third at 1280px with «…». No line clamp and no ellipsis anywhere in the site's styles.
+  {
+    const clamps = [];
+    const walk = (dir) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, entry.name);
+        if (entry.isDirectory()) walk(p);
+        else if (/\.(astro|css)$/.test(entry.name) && /line-clamp|text-overflow:\s*ellipsis/.test(readFileSync(p, "utf8"))) clamps.push(p);
+      }
+    };
+    walk("src");
+    check("no headline or summary is cut by a style: no line clamp or ellipsis in src/", clamps, []);
+  }
   // A card's label that leads to the page it is printed on (2026-11-20): every analysis card's desk led back to /analysis/.
   {
     const { selfLabelLinks } = await import("./site-furniture.mjs");

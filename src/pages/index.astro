@@ -200,7 +200,8 @@ desks.forEach((d) => place([d.story]));
 // cover are not printed again.
 const hubs = [
   { id: "analysis", kind: "analysis", more: "كل التحليلات" },
-  { id: "explainers", kind: "explainer", more: "كل المواد" },
+  // The section's own phrase (allLabel()): «كل المواد» alone said nothing of what (2026-11-20).
+  { id: "explainers", kind: "explainer", more: "كل مواد مدخل إلى الاقتصاد" },
 ]
   .map((h) => ({ ...h, section: getSection(h.id), items: unplaced(articles.filter((a) => a.data.kind === h.kind || (h.id === "explainers" && (a.data.kind === "paper" || a.data.kind === "idea")) || (h.id === "analysis" && (a.data.kind === "weekly" || a.data.kind === "feature")))).slice(0, 4) }))
   .filter((h) => h.items.length > 0);
