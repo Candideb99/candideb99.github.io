@@ -17955,6 +17955,62 @@
           "noted": []
         }
       ]
+    },
+    "japan-core-inflation-october-energy-subsidy-dc784f": {
+      "at": "2026-11-20T02:47:02.878Z",
+      "title": "التضخم الأساسي في اليابان يتسارع إلى 2.2% مع انتهاء دعم الطاقة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 35,
+            "checked": 35,
+            "supported": 27,
+            "weak": 8,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "us-approved-879000-ai-chips-china-1bf1f3": {
+      "at": "2026-11-20T03:08:46.038Z",
+      "title": "لجنة بالكونغرس: واشنطن أجازت تصدير نحو 900 ألف رقاقة ذكاء اصطناعي للصين",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 35,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

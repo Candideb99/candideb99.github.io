@@ -2959,6 +2959,50 @@
         ],
         "programmatic": 2
       }
+    },
+    {
+      "at": "2026-11-20T02:47:02.908Z",
+      "slug": "japan-core-inflation-october-energy-subsidy-dc784f",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 24,
+        "notFound": 1,
+        "checked": 33,
+        "words": 530,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 0,
+        "checked": 38,
+        "words": 561,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 30,
+        "notFound": 0,
+        "checked": 38,
+        "words": 561,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

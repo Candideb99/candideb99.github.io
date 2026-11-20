@@ -1,0 +1,471 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-20T02:23:42.767Z",
+  "durationSec": 2703,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "نيكي يهوي 4.28% وسوفت بنك يخسر 16% مع امتداد بيع أسهم الذكاء الاصطناعي إلى آسيا",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.cnbc.com/2026/11/20/softbank-ai-tech-stocks-slide-anthropic-debut.html",
+        "https://news.rthk.hk/rthk/en/component/k2/1878547-20261120.htm",
+        "https://www.annahar.com/economy/368191/%D9%85%D8%A4%D8%B4%D8%B1-%D9%86%D9%8A%D9%83%D9%8A-%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86%D9%8A-%D9%8A%D9%87%D9%88%D9%8A-428-%D8%A8%D9%81%D8%B9%D9%84-%D8%AA%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A7",
+        "https://www.cnbcindonesia.com/market/20261120072636-17-786842/bursa-asia-dibuka-lesu-kospi-korea-selatan-anjlok-hampir-4"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والملخّص يحددان البلدين (اليابان وكوريا الجنوبية) والحدث، أي هبوط أسهم التكنولوجيا. لكن «أنثروبيك» تظهر في الملخّص بلا تعريف بنشاطها، و«بداية قوية» لا تقول ما الذي حدث للسهم.",
+              "repair": "«رغم إغلاق سهم شركة الذكاء الاصطناعي أنثروبيك مرتفعاً 17% في أول أيام تداوله»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير انكشاف سوفت بنك على أوبن إيه آي وقلق العوائد (SOURCE 1)، وأزمة إنفيديا وتعليق «مونكس» (SOURCE 2). ويُسقط هبوط ناسداك وستاندرد آند بورز 500 بأكثر من 2% (SOURCE 1 وSOURCE 2)، وتبدد الارتفاع الأولي لسهم أنثروبيك وعجز الطرح عن إحياء الحماس (SOURCE 3). أما «لماذا يهمّ» فيستنتج من مقدمات ثابتة استنتاجاً مشروطاً بـ«إذا صحّ انتقال أموال»، وهذا متوازن.",
+              "repair": "إضافة هبوط المؤشرين الأمريكيين وتفسير SOURCE 3 إلى الفقرة التي تشرح الهبوط رغم الطرح."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن البيع امتد إلى آسيا، والمتن يعود إليه في الفقرات الثلاث الأولى ثم في قسم الرقائق. لكن قسم الرقائق يقرأ صفوف الرسم البياني بدل أن يقول ما تُظهره، وعبارة «قاد التراجعَ» تضيف ادعاءً لا يذكره المصدر.",
+              "repair": "صياغة قسم الرقائق كخلاصة: من يتقدم الخسائر، ونطاق الهبوط، وامتداده إلى مورّدي إنفيديا. وحذف «قاد»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "تُجمع في المقدمة لقطة الساعة 00:40 (نيكي 4.28%) مع رقم جلسة سوفت بنك 16.16% (SOURCE 1)، بينما كان الهبوط عند تلك الساعة 15% (SOURCE 3). وبند «حتى نوفمبر» في صندوق الأرقام يضيف فترة غير موجودة في المصدر.",
+              "repair": "توقيت رقم سوفت بنك بالجلسة، وحذف بند الـ64.6 مليار دولار من صندوق الأرقام."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: جمل طويلة جداً (1): «وترى «سي إن بي سي» أن هذا الانكشاف جعل السهم شديد الحساسية…»؛ اقسم كل جملة تتجاوز 40 كلمة إلى جملتين، فكرة واحدة في كل جملة. | ورد اسم «آر تي إتش كيه» أول مرة بلا صفته؛ اكتب أول ذكر له: هيئة الإذاعة الحكومية في هونغ كونغ «آر تي إتش كيه»."
+    },
+    {
+      "headline": "تضخم اليابان يتسارع لأعلى مستوى في 2026 ويرجّح رفع الفائدة في ديسمبر",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/157116/%D8%AA%D8%B6%D8%AE%D9%85-%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86-%D9%8A%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9-%D9%84%D8%A3%D8%B9%D9%84%D9%89-%D9%85%D8%B3%D8%AA%D9%88%D9%89-%D9%81%D9%8A-2026/",
+        "https://www.bloomberg.com/news/articles/2026-11-19/japan-cpi-quickens-to-fastest-this-year-backing-boj-hike-case",
+        "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
+        "https://www.straitstimes.com/business/japans-core-inflation-accelerates-in-october-cementing-rate-hike-expectations"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والمؤسسة، ويذكران الرقم والسبب والاجتماع القادم. لكن عبارة «مع انتهاء دعم الطاقة» تبدو متعارضة مع قول الوزارة إن الإجراءات الحكومية ما زالت تخفض المؤشر العام بنحو نقطة، ومع خبر إعادة الدعم في ديسمبر الذي يأتي في آخر التقرير.",
+              "repair": "شرح الإجراءين معاً قرب المقدمة: دعم الطاقة للأسر انتهى في سبتمبر، بينما ما زالت إجراءات كبح تكاليف المرافق تخفض المؤشر العام بنحو نقطة (SOURCE 1، SOURCE 3)، وتفيد تقارير بأن الحكومة وافقت على إعادة الدعم في ديسمبر."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يذكر السبب (الطاقة وحرب إيران وانتهاء الدعم) ومقارنة الأرقام بالتوقعات (2.3%) ويعرض ردود المحللين والأسواق. لكنه يحذف أثر الإجراءات الحكومية بنحو نقطة، وأسعار الخدمات 1.4%، وتفسير ما تييينغ لدورة الأجور والأسعار. ويرد ذكر الأجور بلا معنى. في «لماذا يهمّ» المقدمات مسندة (الطاقة، تراجع المقياس الأساسي، الانكماش، إعادة الدعم)، والاستنتاج عن رفع الفائدة في وجه صدمة خارجية محدود ومشروط بـ«إذا». غير أنه يتجاهل الرأي المقابل في المتن الذي يرى عوامل محلية داعمة.",
+              "repair": "إضافة أثر الإجراءات المالية وأسعار الخدمات (SOURCE 1) وحجة ما تييينغ (SOURCE 3) في فقرة الطلب، وإبقاء الاستنتاج في «لماذا يهمّ» على حاله مع مراعاة هذا الرأي المقابل."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد هو تسارع التضخم مع انتهاء دعم الطاقة، والفقرة الأولى تتناول ذلك فعلاً. لكنها تبدأ بتكرار المقدمة. ثم يتفرق خيط الدعم: انتهاؤه في البداية، وإعادته في آخر سطر تحت عنوان فرعي عن الاجتماع. كما تقع جملة الأجور بين خبر شركات الأغذية والتوقعات.",
+              "repair": "حذف التكرار، ونقل فقرة إعادة الدعم إلى ما بعد فقرة الطاقة، وجمع مسألة الطلب المحلي (المقياس الأساسي، الخدمات، كويكي، ما تييينغ) تحت عنوان فرعي واحد قبل قسم توقعات الفائدة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والرسم البياني مطابقة للمصادر. المشكلة في عبارة «وفق بيانات وزارة الشؤون الداخلية والاتصالات» التي تُلحق السبب بالوزارة. كذلك ينسب «وقال حينها» موقف السياسة النقدية إلى أكتوبر تحديداً. وفي why_basis يُعزى كون الطاقة «المحرك الرئيسي» إلى SOURCE 3، بينما هذه الصياغة من SOURCE 1.",
+              "repair": "نسبة سبب انتهاء الدعم إلى SOURCE 3 والأرقام إلى الوزارة، وفصل جملتي البنك زمنياً، وتصحيح مصدر الحقيقة الأولى في why_basis إلى SOURCE 1."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد والمقياس والرقم وسببه والاجتماع القادم. والتعارض الظاهر بين «انتهاء دعم الطاقة» واستمرار الإجراءات الحكومية التي تخفض المؤشر العام بنحو نقطة، ثم إعادة الدعم في ديسمبر، مشروح الآن في الفقرة الثانية مباشرة.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير التفسيرات الثلاث التي تقدمها المصادر: السبب (انتهاء الدعم وأسعار الطاقة وحرب إيران، SOURCE 1 وSOURCE 3)، والتوقع الذي جاءت القراءة دونه (2.3%)، وردود المحللين والأسواق ومحافظ البنك. ويقابل بين رأي كويكي ورأي ما تييينغ في مصدر الضغوط، ويعرّف كل محلل بدوره ومؤسسته.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "خيط الدعم مجموع بعد المقدمة كما يقتضي العنوان، والقسمان الفرعيان متماسكان في معظمهما. لكن آراء كويكي موزعة على ثلاث فقرات، وفقرة تمرير التكاليف تقع تحت عنوان «ضغوط الطلب المحلي». و«لماذا يهمّ» يبدأ بإعادة أرقام المتن قبل أن يصل إلى استنتاجه، وهو معقول ومشروط: رفع الفائدة في وجه صدمة خارجية، ونقل فاتورة الطاقة إلى المال العام.",
+              "repair": "جمع أقوال كويكي عن مصدر الضغوط في موضع واحد، وتسمية القسم بما يشمل فقرة التكاليف أو نقلها إلى قسم التوقعات، وحذف الجملة الافتتاحية التلخيصية من «لماذا يهمّ»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ وقيم الرسم البياني مطابقة للمصادر: 2.2% و2.1% و2.4% و2.3% و0.6%- و5.8% و17.2% و86% و1.25% و159.59 و2.805%. ودعم ديسمبر منسوب إلى «تقارير» كما في SOURCE 3. أما المشكلة الوحيدة فهي في الصندوق: عبارة «لم يظهر أثرها بعد في أسعار الخدمات» تحوّل رقم 1.4% إلى حكم قاطع بغياب الأثر.",
+              "repair": "«فيما لم تتجاوز زيادة أسعار الخدمات 1.4%» بدلاً من الحكم بغياب الأثر."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "«لماذا يهمّ» يبدأ بملخص للمتن لا باستنتاج: «قاد ارتفاع أسعار الطاقة المستوردة تسارع أكتوبر، بينما تراجع التضخم باستثناء الطاقة والأغذية الطازجة، وهو المقياس الذي يتابعه بنك اليابان لضغوط الطلب، إلى 2.2%، ولم يتجاوز ارتفاع أسعار الخدمات 1.4%». هذه الجملة تعيد أرقام الفقرتين الأولى والرابعة، والصندوق ثلاث جمل طويلة. الإصلاح: حذف الجملة الأولى، وإدخال مقدماتها اللازمة في جملة الشرط، والاكتفاء بجملتين: معضلة رفع الفائدة في وجه صدمة خارجية، ونقل فاتورة الطاقة إلى المال العام.",
+        "في «لماذا يهمّ» حكم أقطع مما تحتمله المقدمات: «أجور تنمو فوق 3% منذ تسعة أشهر لم يظهر أثرها بعد في أسعار الخدمات». ما تييينغ (SOURCE 3) تقول إن مكاسب الأجور تنتقل إلى أسعار الخدمات، والرقم 1.4% (SOURCE 1) يدل على ضعف هذا الانتقال لا على غيابه. الإصلاح: «أجور تنمو فوق 3% منذ تسعة أشهر، فيما لم تتجاوز زيادة أسعار الخدمات 1.4%».",
+        "تكرار المعلومة: السطر التمهيدي يذكر رفع الفائدة «إلى 1.5% في اجتماعه الذي ينتهي في 18 ديسمبر»، ثم يعيد المتن «في اجتماعه الذي يمتد يومين وينتهي في 18 ديسمبر، فيما يتوقع كثير من المتعاملين رفعها إلى 1.5%». الإصلاح: يبقي المتن ما يضيفه فقط، أي احتمال 86% في عقود المبادلة والسعر الحالي 1.25%: «وأشارت عقود المبادلة حتى صباح الجمعة بتوقيت طوكيو إلى احتمال يناهز 86% لرفع الفائدة من 1.25% حالياً».",
+        "بناء: آراء كويكي موزعة على ثلاث فقرات متباعدة (ضعف القراءة، ثم العوامل الخارجية، ثم توقع 3%). وفقرة ثيليانت وتيكوكو داتابنك تتحدث عن تمرير الشركات للتكاليف وأثر الشرق الأوسط، أي عن عوامل العرض، لكنها جاءت تحت عنوان فرعي هو «ضغوط الطلب المحلي». الإصلاح: نقل توقع كويكي بالاقتراب من 3% إلى جانب قوله إن معظم الضغوط خارجية. وإما تسمية القسم بما يشمل محتواه («مصدر الضغوط: الطلب أم التكاليف»)، وإما ضم فقرة تمرير التكاليف إلى قسم التوقعات.",
+        "صياغة: «ارتفعت أسعار الخدمات... 1.4% فقط»: كلمة «فقط» حكم تحريري لا يرد في SOURCE 1، والمقابلة مع رأي ما تييينغ تكفي لإبراز الرقم، فتُحذف. وفي «مضيفاً أنهم ما زالوا يتوقعون» يبقى مرجع الضمير غامضاً. الإصلاح: «وأضاف أن بلومبرغ إيكونوميكس ما زالت تتوقع رفع الفائدة 25 نقطة أساس في ديسمبر».",
+        "خيط الدعم مجموع بعد المقدمة كما يقتضي العنوان، والقسمان الفرعيان متماسكان في معظمهما. لكن آراء كويكي موزعة على ثلاث فقرات، وفقرة تمرير التكاليف تقع تحت عنوان «ضغوط الطلب المحلي». و«لماذا يهمّ» يبدأ بإعادة أرقام المتن قبل أن يصل إلى استنتاجه، وهو معقول ومشروط: رفع الفائدة في وجه صدمة خارجية، ونقل فاتورة الطاقة إلى المال العام. — جمع أقوال كويكي عن مصدر الضغوط في موضع واحد، وتسمية القسم بما يشمل فقرة التكاليف أو نقلها إلى قسم التوقعات، وحذف الجملة الافتتاحية التلخيصية من «لماذا يهمّ».",
+        "الأرقام والتواريخ وقيم الرسم البياني مطابقة للمصادر: 2.2% و2.1% و2.4% و2.3% و0.6%- و5.8% و17.2% و86% و1.25% و159.59 و2.805%. ودعم ديسمبر منسوب إلى «تقارير» كما في SOURCE 3. أما المشكلة الوحيدة فهي في الصندوق: عبارة «لم يظهر أثرها بعد في أسعار الخدمات» تحوّل رقم 1.4% إلى حكم قاطع بغياب الأثر. — «فيما لم تتجاوز زيادة أسعار الخدمات 1.4%» بدلاً من الحكم بغياب الأثر."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "كانت تكاليف الطاقة المحرك الرئيسي لارتفاع الأسعار في أكتوبر، بعد انتهاء دعم الطاقة للأسر في سبتمبر",
+          "source": 3
+        },
+        {
+          "fact": "تراجع المؤشر الذي يستثني الأغذية الطازجة والطاقة، ويتابعه بنك اليابان مقياساً لضغوط الطلب، إلى 2.2% من 2.4%",
+          "source": 4
+        },
+        {
+          "fact": "انكمش الاقتصاد الياباني على نحو غير متوقع في الربع الثالث، وأفادت تقارير بأن الحكومة وافقت على إعادة دعم الطاقة في ديسمبر",
+          "source": 3
+        },
+        {
+          "fact": "ظل نمو الأجور فوق 3% تسعة أشهر متتالية",
+          "source": 3
+        }
+      ],
+      "slug": "japan-core-inflation-october-energy-subsidy-dc784f",
+      "title": "التضخم الأساسي في اليابان يتسارع إلى 2.2% مع انتهاء دعم الطاقة",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "واشنطن وافقت على بيع نحو 900 ألف رقاقة ذكاء اصطناعي لشركات صينية في ستة أشهر",
+      "section": "technology",
+      "importance": 7,
+      "sources": [
+        "https://www.nytimes.com/2026/11/19/business/economy/nvidia-chips-commerce-china-huang.html",
+        "https://www.aljazeera.com/economy/2026/11/19/us-signed-off-on-sales-of-nearly-900000-ai-chips-to-china-in-six-months",
+        "https://www.moneycontrol.com/news/business/us-approved-ai-chip-sales-to-china-s-tencent-alibaba-data-show-14085262.html",
+        "https://bworldonline.com/technology/2026/11/20/795443/us-signed-off-on-sales-of-nearly-900000-ai-chips-to-china-in-six-months-house-committee-says/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والجهة وحجم الموافقات بوضوح، والمقدمة تحفظ أن الموافقات لم يُعرف عدد ما تحوّل منها إلى شحنات. لكن العبارة «وجميعها مدرجة على قائمة البنتاغون» توحي لقارئ البطاقة بأن الإدراج سبق الموافقة، في حين يقول المصدر 3 إن علي بابا وبايدو وبي واي دي لم تكن مدرجة رسمياً حين مُنحت التراخيص.",
+              "repair": "«وجميعها مدرجة حالياً على قائمة البنتاغون…»، أو نقل الحد الزمني إلى المقدمة: «ثلاث منها أُدرجت بعد الموافقة»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير الخلفية: قرار ترامب في ديسمبر بعد ضغوط هوانغ، وقيود بايدن، وقاعدة يناير. ويحمل ردود الفعل: ماكغواير معرّفاً بصفته، وإنفيديا، وإيه إم دي، والأسهم. ويعرّف مكتب الصناعة والأمن عند أول ذكر. لكنه يُغفل من المصدر 3 قاعدة التجارة الجديدة هذا الأسبوع، وإحاطة لوتنيك، وسبب الضغط على كيسلر بشأن تحقيق التهريب. وصندوق «لماذا يهمّ» يبني استنتاجه على جلسات لا تملك تشديد القاعدة.",
+              "repair": "إضافة القاعدة الجديدة وإحاطة لوتنيك وسبب الضغط على كيسلر (المصدر 3)، وإعادة بناء الصندوق على ما يقع فعلاً: إيرادات حكومية تتوقف مع الشحنات، وقاعدة جديدة تحسم الوصول."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "المتن يطوّر عنصر العنوان، أي حجم الموافقات، مباشرة بعد المقدمة: المطلوب مقابل الموافق عليه، ثم توزيعه على الشركات، ثم القائمة العسكرية. لكن فقرة «وطلبت لجنة ماست مثول كيسلر…» واقعة تحت عنوان فرعي عن الخلفية، وخبر وقف الشحنات مكرر في جملتين متتاليتين، و«هذه القائمة» بلا مرجع في المتن.",
+              "repair": "نقل فقرة الجلسات إلى موضع الخطوة التالية، ودمج جملتي وقف الشحنات، وتسمية القائمة صراحة عند أول ذكر في المتن."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 879 ألفاً، و3.4 مليون، و150 و75 و43 و4 آلاف، و950 ألفاً، و30%، و2.4 مليار دولار، و2.2%، و25%. لكن «إثر الكشف عن علاقته» يجعل العلاقة سبباً للإقالة بلا سند، و«لم تتجاوز 2.2%» تحوّل التقريب إلى سقف، و«بين ديسمبر 2025 ومايو» تُسقط سنة مايو.",
+              "repair": "حذف الربط السببي، وكتابة «نحو 2.2%»، وكتابة «بين ديسمبر 2025 ومايو 2026»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد والجهة وحجم الموافقات والشركات الأربع. وصار «مدرجة حالياً» يمنع الإيحاء بأن الإدراج سبق الموافقة. والمقدمة تحفظ أن عدد ما تحوّل إلى شحنات فعلية غير معروف.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير السبب، أي قضية هوانغ وتدقيق الإدارة. ويحمل ردود الفعل: ماكغواير معرّفاً بصفته، وإنفيديا، وإيه إم دي، والأسهم. ويحمل الخلفية: قيود بايدن وقرار ترامب وقاعدة يناير. ويحمل الخطوة التالية: كيسلر وهوانغ ولوتنيك والقاعدة الجديدة. لكن «لماذا يهمّ» يجعل الجلسات نتيجة لوقف الشحنات («وبذلك…»)، ويقدّم الحصة البالغة 25% على أنها عائد كان يُحصَّل، والمصدر 3 يذكرها شرطاً فقط.",
+              "repair": "يُعاد بناء الصندوق على حصة مشروطة تسقط مع الوقف، وعلى قاعدة جديدة تحكم الوصول إلى السوق، دون ربط سببي بالجلسات."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "المتن يطوّر عنصر العنوان، أي حجم الموافقات، مباشرة بعد المقدمة: المطلوب مقابل الموافق عليه، ثم توزيعه على الشركات، ثم قائمة البنتاغون. لكن «هذه القائمة» بلا مرجع في المتن. والخطوة التالية مقسومة بين منتصف التقرير وآخره، وتفصل بينهما فقرة أسهم معزولة. وبيان إيه إم دي ملحق بفقرة إيرادات إنفيديا.",
+              "repair": "تُسمّى القائمة صراحة عند أول ذكر. وتُنقل فقرة الأسهم وبيان إيه إم دي إلى جوار ردود الفعل. وتُجمع الجلسات والإحاطات والقاعدة الجديدة في ختام واحد."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 879 ألفاً، و3.4 مليون، و150 و75 و43 و4 آلاف، و950 ألفاً، وأكثر من 30%، و2.4 مليار دولار، ونحو 2.2%، وأقل من 1%، و25%. وصُحّحت «نحو 2.2%». لكن «بين ديسمبر 2025 ومايو» تسقط سنة 2026. و«عائداً كانت التراخيص تدرّه» تحوّل شرطاً إلى تحصيل فعلي.",
+              "repair": "«بين ديسمبر 2025 ومايو 2026»، و«الحصة التي اشترطتها القاعدة» بدلاً من «عائداً كانت التراخيص تدرّه»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ في الربط السببي في «لماذا يهمّ»: «وبذلك تتجه جلسات ديسمبر إلى محاسبة وزارة التجارة على موافقات منحتها». وقف إنفيديا للشحنات ليس سبب الجلسات. المصدر 3 يربط تكثيف التدقيق في وزارة التجارة بإفصاح اللجنة وبقضية هوانغ، وطلبُ مثول كيسلر يتصل بتحقيق التهريب. وفي الجملة الأولى «فتخسر الخزانة الأمريكية عائداً كانت التراخيص تدرّه» يقين لا تحمله المصادر. المصدر 3 يقول إن القاعدة اشترطت أن تحصل واشنطن على 25% («would receive»)، ولا يقول إن المبلغ حُصّل فعلاً. الإصلاح: «وقف إنفيديا شحنات H200 المرخصة يُسقط الحصة البالغة 25% التي اشترطتها قاعدة يناير لواشنطن من مبيعات بلغت 2.4 مليار دولار في ربع واحد. ويصبح الوصول إلى السوق الصينية محكوماً بالقاعدة الجديدة التي تحجب المعالجات عن الشركات الصينية حتى خارج الصين، لا بحجم التراخيص الممنوحة». وتُحذف «وبذلك» وربط الجلسات بالوقف.",
+        "إحالة بلا مرجع (لم تُصلَح من المراجعة السابقة): «وقالت اللجنة إن الشركات الأربع مدرجة على هذه القائمة، المعروفة بقائمة 1260H». القائمة لم تُذكر في المقدمة ولا في الفقرة الأولى من المتن، وإنما في العنوان الفرعي للمقال فقط. الإصلاح: «وقالت اللجنة إن الشركات الأربع مدرجة على قائمة البنتاغون للشركات المتهمة بتلقي دعم من الجيش الصيني، المعروفة بقائمة 1260H» (المصدران 2 و4).",
+        "بناء: الخطوة التالية موزعة على موضعين متباعدين. فقرتا كيسلر وإحاطتَي هوانغ ولوتنيك تقعان في منتصف التقرير، والقاعدة الجديدة التي أعلنتها وزارة التجارة هذا الأسبوع في آخره (المصدر 3). وبين الموضعين تقف فقرة الأسهم «وفي ختام تعاملات الخميس…» معزولة قبل قسم «ما الذي وصل إلى الصين». الإصلاح: تُنقل فقرة الأسهم إلى جوار ردود الفعل (بعد ماكغواير وبياني الشركتين)، وتُجمع الجلسات والإحاطات والقاعدة الجديدة في ختام واحد. ويقع القسم الأول قرابة 370 كلمة بلا عنوان فرعي، والجمع المقترح يتيح عنواناً فرعياً لما بعد الإفصاح.",
+        "ربط غير متسق في الفقرة: «وسجلت إنفيديا 2.4 مليار دولار… أما إيه إم دي فقالت في بيان إنها تلتزم بقوانين ضوابط التصدير». بيان امتثال إيه إم دي (المصدران 3 و4) لا صلة له بإيرادات إنفيديا الربعية، وموضعه رد فعل. الإصلاح: يُنقل بيان إيه إم دي إلى جوار بيان إنفيديا «خضعت لشروط صارمة وكميات محدودة»، وتبقى فقرة الإيرادات لإنفيديا وحدها.",
+        "دقة (لم تُصلَح من المراجعة السابقة): في المقدمة «بين ديسمبر 2025 ومايو» تسقط سنة مايو. المصدران 2 و4 يقولان «from December 2025 through May 2026». الإصلاح: «بين ديسمبر 2025 ومايو 2026».",
+        "يحمل التقرير السبب، أي قضية هوانغ وتدقيق الإدارة. ويحمل ردود الفعل: ماكغواير معرّفاً بصفته، وإنفيديا، وإيه إم دي، والأسهم. ويحمل الخلفية: قيود بايدن وقرار ترامب وقاعدة يناير. ويحمل الخطوة التالية: كيسلر وهوانغ ولوتنيك والقاعدة الجديدة. لكن «لماذا يهمّ» يجعل الجلسات نتيجة لوقف الشحنات («وبذلك…»)، ويقدّم الحصة البالغة 25% على أنها عائد كان يُحصَّل، والمصدر 3 يذكرها شرطاً فقط. — يُعاد بناء الصندوق على حصة مشروطة تسقط مع الوقف، وعلى قاعدة جديدة تحكم الوصول إلى السوق، دون ربط سببي بالجلسات.",
+        "المتن يطوّر عنصر العنوان، أي حجم الموافقات، مباشرة بعد المقدمة: المطلوب مقابل الموافق عليه، ثم توزيعه على الشركات، ثم قائمة البنتاغون. لكن «هذه القائمة» بلا مرجع في المتن. والخطوة التالية مقسومة بين منتصف التقرير وآخره، وتفصل بينهما فقرة أسهم معزولة. وبيان إيه إم دي ملحق بفقرة إيرادات إنفيديا. — تُسمّى القائمة صراحة عند أول ذكر. وتُنقل فقرة الأسهم وبيان إيه إم دي إلى جوار ردود الفعل. وتُجمع الجلسات والإحاطات والقاعدة الجديدة في ختام واحد.",
+        "الأرقام مطابقة للمصادر: 879 ألفاً، و3.4 مليون، و150 و75 و43 و4 آلاف، و950 ألفاً، وأكثر من 30%، و2.4 مليار دولار، ونحو 2.2%، وأقل من 1%، و25%. وصُحّحت «نحو 2.2%». لكن «بين ديسمبر 2025 ومايو» تسقط سنة 2026. و«عائداً كانت التراخيص تدرّه» تحوّل شرطاً إلى تحصيل فعلي. — «بين ديسمبر 2025 ومايو 2026»، و«الحصة التي اشترطتها القاعدة» بدلاً من «عائداً كانت التراخيص تدرّه»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "إنفيديا أوقفت جميع شحنات H200 إلى الصين حتى المرخصة منها",
+          "source": 3
+        },
+        {
+          "fact": "مبيعات H200 للصين بلغت 2.4 مليار دولار في الأشهر الثلاثة المنتهية في أكتوبر",
+          "source": 3
+        },
+        {
+          "fact": "قاعدة يناير تشترط حصول الولايات المتحدة على 25% من إيرادات أي مبيعات",
+          "source": 3
+        },
+        {
+          "fact": "وزارة التجارة أعلنت هذا الأسبوع قاعدة جديدة تهدف إلى منع الشركات الصينية من الحصول على معالجات الذكاء الاصطناعي خارج الصين",
+          "source": 3
+        }
+      ],
+      "slug": "us-approved-879000-ai-chips-china-1bf1f3",
+      "title": "لجنة بالكونغرس: واشنطن أجازت تصدير نحو 900 ألف رقاقة ذكاء اصطناعي للصين",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "مصر تخطط لتشغيل 7 آلاف مصنع بالطاقة الشمسية باستثمارات مليار دولار",
+      "section": "energy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 78,
+    "failures": 3,
+    "promptTokens": 1276331,
+    "completionTokens": 301828,
+    "cacheReadTokens": 314014,
+    "costUsd": 13.7977,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 78
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 123304,
+        "read": 0,
+        "out": 2447,
+        "usd": 1.0354
+      },
+      "desk": {
+        "calls": 17,
+        "in": 145702,
+        "read": 136270,
+        "out": 91304,
+        "usd": 3.0188
+      },
+      "writer": {
+        "calls": 15,
+        "in": 185794,
+        "read": 143928,
+        "out": 91478,
+        "usd": 3.3448
+      },
+      "critic": {
+        "calls": 19,
+        "in": 212621,
+        "read": 33816,
+        "out": 48912,
+        "usd": 2.6859
+      },
+      "checker": {
+        "calls": 4,
+        "in": 38609,
+        "read": 0,
+        "out": 37504,
+        "usd": 1.059
+      },
+      "vision": {
+        "calls": 22,
+        "in": 256287,
+        "read": 0,
+        "out": 30183,
+        "usd": 2.6538
+      }
+    }
+  },
+  "log": [
+    "[03:04:06] openverse \"Nvidia GPU\": 10 usable of 20",
+    "[03:04:07] openverse \"Nvidia H200\": 0 usable of 0",
+    "[03:04:07] image: dropped \"Detailed shot of hands holding a modern graphics card indoors.\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] image: dropped \"Detailed view of a GeForce RTX graphics card installed in a computer s\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] image: dropped \"Close-up of a RTX 2080 Super graphics card against a bright yellow bac\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] image: dropped \"Close-up of a GeForce RTX graphics card on a desk, showcasing its desi\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] image: dropped \"Detailed view of a GeForce RTX graphics card, highlighting modern tech\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] image: dropped \"Close-up of two high-performance RTX 2080 graphics cards showcasing th\" — names too little of nvidia, h200, gpu",
+    "[03:04:07] openverse \"Nvidia DGX\": 1 usable of 3",
+    "[03:04:08] openverse \"servers Chinese\": 5 usable of 20",
+    "[03:04:08] commons \"Chinese data center servers\": 2 usable of 24",
+    "[03:04:08] image: dropped \"Messier5 - SDSS DR14 (panorama).jpg\" — names too little of data, center, servers",
+    "[03:04:08] image: dropped \"Messier3 - SDSS DR14 (panorama).jpg\" — names too little of data, center, servers",
+    "[03:04:08] image: dropped \"Beringer Vineyards, Napa Valley, California, USA\" — names too little of data, center, servers",
+    "[03:04:08] image: dropped \"Beringer Vineyards, Napa Valley, California, USA\" — names too little of data, center, servers",
+    "[03:04:08] image: \"Close-up of tower servers in a data center with blue and red lighting.\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[03:04:08] image: dropped \"Beringer Vineyards, Napa Valley, California, USA\" — names too little of data, center, servers",
+    "[03:04:08] image: set aside \"Close-up of a modern server unit in a blue-lit data center environment\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:04:08] image: dropped \"Beringer Vineyards, Napa Valley, California, USA\" — names too little of data, center, servers",
+    "[03:04:08] image: dropped \"Beringer Vineyards, Napa Valley, California, USA\" — names too little of data, center, servers",
+    "[03:04:09] commons \"House Foreign Affairs Committee hearing\": 20 usable of 24",
+    "[03:04:09] image: dropped \"A detailed view of an empty legislative chamber with rows of desks and\" — names too little of hearing",
+    "[03:04:09] image: dropped \"Elegant courtroom seating with leather chairs and wooden desks, exudin\" — names too little of hearing",
+    "[03:04:09] image: dropped \"External view of Germany's Bundesverfassungsgericht in Karlsruhe, clou\" — names too little of hearing",
+    "[03:04:09] image: dropped \"A close-up of a gavel on a courtroom desk representing law and justice\" — names too little of hearing",
+    "[03:04:09] image: dropped \"Wide view of an ornate legislative chamber with empty seats and chande\" — names too little of hearing",
+    "[03:04:09] image: dropped \"Two professionals in discussion during a political meeting in a modern\" — names too little of hearing",
+    "[03:04:09] image: dropped \"Spacious interior of the Texas State Capitol House Chamber with seatin\" — names too little of hearing",
+    "[03:04:09] image: dropped \"Empty courtroom desk with microphones and nameplates in a Polish court\" — names too little of hearing",
+    "[03:04:09] commons \"data center server racks\": 14 usable of 24",
+    "[03:04:09] image: set aside \"Racks Amravati Data Center.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:04:09] image: set aside \"Datacenter Server Racks (22370909788).jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:04:09] image: dropped \"Supercomputing\" — names too little of data, center, server, racks",
+    "[03:04:10] commons \"Nvidia GPU\": 15 usable of 24",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] image: dropped \"Detailed close-up of a GeForce GTX graphics card showing hardware comp\" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] image: dropped \"Detailed view of a GeForce RTX graphics card installed in a computer s\" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] image: dropped \"Detailed shot of hands holding a modern graphics card indoors.\" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Close-up of a RTX 2080 Super graphics card against a bright yellow bac\" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Detailed view of a GeForce RTX graphics card, highlighting modern tech\" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] image: dropped \"Two modern graphics cards on a bright yellow background, highlighting \" — names too little of nvidia, gpu",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] image: dropped \"Nvidia@16nm@Pascal@GP100@Tesla_P100@T_Taiwan_1912A1_PN9G70.S6W_GP100-8\" — dated 1912, an archival picture",
+    "[03:04:10] commons \"Nvidia DGX server\": 0 usable of 0",
+    "[03:04:10] commons \"Nvidia DGX\": 15 usable of 19",
+    "[03:04:10] image: dropped \"Nvidia DGX Spark rear ports dllu.jpg\" — an event's photograph, people and banners",
+    "[03:04:10] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54953).jpg\" — names too little of nvidia, dgx",
+    "[03:04:10] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54950).jpg\" — names too little of nvidia, dgx",
+    "[03:04:10] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54954).jpg\" — names too little of nvidia, dgx",
+    "[03:04:10] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54952).jpg\" — names too little of nvidia, dgx",
+    "[03:04:10] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54956).jpg\" — names too little of nvidia, dgx",
+    "[03:04:10] image: dropped \"Close-up of a hand holding a smartphone showing the NVIDIA logo on scr\" — names too little of server",
+    "[03:04:10] image: dropped \"Detailed close-up of a laptop keyboard featuring Intel Core i7 and NVI\" — names too little of server",
+    "[03:04:10] image: dropped \"House Foreign Affairs Committee Hearing \"Egypt Security, Human Rights,\" — taken in Egypt, which the story does not name",
+    "[03:04:10] image: dropped \"House Foreign Affairs Committee Hearing \"Egypt Security, Human Rights,\" — taken in Egypt, which the story does not name",
+    "[03:04:10] image: dropped \"House Foreign Affairs Committee Hearing 'Egypt: Security, Human Rights\" — taken in Egypt, which the story does not name",
+    "[03:04:10] image: dropped \"House Foreign Affairs Committee Hearing 'Egypt: Security, Human Rights\" — taken in Egypt, which the story does not name",
+    "[03:04:10] image: thumbnail HTTP 403 for https://live.staticflickr.com/2054/2414578731_82c451232d_n.jpg",
+    "[03:04:24] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1076 in=12717 read=0 out=1281 attempt=1 ms=12650",
+    "[03:04:24] image: \"Virginia Tech - data center\" names the story's topic without saying its point (Generic fallback that fits the story: a clear data-centre hall, where AI chips are used. It does not show chips going to China. The other candidates fail: 2 is ); checked now and kept in reserve while the desk looks further",
+    "[03:04:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=737 in=8886 read=0 out=849 attempt=1 ms=10052",
+    "[03:04:34] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Virginia Tech - data center\": The frame is a dated SGI cluster in a US university data centre, and the legible SGI logo at its centre names a defunct ",
+    "[03:04:34] image: thumbnail HTTP 403 for https://live.staticflickr.com/4137/5014120294_2252c887f9_n.jpg",
+    "[03:04:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=919 in=12667 read=0 out=1129 attempt=1 ms=13135",
+    "[03:04:48] image: vision rejected all candidates (fallback pass) (None of the candidates fits. 1 is an old, dark slide of a chart. 2 is a staged studio shot of 2018 gaming graphics cards, not the AI chips the story is about, and it looks dated. 3 is a texture close-up. 4 is a box on a table that only a specialist would recognise as Nvidia AI hardware. 5 is an abandoned Chernobyl site, which would mislead readers. 6 is an old server from the Epstein files, which is an embarrassing link. No candidate shows a data centre or the chips plainly.)",
+    "[03:04:48] image: the story's people first: Brian Mast 2026 | Brian Mast | براين ماست",
+    "[03:04:48] commons \"Brian Mast 2026\": 1 usable of 3",
+    "[03:04:49] commons \"Brian Mast\": 6 usable of 20",
+    "[03:04:49] image: dropped \"U.S. Representative Brian Mast with President Trump in the Oval Office\" — shows trump, not the story's people",
+    "[03:04:49] image: dropped \"Brian Mast , Liz Cheney, and Scott Taylor at 2017 inauguration.jpg\" — shows trump, donald, tayl, not the story's people",
+    "[03:04:49] image: dropped \"Chairman of the Joint Chiefs of Staff General Charles CQ Brown, Jr. me\" — shows charles, not the story's people",
+    "[03:04:49] commons \"براين ماست\": 7 usable of 20",
+    "[03:04:49] image: people shortlist: 2026 Brian Mast and Congress Delegation at the Vertiere | 2025 Family of Brian Mast, 2025.jpg | 2025 Brian Mast in a helicopter surveying Florida.jpg | 2025 Συνάντηση Υπουργού Εξωτερικών, Γιώργου Γεραπετρίτη",
+    "[03:04:58] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=575 in=10722 read=0 out=801 attempt=1 ms=8502",
+    "[03:04:58] image: vision rejected all candidates (No candidate shows Brian Mast in the role this story is about: publishing the committee's chip-export licence data. Photo 4 shows him as committee chairman, but beside Greek Foreign Minister Gerapetritis, an identifiable person not in the story, at an unrelated 2025 meeting. Photo 1 is a military group photo in Haiti with a logo stamped on it. Photos 2 and 3 are a family portrait and a helicopter tour of Florida. None of these says anything about AI chips reaching Chinese firms. A fallback should find a chip or semiconductor scene instead.)",
+    "[03:05:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=376 in=3106 read=0 out=412 attempt=1 ms=5489",
+    "[03:05:04] image: last resort: Nvidia AI chips United States | Nvidia AI chips | Nvidia AI chips industrial",
+    "[03:05:04] commons \"Nvidia AI chips United States\": 0 usable of 0",
+    "[03:05:05] commons \"Nvidia AI\": 9 usable of 24",
+    "[03:05:05] image: dropped \"Chris Benson - Practical AI - NVIDIA GTC 2019 Silicon Valley.jpg\" — an event's photograph, people and banners",
+    "[03:05:05] image: dropped \"NVIDIA Headquarters.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:05:05] image: dropped \"Nvidiaheadquarters.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:05:05] image: dropped \"Nvidia CEO Jensen Huang is recognized by President Donald Trump during\" — shows jensen, donald, jensen, donald, not the story's people",
+    "[03:05:05] commons \"Nvidia AI chips\": 17 usable of 24",
+    "[03:05:05] image: dropped \"NVIDIA Headquarters.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:05:05] image: dropped \"Nvidia sign.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:05:05] image: dropped \"Nvdia Endeavor Grand Signage wall Prostak.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:05:06] commons \"Nvidia AI chips industrial\": 0 usable of 0",
+    "[03:05:06] commons \"industrial Nvidia AI\": 8 usable of 8",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54953).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54950).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54954).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54952).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54956).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54955).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54949).jpg\" — names too little of industrial",
+    "[03:05:06] image: dropped \"Le Centre Datarmor, les coulisses (Ifremer 00957-106840 - 54951).jpg\" — names too little of industrial",
+    "[03:05:27] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1641 in=13786 read=0 out=1886 attempt=1 ms=20080",
+    "[03:05:32] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=306 in=8815 read=0 out=406 attempt=1 ms=5117",
+    "[03:05:32] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Nintendo Switch 2 NVIDIA SoC GMLX30-A1.jpg\": The frame is a Nintendo Switch 2 gaming console's Tegra chip, not the Nvidia and AMD AI accelerators exported to China, ",
+    "[03:05:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2167 in=13830 read=0 out=2391 attempt=1 ms=24624",
+    "[03:06:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=471 in=8806 read=0 out=566 attempt=1 ms=7362",
+    "[03:06:04] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Nvidia GM200 GeForce GTX 980 Ti die shot.jpg\": The file shows the die of a 2015 GeForce GTX 980 Ti gaming GPU, not the AI accelerators whose exports the story covers, ",
+    "[03:06:04] image: last pass, a neutral illustration: data center servers | data center server racks",
+    "[03:06:05] openverse \"data center server racks\": 7 usable of 20",
+    "[03:06:05] pexels \"data center servers\": 8 usable",
+    "[03:06:05] pexels \"data center server racks\": 8 usable",
+    "[03:06:05] commons \"data center servers\": 14 usable of 24",
+    "[03:06:05] image: set aside \"Wikimedia Foundation Servers-8055 13.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:05] image: set aside \"Data center roof.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:05] image: set aside \"123Net Data Center (DC2).jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:05] image: set aside \"Data Center của CMC Telecom (2).jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:05] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[03:06:08] openverse \"data center servers\": 8 usable of 20",
+    "[03:06:08] image: \"Close-up of tower servers in a data center with blue and red lighting.\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[03:06:08] image: \"Detailed image of illuminated server racks showcasing modern technolog\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[03:06:08] image: set aside \"Close-up of a modern server unit in a blue-lit data center environment\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:08] image: \"Close-up view of modern rack-mounted server units in a data center.\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[03:06:08] image: dropped \"Quantum Computing for Google Goggles\" — names too little of data, center, servers",
+    "[03:06:08] commons \"data center server racks\": 14 usable of 24",
+    "[03:06:08] image: set aside \"Racks Amravati Data Center.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:08] image: set aside \"Datacenter Server Racks (22370909788).jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[03:06:08] image: dropped \"Supercomputing\" — names too little of data, center, server, racks",
+    "[03:06:09] image: thumbnail HTTP 403 for https://live.staticflickr.com/3337/3594831417_0ddc270170_n.jpg",
+    "[03:06:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=837 in=11018 read=0 out=1046 attempt=1 ms=11161",
+    "[03:06:29] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=785 in=1187 read=0 out=815 attempt=1 ms=9278",
+    "[03:06:38] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=498 in=8492 read=0 out=592 attempt=1 ms=8158",
+    "[03:06:38] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"Close-up of server racks in a data center highlighting moder\": A tight, heavily teal-tinted close-up of a server's front panel, cut by the frame's edge and mostly blurred green dots, ",
+    "[03:06:38] image: thumbnail HTTP 403 for https://live.staticflickr.com/3337/3594831417_0ddc270170_n.jpg",
+    "[03:06:53] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1117 in=11010 read=0 out=1286 attempt=1 ms=14639",
+    "[03:06:57] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=308 in=1168 read=0 out=334 attempt=1 ms=4368",
+    "[03:07:05] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=559 in=8475 read=0 out=647 attempt=1 ms=8017",
+    "[03:07:05] image: second check (claude-cli/claude-opus-5-5) STOCK — refused \"Close-up of tower servers in a data center with blue and red\": A moody stock close-up of dated, 2000s-era tower servers that looks old and shows neither AI chips nor a modern data-cen",
+    "[03:07:05] image: thumbnail HTTP 403 for https://live.staticflickr.com/3337/3594831417_0ddc270170_n.jpg",
+    "[03:07:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=604 in=11192 read=0 out=795 attempt=1 ms=9567",
+    "[03:07:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=936 in=1164 read=0 out=966 attempt=1 ms=10847",
+    "[03:07:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=596 in=8480 read=0 out=692 attempt=1 ms=7716",
+    "[03:07:34] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"From above contemporary server cable trays without wires loc\": A heavily defocused close-up of rack hardware with green LEDs, taken from an odd angle, reads at a glance as an abstract",
+    "[03:07:34] image: nothing new was found; 7 photograph(s) other stories ran 30 days or more ago may run again: Data center roof.jpg | Racks Amravati Data Center.jpg | Close-up of a modern server unit in a blue-lit dat | Data Center của CMC Telecom (2).jpg | Wikimedia Foundation Servers-8055 13.jpg | Datacenter Server Racks (22370909788).jpg | 123Net Data Center (DC2).jpg",
+    "[03:07:49] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=967 in=10972 read=0 out=1243 attempt=1 ms=14282",
+    "[03:07:59] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=902 in=8687 read=0 out=979 attempt=1 ms=10044",
+    "[03:07:59] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Racks Amravati Data Center.jpg\": The file name and description place this hall at Pi Data Centers in Amravati, India, a country and company outside a sto",
+    "[03:08:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=3182 in=11695 read=0 out=3474 attempt=1 ms=38012",
+    "[03:08:46] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=609 in=8658 read=0 out=729 attempt=1 ms=8052",
+    "[03:08:46] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Wikimedia Foundation Servers-8055 13.jpg\": The file shows the Wikimedia Foundation's 2012 Dell PowerEdge web-server racks, which belong to a different institution ",
+    "[03:08:46] published \"لجنة بالكونغرس: واشنطن أجازت تصدير نحو 900 ألف رقاقة ذكاء اصطناعي للصين\" -> us-approved-879000-ai-chips-china-1bf1f3",
+    "[03:08:46] run budget of 35 minutes spent; \"مصر تخطط لتشغيل 7 آلاف مصنع بالطاقة الشمسية باستثمارات مليار دولار\" waits for the next run"
+  ]
+}
