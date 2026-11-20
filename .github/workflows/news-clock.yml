@@ -1,0 +1,80 @@
+name: News clock
+
+# The newsroom's news rounds, on a clock GitHub's delays cannot bunch (the owner, 2026-11-20, on another session's remark
+# that GitHub starts scheduled runs late and skips some: "if yes then fix it at the source").
+# GitHub fires a scheduled line hours after its time (4 to 6 hours in September, 8 to 9 by 20 November) and holds one
+# firing of a line at a time, dropping the slots that pass while it waits. So newsroom.yml's three-hourly news line gave
+# three or four rounds a day at hours that moved with the delay (by November about 02:00, 11:30 and 20:00 UTC, nothing
+# through the Arab afternoon), and the morning fill-in that was here from 2026-10-25, whose lines asked for 02:13-09:43
+# on the measure of five hours' delay, came to fire after its own 06:00-10:30 window or just before the line's round.
+# A line with one slot a day fires once every day whatever the delay: every one-slot line of the newsroom did, every day
+# from September to November. So these are 24 one-slot lines, one an hour; the delay moves the firings, not their
+# spacing. Each firing asks scripts/news-clock.mjs, which starts a news round (newsroom.yml, mode news) only when no
+# newsroom run is running or waiting and the last news round started 4 hours ago or more by day (04:00-19:00 UTC,
+# 07:00-22:00 in Riyadh), 7 at night: about four or five rounds a day, as many as the old line gave, three in four by
+# day. Most firings start nothing, at the cost of a few seconds of a free runner and no model call.
+# Keep one slot per line (scripts/news-clock-selftest.mjs checks it). Measured by scripts/cadence.mjs. Switch it off by
+# deleting this file or with "Disable workflow" in the repository's Actions tab; "Pause everything" in the control room
+# pauses it too.
+
+on:
+  schedule:
+    - cron: "47 0 * * *"
+    - cron: "47 1 * * *"
+    - cron: "47 2 * * *"
+    - cron: "47 3 * * *"
+    - cron: "47 4 * * *"
+    - cron: "47 5 * * *"
+    - cron: "47 6 * * *"
+    - cron: "47 7 * * *"
+    - cron: "47 8 * * *"
+    - cron: "47 9 * * *"
+    - cron: "47 10 * * *"
+    - cron: "47 11 * * *"
+    - cron: "47 12 * * *"
+    - cron: "47 13 * * *"
+    - cron: "47 14 * * *"
+    - cron: "47 15 * * *"
+    - cron: "47 16 * * *"
+    - cron: "47 17 * * *"
+    - cron: "47 18 * * *"
+    - cron: "47 19 * * *"
+    - cron: "47 20 * * *"
+    - cron: "47 21 * * *"
+    - cron: "47 22 * * *"
+    - cron: "47 23 * * *"
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: decide and report, but start nothing (also proves the token may start a newsroom run)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: write  # to start newsroom.yml: what the workflow's own token does starts no workflow, except a dispatch like this
+
+jobs:
+  tick:
+    if: vars.KHAZENDAR_PAUSED != '1'
+    name: Start a news round if one is due
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Decide
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_ONLY: ${{ inputs.check_only }}
+        run: node scripts/news-clock.mjs
+
+      - name: Start a news round
+        if: steps.decide.outputs.start == '1' && inputs.check_only != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run newsroom.yml --repo "$GITHUB_REPOSITORY" --ref main -f mode=news

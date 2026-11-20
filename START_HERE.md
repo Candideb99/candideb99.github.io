@@ -15,7 +15,7 @@ Nothing here uses your GPU. Writing and website control happen via AI providers 
 
 ## 2. What happens automatically
 
-Every 3 hours (and once a day each for an explainer and an analysis, and on Sundays «في العمق», the week's in-depth piece on one running story) a cloud job:
+About four or five times a day (a news round once 4 hours have passed since the last one, 7 at night), and once a day each for an explainer and an analysis, a cloud job:
 
 1. reads 57 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, and since 24 September the Gulf, Egyptian and Moroccan press: Al Khaleej, Al Riyadh, Youm7, Masrawy, Hespress, AGBI, Gulf Times, Saudi Gazette, Daily News Egypt, Arabian Business; the defence press …),
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
@@ -184,7 +184,7 @@ change anything and cannot publish: what it changed is listed underneath with Pu
 
 ### Two ways to run the paper
 
-- **As now**: the cloud publishes on its own every three hours, and the desk is for extra material
+- **As now**: the cloud publishes on its own through the day, and the desk is for extra material
   and for taking things down. Settings → "Publish on their own".
 - **Editor-gated**: the cloud writes drafts and waits. You open the desk, press **Sync from GitHub**,
   read, publish. Settings → "Write drafts and wait for me". Choose this if you want to see every

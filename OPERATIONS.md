@@ -7,7 +7,7 @@ this chat, the control room or your laptop to be open. Times are UTC.
 
 | job | when | what it does |
 |---|---|---|
-| Newsroom: news | every 3 hours at :23 | 1. Second look: reads the earlier rounds' stories against their sources (the saved evidence when a page has changed or gone), corrects what the sources prove, and reads every correction once more. 2. Learns lessons from proved mistakes. 3. Picks up to 4 stories, writes them, runs the critic. 4. Checks each final text against its sources before publication: an error is repaired and the text checked again (3 tries at most); a story still wrong is held and retried later. 5. Saves each published story's source evidence. 6. Commits and deploys. |
+| Newsroom: news | started by the news clock (news-clock.yml) once 4 hours have passed since the last round, 7 at night: about four or five a day | 1. Second look: reads the earlier rounds' stories against their sources (the saved evidence when a page has changed or gone), corrects what the sources prove, and reads every correction once more. 2. Learns lessons from proved mistakes. 3. Picks up to 4 stories, writes them, runs the critic. 4. Checks each final text against its sources before publication: an error is repaired and the text checked again (3 tries at most); a story still wrong is held and retried later. 5. Saves each published story's source evidence. 6. Commits and deploys. |
 | Newsroom: explainer | daily 05:41 | One explainer, same checks. |
 | Newsroom: analysis | daily 14:07 | One analysis. |
 | Newsroom: research-paper reading | Tue and Fri 09:31 | One reading of an open-access paper. |

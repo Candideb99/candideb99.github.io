@@ -50,8 +50,7 @@ const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology"
 const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
 /** What the cloud runs on its own (newsroom.yml). UTC; the page shows it in the owner's local time. */
 const SCHEDULE = [
-  { what: "News stories", when: "every 3 hours, at :23 (GitHub keeps about four a day)", utc: null },
-  { what: "Morning fill-in: one more news round when the morning has a gap (news-fill.yml)", when: "mornings, 06:00-10:30 UTC, once the last round started 2.5 hours ago", utc: null },
+  { what: "News stories (news-clock.yml)", when: "a round once 4 hours have passed since the last, 7 at night (19:00-04:00 UTC): about four or five a day", utc: null },
   { what: "An explainer", when: "daily", utc: "05:41" },
   { what: "An economist's idea (الفكر الاقتصادي)", when: "Wednesdays", utc: "10:29" },
   { what: "An analysis", when: "daily", utc: "14:07" },
@@ -1272,7 +1271,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
   <div class="folds">
     <details class="fold" id="rejected-box" style="display:none"><summary>Not published from the last run <span id="rejected-n"></span></summary><div class="in m" id="rejected"></div></details>
-    <details class="fold"><summary>What runs on its own <span>the cloud's schedule</span></summary><div class="in"><ul class="sched" id="sched"></ul><p class="m" style="margin:10px 0 0">All of it in the cloud, whether this laptop is on or not. A section with nothing for three days takes the next good story.</p></div></details>
+    <details class="fold"><summary>What runs on its own <span>the cloud's schedule</span></summary><div class="in"><ul class="sched" id="sched"></ul><p class="m" style="margin:10px 0 0">All of it in the cloud, whether this laptop is on or not. GitHub starts each timed piece hours after the time shown (8 to 9 hours in November); the news keeps its spacing whatever the delay. A section with nothing for three days takes the next good story.</p></div></details>
     <details class="fold" id="checks-box" style="display:none"><summary>The checks in detail <span>daily, no Claude unless something is wrong</span></summary><div class="in"><ul class="plain" id="checks"></ul></div></details>
     <details class="fold" id="lessons-box" style="display:none"><summary><b id="lessons-sum" style="font-weight:600"></b></summary><div class="in"><ol class="m" id="lessons-list" style="margin:0;padding-inline-start:20px"></ol></div></details>
     <details class="fold"><summary>Other tools <span>a dry run, a sync, the stopped «في العمق»</span></summary><div class="in get">

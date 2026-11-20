@@ -112,6 +112,13 @@ const contact = spawnSync(process.execPath, [path.join("scripts", "contact-selft
 if (contact.status !== 0) fail("the contact form (scripts/contact-selftest.mjs)", contact.stdout + contact.stderr);
 console.log(`[ok] the contact form's endpoint and inbox pass their known cases (${seconds(t)})`);
 
+// 1f. The news clock decides its known cases, and every scheduled line of the newsroom keeps one slot a day
+// (scripts/news-clock-selftest.mjs, 2026-11-20): GitHub drops a line's slots while one firing waits, 8-9 hours by then.
+t = Date.now();
+const newsClock = spawnSync(process.execPath, [path.join("scripts", "news-clock-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (newsClock.status !== 0) fail("the news clock (scripts/news-clock-selftest.mjs)", newsClock.stdout + newsClock.stderr);
+console.log(`[ok] the news clock and the one-slot lines pass their known cases (${seconds(t)})`);
+
 // 2 and 3. The type check and the production build, as the project runs them.
 for (const [name, command] of [["astro check", "npm run check"], ["npm run build", "npm run build"]]) {
   t = Date.now();
