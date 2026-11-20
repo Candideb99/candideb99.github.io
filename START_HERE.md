@@ -15,7 +15,7 @@ Nothing here uses your GPU. Writing and website control happen via AI providers 
 
 ## 2. What happens automatically
 
-About four or five times a day (a news round once 4 hours have passed since the last one, 7 at night), and once a day each for an explainer and an analysis, a cloud job:
+About four times a day (a news round once 4½ hours have passed since the last one, 7 at night), and once a day each for an explainer and an analysis, a cloud job:
 
 1. reads 57 feeds (central banks, statistics offices, BBC, CNBC, Guardian, Al Jazeera, Asharq Al-Awsat, Sky News Arabia, and since 24 September the Gulf, Egyptian and Moroccan press: Al Khaleej, Al Riyadh, Youm7, Masrawy, Hespress, AGBI, Gulf Times, Saudi Gazette, Daily News Egypt, Arabian Business; the defence press …),
 2. picks the stories that matter to Arab readers and groups sources covering the same story,
@@ -106,7 +106,8 @@ and this week's count and its last story, so you can see at a glance that nothin
 (a section quiet for three days is marked *due for one*, and the balancing rule feeds it next).
 
 **Pause everything** sits in that first band: it stops the cloud from writing and publishing until you
-press Resume (stories already live stay live). Under the coverage strip, **Latest on the site** lists
+press Resume, a run in progress included (stories already live stay live). After Resume the next
+round starts within the hour, and nothing missed while paused is written late. Under the coverage strip, **Latest on the site** lists
 the ten newest stories with the same ⋯ menu as the Stories page.
 
 You do not have to check anything. The desk exists for the few decisions that are yours:

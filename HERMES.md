@@ -6,7 +6,7 @@ the house rules and they bind you exactly as they bind any other agent on this p
 
 ## What publishes the paper (and it is not you)
 
-A GitHub Actions job called **Newsroom** runs in the cloud about four or five times a day, plus one explainer and
+A GitHub Actions job called **Newsroom** runs in the cloud about four times a day, plus one explainer and
 one analysis a day and one reading of a research paper on Tuesdays and Fridays. It reads 47 feeds, picks the stories, writes original Arabic reporting, checks every number
 against the sources, has an independent critic model score the draft, finds a licensed photograph,
 and commits. That pipeline carries the quality of this paper. **Never write an article yourself and

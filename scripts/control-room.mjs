@@ -31,7 +31,8 @@ import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
-import { applySettings, jobProgress, progressLines, runProgram, siteLight } from "./desk-lib.mjs";
+import { applySettings, jobProgress, progressLines, runProgram, setPaused, siteLight } from "./desk-lib.mjs";
+import { GAP, PIECES } from "./news-clock.mjs";
 
 const root = process.cwd();
 // `--port=4777` on the command line comes first: a launcher that can pass arguments but no environment (the Browser
@@ -48,18 +49,20 @@ const REPO_URL = `https://github.com/${REPO}`;
 const GIT_ID = ["-c", "user.name=khazendar-control", "-c", "user.email=newsroom@users.noreply.github.com"];
 const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology"];
 const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
-/** What the cloud runs on its own (newsroom.yml). UTC; the page shows it in the owner's local time. */
+/** What the cloud runs on its own, started by the news clock (scripts/news-clock.mjs, whose PIECES give the times). UTC;
+ * the page shows it in the owner's local time. */
+const pieceAt = (mode) => PIECES.find((p) => p.mode === mode).at;
 const SCHEDULE = [
-  { what: "News stories (news-clock.yml)", when: "a round once 4 hours have passed since the last, 7 at night (19:00-04:00 UTC): about four or five a day", utc: null },
-  { what: "An explainer", when: "daily", utc: "05:41" },
-  { what: "An economist's idea (الفكر الاقتصادي)", when: "Wednesdays", utc: "10:29" },
-  { what: "An analysis", when: "daily", utc: "14:07" },
-  { what: "A research paper", when: "Tuesdays and Fridays", utc: "09:31" },
-  { what: "The week's review", when: "Fridays", utc: "15:37" },
-  { what: "The flagship reports: new editions, from their publishers' own pages", when: "daily", utc: "08:17" },
+  { what: "News stories", when: `a round once ${String(GAP.day).replace(".5", "½")} hours have passed since the last, ${GAP.night} at night (19:00-04:00 UTC): about four a day`, utc: null },
+  { what: "An explainer", when: "daily", utc: pieceAt("explainer") },
+  { what: "An economist's idea (الفكر الاقتصادي)", when: "Wednesdays", utc: pieceAt("idea") },
+  { what: "An analysis", when: "daily", utc: pieceAt("analysis") },
+  { what: "A research paper", when: "Tuesdays and Fridays", utc: pieceAt("paper") },
+  { what: "The week's review", when: "Fridays", utc: pieceAt("weekly") },
+  { what: "The flagship reports: new editions, from their publishers' own pages", when: "daily", utc: pieceAt("reports") },
   { what: "Second look and learning: the earlier stories re-read against their sources, the proved mistakes corrected and learned", when: "every news round, before it writes", utc: null },
-  { what: "Editor's round: photos, freshness, the week's numbers", when: "daily", utc: "07:17" },
-  { what: "Weekly lessons test: keep the new lessons or put back the last approved ones", when: "Mondays", utc: "06:13" },
+  { what: "Editor's round: photos, freshness, the week's numbers (on GitHub's own timer, which starts it hours after 07:17 UTC; it publishes nothing)", when: "daily", utc: null },
+  { what: "Weekly lessons test: keep the new lessons or put back the last approved ones", when: "Mondays", utc: pieceAt("lessons-test") },
   { what: "Market quotes and the calendar", when: "on every build, and every 2 hours", utc: null },
 ];
 
@@ -1271,7 +1274,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
 
   <div class="folds">
     <details class="fold" id="rejected-box" style="display:none"><summary>Not published from the last run <span id="rejected-n"></span></summary><div class="in m" id="rejected"></div></details>
-    <details class="fold"><summary>What runs on its own <span>the cloud's schedule</span></summary><div class="in"><ul class="sched" id="sched"></ul><p class="m" style="margin:10px 0 0">All of it in the cloud, whether this laptop is on or not. GitHub starts each timed piece hours after the time shown (8 to 9 hours in November); the news keeps its spacing whatever the delay. A section with nothing for three days takes the next good story.</p></div></details>
+    <details class="fold"><summary>What runs on its own <span>the cloud's schedule</span></summary><div class="in"><ul class="sched" id="sched"></ul><p class="m" style="margin:10px 0 0">All of it in the cloud, whether this laptop is on or not, started by the news clock (news-clock.yml): each timed piece within about two hours of the time shown, never twice a day, and nothing it missed while paused is written late. A section with nothing for three days takes the next good story.</p></div></details>
     <details class="fold" id="checks-box" style="display:none"><summary>The checks in detail <span>daily, no Claude unless something is wrong</span></summary><div class="in"><ul class="plain" id="checks"></ul></div></details>
     <details class="fold" id="lessons-box" style="display:none"><summary><b id="lessons-sum" style="font-weight:600"></b></summary><div class="in"><ol class="m" id="lessons-list" style="margin:0;padding-inline-start:20px"></ol></div></details>
     <details class="fold"><summary>Other tools <span>a dry run, a sync, the stopped «في العمق»</span></summary><div class="in get">
@@ -1973,7 +1976,7 @@ function useChatGPT(id,target){var n=document.getElementById('chatgpt-login');n.
 function connectChatGPT(){post('/accounts/login',{target:document.getElementById('chatgpt-target').value,method:document.getElementById('chatgpt-method').value}).then(function(r){return r.json()}).then(function(r){if(r.error)document.getElementById('chatgpt-login').textContent=r.error;else pollChatGPTLogin()})}
 function pollChatGPTLogin(){fetch('/accounts').then(function(r){return r.json()}).then(function(r){var s=r.login,n=document.getElementById('chatgpt-login');if(s.complete){n.textContent='Account connected. Select Use this account or Use for GitHub scheduled publishing.';loadHealth()}else if(s.error)n.textContent=s.error;else{n.innerHTML=s.url?'Open <a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">ChatGPT sign-in</a>'+ (s.method==='browser'?' and complete the browser approval.':' and enter <b>'+esc(s.code||'the code shown shortly')+'</b>.'):'Starting ChatGPT sign-in…';if(s.running)setTimeout(pollChatGPTLogin,1500)}})}
 function saveWriters(localOnly){var n=document.getElementById('writersaved');n.textContent='applying…';var tb=document.getElementById('thinkingBudget')?document.getElementById('thinkingBudget').value:'-1';var ce=document.getElementById('claudeEffort')?document.getElementById('claudeEffort').value:'';post('/writers',{provider:document.getElementById('activeProvider').value,model:document.getElementById('newsroomModel').value,chatModel:document.getElementById('chatModel').value,thinkingBudget:tb,claudeEffort:ce,localOnly:localOnly===true}).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
-function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
+function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume, and a run in progress is stopped. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
 function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true'};post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t})}
@@ -2419,12 +2422,10 @@ const server = http.createServer(async (req, res) => {
       }
       return text(200, note);
     }
-    // "Pause everything": the cloud newsroom and the daily editor skip every scheduled run until resumed.
+    // "Pause everything": the news clock, the newsroom and the daily editor skip every run until resumed, and the runs
+    // already going are stopped (setPaused(), scripts/desk-lib.mjs).
     if (url.pathname === "/pause" && req.method === "POST") {
-      const value = url.searchParams.get("value") === "1" ? "1" : "0";
-      const bad = await setCloudVariable("KHAZENDAR_PAUSED", value);
-      if (bad) return text(200, `Could not ${value === "1" ? "pause" : "resume"}: GitHub did not take it, and the cloud runs as before. ${bad}`);
-      return text(200, value === "1" ? "Paused — nothing will be written or published until you press Resume. Stories already live stay live." : "Resumed — the next scheduled run goes ahead.");
+      return text(200, await setPaused(url.searchParams.get("value") === "1", { run, repo: REPO }));
     }
     if (url.pathname === "/review" && req.method === "POST") {
       const value = url.searchParams.get("value") === "1" ? "1" : "0";

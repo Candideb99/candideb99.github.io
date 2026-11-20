@@ -23,6 +23,58 @@ export function runProgram(command, args, cwd) {
   });
 }
 
+/** The workflows "Pause everything" stops: those that write, publish or correct stories (a deploy publishes only what is
+ * already committed, and stays). */
+export const PAUSED_WORKFLOWS = ["newsroom.yml", "news-clock.yml", "editor.yml"];
+/** The scheduled ones, which GitHub switches off in a public repository after 60 days without activity. */
+const SCHEDULED_WORKFLOWS = ["news-clock.yml", "editor.yml"];
+
+/**
+ * "Pause everything" and "Resume" (the owner, 2026-11-20: "did you account for the fact that I might manually stop
+ * publishing by pausing the news room? so nothing goes wrong"). Until then the pause only set KHAZENDAR_PAUSED, which a
+ * run reads when its job starts: a newsroom run already writing went on and published its stories up to an hour after
+ * the owner pressed Pause. Now the switch is set first, so nothing new starts, and then every run of the newsroom, the
+ * news clock and the editor still queued, waiting or going is cancelled: a run commits nothing before its last step, so
+ * what a stopped run had not yet published is not, and its stories are read again after Resume. Resume clears the
+ * switch and switches the scheduled workflows on again (a pause of 60 days would have let GitHub switch them off);
+ * the news clock then starts the next round within the hour and writes nothing it missed while paused
+ * (scripts/news-clock.mjs). `run` has runProgram()'s shape, so the self-test stands in for gh. Answers what to tell him.
+ */
+export async function setPaused(on, { run, repo }) {
+  const set = await run("gh", ["variable", "set", "KHAZENDAR_PAUSED", "--repo", repo, `--body=${on ? 1 : 0}`]);
+  if (!set.ok) return `Could not ${on ? "pause" : "resume"}: GitHub did not take it, and the cloud runs as before. ${set.out.slice(0, 160) || "gh could not reach GitHub"}`;
+  if (!on) {
+    const off = [];
+    for (const workflow of SCHEDULED_WORKFLOWS) if (!(await run("gh", ["api", "-X", "PUT", `repos/${repo}/actions/workflows/${workflow}/enable`])).ok) off.push(workflow);
+    return `Resumed — the newsroom's next round starts within the hour; nothing it missed while paused is written late.${off.length ? ` GitHub did not confirm that ${off.join(" and ")} ${off.length === 1 ? "is" : "are"} switched on: look at the repository's Actions page.` : ""}`;
+  }
+  const stopped = [];
+  const unsure = [];
+  for (const workflow of PAUSED_WORKFLOWS) {
+    const list = await run("gh", ["run", "list", "--workflow", workflow, "--repo", repo, "--limit", "20", "--json", "databaseId,status"]);
+    let runs = null;
+    try {
+      runs = list.ok ? JSON.parse(list.out) : null;
+    } catch {
+      runs = null;
+    }
+    if (!Array.isArray(runs)) {
+      unsure.push(`the runs of ${workflow} could not be read`);
+      continue;
+    }
+    for (const r of runs.filter((r) => r.status !== "completed")) {
+      if ((await run("gh", ["run", "cancel", String(r.databaseId), "--repo", repo])).ok) stopped.push(r.databaseId);
+      else unsure.push(`run ${r.databaseId} would not stop`);
+    }
+  }
+  const n = stopped.length;
+  return [
+    "Paused — nothing will be written or published until you press Resume. Stories already live stay live.",
+    n ? `${n === 1 ? "One run was" : `${n} runs were`} still going and ${n === 1 ? "was" : "were"} stopped (${stopped.join(", ")}): what ${n === 1 ? "it" : "they"} had not yet published will not be.` : "",
+    unsure.length ? `But ${unsure.join(" and ")}, so a run already writing may still publish: look at the repository's Actions page.` : "",
+  ].filter(Boolean).join(" ");
+}
+
 /** A log line without the newsroom's clock («[17:14:06] »). */
 const bare = (line) => String(line).replace(/^\[\d\d:\d\d:\d\d\] /, "");
 /** The newsroom's lines that mean something to an editor, not to a programmer (pipeline/run.mjs log()). */

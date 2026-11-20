@@ -1,31 +1,23 @@
 name: Newsroom
+# The run's name carries its mode ("Newsroom: explainer"): the news clock reads it to know what has started today.
+run-name: "Newsroom: ${{ inputs.mode || 'news' }}"
+
+# Nothing here runs on a schedule of its own. The news clock (news-clock.yml, scripts/news-clock.mjs) starts every run
+# through workflow_dispatch: the news rounds from 2026-11-20, and the timed pieces from the same night (the owner: "move
+# the daily pieces onto the clock too"). GitHub had fired their lines here 8-9 hours late by November (4-6 in
+# September), so the morning explainer came out in the afternoon and the afternoon analysis near midnight in Riyadh;
+# on the clock each starts within about two hours of its time (PIECES in news-clock.mjs: an explainer, an analysis
+# and the reports desk every day, a research paper on Tuesdays and Fridays, «الفكر الاقتصادي» on Wednesdays, the
+# week's review on Fridays, the lessons' weekly test on Mondays). A scheduled line here would run beside the clock and
+# write a piece twice: scripts/news-clock-selftest.mjs fails on one.
+# The Saturday defence-and-geopolitics reading went with the defence section on 2026-10-19 (folded into companies and
+# economy at the owner's choice); in five weeks it never found enough stories to run. «في العمق», the weekly in-depth
+# piece, ran on Sundays from 2026-09-24 until the owner stopped it on 2026-10-19 ("extremely boring to read and i lost
+# concentration"): a 1,370-word retelling of our own stories in date order. Its mode stays for a run by hand.
+# Every news round first reads the earlier rounds' stories again against their sources (the second look) and learns
+# from what it proves (the lessons), then writes (2026-09-25; the separate twice-daily second-look run was folded in).
 
 on:
-  schedule:
-    # One explainer and one analysis a day; one research-paper reading on Tuesdays and Fridays; the week's review on
-    # Fridays. The Saturday defence-and-geopolitics reading went with the defence section on 2026-10-19 (folded into
-    # companies and economy at the owner's choice); in five weeks it never found enough stories to run.
-    # The news rounds are started by the news clock (news-clock.yml, 2026-11-20) through workflow_dispatch, mode news.
-    # GitHub fires these lines hours late (4-6 in September, 8-9 by November) and holds one firing of a line at a time,
-    # dropping the slots that pass while it waits: the three-hourly news line that was here ("23 */3 * * *") got three or
-    # four runs a day at hours that moved with the delay. A line with one slot a day fires once every day, however late,
-    # so keep every line here to one slot a day and name its mode below (scripts/news-clock-selftest.mjs checks both).
-    # README "How it runs" records the cadence GitHub keeps.
-    - cron: "41 5 * * *"
-    - cron: "7 14 * * *"
-    - cron: "31 9 * * 2,5"
-    - cron: "37 15 * * 5"
-    # «في العمق», the weekly in-depth piece, ran on Sundays from 2026-09-24 until the owner stopped it on 2026-10-19
-    # ("extremely boring to read and i lost concentration"): a 1,370-word retelling of our own stories in date order. The
-    # mode stays for a run by hand; the schedule no longer starts it.
-    # Every news round first reads the earlier rounds' stories again against their sources (the second look) and learns
-    # from what it proves (the lessons), then writes (2026-09-25; the separate twice-daily second-look run was folded in).
-    # The weekly test of the lessons: keep the current ones or put back the last version that passed (Mondays).
-    - cron: "13 6 * * 1"
-    # The reports desk (pipeline/lib/reports.mjs, 2026-10-18): new editions of the flagship reports, read from their own pages.
-    - cron: "17 8 * * *"
-    # «الفكر الاقتصادي» (pipeline/lib/ideas.mjs, 2026-11-20): one economist's idea a week, Wednesdays.
-    - cron: "29 10 * * 3"
   workflow_dispatch:
     inputs:
       mode:
@@ -51,7 +43,8 @@ permissions:
 
 jobs:
   run:
-    # "Pause everything" on the control room sets KHAZENDAR_PAUSED=1; nothing is written or published until it is cleared.
+    # "Pause everything" on the control room sets KHAZENDAR_PAUSED=1 and stops the runs already going (setPaused() in
+    # scripts/desk-lib.mjs); nothing is written or published until it is cleared.
     if: vars.KHAZENDAR_PAUSED != '1'
     name: Write and publish
     runs-on: ubuntu-latest
@@ -60,7 +53,7 @@ jobs:
     # «في العمق» runs longer than a news round: the first one took 32 minutes on its own, and one desk call on a
     # 1,500-word body may take fifteen.
     # A news round also runs the second look and the learning step before it writes: up to 12 and 1 minutes.
-    timeout-minutes: ${{ (github.event.schedule == '47 7 * * 0' || inputs.mode == 'feature') && 100 || 65 }}
+    timeout-minutes: ${{ inputs.mode == 'feature' && 100 || 65 }}
     outputs:
       published: ${{ steps.newsroom.outputs.published }}
       corrected: ${{ steps.recheck.outputs.published }}
@@ -85,25 +78,13 @@ jobs:
           INPUT_MODE: ${{ inputs.mode }}
           INPUT_LIMIT: ${{ inputs.limit }}
           INPUT_SECTIONS: ${{ inputs.sections }}
-          SCHEDULE: ${{ github.event.schedule }}
           # Review is on only at "1": the control room switches it off by setting "0", and a test for a non-empty
           # value read that "0" as on (found 2026-09-25: every story would have stayed a draft).
           REVIEW: ${{ vars.KHAZENDAR_REVIEW }}
         run: |
-          mode="$INPUT_MODE"
+          mode="${INPUT_MODE:-news}"
           limit="${INPUT_LIMIT:-4}"
           sections="$INPUT_SECTIONS"
-          if [ -z "$mode" ]; then
-            if [ "$SCHEDULE" = "41 5 * * *" ]; then mode=explainer;
-            elif [ "$SCHEDULE" = "7 14 * * *" ]; then mode=analysis;
-            elif [ "$SCHEDULE" = "31 9 * * 2,5" ]; then mode=paper;
-            elif [ "$SCHEDULE" = "37 15 * * 5" ]; then mode=weekly;
-            elif [ "$SCHEDULE" = "47 7 * * 0" ]; then mode=feature;
-            elif [ "$SCHEDULE" = "13 6 * * 1" ]; then mode=lessons-test;
-            elif [ "$SCHEDULE" = "17 8 * * *" ]; then mode=reports;
-            elif [ "$SCHEDULE" = "29 10 * * 3" ]; then mode=idea;
-            else mode=news; fi
-          fi
           case "$mode" in news|explainer|idea|analysis|paper|weekly|feature|reports|recheck|lessons-test) ;; *) echo "invalid mode: $mode"; exit 2;; esac
           review=""
           if [ "$REVIEW" = "1" ]; then review=1; fi

@@ -1,21 +1,23 @@
 name: News clock
 
-# The newsroom's news rounds, on a clock GitHub's delays cannot bunch (the owner, 2026-11-20, on another session's remark
-# that GitHub starts scheduled runs late and skips some: "if yes then fix it at the source").
+# Every newsroom run, on a clock GitHub's delays cannot bunch (the owner, 2026-11-20, on another session's remark that
+# GitHub starts scheduled runs late and skips some: "if yes then fix it at the source"; the same night: "move the daily
+# pieces onto the clock too").
 # GitHub fires a scheduled line hours after its time (4 to 6 hours in September, 8 to 9 by 20 November) and holds one
 # firing of a line at a time, dropping the slots that pass while it waits. So newsroom.yml's three-hourly news line gave
 # three or four rounds a day at hours that moved with the delay (by November about 02:00, 11:30 and 20:00 UTC, nothing
-# through the Arab afternoon), and the morning fill-in that was here from 2026-10-25, whose lines asked for 02:13-09:43
-# on the measure of five hours' delay, came to fire after its own 06:00-10:30 window or just before the line's round.
-# A line with one slot a day fires once every day whatever the delay: every one-slot line of the newsroom did, every day
-# from September to November. So these are 24 one-slot lines, one an hour; the delay moves the firings, not their
-# spacing. Each firing asks scripts/news-clock.mjs, which starts a news round (newsroom.yml, mode news) only when no
-# newsroom run is running or waiting and the last news round started 4 hours ago or more by day (04:00-19:00 UTC,
-# 07:00-22:00 in Riyadh), 7 at night: about four or five rounds a day, as many as the old line gave, three in four by
-# day. Most firings start nothing, at the cost of a few seconds of a free runner and no model call.
+# through the Arab afternoon), the morning fill-in that was here from 2026-10-25, whose lines asked for 02:13-09:43 on
+# the measure of five hours' delay, came to fire after its own 06:00-10:30 window, and the daily pieces came out 8-9
+# hours after their time. A line with one slot a day fires once every day whatever the delay: every one-slot line of the
+# newsroom did, every day from September to November. So these are 24 one-slot lines, one an hour; the delay moves the
+# firings, not their spacing. Each firing asks scripts/news-clock.mjs, which reads the time itself and starts at most
+# one newsroom run (newsroom.yml, the mode it names), never while one is running or waiting: a news round once the last
+# one started 4.5 hours ago by day (04:00-19:00 UTC, 07:00-22:00 in Riyadh), 7 at night, about four a day, as many as
+# before; each timed piece once, from its time until eight hours later. Most firings start nothing, at the cost of a few
+# seconds of a free runner and no model call.
 # Keep one slot per line (scripts/news-clock-selftest.mjs checks it). Measured by scripts/cadence.mjs. Switch it off by
-# deleting this file or with "Disable workflow" in the repository's Actions tab; "Pause everything" in the control room
-# pauses it too.
+# deleting this file or with "Disable workflow" in the repository's Actions tab, and nothing in the newsroom runs by
+# itself; "Pause everything" in the control room skips its firings and stops the runs already going.
 
 on:
   schedule:
@@ -57,7 +59,7 @@ permissions:
 jobs:
   tick:
     if: vars.KHAZENDAR_PAUSED != '1'
-    name: Start a news round if one is due
+    name: Start the newsroom run that is due, if any
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -73,8 +75,12 @@ jobs:
           CHECK_ONLY: ${{ inputs.check_only }}
         run: node scripts/news-clock.mjs
 
-      - name: Start a news round
+      - name: Start it
         if: steps.decide.outputs.start == '1' && inputs.check_only != true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run newsroom.yml --repo "$GITHUB_REPOSITORY" --ref main -f mode=news
+          MODE: ${{ steps.decide.outputs.mode }}
+        # The mode reaches the shell through the environment, and only a mode newsroom.yml offers is sent.
+        run: |
+          case "$MODE" in news|explainer|idea|analysis|paper|weekly|reports|lessons-test) ;; *) echo "not a mode the clock starts: $MODE"; exit 2;; esac
+          gh workflow run newsroom.yml --repo "$GITHUB_REPOSITORY" --ref main -f mode="$MODE"

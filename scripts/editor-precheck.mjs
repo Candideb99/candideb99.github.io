@@ -30,6 +30,7 @@ import path from "node:path";
 import YAML from "yaml";
 import { PHOTO_SEARCHES, checkCommons, checkPages, commonsTitle, confirmLoss, issuesToClose, renamedUrl } from "../pipeline/lib/health.mjs";
 import { sharedPhotos } from "../pipeline/lib/photo-key.mjs";
+import { quietHours } from "./news-clock.mjs";
 
 const DAY = 86_400_000;
 const now = Date.now();
@@ -54,9 +55,9 @@ state.photos ??= {};
 state.woken ??= {};
 const hoursAgo = (iso) => (now - Date.parse(iso)) / 36e5;
 
-// 1. The newsroom and the deploy.
+// 1. The newsroom, the news clock that starts it (since 2026-11-20) and the deploy.
 const runsOf = {};
-for (const workflow of OFFLINE ? [] : ["newsroom.yml", "deploy.yml"]) {
+for (const workflow of OFFLINE ? [] : ["newsroom.yml", "news-clock.yml", "deploy.yml"]) {
   let runs;
   try {
     runs = JSON.parse(execFileSync("gh", ["run", "list", "--workflow", workflow, "--limit", "30", "--json", "databaseId,conclusion,status,createdAt"], { encoding: "utf8" }));
@@ -212,14 +213,18 @@ for (let i = 0; i < lastTwoNews.length; i++) {
 if (pairs.length) findings.push({ key: `dup:${createHash("sha1").update([...pairs].sort().join("|")).digest("hex").slice(0, 10)}`, text: `The same event was filed twice in the last two days: ${pairs.join("; ")}. That is a de-duplication weakness in pipeline/lib/select.mjs: tighten the rule; do not delete or edit the articles.` });
 else fine.push("No event was filed twice in the last two days.");
 
-// 6. Freshness. The newsroom runs about five times a day and GitHub drops some slots; its longest quiet spell in the
-// week to 2026-09-24 was 17 hours, so a day without news means something is wrong.
+// 6. Freshness. The newsroom runs about four times a day; its longest quiet spell in the week to 2026-09-24 was 17 hours,
+// so a day without news means something is wrong. A day of "Pause everything" is not: the quiet hours count from the end
+// of the last pause, which the news clock's skipped runs mark (quietHours(), 2026-11-20); counted from the story alone,
+// a resume after a day's pause read as a stall and woke the paid editor to look for a fault that was not there. A run
+// cancelled or skipped did nothing and is not counted among the runs since.
 const newestNews = stories.find((s) => s.kind === "news");
-const quietH = newestNews ? (now - newestNews.at) / 36e5 : Infinity;
+const quiet = quietHours({ now, newestNewsAt: newestNews?.at ?? null, clockRuns: runsOf["news-clock.yml"] ?? [] });
+const quietH = quiet.hours;
 if (quietH > 24 && !refusedLogin) {
-  const ran = (runsOf["newsroom.yml"] ?? []).filter((r) => r.createdAt > new Date(newestNews?.at ?? 0).toISOString()).length;
-  findings.push({ key: "stall", text: `No news story has been published for ${Math.round(quietH)} hours${OFFLINE ? "" : `, though the newsroom completed ${ran} run(s) since`}. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug.` });
-} else if (newestNews) fine.push(`The newest news story is ${Math.round(quietH)} hour(s) old.`);
+  const ran = (runsOf["newsroom.yml"] ?? []).filter((r) => r.createdAt > new Date(newestNews?.at ?? 0).toISOString() && r.conclusion !== "cancelled" && r.conclusion !== "skipped").length;
+  findings.push({ key: "stall", text: `No news story has been published for ${Math.round(quietH)} hours${quiet.afterPause ? " since the newsroom was last paused" : ""}${OFFLINE ? "" : `, though the newsroom completed ${ran} run(s) since`}. Read the last run reports (pipeline/runs/*.json: each story's outcome and the log) and fix what stops every story; a story the critic rejects is not a bug.` });
+} else if (newestNews) fine.push(`The newest news story is ${Math.round((now - newestNews.at) / 36e5)} hour(s) old${quiet.afterPause ? `; the newsroom was paused until about ${Math.round(quietH)} hour(s) ago` : ""}.`);
 for (const [name, file, maxH] of [["Market quotes", "src/data/markets.json", 12], ["The economic calendar", "src/data/calendar.json", 48]]) {
   const at = readJson(file)?.updatedAt;
   if (at && hoursAgo(at) > maxH) findings.push({ key: `data:${file}`, text: `${name} (${file}) were last refreshed ${Math.round(hoursAgo(at))} hours ago. The refresh runs in the newsroom and deploy workflows as a best-effort step; read its output in the latest runs and fix the script if a source changed.` });
