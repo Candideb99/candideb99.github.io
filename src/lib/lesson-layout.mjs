@@ -46,8 +46,14 @@ const textOf = (html) => html.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").r
 
 /** Everything a part prints, as words and figures to match a paragraph against. */
 function partSignature(part) {
-  const strings = [part.title, part.caption, part.center, part.price, part.quantity, part.supply, part.demand, part.result?.label, ...(part.terms ?? []).map((t) => t.label), ...(part.inflows ?? []).map((f) => f.label), ...(part.outflows ?? []).map((f) => f.label), ...(part.steps ?? [])].filter(Boolean).join(" ");
-  const values = [...(part.terms ?? []).map((t) => t.value), ...(part.inflows ?? []).map((f) => f.value), ...(part.outflows ?? []).map((f) => f.value)];
+  // The graph templates of 2026-11-20 add their own labels: a floor's or a tax's name, a curve's axes and points.
+  const strings = [
+    part.title, part.caption, part.center, part.price, part.quantity, part.supply, part.demand, part.result?.label,
+    part.control?.label, part.control?.gap, part.wedge?.label, part.x, part.y, part.label, part.second?.label, part.longRun?.label,
+    ...(part.marks ?? []).map((m) => m.label), ...(part.terms ?? []).map((t) => t.label), ...(part.inflows ?? []).map((f) => f.label),
+    ...(part.outflows ?? []).map((f) => f.label), ...(part.steps ?? []),
+  ].filter(Boolean).join(" ");
+  const values = [...(part.terms ?? []).map((t) => t.value), ...(part.inflows ?? []).map((f) => f.value), ...(part.outflows ?? []).map((f) => f.value), ...(part.rows ?? []).flatMap((r) => [r.price, r.demand, r.supply]), part.equilibrium?.price, part.equilibrium?.quantity].filter((v) => v !== undefined);
   // The formula's words help (its constants, «× 100», are no figure of the story).
   return { words: words(`${strings} ${part.formula ?? ""}`), figures: figures(`${strings} ${values.join(" ")}`) };
 }

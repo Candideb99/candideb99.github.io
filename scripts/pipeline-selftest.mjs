@@ -35,7 +35,8 @@ import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { canonicalRegions, countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues, bareNameInDek, structural, WRITER_ONLY, READOUT, tableReadout, figureCount, readoutRoute, unjoinedParagraphs, subjectFirstSpeech } from "../pipeline/lib/style.mjs";
 import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
-import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
+import { CURVE_SHAPES, keepLessonParts, lessonNumbers, lessonResults, normalizeDiagram, normalizeWorked, partLabels } from "../pipeline/lib/lesson.mjs";
+import { drawFigure } from "../src/lib/figures.mjs";
 import { IDEA_HOSTS, IDEA_SOURCE_CHARS, excerpt, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "../pipeline/lib/ideas.mjs";
 import { selectIdea } from "../pipeline/lib/select.mjs";
 import { photoFree } from "../pipeline/lib/photo-key.mjs";
@@ -637,6 +638,75 @@ check(
   const planned = { title: "لماذا يتردد المشتري كما رأى أكرلوف؟", subtitle: "د", lede: "يتردد المشترون في سوق السيارات المستعملة.", body: "وجد أكرلوف أن 45% من المشترين يدفعون سعراً وسطاً.", keyFacts: [], whyItMatters: "", tags: ["أكرلوف"], regions: [], lessonPlan: { idea: "يدفع 45% من المشترين سعراً وسطاً", path: [{ bridge: "", question: "", answer: "", facts: [] }] } };
   const planChecks = programmaticChecks(planned, [{ sourceNameEn: "Wikipedia", title: "t", lang: "en", text: "45% of buyers pay an average price." }], { explainer: true, minWords: 0 });
   check("a figure an idea piece's plan carries in its `idea` is on the plan", planChecks.warnings.some((w) => w.startsWith("خارج الخطة")), false);
+}
+
+// The lessons' graphs (2026-11-20: the owner asked why a tax wedge, the Card–Krueger minimum wage and the textbook curves
+// could not be drawn; they had never been built, and 9 of 10 lessons since 8 November drew a chain of boxes). Each spec
+// is held to one mechanism and to the economics it teaches; the drawing (src/lib/figures.mjs) to the same.
+{
+  const sd = { type: "supply_demand", title: "t", price: "الأجر", quantity: "العمال", supply: "عرض العمل", demand: "الطلب على العمل" };
+  const floor = normalizeDiagram({ ...sd, control: { kind: "floor", label: "الحد الأدنى للأجر", gap: "بطالة" } });
+  check(
+    "a supply-and-demand figure takes one mechanism: a floor or ceiling, a tax or subsidy, a shift (and a second on the other curve)",
+    [
+      floor?.control?.kind,
+      normalizeDiagram({ ...sd, control: { kind: "ceiling", label: "سعر محدد" } })?.control?.gap,
+      normalizeDiagram({ ...sd, control: { kind: "floor", label: "ح" }, wedge: { kind: "tax", label: "ض" } }),
+      normalizeDiagram({ ...sd, wedge: { kind: "tax", label: "ضريبة" }, shift: "demand_up" })?.shift,
+      normalizeDiagram({ ...sd, shift: "demand_up", shift2: "supply_down" })?.shift2,
+      normalizeDiagram({ ...sd, shift: "demand_up", shift2: "demand_down" })?.shift2,
+      normalizeDiagram({ ...sd, control: { kind: "floor" } }),
+    ],
+    ["floor", "عجز", null, null, "supply_down", null, null],
+  );
+  const rows = [{ price: 2, demand: 12, supply: 2 }, { price: 4, demand: 10, supply: 4 }, { price: 6, demand: 8, supply: 6 }, { price: 8, demand: 6, supply: 8 }];
+  const sched = normalizeDiagram({ type: "schedule", title: "t", price: "السعر", quantity: "الكمية", rows, hypothetical: true });
+  const real = normalizeDiagram({ type: "schedule", title: "t", price: "السعر", quantity: "الكمية", rows: rows.map((r) => ({ ...r, price: r.price + 0.5 })) });
+  check(
+    "a schedule's equilibrium is computed by code; a schedule that breaks the law of demand, never crosses, or makes up fractions is refused",
+    [
+      sched?.equilibrium,
+      lessonNumbers(sched).length,
+      lessonNumbers(real).length,
+      lessonResults(real),
+      normalizeDiagram({ type: "schedule", title: "t", price: "p", quantity: "q", rows: [{ price: 2, demand: 5, supply: 2 }, { price: 4, demand: 9, supply: 4 }, { price: 6, demand: 3, supply: 6 }] }),
+      normalizeDiagram({ type: "schedule", title: "t", price: "p", quantity: "q", rows: [{ price: 2, demand: 20, supply: 2 }, { price: 4, demand: 18, supply: 4 }, { price: 6, demand: 16, supply: 6 }] }),
+      normalizeDiagram({ type: "schedule", title: "t", price: "p", quantity: "q", hypothetical: true, rows: rows.map((r) => ({ ...r, demand: r.demand + 0.5 })) }),
+    ],
+    [{ price: 7, quantity: 7 }, 0, 12, [7.5, 7], null, null, null],
+  );
+  check(
+    "a named curve keeps its shape's own points and second curve; an unknown shape is refused",
+    [
+      normalizeDiagram({ type: "curve", shape: "laffer", title: "t", x: "معدل الضريبة", y: "الحصيلة", label: "لافر", marks: [{ at: "peak", label: "الذروة" }, { at: "gain", label: "x" }] })?.marks,
+      normalizeDiagram({ type: "curve", shape: "yield_curve", title: "t", x: "الأجل", y: "العائد", label: "اليوم", variant: "inverted", second: { label: "قبل عام", variant: "inverted" } })?.second,
+      normalizeDiagram({ type: "curve", shape: "phillips", title: "t", x: "البطالة", y: "التضخم", label: "قصير", long_run: { label: "طويل" } })?.longRun,
+      normalizeDiagram({ type: "curve", shape: "pie", title: "t", x: "x", y: "y", label: "l" }),
+      partLabels(floor).includes("بطالة"),
+    ],
+    [[{ at: "peak", label: "الذروة" }], undefined, { label: "طويل" }, null, true],
+  );
+  // An invented money unit is no unit (the first Ibn Khaldun dry run, 2026-11-20).
+  const coined = normalizeWorked({ title: "t", formula: "f", op: "ratio", hypothetical: true, terms: [{ label: "a", value: 1000, unit: "وحدة نقدية" }, { label: "b", value: 25, unit: "وحدة نقدية" }], result: { label: "r", unit: "سفينة" } });
+  check("a worked example's invented money unit is dropped, a real unit kept", [coined?.terms.map((t) => t.unit), coined?.result.unit], [["", ""], "سفينة"]);
+  const draw = (spec) => drawFigure(normalizeDiagram(spec)).facts;
+  const fl = draw({ ...sd, control: { kind: "floor", label: "ح" } });
+  const ce = draw({ ...sd, control: { kind: "ceiling", label: "س" } });
+  const tax = draw({ ...sd, wedge: { kind: "tax", label: "ض" } });
+  const sub = draw({ ...sd, wedge: { kind: "subsidy", label: "د" } });
+  const both = draw({ ...sd, shift: "demand_up", shift2: "supply_up" });
+  check(
+    "the drawing teaches the economics: a floor above the market's price opens a surplus, a ceiling below it a shortage; a tax puts the buyer's price above the seller's and cuts the quantity, a subsidy the reverse; both curves rising move the quantity up",
+    [fl.controlY < fl.marketY && fl.demanded < fl.supplied, ce.controlY > ce.marketY && ce.demanded > ce.supplied, tax.buyersY < tax.sellersY && tax.quantity < tax.marketQuantity, sub.buyersY > sub.sellersY && sub.quantity > sub.marketQuantity, both.after[0] > both.before[0]],
+    [true, true, true, true, true],
+  );
+  const plotted = draw({ type: "schedule", title: "t", price: "p", quantity: "q", rows, hypothetical: true });
+  const inside = (path) => (path.match(/-?\d+(?:\.\d+)?/g) ?? []).map(Number).every((v, i) => (i % 2 === 0 ? v >= 80 && v <= 600 : v >= 40 && v <= 350));
+  check(
+    "a schedule's point of equilibrium lies where its two lines cross, and every named curve stays inside its frame",
+    [Math.abs(plotted.equilibrium[0] - (plotted.demand[2][0] + plotted.demand[3][0]) / 2) < 1, Object.keys(CURVE_SHAPES).every((shape) => inside(draw({ type: "curve", shape, title: "t", x: "x", y: "y", label: "l", second: { label: "s", variant: "flat" }, long_run: { label: "l" } }).path))],
+    [true, true],
+  );
 }
 
 // «مدخل إلى الاقتصاد» carries no photograph (the owner, 2026-11-20: "i do not think we need pictures in the intro to economy

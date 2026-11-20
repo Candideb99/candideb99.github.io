@@ -91,6 +91,8 @@ const ONLY_SOURCES = option("source", null)?.split(",").map((s) => s.trim()).fil
 const ONLY_REPORT = option("report", null);
 /** `--paper=<arXiv id or address>`: the paper mode reads that one paper, chosen by hand (a reading written again, or a test). */
 const ONLY_PAPER = option("paper", null);
+/** `--idea=<id>`: one idea of pipeline/ideas.json by hand (a test, or a piece the owner asks for), run or not before. */
+const ONLY_IDEA = option("idea", null);
 /** `--slugs=a,b`: the explainers and paper readings `--mode=rewrite` writes again under their own addresses. */
 const REWRITE_SLUGS = option("slugs", "").split(",").map((s) => s.trim()).filter(Boolean);
 const MIN_IMPORTANCE = (() => {
@@ -1192,7 +1194,8 @@ function runIdea() {
     const catalogue = await loadIdeas();
     const week = existing.filter((a) => a.kind === "news" && !a.draft && hoursSince(a.publishedAt) < 24 * 7).slice(0, 60);
     const counts = fieldCounts(catalogue, existing);
-    let candidates = ideaCandidates(catalogue, existing);
+    let candidates = ONLY_IDEA ? catalogue.ideas.filter((i) => i.id === ONLY_IDEA) : ideaCandidates(catalogue, existing);
+    if (ONLY_IDEA && !candidates.length) throw new Error(`--idea=${ONLY_IDEA}: no such idea in pipeline/ideas.json`);
     log(`idea candidates: ${candidates.length} (${[...new Set(candidates.map((i) => i.field))].join(", ")}); pieces per field: ${Object.entries(counts).map(([f, n]) => `${f} ${n}`).join(", ")}`);
     if (week.length < 3 || !candidates.length) {
       log(week.length < 3 ? "not enough news this week to open an idea on" : "every idea of the catalogue has run");
