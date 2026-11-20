@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (185 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (226 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -1376,6 +1376,99 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   );
   const unplaced = await scenario({ draft: saudi, plan, world: { "vegetable market Saudi Arabia": [dusk], "vegetable market": [stock] }, judge, verify: snapshot });
   check("a held snapshot no record places in the story's country still comes after the illustration", [unplaced.image?.title, String(unplaced.image?.alt ?? "").includes(ILLUSTRATIVE)], [stock.title, true]);
+}
+
+// Morocco's own markets (the owner, 2026-11-20, on a Pexels seller at an Indonesian market run as «صورة تعبيرية» under
+// «التضخم في المغرب يتسارع إلى 1.9% في أكتوبر»: "the picture did not build actual relation to Moroccan people … I would have
+// preferred a photo with no people in this case … if it is a bug, then fix it at the source"). The run log showed the
+// country's markets lost before any judge saw them, and our own rules inviting a stranger's face into a stand-in.
+{
+  const { collect, strangerFace } = await import("../pipeline/lib/images.mjs");
+  const { usedPhotos } = await import("../pipeline/lib/photo-key.mjs");
+  const morocco = { title: "التضخم في المغرب يتسارع إلى 1.9% في أكتوبر، الأعلى منذ فبراير 2025", subtitle: "النقل يقفز 11.6% على أساس سنوي", lede: "ارتفع الرقم الاستدلالي للأثمان عند الاستهلاك في المغرب 1.9%.", body: "فقرة.", tags: ["المغرب", "التضخم"], regions: ["المغرب العربي"], kind: "news", section: "economy", imageQueries: [] };
+  const stock = (title) => ({ ...file(title), description: title, library: "pexels" });
+  const seller = stock("Local woman selling fresh vegetables at an Indonesian market");
+  const produce = stock("Fresh vegetables piled in crates at a market stall");
+  // (1) The country reader: a library's adjective before a place, the Maghreb's cities and French names, «Türkiye».
+  check(
+    "an adjective before a place places a photograph, and the Maghreb's cities do; an adjective alone does not",
+    [
+      placedAbroad(seller, morocco),
+      placedAtHome({ title: "Colorful fruit stand in Marrakech offering a variety of fresh produce" }, morocco),
+      placedAtHome({ title: '"A Moroccan traditional market called "Souk.jpg' }, morocco),
+      placedAtHome({ title: "Légumes exposés.jpg", description: "légumes exposés à Souk Jmiaa à Derb Sultan Casablanca Maroc" }, morocco),
+      placedAbroad({ title: "Turkish coffee and Japanese cars at a market in Casablanca" }, morocco),
+      placedAbroad({ title: "Colorful crates of fruits on display at a street market in İzmir, Türkiye" }, morocco),
+      placedAbroad({ title: "A Latin American street market at dusk" }, morocco),
+    ],
+    ["Indonesia", true, true, true, null, "Turkey", null],
+  );
+  // (2) A rank inside a place's name: «Derb Sultan Casablanca» was a person called Casablanca, «Queen Victoria Market» one
+  // called Victoria; a person beside a city still is one.
+  const derb = file("Légumes exposés.jpg", { description: "légumes exposés à Souk Jmiaa à  Derb Sultan Casablanca Maroc", date: "2025-04-13" });
+  const queenVic = file("Melbourne (AU), Queen Victoria Market -- 2019 -- 1542.jpg", { date: "2019-05-01" });
+  const modi = file("Prime Minister Modi Mumbai 2025.jpg", { date: "2025-05-01" });
+  // (3) The everyday market's kin: a souk is a market, produce is vegetables.
+  const souk = stock("Colorful Moroccan souk stalls in Marrakech bustling with local vendors");
+  const stand = stock("Colorful fruit stand in Marrakech offering a variety of fresh produce");
+  const world = { "Derb Sultan": [derb], market: [queenVic], Mumbai: [modi] };
+  const restore = withStandIns({ searchCommons: async (q) => world[q] ?? [], searchCommonsCategory: async () => [], searchLibraries: async (q) => (q === "Moroccan market" ? [souk] : q === "vegetable market Morocco" ? [stand] : []) });
+  try {
+    const quiet = () => {};
+    const [atDerb, markets, mumbai, kin] = [
+      await collect(["Derb Sultan"], quiet, { perQuery: 10, max: 20, people: "none", places: ["Derb Sultan"], simplify: false }),
+      await collect(["market"], quiet, { perQuery: 10, max: 20, people: "none" }),
+      await collect(["Mumbai"], quiet, { perQuery: 10, max: 20, people: "none", simplify: false }),
+      await collect(["Moroccan market", "vegetable market Morocco"], quiet, { perQuery: 10, max: 20, people: "none", place: ["Morocco", "Moroccan"], libraries: true }),
+    ];
+    check(
+      "a rank inside a place's name is no person, a person beside a city still is, and a souk or a stand of produce fits a market search",
+      [atDerb.map((c) => c.title), markets.map((c) => c.title), mumbai.length, kin.map((c) => c.title).sort()],
+      [[derb.title], [queenVic.title], 0, [stand.title, souk.title].sort()],
+    );
+  } finally {
+    restore();
+  }
+  // (4) No stranger's face in a stand-in, in code: a person as the frame's subject, placed nowhere in the story's country.
+  check(
+    "a stranger's face is read from the record; hands, a person at home, a named person and a world story are not one",
+    [
+      strangerFace(seller, morocco),
+      strangerFace(stock("Woman's hands holding vegetables at an Indonesian market"), morocco),
+      strangerFace(stock("A vendor weighing tomatoes at a market in Rabat"), morocco),
+      strangerFace(stock("Close-up of a hand holding a green fuel nozzle"), morocco),
+      strangerFace(seller, { ...morocco, tags: ["الأسواق الناشئة"], title: "أسعار الغذاء العالمية ترتفع", regions: ["عالمي"] }),
+      strangerFace(stock("Prime Minister Aziz Akhannouch talks to a vendor"), morocco),
+    ],
+    [true, false, false, false, false, false],
+  );
+  const plan = planFor({ queries: ["vegetable market Morocco"], place: ["Morocco", "Moroccan", "Casablanca", "Rabat"], places: [], place_queries: [] });
+  const first = (titles) => (titles.length ? 1 : 0);
+  const neutral = await scenario({ draft: morocco, plan, libs: { "vegetable market": [seller, produce] }, judge: first, verify: () => "GENERIC_OK" });
+  check(
+    "the neutral pass never shows a judge a stranger's face, and its judge and check are told why",
+    [neutral.image?.title, neutral.judgePrompts.some((p) => p.includes("Local woman selling")), neutral.judgePrompts.every((p) => !p.includes("LAST PASS") || p.includes("no stranger's face")), neutral.verifyPrompts.every((p) => p.includes("a stranger's face"))],
+    [produce.title, false, true, true],
+  );
+  // The second check reads it in code for a frame that can only stand in, never for one placed in the story's country.
+  const placedNowhere = await scenario({ draft: morocco, plan, libs: { "vegetable market Morocco": [produce] }, judge: first, verify: () => "GENERIC_OK" });
+  const casablanca = stock("Vegetable stall at a market in Casablanca");
+  const placedHome = await scenario({ draft: morocco, plan, libs: { "vegetable market Morocco": [casablanca] }, judge: first, verify: () => "GENERIC_OK" });
+  check(
+    "the check of a stand-in from nowhere names a stranger's face; the check of a photograph from the story's country does not",
+    [placedNowhere.verifyPrompts.some((p) => p.includes("which can therefore only stand in")), placedHome.verifyPrompts.some((p) => p.includes("which can therefore only stand in")), placedHome.image?.title],
+    [true, false, casablanca.title],
+  );
+  // (5) A photograph of the story's own country another story ran 30 days ago or more comes before an illustration from
+  // elsewhere: the Moroccan souk had waited behind the neutral pass.
+  const day = 24 * 60 * 60 * 1000;
+  const ranSouk = file('"A Moroccan traditional market called "Souk.jpg', { description: 'This is an image with the theme "Farm to Plate"', date: "2025-04-10" });
+  const rested = await scenario({ draft: morocco, plan, world: { "vegetable market Morocco": [ranSouk] }, libs: { "vegetable market": [produce] }, judge: first, verify: () => "GENERIC_OK", exclude: usedPhotos([{ url: ranSouk.url, at: Date.now() - 40 * day }]) });
+  check(
+    "a rested photograph of the story's own country runs before the illustration, which is not looked for",
+    [rested.image?.title, rested.calls.includes("judge-neutral"), String(rested.image?.alt ?? "").includes(ILLUSTRATIVE)],
+    [ranSouk.title, false, false],
+  );
 }
 
 // The city pass (the owner, 2026-11-07, of Bloomberg's Downtown Dubai under DIP Holding's offering: "why not then use dubai
