@@ -92,6 +92,34 @@ export function selfLabelLinks(html, path) {
   return out;
 }
 
+/**
+ * A page head's row of links and the sentence above it (2026-11-20, the owner: "check the section pages design and
+ * organization too"). Two names with nothing between them run together (the topic and desk pages' own copies of the row
+ * had no dot; LinkRow.astro prints one), and a news section's sentence named its sub-topics, which the row under it
+ * names again («الذكاء الاصطناعي والرقائق ومراكز البيانات…» over «الذكاء الاصطناعي · الرقائق ومراكز البيانات · …»):
+ * three of the row's names, and at least half of them, in the sentence above it is the row said twice.
+ */
+export function pageHeadFaults(html) {
+  const out = [];
+  const stem = (w) => w.replace(/[^ء-ي]/g, "").replace(/^و(?=ال)/, "").replace(/^ال/, "");
+  for (const head of html.matchAll(/<header class="page-head(?: [^"]*)?"[^>]*>([\s\S]*?)<\/header>/g)) {
+    const intro = head[1].match(/<p class="page-intro"[^>]*>([\s\S]*?)<\/p>/);
+    const said = new Set((intro?.[1] ?? "").replace(/<[^>]+>/g, " ").split(/\s+/).map(stem).filter(Boolean));
+    for (const row of head[1].matchAll(/<p class="page-head__topics[^"]*"[^>]*>([\s\S]*?)<\/p>/g)) {
+      const names = [...row[1].matchAll(/<a\b[^>]*>([^<]*)<\/a>/g)].map((a) => a[1].trim());
+      const between = row[1].split(/<a\b[^>]*>[^<]*<\/a>/).slice(1, -1);
+      if (between.some((s) => !s.replace(/<[^>]+>/g, "").trim())) out.push(`names run together in a page head's row: «${names.slice(0, 3).join(" ")}»`);
+      // A dot must close the item of the name before it: as an item of its own it wrapped to open a line (LinkRow.astro).
+      const dots = row[1].match(/class="page-head__sep"/g)?.length ?? 0;
+      const held = row[1].match(/<\/a><span class="page-head__sep"[^>]*>[^<]*<\/span><\/span>/g)?.length ?? 0;
+      if (dots > held) out.push(`a dot in a page head's row stands apart from the name before it, so it can open a line: «${names.slice(0, 3).join(" · ")}»`);
+      const repeated = names.filter((n) => said.has(stem(n.split(/\s+/)[0])));
+      if (repeated.length >= 3 && repeated.length * 2 >= names.length) out.push(`the sentence over a page head's row names the row again: ${repeated.join("، ")}`);
+    }
+  }
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

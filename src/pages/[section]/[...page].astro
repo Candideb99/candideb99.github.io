@@ -2,6 +2,7 @@
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import LinkRow from "@components/LinkRow.astro";
 import { analysisLabel, liveDesks, WEEKLY_HREF } from "@lib/analysis";
 import { menuTopics, topicHref } from "@lib/topics";
 import type { Article } from "@lib/articles";
@@ -79,20 +80,14 @@ const weekly = first && section.id === "analysis" ? everything.find((a) => a.dat
   <section class="wrap block" data-section={section.id}>
     <header class="page-head">
       <h1 class="page-title">{section.name}</h1>
-      <p class="page-intro">{section.description}</p>
+      {/* A news section's sentence listed its sub-topics, which the row under it names (2026-11-20, the owner: "check the
+          section pages design and organization too"): it is printed only where no row follows (the analysis hub says
+          what its readings are; a news section with no live sub-topic, or past its first page). The sentence stays the
+          page's description for search engines, the about page's line and the editor's guide (select.mjs). */}
+      {(HUB_SECTIONS.has(section.id) || topics.length === 0) && <p class="page-intro">{section.description}</p>}
       {section.id === "markets" && <a class="page-head__link ui" href="/markets/data/">لوحة الأسواق: المؤشرات والعملات والسلع</a>}
-      {topics.length > 0 && (
-        <p class="page-head__topics ui">
-          <span class="page-head__topics-label">المواضيع:</span>
-          {topics.map((t, i) => <>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={topicHref(section.id, t.topic.id)}>{t.topic.name}</a></>)}
-        </p>
-      )}
-      {divisions.length > 0 && (
-        <p class="page-head__topics ui">
-          <span class="page-head__topics-label">المجالات:</span>
-          {divisions.map((v, i) => <>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={v.href}>{v.name}</a></>)}
-        </p>
-      )}
+      <LinkRow label="المواضيع:" links={topics.map((t) => ({ href: topicHref(section.id, t.topic.id), name: t.topic.name }))} />
+      <LinkRow label="المجالات:" links={divisions} />
     </header>
 
     {page.total === 0 ? (

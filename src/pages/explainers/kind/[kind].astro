@@ -6,6 +6,7 @@
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import LinkRow from "@components/LinkRow.astro";
 import { getArticles } from "@lib/articles";
 import { EXPLAINER_KINDS } from "@lib/sections";
 
@@ -31,8 +32,8 @@ const n = items.length;
       <p class="page-head__section ui"><a href="/explainers/">مدخل إلى الاقتصاد</a></p>
       <h1 class="page-title">{name}</h1>
       <p class="page-intro">{intro} {n === 0 && <span>لم تُنشر مواد من هذا النوع بعد.</span>}</p>
-      {/* A dot of its own between the names: as a flex row's own item, a «، » had printed with a space before it. */}
-      <p class="page-head__topics ui"><span class="page-head__topics-label">أيضاً:</span> {others.map((o, i) => (<>{i > 0 && <span class="page-head__sep" aria-hidden="true">·</span>}<a href={`/explainers/kind/${o.id}/`}>{o.name}</a></>))}</p>
+      {/* As a flex row's own item, a «، » between the names had printed with a space before it (LinkRow's dot since). */}
+      <LinkRow label="أيضاً:" links={others.map((o) => ({ href: `/explainers/kind/${o.id}/`, name: o.name }))} />
     </header>
     {n > 0 && (
       <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>

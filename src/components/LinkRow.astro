@@ -1,0 +1,24 @@
+---
+/**
+ * A row of links under a page's title (a section's sub-topics, the analysis desks, a topic's neighbours, the other
+ * explainer kinds): its label, then the names with a light dot between two, never inside a link. One component since
+ * 2026-11-20, when the section page's rows had taken the dot and the desk and topic pages' copies had not, so their
+ * names ran together. Each dot ends the item of the name before it, as a comma stays with its word: as an item of its
+ * own it wrapped to open a line at some widths (/technology/ at 375px, /economy/ at 340px). Written on one line, with no
+ * space between the name and its dot, so nothing can break between them. Nothing is printed without links.
+ */
+interface Props {
+  label: string;
+  links: { href: string; name: string }[];
+}
+const { label, links } = Astro.props;
+---
+
+{links.length > 0 && (
+  <p class="page-head__topics ui">
+    <span class="page-head__topics-label">{label}</span>
+    {links.map((l, i) => (
+      <span class="page-head__item"><a href={l.href}>{l.name}</a>{i < links.length - 1 && <span class="page-head__sep" aria-hidden="true">·</span>}</span>
+    ))}
+  </p>
+)}

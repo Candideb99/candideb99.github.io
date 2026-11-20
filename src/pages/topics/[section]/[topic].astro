@@ -14,6 +14,7 @@
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import LinkRow from "@components/LinkRow.astro";
 import QuoteCard from "@components/QuoteCard.astro";
 import { getArticles, firstPictures, articleHref } from "@lib/articles";
 import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections";
@@ -69,12 +70,7 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
       <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
       <h1 class="page-title">{topic.name}</h1>
       <p class="page-intro">{n > 0 ? <span>{countWord} من تغطية خازندار، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
-      {siblings.length > 0 && (
-        <p class="page-head__topics ui">
-          <span class="page-head__topics-label">مواضيع {sec.name}:</span>
-          {siblings.map((t) => <a href={topicHref(section, t.id)}>{t.name}</a>)}
-        </p>
-      )}
+      <LinkRow label={`مواضيع ${sec.name}:`} links={siblings.map((t) => ({ href: topicHref(section, t.id), name: t.name }))} />
     </header>
 
     {n === 0 ? (

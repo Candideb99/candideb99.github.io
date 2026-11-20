@@ -387,7 +387,9 @@ bdi:has(> .mark-dir) { white-space: nowrap; }
 .page-head__topics { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.55rem; margin-top: 0.8rem; font-size: var(--fs-sm); color: var(--ink-3); }
 .page-head__topics-label { font-family: var(--font-ui); font-weight: 700; color: var(--ink-2); margin-inline-end: 0.3rem; }
 .page-head__topics a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); color: var(--ink-2); text-decoration: none; }
-.page-head__sep { color: var(--ink-3); }
+/* The dot ends its name's item (LinkRow.astro), so it may end a line, never open one; its room before it, the row's gap
+   after it. */
+.page-head__sep { color: var(--ink-3); padding-inline-start: 0.55rem; }
 .page-head__topics a:hover { color: var(--green); text-decoration: underline; }
 
 /* ----- «من مادة»: the story a chart or a figure comes from, under it: the label in the furniture face, the

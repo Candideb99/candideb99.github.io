@@ -1941,6 +1941,27 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const card = (href) => `<article class="card"><p class="meta card__meta"><a href="${href}">تحليل الطاقة</a><time>منذ يوم</time></p></article>`;
     check("the site check finds a card's label leading to its own page, and passes one leading to its desk", [selfLabelLinks(card("/analysis/"), "/analysis/").length, selfLabelLinks(card("/analysis/desk/energy/"), "/analysis/").length], [1, 0]);
   }
+  // A page head's row (2026-11-20): the topic pages' copy ran its names together, a news section's sentence named the
+  // sub-topics its row names, and a dot set as an item of its own wrapped to open a line (/technology/ at 375px). The old
+  // technology head fails twice, the first dots once; LinkRow's items, and the analysis hub's sentence, pass.
+  {
+    const { pageHeadFaults } = await import("./site-furniture.mjs");
+    const names = ["الذكاء الاصطناعي", "الرقائق ومراكز البيانات", "الأمن السيبراني", "التكنولوجيا المالية"];
+    const dot = `<span class="page-head__sep" aria-hidden="true">·</span>`;
+    const link = (n, i) => `<a href="/topics/technology/${i}/">${n}</a>`;
+    const together = names.map(link).join("");
+    const apart = names.map((n, i) => `${i ? dot : ""}${link(n, i)}`).join("");
+    const held = names.map((n, i) => `<span class="page-head__item">${link(n, i)}${i < names.length - 1 ? dot : ""}</span>`).join("");
+    const row = (inner) => `<p class="page-head__topics ui"><span class="page-head__topics-label">المواضيع:</span>${inner}</p>`;
+    const head = (intro, r) => `<header class="page-head" data-astro-cid-x><h1 class="page-title">التكنولوجيا</h1>${intro ? `<p class="page-intro" data-astro-cid-x>${intro}</p>` : ""}${r}</header>`;
+    const said = "الذكاء الاصطناعي والرقائق ومراكز البيانات والأمن السيبراني والتكنولوجيا المالية.";
+    check("the site check finds a page head's row run together, a dot that can open a line, a sentence naming the row again, and passes LinkRow's row and the analysis hub", [
+      pageHeadFaults(head(said, row(together))).length,
+      pageHeadFaults(head("", row(apart))).length,
+      pageHeadFaults(head("", row(held))).length,
+      pageHeadFaults(head("قراءات أعمق فيما وراء الخبر: ماذا يعني، ولمن، وما السيناريوهات المقبلة.", row(held).replace(/الذكاء|الرقائق|الأمن|التكنولوجيا/g, "تحليل"))).length,
+    ], [2, 1, 0, 0]);
+  }
   // …and the chart's note, built in the reader's browser where no site check reads it, takes the values as the build
   // isolated them, never inside a left-to-right run of its own.
   {
