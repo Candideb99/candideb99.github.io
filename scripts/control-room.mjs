@@ -555,6 +555,7 @@ async function health() {
   const local = envFileKeys();
   let editorReal = null;
   let deploy = null;
+  let openIssues = null;
   if (ghOk) {
     // Judged on the last deploy that finished: a deploy still running has no result yet, and the newest run alone had shown
     // "THE SITE IS NOT UPDATING" through each of the day's twenty-odd deploys; a cancelled one was replaced by a newer
@@ -577,6 +578,10 @@ async function health() {
     } catch {
       /* none yet */
     }
+    // The owner's issues still open: «Needs you» lists the titles the last morning round reported, and an issue closed
+    // since (by hand, or while the paused newsroom runs no round) stood there until the next round (2026-11-20).
+    const open = await run("gh", ["issue", "list", "--repo", REPO, "--state", "open", "--limit", "50", "--json", "title"]);
+    if (open.ok) try { openIssues = JSON.parse(open.out).map((i) => i.title); } catch { /* unknown: the list stays whole */ }
     const last = await exec("gh", ["run", "list", "--repo", REPO, "--workflow", "editor.yml", "-L", "1", "--json", "startedAt,updatedAt,conclusion"]);
     try {
       const [r] = JSON.parse(last);
@@ -674,6 +679,7 @@ async function health() {
 
   return {
     ghOk,
+    openIssues,
     activeProvider,
     providers,
     // The picture desk's free libraries (photolibs.mjs): Settings had no box for them, so Unsplash, wired since 2026-09-24,
@@ -1241,7 +1247,7 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
     <span class="m">A publish that could not reach GitHub, or changes saved on this laptop and not sent yet. Until they are sent, readers do not have them; a change to the site's code is checked first.</span>
   </div>
 
-  <div class="alert" id="needs" style="display:none"><b>Needs you</b><ul id="needs-list"></ul><a class="m" href="${REPO_URL}/issues" target="_blank">Open the list on GitHub →</a></div>
+  <div class="alert" id="needs" style="display:none"><b>Needs you <span class="m" id="needs-when" style="font-weight:400"></span></b><ul id="needs-list"></ul><a class="m" href="${REPO_URL}/issues" target="_blank">Open the list on GitHub →</a></div>
 
   <div id="drafts-wrap" style="display:none">
     <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
@@ -1644,7 +1650,9 @@ var LIVE=[],wasRunning=false,timer=null;
 function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){try{render(s);}catch(e){console.error('Render error:',e);}clearTimeout(timer);timer=setTimeout(refresh,s&&s.job&&s.job.running?3000:20000)}).catch(function(err){console.error('State fetch error:',err);timer=setTimeout(refresh,5000)})}
 function scoreTag(s){if(s==null||s==='')return '<span class="score">–</span>';var c=s>=8?'hi':(s<=5?'lo':'');return '<span class="score '+c+'">'+s+'</span>'}
 function srcList(list){return '<details><summary>'+list.length+' source'+(list.length===1?'':'s')+'</summary><ul>'+list.map(function(s){return '<li><a href="'+esc(link(s.url))+'" target="_blank">'+esc(s.nameEn||s.name)+'</a> — '+esc(s.title)+'</li>'}).join('')+'</ul></details>'}
+var LAST_STATE=null;
 function render(s){
+  LAST_STATE=s;
   document.getElementById('b-next').innerHTML=esc(fmtWhen(s.nextCloudRun));
   document.getElementById('b-last').innerHTML=s.lastRun?esc(KIND[s.lastRun.mode]||s.lastRun.mode)+' <small>· '+s.lastRun.published+' written · '+esc(ago(s.lastRun.startedAt))+'</small>':'–';
   document.getElementById('b-live').textContent=s.live.length+' stories';
@@ -1714,8 +1722,11 @@ function renderChecks(s){
     tiles.push(tile(held,'held or left unresolved',held?'see the checks in detail, below':'nothing stuck',held>0))}
   if(h){var p3=h.photos||{},busyPh=(p3.pending||0)+((p3.redo&&p3.redo.length)||0);tiles.push(busyPh?tile(busyPh,'photographs being checked',p3.redo&&p3.redo.length?p3.redo.length+' replaced':''):tile('All in place','photographs',''))}
   setHtml(document.getElementById('tiles'),tiles.join(''));
-  var own=(h&&h.owner)||[],canary=Boolean(s.quality&&s.quality.evidence&&s.quality.evidence.canary&&s.quality.evidence.canary.alarm);
+  // Closed on GitHub since the round (HEALTH_DATA.openIssues, read every five minutes): no longer waiting for him.
+  var openNow=HEALTH_DATA&&HEALTH_DATA.openIssues;
+  var own=((h&&h.owner)||[]).filter(function(t){return !openNow||openNow.indexOf(t)>=0}),canary=Boolean(s.quality&&s.quality.evidence&&s.quality.evidence.canary&&s.quality.evidence.canary.alarm);
   document.getElementById('needs').style.display=own.length||canary?'block':'none';
+  document.getElementById('needs-when').textContent=h&&h.at?'· from the morning check of '+new Date(h.at).toLocaleDateString('en-GB',{day:'numeric',month:'long'}):'';
   setHtml(document.getElementById('needs-list'),own.map(function(x){var t=String(x).replace(/^خازندار:\\s*/,'');return '<li>'+esc(t.charAt(0).toUpperCase()+t.slice(1))+'</li>'}).join('')+(canary?'<li>The fact-check missed planted errors</li>':''));
   parts=parts.filter(function(p){return p.indexOf('Needs you:')<0});
   var E0=s.quality&&s.quality.evidence;
@@ -1843,6 +1854,7 @@ function refreshModels() {
 function loadHealth(){fetch('/health').then(function(r){return r.json()}).then(function(h){
   if (!h) return;
   HEALTH_DATA = h;
+  if (LAST_STATE) try { renderChecks(LAST_STATE); } catch (e) {}
   var cloud = h.cloud || {};
   var providers = h.providers || {};
   PAUSED=Boolean(cloud.paused);
