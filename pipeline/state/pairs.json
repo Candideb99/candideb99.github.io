@@ -3003,6 +3003,52 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-20T10:17:36.063Z",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 1,
+        "drift": 0,
+        "severity": 1,
+        "supported": 26,
+        "notFound": 1,
+        "checked": 36,
+        "words": 602,
+        "keyFacts": 6,
+        "classes": [
+          "other"
+        ],
+        "programmatic": 1
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 29,
+        "notFound": 2,
+        "checked": 40,
+        "words": 608,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 29,
+        "notFound": 2,
+        "checked": 40,
+        "words": 608,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      }
     }
   ]
 }

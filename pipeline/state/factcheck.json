@@ -14077,6 +14077,63 @@
         }
       ],
       "outcome": "clean"
+    },
+    "us-approved-879000-ai-chips-china-1bf1f3": {
+      "at": "2026-11-20T09:57:50.150Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-20T03:08:46.027Z",
+      "sourcesRead": 3,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 35,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "class": "actor",
+          "field": "body",
+          "sentence": "ونُشرت البيانات بعد أسبوع من إقالة جنسن هوانغ من رئاسة إنفيديا التنفيذية، فيما تواجه إدارة الرئيس دونالد ترامب تدقيقاً متزايداً منذ الكشف عن علاقته بجاسوسة صينية مزعومة.",
+          "quote": "The unusual release of chip export licensing data comes as the Trump administration faces heightened scrutiny following revelations about former Nvidia CEO Jensen Huang’s affair with an alleged Chinese spy, which fuelled renewed calls for a tougher stance against Chinese technology threats.",
+          "source": "Al Jazeera English",
+          "correction": "The affair with an alleged Chinese spy was Jensen Huang's, not President Trump's; the sentence should name Huang explicitly."
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "وقفُ إنفيديا شحنات H200 المرخصة إلى الصين يُسقط حصة الـ25% التي اشترطتها قاعدة يناير لواشنطن من أي مبيعات، وقد بلغت مبيعات هذه الرقاقة للصين 2.4 مليار دولار في ربع واحد.",
+          "quote": "A BIS rule published in January gave BIS the ability to approve sales of both those processors on a case by case basis, subject to various conditions, including that the US would receive a 25% cut of any revenue."
+        },
+        {
+          "sentence": "وتُظهر بيانات التراخيص التي نشرتها اللجنة أن الشركات طلبت خلال الفترة نفسها إذناً بشحن 3.4 مليون رقاقة إلى الصين، فوافق مكتب الصناعة والأمن، الجهة المسؤولة في وزارة التجارة عن قيود تصدير التقنيات الحساسة، على عدد أقل بكثير.",
+          "quote": "BIS ultimately approved far fewer shipments to Chinese customers than were requested, allowing sales of nearly 880,000 AI chips."
+        },
+        {
+          "sentence": "ونالت تنسنت موافقة على شراء 150 ألف رقاقة، وبايدو 43 ألفاً، وشركة السيارات الكهربائية بي واي دي 4 آلاف، أي كامل ما طلبته كل منها.",
+          "quote": "Tencent, Baidu, and BYD each saw their full requests approved."
+        },
+        {
+          "sentence": "وقالت اللجنة إن الشركات الأربع مدرجة على هذه القائمة، المعروفة بقائمة 1260H.",
+          "quote": "The approvals for 879,000 chip shipments by the Commerce Department included 75,000 for Alibaba, 150,000 for Tencent, 43,000 for Baidu, and 4,000 for BYD, all on the Pentagon’s list of alleged Chinese military-backed companies, the committee noted."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

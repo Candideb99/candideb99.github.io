@@ -1,0 +1,57 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-20T09:57:49.511Z",
+  "durationSec": 70,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "us-approved-879000-ai-chips-china-1bf1f3",
+      "title": "لجنة بالكونغرس: واشنطن أجازت تصدير نحو 900 ألف رقاقة ذكاء اصطناعي للصين",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 40,
+        "checked": 40,
+        "supported": 35,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 9951,
+    "completionTokens": 9078,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2612,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 9951,
+        "read": 0,
+        "out": 9078,
+        "usd": 0.2612
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:57:50] second look: 1 to read now (1 published pieces not yet read; 286 read clean before publication and left out of the audit sample)",
+    "[09:57:50] us-approved-879000-ai-chips-china-1bf1f3:   source https://www.nytimes.com/2026/11/19/business/economy/nvidia-chips-commerce-china-: http-403",
+    "[09:58:59] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3064 in=9951 read=0 out=9078 attempt=1 ms=67431",
+    "[09:58:59] us-approved-879000-ai-chips-china-1bf1f3: 40 of 40 sentences checked · 35 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}

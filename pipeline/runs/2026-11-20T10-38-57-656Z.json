@@ -1,0 +1,437 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-20T09:58:59.977Z",
+  "durationSec": 2398,
+  "published": 2,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "الأسهم اليابانية تهوي 5% وآسيا تتجه لأسوأ أسبوع منذ 2020",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5343508",
+        "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears",
+        "https://www.bloomberg.com/news/articles/2026-11-20/hong-kong-stocks-hang-seng-hsi-hkex-2026-ai-selloff-bear-market",
+        "https://www.aa.com.tr/en/economy/asian-tech-stocks-plunge-despite-anthropics-strong-us-market-debut/4131708"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يحدد العنوان والمقدمة البلد بوضوح: اليابان أولاً، ثم امتداد البيع إلى تايوان وكوريا الجنوبية. لكن «أنثروبيك» تُذكر بلا هوية، فلا يعرف قارئ البطاقة أنها شركة أمريكية تطوّر نماذج الذكاء الاصطناعي.",
+              "repair": "«رغم إدراج «أنثروبيك» الأمريكية للذكاء الاصطناعي» في العنوان، أو «أنثروبيك» الأمريكية المطوّرة لـ«Claude» في المقدمة (المصدران 1 و2)."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب حاضر: فشل الإدراج في تبديد المخاوف، وتحويل السيولة إلى السهم الجديد، ونتائج «إنفيديا». ردود الفعل حاضرة: أوينو وكازانوفا وأغاروال. لكن الخطوة التالية التي يوفرها المصدر 1 غائبة، وهي تردد المستثمرين في شراء أسهم الرقائق الأرخص خشية هبوط إضافي. ويكرر صندوق «لماذا يهمّ» في جملته الثانية رأي أغاروال بدل أن يستخلص معنى جديداً.",
+              "repair": "إضافة تصريح أوينو الثاني، وإعادة صياغة الصندوق حول انتقال الأموال من الأسهم إلى السندات اليابانية كما يرد في المصدر 1."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان «رغم إدراج «أنثروبيك»» لا يُشرح إلا في الفقرة الرابعة وما بعدها، ويفصل وول ستريت بين أوينو وكازانوفا. العنوان الفرعي «إدراج لم يُنعش أسهم القطاع» يغطي فقرة عن قيود التصدير الأمريكية. وفقرة تجمع «غارتنر» وكوهاركي بلا رابط، وأخرى تجمع القطاعات الدفاعية وعائد السندات.",
+              "repair": "تُجمع فقرات الإدراج وأوينو وكازانوفا بعد فقرتي اتساع البيع وأسهم الرقائق. تُنقل قيود التصدير إلى جانب «إنفيديا». تُفصل فقرة السندات عن فقرة القطاعات الدفاعية، ويُفصل رأي كوهاركي عن توقع «غارتنر»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «تمنع المطوّرين الصينيين» تقدم هدف الإجراء نتيجة متحققة. وفي الرسم البياني تُوضع نسبة «كوسبي» 5.2%، وهي وفق المصدر 4 نسبة تعاملات الصباح، بجانب نسب إغلاق «نيكي» و«تايكس» و«هانغ سنغ» تحت عنوان «يوم الجمعة». أما بقية الأرقام فمطابقة للمصادر: 5.06%، و56436.65 نقطة، و7.7%، و3.88%، و97.17 دولار، و17.1%، و81.3 مليار دولار.",
+              "repair": "«تهدف إلى منع…». ويُوضَّح في الرسم أن نسبة «كوسبي» تخص تعاملات الصباح، أو يُذكر وقت كل قراءة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد والهوية: «الأسهم اليابانية تهوي 5% رغم إدراج «أنثروبيك» الأمريكية للذكاء الاصطناعي». ويبيّن الدك امتداد البيع إلى تايوان وكوريا الجنوبية وسببه، وتعطي المقدمة الرقم الحاسم ومستواه منذ 13 أبريل والخسارة الأسبوعية.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سبب هبوط الأسهم حاضر: فشل الإدراج، وتحويل السيولة بحسب كازانوفا، ونتائج «إنفيديا»، وانقلاب وول ستريت. وردود الفعل حاضرة بأصحابها وصفاتهم، والخطوة التالية حاضرة عبر تردد المشترين بحسب أوينو. لكن حركة السندات المنشورة بلا سببها الأول، وهو انخفاض العوائد الأمريكية، وبلا تفسير كوغوتشي (المصدر 1). والصندوق ينسبها إلى انتقال الأموال وحده.",
+              "repair": "إضافة محرّك العوائد الأمريكية وتفسير كوغوتشي إلى فقرة السندات، وتعديل الصندوق ليذكر السببين ويقدّر الأثر بحجمه، أي ثلاث نقاط أساس."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان «رغم إدراج «أنثروبيك»» يُشرح في قسم مجموع: الطرح والجلسة الأولى وكوهاركي وأوينو وكازانوفا. غير أن فقرتي القطاعات الدفاعية والسندات تفصلانه عن فقرة أسهم الرقائق، والعنوان الفرعي «إدراج لم يُنعش أسهم القطاع» يغطي فقرتي قيود التصدير ووول ستريت.",
+              "repair": "نقل فقرة وول ستريت لتلي جلسة «أنثروبيك»، ووضع كازانوفا و«إنفيديا» وقيود التصدير تحت عنوان فرعي مثل «مخاوف تتجاوز الإدراج»، وتأخير فقرتي القطاعات الدفاعية والسندات إلى ما بعد قسم الإدراج."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 5.06% و56436.65 و7.7% و3.88% و111.50 و97.17 و17.1% و4.7% و81.3 مليار و6.23% و4869.96 و1.9%، ووقت قراءة «كوسبي» محدد في الرسم والصندوق. لكن سطر مصدر الرسم ينسب أرقام البورصات إلى «الجزيرة» و«الشرق الأوسط»، وعبارة «فيخفّض كلفة اقتراض الحكومة اليابانية» تكبّر حركة قدرها ثلاث نقاط أساس.",
+              "repair": "«المصدر: بيانات البورصات، عبر الأناضول»، و«يخفّض قليلاً كلفة اقتراض الحكومة»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "إسناد الرسم البياني: سطر المصدر «الأناضول، الجزيرة، الشرق الأوسط» ينسب أرقام إغلاق مؤشرات البورصات، وهي أرقام سوق عامة، إلى منفذين عربيين. الإصلاح: «المصدر: بيانات البورصات، عبر الأناضول» أو «بيانات السوق»، مع إبقاء أرقام «نيكي» و«توبكس» و«تايكس» و«هانغ سنغ» كما هي.",
+        "ينقص التقرير: سبب تراجع العوائد اليابانية. الفقرة «واتجه المستثمرون إلى أدوات الدين مع اضطراب الأسهم، فانخفض عائد السندات الحكومية اليابانية لأجل عشر سنوات ثلاث نقاط أساس إلى 2.79%» تُسقط المحرّك الذي يقدّمه المصدر 1 أولاً، وهو انخفاض عوائد سندات الخزانة الأمريكية خلال تعاملات الخميس بعدما دفعت موجة البيع في وول ستريت المستثمرين إلى أصول أقل مخاطرة. وتُسقط تفسير ماسايوكي كوغوتشي، المدير التنفيذي لإدارة الصناديق في «ميتسوبيشي يو إف جي لإدارة الأصول»، بأن العوائد اليابانية صارت تتحرك أوثق مع نظيراتها العالمية مع تزايد حضور المستثمرين الأجانب. الإصلاح: «وتراجع عائد السندات الحكومية اليابانية لأجل عشر سنوات ثلاث نقاط أساس إلى 2.79%، مقتفياً انخفاض عوائد سندات الخزانة الأمريكية بعد موجة البيع في وول ستريت، ومع إقبال المستثمرين على أدوات الدين»، ثم جملة كوغوتشي (المصدر 1). وهكذا تصير الفقرة فقرة كاملة لا سطراً واحداً.",
+        "«لماذا يهمّ» يحمّل انتقال الأموال وحده تراجع العائد: «ذهب جزء من الأموال الهاربة من الأسهم إلى الدين الحكومي، فتراجع عائد السندات لأجل عشر سنوات إلى 2.79%». المصدر 1 يعطي سببين، أولهما انخفاض العوائد الأمريكية. وعبارة «فيخفّض كلفة اقتراض الحكومة اليابانية» أكبر من حركة قدرها ثلاث نقاط أساس في يوم واحد. ويعيد الصندوق كذلك «الطرح الأكبر في التاريخ» الذي قاله الدك والمتن. الإصلاح: «وفي طوكيو اتجه المستثمرون إلى الدين الحكومي مع انخفاض العوائد الأمريكية، فتراجع العائد لأجل عشر سنوات ثلاث نقاط أساس إلى 2.79%: القلق من تقييمات الذكاء الاصطناعي يخفّض قليلاً كلفة اقتراض الحكومة في اليوم الذي تخسر فيه شركات الرقائق اليابانية»، مع الاكتفاء بـ«الإدراج» في الجملة الأولى.",
+        "البناء: العنوان الفرعي «إدراج لم يُنعش أسهم القطاع» يغطي أيضاً فقرة اشتراطات التصدير التي أعلنها مكتب الصناعة والأمن الأمريكي، وهي عامل آخر في معنويات السوق لا صلة له بالإدراج (المصدر 2)، ويغطي فقرة انقلاب وول ستريت. الإصلاح: تُنقل فقرة وول ستريت لتلي مباشرة فقرة جلسة «أنثروبيك» الأولى، لأنهما الجلسة نفسها. ويؤيد ذلك المصدر 4: أغلق السهم مرتفعاً 17.1% في جلسة تراجعت فيها أكثر من 90% من أسهم «إس آند بي 500». ثم تُجعل فقرتا كازانوفا و«إنفيديا» وقيود التصدير تحت عنوان فرعي يسمّيها، مثل «مخاوف تتجاوز الإدراج». بذلك تصبح العناوين الفرعية ثلاثة، وهو الحد الأقصى لهذا الطول.",
+        "البناء: لم يُنفَّذ كاملاً طلب جمع شرح الإدراج بعد فقرتي اتساع البيع وأسهم الرقائق. تفصل بينهما الآن فقرتا القطاعات الدفاعية والسندات، فلا يصل القارئ إلى «رغم إدراج «أنثروبيك»» إلا في الفقرة الخامسة. الإصلاح: تُؤخَّر فقرتا القطاعات الدفاعية والسندات إلى ما بعد قسم الإدراج، أو تُضمّان إلى قسم السوق الآسيوية الأخير، ليتصل شرح عنصر العنوان بأسهم الرقائق التي خسرت.",
+        "صندوق «الأرقام»: «هبوط تايكس التايواني عند الإغلاق 6.23%» و«تراجع كوسبي الكوري في تعاملات الصباح 5.2%» رقمان لسوقين أخريين غير السوق اليابانية التي يتناولها العنوان. يُستبدل بهما رقمان من الحدث نفسه، مثل «تراجع توبكس 3.88%» و«أسهم نيكي المتراجعة: 214 من 225». ويبقى الرقمان في المتن والرسم.",
+        "سبب هبوط الأسهم حاضر: فشل الإدراج، وتحويل السيولة بحسب كازانوفا، ونتائج «إنفيديا»، وانقلاب وول ستريت. وردود الفعل حاضرة بأصحابها وصفاتهم، والخطوة التالية حاضرة عبر تردد المشترين بحسب أوينو. لكن حركة السندات المنشورة بلا سببها الأول، وهو انخفاض العوائد الأمريكية، وبلا تفسير كوغوتشي (المصدر 1). والصندوق ينسبها إلى انتقال الأموال وحده. — إضافة محرّك العوائد الأمريكية وتفسير كوغوتشي إلى فقرة السندات، وتعديل الصندوق ليذكر السببين ويقدّر الأثر بحجمه، أي ثلاث نقاط أساس.",
+        "العنصر الجديد في العنوان «رغم إدراج «أنثروبيك»» يُشرح في قسم مجموع: الطرح والجلسة الأولى وكوهاركي وأوينو وكازانوفا. غير أن فقرتي القطاعات الدفاعية والسندات تفصلانه عن فقرة أسهم الرقائق، والعنوان الفرعي «إدراج لم يُنعش أسهم القطاع» يغطي فقرتي قيود التصدير ووول ستريت. — نقل فقرة وول ستريت لتلي جلسة «أنثروبيك»، ووضع كازانوفا و«إنفيديا» وقيود التصدير تحت عنوان فرعي مثل «مخاوف تتجاوز الإدراج»، وتأخير فقرتي القطاعات الدفاعية والسندات إلى ما بعد قسم الإدراج.",
+        "الأرقام مطابقة: 5.06% و56436.65 و7.7% و3.88% و111.50 و97.17 و17.1% و4.7% و81.3 مليار و6.23% و4869.96 و1.9%، ووقت قراءة «كوسبي» محدد في الرسم والصندوق. لكن سطر مصدر الرسم ينسب أرقام البورصات إلى «الجزيرة» و«الشرق الأوسط»، وعبارة «فيخفّض كلفة اقتراض الحكومة اليابانية» تكبّر حركة قدرها ثلاث نقاط أساس. — «المصدر: بيانات البورصات، عبر الأناضول»، و«يخفّض قليلاً كلفة اقتراض الحكومة»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "رأى كازانوفا أن الإدراج ربما حوّل السيولة بعيداً عن أسهم الذكاء الاصطناعي القائمة مع انتقال المستثمرين إلى السهم الجديد",
+          "source": 2
+        },
+        {
+          "fact": "تضم المنطقة لاعبين أساسيين في الذكاء الاصطناعي مثل إس كيه هاينكس وسامسونغ إلكترونيكس وتي إس إم سي وسوفت بنك",
+          "source": 2
+        },
+        {
+          "fact": "تراجع تايكس 6.23% عند الإغلاق، وكوسبي 5.2% في تعاملات الصباح",
+          "source": 4
+        },
+        {
+          "fact": "انخفض عائد السندات الحكومية اليابانية لأجل عشر سنوات ثلاث نقاط أساس إلى 2.79% مع تراجع عوائد سندات الخزانة الأمريكية الخميس وإقبال المستثمرين على أدوات الدين وسط اضطراب الأسهم",
+          "source": 1
+        }
+      ],
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "مؤشر «نيكي» الياباني يهوي 5% رغم إدراج «أنثروبيك» الأمريكية للذكاء الاصطناعي",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "التضخم في المغرب يتسارع إلى 1.9% في أكتوبر، الأعلى منذ 20 شهراً",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/157152/%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8-%D9%8A%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9-%D9%81%D9%8A-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-%D8%A8%D8%A3%D8%B9%D9%84%D9%89-%D9%88%D8%AA%D9%8A%D8%B1%D8%A9-%D9%85%D9%86%D8%B0-20-%D8%B4%D9%87%D8%B1%D8%A7/",
+        "https://www.hespress.com/%d8%ba%d9%84%d8%a7%d8%a1-%d8%a7%d9%84%d8%ae%d8%b6%d8%b1-%d9%88%d8%a7%d9%84%d9%84%d8%ad%d9%88%d9%85-%d9%8a%d8%b1%d9%81%d8%b9-%d8%a7%d9%84%d8%aa%d8%b6%d8%ae%d9%85-%d8%a8%d8%a7%d9%84%d9%85%d8%ba%d8%b1-1842698.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البلد والمعدل والمقارنة بوضوح. لكن العنوان الفرعي «الخضر واللحوم ترفع أسعار الغذاء 1.6% خلال شهر واحد» يربط التسارع بالغذاء، بينما لم يرتفع الغذاء سنوياً إلا 0.3% وجاء التسارع السنوي من المواد غير الغذائية 3.1% والنقل 11.6% (المصدران 1 و2).",
+              "repair": "عنوان فرعي يحمل محرك التسارع السنوي: «النقل يرتفع 11.6% مع بلوغ سعر الديزل مستوى قياسياً»، وتبقى قفزة الخضر الشهرية في المتن."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب الذي يورده المصدر 1 (الديزل عند نحو 17 درهماً للتر، أعلى مستوى على الإطلاق، ما زاد كلفة النقل) غائب. ومستهدف 2% للفترة 2027-2031 مع نمو 5% غائب أيضاً. المقارنة بسبتمبر والصيف وبموجة 2022-2023 والتوقع الحكومي 1.5% حاضرة. لا ردود فعل في المصادر. في «لماذا يهمّ» المقدمة سليمة (العام 1.9% مقابل الأساسي 1%، الخضر 6.8%، المحروقات المحررة 5%)، لكن الاستنتاج بأن تعليق التصدير أقرب الأدوات إلى مصدر الغلاء يتجاوز المقدمات.",
+              "repair": "إضافة سعر الديزل القياسي وأثره في النقل، ومستهدف 2% للفترة 2027-2031 (المصدر 1). وصياغة استنتاج الصندوق حول القيد الذي يفرضه تحرير المحروقات على أدوات الحكومة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد (تسارع إلى 1.9%) يُفسَّر في أماكن متفرقة: المواد غير الغذائية في المقدمة، والنقل والمحروقات في القسم الأخير. وبينهما فقرات عن الغذاء الشهري والتضخم الأساسي. والخاتمة «وتخضع أسعار المحروقات… للتحرير منذ عام 2015» معلقة بلا ربط بأثرها.",
+              "repair": "إعادة الترتيب: المقدمة، ثم النقل والمحروقات والديزل وتحرير الأسعار في فقرة واحدة، ثم المسار منذ الصيف والتضخم الأساسي، ثم الخضر واللحوم وتعليق التصدير، ثم التوقع الحكومي والمستهدف حتى 2031."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "المعدلات السنوية والشهرية مطابقة لأساسها في المصدرين: 1.9%، و3.1%، و0.3%، و0.8%، و1.6%، و6.8%، و5%، و11.6%، والأساسي 1% و0.2%. ونسب التضخم في الرسم (-0.6، -0.3، 0.5، 1.9) صحيحة. ونسبة ارتفاع الخضر في نوفمبر مؤرخة صحيحاً بـ«الشهر الجاري» في المصدر 1، و«مؤقتاً» محفوظة.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد (المغرب) والمعدل (1.9%) والمقارنة (الأعلى منذ فبراير 2025). والعنوان الفرعي يحمل محرك التسارع السنوي: النقل 11.6% والديزل القياسي. والمقدمة تفصل بين المواد غير الغذائية 3.1% والغذائية 0.3%.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يحمل السبب الذي يورده المصدر 1 (الديزل عند نحو 17 درهماً، ما زاد ضغوط النقل)، والتوقع الحكومي 1.5%، ومستهدف 2% مع نمو 5%، وتعليق تراخيص التصدير. ولا ردود فعل في المصادر. غير أن «لماذا يهمّ» يقيم استنتاجه على رابط غير صحيح: «بما أن أسعار المحروقات محررة… فإن تعليق التصدير يطال الخضر وحدها»، ويستنتج «تسارع أكتوبر» من فارق سنوي من دون نقطة مقارنة في سبتمبر.",
+              "repair": "يُبنى الصندوق على الفارق الشهري (0.8% للعام مقابل 0.2% للأساسي)، ثم يُذكر القيد: التعليق يطال الخضر، والمحروقات التي ضغطت على النقل محررة منذ 2015، من دون «بما أن… فإن»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقول العنوان إنه جديد، أي التسارع، يُفسَّر الآن مباشرة بعد المقدمة: النقل والمحروقات والديزل وتحرير الأسعار، ثم المسار منذ الصيف، ثم الخضر وتعليق التصدير. غير أن الفقرة الثالثة تقرأ قيم الرسم واحدة واحدة، والعنوان الفرعي الأول يعلو فقرتي الأساسي والمستهدف ولا يسمّيهما.",
+              "repair": "صياغة مسار الصيف بما يُظهره الرسم بدل سرد القيم، وتسمية القسم الأول بما يجمعه، أو نقل فقرة المستهدف إلى الختام."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام كلها مطابقة: 1.9%، 3.1%، 0.3%، 11.6%، -0.1%، 5%، 17 درهماً، 0.8%، 1.6%، 6.8%، 2.7%، والأساسي 1% و0.2%، وقيم الرسم صحيحة. لكن «أكبر مصدر للزيادة» يحوّل أعلى نسبة ارتفاع إلى أكبر مساهمة. وفي «وصعدت أسعار المحروقات وحدها 5%» يلتبس الأساس الشهري بالسنوي.",
+              "repair": "«وسجلت أسعار النقل أكبر ارتفاع…» و«وارتفعت أسعار المحروقات 5% في أكتوبر مقارنة بسبتمبر»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "خطأ في الوصف: «وكان النقل أكبر مصدر للزيادة بين المواد غير الغذائية». المصدران 1 و2 يقولان إن أسعار النقل «سجلت أكبر ارتفاع» بنسبة 11.6%، أي أعلى نسبة زيادة، ولا يقولان إنها أكبر مساهم في الارتفاع، فالمساهمة تتوقف على وزن النقل في السلة وهو غير وارد. الإصلاح: «وسجلت أسعار النقل أكبر ارتفاع بين المواد غير الغذائية، إذ صعدت 11.6% على أساس سنوي…».",
+        "رابط سببي غير صحيح في «لماذا يهمّ»: «وبما أن أسعار المحروقات محررة منذ 2015، فإن تعليق التصدير يطال الخضر وحدها». تحرير المحروقات لا يفسر اقتصار التعليق على الخضر. وتعبير «تبقى تابعة لسعر الديزل» يتجاوز ما يقوله المصدر 1، فهو يذكر أن الديزل «زاد الضغوط على تكاليف النقل» فقط. والجملة الأولى تنسب «تسارع أكتوبر» إلى الفارق السنوي بين 1.9% و1%، مع أن الأساسي في سبتمبر غير معروف، بينما الأرقام الشهرية تسند القراءة (0.8% للعام مقابل 0.2% للأساسي، المصدر 2). الإصلاح المقترح: «ارتفع المؤشر العام 0.8% في شهر واحد مقابل 0.2% فقط للأساسي الذي يستبعد المواد المحددة الأثمان وشديدة التقلب، فالجزء الأكبر من قفزة أكتوبر جاء من خارج الأسعار الأساسية. والأداة التي استخدمتها الحكومة، أي تعليق تراخيص التصدير، تطال الخضر، أما المحروقات التي ضغطت على كلفة النقل فأسعارها محررة منذ 2015 ولا تتدخل فيها الحكومة مباشرة».",
+        "قراءة صفوف الرسم البياني في المتن: «وبعد معدلين سالبين في يوليو وأغسطس بلغا سالب 0.6% وسالب 0.3% على التوالي». الرسم يطبع هذه القيم، والنص يقول ما تُظهره. الإصلاح: «وجاءت قراءة أكتوبر بعد 0.5% في سبتمبر وشهرين من التضخم السالب في الصيف»، مع حذف الأرقام المكررة وصيغة «سالب 0.6%» الثقيلة.",
+        "صياغة ملتبسة: «وصعدت أسعار المحروقات وحدها 5% بين سبتمبر وأكتوبر». كلمة «وحدها» توحي بأن المحروقات انفردت بالارتفاع أو أنها جزء محسوب من الـ11.6%، والفقرة تنتقل من أساس سنوي إلى أساس شهري من دون تمييز واضح. الإصلاح: «وارتفعت أسعار المحروقات 5% في أكتوبر مقارنة بسبتمبر (المصدر 2)»، وبعدها سعر الديزل القياسي.",
+        "عنوان فرعي لا يسمّي كل ما تحته: «من التضخم السالب في الصيف إلى 1.9%» يعلو أيضاً فقرة التضخم الأساسي وفقرة توقع الحكومة 1.5% ومستهدف 2% للفترة 2027-2031 مع نمو 5%. الإصلاح: تسمية القسم بما يجمعه، مثلاً «التضخم الأساسي والمستهدف الحكومي»، أو نقل فقرة المستهدف إلى ختام التقرير بعد تعليق التصدير.",
+        "التقرير يحمل السبب الذي يورده المصدر 1 (الديزل عند نحو 17 درهماً، ما زاد ضغوط النقل)، والتوقع الحكومي 1.5%، ومستهدف 2% مع نمو 5%، وتعليق تراخيص التصدير. ولا ردود فعل في المصادر. غير أن «لماذا يهمّ» يقيم استنتاجه على رابط غير صحيح: «بما أن أسعار المحروقات محررة… فإن تعليق التصدير يطال الخضر وحدها»، ويستنتج «تسارع أكتوبر» من فارق سنوي من دون نقطة مقارنة في سبتمبر. — يُبنى الصندوق على الفارق الشهري (0.8% للعام مقابل 0.2% للأساسي)، ثم يُذكر القيد: التعليق يطال الخضر، والمحروقات التي ضغطت على النقل محررة منذ 2015، من دون «بما أن… فإن».",
+        "ما يقول العنوان إنه جديد، أي التسارع، يُفسَّر الآن مباشرة بعد المقدمة: النقل والمحروقات والديزل وتحرير الأسعار، ثم المسار منذ الصيف، ثم الخضر وتعليق التصدير. غير أن الفقرة الثالثة تقرأ قيم الرسم واحدة واحدة، والعنوان الفرعي الأول يعلو فقرتي الأساسي والمستهدف ولا يسمّيهما. — صياغة مسار الصيف بما يُظهره الرسم بدل سرد القيم، وتسمية القسم الأول بما يجمعه، أو نقل فقرة المستهدف إلى الختام.",
+        "الأرقام كلها مطابقة: 1.9%، 3.1%، 0.3%، 11.6%، -0.1%، 5%، 17 درهماً، 0.8%، 1.6%، 6.8%، 2.7%، والأساسي 1% و0.2%، وقيم الرسم صحيحة. لكن «أكبر مصدر للزيادة» يحوّل أعلى نسبة ارتفاع إلى أكبر مساهمة. وفي «وصعدت أسعار المحروقات وحدها 5%» يلتبس الأساس الشهري بالسنوي. — «وسجلت أسعار النقل أكبر ارتفاع…» و«وارتفعت أسعار المحروقات 5% في أكتوبر مقارنة بسبتمبر»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "ارتفع الرقم الاستدلالي للأثمان 0.8% في أكتوبر مقارنة بسبتمبر، فيما ارتفع مؤشر التضخم الأساسي، الذي يستبعد المواد ذات الأثمان المحددة والمواد شديدة التقلب، 0.2% مقارنة بسبتمبر.",
+          "source": 2
+        },
+        {
+          "fact": "ارتفعت أسعار الخضر 6.8% والمحروقات 5% بين سبتمبر وأكتوبر، وسجّل النقل أكبر ارتفاع سنوي بين المواد غير الغذائية بنسبة 11.6%.",
+          "source": 2
+        },
+        {
+          "fact": "بلغ سعر الديزل في محطات التوزيع نحو 17 درهماً للتر، وهو أعلى مستوى له على الإطلاق، ما زاد الضغوط على تكاليف النقل.",
+          "source": 1
+        },
+        {
+          "fact": "حُرّرت أسعار المحروقات في المغرب منذ 2015، وعلّقت الحكومة مؤقتاً تراخيص تصدير الخضروات لتوجيه كميات أكبر إلى السوق المحلية والحد من ارتفاع الأسعار.",
+          "source": 1
+        }
+      ],
+      "slug": "morocco-inflation-accelerates-october-2026-e5a043",
+      "title": "التضخم في المغرب يتسارع إلى 1.9% في أكتوبر، الأعلى منذ فبراير 2025",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "أسعار المنتجين في ألمانيا ترتفع 8.1% في أكتوبر، الأعلى منذ 2023",
+      "section": "economy",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    },
+    {
+      "headline": "لوفتهانزا تلغي ألف وظيفة وتقلص رحلاتها القصيرة لوقف الخسائر",
+      "section": "companies",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 67,
+    "failures": 0,
+    "promptTokens": 1088587,
+    "completionTokens": 245728,
+    "cacheReadTokens": 228697,
+    "costUsd": 11.8388,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 67
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 125039,
+        "read": 0,
+        "out": 2151,
+        "usd": 1.0433
+      },
+      "desk": {
+        "calls": 11,
+        "in": 98022,
+        "read": 95389,
+        "out": 57075,
+        "usd": 1.9446
+      },
+      "writer": {
+        "calls": 12,
+        "in": 161997,
+        "read": 107946,
+        "out": 78487,
+        "usd": 2.8872
+      },
+      "critic": {
+        "calls": 18,
+        "in": 198500,
+        "read": 25362,
+        "out": 46679,
+        "usd": 2.5264
+      },
+      "checker": {
+        "calls": 4,
+        "in": 42904,
+        "read": 0,
+        "out": 37263,
+        "usd": 1.0885
+      },
+      "vision": {
+        "calls": 21,
+        "in": 233428,
+        "read": 0,
+        "out": 24073,
+        "usd": 2.3488
+      }
+    }
+  },
+  "log": [
+    "[10:34:50] image: dropped \"A man rides a moped loaded with herbs in a Marrakesh market, showcasin\" — names too little of vegetables",
+    "[10:34:50] image: dropped \"Vibrant display of spices and herbs in Marrakech market.\" — names too little of vegetables",
+    "[10:34:51] commons \"Derb Sultan market Casablanca\": 0 usable of 0",
+    "[10:34:51] commons \"Derb Sultan\": 2 usable of 2",
+    "[10:34:51] image: dropped \"Légumes exposés.jpg\" — shows casablanca, not the story's people",
+    "[10:34:51] image: dropped \"Elegant vintage buildings in an urban setting in Casablanca, Morocco c\" — names too little of market",
+    "[10:34:51] image: dropped \"Stunning aerial view of Casablanca's cityscape, highlighting a tall cl\" — names too little of market",
+    "[10:34:51] image: dropped \"Explore a vibrant alleyway in El Jadida, Morocco, featuring colorful a\" — names too little of market",
+    "[10:34:51] commons \"tomatoes potatoes market stall Morocco\": 0 usable of 0",
+    "[10:34:52] commons \"stall Morocco\": 13 usable of 20",
+    "[10:34:52] image: dropped \"A woman shops for fresh produce in a vibrant Cairo market. Traditional\" — names too little of tomatoes, potatoes, market, stall",
+    "[10:34:52] image: dropped \"Colorful display of fresh vegetables at a market in Ibagué, Colombia, \" — names too little of tomatoes, potatoes, market, stall",
+    "[10:34:52] image: dropped \"Colorful crates of fruits on display at a street market in İzmir, Türk\" — names too little of tomatoes, potatoes, market, stall",
+    "[10:34:52] image: dropped \"Colorful market scene in Jos, Nigeria showcasing women selling fresh p\" — names too little of tomatoes, potatoes, market, stall",
+    "[10:34:53] commons \"shoppers vegetable market Morocco\": 2 usable of 2",
+    "[10:34:53] image: dropped \"Life in Morocco and glimpses beyond (1905) (14577399977).jpg\" — names too little of shoppers, vegetable, market",
+    "[10:34:53] image: dropped \"Fruits in Medina Rabat 14.jpg\" — names too little of shoppers, vegetable, market",
+    "[10:34:53] image: dropped \"Souk El Had - Chabet El Ameur سوق الحد - شعبة العامر 1.jpg\" — taken in Algeria, which the story does not name",
+    "[10:34:53] image: dropped \"Souk El Had سوق الحد.jpg\" — taken in Algeria, which the story does not name",
+    "[10:34:53] image: dropped \"Souk El Had - Chabet El Ameur سوق الحد - شعبة العامر 2.jpg\" — taken in Algeria, which the story does not name",
+    "[10:34:53] image: dropped \"A woman shops for fresh produce in a vibrant Cairo market. Traditional\" — taken in Egypt, which the story does not name",
+    "[10:34:53] image: 4 likeness(es) set aside for the country's own photographs",
+    "[10:35:10] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1177 in=11446 read=0 out=1408 attempt=1 ms=14942",
+    "[10:35:10] image: \"Vibrant display of fresh fruits and pastries at a market in \" names the story's topic without saying its point (Closest to the source's subject: produce crated at a street market in Casablanca, in the story's own country, and an everyday market suits an inflation story. F); checked now and kept in reserve while the desk looks further",
+    "[10:35:20] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=786 in=8690 read=0 out=910 attempt=1 ms=9780",
+    "[10:35:20] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Vibrant display of fresh fruits and pastries at a market in \": This is a passer-by's casual phone shot of a shopfront: empty red crates fill the foreground, repeated brand-labelled bo",
+    "[10:35:34] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1200 in=8560 read=0 out=1304 attempt=1 ms=14177",
+    "[10:35:34] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Vibrant display of fresh fruits and pastries at a market in \": A Casablanca fruit-and-pastry shop front with no shoppers pictures fruit, which the story never names, and food, the sid",
+    "[10:35:34] image: \"Vibrant display of fresh fruits and pastries at a market in \" is not held back either (WRONG_SUBJECT)",
+    "[10:35:43] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=709 in=11461 read=0 out=901 attempt=1 ms=9224",
+    "[10:35:43] image: vision rejected all candidates (None shows the sources' subject, an everyday Moroccan vegetable market with shoppers. #2 is the tourist fruit-juice stands of Jemaa el-Fna with tourists and a legible 'Chez Simo' sign: a tourist bazaar, not household vegetable prices. The pastry, lamp and slipper stalls (#3, #4, #1) are folkloric tourist goods. #5 is football supporters. #6 is a 2008 night food stall in Jemaa el-Fna.)",
+    "[10:35:43] image: tier 3, the writer's own subjects: fuel station Morocco | vegetable market Morocco | Moroccan souk produce",
+    "[10:35:44] commons \"fuel station Morocco 2026\": 1 usable of 1",
+    "[10:35:44] commons \"fuel station Morocco\": 3 usable of 5",
+    "[10:35:45] commons \"vegetable market Morocco 2026\": 0 usable of 1",
+    "[10:35:45] commons \"vegetable market Morocco\": 11 usable of 12",
+    "[10:35:45] image: set aside \"\"A Moroccan traditional market called \"Souk.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[10:35:46] commons \"Moroccan souk produce 2026\": 0 usable of 0",
+    "[10:35:46] commons \"Moroccan souk produce\": 0 usable of 6",
+    "[10:35:47] commons \"produce Moroccan\": 3 usable of 12",
+    "[10:35:47] image: dropped \"Moroccan soldiers on a tank during the Yom Kippur War on the Golan Hei\" — dated 1973, an archival picture",
+    "[10:36:12] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2052 in=11764 read=0 out=2385 attempt=1 ms=24831",
+    "[10:36:18] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=398 in=8938 read=0 out=512 attempt=1 ms=5848",
+    "[10:36:18] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Station Total Energies à casablanca lors du blocage du détro\": TotalEnergies' logo and name, a company the story never mentions, are the most legible things in the frame, there are no",
+    "[10:36:18] image: tier 4, the story's point and its subject: shoppers vegetable market Morocco | filling station Morocco diesel | buying vegetables Casablanca | vegetable market Morocco | petrol station Morocco | Moroccan market (home: Morocco, Moroccan, Casablanca, Rabat, Tangier, Fes)",
+    "[10:36:18] pexels \"Moroccan market\": 8 usable",
+    "[10:36:19] pexels \"buying vegetables Casablanca\": 8 usable",
+    "[10:36:19] commons \"shoppers vegetable market Morocco\": 2 usable of 2",
+    "[10:36:19] image: dropped \"Life in Morocco and glimpses beyond (1905) (14577399977).jpg\" — names too little of shoppers, vegetable, market",
+    "[10:36:19] image: dropped \"Fruits in Medina Rabat 14.jpg\" — names too little of shoppers, vegetable, market",
+    "[10:36:19] pexels \"vegetable market Morocco\": 8 usable",
+    "[10:36:19] pexels \"filling station Morocco diesel\": 8 usable",
+    "[10:36:19] pexels \"shoppers vegetable market Morocco\": 8 usable",
+    "[10:36:19] pexels \"petrol station Morocco\": 8 usable",
+    "[10:36:19] commons \"filling station Morocco diesel\": 1 usable of 1",
+    "[10:36:19] image: dropped \"Close-up of a vintage gasoline pump with 'Gasoil Optimum' label in blu\" — names too little of filling, station, diesel",
+    "[10:36:19] image: set aside \"Close-up of a green nozzle refueling a white car at a gas station.\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[10:36:19] commons \"buying vegetables Casablanca\": 0 usable of 0",
+    "[10:36:20] commons \"vegetables Casablanca\": 1 usable of 5",
+    "[10:36:20] image: dropped \"A woman choosing fresh carrots and bell peppers at an outdoor market d\" — names too little of buying, vegetables",
+    "[10:36:20] image: dropped \"Two women interacting over fresh produce in an outdoor market setting.\" — names too little of buying, vegetables",
+    "[10:36:20] image: dropped \"A shopper holds a red basket near vibrant lettuce at a grocery store.\" — names too little of buying, vegetables",
+    "[10:36:20] image: dropped \"A family enjoys shopping for fresh produce together in a supermarket, \" — names too little of buying, vegetables",
+    "[10:36:21] commons \"vegetable market Morocco\": 21 usable of 24",
+    "[10:36:21] image: dropped \"Guelmim market 1989 05.jpg\" — dated 1989, an archival picture",
+    "[10:36:21] image: dropped \"A cart filled with bright oranges on a sunny street in Marrakesh, Moro\" — names too little of vegetable, market",
+    "[10:36:21] image: dropped \"Colorful fruit stand in Marrakech offering a variety of fresh produce \" — names too little of vegetable, market",
+    "[10:36:21] commons \"petrol station Morocco\": 18 usable of 21",
+    "[10:36:21] image: dropped \"A nostalgic view of an Esso gas station featuring a boutique and tabac\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:36:22] commons \"Moroccan market\": 18 usable of 24",
+    "[10:36:22] image: dropped \"Traditional Moroccan shoes called \"babouches\".JPG\" — names too little of market",
+    "[10:36:22] image: dropped \"Weeks Edwin Moroccan Market Rabat.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[10:36:22] image: dropped \"Colorful Moroccan souk stalls in Marrakech bustling with local vendors\" — names too little of market",
+    "[10:36:22] image: dropped \"Stalls of assorted traditional dishes and plates with bright colors on\" — names too little of market",
+    "[10:36:45] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1634 in=11814 read=0 out=1918 attempt=1 ms=20091",
+    "[10:36:45] image: \"Colorful array of spices and produce in a bustling market st\" names the story's topic without saying its point (This is the only candidate that is both well made and fits a Moroccan consumer-price story: an everyday food stall in Fes with its vendor and price tags, tied t); checked now and kept in reserve while the desk looks further",
+    "[10:36:53] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=611 in=8645 read=0 out=714 attempt=1 ms=7941",
+    "[10:36:53] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Colorful array of spices and produce in a bustling market st\": The frame is a picturesque olive and preserved-lemon stall in the Fes medina, a single traditional product that pictures",
+    "[10:37:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1580 in=11808 read=0 out=1829 attempt=1 ms=21114",
+    "[10:37:14] image: \"Petrol Station in Sahara - Morocco.jpg\" names the story's topic without saying its point (The story's main driver is record diesel prices pushing transport costs up 11.6%. Photo 6 shows a working Moroccan filling station with a diesel truck at the pu); checked now and kept in reserve while the desk looks further",
+    "[10:37:19] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=252 in=8742 read=0 out=350 attempt=1 ms=4738",
+    "[10:37:19] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Petrol Station in Sahara - Morocco.jpg\": A Moroccan filling station fits the diesel pump-price angle, but this is a casual phone snapshot with flat washed-out li",
+    "[10:37:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1024 in=8612 read=0 out=1129 attempt=1 ms=13494",
+    "[10:37:33] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"Petrol Station in Sahara - Morocco.jpg\": The Moroccan filling station suits the story's diesel driver, but in this snapshot the truck and small pumps sit to one ",
+    "[10:37:33] image: \"Petrol Station in Sahara - Morocco.jpg\" is not held back either (UNCLEAR)",
+    "[10:37:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=485 in=3058 read=0 out=528 attempt=1 ms=6029",
+    "[10:37:39] image: last resort: fuel station diesel pump Morocco | fuel station diesel pump | fuel station diesel pump industrial",
+    "[10:37:39] commons \"fuel station diesel pump Morocco\": 0 usable of 0",
+    "[10:37:40] commons \"pump Morocco\": 15 usable of 24",
+    "[10:37:40] image: dropped \"UR2 vue générale.JPG\" — dated 2003, an archival picture",
+    "[10:37:40] image: dropped \"U.S. Marine Corps Cpl. Kyle Slusher, a water purification specialist w\" — soldiers or a patrol, and the story is not about the military",
+    "[10:37:40] image: dropped \"U.S. Marine Corps Cpls 120410-M-RU378-407.jpg\" — soldiers or a patrol, and the story is not about the military",
+    "[10:37:40] image: dropped \"Orthocone2661 (3634522744).jpg\" — names too little of pump",
+    "[10:37:41] commons \"fuel station diesel pump\": 18 usable of 24",
+    "[10:37:42] commons \"fuel station diesel pump industrial\": 0 usable of 0",
+    "[10:37:43] commons \"fuel station\": 21 usable of 24",
+    "[10:37:43] image: dropped \"Reliance Petroleum Fuel Filling Station Kottarakara.jpg\" — taken in Iran, which the story does not name",
+    "[10:37:43] image: dropped \"SPBU Pertamina 2022.jpg\" — taken in Indonesia, which the story does not name",
+    "[10:37:43] image: dropped \"Fuel station, Tamale (P1100296).jpg\" — taken in Ghana, which the story does not name",
+    "[10:37:43] image: dropped \"Diesel pump 20160819.jpg\" — taken in Finland, which the story does not name",
+    "[10:37:43] image: dropped \"Dieselpump Preem Avesta.jpg\" — taken in Sweden, which the story does not name",
+    "[10:37:43] image: dropped \"Nam Kwong Filling Station.JPG\" — taken in China, which the story does not name",
+    "[10:37:59] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1248 in=12458 read=0 out=1493 attempt=1 ms=15579",
+    "[10:38:09] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=723 in=8651 read=0 out=852 attempt=1 ms=9084",
+    "[10:38:09] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"MA.SS. 2018-08-15 filling-station 1415 3x2-R 5K.jpg\": The pump-price subject and Moroccan location fit, but the AFRIQUIA brand is painted three times across the canopy as the",
+    "[10:38:16] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=390 in=12129 read=0 out=586 attempt=1 ms=7440",
+    "[10:38:16] image: vision rejected all candidates (fallback pass) (None fits. Photo 1 is a fuel pump, but its 87/85/91 octane labels and the Murphy Express branding mark it as North American, wrong for a Morocco-only story, and its heavy vignette gives it an amateur look. Photos 2–5 are from Morocco but show a 2003 hydro-plant building site with a date stamp, a reservoir landscape and rural desert water pumps. None of these shows fuel prices, transport costs or vegetable prices, and the desert pumps read as folkloric.)",
+    "[10:38:16] image: last pass, a neutral illustration: shoppers vegetable market | filling station diesel | buying vegetables | vegetable market | petrol station",
+    "[10:38:17] pexels \"petrol station\": 8 usable",
+    "[10:38:17] pexels \"buying vegetables\": 8 usable",
+    "[10:38:17] pexels \"vegetable market\": 8 usable",
+    "[10:38:17] pexels \"filling station diesel\": 8 usable",
+    "[10:38:17] pexels \"shoppers vegetable market\": 8 usable",
+    "[10:38:17] commons \"shoppers vegetable market\": 18 usable of 24",
+    "[10:38:17] image: dropped \"Melbourne (AU), Queen Victoria Market -- 2019 -- 1543.jpg\" — shows victoria, victoria, not the story's people",
+    "[10:38:17] image: dropped \"Melbourne (AU), Queen Victoria Market -- 2019 -- 1545.jpg\" — names too little of shoppers, vegetable, market",
+    "[10:38:17] image: dropped \"Melbourne (AU), Queen Victoria Market -- 2019 -- 1542.jpg\" — names too little of shoppers, vegetable, market",
+    "[10:38:18] commons \"filling station diesel\": 13 usable of 24",
+    "[10:38:18] image: dropped \"Amboy (California, USA) -- 2012 -- 4.jpg\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Rieker-garage-ritzville-washington-2026.jpg\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Standard Oil Co. Service Station, Minnesota, Minnesota.jpg\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Puma service station, a few kilometers west of Lilongwe, 4 April 2021.\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Railside Service Station, Gillingham - geograph.org.uk - 2015737.jpg\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Service station, Hiawatha and E. 55th Street, Minnesota, Minnesota.jpg\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Texaco Service Station, Penn Ave. & Superior Blvd., Minneapolis, Minne\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Auto Service Station, Nicollet Ave. & W. Franklin Ave., Minneapolis, M\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Auto Service Station, Nicollet Ave. & E. 35th St., Minneapolis, Minnes\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Shell Oil Service Station, Bloomington Ave. & E. 21st St., Minneapolis\" — names too little of filling, station, diesel",
+    "[10:38:18] image: dropped \"Close-up of a vintage gasoline pump with 'Gasoil Optimum' label in blu\" — names too little of filling, station, diesel",
+    "[10:38:18] image: set aside \"Close-up of a green nozzle refueling a white car at a gas station.\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[10:38:18] image: \"Close-up of a hand holding a green fuel nozzle at a gas pump station o\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[10:38:21] commons \"buying vegetables\": 16 usable of 24",
+    "[10:38:21] image: dropped \"Buying vegetables at Kensei-cho Taihoku.jpg\" — dated 1950, an archival picture",
+    "[10:38:21] image: dropped \"A woman carrying a child is buying salad vegetables from a s Wellcome \" — a scan of a note's or a coin's face, not a photograph",
+    "[10:38:21] image: dropped \"New Zealand soldiers buying vegetables in a French village (2161403258\" — soldiers or a patrol, and the story is not about the military",
+    "[10:38:21] image: dropped \"A woman choosing fresh carrots and bell peppers at an outdoor market d\" — names too little of buying, vegetables",
+    "[10:38:21] image: dropped \"A family enjoys shopping for fresh produce together in a supermarket, \" — names too little of buying, vegetables",
+    "[10:38:21] image: dropped \"A shopper holds a red basket near vibrant lettuce at a grocery store.\" — names too little of buying, vegetables",
+    "[10:38:21] image: dropped \"Two women interacting over fresh produce in an outdoor market setting.\" — names too little of buying, vegetables",
+    "[10:38:22] commons \"vegetable market\": 21 usable of 24",
+    "[10:38:23] commons \"petrol station\": 19 usable of 24",
+    "[10:38:23] image: dropped \"A nostalgic view of an Esso gas station featuring a boutique and tabac\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[10:38:37] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=929 in=11098 read=0 out=1134 attempt=1 ms=13037",
+    "[10:38:46] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=733 in=1200 read=0 out=756 attempt=1 ms=8707",
+    "[10:38:57] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=943 in=8491 read=0 out=1040 attempt=1 ms=11531",
+    "[10:38:57] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Local woman selling fresh vegetables at an Indonesian market\": A sharp, professional shot of a vendor at an ordinary vegetable market, with no readable signs, watermark or place in th",
+    "[10:38:57] image: \"Local woman selling fresh vegetables at an Indonesian market\" stands in and its record places it nowhere: captioned «صورة تعبيرية»",
+    "[10:38:57] published \"التضخم في المغرب يتسارع إلى 1.9% في أكتوبر، الأعلى منذ فبراير 2025\" -> morocco-inflation-accelerates-october-2026-e5a043",
+    "[10:38:57] run budget of 35 minutes spent; \"أسعار المنتجين في ألمانيا ترتفع 8.1% في أكتوبر، الأعلى منذ 2023\" waits for the next run",
+    "[10:38:57] run budget of 35 minutes spent; \"لوفتهانزا تلغي ألف وظيفة وتقلص رحلاتها القصيرة لوقف الخسائر\" waits for the next run"
+  ]
+}

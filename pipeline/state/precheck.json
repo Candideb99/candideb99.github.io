@@ -18039,6 +18039,96 @@
           "noted": []
         }
       ]
+    },
+    "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d": {
+      "at": "2026-11-20T10:17:36.052Z",
+      "title": "مؤشر «نيكي» الياباني يهوي 5% رغم إدراج «أنثروبيك» الأمريكية للذكاء الاصطناعي",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 40,
+            "supported": 32,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبط مؤشر «نيكي» الياباني 5.06% يوم الجمعة إلى 56436.65 نقطة، مسجّلاً أدنى إغلاق له منذ 13 أبريل، بعدما أخفق إدراج «أنثروبيك» الأمريكية، مطوّرة «Claude»، في بورصة «ناسداك» في تبديد المخاوف من استدامة طفرة الذكاء الاصطناعي.",
+              "quote": "In Japan, the Nikkei 225 fell below 57,000 for the first time since Nov. 6, reaching an intraday low of 56,436.65 during morning trading. The index was down 5.06% from Thursday's close at that level.",
+              "source": "Anadolu Agency",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 9,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبوط سهم سوفت بنك الجمعة: 14.48%",
+              "quote": "SoftBank Group, which holds an approximately 13% stake in ChatGPT developer OpenAI, plunged more than 14.5% during the session.",
+              "source": "Anadolu Agency",
+              "sourceN": 4,
+              "correction": ""
+            },
+            {
+              "id": 15,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقادت أسهم التكنولوجيا الهبوط، فهوى سهم مجموعة «سوفت بنك» 14.48%، وتراجع سهم «كيوكسيا» لرقائق الذاكرة 11.66%.",
+              "quote": "SoftBank Group, which holds an approximately 13% stake in ChatGPT developer OpenAI, plunged more than 14.5% during the session.",
+              "source": "Anadolu Agency",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "morocco-inflation-accelerates-october-2026-e5a043": {
+      "at": "2026-11-20T10:38:57.647Z",
+      "title": "التضخم في المغرب يتسارع إلى 1.9% في أكتوبر، الأعلى منذ فبراير 2025",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 20,
+            "weak": 2,
+            "noEvidence": 2,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

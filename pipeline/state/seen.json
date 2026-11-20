@@ -1,96 +1,6 @@
 {
   "version": 1,
   "items": {
-    "cb3a0b1fb3179f5d": {
-      "at": "2026-10-30T08:50:15.683Z",
-      "decision": "published",
-      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
-      "title": "Global tech rout deepens as US earnings stoke AI spending fears"
-    },
-    "e5e4f975ba9b720e": {
-      "at": "2026-10-30T08:50:15.683Z",
-      "decision": "published",
-      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
-      "title": "تباين أداء الأسهم الآسيوية وسط تنامي المخاوف بشأن الذكاء الاصطناعي"
-    },
-    "945642cb40ba0752": {
-      "at": "2026-10-30T08:50:15.683Z",
-      "decision": "published",
-      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
-      "title": "Amazon falls 7%, Intel plunges 25% in premarket trading, as pressure mounts after earnings"
-    },
-    "0cd7fb0c048a51e1": {
-      "at": "2026-10-30T08:50:15.683Z",
-      "decision": "published",
-      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
-      "title": "Stock market today: Asian shares, Wall Street futures dip as AI spending fears wipe $500 billion off Alphabet"
-    },
-    "ee447a3aa1565d66": {
-      "at": "2026-10-30T08:50:15.683Z",
-      "decision": "published",
-      "slug": "global-tech-selloff-amazon-intel-results-c3f7eb",
-      "title": "نيكاي يهبط 3% مع تراجع أسهم شركات التكنولوجيا"
-    },
-    "dee40658277364cc": {
-      "at": "2026-10-30T09:04:19.348Z",
-      "decision": "published",
-      "slug": "boj-holds-rate-inflation-hits-target-728e78",
-      "title": "بنك اليابان يثبت الفائدة عند 1.25 % ويمهّد لزيادة جديدة في ديسمبر"
-    },
-    "0e98fb4b5f50f0f4": {
-      "at": "2026-10-30T09:04:19.348Z",
-      "decision": "published",
-      "slug": "boj-holds-rate-inflation-hits-target-728e78",
-      "title": "BOJ Holds Rate as Underlying Inflation Hits Target"
-    },
-    "32e7bd4b50f159bb": {
-      "at": "2026-10-30T09:04:19.348Z",
-      "decision": "published",
-      "slug": "boj-holds-rate-inflation-hits-target-728e78",
-      "title": "Bank of Japan says inflation hit 2 percent target after 13 years"
-    },
-    "1cc4435b0ecdbddc": {
-      "at": "2026-10-30T09:04:19.348Z",
-      "decision": "published",
-      "slug": "boj-holds-rate-inflation-hits-target-728e78",
-      "title": "Bank of Japan says inflation hit 2% target after 13 years"
-    },
-    "59d3b19d434da86c": {
-      "at": "2026-10-30T09:04:19.348Z",
-      "decision": "published",
-      "slug": "boj-holds-rate-inflation-hits-target-728e78",
-      "title": "BOJ holds rates as underlying inflation aligns with 2% target for first time since 2013"
-    },
-    "691a8b4ea3575b18": {
-      "at": "2026-10-30T09:16:23.209Z",
-      "decision": "published",
-      "slug": "bp-profit-18-year-high-refining-7b282d",
-      "title": "BP profits jump as Middle East conflict drives up oil refining margins"
-    },
-    "21ace42cab1767bc": {
-      "at": "2026-10-30T09:16:23.209Z",
-      "decision": "published",
-      "slug": "bp-profit-18-year-high-refining-7b282d",
-      "title": "BP's Refining Business Had a 'Banner Quarter,' CEO Says"
-    },
-    "1b0ae86b0acede18": {
-      "at": "2026-10-30T09:16:23.209Z",
-      "decision": "published",
-      "slug": "bp-profit-18-year-high-refining-7b282d",
-      "title": "BP’s profits surge to new record on high fuel prices"
-    },
-    "9da5d36257b3e643": {
-      "at": "2026-10-30T09:16:23.209Z",
-      "decision": "published",
-      "slug": "bp-profit-18-year-high-refining-7b282d",
-      "title": "BP Profit Hits 18-Year High as Oil Refining Margins Surge"
-    },
-    "f7856981cd2d760d": {
-      "at": "2026-10-30T09:16:23.209Z",
-      "decision": "published",
-      "slug": "bp-profit-18-year-high-refining-7b282d",
-      "title": "BP’s third-quarter profit nearly quadruples to $8.5 billion as refining margins surge"
-    },
     "d32bebfb84146994": {
       "at": "2026-10-30T10:25:27.791Z",
       "decision": "published",
@@ -5356,6 +5266,48 @@
       "decision": "published",
       "slug": "us-approved-879000-ai-chips-china-1bf1f3",
       "title": "Commerce approved sales of more than 879,000 AI chips to Chinese companies, Rep. Mast says"
+    },
+    "c214b3ded63216d0": {
+      "at": "2026-11-20T10:17:36.062Z",
+      "decision": "published",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "الأسهم اليابانية تهوي 5 % لأدنى مستوى في سبعة أشهر"
+    },
+    "eb42bbb391b7fd17": {
+      "at": "2026-11-20T10:17:36.062Z",
+      "decision": "published",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "Asia’s stock markets dive as Anthropic debut fails to allay AI bubble fears"
+    },
+    "b1b09e39c2cf22ed": {
+      "at": "2026-11-20T10:17:36.062Z",
+      "decision": "published",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "Hong Kong Stocks Sink to Brink of Bear Market as Selloff Worsens"
+    },
+    "a2f53e733cd80cfd": {
+      "at": "2026-11-20T10:17:36.062Z",
+      "decision": "published",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "Asian tech stocks plunge despite Anthropic's strong US market debut"
+    },
+    "b57192e1ddac0677": {
+      "at": "2026-11-20T10:17:36.062Z",
+      "decision": "published",
+      "slug": "asia-stocks-slump-anthropic-ipo-ai-fears-7ad32d",
+      "title": "Asian shares head for worst week since 2020 as AI rout deepens"
+    },
+    "0b19624987461e10": {
+      "at": "2026-11-20T10:38:57.654Z",
+      "decision": "published",
+      "slug": "morocco-inflation-accelerates-october-2026-e5a043",
+      "title": "التضخم في المغرب يتسارع في أكتوبر بأعلى وتيرة منذ 20 شهراً"
+    },
+    "8eaa9de5a928d138": {
+      "at": "2026-11-20T10:38:57.654Z",
+      "decision": "published",
+      "slug": "morocco-inflation-accelerates-october-2026-e5a043",
+      "title": "غلاء الخضر واللحوم يرفع التضخم بالمغرب"
     }
   }
 }
