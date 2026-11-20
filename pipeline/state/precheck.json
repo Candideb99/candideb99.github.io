@@ -18011,6 +18011,34 @@
           "noted": []
         }
       ]
+    },
+    "card-krueger-minimum-wage-natural-experiment-egypt-7bfa2f": {
+      "at": "2026-11-20T03:21:47.016Z",
+      "title": "لماذا لم يُفقِد رفعُ الحد الأدنى للأجور العمالَ وظائفهم في دراسة كارد وكروغر؟",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 40,
+            "checked": 37,
+            "supported": 30,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 6,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [
