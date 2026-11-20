@@ -18129,6 +18129,146 @@
           "noted": []
         }
       ]
+    },
+    "saudi-japan-16-million-barrels-oil-storage-61162d": {
+      "at": "2026-11-20T12:04:37.066Z",
+      "title": "السعودية تتفق مع اليابان على تخزين 16 مليون برميل إضافي من نفطها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 23,
+            "checked": 23,
+            "supported": 22,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "houthis-threaten-jeddah-port-hodeidah-evacuation-cf90dd": {
+      "at": "2026-11-20T12:17:58.601Z",
+      "title": "الحوثيون يهددون ميناء جدة السعودي إذا قصف التحالف الحديدة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "gold-heads-for-worst-week-since-march-96809a": {
+      "at": "2026-11-20T12:29:41.400Z",
+      "title": "الذهب يتجه إلى خسارة أسبوعية بنحو 8.9% هي الأكبر منذ مارس",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 13,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 5,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "الذهب يتجه إلى خسارة أسبوعية بنحو 8.9% هي الأكبر منذ مارس",
+              "quote": "وتراجعت أسعار الذهب بنحو 9.2 في المائة منذ بداية الأسبوع، في أكبر انخفاض أسبوعي لها منذ الأسبوع المنتهي في 20 مارس (آذار).",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع الذهب يوم الجمعة متجهاً إلى خسارة أسبوعية بنحو 8.9% في المعاملات الفورية، هي الأكبر منذ الأسبوع المنتهي في 20 مارس، بعدما لامس في وقت أبكر من الجلسة أدنى مستوياته منذ سبتمبر 2025.",
+              "quote": "وتراجعت أسعار الذهب بنحو 9.2 في المائة منذ بداية الأسبوع، في أكبر انخفاض أسبوعي لها منذ الأسبوع المنتهي في 20 مارس (آذار).",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "خسارة الذهب الفوري هذا الأسبوع: نحو 8.9%",
+              "quote": "وتراجعت أسعار الذهب بنحو 9.2 في المائة منذ بداية الأسبوع، في أكبر انخفاض أسبوعي لها منذ الأسبوع المنتهي في 20 مارس (آذار).",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 7,
+              "field": "whyItMatters",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "مع تسعير الأسواق احتمالاً بنسبة 97.3% لرفع الفائدة ربع نقطة في ديسمبر، يكاد القرار المنتظر يكون محسوباً في سعر الذهب؛ والضغط الإضافي على المعدن سيأتي إذا أشار الفيدرالي إلى زيادات تالية تدفع عوائد السندات والدولار إلى مزيد من الصعود.",
+              "quote": "وتُظهر أداة «فيد ووتش» التابعة لمجموعة «سي إم إي» أن الأسواق تسعّر احتمالاً بنسبة 96.8 في المائة لرفع أسعار الفائدة الأميركية بمقدار 25 نقطة أساس في ديسمبر، مقابل احتمال بنسبة 3.2 في المائة لزيادة أكبر تبلغ 50 نقطة أساس.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتسعّر الأسواق احتمالاً بنسبة 97.3% لرفع الفائدة الأمريكية 25 نقطة أساس في ديسمبر، مقابل 2.7% لرفعها 50 نقطة أساس، بحسب أداة «فيد ووتش» التي تقيس توقعات الأسواق لأسعار الفائدة الأمريكية وتتبع مجموعة «سي إم إي» الأمريكية المتخصصة في الأسواق المالية والمشتقات.",
+              "quote": "وتُظهر أداة «فيد ووتش» التابعة لمجموعة «سي إم إي» أن الأسواق تسعّر احتمالاً بنسبة 96.8 في المائة لرفع أسعار الفائدة الأميركية بمقدار 25 نقطة أساس في ديسمبر، مقابل احتمال بنسبة 3.2 في المائة لزيادة أكبر تبلغ 50 نقطة أساس.",
+              "source": "Asharq Al-Awsat",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": [
