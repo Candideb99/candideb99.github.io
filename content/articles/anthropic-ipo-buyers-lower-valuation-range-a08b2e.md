@@ -23,7 +23,7 @@ tags:
   - ناسداك
   - أوبن إيه آي
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - أوروبا
 readingMinutes: 4
 chart: null

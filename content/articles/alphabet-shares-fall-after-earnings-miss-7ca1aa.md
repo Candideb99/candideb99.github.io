@@ -23,7 +23,7 @@ tags:
   - الحوسبة السحابية
   - وول ستريت
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 5
 chart:
   type: bar

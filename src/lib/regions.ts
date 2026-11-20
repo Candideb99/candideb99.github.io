@@ -8,7 +8,7 @@
  * المشرق وإيران وتركيا، المغرب العربي، and العالم for Europe, the Americas, Asia, Africa and the world market. The
  * third was «الشرق الأوسط» until 2026-10-19, the region the other two belong to (half its stories were the Gulf's
  * too); Egypt and the Maghreb were one desk until 2026-11-19, when Egypt held 48 of its 57 stories of the month
- * (Al Arabiya runs مصر and المغرب العربي apart).
+ * (Al Arabiya runs مصر and المغرب العربي apart). The United States has a desk of its own since 2026-11-20.
  */
 // A relative address with its type, so Node can read this module in the self-test (as topics.ts).
 import desks from "../data/regions.json" with { type: "json" };
@@ -20,11 +20,14 @@ export interface Desk {
 }
 
 const RAW: Desk[] = desks as Desk[];
-const ARAB = new Set(["gulf", "egypt", "mena", "maghreb"]);
-const abroad = RAW.filter((d) => !ARAB.has(d.id));
+// The United States has its own desk since 2026-11-20 (the owner: "Yes, add US desk"): about 1.3 news stories a day
+// named it in the headline, and in «العالم» it took that desk's one place in the front's region block from every other
+// country. China, about 2 a week, stays in «العالم».
+const OWN = new Set(["gulf", "egypt", "mena", "maghreb", "usa"]);
+const abroad = RAW.filter((d) => !OWN.has(d.id));
 
 export const DESKS: Desk[] = [
-  ...RAW.filter((d) => ARAB.has(d.id)),
+  ...RAW.filter((d) => OWN.has(d.id)),
   { id: "world", name: "العالم", match: [...new Set(abroad.flatMap((d) => [d.name, ...d.match]))] },
 ];
 

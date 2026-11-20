@@ -25,7 +25,7 @@ tags:
   - الرافعة المالية
   - الأسهم الأمريكية
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table:

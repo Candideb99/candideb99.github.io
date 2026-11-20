@@ -22,7 +22,7 @@ tags:
   - الشحن البحري
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

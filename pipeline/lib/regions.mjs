@@ -83,6 +83,41 @@ const DESK_PLACES = new Map(DESKS.filter((d) => PLACES[d.name]).map((d) => [d.na
 // about the region names it outside such a phrase («إيران تعلن…»، «مضيق هرمز»).
 const CONFLICT_CAUSE = /(?:ال)?(?:حرب|صراع|نزاع|توترات|تصعيد|ازمه)(?:\s+(?:في|علي|مع|ضد))?\s+(?:منطقه\s+)?(?:الشرق الاوسط|ايران|الايرانيه|الخليج)/g;
 
+/**
+ * The United States has a desk of its own since 2026-11-20 (the owner: "shouldd we add dedicated USA and China
+ * categories?", then "Yes, add US desk"): about 1.3 news stories a day named it in the headline, where China named
+ * about 2 a week. Until then it was part of «الأمريكتان», which the site folds into «العالم». A story filed under the
+ * Americas, by a writer's habit or before the desk existed, stays there only when its headline, dek or lede names
+ * another country of the Americas and not the US; it is on both when it names both, and otherwise on the US desk:
+ * of the 190 published stories filed under the Americas that day, about 40 named no country of the Americas in their
+ * headline, dek or lede, nearly all American companies (Apple, Nvidia, Anthropic, OpenAI) or prices in dollars. Under
+ * this rule 186 moved to the US desk (4 of them, the US with Canada or Mexico, on both) and 4 stayed: Brazil's
+ * election markets twice, the UAE–Canada agreement and Venezuela's oil.
+ */
+const US_DESK = "الولايات المتحدة";
+const AMERICAS_DESK = "الأمريكتان";
+const US_PLACES = ["الولايات المتحدة", "أمريكي", "أميركي", "أمريكيتان", "أميركيتان", "أمريكيتين", "أميركيتين", "أمريكا", "أميركا", "واشنطن", "نيويورك", "وول ستريت", "تكساس", "كاليفورنيا", "البيت الأبيض", "ترامب", "ترمب", "الاحتياطي الفيدرالي", "الفيدرالي", "ناسداك", "داو جونز", "إس آند بي"].map((w) => placeRe(w));
+const OTHER_AMERICAS = ["كندا", "كندي", "المكسيك", "مكسيكي", "البرازيل", "برازيلي", "الأرجنتين", "أرجنتيني", "تشيلي", "كولومبيا", "كولومبي", "بيرو", "بيروفي", "فنزويلا", "فنزويلي", "أمريكا اللاتينية", "أميركا اللاتينية", "لاتيني"].map((w) => placeRe(w));
+// «أمريكا اللاتينية» is not the US, and the dollar's name («الدولار الأمريكي») places nothing: both are taken out
+// before the US is looked for. «مقاطعة كولومبيا» is Washington's district, not Colombia.
+const NOT_US = /امريكا اللاتينيه|اميركا اللاتينيه|امريكا الجنوبيه|اميركا الجنوبيه|امريكا الوسطي|اميركا الوسطي|امريكا الشماليه|اميركا الشماليه|الدولار الامريكي|الدولار الاميركي/g;
+const NOT_AMERICAS = /مقاطعه كولومبيا/g;
+function toUsDesk(canon, text) {
+  if (!canon.includes(AMERICAS_DESK)) return canon;
+  const hay = normalizePlace(text);
+  const us = US_PLACES.some((re) => re.test(hay.replace(NOT_US, " ")));
+  const others = OTHER_AMERICAS.some((re) => re.test(hay.replace(NOT_AMERICAS, " ")));
+  if (others && !us) return canon;
+  const out = [];
+  for (const r of canon) {
+    if (r === AMERICAS_DESK) {
+      if (!out.includes(US_DESK)) out.push(US_DESK);
+      if (others) out.push(r);
+    } else if (!out.includes(r)) out.push(r);
+  }
+  return out;
+}
+
 /** Whether a text names a place of an Arab desk. */
 function namesDesk(desk, text) {
   const hay = normalizePlace(text).replace(CONFLICT_CAUSE, " ");
@@ -222,8 +257,8 @@ export function countriesNamed(text) {
  * A split desk's old name (SPLIT_DESKS) is read as both its desks, so a story keeps the one it names.
  */
 export function groundedRegions(regions, { title = "", subtitle = "", lede = "" } = {}) {
-  const canon = canonicalRegions(regions, { cap: Infinity });
   const text = [title, subtitle, lede].join("\n");
+  const canon = toUsDesk(canonicalRegions(regions, { cap: Infinity }), text);
   const kept = canon.filter((r) => !DESK_PLACES.has(r) || namesDesk(r, text));
   for (const desk of DESK_PLACES.keys()) if (!kept.includes(desk) && namesDesk(desk, title)) kept.push(desk);
   return kept.length ? kept.slice(0, 3) : canon.length ? ["عالمي"] : [];

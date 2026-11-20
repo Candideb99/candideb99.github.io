@@ -22,7 +22,7 @@ tags:
   - أسهم التكنولوجيا
   - الذكاء الاصطناعي
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

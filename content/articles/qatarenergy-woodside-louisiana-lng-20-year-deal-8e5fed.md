@@ -22,7 +22,7 @@ tags:
   - الولايات المتحدة
 regions:
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 3
 chart: null

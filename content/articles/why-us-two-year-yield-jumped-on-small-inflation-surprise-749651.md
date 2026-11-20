@@ -23,7 +23,7 @@ tags:
   - أسعار الفائدة
   - فرضية التوقعات
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

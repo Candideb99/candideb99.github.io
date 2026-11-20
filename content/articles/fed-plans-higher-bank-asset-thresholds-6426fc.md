@@ -26,7 +26,7 @@ tags:
   - الرقابة المصرفية
   - الاندماج والاستحواذ
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

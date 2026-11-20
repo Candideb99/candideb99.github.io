@@ -23,7 +23,7 @@ tags:
   - الذكاء الاصطناعي
   - تايوان
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 2
 chart: null

@@ -21,7 +21,7 @@ tags:
   - الديزل
   - أسعار النفط
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - الخليج
 readingMinutes: 3
 chart: null

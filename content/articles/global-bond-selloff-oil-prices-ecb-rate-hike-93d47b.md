@@ -23,7 +23,7 @@ tags:
   - الاحتياطي الفيدرالي
 regions:
   - أوروبا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

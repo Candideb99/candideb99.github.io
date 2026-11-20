@@ -25,7 +25,7 @@ tags:
   - الولايات المتحدة
   - الدولار
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

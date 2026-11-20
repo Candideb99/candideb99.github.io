@@ -27,7 +27,7 @@ tags:
   - الرهن العقاري
   - هيئة الأوراق المالية والبورصات الأمريكية
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

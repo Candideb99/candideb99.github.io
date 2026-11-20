@@ -27,7 +27,7 @@ tags:
   - S&P 500
   - برغر كينغ
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart:
   type: bar

@@ -28,7 +28,7 @@ tags:
   - أوراق بحثية
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

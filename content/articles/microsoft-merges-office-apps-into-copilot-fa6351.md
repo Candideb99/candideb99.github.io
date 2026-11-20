@@ -23,7 +23,7 @@ tags:
   - أنثروبيك
   - البرمجيات
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

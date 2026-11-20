@@ -21,7 +21,7 @@ tags:
   - المصافي
   - حظر الصادرات
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - أوروبا
 readingMinutes: 4
 chart: null

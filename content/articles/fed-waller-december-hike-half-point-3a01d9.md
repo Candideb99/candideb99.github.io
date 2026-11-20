@@ -24,7 +24,7 @@ tags:
   - التضخم
   - الولايات المتحدة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 3
 chart: null

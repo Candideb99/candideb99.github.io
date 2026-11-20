@@ -27,7 +27,7 @@ tags:
   - السندات اليابانية
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 1
 chart: null

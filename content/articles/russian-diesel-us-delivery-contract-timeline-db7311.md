@@ -20,7 +20,7 @@ tags:
   - الديزل
 regions:
   - أوروبا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

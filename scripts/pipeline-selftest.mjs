@@ -32,7 +32,7 @@ import { EDITORIAL_CRAFT, NEWS_DEPTH, NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_
 import { arabicEdition, bestPdf, coveredBy, documentUrl, editionKey, previousEdition, releaseDocument, releaseStory, reportExcerpts } from "../pipeline/lib/reports.mjs";
 import { mergeNewsRefresh, recentNews, serializeArticle, weekStories } from "../pipeline/lib/article.mjs";
 import { cleanTags } from "../pipeline/lib/tags.mjs";
-import { countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
+import { canonicalRegions, countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues, bareNameInDek, structural, WRITER_ONLY, READOUT, tableReadout, figureCount, readoutRoute, unjoinedParagraphs, subjectFirstSpeech } from "../pipeline/lib/style.mjs";
 import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
 import { keepLessonParts, normalizeDiagram, normalizeWorked } from "../pipeline/lib/lesson.mjs";
@@ -807,7 +807,22 @@ if (spawnSync("git", ["--version"]).status === 0) {
   const tags = cleanTags(["الذكاء الاصطناعي", "التجارة", "الأميركية", "الحوثيون", "لجنة الاتصالات الفيدرالية"], "قمة ترامب وشي تبحث التجارة والرسوم الجمركية، والسياسة الأمريكية تجاه الحوثي، وقرار هيئة الطيران الفيدرالية", { dir });
   check("tags: absent subjects and institutions go, worded ones stay, house spelling", tags, ["التجارة", "الأمريكية", "الحوثيون"]);
   // An Arab desk only where the headline, dek or lede names one of its places; a war named as a cause is not a place.
-  check("desks: a US jobs report leaves the Gulf desk", groundedRegions(["الخليج", "الأمريكتان"], { title: "الاقتصاد الأمريكي يضيف 150 ألف وظيفة", lede: "أضاف الاقتصاد الأمريكي 150 ألف وظيفة في أغسطس" }), ["الأمريكتان"]);
+  check("desks: a US jobs report leaves the Gulf desk for the US desk", groundedRegions(["الخليج", "الأمريكتان"], { title: "الاقتصاد الأمريكي يضيف 150 ألف وظيفة", lede: "أضاف الاقتصاد الأمريكي 150 ألف وظيفة في أغسطس" }), ["الولايات المتحدة"]);
+  check(
+    "desks: the US has its own desk, an American company too; Brazil and Latin America stay in the Americas (the dollar places nothing, DC is not Colombia); a US–Mexico story is on both",
+    [
+      canonicalRegions(["أمريكا"]),
+      groundedRegions(["الأمريكتان"], { title: "المركزي البرازيلي يرفع الفائدة إلى 15%" }),
+      groundedRegions(["الأمريكتان"], { title: "صادرات أمريكا اللاتينية تتراجع" }),
+      groundedRegions(["الأمريكتان", "آسيا"], { title: "ترامب يفرض رسوماً على السيارات المكسيكية" }),
+      groundedRegions(["الأمريكتان"], { title: "الفيدرالي يثبت الفائدة" }),
+      groundedRegions(["الأمريكتان"], { title: "«أبل» تطرح «آيفون ديو» القابل للطي" }),
+      groundedRegions(["الأمريكتان"], { title: "الريال البرازيلي يهبط 12%", lede: "هبط الريال البرازيلي 12% أمام الدولار الأمريكي" }),
+      groundedRegions(["الأمريكتان"], { title: "محكمة استئناف أمريكية تؤيد قرار البنتاغون", lede: "أيدت محكمة الاستئناف لدائرة مقاطعة كولومبيا" }),
+      groundedRegions(["الأمريكتان"], { title: "إكسون وشيفرون الأمريكيتان تتجاوزان التوقعات" }),
+    ],
+    [["الولايات المتحدة"], ["الأمريكتان"], ["الأمريكتان"], ["الولايات المتحدة", "الأمريكتان", "آسيا"], ["الولايات المتحدة"], ["الولايات المتحدة"], ["الأمريكتان"], ["الولايات المتحدة"], ["الولايات المتحدة"]],
+  );
   // One measure per chart (CHART_RULE, 2026-10-20): what code can see of it.
   const bars = (categories, values) => ({ type: "bar", title: "t", unit: "%", source: "s", categories, series: [{ name: "v", values }] });
   check("charts: a policy rate beside inflation is no chart", normalizeChart(bars(["سعر الفائدة الأساسي", "التضخم السنوي", "الحد الأعلى للنطاق"], [4.6, 3.5, 3])), null);
@@ -1718,13 +1733,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const iraqGas = story("iraq-gas", ["المشرق وإيران وتركيا"]);
     const cairoRates = story("cairo-rates", ["مصر"]);
     const libyaOil = story("libya-oil", ["المغرب العربي"]);
+    // The US desk of 2026-11-20: a US story takes it and leaves «العالم» to the rest of the world.
+    const usJobs = story("us-jobs", ["الولايات المتحدة"]);
+    const brazilRates = story("brazil-rates", ["الأمريكتان"]);
     const hormuz = new Set(["hormuz-sank", "hormuz-closed"]);
     const sameStory = (a, b) => hormuz.has(a.id) && hormuz.has(b.id);
-    const shown = deskStories([hormuzSank, hormuzClosed, cairoRates, iraqGas, libyaOil], sameStory);
+    const shown = deskStories([hormuzSank, usJobs, hormuzClosed, cairoRates, iraqGas, libyaOil, brazilRates], sameStory);
     check(
-      "the region block: five desks, Egypt apart from the Maghreb, and a desk passes over the running story another desk shows",
+      "the region block: six desks (the US its own), Egypt apart from the Maghreb, and a desk passes over the running story another desk shows",
       [DESKS.map((d) => d.name), shown.map((d) => `${d.name}:${d.story.id}`)],
-      [["الخليج", "مصر", "المشرق وإيران وتركيا", "المغرب العربي", "العالم"], ["الخليج:hormuz-sank", "مصر:cairo-rates", "المشرق وإيران وتركيا:iraq-gas", "المغرب العربي:libya-oil"]],
+      [["الخليج", "مصر", "المشرق وإيران وتركيا", "المغرب العربي", "الولايات المتحدة", "العالم"], ["الخليج:hormuz-sank", "مصر:cairo-rates", "المشرق وإيران وتركيا:iraq-gas", "المغرب العربي:libya-oil", "الولايات المتحدة:us-jobs", "العالم:brazil-rates"]],
     );
   }
   const page = readFileSync("src/pages/search.astro", "utf8");

@@ -25,7 +25,7 @@ tags:
   - الدين العام
   - الرسوم الجمركية
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

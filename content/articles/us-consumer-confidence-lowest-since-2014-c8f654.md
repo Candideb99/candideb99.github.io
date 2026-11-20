@@ -27,7 +27,7 @@ tags:
   - التضخم
   - سوق العمل
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart:
   type: bar

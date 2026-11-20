@@ -27,7 +27,7 @@ tags:
   - الاحتياطي الفيدرالي
   - التضخم
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

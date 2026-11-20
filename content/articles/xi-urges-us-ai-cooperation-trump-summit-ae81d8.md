@@ -15,7 +15,7 @@ tags:
   - البيت الأبيض
   - التكنولوجيا
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 1
 chart: null

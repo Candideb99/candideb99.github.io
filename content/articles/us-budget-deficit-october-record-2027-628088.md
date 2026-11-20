@@ -27,7 +27,7 @@ tags:
   - الدين العام
   - مكتب الموازنة بالكونغرس
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table:

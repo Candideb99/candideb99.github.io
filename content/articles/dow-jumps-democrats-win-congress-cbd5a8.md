@@ -27,7 +27,7 @@ tags:
   - النفط
   - إيلون ماسك
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart:
   type: bar

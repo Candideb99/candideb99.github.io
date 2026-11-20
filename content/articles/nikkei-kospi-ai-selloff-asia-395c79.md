@@ -28,7 +28,7 @@ tags:
   - مراكز البيانات
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart:
   type: bar

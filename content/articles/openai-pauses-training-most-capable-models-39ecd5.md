@@ -23,7 +23,7 @@ tags:
   - الولايات المتحدة
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 3
 chart: null

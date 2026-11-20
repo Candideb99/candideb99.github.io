@@ -27,7 +27,7 @@ tags:
   - أسعار الوقود
   - إيران
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

@@ -28,7 +28,7 @@ tags:
   - الجنيه المصري
 regions:
   - مصر
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table:

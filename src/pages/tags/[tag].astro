@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   const articles = await getArticles();
   const files = allTags(articles);
   // Every regional desk has a file too, gathered from the stories' regions (a story tagged
-  // الولايات المتحدة files under الأمريكتان), so the front's desk links always resolve.
+  // أمريكا files under الولايات المتحدة), so the front's desk links always resolve.
   for (const desk of DESKS) {
     const pool = articles.filter((a) => desksOf(a).some((d) => d.id === desk.id));
     const merged = new Map([...pool, ...(files.get(desk.name) ?? [])].map((a) => [a.id, a]));

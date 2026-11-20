@@ -28,7 +28,7 @@ tags:
   - سندات الخزانة الأمريكية
 regions:
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

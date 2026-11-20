@@ -25,7 +25,7 @@ tags:
   - الولايات المتحدة
   - وسائل التواصل الاجتماعي
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

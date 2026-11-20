@@ -25,6 +25,7 @@ tags:
   - انتخابات التجديد النصفي
   - الزراعة
 regions:
+  - الولايات المتحدة
   - الأمريكتان
 readingMinutes: 4
 chart: null

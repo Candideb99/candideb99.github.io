@@ -26,7 +26,7 @@ tags:
   - الصين
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

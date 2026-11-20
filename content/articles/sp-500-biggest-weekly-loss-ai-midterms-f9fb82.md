@@ -24,7 +24,7 @@ tags:
   - الذكاء الاصطناعي
   - الانتخابات الأمريكية
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart:
   type: bar

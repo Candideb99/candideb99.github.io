@@ -21,7 +21,7 @@ tags:
   - الاستحواذ
   - وورلد لابز
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

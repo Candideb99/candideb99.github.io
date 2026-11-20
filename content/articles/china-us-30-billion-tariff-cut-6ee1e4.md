@@ -22,7 +22,7 @@ tags:
   - المعادن النادرة
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 1
 chart: null

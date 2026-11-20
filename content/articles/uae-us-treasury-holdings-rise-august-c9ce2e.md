@@ -23,7 +23,7 @@ tags:
   - أسواق السندات
 regions:
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

@@ -23,7 +23,7 @@ tags:
   - إم جي إكس
   - رأس المال الجريء
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

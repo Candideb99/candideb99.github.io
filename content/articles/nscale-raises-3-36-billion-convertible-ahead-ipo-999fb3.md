@@ -29,7 +29,7 @@ tags:
 regions:
   - أوروبا
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

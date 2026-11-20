@@ -27,7 +27,7 @@ tags:
   - نفقات الاستهلاك الشخصي
   - أسعار الفائدة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart:
   type: bar

@@ -23,7 +23,7 @@ tags:
 regions:
   - عالمي
   - أوروبا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

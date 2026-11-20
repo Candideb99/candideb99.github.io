@@ -26,7 +26,7 @@ tags:
   - المعادن النفيسة
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

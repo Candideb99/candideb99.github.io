@@ -16,7 +16,7 @@ tags:
   - أسهم التكنولوجيا
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

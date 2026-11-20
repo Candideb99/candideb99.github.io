@@ -27,7 +27,7 @@ tags:
   - نتائج الشركات
   - إيلون ماسك
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart:
   type: bar

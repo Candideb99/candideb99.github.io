@@ -23,7 +23,7 @@ tags:
   - سوق الصرف
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

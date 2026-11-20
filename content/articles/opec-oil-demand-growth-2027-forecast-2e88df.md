@@ -25,7 +25,7 @@ tags:
   - إنتاج النفط
   - أسعار الطاقة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 2
 chart: null

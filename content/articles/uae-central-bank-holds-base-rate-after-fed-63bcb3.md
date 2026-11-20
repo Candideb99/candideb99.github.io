@@ -22,7 +22,7 @@ tags:
   - إيبور
 regions:
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart:
   type: bar

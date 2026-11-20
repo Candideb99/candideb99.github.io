@@ -22,7 +22,7 @@ tags:
   - الحصار البحري
 regions:
   - المشرق وإيران وتركيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

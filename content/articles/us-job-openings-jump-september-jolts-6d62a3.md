@@ -23,7 +23,7 @@ tags:
   - الاحتياطي الفيدرالي
   - سندات الخزانة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table:

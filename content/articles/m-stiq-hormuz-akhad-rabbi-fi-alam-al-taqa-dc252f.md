@@ -23,7 +23,7 @@ tags:
   - الديزل
   - التضخم الأمريكي
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - الخليج
 readingMinutes: 4
 chart: null

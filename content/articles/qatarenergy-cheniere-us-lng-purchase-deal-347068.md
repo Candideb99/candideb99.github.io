@@ -24,7 +24,7 @@ tags:
   - الولايات المتحدة
 regions:
   - الخليج
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

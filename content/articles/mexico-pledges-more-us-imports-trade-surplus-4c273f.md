@@ -19,6 +19,7 @@ tags:
   - الميزان التجاري
   - كلوديا شينباوم
 regions:
+  - الولايات المتحدة
   - الأمريكتان
 readingMinutes: 1
 chart: null

@@ -27,7 +27,7 @@ tags:
   - عائدات السندات
   - التضخم
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 3
 chart: null

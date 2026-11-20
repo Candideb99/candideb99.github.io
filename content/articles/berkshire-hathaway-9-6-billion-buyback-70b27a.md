@@ -27,7 +27,7 @@ tags:
   - الولايات المتحدة
   - نتائج الشركات
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

@@ -21,7 +21,7 @@ tags:
   - الولايات المتحدة
   - النفط
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 4
 chart: null

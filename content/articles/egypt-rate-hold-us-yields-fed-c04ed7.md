@@ -28,7 +28,7 @@ tags:
   - سندات الخزانة الأمريكية
 regions:
   - مصر
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 5
 chart: null
 table:

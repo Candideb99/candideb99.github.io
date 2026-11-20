@@ -26,7 +26,7 @@ tags:
   - الذكاء الاصطناعي
   - أشباه الموصلات
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

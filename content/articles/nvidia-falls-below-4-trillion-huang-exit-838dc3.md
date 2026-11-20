@@ -23,7 +23,7 @@ tags:
   - الصين
   - الخليج
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - آسيا
 readingMinutes: 4
 chart: null

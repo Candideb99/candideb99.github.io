@@ -21,7 +21,7 @@ tags:
   - الولايات المتحدة
   - أسعار الوقود
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

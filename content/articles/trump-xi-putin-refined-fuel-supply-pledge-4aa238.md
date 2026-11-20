@@ -18,7 +18,7 @@ tags:
 regions:
   - عالمي
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 1
 chart: null
 table: null

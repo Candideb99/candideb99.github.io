@@ -16,7 +16,7 @@ tags:
   - أوبن إيه آي
   - هاغينغ فيس
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart: null

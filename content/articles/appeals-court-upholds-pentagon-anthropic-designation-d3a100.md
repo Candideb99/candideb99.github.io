@@ -21,7 +21,7 @@ tags:
   - التعاقدات الحكومية
   - القضاء الأمريكي
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

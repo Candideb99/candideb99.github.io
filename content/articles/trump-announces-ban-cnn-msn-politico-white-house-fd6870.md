@@ -15,7 +15,7 @@ tags:
   - حرية الصحافة
   - دونالد ترامب
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 1
 chart: null

@@ -17,7 +17,7 @@ tags:
   - كفاءة استهلاك الوقود
   - دونالد ترامب
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

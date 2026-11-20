@@ -26,7 +26,7 @@ tags:
   - الطروحات العامة الأولية
   - ناسداك
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

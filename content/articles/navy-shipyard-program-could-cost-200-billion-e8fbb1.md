@@ -25,7 +25,7 @@ tags:
   - الصناعات الدفاعية
   - الولايات المتحدة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table:

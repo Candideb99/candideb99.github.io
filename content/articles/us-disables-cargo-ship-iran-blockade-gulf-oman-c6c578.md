@@ -25,7 +25,7 @@ tags:
 regions:
   - الخليج
   - المشرق وإيران وتركيا
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table: null

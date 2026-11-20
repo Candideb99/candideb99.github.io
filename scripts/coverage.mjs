@@ -260,7 +260,7 @@ function main() {
   row("  no place", (s) => !s.arab && !s.twelve.length && !s.others.length);
 
   console.log("\nThe regions the writers gave (a story may carry several):");
-  for (const [label, desk] of [["Europe", "أوروبا"], ["Asia", "آسيا"], ["the Americas", "الأمريكتان"], ["Africa", "أفريقيا"], ["the world", "عالمي"]]) {
+  for (const [label, desk] of [["Europe", "أوروبا"], ["Asia", "آسيا"], ["the United States", "الولايات المتحدة"], ["the rest of the Americas", "الأمريكتان"], ["Africa", "أفريقيا"], ["the world", "عالمي"]]) {
     row(`  ${label}`, (s) => s.regions.includes(desk));
   }
 

@@ -20,7 +20,7 @@ tags:
   - التضخم
   - الولايات المتحدة
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

@@ -28,7 +28,7 @@ tags:
   - الخليج
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

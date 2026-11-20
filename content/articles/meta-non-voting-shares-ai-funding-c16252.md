@@ -25,7 +25,7 @@ tags:
   - أسواق الأسهم
   - وول ستريت
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 4
 chart: null
 table: null

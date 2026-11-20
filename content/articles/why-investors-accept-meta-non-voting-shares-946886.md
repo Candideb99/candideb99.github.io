@@ -21,7 +21,7 @@ tags:
   - أسهم بلا حق تصويت
   - أسواق الأسهم
 regions:
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 3
 chart: null
 table: null

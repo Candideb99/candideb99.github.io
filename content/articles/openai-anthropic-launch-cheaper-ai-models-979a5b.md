@@ -24,7 +24,7 @@ tags:
   - الذكاء الاصطناعي
 regions:
   - عالمي
-  - الأمريكتان
+  - الولايات المتحدة
 readingMinutes: 2
 chart: null
 table:

@@ -28,7 +28,7 @@ tags:
   - الرقائق
 regions:
   - آسيا
-  - الأمريكتان
+  - الولايات المتحدة
   - عالمي
 readingMinutes: 2
 chart:
