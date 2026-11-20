@@ -410,6 +410,8 @@ const STORY_COUNTRIES = {
   "كينيا": "Kenya", "غانا": "Ghana", "إثيوبيا": "Ethiopia", "تنزانيا": "Tanzania", "أوغندا": "Uganda", "رواندا": "Rwanda", "أنغولا": "Angola", "زامبيا": "Zambia",
   "السنغال": "Senegal", "ساحل العاج": "Ivory Coast", "كوت ديفوار": "Ivory Coast", "موريتانيا": "Mauritania", "جنوب إفريقيا": "South Africa",
   "موزمبيق": "Mozambique", "زيمبابوي": "Zimbabwe", "الكونغو": "DR Congo", "الكاميرون": "Cameroon", "بوتسوانا": "Botswana", "ناميبيا": "Namibia", "هونغ كونغ": "China",
+  // 2026-11-20: Taiwan and South Asia (their own press joined the sources).
+  "تايوان": "Taiwan", "بنغلاديش": "Bangladesh", "سريلانكا": "Sri Lanka", "سري لانكا": "Sri Lanka",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
@@ -422,6 +424,7 @@ const STORY_STEMS = [
   ["جنوب أفريقي", "South Africa"], ["جنوب إفريقي", "South Africa"], ["الكيني", "Kenya"], ["الغاني", "Ghana"], ["الإثيوبي", "Ethiopia"], ["التنزاني", "Tanzania"],
   ["الأوغندي", "Uganda"], ["الرواندي", "Rwanda"], ["الأنغولي", "Angola"], ["الزامبي", "Zambia"], ["السنغالي", "Senegal"], ["الإيفواري", "Ivory Coast"], ["الموريتاني", "Mauritania"],
   ["الموزمبيقي", "Mozambique"], ["الزيمبابوي", "Zimbabwe"], ["الكونغولي", "DR Congo"], ["الكاميروني", "Cameroon"], ["البوتسواني", "Botswana"], ["الناميبي", "Namibia"],
+  ["التايواني", "Taiwan"], ["الباكستاني", "Pakistan"], ["البنغلاديشي", "Bangladesh"], ["السريلانكي", "Sri Lanka"], ["الكوري الجنوبي", "South Korea"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -432,7 +435,8 @@ const PHOTO_PLACES = {
   Egypt: ["Egypt", "Cairo", "Alexandria", "Suez", "Port Said"], Qatar: ["Qatar", "Doha", "Ras Laffan"], Kuwait: ["Kuwait"], Oman: ["Oman", "Muscat"], Bahrain: ["Bahrain", "Manama"],
   Iraq: ["Iraq", "Baghdad", "Basra"], Iran: ["Iran", "Tehran"], Jordan: ["Jordan", "Amman"], Lebanon: ["Lebanon", "Beirut"], Syria: ["Syria", "Damascus"], Yemen: ["Yemen", "Aden"],
   Israel: ["Israel", "Eilat", "Haifa", "Tel Aviv"], Turkey: ["Turkey", "Istanbul", "Ankara"], Morocco: ["Morocco", "Casablanca", "Rabat"], Algeria: ["Algeria", "Algiers"], Tunisia: ["Tunisia"], Libya: ["Libya", "Tripoli"], Sudan: ["Sudan", "Khartoum"],
-  China: ["China", "Shanghai", "Beijing", "Shenzhen", "Guangzhou", "Hong Kong"], Japan: ["Japan", "Tokyo", "Yokohama", "Osaka"], India: ["India", "Mumbai", "New Delhi"], "South Korea": ["South Korea", "Seoul", "Busan"], Pakistan: ["Pakistan", "Karachi"],
+  China: ["China", "Shanghai", "Beijing", "Shenzhen", "Guangzhou", "Hong Kong"], Japan: ["Japan", "Tokyo", "Yokohama", "Osaka"], India: ["India", "Mumbai", "New Delhi"], "South Korea": ["South Korea", "Seoul", "Busan"], Pakistan: ["Pakistan", "Karachi", "Lahore", "Islamabad"],
+  Taiwan: ["Taiwan", "Taipei", "Kaohsiung", "Hsinchu"], Bangladesh: ["Bangladesh", "Dhaka", "Chittagong"], "Sri Lanka": ["Sri Lanka", "Colombo"],
   Indonesia: ["Indonesia", "Jakarta"], Malaysia: ["Malaysia", "Kuala Lumpur"], Singapore: ["Singapore"], Russia: ["Russia", "Moscow", "Saint Petersburg"], Ukraine: ["Ukraine", "Kyiv", "Kiev"],
   Germany: ["Germany", "Berlin", "Hamburg", "Frankfurt", "Munich"], France: ["France", "Paris", "Marseille"], "United Kingdom": ["United Kingdom", "England", "Scotland", "Wales", "London", "Solent", "Southampton"],
   Italy: ["Italy", "Rome", "Milan"], Spain: ["Spain", "Madrid", "Barcelona"], Netherlands: ["Netherlands", "Rotterdam", "Amsterdam"], Belgium: ["Belgium", "Brussels", "Antwerp"], Austria: ["Austria", "Vienna", "Schwechat"], Switzerland: ["Switzerland", "Geneva", "Zurich", "Vevey"],
@@ -458,7 +462,7 @@ const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgiu
 const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland"];
 const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vietnam", "Thailand"];
 const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];
-const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
+const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", "Taiwan", "Bangladesh", "Sri Lanka", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
 const LATIN_AMERICA = ["Mexico", "Brazil", "Argentina", "Chile", "Colombia", "Peru"];
 const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia"];
 const MIDDLE_EAST = [...GULF, "Egypt", "Jordan", "Lebanon", "Syria", "Yemen", "Israel", "Turkey"];

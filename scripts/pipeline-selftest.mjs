@@ -407,6 +407,14 @@ check(
 );
 check("Poland is read (Notes from Poland joined the same night)", [...countriesNamed("المركزي البولندي يخفض الفائدة")], ["بولند"]);
 check(
+  "Bangladesh and Sri Lanka are read, and a Bangladeshi and a Sri Lankan rate decision are two events",
+  [[...countriesNamed("المركزي البنغلاديشي يرفع الفائدة")], [...countriesNamed("التضخم في سريلانكا يتراجع")], Boolean(repeatsRecent("المركزي البنغلاديشي يرفع الفائدة إلى 10%", ["المركزي السريلانكي يرفع الفائدة إلى 10%"]))],
+  [["بنغلاديش"], ["سريلانك"], false],
+);
+check("a story's 2500000000 stands in a Russian «2,5 млрд», 1.2 trillion in «1,2 трлн руб.», 300000 in «300 тыс.»", [
+  ungroundedNumbers("ارتفع العجز إلى 2500000000 روبل والإنفاق إلى 1.2 تريليون روبل وبلغ عدد العاملين 300000", ["Дефицит вырос до 2,5 млрд руб., расходы — до 1,2 трлн руб., занято 300 тыс. человек"]),
+], [[]]);
+check(
   "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
   [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],
   [null, true],

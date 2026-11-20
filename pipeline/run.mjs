@@ -114,9 +114,11 @@ const REJECT_RETRY_HOURS = 12;
  * Each candidate line is about 300 characters, so the editor reads about 36,000 more. 785 the same evening, when
  * eleven Indonesian and African feeds joined (in Indonesian and French among them): they took 65 places, given back.
  * 830 the same night, for China's state media and seven more African feeds (47 items at most by their maxItems);
- * 865 for six Indian and European feeds (34 at most).
+ * 865 for six Indian and European feeds (34 at most). 920 since 2026-11-20, for ten Russian, Pakistani, Bangladeshi,
+ * Sri Lankan, Taiwanese and Korean feeds: measured that afternoon (1,225 fresh items before, 1,279 after), they took 54
+ * places, two from each of the busiest current feeds; 920 gives them back.
  */
-const CANDIDATE_CAP = 865;
+const CANDIDATE_CAP = 920;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;
