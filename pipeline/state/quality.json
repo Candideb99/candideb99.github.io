@@ -470,105 +470,121 @@
       "read": 3,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-21",
+      "published": 10,
+      "news": 8,
+      "styleFaultsPerStory": 0,
+      "corrections": 0,
+      "read": 3,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-19T16:38:57.220Z",
+  "updatedAt": "2026-11-21T15:32:31.879Z",
   "week": {
     "published": 60,
-    "news": 52,
+    "news": 51,
     "revisedShare": 1,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.33,
+    "styleWarningsPerStory": 0.27,
     "corrections": 1,
     "usefulness": {
       "withLessons": {
-        "stories": 43,
-        "words": 429,
-        "keyFacts": 3.4
+        "stories": 44,
+        "words": 428,
+        "keyFacts": 3.3
       },
       "control": {
-        "stories": 9,
-        "words": 454,
-        "keyFacts": 3.7
+        "stories": 6,
+        "words": 590,
+        "keyFacts": 4.2
       }
     },
     "precheck": {
-      "checked": 58,
-      "clean": 53,
-      "repaired": 4,
+      "checked": 57,
+      "clean": 54,
+      "repaired": 2,
       "held": 1,
-      "errorsFound": 5,
-      "unsourcedCut": 0,
+      "errorsFound": 3,
+      "unsourcedCut": 1,
       "heldTitles": [
         "وكالة الطاقة الدولية: استهلاك مراكز البيانات للكهرباء قد يتضاعف بحلول 2030"
       ]
     },
     "outcomes": {
-      "repairedBeforePublication": 4,
+      "repairedBeforePublication": 2,
       "correctionsVerifiedClean": 1,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 1,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 25,
-      "clean": 16,
+      "read": 21,
+      "clean": 13,
       "corrected": 1,
       "stands": 0,
       "refused": 0,
-      "listed": 8,
+      "listed": 7,
       "unverifiable": 0,
-      "confirmedPerStory": 0.04,
+      "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 20,
-        "confirmedPerStory": 0.05
+        "read": 17,
+        "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 5,
+        "read": 4,
         "confirmedPerStory": 0
       }
     },
     "runs": {
       "count": 24,
-      "written": 49,
-      "refused": 5,
-      "callsPerStory": 25.1,
-      "tokensPerStory": 490296,
-      "costPerStory": 3.96,
+      "written": 45,
+      "refused": 4,
+      "callsPerStory": 26.2,
+      "tokensPerStory": 526253,
+      "costPerStory": 4.15,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": []
+    "recurring": [
+      {
+        "what": "newsroom: skipped: nothing readable in the report's pages",
+        "stories": 2,
+        "examples": []
+      }
+    ]
   },
   "weekBefore": {
-    "published": 99,
-    "news": 82,
+    "published": 93,
+    "news": 78,
     "revisedShare": 0.99,
-    "styleFaultsPerStory": 0.01,
-    "styleWarningsPerStory": 0.9,
+    "styleFaultsPerStory": 0,
+    "styleWarningsPerStory": 0.71,
     "corrections": 2,
     "usefulness": {
       "withLessons": {
-        "stories": 66,
-        "words": 474,
-        "keyFacts": 4.1
+        "stories": 58,
+        "words": 466,
+        "keyFacts": 3.9
       },
       "control": {
-        "stories": 15,
-        "words": 449,
+        "stories": 20,
+        "words": 442,
         "keyFacts": 3.5
       }
     },
     "precheck": {
-      "checked": 92,
-      "clean": 73,
-      "repaired": 19,
+      "checked": 87,
+      "clean": 71,
+      "repaired": 16,
       "held": 0,
-      "errorsFound": 21,
+      "errorsFound": 18,
       "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 21,
+      "repairedBeforePublication": 18,
       "correctionsVerifiedClean": 2,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
@@ -576,19 +592,19 @@
     },
     "secondLook": {
       "read": 42,
-      "clean": 33,
+      "clean": 30,
       "corrected": 2,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 10,
       "unverifiable": 0,
       "confirmedPerStory": 0.05,
       "withLessons": {
-        "read": 32,
+        "read": 31,
         "confirmedPerStory": 0.06
       },
       "claudeWithout": {
-        "read": 10,
+        "read": 11,
         "confirmedPerStory": 0
       }
     },
@@ -659,7 +675,7 @@
     }
   },
   "evidence": {
-    "pairs": 65,
+    "pairs": 69,
     "vsKept": {
       "n": 0,
       "better": 0,
