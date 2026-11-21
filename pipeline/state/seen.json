@@ -1,203 +1,6 @@
 {
   "version": 1,
   "items": {
-    "7d7189cdf1f3d46e": {
-      "at": "2026-10-30T16:10:40.104Z",
-      "decision": "skipped",
-      "title": "IFDP Paper: When and for Whom Does the Sovereign-Bank Nexus Matter? Evidence from Post-Crisis Europe"
-    },
-    "fe6b4fc501737788": {
-      "at": "2026-10-30T16:24:02.704Z",
-      "decision": "published",
-      "slug": "oil-futures-overstate-expected-prices-wartime-4c6e28",
-      "title": "FEDS Note: Convenience Yields, Risk Premiums, and the Interpretation of Oil Futures Prices During Times of Geopolitical Conflict"
-    },
-    "eb31593ba6913554": {
-      "at": "2026-10-30T18:15:51.779Z",
-      "decision": "rejected",
-      "title": "زورق سريع ولغم لاصق.. أول هجوم من نوعه في هرمز خلال حرب إيران",
-      "strikes": 1
-    },
-    "95c73733e58f4103": {
-      "at": "2026-10-30T18:15:51.779Z",
-      "decision": "rejected",
-      "title": "مرصد هرمز | سفينتان فقط تعبران اليوم.. وتحركات قطرية لتهدئة المضيق",
-      "strikes": 1
-    },
-    "41ee8f49166d726d": {
-      "at": "2026-10-30T18:15:51.779Z",
-      "decision": "rejected",
-      "title": "Iran hits Hormuz tanker with limpet mines in apparent tactical shift",
-      "strikes": 1
-    },
-    "06b68c63c5ea6610": {
-      "at": "2026-10-30T18:15:51.779Z",
-      "decision": "rejected",
-      "title": "Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz",
-      "strikes": 1
-    },
-    "e90aea9e6f220839": {
-      "at": "2026-10-30T18:15:51.779Z",
-      "decision": "rejected",
-      "title": "Brent Hits $117 as Tanker Catches Fire in Strait of Hormuz",
-      "strikes": 1
-    },
-    "416d4a5c586eccae": {
-      "at": "2026-10-30T18:27:34.748Z",
-      "decision": "published",
-      "slug": "fed-officials-logan-musalem-more-rate-hikes-249b0d",
-      "title": "Fed’s Logan Sees Two More Hikes, But Says Pace Can Be Gradual"
-    },
-    "53785dd961581b4a": {
-      "at": "2026-10-30T18:27:34.748Z",
-      "decision": "published",
-      "slug": "fed-officials-logan-musalem-more-rate-hikes-249b0d",
-      "title": "Fed’s Musalem Says More Rate Hikes Needed Soon to Tame Inflation"
-    },
-    "f699365bef72ac89": {
-      "at": "2026-10-30T18:27:34.748Z",
-      "decision": "published",
-      "slug": "fed-officials-logan-musalem-more-rate-hikes-249b0d",
-      "title": "Fed officials are already saying they’ll need to get back to hiking rates"
-    },
-    "84ae6a86db608a8b": {
-      "at": "2026-10-30T18:27:34.748Z",
-      "decision": "published",
-      "slug": "fed-officials-logan-musalem-more-rate-hikes-249b0d",
-      "title": "Fed/Musalem: Yakında ilave sıkılaşma gerekecek"
-    },
-    "eafe5cdf3a87dbc2": {
-      "at": "2026-10-30T18:40:43.376Z",
-      "decision": "published",
-      "slug": "gold-falls-below-4000-rate-hike-bets-a278bb",
-      "title": "الذهب يتراجع 2 % ويصل لأدنى مستوى منذ نوفمبر 2025"
-    },
-    "2646d270c9fbcf0e": {
-      "at": "2026-10-30T18:40:43.376Z",
-      "decision": "published",
-      "slug": "gold-falls-below-4000-rate-hike-bets-a278bb",
-      "title": "Altın fiyatlarında sert düşüş: Son 1 yılın en düşük seviyesinde"
-    },
-    "70cbca6bb9ccc687": {
-      "at": "2026-10-30T18:40:43.376Z",
-      "decision": "published",
-      "slug": "gold-falls-below-4000-rate-hike-bets-a278bb",
-      "title": "الذهب يتراجع إلى أدنى مستوى منذ يوليو تحت ضغط الفائدة الأميركية"
-    },
-    "5a4566c6de00b6db": {
-      "at": "2026-10-30T18:40:43.376Z",
-      "decision": "published",
-      "slug": "gold-falls-below-4000-rate-hike-bets-a278bb",
-      "title": "الذهب يهبط دون 4 آلاف دولار للأونصة ويتجه لثاني خسارة شهرية"
-    },
-    "2f35d8a8234b03e1": {
-      "at": "2026-10-30T18:40:43.376Z",
-      "decision": "published",
-      "slug": "gold-falls-below-4000-rate-hike-bets-a278bb",
-      "title": "Rising oil prices and inflation weigh on gold"
-    },
-    "175e0aef21b2b21d": {
-      "at": "2026-10-30T18:51:52.984Z",
-      "decision": "published",
-      "slug": "uae-central-bank-fines-foreign-bank-branch-bc9e7e",
-      "title": "\"المركزي الإماراتي\" يغرّم فرع بنك أجنبي 200 مليون درهم"
-    },
-    "4bf12dc7d930b267": {
-      "at": "2026-10-30T18:51:52.984Z",
-      "decision": "published",
-      "slug": "uae-central-bank-fines-foreign-bank-branch-bc9e7e",
-      "title": "UAE fines foreign bank branch Dh200 million for breaching money laundering laws"
-    },
-    "24d049e57d7f6262": {
-      "at": "2026-10-30T18:51:52.984Z",
-      "decision": "published",
-      "slug": "uae-central-bank-fines-foreign-bank-branch-bc9e7e",
-      "title": "Foreign bank branch in UAE fined Dh200 million"
-    },
-    "722edd30b8592c2c": {
-      "at": "2026-10-30T22:39:13.961Z",
-      "decision": "published",
-      "slug": "egypt-budget-deficit-narrows-first-two-months-f8c9f8",
-      "title": "تقلص عجز موازنة مصر إلى 1.3% في أول شهرين من العام المالي الجاري"
-    },
-    "6fcf304321e34c0a": {
-      "at": "2026-10-30T22:39:13.961Z",
-      "decision": "published",
-      "slug": "egypt-budget-deficit-narrows-first-two-months-f8c9f8",
-      "title": "إجمالى المصروفات بموازنة مصر تزيد 12.5% خلال أول شهرين من العام المالي الجاري"
-    },
-    "a0463b52579e7de8": {
-      "at": "2026-10-30T22:39:13.961Z",
-      "decision": "published",
-      "slug": "egypt-budget-deficit-narrows-first-two-months-f8c9f8",
-      "title": "عجز موازنة مصر يتقلص إلى 1.3% من الناتج المحلي الإجمالي خلال أول شهرين من العام المالي الجاري"
-    },
-    "30ec57c5da742b83": {
-      "at": "2026-10-30T22:39:13.961Z",
-      "decision": "published",
-      "slug": "egypt-budget-deficit-narrows-first-two-months-f8c9f8",
-      "title": "82% من إجمالي الإيرادات العامة لموازنة مصر تأتي من الضرائب"
-    },
-    "e98e6b48992c2842": {
-      "at": "2026-10-30T22:53:16.512Z",
-      "decision": "published",
-      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
-      "title": "النفط يصعد إلى أعلى تسوية منذ نيسان... وتوترات جديدة في هرمز"
-    },
-    "7b2cabe5866ebf40": {
-      "at": "2026-10-30T22:53:16.512Z",
-      "decision": "published",
-      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
-      "title": "أسعار النفط تغلق مرتفعة 2 % وسط احتمال تصاعد الصراع بين أمريكا وإيران"
-    },
-    "8170cca7e23dec7c": {
-      "at": "2026-10-30T22:53:16.512Z",
-      "decision": "published",
-      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
-      "title": "Oil Traders Brace for a Wild Week as Brent Approaches $120"
-    },
-    "d68955ca74d2f10d": {
-      "at": "2026-10-30T22:53:16.512Z",
-      "decision": "published",
-      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
-      "title": "Oil prices set for sharp monthly rise on Hormuz strikes and US threat to hit Iran"
-    },
-    "a62a369bc0c1c5f4": {
-      "at": "2026-10-30T22:53:16.512Z",
-      "decision": "published",
-      "slug": "oil-highest-settlement-since-april-hormuz-tanker-3779a4",
-      "title": "قیمت نفت در آستانه ثبت چهارمین افزایش ماهانه"
-    },
-    "181a945f59ad5c86": {
-      "at": "2026-10-30T23:08:43.822Z",
-      "decision": "published",
-      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
-      "title": "أرباح «إكسون» و«شيفرون» تنتعش بفضل طفرة قطاع التكرير وارتفاع الأسعار"
-    },
-    "13f57d4157568840": {
-      "at": "2026-10-30T23:08:43.822Z",
-      "decision": "published",
-      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
-      "title": "أرباح \"إكسون موبيل\" و\"شيفرون\" تتجاوز التوقعات بدعم من التكرير"
-    },
-    "cef82bb2b3763487": {
-      "at": "2026-10-30T23:08:43.822Z",
-      "decision": "published",
-      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
-      "title": "ExxonMobil and Chevron post bumper profits and warn on diesel supplies"
-    },
-    "d3a840cafbadbc99": {
-      "at": "2026-10-30T23:08:43.823Z",
-      "decision": "published",
-      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
-      "title": "Chevron Profits Nearly Triple to $9.9 Billion"
-    },
-    "a99670fd3dcd1c96": {
-      "at": "2026-10-30T23:08:43.823Z",
-      "decision": "published",
-      "slug": "exxon-chevron-q3-refining-profits-beat-069e13",
-      "title": "ExxonMobil Profits Double to $15.4 Billion"
-    },
     "3642ec9f2823da91": {
       "at": "2026-10-31T06:11:27.356Z",
       "decision": "published",
@@ -5326,6 +5129,36 @@
       "decision": "published",
       "slug": "gold-heads-for-worst-week-since-march-96809a",
       "title": "Gold set for worst week since March on hawkish Fed, AI sell-off"
+    },
+    "1380648aadbb198c": {
+      "at": "2026-11-21T01:13:14.438Z",
+      "decision": "published",
+      "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
+      "title": "Stocks Skid Into a Correction, as A.I. Worries Intensify"
+    },
+    "4dfd121c6c304146": {
+      "at": "2026-11-21T01:13:14.438Z",
+      "decision": "published",
+      "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
+      "title": "Tech stock sell-off drags markets down as Anthropic shares slide"
+    },
+    "91964bf33a763087": {
+      "at": "2026-11-21T01:13:14.438Z",
+      "decision": "published",
+      "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
+      "title": "S&P, Dow Slide Into Correction as Investors Dump Tech"
+    },
+    "6eb83dcfe68d7e65": {
+      "at": "2026-11-21T01:13:14.438Z",
+      "decision": "published",
+      "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
+      "title": "US tech stocks plunge into bear market in worst week since Covid-19 crisis"
+    },
+    "438e086b17cba2d0": {
+      "at": "2026-11-21T01:13:14.438Z",
+      "decision": "published",
+      "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
+      "title": "ناسداك يخسر 5% والمؤشرات الأمريكية تتكبد أسوأ أسبوع منذ أبريل 2025"
     }
   }
 }

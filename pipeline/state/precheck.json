@@ -18269,6 +18269,34 @@
           ]
         }
       ]
+    },
+    "sp500-dow-enter-correction-ai-selloff-d281d3": {
+      "at": "2026-11-21T01:13:14.428Z",
+      "title": "«ستاندرد آند بورز 500» الأمريكي يدخل منطقة التصحيح بهبوط 3.7% تقوده أسهم الرقائق",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [
