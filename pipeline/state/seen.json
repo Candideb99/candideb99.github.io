@@ -1,65 +1,11 @@
 {
   "version": 1,
   "items": {
-    "3642ec9f2823da91": {
-      "at": "2026-10-31T06:11:27.356Z",
-      "decision": "published",
-      "slug": "saudi-oil-exports-rise-october-trackers-59245b",
-      "title": "Saudi oil keeps flowing despite attacks, say trackers: Why counting barrels is not easy"
-    },
-    "188561d1419225b5": {
-      "at": "2026-10-31T06:11:27.356Z",
-      "decision": "published",
-      "slug": "saudi-oil-exports-rise-october-trackers-59245b",
-      "title": "ارتفاع صادرات النفط السعودية في تشرين الأول رغم الهجمات"
-    },
     "c4ca1cf8bfec0f87": {
       "at": "2026-11-01T06:47:16.823Z",
       "decision": "published",
       "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
       "title": "\"فيتش\" تحوّل نظرتها لفرنسا إلى سلبية وسط تفاقم أزمة الديون"
-    },
-    "96519c7ac8be7aec": {
-      "at": "2026-10-31T06:11:30.045Z",
-      "decision": "rejected",
-      "title": "France Gets Budget Warning as Fitch Turns Negative on Rating",
-      "strikes": 1
-    },
-    "6f3327b6dcb8fbf2": {
-      "at": "2026-10-31T06:11:30.045Z",
-      "decision": "rejected",
-      "title": "Fitch Fransa'nın kredi notu görünümünü negatife revize etti",
-      "strikes": 1
-    },
-    "99d61d2d5d428521": {
-      "at": "2026-10-31T06:17:45.371Z",
-      "decision": "rejected",
-      "title": "European Gas Tops 101 Euros for First Time Since 2022",
-      "strikes": 1
-    },
-    "597088589db71a35": {
-      "at": "2026-10-31T06:17:45.372Z",
-      "decision": "rejected",
-      "title": "سعر الغاز الأوروبي يعاود الصعود فوق 100 يورو مع دراسة ترمب خياراته بشأن إيران",
-      "strikes": 1
-    },
-    "c54e56bdc0cc413b": {
-      "at": "2026-10-31T06:34:30.456Z",
-      "decision": "published",
-      "slug": "uae-caps-einvoicing-fines-50000-dirhams-3da2f9",
-      "title": "UAE limits e-invoicing fines at Dh50,000, removes Dh1,000 daily penalty—how it works now"
-    },
-    "633d6ec0d18b0388": {
-      "at": "2026-10-31T06:34:30.456Z",
-      "decision": "published",
-      "slug": "uae-caps-einvoicing-fines-50000-dirhams-3da2f9",
-      "title": "UAE updates eInvoicing penalties with AED50,000 cap for implementation breaches"
-    },
-    "9b5f55c59a4ebc2d": {
-      "at": "2026-10-31T06:34:30.456Z",
-      "decision": "published",
-      "slug": "uae-caps-einvoicing-fines-50000-dirhams-3da2f9",
-      "title": "UAE updates e-invoicing penalty rules ahead of rollout"
     },
     "3aa81cdaf986ecc2": {
       "at": "2026-10-31T10:11:53.684Z",
@@ -5159,6 +5105,72 @@
       "decision": "published",
       "slug": "sp500-dow-enter-correction-ai-selloff-d281d3",
       "title": "ناسداك يخسر 5% والمؤشرات الأمريكية تتكبد أسوأ أسبوع منذ أبريل 2025"
+    },
+    "e8071dec0cb02f8a": {
+      "at": "2026-11-21T08:03:53.556Z",
+      "decision": "published",
+      "slug": "hormuz-ship-transits-fall-iran-attacks-853a2b",
+      "title": "تراجع شحنات النفط عبر مضيق هرمز 15 % مع تصاعد الهجمات الإيرانية على السفن"
+    },
+    "d2ef14e6431d9b4a": {
+      "at": "2026-11-21T08:03:53.556Z",
+      "decision": "published",
+      "slug": "hormuz-ship-transits-fall-iran-attacks-853a2b",
+      "title": "Oil shipped through Hormuz falls as Iranian strikes increase"
+    },
+    "5d6e34d43e711a29": {
+      "at": "2026-11-21T08:03:53.556Z",
+      "decision": "published",
+      "slug": "hormuz-ship-transits-fall-iran-attacks-853a2b",
+      "title": "هجمات إيران على السفن.. وقائع بحرية تناقض روايات \"الحرس الثوري\""
+    },
+    "c4b03c214d7e1c33": {
+      "at": "2026-11-21T08:03:53.556Z",
+      "decision": "published",
+      "slug": "hormuz-ship-transits-fall-iran-attacks-853a2b",
+      "title": "Iran exaggerates Hormuz sea mine threat but uses fear to tighten grip"
+    },
+    "daedb577d06d5776": {
+      "at": "2026-11-21T08:16:37.444Z",
+      "decision": "published",
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "Nvidia Said to Face S.E.C. Probe Into Its Accounting Practices"
+    },
+    "ca54f2dba1cdef06": {
+      "at": "2026-11-21T08:16:37.444Z",
+      "decision": "published",
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "Nvidia Plunges as SEC Probe Deepens AI Market Selloff | Closing Bell"
+    },
+    "2badeaf032cd052d": {
+      "at": "2026-11-21T08:16:37.444Z",
+      "decision": "published",
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "تقرير: هيئة الأوراق المالية الأميركية تدقق في حسابات \"إنفيديا\""
+    },
+    "3cd9456bb45fdb97": {
+      "at": "2026-11-21T08:16:37.444Z",
+      "decision": "published",
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "Nvidia'da muhasebe incelemesi iddiası: Hisselerde yüzde 14'lük çöküş"
+    },
+    "dc970c88db822a52": {
+      "at": "2026-11-21T08:16:37.444Z",
+      "decision": "published",
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "Nvidia stock plunges 14%, wraps up longest weekly losing streak since 2008 financial crisis"
+    },
+    "2025a4d74c694968": {
+      "at": "2026-11-21T08:29:09.929Z",
+      "decision": "published",
+      "slug": "qia-brookfield-germany-defense-investment-024970",
+      "title": "السيادي القطري و\"بروكفيلد\" يستهدفان استثمار 15 مليار يورو في قطاع الدفاع الألماني"
+    },
+    "f23cf9dc3524937f": {
+      "at": "2026-11-21T08:29:09.929Z",
+      "decision": "published",
+      "slug": "qia-brookfield-germany-defense-investment-024970",
+      "title": "قطر تعتزم استثمار 15 مليار يورو إضافية في ألمانيا خلال 5 سنوات"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-21T01:16:31.970Z",
+  "updatedAt": "2026-11-21T08:32:32.775Z",
   "sources": [
     {
       "id": "fed",
       "name": "الاحتياطي الفيدرالي الأمريكي",
       "what": "جدول اجتماعات لجنة السوق المفتوحة",
       "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-11-17"
     },
     {
@@ -14,7 +14,7 @@
       "name": "الاحتياطي الفيدرالي الأمريكي",
       "what": "مواعيد نشر محاضر الاجتماعات",
       "url": "https://www.federalreserve.gov/newsevents/calendar.htm",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2026-12-30"
     },
     {
@@ -22,7 +22,7 @@
       "name": "البنك المركزي الأوروبي",
       "what": "جدول اجتماعات مجلس المحافظين",
       "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2028-12-07"
     },
     {
@@ -30,7 +30,7 @@
       "name": "بنك إنجلترا",
       "what": "مواعيد لجنة السياسة النقدية",
       "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-12-16"
     },
     {
@@ -38,7 +38,7 @@
       "name": "بنك اليابان",
       "what": "جدول اجتماعات السياسة النقدية",
       "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-12-17"
     },
     {
@@ -46,33 +46,31 @@
       "name": "البنك المركزي التركي",
       "what": "تقويم لجنة السياسة النقدية",
       "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Calendar",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-06-10"
     },
     {
       "id": "bls-cpi",
       "name": "مكتب إحصاءات العمل الأمريكي",
       "what": "مواعيد إصدار مؤشر أسعار المستهلكين",
-      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10",
-      "via": "عن نسخة بنك الاحتياطي الفيدرالي في سانت لويس",
-      "readAt": "2026-11-21T01:16:31.970Z",
-      "until": "2026-12-10"
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "readAt": "2026-11-21T08:32:32.775Z",
+      "until": "2027-12-10"
     },
     {
       "id": "bls-jobs",
       "name": "مكتب إحصاءات العمل الأمريكي",
       "what": "مواعيد إصدار تقرير الوظائف",
-      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50",
-      "via": "عن نسخة بنك الاحتياطي الفيدرالي في سانت لويس",
-      "readAt": "2026-11-21T01:16:31.970Z",
-      "until": "2026-12-04"
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "readAt": "2026-11-21T08:32:32.775Z",
+      "until": "2027-12-03"
     },
     {
       "id": "bea",
       "name": "مكتب التحليل الاقتصادي الأمريكي",
       "what": "جدول إصدار الناتج المحلي ونفقات الاستهلاك الشخصي",
       "url": "https://www.bea.gov/news/schedule",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-12-22"
     },
     {
@@ -80,7 +78,7 @@
       "name": "مكتب الإحصاء الأوروبي (يوروستات)",
       "what": "تقويم الإصدارات: التقديرات الأولية للتضخم والناتج المحلي",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
-      "readAt": "2026-11-21T01:16:31.970Z",
+      "readAt": "2026-11-21T08:32:32.775Z",
       "until": "2027-11-04"
     },
     {
@@ -131,7 +129,7 @@
       "org": "مكتب إحصاءات العمل الأمريكي",
       "kind": "data",
       "time": "13:30 UTC",
-      "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "source": "bls-jobs"
     },
     {
@@ -171,7 +169,7 @@
       "org": "مكتب إحصاءات العمل الأمريكي",
       "kind": "data",
       "time": "13:30 UTC",
-      "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "source": "bls-cpi"
     },
     {
@@ -255,6 +253,26 @@
       "time": "10:00 UTC",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
       "source": "eurostat"
+    },
+    {
+      "date": "2027-01-08",
+      "title": "تقرير الوظائف الأمريكي عن ديسمبر",
+      "short": "الوظائف الأمريكية عن ديسمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-01-13",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن ديسمبر",
+      "short": "التضخم الأمريكي عن ديسمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-01-21",
@@ -348,6 +366,26 @@
       "source": "ecb"
     },
     {
+      "date": "2027-02-05",
+      "title": "تقرير الوظائف الأمريكي عن يناير",
+      "short": "الوظائف الأمريكية عن يناير",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-02-11",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن يناير",
+      "short": "التضخم الأمريكي عن يناير",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
+    },
+    {
       "date": "2027-02-25",
       "title": "الناتج المحلي الأمريكي للربع الرابع (التقدير الثاني)",
       "short": "الناتج المحلي الأمريكي للربع الرابع",
@@ -377,6 +415,26 @@
       "time": "10:00 UTC",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
       "source": "eurostat"
+    },
+    {
+      "date": "2027-03-05",
+      "title": "تقرير الوظائف الأمريكي عن فبراير",
+      "short": "الوظائف الأمريكية عن فبراير",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-03-10",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن فبراير",
+      "short": "التضخم الأمريكي عن فبراير",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-03-17",
@@ -458,6 +516,26 @@
       "time": "09:00 UTC",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
       "source": "eurostat"
+    },
+    {
+      "date": "2027-04-02",
+      "title": "تقرير الوظائف الأمريكي عن مارس",
+      "short": "الوظائف الأمريكية عن مارس",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-04-13",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن مارس",
+      "short": "التضخم الأمريكي عن مارس",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-04-22",
@@ -551,6 +629,26 @@
       "source": "eurostat"
     },
     {
+      "date": "2027-05-07",
+      "title": "تقرير الوظائف الأمريكي عن أبريل",
+      "short": "الوظائف الأمريكية عن أبريل",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-05-12",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن أبريل",
+      "short": "التضخم الأمريكي عن أبريل",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
+    },
+    {
       "date": "2027-05-27",
       "title": "الناتج المحلي الأمريكي للربع الأول (التقدير الثاني)",
       "short": "الناتج المحلي الأمريكي للربع الأول",
@@ -582,6 +680,16 @@
       "source": "eurostat"
     },
     {
+      "date": "2027-06-04",
+      "title": "تقرير الوظائف الأمريكي عن مايو",
+      "short": "الوظائف الأمريكية عن مايو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
       "date": "2027-06-09",
       "title": "قرار الفائدة: الاحتياطي الفيدرالي الأمريكي",
       "short": "الفيدرالي: قرار الفائدة",
@@ -611,6 +719,16 @@
       "time": "12:15 UTC",
       "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
       "source": "ecb"
+    },
+    {
+      "date": "2027-06-10",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن مايو",
+      "short": "التضخم الأمريكي عن مايو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-06-11",
@@ -661,6 +779,26 @@
       "time": "09:00 UTC",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
       "source": "eurostat"
+    },
+    {
+      "date": "2027-07-02",
+      "title": "تقرير الوظائف الأمريكي عن يونيو",
+      "short": "الوظائف الأمريكية عن يونيو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-07-14",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن يونيو",
+      "short": "التضخم الأمريكي عن يونيو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-07-22",
@@ -745,6 +883,26 @@
       "source": "eurostat"
     },
     {
+      "date": "2027-08-06",
+      "title": "تقرير الوظائف الأمريكي عن يوليو",
+      "short": "الوظائف الأمريكية عن يوليو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-08-11",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن يوليو",
+      "short": "التضخم الأمريكي عن يوليو",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
+    },
+    {
       "date": "2027-08-25",
       "title": "الناتج المحلي الأمريكي للربع الثاني (التقدير الثاني)",
       "short": "الناتج المحلي الأمريكي للربع الثاني",
@@ -776,6 +934,16 @@
       "source": "eurostat"
     },
     {
+      "date": "2027-09-03",
+      "title": "تقرير الوظائف الأمريكي عن أغسطس",
+      "short": "الوظائف الأمريكية عن أغسطس",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
       "date": "2027-09-09",
       "title": "قرار الفائدة: البنك المركزي الأوروبي",
       "short": "المركزي الأوروبي: قرار الفائدة",
@@ -785,6 +953,16 @@
       "time": "12:15 UTC",
       "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
       "source": "ecb"
+    },
+    {
+      "date": "2027-09-14",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن أغسطس",
+      "short": "التضخم الأمريكي عن أغسطس",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-09-15",
@@ -846,6 +1024,26 @@
       "time": "09:00 UTC",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
       "source": "eurostat"
+    },
+    {
+      "date": "2027-10-08",
+      "title": "تقرير الوظائف الأمريكي عن سبتمبر",
+      "short": "الوظائف الأمريكية عن سبتمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-10-14",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن سبتمبر",
+      "short": "التضخم الأمريكي عن سبتمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-10-27",
@@ -930,6 +1128,26 @@
       "source": "boe"
     },
     {
+      "date": "2027-11-05",
+      "title": "تقرير الوظائف الأمريكي عن أكتوبر",
+      "short": "الوظائف الأمريكية عن أكتوبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "12:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-11-10",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن أكتوبر",
+      "short": "التضخم الأمريكي عن أكتوبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
+    },
+    {
       "date": "2027-11-17",
       "title": "قرار الفائدة: الاحتياطي الفيدرالي الأمريكي",
       "short": "الفيدرالي: قرار الفائدة",
@@ -960,6 +1178,26 @@
       "time": "13:30 UTC",
       "url": "https://www.bea.gov/news/schedule",
       "source": "bea"
+    },
+    {
+      "date": "2027-12-03",
+      "title": "تقرير الوظائف الأمريكي عن نوفمبر",
+      "short": "الوظائف الأمريكية عن نوفمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "source": "bls-jobs"
+    },
+    {
+      "date": "2027-12-10",
+      "title": "التضخم الأمريكي (مؤشر أسعار المستهلكين) عن نوفمبر",
+      "short": "التضخم الأمريكي عن نوفمبر",
+      "org": "مكتب إحصاءات العمل الأمريكي",
+      "kind": "data",
+      "time": "13:30 UTC",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "source": "bls-cpi"
     },
     {
       "date": "2027-12-16",

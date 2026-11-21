@@ -18297,6 +18297,135 @@
           "noted": []
         }
       ]
+    },
+    "hormuz-ship-transits-fall-iran-attacks-853a2b": {
+      "at": "2026-11-21T08:03:53.542Z",
+      "title": "عبور السفن في مضيق هرمز يتراجع 15% مع تصاعد الهجمات الإيرانية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 33,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nvidia-shares-drop-sec-accounting-probe-22840b": {
+      "at": "2026-11-21T08:16:37.425Z",
+      "title": "سهم إنفيديا يهبط 14% مع تقارير عن تحقيق أمريكي في حساباتها",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 18,
+            "checked": 18,
+            "supported": 14,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 4,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "سهم إنفيديا يهبط 14% مع تقارير عن تحقيق أمريكي في حساباتها",
+              "quote": "تراجع سهم \"إنفيديا\" بما يصل إلى 12% إلى 128.75 دولار يوم الجمعة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبط سهم إنفيديا 14% في تعاملات الجمعة، إثر تقارير أفادت بأن هيئة الأوراق المالية والبورصات الأمريكية تحقق في الممارسات المحاسبية لصانعة الرقائق، وسط موجة بيع تضرب أسهم الذكاء الاصطناعي.",
+              "quote": "تراجع سهم \"إنفيديا\" بما يصل إلى 12% إلى 128.75 دولار يوم الجمعة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 4,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "هبوط سهم إنفيديا يوم الجمعة: 14%",
+              "quote": "تراجع سهم \"إنفيديا\" بما يصل إلى 12% إلى 128.75 دولار يوم الجمعة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 6,
+              "field": "whyItMatters",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ما دام تاريخ بدء التحقيق والعمليات التي يتناولها مجهولين، فإن هبوط السهم 14% يسعّر شكوكاً حول حسابات الشركة لا نتائج تحقيق؛ وما سيتضح عن تلك العمليات هو ما سيعيد تسعير السهم وأسهم الذكاء الاصطناعي التي امتد إليها البيع.",
+              "quote": "تراجع سهم \"إنفيديا\" بما يصل إلى 12% إلى 128.75 دولار يوم الجمعة.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "qia-brookfield-germany-defense-investment-024970": {
+      "at": "2026-11-21T08:29:09.919Z",
+      "title": "جهاز قطر للاستثمار و«بروكفيلد» يتفقان على ضخ حتى 15 مليار يورو في ألمانيا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 24,
+            "checked": 24,
+            "supported": 21,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

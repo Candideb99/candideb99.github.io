@@ -1,0 +1,514 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-21T07:45:35.606Z",
+  "durationSec": 2812,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "شحنات النفط عبر هرمز تتراجع 15% مع تصاعد الهجمات الإيرانية على السفن",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://aawsat.com/node/5343865",
+        "https://www.ft.com/content/5fbc2b9d-0360-4a1f-9e4a-3e86168cbbc5?syn-25a6b1a6=1",
+        "https://asharqbusiness.com/politics/156356/%D9%87%D8%AC%D9%85%D8%A7%D8%AA-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%B3%D9%81%D9%86-%D9%88%D9%82%D8%A7%D8%A6%D8%B9-%D8%A8%D8%AD%D8%B1%D9%8A%D8%A9-%D8%AA%D9%86%D8%A7%D9%82%D8%B6-%D8%B1%D9%88%D8%A7%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D8%B1%D8%B3-%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D9%8A/",
+        "https://www.thenationalnews.com/news/mena/2026/11/21/iran-exaggerates-hormuz-sea-mine-threat-but-uses-fear-to-tighten-grip/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والاستهلال يوضحان ما تغير: 263 سفينة بتراجع 15%، و37 ناقلة مقابل 52. لكن العنوان الفرعي يورد «محلل» بلا اسم ولا مؤسسة، فلا يعرف قارئ البطاقة من القائل. ولا يذكر العنوان ولا الاستهلال أن الأرقام أرقام عبور سفن، وأن تدفقات النفط نفسها تراجعت بنسبة أكبر إلى قرابة النصف بحسب «كبلر» (المصدر 1).",
+              "repair": "يُكتب في العنوان الفرعي «جيوفاني ستانوفو من «يو بي إس»» بدل «محلل»، ويُضاف إلى الاستهلال أو الفقرة التالية رقم «كبلر» عن تراجع تدفقات النفط إلى قرابة نصف مستوى الأسبوع الأول، مع ذكر احتمال مراجعته صعوداً."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصدر 1 يورد السبب: تصاعد الهجمات منذ أكتوبر بعد هدوء نسبي، وسبع ناقلات هوجمت الأسبوع الماضي. ويورد ردود الفعل والعواقب: تقدير ليون وتحذيره من مشكلة في توافر السفن خلال شهرين أو ثلاثة، ورقم التأمين الذي ذكره هونغ كاو. المسودة لا تحمل إلا تقدير الوتيرة وعبارة عامة عن التأمين. أما «لماذا يهمّ» فتربط الحدث بعقدة اقتصادية مفيدة، هي أن الشحنات باتت رهن استعداد المالكين للمخاطرة، لكن جملتها الأولى تقطع بسببية لم تثبت.",
+              "repair": "تُضاف وقائع المصدر 1 المذكورة منسوبة إلى أصحابها، وتُخفف الجملة الأولى في «لماذا يهمّ» إلى استنتاج محدود يقوم على ارتفاع التأمين واستمرار الهجمات."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن التراجع جاء «مع تصاعد الهجمات»، والفقرة الأولى من المتن تقدّر وتيرتها ثم تقفز إلى عدد القتلى. وتأتي زيادة أكتوبر في فقرة الخلفية، وتنتهي فقرة «العبور المظلم» على رقم خاطئ. قسم الألغام متصل بالقصة لأنه يشرح ما يردع السفن عن العبور، لكن رقم الـ27 لغماً جاء بلا دلالته التي يعطيها أوفلاهرتي: أن تهديداً ما قائم.",
+              "repair": "بعد الاستهلال تأتي فقرة واحدة تجمع تصاعد الهجمات منذ أكتوبر، والناقلات السبع، وتقدير ليون وتحذيره، ثم رقم «كبلر» وانتعاش أكتوبر مع رأي ستانوفو. تُحذف جملة القتلى أو تُنقل، ويُضاف إلى ذكر الـ27 لغماً أن أوفلاهرتي رأى فيه دليلاً على وجود تهديد ما."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«82 عبوراً من هذا النوع من أصل 308» تجعل العبور المرصود بنظام التعريف الآلي عبوراً مظلماً، خلافاً للمصدر 3. و«ووثّقت الهيئة البريطانية» تنسب إلى الهيئة ما وثّقه مركز JMIC. وتسمية «البحارة القتلى… حتى نوفمبر» تضيف فترة لا يحددها المصدر 4. والمقارنة بنسبة 80% منسوبة بحق إلى «لويدز ليست إنتليجنس»، وهي مصدر بيانات مختلف عن الهيئة البريطانية، فلا يُخلط بين الرقمين.",
+              "repair": "يُصحح رقم الـ82 كما في الملاحظات، ويُنسب التوثيق إلى مركز JMIC، وتُحذف «حتى نوفمبر» من صندوق الأرقام، ويُبقى كل رقم منسوباً إلى جهته."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد المكان (مضيق هرمز) والرقم (15%) والسياق (تصاعد الهجمات الإيرانية). والعنوان الفرعي يعرّف ستانوفو ومؤسسته «يو بي إس». والاستهلال يذكر أن الأرقام أرقام عبور السفن بحسب الهيئة البريطانية، ويذكر عدد الناقلات. وتراجع تدفقات النفط إلى قرابة النصف (كبلر) يأتي في الفقرة الثالثة مع تحفظ المراجعة صعوداً.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل ما يقدمه المصدران 1 و4: سبب التراجع (تصاعد الهجمات منذ أكتوبر، والناقلات السبع)، والعاقبة (تحذير ليون، ورقم التأمين الذي ذكره هونغ كاو)، وردود الخبراء. لكن قسم الألغام ينقصه ربط المصدر 4 بين الادعاءات وإخافة البحارة ورفع التكاليف. و«لماذا يهمّ» تبني على عقدة مفيدة، هي أن الشحنات باتت رهن استعداد المالكين للمخاطرة، لكن شرطها الثاني يعامل نقص الناقلات كأنه جارٍ.",
+              "repair": "يُضاف ربط المصدر 4 في مطلع قسم الألغام، ويُصاغ شرط «لماذا يهمّ» على أنه احتمال: «إذا تحقق نقص الناقلات…»."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يقول العنوان إن العبور تراجع «مع تصاعد الهجمات»، والفقرتان التاليتان للاستهلال تجمعان وقائع هذا التصاعد وتقدير ليون، فالعمود الفقري سليم. لكن مقارنة الـ20% منفصلة عن رقم الـ15%. وفقرة «العبور المظلم» معلقة بعيداً عن تحفظ «كبلر». وجملة «وهذا هو التعافي الذي…» تفتتح بإحالة إلى ما سبقها. ولا يقول قسم الألغام في بدايته ما صلته بتراجع العبور.",
+              "repair": "تُنقل مقارنة الـ20% إلى الاستهلال، وتُضم فقرة العبور المظلم إلى فقرة «كبلر»، ويُعاد صوغ جملة ستانوفو، ويُفتتح قسم الألغام بالربط الذي يورده المصدر 4."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "صُححت الأرقام والإسنادات: 82 من 308، والتوثيق لمركز JMIC، و27 لغماً مع دلالتها منسوبة إلى الصحيفة. لكن «المقربة من الحرس الثوري» وصف لا تذكره المصادر. و«بالهش» تُسقط «على نحو متزايد». و«مجهولة المصدر» أوسع قليلاً مما في المصدر 3، الذي يقول «مقذوفات مجهولة».",
+              "repair": "تُحذف صفة «المقربة من الحرس الثوري»، ويُعاد الاقتباس كاملاً «هشاً على نحو متزايد»، وتُكتب «مقذوفات مجهولة» كما في المصدر 3."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تثير الهجمات المستمرة مخاوف من تراجع توافر الناقلات القادرة على العمل في المنطقة، وحذّر خورخي ليون من مشكلة كبيرة في توافر السفن خلال شهرين أو ثلاثة إذا استمرت الوتيرة الحالية",
+          "source": 1
+        },
+        {
+          "fact": "تتزايد تكاليف التأمين ضد مخاطر الحرب بعد فترة من الاستقرار النسبي، وقال هونغ كاو إن تكلفة التأمين على ناقلة تعبر المضيق ارتفعت من 54 ألف دولار قبل عام إلى 64 مليون دولار",
+          "source": 1
+        },
+        {
+          "fact": "قرار العبور وتقييم مخاطره يبقيان بيد مالكي السفن، والتطمينات الأمريكية لم تولّد حماساً واسعاً للعبور لدى شركات تواجه تكاليف تأمين ضخمة، وهجمات المسيّرات والصواريخ الإيرانية مستمرة يومياً",
+          "source": 4
+        },
+        {
+          "fact": "القيادة المركزية الأمريكية تقول إن المسارات الرئيسية في المضيق نُظفت من الألغام",
+          "source": 4
+        }
+      ],
+      "slug": "hormuz-ship-transits-fall-iran-attacks-853a2b",
+      "title": "عبور السفن في مضيق هرمز يتراجع 15% مع تصاعد الهجمات الإيرانية",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "تحقيق محاسبي في إنفيديا يهوي بسهمها 14% ويدفعها إلى المرتبة الرابعة عالمياً",
+      "section": "technology",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/11/20/business/nvidia-sec-accounting.html",
+        "https://www.bloomberg.com/news/videos/2026-11-20/nvidia-plunges-on-sec-probe-closing-bell-video",
+        "https://asharqbusiness.com/companies/157258/%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D8%A7%D9%82-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%AA%D8%AF%D9%82%D9%82-%D9%81%D9%8A-%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D9%84%D8%A5%D9%86%D9%81%D9%8A%D8%AF%D9%8A%D8%A7/",
+        "https://www.dunya.com/finans/haberler/nvidiada-muhasebe-incelemesi-iddiasi-hisselerde-yuzde-14luk-cokus-haberi-848375"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدرج يحددان ما تغيّر: هبوط السهم 14% مع تقارير عن تحقيق الهيئة في الحسابات. ويحددان الحدّ الأساسي: النبأ منقول عن أشخاص مطلعين، وبدء التحقيق ونطاقه مجهولان. إنفيديا اسم معروف للقارئ العربي.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم السبب المباشر (تقرير رويترز وتساؤلات مبيعات آسيا بحسب نيويورك تايمز)، والمسودة تحمله. لكنها تُسقط ردّ الشركة والهيئة (المصدر 3)، وطبيعة إفصاح هوانغ ونتائجه، ونفي الصين، واستعداده للعودة (المصدر 3).",
+              "repair": "إضافة عدم رد إنفيديا ورفض الهيئة التعليق، وتسمية الإفصاح (علاقة خارج إطار الزواج أفضت إلى موجة بيع وخروجه من المنصب)، ونفي الصين، واستعداده للعودة مع عدم دراسة المجلس لذلك."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقوم على عنصرين: الهبوط والتحقيق، والمتن يطوّر التحقيق ثم الهبوط بترتيب معقول. لكن فقرة «فالسهم الذي خسر 22%…» تكرار. وثلاثة عناوين فرعية كثيرة على تقرير من نحو 340 كلمة. وصندوق «لماذا يهمّ» يعيد خلاصة المتن (مجهولية النطاق وامتداد البيع) مع تعميم «كلها».",
+              "repair": "حذف جملة التكرار، والاكتفاء بعنوانين فرعيين بدمج قسم «ما الذي يُعرف عن التحقيق» في الافتتاح. وحصر الصندوق في استنتاج واحد: الأسعار تعكس شكوكاً لا نتائج، وتوضيح نطاق التحقيق هو ما سيعيد تسعير السهم وأسهم الذكاء الاصطناعي المتأثرة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "نسبة 14% مأخوذة من المصدر 4 بوصفها هبوط الجمعة، ونسبة 22% محددة حتى إغلاق الخميس بدقة. لكن اشتباه المسؤولين الأمريكيين يُروى خارج إسناد «التقارير».",
+              "repair": "إعادة الاشتباه إلى صيغة «تقارير أفادت بأن مسؤولين أمريكيين اشتبهوا…» مع نفي الصين."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والدرج ما تغيّر: هبط السهم 14% مع تقارير عن تحقيق أمريكي في حسابات إنفيديا، وهي شركة معروفة. ويحدد الدرج القيد الأساسي، وهو أن تاريخ بدء التحقيق والعمليات التي يركز عليها لم يتضحا (المصدران 3 و4).",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير ما تقدمه المصادر من سياق: التساؤلات حول مبيعات الرقائق في آسيا (المصدر 1)، والتراجع 22% حتى إغلاق الخميس، وعدم رد الشركة ورفض الهيئة التعليق، وأزمة هوانغ وخروجه ونفي الصين واستعداده للعودة، وتحقيق كاليفورنيا (المصدر 3). أما صندوق «لماذا يهمّ» فيستنتج من مقدمات مسندة استنتاجاً محدوداً: السعر يعكس شكوكاً لا نتائج تحقيق، وما يتضح عن العمليات المدققة هو ما سيعيد التسعير.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن عنصري العنوان بترتيب سليم: التحقيق أولاً ثم الهبوط. لكن العنوان الفرعي «الهبوط يعمّق بيع أسهم التكنولوجيا» لا يطابق فقرتيه ويقلب السبب. وفكرة موجة البيع ترد في الدرج والمقدمة، ثم مرتين في فقرة واحدة.",
+              "repair": "تسمية القسم بما تقوله فقرتاه، مثل «خسائر السهم وبيع أسهم الذكاء الاصطناعي»، وجمع إسنادي «بلومبرغ» و«دنيا» في جملة واحدة لا تعيد المعنى."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«لكن موضوع التحقيق وتاريخ بدايته لم يتضحا بعد» تتجاوز المصادر، فالممارسات المحاسبية هي موضوع التحقيق المعلن (المصدر 3)، والمجهول هو العمليات التي يركز عليها (المصدر 4) وتاريخ بدايته (المصدر 3).",
+              "repair": "«لكن تاريخ بدء التحقيق والعمليات التي يركز عليها لم يتضحا بعد»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 6,
+      "mendIssues": [
+        "خطأ في السبب: العنوان الفرعي «الهبوط يعمّق بيع أسهم التكنولوجيا» يجعل هبوط سهم إنفيديا سبباً لتعمّق البيع في أسهم التكنولوجيا، والمصادر لا تقول ذلك. فالمصدر 2 يقول إن تحقيق الهيئة هو الذي عمّق موجة البيع في سوق الذكاء الاصطناعي («SEC Probe Deepens AI Market Selloff»)، والمصدر 4 ينسب ذلك إلى ما تردد عن شمول التحقيق الممارسات المحاسبية. ثم إن الفقرة الأولى تحت العنوان تتحدث عن خسارة السهم 22% منذ بداية العام، لا عن أسهم التكنولوجيا. الإصلاح: «خسائر السهم وبيع أسهم الذكاء الاصطناعي»، أو «التحقيق يعمّق بيع أسهم الذكاء الاصطناعي».",
+        "خطأ في الدقة: «لكن موضوع التحقيق وتاريخ بدايته لم يتضحا بعد» تجعل موضوع التحقيق مجهولاً، وهذا يناقض المقدمة نفسها. فموضوع التحقيق معروف، وهو الممارسات المحاسبية (المصدر 3). المجهول أمران: العمليات التي يركز عليها (المصدر 4)، وتاريخ بدايته (المصدر 3). الإصلاح: «لكن تاريخ بدء التحقيق والعمليات التي يركز عليها لم يتضحا بعد».",
+        "تكرار: الفقرة «ولم يقتصر أثر النبأ على سهم الشركة؛ فقد زاد ما يُتداول… حدة البيع في أسهم التكنولوجيا، بحسب «دنيا». أما «بلومبرغ» فربطت… بتعميق التحقيق موجة البيع في أسهم الذكاء الاصطناعي» تقول المعنى نفسه مرتين، وسبق أن قاله الدرج («النبأ يزيد حدة البيع في أسهم التكنولوجيا») والمقدمة («وسط موجة بيع تضرب أسهم الذكاء الاصطناعي»). الإصلاح: جملة واحدة تضيف الإسناد وحده، مثل «وربطت «بلومبرغ» في تغطيتها لإغلاق السوق الأمريكية هبوط السهم بتعميق التحقيق موجة البيع في أسهم الذكاء الاصطناعي، كما ذكرت «دنيا» أن النبأ زاد حدة البيع في أسهم التكنولوجيا»، مع حذف «ولم يقتصر أثر النبأ على سهم الشركة».",
+        "إضافة بلا مصدر: «الجهة الاتحادية التي تنظم أسواق المال في الولايات المتحدة» تعريف لا يرد في أي مصدر، والهيئة مؤسسة يعرفها قارئ خازندار. تُحذف هذه الجملة الاعتراضية.",
+        "يطوّر المتن عنصري العنوان بترتيب سليم: التحقيق أولاً ثم الهبوط. لكن العنوان الفرعي «الهبوط يعمّق بيع أسهم التكنولوجيا» لا يطابق فقرتيه ويقلب السبب. وفكرة موجة البيع ترد في الدرج والمقدمة، ثم مرتين في فقرة واحدة. — تسمية القسم بما تقوله فقرتاه، مثل «خسائر السهم وبيع أسهم الذكاء الاصطناعي»، وجمع إسنادي «بلومبرغ» و«دنيا» في جملة واحدة لا تعيد المعنى.",
+        "«لكن موضوع التحقيق وتاريخ بدايته لم يتضحا بعد» تتجاوز المصادر، فالممارسات المحاسبية هي موضوع التحقيق المعلن (المصدر 3)، والمجهول هو العمليات التي يركز عليها (المصدر 4) وتاريخ بدايته (المصدر 3). — «لكن تاريخ بدء التحقيق والعمليات التي يركز عليها لم يتضحا بعد»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "رويترز لم تتمكن من تحديد موعد بدء التحقيق، ولم يُعرف بعد ما العمليات التي يركز عليها",
+          "source": 3
+        },
+        {
+          "fact": "ما يُتداول عن شمول التحقيق الممارسات المحاسبية زاد حدة البيع في أسهم التكنولوجيا، مع هبوط السهم 14% يوم الجمعة",
+          "source": 4
+        },
+        {
+          "fact": "تغطية بلومبرغ قدّمت هبوط إنفيديا على أنه جاء مع تعميق التحقيق موجة البيع في سوق الذكاء الاصطناعي",
+          "source": 2
+        }
+      ],
+      "slug": "nvidia-shares-drop-sec-accounting-probe-22840b",
+      "title": "سهم إنفيديا يهبط 14% مع تقارير عن تحقيق أمريكي في حساباتها",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "جهاز قطر للاستثمار وبروكفيلد يستهدفان استثمار 15 مليار يورو في الدفاع الألماني",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financing-and-investment/157216/%D9%82%D8%B7%D8%B1-%D9%88%D8%A8%D8%B1%D9%88%D9%83%D9%81%D9%8A%D9%84%D8%AF-%D9%8A%D8%B3%D8%AA%D9%87%D8%AF%D9%81%D8%A7%D9%86-%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-15-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D9%8A%D9%88%D8%B1%D9%88-%D9%81%D9%8A-%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7/",
+        "https://www.aa.com.tr/ar/%D8%A7%D9%84%D8%AF%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/%D9%82%D8%B7%D8%B1-%D8%AA%D8%B9%D8%AA%D8%B2%D9%85-%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-15-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D9%8A%D9%88%D8%B1%D9%88-%D8%A5%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-%D9%81%D9%8A-%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7-%D8%AE%D9%84%D8%A7%D9%84-5-%D8%B3%D9%86%D9%88%D8%A7%D8%AA/4132614"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "قارئ البطاقة يرى «حتى 15 مليار» في العنوان و«15 مليار يورو إضافية» في العنوان الفرعي، فلا يعرف هل هما مبلغ واحد أم مبلغان. ولا يعرف ما «بروكفيلد» لأن العنوان والعنوان الفرعي لا يعرّفان بها.",
+              "repair": "تُكتب «بروكفيلد لإدارة الأصول» (SOURCE 1). ويُصاغ العنوان الفرعي بحيث لا يوحي بجمع المبلغين، مع نسبة كل إعلان إلى جهته."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تغيب زيارة أمير قطر ومباحثاته مع ميرتس، وهي مناسبة الإعلان (SOURCE 2). ويغيب إعلان «بروكفيلد» عن خطتها الاستثمارية في ألمانيا (SOURCE 1)، وكذلك رقم الاستثمارات القطرية القائمة البالغ أكثر من 25 مليار يورو (SOURCE 2). أما صندوق «لماذا يهمّ» فمقدماته مسندة واستنتاجه عن التنفيذ صفقة بصفقة مقبول.",
+              "repair": "تُضاف المناسبة وخطة «بروكفيلد» والرقم القائم مع نسبة كل منها إلى مصدره."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، أي اتفاق الجهاز و«بروكفيلد»، يغيب بعد الفقرة الأولى، ويحل محله بيان الحكومة وتصريح ميرتس العام. ووقائع الشراكة موزعة تحت عنوان فرعي بعيد.",
+              "repair": "تُجمع وقائع الاتفاق وخطة «بروكفيلد» بعد المقدمة، ثم يأتي إعلان برلين وشرطه، ثم الخلفية، ويُحذف «يستطيعان معاً تحقيق المزيد»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«الصناعات الحيوية» مكان «الاستراتيجية» (SOURCE 2). وأرقام تراجع الصفقات الخليجية، نحو 5 مليارات مقابل 69 ملياراً، محذوفة. وصندوق الأرقام يعرض الرقمين بما يوحي بجمعهما.",
+              "repair": "يُعاد المصطلح الأصلي، وتُثبَّت أرقام المقارنة، ويُصحَّح صندوق الأرقام."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "يحدد العنوان والعنوان الفرعي البلد (ألمانيا) والقطاعين، ويعرّفان «بروكفيلد» بأنها «بروكفيلد لإدارة الأصول»، فعولجت الملاحظة السابعة. غير أن المقدمة تقول «سيضخ ... ما يصل إلى 15 مليار يورو»، وهذا يجعل اتفاقاً للبحث عن الفرص ضخاً مؤكداً. ويعرض صندوق الأرقام مبلغي الـ15 ملياراً في سطرين منفصلين.",
+              "repair": "تُكتب المقدمة «اتفق ... على استثمار ما يصل إلى 15 مليار يورو»، ويُدمج المبلغان في سطر واحد في الصندوق مع نسبة كل منهما إلى جهته."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة السياق الذي توفره المصادر: سعي رأس المال الخاص إلى الدفاع الأوروبي مع ارتفاع الإنفاق الحكومي، وخطة «بروكفيلد» في ألمانيا، وتاريخ الشراكة (2.5 مليار جنيه إسترليني و20 مليار دولار) من SOURCE 1. ومن SOURCE 2: زيارة الأمير ومباحثاته وتدوينة ميرتس، وشرط قرارات المستثمرين المستقلة، والاستثمارات القائمة فوق 25 مليار يورو. وتحمل أيضاً أثر الحرب على صادرات الغاز وعلى الصفقات الخليجية. أما صندوق «لماذا يهمّ» فمقدماته مسندة، واستنتاجه محدود بشرط التنفيذ صفقة بصفقة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يُطوَّر عنصر العنوان، أي اتفاق الجهاز و«بروكفيلد»، مباشرة بعد المقدمة: الاتفاقية ومجالها، ودافع رأس المال الخاص، وخطة «بروكفيلد»، ثم تاريخ الشراكة. يلي ذلك إعلان برلين وشرطه، ثم خلفية الحرب. وكل قسم تحت عنوان فرعي يضم ثلاث فقرات، وحُذفت عبارة «نستطيع معاً تحقيق المزيد». فعولجت الملاحظتان الثانية والتاسعة.",
+              "repair": ""
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«الصناعات ذات الأولوية» مكان «الصناعات الاستراتيجية» (SOURCE 2). ورقم «40 مليار يورو» حساب للأناضول قُدّم بلا نسبة. والجملة «وتقول بلومبرغ» نسبة لا يسندها SOURCE 1. في المقابل، شرطا ثبات القيمة والتنفيذ الكامل محفوظان، وكذلك مدة السنوات الخمس.",
+              "repair": "يُعاد مصطلح «الاستراتيجية»، ويُنسب حساب الـ40 ملياراً إلى الأناضول، وتُحذف النسبة إلى «بلومبرغ» في جملة رأس المال الخاص."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "مبالغة في اليقين: تقول المقدمة «سيضخ جهاز قطر للاستثمار ... وشركة «بروكفيلد لإدارة الأصول» ... ما يصل إلى 15 مليار يورو». أما SOURCE 1 فيقول إن الطرفين «اتفقا على استثمار ما يصل إلى» هذا المبلغ، وإن الاتفاقية «تُركز على البحث عن فرص للاستثمار». الصيغة الحالية تجعل سقفاً لاتفاق يبحث عن الفرص ضخاً مؤكداً. الإصلاح: «اتفق جهاز قطر للاستثمار ... وشركة «بروكفيلد لإدارة الأصول» على استثمار ما يصل إلى 15 مليار يورو ...»، أو «يعتزمان استثمار ما يصل إلى ...».",
+        "نسبة غير مسندة: «وتقول بلومبرغ إن شركات رأس المال الخاص تتطلع إلى قطاع الدفاع الأوروبي». يورد SOURCE 1 هذه الجملة بصوت «الشرق» نفسها من غير أن ينسبها إلى «بلومبرغ». المصدر ينسب إلى «بلومبرغ» بيانات صفقات الاندماج والاستحواذ وحدها. الإصلاح: تُكتب الجملة خبراً سياقياً بلا نسبة إلى «بلومبرغ»، مثل «وتبحث شركات رأس المال الخاص عن فرص في قطاع الدفاع الأوروبي لتستفيد من زيادة الإنفاق الحكومي عليه».",
+        "الملاحظة السابقة الأولى عولجت جزئياً فقط: صارت العبارة «لا سيما في الصناعات ذات الأولوية وقطاع الدفاع»، والبيان المشترك يقول «الصناعات الاستراتيجية» (SOURCE 2). «ذات الأولوية» ليست المصطلح الذي استخدمه البيان. الإصلاح: «لا سيما في الصناعات الاستراتيجية وقطاع الدفاع».",
+        "صندوق الأرقام: تبقى فيه بندان: «الاستثمارات القطرية القائمة في ألمانيا ... أكثر من 25 مليار يورو» و«صفقات الاندماج والاستحواذ الخليجية في الربع الثالث ... نحو 5 مليارات دولار». الأول خلفية والثاني رقم سوق إقليمي، وليس أي منهما رقماً للحدث، فيُحذفان من الصندوق ويبقيان في المتن. ويبقى أيضاً سطران منفصلان لـ15 مليار يورو، وهو ما اعترضت عليه الملاحظة السادسة، فيظن قارئ الصندوق أن المجموع 30 ملياراً. الإصلاح: يُدمجان في سطر واحد يذكر كل إعلان بجهته وشرطه، مثل «اتفاق الجهاز و«بروكفيلد»: حتى 15 مليار يورو؛ وزيادة أعلنتها برلين بالمبلغ نفسه خلال 5 سنوات»، من دون صياغة توحي بالجمع.",
+        "ترجمة حرفية: «زيارة دولة يجريها أمير قطر» في العنوان الفرعي، و«الذي يجري زيارة دولة إلى ألمانيا» في المتن، نقلاً حرفياً لـ state visit. الإصلاح: «زيارة رسمية يجريها أمير قطر لألمانيا».",
+        "نسبة الحساب: عبارة «فقد يتجاوز الإجمالي 40 مليار يورو» حساب أجرته وكالة الأناضول بناءً على تقديرات غرفة قطر (SOURCE 2)، والمسودة تقدمه بلا نسبة. الإصلاح: «وبناءً على هذه التقديرات، قد يرفع التنفيذ الكامل للاستثمارات الإضافية الإجمالي إلى أكثر من 40 مليار يورو إذا بقيت قيمة القائمة منها ثابتة، بحسب حساب الأناضول».",
+        "يحدد العنوان والعنوان الفرعي البلد (ألمانيا) والقطاعين، ويعرّفان «بروكفيلد» بأنها «بروكفيلد لإدارة الأصول»، فعولجت الملاحظة السابعة. غير أن المقدمة تقول «سيضخ ... ما يصل إلى 15 مليار يورو»، وهذا يجعل اتفاقاً للبحث عن الفرص ضخاً مؤكداً. ويعرض صندوق الأرقام مبلغي الـ15 ملياراً في سطرين منفصلين. — تُكتب المقدمة «اتفق ... على استثمار ما يصل إلى 15 مليار يورو»، ويُدمج المبلغان في سطر واحد في الصندوق مع نسبة كل منهما إلى جهته.",
+        "«الصناعات ذات الأولوية» مكان «الصناعات الاستراتيجية» (SOURCE 2). ورقم «40 مليار يورو» حساب للأناضول قُدّم بلا نسبة. والجملة «وتقول بلومبرغ» نسبة لا يسندها SOURCE 1. في المقابل، شرطا ثبات القيمة والتنفيذ الكامل محفوظان، وكذلك مدة السنوات الخمس. — يُعاد مصطلح «الاستراتيجية»، ويُنسب حساب الـ40 ملياراً إلى الأناضول، وتُحذف النسبة إلى «بلومبرغ» في جملة رأس المال الخاص."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تبحث شركات رأس المال الخاص عن فرص في قطاع الدفاع الأوروبي للاستفادة من زيادة الإنفاق الحكومي على هذه الأصول.",
+          "source": 1
+        },
+        {
+          "fact": "أشار جهاز قطر للاستثمار قبل الحرب إلى العودة للصفقات الكبرى مدعوماً بعوائد متوقعة من توسيع إنتاج الغاز المسال، ولا تزال الشحنات دون مستويات ما قبل الحرب.",
+          "source": 1
+        },
+        {
+          "fact": "يعتزم الجهاز ضخ الاستثمارات خلال السنوات الخمس المقبلة على أن يخضع تنفيذها لقرارات المستثمرين المستقلة، بحسب البيان المشترك.",
+          "source": 2
+        }
+      ],
+      "slug": "qia-brookfield-germany-defense-investment-024970",
+      "title": "جهاز قطر للاستثمار و«بروكفيلد» يتفقان على ضخ حتى 15 مليار يورو في ألمانيا",
+      "score": 6,
+      "image": "photo"
+    },
+    {
+      "headline": "ترامب يهدد بمعاقبة الشركات الأمريكية التي تبني مراكز بيانات في الخارج",
+      "section": "technology",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 79,
+    "failures": 1,
+    "promptTokens": 1401818,
+    "completionTokens": 317194,
+    "cacheReadTokens": 334706,
+    "costUsd": 10.9985,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 79
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 137675,
+        "read": 0,
+        "out": 2717,
+        "usd": 0.605
+      },
+      "desk": {
+        "calls": 20,
+        "in": 164909,
+        "read": 190778,
+        "out": 89579,
+        "usd": 2.6112
+      },
+      "writer": {
+        "calls": 14,
+        "in": 233914,
+        "read": 143928,
+        "out": 114360,
+        "usd": 3.449
+      },
+      "critic": {
+        "calls": 17,
+        "in": 248128,
+        "read": 0,
+        "out": 53858,
+        "usd": 2.0698
+      },
+      "checker": {
+        "calls": 5,
+        "in": 41962,
+        "read": 0,
+        "out": 34387,
+        "usd": 0.8556
+      },
+      "vision": {
+        "calls": 22,
+        "in": 240524,
+        "read": 0,
+        "out": 22293,
+        "usd": 1.4079
+      }
+    }
+  },
+  "log": [
+    "[08:28:03] image: dropped \"Close-up of a detailed model tank with camouflage paint in a studio se\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"Detailed close-up of a model military tank with camouflage, displayed \" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"Detailed view of a camouflage military tank model on gravel road outdo\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"Close-up of a miniature military tank model on rough terrain outdoors \" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"Close-up of a model tank with camouflage, reflecting on a surface indo\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"A detailed model tank positioned on gravel terrain with a warm, golden\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"A soldier in full camouflage gear aims a rifle during a military train\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"180217_demo gg Sicheitskonferenz München\" — names too little of bundeswehr, leopard",
+    "[08:28:03] image: dropped \"180217_demo gg Sicheitskonferenz München\" — names too little of bundeswehr, leopard",
+    "[08:28:03] openverse \"Leopard tank Germany\": 10 usable of 20",
+    "[08:28:04] openverse \"Bundeswehr tanks\": 10 usable of 20",
+    "[08:28:04] openverse \"pylons German\": 10 usable of 20",
+    "[08:28:04] openverse \"power grid Germany\": 4 usable of 9",
+    "[08:28:04] commons \"tank production line Germany\": 6 usable of 24",
+    "[08:28:04] image: dropped \"World War II propaganda, fake photograph of a production line of Frenc\" — dated 1940, an archival picture",
+    "[08:28:04] image: dropped \"Sd Kfz 173 Jagdpanther\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Interior view of an industrial tequila distillery with large metal con\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Messerschmitt Me 163B Komet\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"An industrial train car featuring Potts Beer branding at a brewery set\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Messerschmitt Me 163B Komet\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Freight train passing through Hamburg port, showcasing rail transport \" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] image: dropped \"Strong Europe Tank Challenge 2018\" — names too little of tank, production, line",
+    "[08:28:04] commons \"German power grid pylons\": 3 usable of 4",
+    "[08:28:04] image: dropped \"Lockheed P-38L Lightning\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Lockheed P-38L Lightning\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Arbatskaya Metro Station\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Lockheed P-38L 'Lightning'\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Arbatskaya Metro Station\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"High voltage transmission towers stretching through lush green forest \" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Arbatskaya Metro Station\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Blue sky over transmission towers on a rural landscape, symbolizing en\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Ponte Scaligero, Verona.\" — names too little of power, grid, pylons",
+    "[08:28:04] image: dropped \"Industrial station with rows of transmission towers with curved wires \" — names too little of power, grid, pylons",
+    "[08:28:05] commons \"Leopard tank Germany\": 22 usable of 24",
+    "[08:28:05] image: dropped \"Leopard 1 tank in actie, Bestanddeelnr 921-5838.jpg\" — dated 1968, an archival picture",
+    "[08:28:05] image: dropped \"Danish Leopard 1.jpg\" — dated 1998, an archival picture",
+    "[08:28:05] image: dropped \"Leopard 2A7 turret back side.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[08:28:05] image: dropped \"Detailed scale model of a German armored vehicle in a desert-like sett\" — names too little of tank",
+    "[08:28:06] commons \"power grid Germany\": 7 usable of 24",
+    "[08:28:06] image: dropped \"Paranal–Armazones connected to Chilean power grid (20160527-img-4417-c\" — shows general, not the story's people",
+    "[08:28:06] image: dropped \"Paranal–Armazones connected to Chilean power grid (20160527-img-4293-c\" — shows general, not the story's people",
+    "[08:28:06] image: dropped \"STS-116 spacewalk 1.jpg\" — names too little of power, grid",
+    "[08:28:06] image: dropped \"BMW facade\" — names too little of power, grid",
+    "[08:28:06] image: dropped \"Panoramic view of power lines and wind turbines over a vibrant yellow \" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[08:28:06] image: dropped \"Transmission towers stretch across a lush field in Ingolstadt, Bavaria\" — names too little of power, grid",
+    "[08:28:06] image: dropped \"High voltage transmission towers stretch across a clear blue sky, symb\" — names too little of power, grid",
+    "[08:28:07] commons \"Bundeswehr tanks\": 19 usable of 24",
+    "[08:28:07] image: dropped \"Manöver Nordwind der Bundeswehr (Kiel 13.791).jpg\" — dated 1957, an archival picture",
+    "[08:28:07] image: dropped \"Detailed scale model of a German armored vehicle in a desert-like sett\" — names too little of tanks",
+    "[08:28:07] image: dropped \"Militairen van 5 Groep Geleide Wapens op een Duitse Leopard 1 tank tij\" — taken in Netherlands, which the story does not name",
+    "[08:28:07] image: dropped \"UA 5th tank brigade Leopard 1 MBT right side.jpg\" — taken in Ukraine, which the story does not name",
+    "[08:28:17] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=460 in=12887 read=0 out=692 attempt=1 ms=8450",
+    "[08:28:17] image: \"Leopard 2 Panzer der Bundeswehr (49919624546).jpg\" names the story's topic without saying its point (The standfirst names defence as a target sector, so a defence scene can stand in for the deal. This Bundeswehr Leopard 2 was photographed in Germany (Meppen, 20); checked now and kept in reserve while the desk looks further",
+    "[08:28:37] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1848 in=9810 read=0 out=1957 attempt=1 ms=20825",
+    "[08:28:37] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Leopard 2 Panzer der Bundeswehr (49919624546).jpg\": A Bundeswehr Leopard 2 at Germany's Meppen test site shows the German defence sector that the standfirst and the editor'",
+    "[08:28:37] image: \"Leopard 2 Panzer der Bundeswehr (49919624546).jpg\" stands in: its record places it in none of the story's countries; captioned «صورة تعبيرية»",
+    "[08:28:47] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=511 in=14757 read=0 out=706 attempt=1 ms=8677",
+    "[08:28:47] image: \"Wide green field with power lines under a cloudy sky in Nort\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[08:28:47] image: the company's own brand (Brookfield Asset Management / Brookfield): Brookfield Asset Management sign | Brookfield Asset Management office | Brookfield Asset Management headquarters; its categories: Brookfield Asset Management",
+    "[08:28:47] pexels \"Brookfield Asset Management headquarters\": 8 usable",
+    "[08:28:47] pexels \"Brookfield Asset Management sign\": 8 usable",
+    "[08:28:47] pexels \"Brookfield Asset Management office\": 8 usable",
+    "[08:28:47] commons \"Brookfield Asset Management sign 2026\": 4 usable of 5",
+    "[08:28:48] openverse \"Brookfield Asset Management headquarters\": 0 usable of 0",
+    "[08:28:48] openverse \"Brookfield Asset Management sign\": 0 usable of 0",
+    "[08:28:48] commons \"Brookfield Asset Management sign\": 4 usable of 5",
+    "[08:28:48] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 01.jpg\" — shows asset, not the story's people",
+    "[08:28:48] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 02.jpg\" — shows asset, not the story's people",
+    "[08:28:48] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 04.jpg\" — shows asset, not the story's people",
+    "[08:28:48] image: dropped \"Ilham Aliyev met with Connor Teskey - 2026 WEF - 03.jpg\" — shows asset, not the story's people",
+    "[08:28:48] openverse \"Brookfield Asset Management office\": 1 usable of 2",
+    "[08:28:49] openverse \"Brookfield Asset\": 5 usable of 7",
+    "[08:28:49] openverse \"Brookfield Asset\": 5 usable of 7",
+    "[08:28:49] image: dropped \"Jenni and Jarom, Mr. Lucky's 24/7, Hard Rock Hotel, Las Vegas\" — names too little of sign",
+    "[08:28:49] image: dropped \"Ken, Alicia, and Abby, Mr. Lucky's 24/7, Hard Rock Hotel, Las Vegas\" — names too little of sign",
+    "[08:28:49] image: dropped \"The Sheraton Centre Toronto Hotel, Toronto, Ontario\" — names too little of sign",
+    "[08:28:49] image: dropped \"The Sheraton Centre Toronto Hotel, Toronto, Ontario\" — names too little of sign",
+    "[08:28:49] image: dropped \"Brookfield Place, New York, New York\" — names too little of sign",
+    "[08:28:49] commons \"Brookfield Asset Management office 2026\": 4 usable of 5",
+    "[08:28:50] commons \"Brookfield Asset Management office\": 5 usable of 8",
+    "[08:28:50] image: dropped \"Brookfield Place, New York, New York\" — names too little of office",
+    "[08:28:50] image: dropped \"View of modern skyscrapers and historic buildings in Perth, Australia.\" — names too little of office",
+    "[08:28:50] image: dropped \"Stunning aerial view of London's financial district featuring modern s\" — names too little of office",
+    "[08:28:50] image: dropped \"Stunning view of architectural arches in Toronto's Brookfield Place at\" — names too little of office",
+    "[08:28:50] image: dropped \"View of the New York City skyline with skyscrapers and trees in spring\" — names too little of office",
+    "[08:28:50] image: dropped \"Impressive skyscrapers in Sydney's business district on a sunny day.\" — names too little of office",
+    "[08:28:50] commons \"Brookfield Asset Management headquarters 2026\": 0 usable of 0",
+    "[08:28:51] commons \"Brookfield Asset Management headquarters\": 0 usable of 1",
+    "[08:28:51] image: dropped \"Jenni and Jarom, Mr. Lucky's 24/7, Hard Rock Hotel, Las Vegas\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Stunning view of architectural arches in Toronto's Brookfield Place at\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Ken, Alicia, and Abby, Mr. Lucky's 24/7, Hard Rock Hotel, Las Vegas\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"View of modern skyscrapers and historic buildings in Perth, Australia.\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"The Sheraton Centre Toronto Hotel, Toronto, Ontario\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"The Sheraton Centre Toronto Hotel, Toronto, Ontario\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Reflection of a modern office building captured through a glass window\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Brookfield Place, New York, New York\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Contemporary architecture featuring a sleek glass facade in Accra, Gha\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Close-up of a modern building featuring glass and steel elements, show\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Glass facade skyscraper with trees in downtown urban scene, perfect fo\" — names too little of headquarters",
+    "[08:28:51] image: dropped \"Curved glass windows reflecting the modern architectural details of a \" — names too little of headquarters",
+    "[08:28:51] commons Category:Brookfield Asset Management: 4 usable of 14",
+    "[08:28:51] image: 10 file(s) dropped for not naming Brookfield Asset Management or Brookfield",
+    "[08:28:51] image: no photograph of Brookfield Asset Management's brand",
+    "[08:28:51] image: the story's people first: Mohammed Saif Al-Sowaidi Bruce Flatt 2026 | Mohammed Saif Al-Sowaidi Bruce Flatt | Mohammed Saif Al-Sowaidi and Bruce Flatt | Mohammed Saif Al-Sowaidi 2026 | Bruce Flatt 2026 | محمد سيف السويدي | محمد السويدي | بروس فلات",
+    "[08:28:52] commons \"Mohammed Saif Al-Sowaidi Bruce Flatt 2026\": 0 usable of 0",
+    "[08:28:53] commons \"Mohammed Saif\": 20 usable of 20",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (5).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (7).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (6).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (8).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (3).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (9).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (2).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (1).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"2025-07-26 Mohammed Saif Al Suwaidi meets Mohamed Muizzu (4).jpg\" — names none of the story's people",
+    "[08:28:53] image: dropped \"Mohamed Muizzu meets Mohammed Saif Al Suwaidi (10).jpg\" — names none of the story's people",
+    "[08:28:54] commons \"Mohammed Saif Al-Sowaidi Bruce Flatt\": 0 usable of 0",
+    "[08:28:54] commons \"Mohammed Saif\": 20 usable of 20",
+    "[08:28:54] commons \"Mohammed Saif Al-Sowaidi and Bruce Flatt\": 0 usable of 0",
+    "[08:28:54] commons \"Mohammed Saif Al-Sowaidi Bruce Flatt\": 0 usable of 0",
+    "[08:28:54] commons \"Mohammed Saif\": 20 usable of 20",
+    "[08:28:55] commons \"Mohammed Saif Al-Sowaidi 2026\": 0 usable of 0",
+    "[08:28:55] commons \"Mohammed Saif\": 20 usable of 20",
+    "[08:28:55] commons \"Bruce Flatt 2026\": 0 usable of 1",
+    "[08:28:55] commons \"Bruce Flatt\": 0 usable of 4",
+    "[08:28:56] commons \"محمد سيف السويدي\": 0 usable of 0",
+    "[08:28:57] commons \"محمد سيف\": 14 usable of 20",
+    "[08:28:57] image: dropped \"تخرّج الفريق محمد قائد سيف من الكلية الحربية الملكية بالقاهرة – 1954.j\" — dated 1954, an archival picture",
+    "[08:28:57] commons \"محمد السويدي\": 2 usable of 8",
+    "[08:28:57] image: dropped \"مشجر عشيرة ال شعيب (الشعوب).jpg\" — names too little of محمد, السويدي",
+    "[08:28:58] commons \"بروس فلات\": 0 usable of 3",
+    "[08:28:58] image: people shortlist: 2021 افراد زورق الصواريخ دامسة.jpg",
+    "[08:29:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=85 in=9725 read=0 out=244 attempt=1 ms=3558",
+    "[08:29:02] image: vision rejected all candidates (The only candidate shows Saeed Mohammed Hamid Al-Suwaidi, not the story's Mohammed Saif Al-Sowaidi, posing with a naval missile-boat crew. It is the wrong identifiable person, it looks like an archival group snapshot rather than a news photo, and it has nothing to do with Qatar Investment Authority, Brookfield or the investment in Germany.)",
+    "[08:29:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=532 in=10441 read=0 out=719 attempt=1 ms=7704",
+    "[08:29:09] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Leopard 2 Panzer der Bundeswehr (49919624546).jpg\"",
+    "[08:29:09] published \"جهاز قطر للاستثمار و«بروكفيلد» يتفقان على ضخ حتى 15 مليار يورو في ألمانيا\" -> qia-brookfield-germany-defense-investment-024970",
+    "[08:29:50] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1081 in=7571 read=0 out=5711 attempt=1 ms=41017",
+    "[08:30:29] desk notes: 8 of 24 facts dropped (not in their source or copied from it)",
+    "[08:30:29] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2087 in=7994 read=0 out=4768 attempt=1 ms=38669",
+    "[08:31:36] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5156 in=24911 read=0 out=7949 attempt=1 ms=66585",
+    "[08:32:27] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2015 in=7866 read=0 out=7095 attempt=1 ms=51184",
+    "[08:32:27] evidence pair \"جهاز قطر للاستثمار و«بروكفيلد» يتفقان على ضخ حتى 15 مليار يورو في ألمانيا\": 0 proved error(s) live (v72), 2 with the kept lessons (v0); the private drafts are not published",
+    "[08:32:27] run budget of 35 minutes spent; \"ترامب يهدد بمعاقبة الشركات الأمريكية التي تبني مراكز بيانات في الخارج\" waits for the next run"
+  ]
+}

@@ -3049,6 +3049,56 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-21T08:29:09.930Z",
+      "slug": "qia-brookfield-germany-defense-investment-024970",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 2,
+        "checked": 23,
+        "words": 336,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 7,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 25,
+        "words": 395,
+        "keyFacts": 5,
+        "classes": [
+          "attribution",
+          "scope"
+        ],
+        "programmatic": 0
+      },
+      "none": {
+        "errors": 2,
+        "drift": 0,
+        "severity": 7,
+        "supported": 22,
+        "notFound": 0,
+        "checked": 25,
+        "words": 395,
+        "keyFacts": 5,
+        "classes": [
+          "attribution",
+          "scope"
+        ],
+        "programmatic": 0
+      }
     }
   ]
 }

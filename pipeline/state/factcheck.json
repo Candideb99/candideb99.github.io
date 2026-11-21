@@ -14241,6 +14241,52 @@
         }
       ],
       "outcome": "clean"
+    },
+    "sp500-dow-enter-correction-ai-selloff-d281d3": {
+      "at": "2026-11-21T07:44:46.440Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "checker": "8abd70ec7f",
+      "publishedAt": "2026-11-21T01:13:14.417Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 29,
+        "weak": 3,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "وإذا تأخر هذا العائد، فالأسواق التي يشكّل صانعو الرقائق ثقلاً كبيراً في مؤشراتها، في تايوان وكوريا الجنوبية واليابان، هي الأكثر انكشافاً على موجة البيع التالية."
+      ],
+      "weak": [
+        {
+          "sentence": "«ستاندرد آند بورز 500» الأمريكي يدخل منطقة التصحيح بهبوط 3.7% تقوده أسهم الرقائق",
+          "quote": "Chipmakers led a plunge in US stocks on Friday, with the S&P 500 and the Dow Jones Industrial Index closing in correction territory."
+        },
+        {
+          "sentence": "تراجع مؤشر «ستاندرد آند بورز 500» الأمريكي 3.70% إلى 6910.39 نقطة عند إغلاق تعاملات الجمعة، ليدخل مع مؤشر «داو جونز الصناعي» منطقة التصحيح، وسط موجة بيع قادتها أسهم شركات الرقائق في وول ستريت، بحسب «بلومبرغ».",
+          "quote": "Chipmakers led a plunge in US stocks on Friday, with the S&P 500 and the Dow Jones Industrial Index closing in correction territory."
+        },
+        {
+          "sentence": "وكانت الخسائر أعمق في مؤشر «ناسداك المركب» الذي تغلب عليه أسهم التكنولوجيا، فقد هوى 5.3%، لتتعمق خسائر سجلتها المؤشرات الرئيسية في وقت سابق من الأسبوع.",
+          "quote": "Those pressures combined to weigh on US markets through Friday, with all key US indexes closing sharply down on the day, furthering earlier falls over the week."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
