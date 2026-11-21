@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (258 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (260 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -2154,6 +2154,24 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     "only the frame under a free licence is offered, at 640 pixels to judge and 1024 to keep, credited with its own licence",
     [fl.length, fl[0].thumb.endsWith("_z.jpg"), fl[0].url.endsWith("_b.jpg"), attributionLine(fl[0]), fl[0].stored, photoKey(fl[0].url) === photoKey(`/photos/handouts/${fl[0].stored}`)],
     [1, true, true, "Presidencia de la República del Ecuador · Public domain · الرئاسة الإكوادورية", "official-flickr-55663376880.jpg", true],
+  );
+  // Italy (CC BY 3.0, photographs included) and Spain (reuse authorised, third parties' excepted: only Moncloa's own frames).
+  const { parseGovernoPhotos, parseMoncloaPhotos } = await import("../pipeline/lib/official-photos.mjs");
+  const itEvent = { id: "x", title: "Riunione della Coalizione dei Volenterosi con gli Stati Uniti", date: "2026-11-19", place: "", summary: withEnglishCountries("Riunione della Coalizione dei Volenterosi con gli Stati Uniti"), url: "https://www.governo.it/it/articolo/x/1" };
+  const it = parseGovernoPhotos(`<meta property="og:image" content="https://www.governo.it/sites/governo.it/files/field/image/DSC00881_pp.jpg" />`, itEvent, byId.governo);
+  const itLogo = parseGovernoPhotos(`<meta property="og:image" content="https://www.governo.it/sites/governo.it/files/stemma_repubblica.png" />`, itEvent, byId.governo);
+  check(
+    "Italy's article photograph is credited to Palazzo Chigi under CC BY; the emblem on a decree is no photograph; Italian countries are read",
+    [it.length, attributionLine(it[0]), photoKey(it[0].url) === photoKey(`/photos/handouts/${it[0].stored}`), itLogo.length, itEvent.summary.endsWith("(United States)")],
+    [1, "Palazzo Chigi · CC BY 3.0 · الحكومة الإيطالية", true, 0, true],
+  );
+  const img = (file, author, w = 2000, h = 1333) => `{"@id":"https://www.lamoncloa.gob.es/multimedia/fotos/presidente/publishingimages/2026/${file}.jpg","@type":"ImageObject","position":1,"url":"https://www.lamoncloa.gob.es/x","contentUrl":"https://www.lamoncloa.gob.es/multimedia/fotos/presidente/PublishingImages/2026/${file}.jpg","thumbnailUrl":"https://www.lamoncloa.gob.es/x?RenditionID=33","name":"Pedro S&aacute;nchez recibe al presidente de Brasil.","author":{"@type":"Person","name":"${author}"},"width":"${w}","height":"${h}"}`;
+  const esEvent = { id: "y", title: "Pedro Sánchez se reúne con el presidente de Brasil", date: "2026-11-16", place: "", summary: "", url: "https://www.lamoncloa.gob.es/y.aspx" };
+  const es = parseMoncloaPhotos(`[${img("161126-sanchez-visita-lula6", "Pool Moncloa/Fernando Calvo")},${img("161126-sanchez-reunion-lula", "EFE/ Mariscal")},${img("161126-vertical", "Pool Moncloa/Fernando Calvo", 1333, 2000)}]`, esEvent, byId.moncloa);
+  check(
+    "Spain's gallery gives only its own photographers' landscape frames, never the agency's",
+    [es.map((p) => p.artist), attributionLine(es[0] ?? {}), es[0]?.thumb.endsWith("?RenditionID=34")],
+    [["Pool Moncloa/Fernando Calvo"], "Pool Moncloa/Fernando Calvo · Reuse authorised · الحكومة الإسبانية", true],
   );
 }
 

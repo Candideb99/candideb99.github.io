@@ -551,6 +551,14 @@ check(
   check("a news sitemap is read, and its Arabic sections filtered", items.map((i) => i.title), ['لماذا هبط "تاسي"؟']);
 }
 
+// 2a'''. A news sitemap whose namespace prefix is the site's own (El Mostrador writes «n:news», 2026-11-21).
+{
+  const fresh = new Date(Date.now() - 3600 * 1000).toISOString();
+  const xml = `<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:n="http://www.google.com/schemas/sitemap-news/0.9"><url><loc>https://www.elmostrador.cl/mercados/2026/11/20/dolar-alcanza</loc><n:news><n:publication><n:name>El Mostrador</n:name></n:publication><n:publication_date>${fresh}</n:publication_date><n:title>Dólar alcanza los 1.021 pesos</n:title></n:news></url></urlset>`;
+  const items = await fetchFeed({ id: "elmostrador", url: `data:text/xml;charset=utf-8,${encodeURIComponent(xml)}` });
+  check("a news sitemap with its own namespace prefix is read", items.map((i) => i.title), ["Dólar alcanza los 1.021 pesos"]);
+}
+
 // 2a''. An Atom title of type XHTML (Statistics Canada's «The Daily», 2026-11-21: every release read as untitled, so the
 // feed gave nothing): its text is read in order, the element's own words before its children's.
 {

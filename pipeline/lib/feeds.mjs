@@ -117,14 +117,17 @@ function normalizeItems(doc, zone) {
   }
   // A Google News sitemap (2026-10-22, Independent Arabia): the list of a site's last two days of articles that it
   // publishes for crawlers, named in its robots.txt. Titles and dates only; the article page gives the rest.
+  // The namespace's prefix is the site's choice: El Mostrador writes «n:news» (2026-11-21), so the element is found by
+  // its local name.
   if (doc?.urlset) {
+    const local = (obj, name) => obj && typeof obj === "object" ? obj[Object.keys(obj).find((k) => k === name || k.endsWith(`:${name}`))] : undefined;
     return asArray(doc.urlset.url)
-      .filter((entry) => entry["news:news"])
+      .filter((entry) => local(entry, "news"))
       .map((entry) => ({
-        title: stripHtml(textOf(entry["news:news"]["news:title"])),
+        title: stripHtml(textOf(local(local(entry, "news"), "title"))),
         url: textOf(entry.loc),
         summary: "",
-        publishedAt: isoDate(textOf(entry["news:news"]["news:publication_date"]), zone),
+        publishedAt: isoDate(textOf(local(local(entry, "news"), "publication_date")), zone),
         categories: [],
       }));
   }

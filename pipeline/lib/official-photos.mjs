@@ -358,8 +358,14 @@ const SPANISH_COUNTRIES = [
   ["Reino Unido", "United Kingdom"], ["Japón", "Japan"], ["India", "India"], ["Rusia", "Russia"], ["Corea", "South Korea"], ["Turquía", "Turkey"],
   ["Israel", "Israel"], ["Arabia Saudita", "Saudi Arabia"], ["Emiratos Árabes", "United Arab Emirates"], ["Qatar", "Qatar"], ["Catar", "Qatar"], ["Egipto", "Egypt"],
 ];
+/** The same in Italian, for Palazzo Chigi's titles. */
+const ITALIAN_COUNTRIES = [
+  ["Stati Uniti", "United States"], ["Cina", "China"], ["Francia", "France"], ["Germania", "Germany"], ["Regno Unito", "United Kingdom"], ["Giappone", "Japan"],
+  ["India", "India"], ["Russia", "Russia"], ["Ucraina", "Ukraine"], ["Arabia Saudita", "Saudi Arabia"], ["Emirati Arabi", "United Arab Emirates"], ["Egitto", "Egypt"],
+  ["Turchia", "Turkey"], ["Brasile", "Brazil"], ["Spagna", "Spain"], ["Algeria", "Algeria"], ["Libia", "Libya"], ["Tunisia", "Tunisia"], ["Marocco", "Morocco"], ["Qatar", "Qatar"],
+];
 export function withEnglishCountries(text) {
-  const found = SPANISH_COUNTRIES.filter(([es]) => new RegExp(`(?<![\\p{L}])${es}(?![\\p{L}])`, "u").test(String(text ?? ""))).map(([, en]) => en);
+  const found = [...SPANISH_COUNTRIES, ...ITALIAN_COUNTRIES].filter(([es]) => new RegExp(`(?<![\\p{L}])${es}(?![\\p{L}])`, "u").test(String(text ?? ""))).map(([, en]) => en);
   return found.length ? `${text} (${[...new Set(found)].join(", ")})` : String(text ?? "");
 }
 
@@ -399,6 +405,60 @@ export function parseCasaRosadaPhotos(html, event, source) {
 }
 async function casaRosadaPhotos(event, { read }) {
   return parseCasaRosadaPhotos(await read(event.url), event, CASA_ROSADA_SOURCE);
+}
+
+// ------------------------------------------------------------------------------------------------------------- Italy, Spain
+
+const GOVERNO = "https://www.governo.it";
+/**
+ * Italy's government (governo.it): its news feed, each article's main photograph named on its page (og:image, on the
+ * site's own /sites/governo.it/files/). Decrees and communiqués carry the site's emblem or nothing, and are passed over.
+ */
+async function governoEvents({ since, until, read, log = () => {} }) {
+  const out = parseRssItems(await read(`${GOVERNO}/it/feed/rss`))
+    .filter((i) => i.title && /^https:\/\/www\.governo\.it\//.test(i.link) && within(i.date, since, until))
+    .map((i) => ({ id: i.link, title: i.title, date: i.date, place: "", summary: withEnglishCountries(i.title), url: i.link }));
+  log(`official: Italy's government lists ${out.length} item(s) from ${since} to ${until}`);
+  return out;
+}
+export function parseGovernoPhotos(html, event, source) {
+  const og = String(html ?? "").match(/<meta property="og:image" content="(https:\/\/www\.governo\.it\/sites\/governo\.it\/files\/(?:field\/image\/)?([\w.-]+?)\.(?:jpe?g|png))"/i);
+  if (!og || /logo|stemma|emblem|default|placeholder/i.test(og[2])) return [];
+  const description = text(String(html ?? "").match(/<meta (?:name|property)="(?:og:)?description" content="([^"]*)"/i)?.[1]);
+  return [candidate(source, event, { caption: event.title, summary: withEnglishCountries([description, event.summary].filter(Boolean).join(" | ")), url: og[1], thumb: og[1], width: 1200, height: 800, key: og[2], artist: source.author })];
+}
+async function governoPhotos(event, { read }) {
+  return parseGovernoPhotos(await read(event.url), event, GOVERNO_SOURCE);
+}
+
+const MONCLOA = "https://www.lamoncloa.gob.es";
+/**
+ * Spain's government (lamoncloa.gob.es): its photo galleries' feed, each gallery's frames listed in the page's own data
+ * (schema.org ImageObject: the 2,000-pixel file, its caption, its author). The site authorises reuse of its content but
+ * not of third parties', and its galleries mix the government's photographers («Pool Moncloa/Fernando Calvo») with an
+ * agency's («EFE/ Mariscal», on the gallery of Lula's visit of 16 November 2026): only Moncloa's own frames are read.
+ */
+async function moncloaEvents({ since, until, read, log = () => {} }) {
+  const out = parseRssItems(await read(`${MONCLOA}/Paginas/rss.aspx?tipo=41`))
+    .filter((i) => i.title && /^https:\/\/www\.lamoncloa\.gob\.es\//.test(i.link) && within(i.date, since, until))
+    .map((i) => ({ id: i.link, title: i.title, date: i.date, place: "", summary: withEnglishCountries(i.title), url: i.link.replace(/\?qfr=\d+$/, "") }));
+  log(`official: Spain's government lists ${out.length} gallery(ies) from ${since} to ${until}`);
+  return out;
+}
+const AGENCY = /\b(?:EFE|Europa Press|Reuters|AFP|AP|Getty|EP|Agencia)\b/i;
+export function parseMoncloaPhotos(html, event, source) {
+  const out = [];
+  const seen = new Set();
+  for (const m of String(html ?? "").matchAll(/\{"@id":"[^"]*","@type":"ImageObject"[^{}]*?"contentUrl":"(https:\/\/www\.lamoncloa\.gob\.es\/multimedia\/fotos\/[^"]+?\/([\w.-]+?)\.jpe?g)"[^{}]*?"name":"([^"]*)"[^{}]*?"author":\{"@type":"Person","name":"([^"]*)"\}[^{}]*?"width":"(\d+)","height":"(\d+)"\}/g)) {
+    const [, url, file, name, author, w, h] = m;
+    if (seen.has(url) || !/Moncloa/i.test(author) || AGENCY.test(author) || !landscape(Number(w), Number(h))) continue;
+    seen.add(url);
+    out.push(candidate(source, event, { caption: text(name), summary: event.summary, url, thumb: `${url}?RenditionID=34`, width: Number(w), height: Number(h), key: file, artist: text(author) }));
+  }
+  return out;
+}
+async function moncloaPhotos(event, { read }) {
+  return parseMoncloaPhotos(await read(event.url), event, MONCLOA_SOURCE);
 }
 
 // ----------------------------------------------------------------------------------------------------------------- Flickr
@@ -625,7 +685,44 @@ const ECUADOR_SOURCE = flickrSource({
   titles: ["الرئيس الإكوادوري", "رئيس الإكوادور"],
 });
 
-export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE, CASA_ROSADA_SOURCE, ECUADOR_SOURCE];
+/*
+ * The G20's other offices, read the same day: France (elysee.fr's legal notice: content under the Licence Ouverte, but its
+ * «photographies … ne sont pas … réutilisables sans leur accord»), Korea (KOGL type 4: no commercial use, no changes),
+ * Australia (pm.gov.au: CC BY 4.0 «with the exception of … all photos and graphics»), Germany (its photo archive's terms
+ * page answers 404), South Africa and Turkey (no reuse statement found), Indonesia (presidenri.go.id 403; setkab.go.id
+ * states only its copyright), Saudi Arabia (SPA, the rule of 16 November): none is read.
+ */
+const GOVERNO_SOURCE = {
+  id: "governo",
+  office: "الحكومة الإيطالية",
+  officeEn: "Italy's government",
+  author: "Palazzo Chigi",
+  country: "Italy",
+  leaders: [{ name: "Giorgia Meloni", ar: "ميلوني" }],
+  titles: ["رئيسة الوزراء الإيطالية", "رئيسة وزراء إيطاليا", "رئيسة الحكومة الإيطالية"],
+  license: "CC BY 3.0",
+  licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+  checked: "2026-11-21: governo.it/it/note-legali, «Salvo ove diversamente indicato, i contenuti pubblicati sul presente sito (testi, immagini, fotografie, video, ecc.) sono messi a disposizione con licenza CC-BY 3.0»",
+  events: governoEvents,
+  photos: governoPhotos,
+};
+
+const MONCLOA_SOURCE = {
+  id: "moncloa",
+  office: "الحكومة الإسبانية",
+  officeEn: "Spain's government",
+  author: "La Moncloa",
+  country: "Spain",
+  leaders: [{ name: "Pedro Sánchez", ar: "سانشيز" }],
+  titles: ["رئيس الوزراء الإسباني", "رئيس الحكومة الإسبانية", "رئيس وزراء إسبانيا"],
+  license: "Reuse authorised",
+  licenseUrl: "https://www.lamoncloa.gob.es/Paginas/es_AvisoLegal.aspx",
+  checked: "2026-11-21: lamoncloa.gob.es's legal notice, «Se autoriza la reproducción total o parcial, modificación, distribución y comunicación de la información disponible en este sitio web, con excepción de los contenidos sobre los que existan derechos … de terceros»; only frames credited to its own photographers (Pool Moncloa) are read",
+  events: moncloaEvents,
+  photos: moncloaPhotos,
+};
+
+export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE, CASA_ROSADA_SOURCE, ECUADOR_SOURCE, GOVERNO_SOURCE, MONCLOA_SOURCE];
 
 /**
  * Offices built and licence-checked but not read. India's waited here for an hour on 2026-11-21: pmindia.gov.in answers
