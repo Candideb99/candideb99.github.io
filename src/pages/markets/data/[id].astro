@@ -12,6 +12,7 @@ import StoryCard from "@components/StoryCard.astro";
 import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
 import { getArticles } from "@lib/articles";
 import { formatShortDate, timeAgo } from "@lib/format";
+import { headlineNames, namesInHeadline } from "@lib/instrument-news.mjs";
 import site from "@data/site.json";
 
 export function getStaticPaths() {
@@ -36,11 +37,10 @@ const dayMove = (i: number) => {
   return { dir: /^[0.]+$/.test(text) ? "flat" : v > 0 ? "up" : "down", text: (/^[0.]+$/.test(text) ? "" : v > 0 ? "+" : "−") + text + (q.changeMode === "abs" ? "" : "%") };
 };
 // Stories whose headline names the instrument, as a whole word: «النفط» in a headline is not Brent's page's business,
-// «برنت» is. Two or more, or the module is left out.
-const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const names = [...new Set([q.name, q.short])].filter((n) => n.length >= 3);
-const named = new RegExp(`(?:^|[\\s«(،])(?:[وبلفك]|ال|لل)?(?:${names.map(escape).join("|")})(?=$|[\\s»)،.:؛])`);
-const news = (await getArticles()).filter((a) => a.data.kind === "news" && named.test(a.data.title)).slice(0, 4);
+// «برنت» is. Two or more, or the module is left out. The names include the newsroom's own (lib/instrument-news.mjs,
+// 2026-11-20): it calls the Saudi index «الأسهم السعودية» and the Egyptian «البورصة المصرية».
+const named = namesInHeadline(headlineNames(q));
+const news = (await getArticles()).filter((a) => a.data.kind === "news" && named(a.data.title)).slice(0, 4);
 const subtitle = [q.note, q.unit && q.unit !== "%" ? q.unit : null].filter(Boolean).join(" · ");
 const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر والتغير اليومي ومسار الإغلاق، من لوحة أسواق خازندار. أسعار مؤجّلة وللاطلاع.`;
 ---

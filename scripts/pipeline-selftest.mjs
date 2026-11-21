@@ -1971,6 +1971,17 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // An instrument's stories (2026-11-20): the newsroom's names for it count («الأسهم السعودية» for TASI, «نيكي» for the
+  // Nikkei), and a name that means something else in a headline does not («منطقة اليورو», «السوق السعودية»).
+  {
+    const { headlineNames, namesInHeadline } = await import("../src/lib/instrument-news.mjs");
+    const tasi = namesInHeadline(headlineNames({ id: "tasi", name: "تاسي", short: "تاسي" }));
+    const nikkei = namesInHeadline(headlineNames({ id: "n225", name: "نيكاي 225", short: "نيكاي" }));
+    const euro = namesInHeadline(headlineNames({ id: "eurusd", name: "يورو / دولار", short: "يورو/دولار" }));
+    check("an instrument's page takes the newsroom's names for it and no other meaning", [
+      tasi("الأسهم السعودية تهبط 2.3% وتسجل أدنى إغلاق منذ 2021"), tasi("«أرادَ» الإماراتية تدخل السوق السعودية بمشروع في الرياض"), nikkei("مؤشر «نيكي» الياباني يهوي 5%"), euro("اقتصاد منطقة اليورو ينمو 0.4% في الربع الثالث"),
+    ], [true, false, true, false]);
+  }
   // The markets board (2026-11-20): an instrument printed twice on it, and an instrument's oldest close without its move
   // while the record holds the session before; the board with each once and a full table pass.
   {
