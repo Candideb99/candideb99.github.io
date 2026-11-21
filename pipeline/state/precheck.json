@@ -18538,6 +18538,34 @@
           "noted": []
         }
       ]
+    },
+    "saudi-crude-storage-japan-hormuz-transits-823e53": {
+      "at": "2026-11-21T15:08:11.373Z",
+      "title": "السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 39,
+            "checked": 39,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 7,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [
