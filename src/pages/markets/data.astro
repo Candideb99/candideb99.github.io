@@ -1,18 +1,17 @@
 ---
 /**
- * لوحة الأسواق: the market-data page, organised as the business dailies organise theirs: the
- * headline numbers as cards with a month's line, then one compact table per market group in
- * ruled columns, then the latest market news so the page leads back into the paper.
+ * لوحة الأسواق: the market-data page, organised as the business dailies organise theirs: one compact
+ * table per market group in ruled columns, each row with its month's line, then the latest market news
+ * so the page leads back into the paper. Until 2026-11-20 six headline cards opened it, each an
+ * instrument its tables printed again under it (MarketBoard.astro).
  */
 import Base from "@layouts/Base.astro";
-import QuoteCard from "@components/QuoteCard.astro";
 import MarketBoard from "@components/MarketBoard.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { board, quotes, grouped, FEATURED_IDS } from "@lib/markets";
+import { board, grouped } from "@lib/markets";
 import { getArticlesBySection } from "@lib/articles";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
 
-const featured = quotes(FEATURED_IDS);
 // The groups run down newspaper columns in this order (2026-10-19): the Arab markets over the commodities their readers
 // watch (oil, gold), then the bonds, the currencies and the world's indices. Three across, columns break before the
 // bonds and the indices: Arab markets and commodities | bonds and currencies | indices, ending within 174px of each
@@ -31,14 +30,6 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
       <h1 class="page-title">لوحة الأسواق</h1>
       <p class="page-intro">المؤشرات والعملات والسلع والسندات التي يتابعها خازندار. الأسعار مؤجّلة وللاطلاع لا للتداول{board.updatedAt && <span>؛ آخر تحديث <time datetime={board.updatedAt} data-relative title={updated}>{timeAgo(board.updatedAt)}</time></span>}.</p>
     </header>
-
-    {featured.length > 0 && (
-      <section class="featured" aria-label="أبرز الأرقام">
-        {featured.map((q) => (
-          <div class="featured__cell"><QuoteCard quote={q} /></div>
-        ))}
-      </section>
-    )}
 
     <div class="groups">
       {groups.map((g) => (
@@ -65,17 +56,9 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
 
 <style>
   .page-intro time { color: inherit; }
-  /* The headline numbers: a ruled row of cards, like the cover's columns. */
-  .featured { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); padding-block: 0.9rem; }
-  .featured__cell { min-width: 0; padding-inline: var(--col-gap); }
-  .featured__cell:first-child { padding-inline-start: 0; }
-  .featured__cell:last-child { padding-inline-end: 0; }
-  /* `:not(:first-child)`, not `+`: the sibling selector outranked the narrower screens' resets below, and a phone
-     drew a stray rule at the page's edge beside the third and fifth cards (2026-10-19). */
-  .featured__cell:not(:first-child) { border-inline-start: 1px solid var(--rule); }
   /* One compact table per group in ruled newspaper columns that balance themselves: in a grid of three across, the
      Arab markets' two rows stood beside tables of seven over a 290px hole (2026-10-19). */
-  .groups { columns: 3; column-gap: calc(var(--col-gap) * 2); column-rule: 1px solid var(--rule); margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+  .groups { columns: 3; column-gap: calc(var(--col-gap) * 2); column-rule: 1px solid var(--rule); border-top: 3px solid var(--ink); padding-top: 0.9rem; }
   .groups__cell { min-width: 0; break-inside: avoid; padding-bottom: 2rem; }
   .groups__cell:last-child { padding-bottom: 0; }
   @media (min-width: 1024px) {
@@ -83,21 +66,10 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   }
   .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: var(--measure); }
   .news { margin-top: clamp(2rem, 4vw, 3rem); }
-  @media (min-width: 600px) and (max-width: 1023px) {
-    .featured__cell:nth-child(4) { border-inline-start: 0; padding-inline-start: 0; }
-    .featured__cell:nth-child(3) { padding-inline-end: 0; }
-  }
   @media (max-width: 1023px) {
-    .featured { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1rem; }
     .groups { columns: 2; }
   }
   @media (max-width: 599px) {
-    .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .featured__cell { padding-inline: 0.75rem; }
-    .featured__cell:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
-    .featured__cell:nth-child(even) { padding-inline-end: 0; }
-    .featured__cell:nth-child(3), .featured__cell:nth-child(4) { border-inline-start: 0; }
-    .featured__cell:nth-child(even) { border-inline-start: 1px solid var(--rule); }
     .groups { columns: 1; }
     .groups__cell { padding-bottom: 1.5rem; }
   }

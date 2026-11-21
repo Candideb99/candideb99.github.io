@@ -11,7 +11,7 @@ import MarketBoard from "@components/MarketBoard.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
 import { getArticles } from "@lib/articles";
-import { formatDate, timeAgo } from "@lib/format";
+import { formatShortDate, timeAgo } from "@lib/format";
 import site from "@data/site.json";
 
 export function getStaticPaths() {
@@ -23,11 +23,13 @@ interface Props {
 const { quote: q } = Astro.props;
 const dir = direction(q);
 const peers = board.quotes.filter((p) => p.group === q.group && p.id !== q.id);
-// The newest closes first, a month of them: the line above carries the rest.
-const closes = [...(q.history ?? [])].reverse().slice(0, 22);
+// The newest closes first, a month of them: the line above carries the rest. Each move is taken from the record, so the
+// oldest row has its own too (it printed «—», the session before it being outside the month, 2026-11-20).
+const record = [...(q.history ?? [])].reverse();
+const closes = record.slice(0, 22);
 const num = (v: number) => v.toLocaleString("en-US", { minimumFractionDigits: q.decimals, maximumFractionDigits: q.decimals }) + (q.unit === "%" ? "%" : "");
 const dayMove = (i: number) => {
-  const prev = closes[i + 1];
+  const prev = record[i + 1];
   if (!prev) return null;
   const v = q.changeMode === "abs" ? closes[i].c - prev.c : prev.c ? ((closes[i].c - prev.c) / Math.abs(prev.c)) * 100 : 0;
   const text = Math.abs(v).toFixed(2);
@@ -80,7 +82,8 @@ const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر وال
                 const m = dayMove(i);
                 return (
                   <tr>
-                    <th scope="row"><bdi>{formatDate(`${p.d}T12:00:00Z`, { weekday: false })}</bdi></th>
+                    {/* «20 نوفمبر», as the site's dated lists print a day: «2026» stood on every row. */}
+                    <th scope="row"><bdi>{formatShortDate(`${p.d}T12:00:00Z`)}</bdi></th>
                     <td><bdi dir="ltr">{num(p.c)}</bdi></td>
                     <td class={m ? `closes__move--${m.dir}` : undefined}>{m ? <bdi dir="ltr">{m.text}</bdi> : "—"}</td>
                   </tr>

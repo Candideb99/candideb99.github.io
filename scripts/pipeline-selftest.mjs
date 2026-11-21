@@ -1971,6 +1971,18 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // The markets board (2026-11-20): an instrument printed twice on it, and an instrument's oldest close without its move
+  // while the record holds the session before; the board with each once and a full table pass.
+  {
+    const { boardFaults } = await import("./site-furniture.mjs");
+    const link = (id) => `<a href="/markets/data/${id}/">${id}</a>`;
+    const board = (ids) => `<section class="wrap block" id="board">${ids.map(link).join("")}<section class="news"><a href="/articles/x/">x</a></section></section></main>`;
+    const rows = (last) => Array.from({ length: 22 }, (_, i) => `<tr><th>${i}</th><td>1</td><td>${i === 21 ? last : "+0.10%"}</td></tr>`).join("");
+    const closes = (last, sessions) => `<bdi dir="ltr" data-stat="sessions">${sessions}</bdi><table class="closes ui"><thead><tr><th>x</th></tr></thead><tbody>${rows(last)}</tbody></table>`;
+    check("the site check finds an instrument twice on the board and an oldest close without its move, and passes the fixed pages", [
+      boardFaults(board(["tasi", "brent", "tasi"])).length, boardFaults(board(["tasi", "brent"])).length, boardFaults(closes("—", 66)).length, boardFaults(closes("+0.20%", 66)).length, boardFaults(closes("—", 22)).length,
+    ], [1, 0, 1, 0, 0]);
+  }
   // The agenda (2026-11-20): a month names the schedules that have published no date in it yet (minutes aside), and a
   // note is said once on the page.
   {

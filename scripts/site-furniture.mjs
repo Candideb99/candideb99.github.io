@@ -221,6 +221,29 @@ export function agendaFaults(html) {
   return [...repeated].map((t) => `an agenda note said again: «${t.slice(0, 60)}»`);
 }
 
+/**
+ * The markets board (2026-11-20, the owner: "check the markets board page design and organization too"): an instrument
+ * printed twice on the board (its six headline cards repeated six rows of its tables, the two Arab indices twice in a row
+ * on a phone), and an instrument page's closes whose oldest row has no move though the record holds the session before.
+ */
+export function boardFaults(html) {
+  const out = [];
+  const board = html.match(/<section class="wrap block" id="board"[\s\S]*?<\/section>\s*<\/main>|<section class="wrap block" id="board"[\s\S]*$/)?.[0];
+  if (board) {
+    const groups = board.split(/<section class="news"/)[0];
+    const ids = [...groups.matchAll(/href="\/markets\/data\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
+    const twice = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+    if (twice.length) out.push(`instruments printed twice on the board: ${twice.join(", ")}`);
+  }
+  const closes = html.match(/<table class="closes[^"]*"[\s\S]*?<\/table>/)?.[0];
+  if (closes) {
+    const rows = [...closes.matchAll(/<tbody[^>]*>[\s\S]*?<\/tbody>/g)][0]?.[0].match(/<tr[\s\S]*?<\/tr>/g) ?? [];
+    const sessions = Number(html.match(/data-stat="sessions"[^>]*>(\d+)</)?.[1] ?? 0);
+    if (rows.length >= 22 && /<td[^>]*>\s*—\s*<\/td>\s*<\/tr>$/.test(rows.at(-1)) && sessions > rows.length) out.push("the oldest close has no move though the record holds the session before it");
+  }
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

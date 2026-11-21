@@ -82,8 +82,7 @@ export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
   "markets/commodities": ["gold", "silver", "copper"],
 };
 
-/** The headline numbers of the data page. */
-export const FEATURED_IDS = ["tasi", "egx30", "spx", "brent", "gold", "usdegp"];
+// The data page's six headline cards (FEATURED_IDS) went on 2026-11-20: each repeated a row of its tables.
 
 /**
  * Whether a story's key figure is a market quote: a price, level or move of an instrument the board carries (Brent,
