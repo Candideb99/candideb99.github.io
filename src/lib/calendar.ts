@@ -2,8 +2,9 @@
  * The economic calendar, read from `src/data/calendar.json` (written by `pipeline/calendar.mjs`
  * from the institutions' own schedule pages), and the grouping the front module and the page share.
  */
-import data from "@data/calendar.json";
-import site from "@data/site.json";
+// Relative addresses with their type, so Node reads this module in scripts/pipeline-selftest.mjs as it reads regions.ts.
+import data from "../data/calendar.json" with { type: "json" };
+import site from "../data/site.json" with { type: "json" };
 
 export interface CalendarEvent {
   date: string;
@@ -77,6 +78,22 @@ export function byMonth(count = 3, from = todayIso()): { key: string; label: str
     label: `${MONTHS[Number(key.slice(5, 7)) - 1]} ${key.slice(0, 4)}`,
     days: [...days.entries()].map(([date, events]) => ({ date, label: weekdayLabel(date), events })),
   }));
+}
+
+/**
+ * The schedules that have published no date in a month yet, by name: their dates end before it starts (2026-11-20, the
+ * owner: "check the agenda page design and organization too"). January showed no US inflation, no US jobs and no
+ * Chinese data, the BLS and NBS calendars ending in December, and said so only inside the folded list of sources: a
+ * month without them read as a quiet month. Minutes are left out: they follow meetings, and a month without them is
+ * not a schedule unpublished.
+ */
+export function notYetIn(monthKey: string, sources: CalendarSource[] = calendar.sources ?? [], events: CalendarEvent[] = calendar.events): string[] {
+  const start = `${monthKey}-01`;
+  const onlyMinutes = (id: string) => {
+    const kinds = new Set(events.filter((e) => e.source === id).map((e) => e.kind));
+    return kinds.size > 0 && [...kinds].every((k) => k === "minutes");
+  };
+  return [...new Set(sources.filter((s) => !(s.until && s.until >= start) && !onlyMinutes(s.id)).map((s) => s.name))];
 }
 
 /** "الثلاثاء 15" under a month's own head. */

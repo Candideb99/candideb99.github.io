@@ -15,7 +15,7 @@
  */
 import Base from "@layouts/Base.astro";
 import Sources from "@components/Sources.astro";
-import { byMonth, localTime, relativeDay, sourceNotes, calendar } from "@lib/calendar";
+import { byMonth, localTime, notYetIn, relativeDay, sourceNotes, calendar } from "@lib/calendar";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
 import { safeHref } from "@lib/safe-url.mjs";
 import site from "@data/site.json";
@@ -28,6 +28,12 @@ const last = months.at(-1);
 const until = last ? `${last.key}-31` : "";
 const lastMonth = last?.label.split(" ")[0];
 const sources = sourceNotes(until).map((s) => ({ name: s.name, title: s.what, url: s.url, detail: s.detail }));
+/** A note under an event is said once on the page (2026-11-20): «مقياس التضخم الذي يعتمده الاحتياطي الفيدرالي» stood under
+ *  all three PCE releases, and the Gulf pegs under both Fed decisions. Rendered in the page's order, months then days. */
+const said = new Set<string>();
+const once = (note?: string) => (note && !said.has(note) ? (said.add(note), note) : "");
+/** «and» before the last of several names. */
+const joined = (names: string[]) => (names.length > 1 ? `${names.slice(0, -1).join("، ")} و${names.at(-1)}` : names[0] ?? "");
 /** «اليوم» or «غداً» beside a day, written at build time and turned with the clock in the page. */
 const near = (date: string) => {
   const label = relativeDay(date);
@@ -61,11 +67,12 @@ const near = (date: string) => {
                       const at = localTime(e);
                       // A decision or a set of minutes is headed by its institution, a release by its own name.
                       const named = e.kind === "data";
+                      const note = once(e.note);
                       return (
                         <li class="event">
                           <p class="event__label ui">{at && <bdi class="event__time">{at}</bdi>}<span class={`event__kind event__kind--${e.kind}`}>{KIND[e.kind]}</span></p>
                           <p class="event__title"><a href={safeHref(e.url)} rel="noopener nofollow" target="_blank">{named ? e.title : e.org}</a></p>
-                          {(named || e.note) && <p class="event__meta ui">{named && e.org}{named && e.note && "، "}{e.note}</p>}
+                          {(named || note) && <p class="event__meta ui">{named && e.org}{named && note && "، "}{note}</p>}
                         </li>
                       );
                     })}
@@ -73,6 +80,7 @@ const near = (date: string) => {
                 </li>
               ))}
             </ol>
+            {notYetIn(m.key).length > 0 && <p class="month__pending ui">لم تُعلَن بعد مواعيد {joined(notYetIn(m.key))} لهذا الشهر.</p>}
           </section>
         ))}
       </div>
@@ -140,4 +148,6 @@ const near = (date: string) => {
   .event__title a { text-decoration: none; }
   .event__title a:hover { color: var(--green); }
   .event__meta { font-size: var(--fs-xs); color: var(--ink-3); line-height: 1.55; margin-top: 0.1rem; }
+  /* A month some schedules have not reached yet says so at its foot, so it does not read as a quiet month. */
+  .month__pending { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); }
 </style>

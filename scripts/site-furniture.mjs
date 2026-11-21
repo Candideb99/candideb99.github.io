@@ -204,6 +204,23 @@ export function latestPageFaults(html) {
   return out;
 }
 
+/**
+ * The agenda (2026-11-20, the owner: "check the agenda page design and organization too"): an event's note said again
+ * under a later event (the PCE measure three times, the Gulf pegs twice). A note is longer than an institution's name
+ * alone, which a release prints each time, so only a line past 40 characters counts.
+ */
+export function agendaFaults(html) {
+  const seen = new Set();
+  const repeated = new Set();
+  for (const m of html.matchAll(/<p class="event__meta[^"]*"[^>]*>([\s\S]*?)<\/p>/g)) {
+    const text = m[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    if (text.length <= 40) continue;
+    if (seen.has(text)) repeated.add(text);
+    seen.add(text);
+  }
+  return [...repeated].map((t) => `an agenda note said again: «${t.slice(0, 60)}»`);
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

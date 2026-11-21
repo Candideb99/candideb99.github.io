@@ -1971,6 +1971,24 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // The agenda (2026-11-20): a month names the schedules that have published no date in it yet (minutes aside), and a
+  // note is said once on the page.
+  {
+    const { notYetIn } = await import(new URL("../src/lib/calendar.ts", import.meta.url).href);
+    const sources = [
+      { id: "fed", name: "الاحتياطي الفيدرالي الأمريكي", until: "2027-11-17" },
+      { id: "fed-minutes", name: "الاحتياطي الفيدرالي الأمريكي", until: "2026-12-30" },
+      { id: "bls-cpi", name: "مكتب إحصاءات العمل الأمريكي", until: "2026-12-10" },
+      { id: "bls-jobs", name: "مكتب إحصاءات العمل الأمريكي", until: "2026-12-04" },
+      { id: "nbs", name: "المكتب الوطني للإحصاء في الصين", until: null },
+    ];
+    const events = [{ source: "fed-minutes", kind: "minutes" }, { source: "bls-cpi", kind: "data" }, { source: "fed", kind: "rates" }];
+    check("a month names the schedules not yet out for it, once each, minutes aside", [notYetIn("2026-12", sources, events), notYetIn("2027-01", sources, events)], [["المكتب الوطني للإحصاء في الصين"], ["مكتب إحصاءات العمل الأمريكي", "المكتب الوطني للإحصاء في الصين"]]);
+    const { agendaFaults } = await import("./site-furniture.mjs");
+    const meta = (t) => `<p class="event__meta ui">${t}</p>`;
+    const pce = "مكتب التحليل الاقتصادي الأمريكي، مقياس التضخم الذي يعتمده الاحتياطي الفيدرالي";
+    check("the site check finds an agenda note said twice and passes a release's name printed twice", [agendaFaults(meta(pce) + meta(pce)).length, agendaFaults(meta(pce) + meta("مكتب التحليل الاقتصادي الأمريكي")).length], [1, 0]);
+  }
   // The latest page (2026-11-20): under a day's head a line prints its hour, never the date again or an age.
   {
     const { latestPageFaults } = await import("./site-furniture.mjs");
