@@ -838,6 +838,8 @@ async function runNews(report) {
   // no section runs empty while another fills up: الدفاع stayed empty for a week this way, its
   // stories scoring 6 and deferred behind the economy's every run.
   const sectionIds = sections.map((x) => (typeof x === "string" ? x : x.id));
+  // The stories a balance brought in: the rotation, a tie-breaker, never undoes one.
+  const balanced = new Set();
   const starved = SECTIONS.length ? [] : sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
   for (const sec of starved) {
     const pick = stories.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
@@ -849,6 +851,7 @@ async function runNews(report) {
       log(`section balance: "${served.headlineHint}" (${served.section}, ${served.importance}) gives way`);
     }
     chosen.push(pick);
+    balanced.add(pick);
     log(`section balance: ${sec} has had nothing for three days; "${pick.headlineHint}" [${pick.importance}] added`);
   }
   // Region balance: our readers live in the Gulf, Egypt and the Maghreb, and their own economies come first
@@ -872,7 +875,7 @@ async function runNews(report) {
   }
   // Rotation (select.mjs, THE WEIGHTS; the owner, 2026-11-21: "cover everything, but yet the most important stuff"): one
   // story a run from the Arab desk or the part of the world that has waited longest, never in place of an Arab story.
-  const rotation = quiet ? rotationSwap({ chosen, stories, quiet, runLimit, minImportance: MIN_IMPORTANCE }) : null;
+  const rotation = quiet ? rotationSwap({ chosen, stories, quiet, runLimit, minImportance: MIN_IMPORTANCE, keep: balanced }) : null;
   if (rotation) {
     if (rotation.drop) {
       chosen.splice(chosen.indexOf(rotation.drop), 1);
@@ -881,7 +884,7 @@ async function runNews(report) {
     chosen.push(rotation.pick);
     log(`rotation: ${rotation.place.name} has had no story for ${Number.isFinite(rotation.place.days) ? `${Math.floor(rotation.place.days)} days` : "as long as the record runs"}; "${rotation.pick.headlineHint}" [${rotation.pick.importance}] added`);
   }
-  for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
+  for (const s of stories) log(`  [${s.importance}] ${s.section}${s.tie ? ` (${s.tie})` : ""} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.rotation ? ` (rotation for ${s.rotation}: not run)` : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;
   const publishedTitles = [...recentTitles];

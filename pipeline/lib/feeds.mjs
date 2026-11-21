@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import { USER_AGENT, askDeclared, canonicalUrl, declaredFor, fetchPublic, hoursSince, readCapped, safeIsoDate, stripHtml, truncate } from "./util.mjs";
+import { USER_AGENT, askDeclared, canonicalUrl, decodeText, declaredFor, fetchPublic, hoursSince, readCapped, safeIsoDate, stripHtml, truncate } from "./util.mjs";
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -185,7 +185,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     }
     // Read only so far: a body past the cap is cut off as it arrives (readCapped()), never held whole first.
     let { bytes, cut } = await readCapped(response, 8_000_000);
-    let raw = bytes.toString("utf8");
+    let raw = decodeText(bytes, response.headers.get("content-type"));
     // A web page where a feed was asked for: Moneycontrol gives its news sitemap only to a reader that names itself a bot,
     // and the plain name a story's page, 200 and no error (2026-11-21). The feed is asked for once more under the declared
     // name (util.mjs), which this host then gets for the rest of the run.
@@ -197,7 +197,7 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
         return [];
       }
       ({ bytes, cut } = await readCapped(response, 8_000_000));
-      raw = bytes.toString("utf8");
+      raw = decodeText(bytes, response.headers.get("content-type"));
       log(`feed ${source.id}: a web page under the plain name; read under the declared name`);
     }
     if (cut || raw.length > 4_000_000) {

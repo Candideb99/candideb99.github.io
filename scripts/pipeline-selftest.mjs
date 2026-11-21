@@ -448,6 +448,18 @@ check(
   ],
   [["صرب"], ["كروات"], ["يونان"], ["رومان"], ["سودان"], ["صومال"], ["اوكران"], ["عراق"], false],
 );
+// A page in another charset (the WTO's news pages, ISO-8859-1) is read in it; a wrong header over UTF-8 (Katadata) is not.
+{
+  const { decodeText } = await import("../pipeline/lib/util.mjs");
+  const latin = Buffer.concat([Buffer.from("Okonjo-Iweala", "latin1"), Buffer.from([0x92]), Buffer.from("s caf", "latin1"), Buffer.from([0xe9]), Buffer.from(" costs ", "latin1"), Buffer.from([0x80]), Buffer.from("5", "latin1")]);
+  const meta = Buffer.concat([Buffer.from('<html><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head><body>caf', "latin1"), Buffer.from([0xe9]), Buffer.from("</body>", "latin1")]);
+  check("a page declared ISO-8859-1 is read in it (header or meta), a wrong declaration over UTF-8 is ignored, an undeclared one stays UTF-8", [
+    decodeText(latin, "text/html; charset=iso-8859-1"),
+    decodeText(meta, "text/html").includes("café"),
+    decodeText(Buffer.from("Rp2,82 triliun – naik", "utf8"), "application/rss+xml; charset=iso-8859-1"),
+    decodeText(latin, "text/html").includes("�"),
+  ], ["Okonjo-Iweala’s café costs €5", true, "Rp2,82 triliun – naik", true]);
+}
 check("a story's figures stand in Italian, Romanian, Polish, Croatian, Ukrainian and Greek scale words", [
   ungroundedNumbers("بلغ عدد الأسر 2400000 أسرة وقيمة المشروع 1300000000 يورو", ["2,4 milioni di famiglie", "Adevărata valoare: 1,3 miliarde de euro"]),
   ungroundedNumbers("تبلغ الحزمة 5000000000 زلوتي وتضخ الدولة 2000000000 يورو ويعمل فيها 300000", ["Pakiet wart 5 mld zł", "Država želi aktivirati 2 milijarde eura; zaposleno je 300 tisuća radnika"]),
@@ -590,6 +602,8 @@ check(
   check("when the longest-quiet place's story can break no tie, the next place's is tried",
     (() => { const r = rotationSwap({ chosen: [saudi, euBudget], stories: [saudi, euBudget, indonesia, xrg], quiet: evening, runLimit: 2, minImportance: 6 }); return r && [r.pick.headlineHint, r.drop.headlineHint]; })(),
     [xrg.headlineHint, euBudget.headlineHint]);
+  check("a story the section balance brought in for a starved section is never the one that gives way",
+    swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, kenyaGulf], keep: new Set([nvidia]) }), null);
   check("with room in the run the rotation story is added; a story whose headline names no quiet place is never one",
     [swap({ chosen: [saudi], stories: [saudi, kenya] }), swap({ chosen: [saudi], stories: [saudi, pick("الأسهم الأفريقية ترتفع", 6, ["أفريقيا"], "none", "أفريقيا جنوب الصحراء")] }), swap({ chosen: [saudi, apple], stories: [saudi, apple, { ...kenya, importance: 4 }] })],
     [[kenya.headlineHint, null], null, null]);

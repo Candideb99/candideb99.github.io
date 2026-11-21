@@ -1,6 +1,6 @@
 import { Readability } from "@mozilla/readability";
 import { parseHTML } from "linkedom";
-import { USER_AGENT, fetchPublic, readCapped, stripHtml } from "./util.mjs";
+import { USER_AGENT, decodeText, fetchPublic, readCapped, stripHtml } from "./util.mjs";
 
 const robotsCache = new Map();
 
@@ -143,7 +143,7 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {}, all
       return result;
     }
     // Its first 3 million characters, as before, but read only so far: a page past the cap is cut off as it arrives.
-    const html = new TextDecoder().decode((await readCapped(response, 6_000_000)).bytes).slice(0, 3_000_000);
+    const html = decodeText((await readCapped(response, 6_000_000)).bytes, type).slice(0, 3_000_000);
     Object.assign(result, readArticleHtml(html, response.url || current, { maxChars, log }));
     return result;
   } catch (error) {

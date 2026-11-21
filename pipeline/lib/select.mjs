@@ -78,7 +78,7 @@ const tieRank = (s, fallback) => TIE_RANK[s?.tie] ?? fallback;
  * whatever a quiet Indonesian story (none) offers. The newcomer's place is checked in code: a desk by the regions its
  * headline grounds, a part of the world by the countries its headline names. Returns { pick, drop, place } or null.
  */
-export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance }) {
+export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance, keep = new Set() }) {
   if (!quiet || (!quiet.desks.length && !quiet.areas.length)) return null;
   const desksOf = (s) => groundedRegions(s.regions ?? [], { title: s.headlineHint ?? "" });
   // Protecting a story trusts the editor's desk and tie; adding one needs its place grounded.
@@ -108,7 +108,8 @@ export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance }
       return incoming > own ? s.importance <= pick.importance + 1 : incoming === own && s.importance <= pick.importance;
     };
     const drop = chosen
-      .filter((s) => !arab(s) && (place.kind === "desk" || served(s)) && yields(s))
+      // `keep`: a story the section balance brought in for a section with nothing in three days (run.mjs) stays.
+      .filter((s) => !keep.has(s) && !arab(s) && (place.kind === "desk" || served(s)) && yields(s))
       .sort((x, y) => tieRank(x, TIE_RANK.global) - tieRank(y, TIE_RANK.global) || x.importance - y.importance)[0];
     if (drop) return { pick, drop, place };
   }

@@ -178,6 +178,28 @@ export async function readCapped(response, maxBytes) {
   }
 }
 
+/**
+ * A page's or a feed's bytes as text: UTF-8, unless they are not UTF-8 and the answer declares another charset (its
+ * Content-Type, an XML declaration or a meta tag), which is then used. Everything was read as UTF-8 until 2026-11-21,
+ * when a scan of every source found the WTO's news pages in ISO-8859-1 reading with U+FFFD in place of their curly
+ * quotes, accents and euro signs; the declaration alone is not trusted, since Katadata's server declares ISO-8859-1
+ * for a feed that is UTF-8 (and says so in its own XML declaration). "iso-8859-1" decodes as windows-1252, as browsers do.
+ */
+export function decodeText(bytes, contentType = "") {
+  const utf8 = new TextDecoder("utf-8").decode(bytes);
+  if (!utf8.includes("�")) return utf8;
+  const head = new TextDecoder("latin1").decode(bytes.subarray(0, 4096));
+  const declared = String(contentType).match(/charset=["']?([\w-]+)/i)?.[1]
+    ?? head.match(/<\?xml[^>]*encoding=["']([\w-]+)/i)?.[1]
+    ?? head.match(/<meta[^>]+charset=["']?([\w-]+)/i)?.[1];
+  if (!declared || /^utf-?8$/i.test(declared)) return utf8;
+  try {
+    return new TextDecoder(declared.toLowerCase()).decode(bytes);
+  } catch {
+    return utf8;
+  }
+}
+
 const TRACKING_PARAMS = /^(utm_|at_|fbclid|gclid|mc_|ref$|source$|traffic_source$|cmpid|ocid|ns_|_ga)/i;
 
 export function canonicalUrl(raw) {
