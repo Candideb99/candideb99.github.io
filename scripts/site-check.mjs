@@ -15,7 +15,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
-import { agendaFaults, articleFootFaults, bareFigures, boardFaults, filePageFaults, interactiveFaults, latestPageFaults, pageHeadFaults, readingFaults, selfLabelLinks, topicPageFaults } from "./site-furniture.mjs";
+import { agendaFaults, articleFootFaults, bareFigures, boardFaults, filePageFaults, interactiveFaults, latestPageFaults, pageHeadFaults, photoCredit, photoSourceFaults, readingFaults, selfLabelLinks, topicPageFaults } from "./site-furniture.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -68,6 +68,8 @@ let links = 0;
 let images = 0;
 let stories = 0;
 let facts = 0;
+// Where the published photographs come from, as their captions say (photoCredit(), 2026-11-20).
+const credited = new Set();
 const broken = new Map();
 
 for (const page of pages) {
@@ -95,6 +97,8 @@ for (const page of pages) {
   for (const what of agendaFaults(html)) fault(page, what);
   // An instrument printed twice on the board, an instrument's oldest close without its move (boardFaults(), 2026-11-20).
   for (const what of boardFaults(html)) fault(page, what);
+  const credit = photoCredit(html);
+  if (credit) credited.add(credit);
   // A redirect stub (<meta http-equiv="refresh">) is not a page a reader reads, but it must land on one: on 2026-09-27
   // eleven forwarded tag addresses pointed at a doubly encoded path («%25D9…») that was never built.
   if (/http-equiv=["']refresh["']/i.test(html) && html.length < 2000) {
@@ -154,6 +158,11 @@ for (const page of pages) {
   }
 }
 for (const key of broken.keys()) faults.push(`broken link: ${key}`);
+// The about and methodology pages name every library the credits use, and the handouts when any run (2026-11-20).
+for (const rel of ["about/index.html", "methodology/index.html"]) {
+  const file = path.join(DIST, rel);
+  if (existsSync(file)) for (const what of photoSourceFaults(readFileSync(file, "utf8"), credited)) faults.push(`${rel}: ${what}`);
+}
 
 console.log(`site-check: ${pages.length} pages (${stories} stories, ${facts} «الأرقام» boxes), ${links} links inside the site, ${images} images, ${stripRates} exchange rates in the market strip`);
 if (!stripRates) faults.push("no exchange rate found in any page's market strip: the strip's markup changed and this check reads nothing");

@@ -244,6 +244,33 @@ export function boardFaults(html) {
   return out;
 }
 
+/** The photo libraries a credit can name, as the captions print them. */
+export const PHOTO_LIBRARIES = ["ويكيميديا كومنز", "بيكسلز", "فليكر", "أوبن فيرس", "أنسبلاش"];
+
+/** Where an article's photograph comes from, read from its caption: a library, or its own source (a handout). */
+export function photoCredit(html) {
+  const credit = html.match(/<span class="article__credit"[^>]*>([\s\S]*?)<\/span>\s*<\/figcaption>/)?.[1];
+  if (!credit) return null;
+  const text = credit.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return PHOTO_LIBRARIES.find((lib) => text.includes(lib)) ?? "handout";
+}
+
+/**
+ * The pages that say where the photographs come from (2026-11-20, the owner: "check the about page design and
+ * organization too"): the about and methodology pages named Wikimedia Commons and Flickr, the methodology Creative
+ * Commons licences only, while Pexels gave 149 of the 577 published photographs and the stories' own sources 14. Each
+ * library the published credits name must be named on the page, and the handouts when any run.
+ */
+export function photoSourceFaults(pageHtml, credited) {
+  const text = pageHtml.replace(/<[^>]+>/g, " ");
+  const out = [];
+  for (const source of credited) {
+    if (source === "handout") { if (!/صاحبة الخبر|صاحبة الأخبار/.test(text)) out.push("published photographs come from the stories' own sources, which the page does not say"); }
+    else if (!text.includes(source)) out.push(`published photographs come from «${source}», which the page does not name`);
+  }
+  return out;
+}
+
 export function bareFigures(html) {
   const furniture = [
     ...html.matchAll(/<dt class="facts__label"[^>]*>([\s\S]*?)<\/dt>/g),

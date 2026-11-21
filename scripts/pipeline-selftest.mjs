@@ -1971,6 +1971,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // Where the photographs come from (2026-11-20): a caption names its library or its source; the about and methodology
+  // pages must name every library the credits use, and the handouts when any run.
+  {
+    const { photoCredit, photoSourceFaults } = await import("./site-furniture.mjs");
+    const caption = (credit) => `<figcaption class="article__caption ui"><span>x</span><span class="article__credit">الصورة: ${credit}</span></figcaption>`;
+    const credited = new Set([photoCredit(caption("Zlaťáky.cz · بيكسلز")), photoCredit(caption("وزارة المالية اللبنانية"))]);
+    check("a caption gives its library or a handout, and the page that names neither fails", [
+      [...credited], photoSourceFaults("<p>الصور من ويكيميديا كومنز وفليكر</p>", credited).length, photoSourceFaults("<p>من ويكيميديا كومنز وبيكسلز، أو مما توزّعه الجهة صاحبة الخبر</p>", credited).length,
+    ], [["بيكسلز", "handout"], 2, 0]);
+  }
   // An instrument's stories (2026-11-20): the newsroom's names for it count («الأسهم السعودية» for TASI, «نيكي» for the
   // Nikkei), and a name that means something else in a headline does not («منطقة اليورو», «السوق السعودية»).
   {
