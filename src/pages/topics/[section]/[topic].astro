@@ -76,7 +76,9 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
     <header class="page-head">
       <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
       <h1 class="page-title">{topic.name}</h1>
-      <p class="page-intro">{n > 0 ? <span>تغطية خازندار لهذا الموضوع، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
+      {/* No sentence over a page with stories (2026-11-21, the owner: "check if other sections/categories have poor
+          introductions"): «… لهذا الموضوع، من الأحدث إلى الأقدم» said what the title and the list already show. */}
+      {n === 0 && <p class="page-intro"><span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span></p>}
       <LinkRow label={`مواضيع ${sec.name}:`} links={siblings.map((t) => ({ href: topicHref(section, t.id), name: t.name }))} />
     </header>
 

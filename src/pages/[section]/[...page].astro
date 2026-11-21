@@ -19,7 +19,7 @@ import { sections, HUB_SECTIONS, type Section } from "@lib/sections";
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const routes = [];
   for (const section of sections) {
-    // «مدخل إلى الاقتصاد» has its own page, set out by kind (src/pages/explainers/index.astro, 2026-11-20), and no
+    // «مدخل إلى علم الاقتصاد» has its own page, set out by kind (src/pages/explainers/index.astro, 2026-11-20), and no
     // pages by date: its kinds' pages keep every piece.
     if (section.id === "explainers") continue;
     // The week's review is a series of its own (WEEKLY_HREF, 2026-11-20): its newest edition has a block on the first

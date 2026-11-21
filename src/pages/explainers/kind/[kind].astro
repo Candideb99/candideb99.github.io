@@ -1,14 +1,22 @@
 ---
 /**
- * The kinds of مدخل إلى الاقتصاد on their own pages: the plain explainers of concepts, one economist's idea a week
+ * The kinds of مدخل إلى علم الاقتصاد on their own pages: the plain explainers of concepts, one economist's idea a week
  * («الفكر الاقتصادي», 2026-11-20), and the readings of open-access research papers. Every piece of a kind is here; the
  * section's page shows each kind's newest (EXPLAINER_KINDS, src/lib/sections.ts).
+ *
+ * A long kind is set out by field (2026-11-21, the owner: "is this section well organized …?"): «شروح مبسّطة» listed its
+ * fifty lessons in one run by date, and a lesson does not age like news; a reader looking for the lessons on interest
+ * rates read past oil and chips. A lesson's field is the news section most of the stories it was written from are
+ * filed under (fieldOf(), as an analysis finds its desk), so the page runs الاقتصاد، الأسواق، الطاقة، الشركات،
+ * التكنولوجيا, each newest first, with a row at the top that jumps to each. A kind of twelve pieces or fewer stays one
+ * list.
  */
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
 import LinkRow from "@components/LinkRow.astro";
 import { getArticles } from "@lib/articles";
-import { EXPLAINER_KINDS } from "@lib/sections";
+import { fieldOf } from "@lib/analysis";
+import { EXPLAINER_KINDS, newsSections } from "@lib/sections";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -24,18 +32,31 @@ interface Props {
 const { id, name, intro, items } = Astro.props;
 const others = EXPLAINER_KINDS.filter((k) => k.id !== id);
 const n = items.length;
+const GROUP_FROM = 13;
+const all = n >= GROUP_FROM ? await getArticles() : [];
+const fields = new Map(items.map((a) => [a.id, n >= GROUP_FROM ? fieldOf(a, all) : undefined]));
+// The fields in the sections' own order; lessons written from no story of ours close the page. A field of one or two
+// lessons joins them, so no head stands over a single card.
+const groups: { id: string; name: string; items: typeof items }[] = newsSections
+  .map((s) => ({ id: s.id as string, name: s.name, items: items.filter((a) => fields.get(a.id) === s.id) }))
+  .filter((g) => g.items.length >= 3);
+const grouped = new Set(groups.flatMap((g) => g.items.map((a) => a.id)));
+const rest = items.filter((a) => !grouped.has(a.id));
+const byField = groups.length >= 2;
+if (byField && rest.length > 0) groups.push({ id: "general", name: "مواضيع أخرى", items: rest });
 ---
 
 <Base title={name} description={intro} path={`/explainers/kind/${id}/`} section="explainers">
   <section class="wrap block" data-section="explainers">
     <header class="page-head">
-      <p class="page-head__section ui"><a href="/explainers/">مدخل إلى الاقتصاد</a></p>
+      <p class="page-head__section ui"><a href="/explainers/">مدخل إلى علم الاقتصاد</a></p>
       <h1 class="page-title">{name}</h1>
       <p class="page-intro">{intro} {n === 0 && <span>لم تُنشر مواد من هذا النوع بعد.</span>}</p>
+      {byField && <LinkRow label="المجالات:" links={groups.map((g) => ({ href: `#field-${g.id}`, name: g.name }))} />}
       {/* As a flex row's own item, a «، » between the names had printed with a space before it (LinkRow's dot since). */}
       <LinkRow label="أيضاً:" links={others.map((o) => ({ href: `/explainers/kind/${o.id}/`, name: o.name }))} />
     </header>
-    {n > 0 && (
+    {n > 0 && !byField && (
       <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>
         {items.map((a) => (
           <StoryCard article={a} variant="text" showSection={false} showExcerpt />
@@ -43,4 +64,23 @@ const n = items.length;
       </div>
     )}
   </section>
+  {byField &&
+    groups.map((g) => (
+      <section class="wrap kind__field" data-section="explainers" aria-labelledby={`field-${g.id}`}>
+        <div class="section-head">
+          <h2 id={`field-${g.id}`}>{g.name}</h2>
+        </div>
+        <div class="cols cols--rows" style="--n:3">
+          {g.items.map((a) => (
+            <StoryCard article={a} variant="text" showSection={false} showExcerpt />
+          ))}
+        </div>
+      </section>
+    ))}
 </Base>
+
+<style>
+  /* Air between the fields, tight within each, as between the hub's kinds; a jump from the row lands under the bar. */
+  .kind__field { padding-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .kind__field h2 { scroll-margin-top: 4.5rem; }
+</style>

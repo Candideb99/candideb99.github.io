@@ -846,7 +846,7 @@ check(
   );
 }
 
-// «مدخل إلى الاقتصاد» carries no photograph (the owner, 2026-11-20: "i do not think we need pictures in the intro to economy
+// «مدخل إلى علم الاقتصاد» carries no photograph (the owner, 2026-11-20: "i do not think we need pictures in the intro to economy
 // part"): the newsroom picks none, the morning round fills none, and the site prints none, the published ones included.
 {
   const source = (file) => readFileSync(file, "utf8");

@@ -48,7 +48,7 @@ const REPO = "Candideb99/candideb99.github.io";
 const REPO_URL = `https://github.com/${REPO}`;
 const GIT_ID = ["-c", "user.name=khazendar-control", "-c", "user.email=newsroom@users.noreply.github.com"];
 const NEWS_SECTIONS = ["economy", "markets", "energy", "companies", "technology"];
-const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى الاقتصاد" };
+const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", energy: "الطاقة", companies: "الشركات", technology: "التكنولوجيا", analysis: "تحليلات", explainers: "مدخل إلى علم الاقتصاد" };
 /** What the cloud runs on its own, started by the news clock (scripts/news-clock.mjs, whose PIECES give the times). UTC;
  * the page shows it in the owner's local time. */
 const pieceAt = (mode) => PIECES.find((p) => p.mode === mode).at;

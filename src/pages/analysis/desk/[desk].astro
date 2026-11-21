@@ -35,7 +35,9 @@ const siblings = liveDesks(all).filter((d) => d.id !== desk);
     <header class="page-head">
       <p class="page-head__section ui"><a href="/analysis/">تحليلات</a></p>
       <h1 class="page-title">{label}</h1>
-      <p class="page-intro">{n > 0 ? <span>قراءات خازندار في هذا المجال، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر قراءات في هذا المجال بعد؛ تُكتب التحليلات من تغطية خازندار نفسها حين تتراكم.</span>}</p>
+      {/* No sentence over a desk with analyses (2026-11-21): «قراءات خازندار في هذا المجال، من الأحدث إلى الأقدم» said what
+          the title and the list already show. */}
+      {n === 0 && <p class="page-intro">لم تُنشر قراءات في هذا المجال بعد؛ تُكتب التحليلات من تغطية خازندار نفسها حين تتراكم.</p>}
       <LinkRow label="المجالات:" links={siblings.map((d) => ({ href: `/analysis/desk/${d.id}/`, name: d.label }))} />
     </header>
     {/* No label under each card: every one of them is this page's desk, its name the page's title (2026-11-20). Set

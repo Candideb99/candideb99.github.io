@@ -14,7 +14,7 @@ export async function getArticles(): Promise<Article[]> {
   // KHAZENDAR_SHOW_DRAFTS=1 so the editor can read a draft as it will look before approving it.
   const showDrafts = process.env.KHAZENDAR_SHOW_DRAFTS === "1";
   const all = await getCollection("articles", ({ data }) => showDrafts || !data.draft);
-  // «مدخل إلى الاقتصاد» prints no photograph, a piece published with one included (the owner, 2026-11-20: "i do not
+  // «مدخل إلى علم الاقتصاد» prints no photograph, a piece published with one included (the owner, 2026-11-20: "i do not
   // think we need pictures in the intro to economy part"; photoFree(), pipeline/lib/photo-key.mjs): every page, card,
   // search thumbnail and preview image reads it from here.
   cache = all

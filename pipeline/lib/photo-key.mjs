@@ -143,7 +143,7 @@ export function firstOfEachPhoto(items) {
 }
 
 /**
- * The sections whose pieces carry no photograph: «مدخل إلى الاقتصاد» (explainers, economists' ideas, paper readings). The
+ * The sections whose pieces carry no photograph: «مدخل إلى علم الاقتصاد» (explainers, economists' ideas, paper readings). The
  * owner, 2026-11-20, on the first «الفكر الاقتصادي» piece and its fast-food photograph: "i do not think we need pictures in
  * the intro to economy part ... we can only rely on graphs, tables, mathematics, analysis etc ... the intro to economy
  * section should not be treated as normal news section articles". The newsroom picks none for them (run.mjs), the

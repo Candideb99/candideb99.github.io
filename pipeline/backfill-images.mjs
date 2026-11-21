@@ -165,7 +165,7 @@ for (const file of files) {
   if (!match) continue;
   const data = YAML.parse(match[1]);
   if (ONLY.size && !ONLY.has(data.slug)) continue;
-  // «مدخل إلى الاقتصاد» carries no photograph (the owner, 2026-11-20; photoFree()): never filled, never re-picked.
+  // «مدخل إلى علم الاقتصاد» carries no photograph (the owner, 2026-11-20; photoFree()): never filled, never re-picked.
   if (photoFree(data.section)) continue;
   const redo = REDO.has(data.slug);
   if (data.image && !redo) continue;

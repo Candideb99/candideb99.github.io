@@ -14,12 +14,12 @@ export const HUB_SECTIONS = new Set(["analysis", "explainers"]);
 export const newsSections = sections.filter((s) => !HUB_SECTIONS.has(s.id));
 
 /**
- * The kinds of «مدخل إلى الاقتصاد», in the order its page sets them out: each has its own page
+ * The kinds of «مدخل إلى علم الاقتصاد», in the order its page sets them out: each has its own page
  * (src/pages/explainers/kind/[kind].astro), its block on the section's page (src/pages/explainers/index.astro, with the
  * `take` newest) and its line in the section bar's panel. One list, read by all three.
  */
 export const EXPLAINER_KINDS = [
-  { id: "concepts", kind: "explainer", name: "شروح مبسّطة", all: "كل الشروح المبسّطة", take: 6, intro: "مفاهيم الاقتصاد من أولها، مشروحة بأمثلة وأرقام." },
+  { id: "concepts", kind: "explainer", name: "شروح مبسّطة", all: "كل الشروح المبسّطة", take: 6, intro: "مفاهيم الاقتصاد مشروحة بأمثلة وأرقام." },
   // «الفكر الاقتصادي», not «أفكار اقتصادية», which the owner read as business or project ideas (2026-11-20).
   { id: "thought", kind: "idea", name: "الفكر الاقتصادي", all: "كل حلقات الفكر الاقتصادي", take: 3, intro: "كل أسبوع فكرة من أفكار علم الاقتصاد ومن قالها: كيف تعمل، وما الذي غيّرته، وأين يختلف الاقتصاديون فيها، مشروحة بخبر من أخبار الأسبوع." },
   { id: "papers", kind: "paper", name: "قراءات في أوراق بحثية", all: "كل القراءات", take: 3, intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة." },
@@ -48,7 +48,7 @@ export function sectionHref(id: string): string {
  *  cannot take the pattern the news sections take («المزيد من تحليلات» read as a slip). */
 const HUB_PHRASES: Record<string, { more: string; all: string }> = {
   analysis: { more: "المزيد من التحليلات", all: "كل التحليلات" },
-  explainers: { more: "المزيد من مدخل إلى الاقتصاد", all: "كل مواد مدخل إلى الاقتصاد" },
+  explainers: { more: "المزيد من مدخل إلى علم الاقتصاد", all: "كل مواد مدخل إلى علم الاقتصاد" },
 };
 export function moreLabel(id: string): string {
   return HUB_PHRASES[id]?.more ?? `المزيد من ${getSection(id).name}`;
