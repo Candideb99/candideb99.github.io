@@ -537,6 +537,61 @@ check(
   check("the editor sees how long ago each story ran", editorPrompt.includes(`- (22h ago) ${tankers.title}`), true);
   check("…and names the published story a chosen one continues, never a headline the paper did not publish", [picked.stories[0]?.follows, editorPrompt.includes('"follows":')], [tankers.title, true]);
 }
+// The weights of the news file (the owner, 2026-11-21: "organize weights ... so we can cover everything, but yet the most
+// important stuff (for the arabic reader)"): the parts of the world, the places with no story lately, and one rotation
+// a run that never takes an Arab story's place.
+{
+  const { worldAreasNamed } = await import("../pipeline/lib/regions.mjs");
+  const { quietPlaces, rotationSwap, selectStories } = await import("../pipeline/lib/select.mjs");
+  check("a headline's countries name its part of the world; a company's story names none",
+    [[...worldAreasNamed("المركزي الكيني يخفض الفائدة")], [...worldAreasNamed("الجنيه السوداني يهوي")], [...worldAreasNamed("بنك روسيا يثبت الفائدة")], [...worldAreasNamed("سهم إنفيديا يهبط 14%")]],
+    [["أفريقيا جنوب الصحراء"], ["السودان والقرن الأفريقي"], ["روسيا وأوروبا الشرقية والبلقان"], []]);
+  const now = Date.parse("2026-11-21T12:00:00Z");
+  const ago = (days) => new Date(now - days * 86_400_000).toISOString();
+  const story = (title, regions, days) => ({ kind: "news", title, regions, publishedAt: ago(days) });
+  const published = [
+    story("أرامكو ترفع إنتاجها", ["الخليج"], 0.2), story("التضخم في مصر يتراجع", ["مصر"], 1), story("العراق يصدر نفطاً أكثر", ["المشرق وإيران وتركيا"], 2),
+    story("التضخم في المغرب يتسارع", ["مصر والمغرب العربي"], 5), story("المركزي الكيني يخفض الفائدة", ["أفريقيا"], 9),
+    story("أبل الأمريكية تطلق هاتفاً", ["الولايات المتحدة"], 1), story("وول ستريت الأمريكية تهبط", ["الولايات المتحدة"], 2), story("الدولار الأمريكي يرتفع", ["الولايات المتحدة"], 3),
+    { kind: "explainer", title: "لماذا يخفض المركزي الكيني الفائدة؟", regions: ["أفريقيا"], publishedAt: ago(1) },
+  ];
+  const quiet = quietPlaces(published, now);
+  check("the Maghreb's desk is quiet after three days (its old joint desk name counts), Africa after seven (an explainer is no news); the US is served",
+    [quiet.desks.map((d) => d.name), quiet.areas.find((a) => a.name === "السودان والقرن الأفريقي")?.days === Infinity, quiet.areas.some((a) => a.name === "أفريقيا جنوب الصحراء"), quiet.served.has("الولايات المتحدة"), quiet.areas.some((a) => a.name === "الولايات المتحدة")],
+    [["المغرب العربي"], true, true, true, false]);
+  const pick = (headlineHint, importance, regions = [], rotation = "") => ({ ids: [headlineHint], section: "economy", importance, headlineHint, regions, rotation });
+  const kenya = pick("المركزي الكيني يخفض الفائدة إلى 9%", 5, ["أفريقيا"], "أفريقيا جنوب الصحراء");
+  const apple = pick("أبل الأمريكية ترفع أسعار هواتفها", 6, ["الولايات المتحدة"]);
+  const nvidia = pick("سهم إنفيديا يهبط 14%", 6, ["الولايات المتحدة"]);
+  const saudi = pick("السعودية تطرح سندات بقيمة 5 مليارات دولار", 6, ["الخليج"]);
+  const algeria = pick("الجزائر ترفع أسعار الوقود 10%", 5, ["المغرب العربي"], "المغرب العربي");
+  const brazil = pick("المركزي البرازيلي يرفع الفائدة", 8, ["الأمريكتان"]);
+  const swap = (args) => { const r = rotationSwap({ runLimit: 2, minImportance: 6, quiet, ...args }); return r ? [r.pick.headlineHint, r.drop?.headlineHint ?? null] : null; };
+  check("a quiet desk's story runs first, in place of the weakest story from a served part of the world; Africa's waits",
+    swap({ chosen: [saudi, apple], stories: [saudi, apple, kenya, algeria] }), [algeria.headlineHint, apple.headlineHint]);
+  check("a quiet part of the world takes the place of an American company's story (it names no place)",
+    swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, kenya] }), [kenya.headlineHint, nvidia.headlineHint]);
+  check("never in place of an Arab story, nor of a clearly stronger one, nor of a story from a part not yet served",
+    [swap({ chosen: [saudi, { ...saudi, headlineHint: "قطر تبيع غازاً لليابان", regions: ["الخليج"] }], stories: [saudi, kenya] }), swap({ chosen: [saudi, { ...apple, importance: 8 }], stories: [saudi, kenya] }), swap({ chosen: [saudi, brazil], stories: [saudi, brazil, kenya] })],
+    [null, null, null]);
+  check("with room in the run the rotation story is added; a story whose headline names no quiet place is never one",
+    [swap({ chosen: [saudi], stories: [saudi, kenya] }), swap({ chosen: [saudi], stories: [saudi, pick("الأسهم الأفريقية ترتفع", 6, ["أفريقيا"], "أفريقيا جنوب الصحراء")] }), swap({ chosen: [saudi, apple], stories: [saudi, apple, { ...kenya, importance: 4 }] })],
+    [[kenya.headlineHint, null], null, null]);
+  let prompt = "";
+  const answer = await selectStories({
+    candidates: [{ id: "c1", title: "t", sourceNameEn: "BBC", reliability: 2, kind: "news", lang: "en", publishedAt: new Date().toISOString() }, { id: "c2", title: "k", sourceNameEn: "Capital FM", reliability: 2, kind: "news", lang: "en", publishedAt: new Date().toISOString() }],
+    recentTitles: [], sections: [{ id: "economy", name: "الاقتصاد", description: "" }], quiet, limit: 1, log: () => {},
+    chatWith: async ({ user, validate }) => {
+      prompt = user;
+      const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه", rotation: "الصين" }, { ids: ["c2"], section: "economy", importance: 5, angle: "a", headline_hint: kenya.headlineHint, rotation: " أفريقيا جنوب الصحراء " }] };
+      validate(data);
+      return { data, model: "stand-in" };
+    },
+  });
+  check("the editor is told the quiet places and the weights, and a rotation is kept only for a place it was told",
+    [prompt.includes("PLACES WITH NO STORY LATELY"), prompt.includes("المغرب العربي (5 days)"), prompt.includes("THE WEIGHTS"), prompt.includes('"rotation"'), answer.stories.map((s) => s.rotation)],
+    [true, true, true, true, ["", "أفريقيا جنوب الصحراء"]]);
+}
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
   [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],

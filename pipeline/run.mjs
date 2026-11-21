@@ -27,7 +27,7 @@ import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
-import { newsSectionsOf, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
+import { newsSectionsOf, quietPlaces, rotationSwap, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
@@ -820,7 +820,10 @@ async function runNews(report) {
   }
   const runLimit = Math.min(LIMIT, room);
   const recent = existing.filter((a) => hoursSince(a.publishedAt) < 96).map((a) => ({ title: a.title, publishedAt: a.publishedAt }));
-  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, recent, sections, coverage24h, limit: runLimit, log });
+  // The places with no story lately, for the editor's rotation (select.mjs, THE WEIGHTS); none on a run for chosen sections.
+  const quiet = SECTIONS.length ? null : quietPlaces(existing.filter((a) => !a.draft));
+  if (quiet && (quiet.desks.length || quiet.areas.length)) log(`rotation: quiet ${[...quiet.desks, ...quiet.areas].map((p) => `${p.name} (${Number.isFinite(p.days) ? `${Math.floor(p.days)}d` : "never"})`).join(", ")}`);
+  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, recent, sections, coverage24h, quiet, limit: runLimit, log });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
   let chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
   // `--sections=energy,markets` on a news run: the desk asked for one part of the paper. Keep only those
@@ -866,6 +869,17 @@ async function runNews(report) {
       }
       if (chosen.includes(pick)) log(`region balance: ${arabToday} Gulf, Egyptian or Maghreb stories in 24 hours; "${pick.headlineHint}" [${pick.importance}] added`);
     }
+  }
+  // Rotation (select.mjs, THE WEIGHTS; the owner, 2026-11-21: "cover everything, but yet the most important stuff"): one
+  // story a run from the Arab desk or the part of the world that has waited longest, never in place of an Arab story.
+  const rotation = quiet ? rotationSwap({ chosen, stories, quiet, runLimit, minImportance: MIN_IMPORTANCE }) : null;
+  if (rotation) {
+    if (rotation.drop) {
+      chosen.splice(chosen.indexOf(rotation.drop), 1);
+      log(`rotation: "${rotation.drop.headlineHint}" (${rotation.drop.importance}) gives way`);
+    }
+    chosen.push(rotation.pick);
+    log(`rotation: ${rotation.place.name} has had no story for ${Number.isFinite(rotation.place.days) ? `${Math.floor(rotation.place.days)} days` : "as long as the record runs"}; "${rotation.pick.headlineHint}" [${rotation.pick.importance}] added`);
   }
   for (const s of stories) log(`  [${s.importance}] ${s.section} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 

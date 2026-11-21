@@ -1,6 +1,6 @@
 import { chat } from "./llm.mjs";
 import { hoursSince, truncate } from "./util.mjs";
-import { DESK_NAMES } from "./regions.mjs";
+import { DESK_NAMES, WORLD_AREAS, canonicalRegions, groundedRegions, worldAreasNamed } from "./regions.mjs";
 import { reportingOrigin } from "./outlets.mjs";
 
 const EDITOR_SYSTEM = `You are the managing editor of خازندار (Khazendar), an Arabic-language economics and business publication read across the Gulf, Egypt, the Levant, North Africa and the diaspora.
@@ -12,6 +12,81 @@ export const HUB_SECTIONS = new Set(["analysis", "explainers"]);
 
 /** The sections news can be filed into. */
 export const newsSectionsOf = (sections) => sections.filter((s) => !HUB_SECTIONS.has(s.id));
+
+/**
+ * The weights of the news file (the owner, 2026-11-21: "organize weights when it comes to news publishing so we can
+ * cover everything, but yet the most important stuff (for the arabic reader)"). The editor's brief ranks a story by
+ * where its event happens (THE WEIGHTS below); code holds the floor. A run's editor returned its best six stories and
+ * the rest of the world competed on size alone, so in the 28 days to that day the Maghreb's desk had 4 of 291 news
+ * stories (15 days at a stretch with none), sub-Saharan Africa and Central Asia one each, though Africa's fifteen feeds
+ * answered fresh in every run. Now the editor is told which Arab desks have had nothing for ROTATION_DAYS.desk days and
+ * which parts of the world (WORLD_AREAS) for ROTATION_DAYS.area, adds a worthy story from each beyond its limit
+ * (`rotation`), and `rotationSwap()` lets one of them run in place of the weakest story of the run that is on no Arab
+ * desk and from a part of the world already served: never in place of an Arab story, never a clearly weaker one.
+ */
+export const ARAB_DESKS = ["الخليج", "مصر", "المشرق وإيران وتركيا", "المغرب العربي"];
+export const ROTATION_DAYS = { desk: 3, area: 7 };
+/** News stories in seven days that make a part of the world served, so its weakest story may give way. */
+export const SERVED_STORIES = 3;
+const DAY_MS = 86_400_000;
+
+/**
+ * The Arab desks and the parts of the world that have had no news story lately, the longest quiet first:
+ * { desks: [{ name, days }], areas: [{ name, days }], served: Set of the parts with SERVED_STORIES or more in seven days }.
+ * `days` is Infinity for a place with none on record. A desk is read from a story's regions, a part of the world from
+ * the countries its headline names.
+ */
+export function quietPlaces(published, now = Date.now()) {
+  const news = (published ?? []).filter((a) => (a.kind ?? "news") === "news" && Number.isFinite(Date.parse(a.publishedAt)));
+  const age = (a) => (now - Date.parse(a.publishedAt)) / DAY_MS;
+  const since = (list) => list.reduce((min, a) => Math.min(min, age(a)), Infinity);
+  const desks = ARAB_DESKS.map((name) => ({ name, days: since(news.filter((a) => canonicalRegions(a.regions, { cap: Infinity }).includes(name))) }))
+    .filter((d) => d.days >= ROTATION_DAYS.desk);
+  const named = news.map((a) => ({ a, areas: worldAreasNamed(a.title) }));
+  const areas = WORLD_AREAS.filter((area) => area.rotates)
+    .map((area) => ({ name: area.name, days: since(named.filter((n) => n.areas.has(area.name)).map((n) => n.a)) }))
+    .filter((area) => area.days >= ROTATION_DAYS.area);
+  const served = new Set(WORLD_AREAS.map((area) => area.name).filter((name) => named.filter((n) => n.areas.has(name) && age(n.a) < 7).length >= SERVED_STORIES));
+  const longest = (x, y) => y.days - x.days;
+  return { desks: desks.sort(longest), areas: areas.sort(longest), served };
+}
+
+/**
+ * One rotation a run at most: the editor's story from the quiet place that has waited longest (Arab desks before the
+ * rest of the world), one point under the threshold being enough. With room in the run it is added; otherwise it
+ * takes the place of the weakest chosen story that is on no Arab desk and, for a part of the world, names only parts
+ * already served (or none, as an American company's story often does), unless that story is clearly stronger (more
+ * than a point). A story's place is checked in code, never taken from the editor's word: a desk by the regions its
+ * headline grounds, a part of the world by the countries its headline names. Returns { pick, drop, place } or null.
+ */
+export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance }) {
+  if (!quiet || (!quiet.desks.length && !quiet.areas.length)) return null;
+  const desksOf = (s) => groundedRegions(s.regions ?? [], { title: s.headlineHint ?? "" });
+  const arab = (s) => desksOf(s).some((r) => ARAB_DESKS.includes(r));
+  const order = [...quiet.desks.map((d) => ({ ...d, kind: "desk" })), ...quiet.areas.map((a) => ({ ...a, kind: "area" }))];
+  const placeOf = (s) => {
+    const desks = desksOf(s);
+    const areas = worldAreasNamed(s.headlineHint ?? "");
+    return order.findIndex((p) => (p.kind === "desk" ? desks.includes(p.name) : areas.has(p.name)));
+  };
+  const options = stories
+    .filter((s) => !chosen.includes(s) && s.importance >= minImportance - 1)
+    .map((s) => ({ s, rank: placeOf(s) }))
+    .filter((o) => o.rank >= 0)
+    .sort((x, y) => x.rank - y.rank || y.s.importance - x.s.importance);
+  if (!options.length) return null;
+  const { s: pick, rank } = options[0];
+  const place = order[rank];
+  if (chosen.length < runLimit) return { pick, drop: null, place };
+  const served = (s) => [...worldAreasNamed(s.headlineHint ?? "")].every((name) => quiet.served.has(name));
+  const drop = chosen
+    .filter((s) => !arab(s) && (place.kind === "desk" || served(s)))
+    .sort((x, y) => x.importance - y.importance)[0];
+  if (!drop || drop.importance > pick.importance + 1) return null;
+  return { pick, drop, place };
+}
+
+const daysLabel = (days) => (Number.isFinite(days) ? `${Math.floor(days)} days` : "none on record");
 
 function formatCandidate(c) {
   const age = Number.isFinite(hoursSince(c.publishedAt)) ? `${Math.round(hoursSince(c.publishedAt))}h` : "?";
@@ -27,9 +102,19 @@ function formatCandidate(c) {
  * `coverage24h` maps section id → stories published there in the last 24 hours (for the balance rule).
  * `recent` gives the published stories with their dates, so the list says how long ago each ran; `follows` is the
  * published headline a chosen story continues (the desk notes then say what happened since, lib/editorial.mjs).
- * Returns an array of { ids, section, importance, angle, headlineHint, regions, follows }.
+ * `quiet` (quietPlaces()) names the Arab desks and parts of the world with no story lately; the editor may add a story
+ * from each beyond the limit, marked `rotation`, and rotationSwap() decides in code which of them runs.
+ * Returns an array of { ids, section, importance, angle, headlineHint, regions, follows, rotation }.
  */
-export async function selectStories({ candidates, recentTitles, recent = null, sections, coverage24h = {}, limit, log, chatWith = chat }) {
+export async function selectStories({ candidates, recentTitles, recent = null, sections, coverage24h = {}, quiet = null, limit, log, chatWith = chat }) {
+  // The quiet places (quietPlaces()) the editor may add a story from, beyond its limit; a `rotation` naming any other is dropped.
+  const quietNames = new Set([...(quiet?.desks ?? []), ...(quiet?.areas ?? [])].map((p) => p.name));
+  const quietLine = quietNames.size
+    ? `\nPLACES WITH NO STORY LATELY (for the ROTATION rule): ${[
+        quiet.desks.length ? `Arab desks with no story in ${ROTATION_DAYS.desk} days: ${quiet.desks.map((d) => `${d.name} (${daysLabel(d.days)})`).join("، ")}` : "",
+        quiet.areas.length ? `parts of the world with no story in ${ROTATION_DAYS.area} days: ${quiet.areas.map((a) => `${a.name} (${daysLabel(a.days)})`).join("، ")}` : "",
+      ].filter(Boolean).join("; ")}\n`
+    : "";
   // Each published story with its age: a follow-up is judged against a story of yesterday, not one of four days ago.
   const publishedLines = (recent ?? recentTitles.map((title) => ({ title }))).map((a) => {
     const h = Math.round(hoursSince(a.publishedAt));
@@ -44,7 +129,7 @@ export async function selectStories({ candidates, recentTitles, recent = null, s
   // beside the public description, so the guide and the paper's sections cannot drift apart.
   const sectionGuide = newsSections.map((s) => `- ${s.id} (${s.name}): ${s.description}${s.guide ? ` ${s.guide}` : ""}`).join("\n");
   const coverageLine = newsSections.map((s) => `${s.id} ${coverage24h[s.id] ?? 0}`).join(", ");
-  const quiet = newsSections.filter((s) => !(coverage24h[s.id] > 0)).map((s) => s.id);
+  const quietSections = newsSections.filter((s) => !(coverage24h[s.id] > 0)).map((s) => s.id);
   const idSet = new Set(candidates.map((c) => c.id));
   const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
 
@@ -54,16 +139,17 @@ ${candidates.map(formatCandidate).join("\n")}
 STORIES ALREADY PUBLISHED RECENTLY (do not select stories that merely repeat these; a genuinely new development is fine):
 ${publishedLines.length ? publishedLines.join("\n") : "- (none)"}
 
-STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quiet.length ? ` (no story yet in: ${quiet.join(", ")})` : ""}
-
+STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quietSections.length ? ` (no story yet in: ${quietSections.join(", ")})` : ""}${quietLine ? `\n${quietLine.trim()}` : ""}
 TASK
 1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together). A story is ONE event: one decision, one data release, one deal, one market move. Never merge different events into a cluster because they happened the same day or touch the same theme; a US confidence survey and a British rate outlook are two stories, not one, and a roundup is not a story. If two events are related, pick the more important and mention the other only if the writer needs it as context. A story cites at most FIVE candidate items (the outlets reporting that one event); a list of more than five ids means events have been merged, and the desk cuts it to the first five. "A week of central bank decisions", "markets await…", "X and Y" framings are roundups, not events: the story is the decision, the release, the deal or the move itself.
 2. Choose up to ${limit} stories: every event that clears the bar below, and fewer only when fewer clear it. A news site is edited, not filled, but a worthy story left unwritten is a gap in the file. Score each candidate on the news values an Arabic desk edits by (قيم الخبر): التأثير (does it change money, prices, jobs or policy for our readers?), الأهمية (a central bank, a government, a market, a major company), الآنية (it happened or was decided now; a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt, the Levant, the Maghreb, or the global forces that move them: oil, the dollar, the Fed, the ECB, China, the other large economies, trade, technology), الضخامة (the size of the number), الصراع والنتائج (winners, losers, what follows). A story must carry at least three of these to be selected; importance below 6 is not published. State the values it carries in "news_value".
    Development over repetition: when a candidate advances a story Khazendar already ran (a running file), prefer the development to an unrelated marginal item; when it only repeats, skip it. A development is something that HAPPENED after that story was published: a new decision, figure, deal or incident, a price that moved, a named party's response that changes something for an economy. The same event in another outlet's words or with another count, more detail of it, or a position that already stood restated (a closure, a ban, a demand, a threat) is a repeat, however fresh the item. For a story that continues a published one, copy that published headline exactly into "follows", say in the angle what happened since, and lead the headline_hint with that alone: the working headline never tells the published event again, and never joins it to the day's other news with «و» or «مع».
    Defence economics is part of our beat: defence budgets, procurement and contract awards (an official award with a stated value is news, not fluff), arms exports and imports, the defence industry and its suppliers, and what each of these means for Arab economies (Gulf procurement, offsets, local industry, public budgets). File a contractor's award, an arms deal or the defence industry under companies, and a defence budget or a war's cost to a state under economy (the defence section was folded into them on 2026-10-19).
    POLITICS AND CONFLICT WHEN THEY MOVE MONEY (the owner, 2026-10-22: Khazendar stays an economics paper, but covers politics and conflict when they move money, told from the economic angle; the Houthi attacks on Saudi airports and Aramco, and Libya's ratification of its maritime deal with Turkey, had gone untold). An attack, a war, a sanction, a treaty, a ratification, a boundary or a government's political decision is selected when the items report that it changes something an economy runs on: oil and gas output, exports or facilities, shipping lanes and ports, airports and flights, drilling and exploration rights (a maritime boundary decides who may drill), sanctions and trade, investment and events that bring it, a state's budget or debt, a market's price. The angle and the headline_hint lead with that consequence, and the story is filed where the consequence lives: energy for oil, gas, facilities and drilling rights; economy for a state's budget, trade, sanctions, airports and security pacts; companies for one company's assets, staff or contracts; markets for a price. Not selected: battlefield news, diplomacy, elections, protests, statements and condemnations that the items tie to no economic consequence.
-   OUR READERS' OWN ECONOMIES FIRST, as on every Arab economics desk. A Saudi, Emirati, Qatari, Kuwaiti, Omani, Bahraini, Egyptian, Moroccan, Jordanian or Iraqi decision, data release, budget, central-bank move, company result, listing, deal or project of real weight is selected ahead of a comparable foreign story, and about half of a day's stories should be about the Arab world when the candidates allow. The Gulf and Egyptian outlets in the list (الخليج، جريدة الرياض، اليوم السابع، مصراوي، هسبريس، AGBI، Gulf Times، Saudi Gazette، Daily News Egypt، Arabian Business, alongside الشرق الأوسط، الجزيرة، سكاي نيوز عربية، البورصة) report such events; two of them reporting one event make a cluster like any other. Give such a story its own desk as its region: الخليج، مصر، المغرب العربي, or المشرق وإيران وتركيا for Jordan and Iraq.
+   OUR READERS' OWN ECONOMIES FIRST, as on every Arab economics desk. A Saudi, Emirati, Qatari, Kuwaiti, Omani, Bahraini, Egyptian, Moroccan, Jordanian or Iraqi decision, data release, budget, central-bank move, company result, listing, deal or project of real weight is selected ahead of a comparable foreign story, and about three of a day's stories in five should be about the Arab world when the candidates allow (THE WEIGHTS below). The Gulf and Egyptian outlets in the list (الخليج، جريدة الرياض، اليوم السابع، مصراوي، هسبريس، AGBI، Gulf Times، Saudi Gazette، Daily News Egypt، Arabian Business, alongside الشرق الأوسط، الجزيرة، سكاي نيوز عربية، البورصة) report such events; two of them reporting one event make a cluster like any other. Give such a story its own desk as its region: الخليج، مصر، المغرب العربي, or المشرق وإيران وتركيا for Jordan and Iraq.
    THE WORLD'S LARGE ECONOMIES, NOT ONLY AMERICA AND CHINA (the owner, 2026-11-09: in four weeks Germany's own economy led one story, Japan two, India one, Latin America three and sub-Saharan Africa none, while American companies led seventeen). Our readers' economies trade with all of them: Japan, India and Korea buy the Gulf's oil and gas, Europe and Brazil sell it machines and food, India's workers send their pay home from it. So a large economy's central-bank decision (the Bank of Japan, the Reserve Bank of India, the Bank of England, the central banks of Brazil, Mexico, Korea or Indonesia) and its headline figures (growth, inflation, trade, jobs, the budget) for Germany, Japan, India, Britain, France, Italy, Korea, Brazil, Mexico, Indonesia, Nigeria or South Africa carry التأثير and القرب as surely as the Fed's do. Among the stories that are not about the Arab world, such a decision or figure ranks ahead of a second story within days on the same company, and when the stories published recently hold none from these economies, take a worthy one. An official institution's own release (tier A, kind official) may carry it alone, as for any central bank.
+   THE WEIGHTS: THE WHOLE WORLD, OUR READERS' ECONOMIES FIRST (the owner, 2026-11-21: cover everything, and first what matters most to the Arab reader). Weigh a story by where its event happens, in this order: (1) the Arab world's own economies, every Arab country and not the Gulf alone (Egypt, Iraq and the Levant, Yemen, the Maghreb, Sudan, Somalia and Mauritania too), about three stories in five; (2) the forces that move them: oil and gas, the dollar and the Fed, China, Iran and Turkey, the euro area; (3) the world's large economies, as the rule above says; (4) the rest of the world, whose القرب is its tie to the Arab economies: Gulf or Egyptian money invested there, what Arab states buy from it or sell to it (grain, fertiliser, gas, oil, phosphate), the Nile and the Red Sea, Arab workers there and the money they send home, the shipping lanes, a market where it competes with Arab exports; failing such a tie, its size. A story lower in this order never displaces a comparable one higher up; but a paper that covers the world takes a worthy event from each part of it that has had none lately.
+   ROTATION: when a list of PLACES WITH NO STORY LATELY is given above, then for each place on it whose items report an event that clears the bar (importance 5 or more is enough here; two outlets, or one official institution), add that place's best story to your answer BEYOND the limit, with "rotation" set to the place's name exactly as the list writes it. At most four such stories, each one event of that place, never a tie to the Arab world the items do not report. Every other story has an empty "rotation". Code decides which rotation story runs.
 3. Skip: opinion columns, listicles, personal finance tips, celebrity and lifestyle, sports business, product reviews, minor local items, press-release fluff, protocol news (a minister receives a delegation, a memorandum that commits nothing, a ribbon-cutting; a treaty or a ratification that grants rights or moves money is news without figures), the day's price tables (gold, currency or share prices), stock-picking, crypto hype, and anything already covered.
    A MARKET MOVE IS A STORY ONLY WHEN IT IS NEWS (the owner, 2026-10-19, after the Financial Times ran no story on a morning when we ran WTI down 0.82%): a record or a high or low of several months, a large move (about 2% or more for oil or a stock index, about 1% for gold or a major currency, about 10 basis points for a government bond yield), or a move whose cause is itself news (a decision, an attack, a data release, a supply disruption), told as that cause's story. An ordinary day's move is on the market board every page carries: skip it, and give the slot to an Arab economy's own news. One story per instrument within eight hours: a later move of the same instrument is news only when it sets a new record or reverses.
 4. Prefer official statistics and central-bank decisions when they are new. Prefer clusters with at least one tier A source. Every story becomes a developed report of 350-650 words (the news, its driver, the figures in perspective, the reactions, the background, what comes next), written only from the items you cite: cite EVERY candidate that reports the same event, up to five, and skip an event that no outlet reports beyond a sentence or two, however important its headline. A story reported by ONE outlet only is not selected unless that outlet is an official institution (tier A, kind official): with a single non-official source the desk cannot cross-check a figure, and the article would be a translation of one report rather than the paper's own account.
@@ -73,8 +159,8 @@ ${sectionGuide}
 7. The angle and headline_hint must state only what the candidate items themselves report; a neutral factual working title, no dramatisation, no ".." ellipses, no inferred events.
 
 Return JSON:
-{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","follows":"<the published headline this story continues, copied exactly from the list above, or an empty string>","regions":["<1-3 region names, only from: ${DESK_NAMES.join("، ")}>"]}]}
-Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories.`;
+{"stories":[{"ids":["<candidate id>", "..."],"section":"<section id>","importance":<1-10>,"news_value":"<the values it carries, e.g. تأثير، آنية، قرب>","angle":"<one Arabic sentence stating the story and the angle for Arab readers>","headline_hint":"<short Arabic working headline>","follows":"<the published headline this story continues, copied exactly from the list above, or an empty string>","regions":["<1-3 region names, only from: ${DESK_NAMES.join("، ")}>"]${quietNames.size ? `,"rotation":"<a place's name from PLACES WITH NO STORY LATELY, or an empty string>"` : ""}}]}
+Order stories by importance, highest first. Use only candidate ids that exist. Return at most ${limit + 2} stories${quietNames.size ? ", plus up to four rotation stories" : ""}.`;
 
   const { data, model } = await chatWith({
     role: "editor",
@@ -119,6 +205,8 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       // Only a headline the paper published: anything else written there is dropped.
       follows: samePublished(s.follows),
       regions: Array.isArray(s.regions) ? s.regions.map(String).slice(0, 4) : [],
+      // Only a place the list named: rotationSwap() checks the story's own place in code before any of it runs.
+      rotation: quietNames.has(String(s.rotation ?? "").trim()) ? String(s.rotation).trim() : "",
     }))
     .filter((s) => s.ids.length && s.section)
     .filter((s) => {

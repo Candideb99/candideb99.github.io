@@ -256,6 +256,37 @@ export function countriesNamed(text) {
 }
 
 /**
+ * The world outside the Arab desks as the editor weighs it (the owner, 2026-11-21: "organize weights when it comes to
+ * news publishing so we can cover everything, but yet the most important stuff (for the arabic reader)"). In the 28
+ * days to that day the 291 news stories named Central Asia once, sub-Saharan Africa once, Russia and Eastern Europe
+ * twice, Southeast Asia three times and the Americas outside the US five times, while the Gulf's desk held 122. Each
+ * part is read from the countries a headline names (countriesNamed()); `rotates: false` marks the parts the day's news
+ * never leaves alone (the US, China, Iran, Turkey and Israel), which the rotation of select.mjs never asks for.
+ * Sudan and Somalia, Arab League members with no desk of their own, are a part with Ethiopia (the Nile, the Red Sea).
+ */
+export const WORLD_AREAS = [
+  { name: "الولايات المتحدة", nisbas: ["أمريكي", "أميركي"], rotates: false },
+  { name: "الصين", nisbas: ["صيني"], rotates: false },
+  { name: "إيران وتركيا وإسرائيل", nisbas: ["إيراني", "تركي", "إسرائيلي"], rotates: false },
+  { name: "أوروبا الغربية والشمالية", nisbas: ["بريطاني", "ألماني", "فرنسي", "إيطالي", "إسباني", "هولندي", "سويسري", "سويدي", "نرويجي", "دنماركي", "فنلندي", "بلجيكي", "نمساوي"], rotates: true },
+  { name: "روسيا وأوروبا الشرقية والبلقان", nisbas: ["روسي", "أوكراني", "بولندي", "صربي", "كرواتي", "يوناني", "روماني"], rotates: true },
+  { name: "شرق آسيا", nisbas: ["ياباني", "كوري", "تايواني"], rotates: true },
+  { name: "جنوب آسيا", nisbas: ["هندي", "باكستاني", "بنغلاديشي", "سريلانكي"], rotates: true },
+  { name: "جنوب شرق آسيا وأستراليا", nisbas: ["إندونيسي", "ماليزي", "سنغافوري", "فلبيني", "فيتنامي", "تايلاندي", "أسترالي"], rotates: true },
+  { name: "آسيا الوسطى والقوقاز", nisbas: ["كازاخستاني", "أوزبكي", "تركمانستاني", "قيرغيزي", "طاجيكي", "أذربيجاني"], rotates: true },
+  { name: "السودان والقرن الأفريقي", nisbas: ["سوداني", "صومالي", "إثيوبي"], rotates: true },
+  { name: "أفريقيا جنوب الصحراء", nisbas: ["نيجيري", "جنوب أفريقي", "كيني", "غاني", "تنزاني", "أوغندي", "رواندي", "أنغولي", "زامبي", "سنغالي", "إيفواري", "موزمبيقي", "زيمبابوي", "كونغولي", "كاميروني", "بوتسواني", "ناميبي"], rotates: true },
+  { name: "الأمريكتان", nisbas: ["كندي", "مكسيكي", "برازيلي", "أرجنتيني", "تشيلي", "كولومبي", "بيروفي", "فنزويلي"], rotates: true },
+];
+const AREA_BY_KEY = new Map(WORLD_AREAS.flatMap((area) => area.nisbas.map((nisba) => [nationalityKey(nisba), area.name])));
+for (const area of WORLD_AREAS) for (const nisba of area.nisbas) if (!NATIONALITY_BY_KEY.has(nationalityKey(nisba))) throw new Error(`regions: «${nisba}» of ${area.name} is not in NATIONALITIES`);
+
+/** The parts of the world (WORLD_AREAS) a text names by its countries. */
+export function worldAreasNamed(text) {
+  return new Set([...countriesNamed(text)].map((key) => AREA_BY_KEY.get(key)).filter(Boolean));
+}
+
+/**
  * The story's regions held to where its event happens: an Arab desk stays only when the headline, dek or lede names
  * one of its places, and joins when the headline names one the writer left out; a story left with none is the world
  * desk's. The other regions (Europe, the Americas, Asia, Africa, the world) all fold into the site's العالم and pass.
