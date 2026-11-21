@@ -57,17 +57,14 @@ const readings = [
 place(readings);
 const secondary = byImportance(unplaced(news).filter((a) => a.data.format !== "short").slice(0, 8)).slice(0, 2);
 place(secondary);
-// The digest: the next seven stories, each its headline and one sentence, newest first.
-const digest = unplaced(news).slice(0, 7);
+// «الأخبار في سطور»: the next eleven stories, a headline to a line, newest first (2026-11-21, the owner: "how about
+// الأخبار في سطور, becuase it doe snot seem to serve its purpose, no?"). Until then seven stories, each its headline, its
+// whole dek and its meta, five or six lines a story: a column of paragraphs under a name that promises lines. The four
+// top stories that ran as an unlabelled list of headlines under the secondary cards are this list's now: with the
+// deks gone the two lists were one form twice, side by side. The front places as many stories as before (eleven here
+// for the seven and the four).
+const digest = unplaced(news).slice(0, 11);
 place(digest);
-// Under the two secondary cards, the next four strongest news stories of the last three days, as the top stories'
-// list (lead, seconds, then a list). Until 2026-10-19 they ran under «مختارات المحرر», a label that promised a hand-picked
-// selection over the same ranking as the cover; the owner chose to fold them in. Ranked by importance alone they had
-// reached back a week, and one said the Saudi pipeline had closed beside a lead saying it had reopened.
-// Not a short story, as on the cover and the secondaries: Lagarde's short item took a place Egypt's first rate rise since
-// 2024 lost, and the rise appeared nowhere on the front but in the figures (the audit of 2026-10-31).
-const picks = byImportance(unplaced(news).filter((a) => hoursOld(a) < 72 && a.data.format !== "short")).slice(0, 4);
-place(picks);
 // The strip above the first screen is the layout's «آخر الأخبار», the same on every page since 2026-09-28 (the owner
 // chose one strip everywhere over the front's own «أيضاً على خازندار», which carried stories not on the first screen).
 // The cover printed up to two headlines on each story's running topic under it («ذات صلة») until 2026-10-22, when the
@@ -147,16 +144,16 @@ place(figures.map((f) => f.article));
 // the front page). Other charts stay inside their stories.
 
 // Section blocks: a feature and up to three briefs, only stories no module above has printed and none older than
-// three days; the blocks follow the news, the section with the newest story first. A section with fewer than two
-// such stories runs as one line in «من الأقسام» (its newest story not yet printed, with its date) instead of a block
-// filled with reprints and week-old stories (الدفاع's stories on the front had a median age of 214 hours).
+// three days; the blocks follow the news, the section with the newest story first. A section with fewer than three
+// such stories has no block: it is one tap away in the section bar. Until 2026-11-21 it ran as one line under «من الأقسام»
+// (the owner: "what does من الأقسام benefit? or is it redundant/confusing?"): the sections' fresh stories are on the
+// cover and in the lists above, so the line carried what was left, two to five days old that day, under a name that
+// said nothing of why these sections stood apart from the blocks beside them.
 // One shape for every block since 2026-11-10 (the critique of 9 November: four blocks in four layouts, their columns
 // ending 121-148px apart): a feature with its photograph beside a ruled list of briefs. A block opens on a story of the
 // last three days; its briefs, when three days give fewer than three, are filled from the last week (each prints its
 // age), so the brief column is not left a third full. The feature is the newest story with a photograph, so no block
 // leads on a headline over blank paper.
-// A line carries a story of the last week or is not printed: «من الأقسام» had run الدفاع's, الطاقة's and الشركات's newest
-// unprinted stories at 18 and 19 days old under today's news, which reads as a paper nobody keeps (2026-10-19).
 const LINE_HOURS = 7 * 24;
 const sectionPools = newsSections.map((section) => ({ section, pool: unplaced(news.filter((a) => a.data.section === section.id)) }));
 const rows = sectionPools
@@ -172,15 +169,6 @@ const rows = sectionPools
   .filter((r) => r.newest && r.items.length >= 3)
   .sort((x, y) => Date.parse(y.newest!.data.publishedAt) - Date.parse(x.newest!.data.publishedAt));
 rows.forEach((r) => place(r.items));
-// «من الأقسام» runs only with two lines or more: one line under a section head read as a module left half built (the
-// critique of 9 November). A section left out is one tap away in the section bar.
-const lines = sectionPools
-  .filter(({ section }) => !rows.some((r) => r.section.id === section.id))
-  .map(({ section, pool }) => ({ section, story: pool.find((a) => hoursOld(a) < LINE_HOURS) }))
-  .filter((l): l is { section: typeof l.section; story: Article } => Boolean(l.story))
-  .sort((x, y) => Date.parse(y.story.data.publishedAt) - Date.parse(x.story.data.publishedAt));
-if (lines.length < 2) lines.length = 0;
-lines.forEach((l) => l.story && place([l.story]));
 
 // الأخبار بحسب المنطقة, the five desks readers see, as a way in rather than a fourth printing: each desk one story of the
 // last week no module above has printed (it reprinted 11 of 12). A desk with no such story is left out: three of four
@@ -230,7 +218,7 @@ const jsonLd = {
     <>
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
-        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
+        <Front secondary={secondary} digest={digest} figures={figures} chart={chart} photoIds={photoIds} />
       </div>
       {cards.length > 0 && <FigureCards cards={cards} />}
     </>
@@ -266,25 +254,6 @@ const jsonLd = {
     );
   })}
 
-  {lines.length > 0 && (
-    <section class="wrap row lines" aria-labelledby="lines-head">
-      <div class="section-head">
-        <h2 id="lines-head">من الأقسام</h2>
-      </div>
-      <ul class="lines__list">
-        {lines.map(({ section, story }) => (
-          <li class="lines__item" data-section={section.id}>
-            <a class="lines__section" href={sectionHref(section.id)}>{section.name}</a>
-            <p class="lines__story">
-              <a href={articleHref(story)} set:html={headline(story.data.title)} />
-              <time class="ui" datetime={story.data.publishedAt} data-relative>{timeAgo(story.data.publishedAt)}</time>
-            </p>
-            <a class="lines__more ui" href={sectionHref(section.id)}>{moreLabel(section.id)}</a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
 
   {desks.length > 0 && (
     <section class="wrap row desks" aria-labelledby="desks-head">
@@ -340,7 +309,6 @@ const jsonLd = {
     .first :global(.front__secondary) { order: 2; }
     .first :global(.front__top) { order: 3; }
     .first :global(.cover__beside) { order: 4; padding-top: 0; }
-    .first :global(.front__picks) { order: 5; margin-top: 0; }
     .first :global(.front__side) { order: 6; margin-top: 0; }
   }
 
@@ -356,21 +324,6 @@ const jsonLd = {
   .row__feature :global(.card__title) { font-size: var(--t-feature); line-height: 1.36; }
   .row__feature :global(.card__summary) { font-size: var(--n-text); margin-top: 0.35rem; }
 
-  /* من الأقسام: a section with too little fresh news for a block runs as one ruled line: its name in green Amiri,
-     its newest story not yet on the page with the story's age, and the way into the section. */
-  .lines__list { display: grid; }
-  .lines__item { position: relative; display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto; column-gap: var(--col-gap); align-items: baseline; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
-  .lines__item:first-child { border-top: 0; padding-top: 0.2rem; }
-  .lines__section { position: relative; z-index: 1; font-family: var(--font-title); font-weight: 700; font-size: var(--t-module); line-height: 1.35; color: var(--green); text-decoration: none; }
-  .lines__section:hover { color: var(--green-deep); text-decoration: underline; }
-  .lines__story { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
-  .lines__story a { text-decoration: none; }
-  .lines__story a:hover, .lines__item:hover .lines__story a { color: var(--green); }
-  /* The story's headline takes the whole line as its target; the section's name and «المزيد» sit above it. */
-  .lines__story a::after { content: ""; position: absolute; inset: 0; }
-  .lines__story time { margin-inline-start: 0.6rem; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-3); white-space: nowrap; }
-  .lines__more { position: relative; z-index: 1; font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding-block: 0.35rem; margin-block: -0.35rem; }
-  .lines__more:hover { color: var(--green); text-decoration: underline; }
 
   /* The desks: a region's name in green Amiri over one story not printed above. */
   .desk__name { font-family: var(--font-title); font-weight: 700; font-size: var(--t-section); line-height: 1.3; color: var(--green); }
@@ -400,10 +353,6 @@ const jsonLd = {
     .row__feature :global(.card--photo .card__body) { order: 2; }
     .row__feature :global(.card__summary) { display: none; }
     /* A line on a phone: the section and the way in on one line, the story under them. */
-    .lines__item { grid-template-columns: minmax(0, 1fr) auto; row-gap: 0.2rem; }
-    .lines__section { grid-column: 1; grid-row: 1; }
-    .lines__more { grid-column: 2; grid-row: 1; }
-    .lines__story { grid-column: 1 / -1; grid-row: 2; }
     /* The analyses and explainers run as headlines on a phone, as the blocks' features do: with a summary each, the two
        bands took 1,620px of a 10,000px front (2026-11-10). */
     .hub :global(.card__summary) { display: none; }

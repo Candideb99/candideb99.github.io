@@ -11,7 +11,7 @@ import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
 import { kindLabel, sectionHref } from "@lib/sections";
 import { headline, isolateNumbers } from "@lib/bidi";
-import { dek, timeAgo } from "@lib/format";
+import { timeAgo } from "@lib/format";
 import StoryCard from "./StoryCard.astro";
 import Chart from "./Chart.astro";
 import Agenda from "./Agenda.astro";
@@ -25,14 +25,13 @@ interface Props {
   secondary: Article[];
   /** The digest: one sentence per story, newest first. */
   digest: Article[];
-  picks: Article[];
   figures: Figure[];
   chart?: Article;
   /** Ids of the stories allowed to show their picture here (the first appearance of each picture). */
   photoIds: Set<string>;
 }
 // «أرقام اليوم» is empty while «بالأرقام», the band of figure cards, runs under this block (index.astro, 2026-11-21).
-const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
+const { secondary, digest, figures, chart, photoIds } = Astro.props;
 ---
 
 <section class="wrap front" aria-label="آخر الأخبار والأرقام">
@@ -42,7 +41,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
       {digest.map((a) => (
         <li class="digest__item">
           <a class="digest__head" href={articleHref(a)} set:html={headline(a.data.title)} />
-          <p class="digest__text" set:html={isolateNumbers(dek(a.data.subtitle, a.data.lede))} />
           <p class="meta digest__meta">
             <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
             <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
@@ -59,19 +57,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
           <StoryCard article={a} variant="card" showExcerpt showTopic showPhoto={photoIds.has(a.id)} sizes="(min-width: 1320px) 460px, (min-width: 1024px) 36vw, (min-width: 720px) 48vw, 120px" />
         ))}
       </div>
-    )}
-    {picks.length > 0 && (
-      <ol class="picks front__picks" aria-label="أبرز الأخبار أيضاً">
-        {picks.map((a) => (
-          <li class="picks__item">
-            <a class="picks__title" href={articleHref(a)} set:html={headline(a.data.title)} />
-            <p class="meta">
-              <a href={sectionHref(a.data.section)}>{kindLabel(a.data.kind, a.data.section)}</a>
-              <time datetime={a.data.publishedAt} data-relative>{timeAgo(a.data.publishedAt)}</time>
-            </p>
-          </li>
-        ))}
-      </ol>
     )}
   </div>
 
@@ -123,17 +108,13 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   /* The agenda closes the digest's column: at the foot of the numbers column it left that column 400px longer than
      the other two, over blank paper (2026-09-27). */
 
-  /* The digest: a story to a line on hairlines, its Amiri headline on a line of its own and its one
-     sentence under it in Naskh, the section and time beneath. The owner, 2026-09-23: the sentence ran
-     on after the bold headline («…للمرة الأولى قفز السهم») and should start its own row. The headline is
-     the link (a screen reader hears the headline, not two hundred characters), and its hit area covers
-     the whole item, so the sentence can be tapped as well. */
+  /* «الأخبار في سطور»: a story to a line on hairlines, its Amiri headline with the section and age beneath, and no
+     sentence since 2026-11-21 (index.astro has why). The headline is the link and its hit area covers the item. */
   .digest { display: grid; }
   .digest__item { position: relative; padding-block: 0.65rem; border-top: 1px solid var(--rule); }
   .digest__item:first-child { border-top: 0; padding-top: 0.1rem; }
   .digest__head { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink); text-decoration: none; }
   .digest__head::after { content: ""; position: absolute; inset: 0; }
-  .digest__text { margin-top: 0.2rem; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.7; color: var(--ink-2); }
   .digest__item:hover .digest__head { color: var(--green); }
   .digest__meta { margin-top: 0.15rem; font-size: var(--fs-xs); }
   .digest__meta a { position: relative; z-index: 1; }
@@ -145,8 +126,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .front__secondary > :global(.card) { padding-block: 0.85rem; border-top: 1px solid var(--rule); }
   .front__secondary > :global(.card:first-child) { border-top: 0; padding-top: 0; }
   .front__secondary :global(.card__title) { font-size: var(--t-feature); line-height: 1.38; }
-  /* The top stories' list continues the secondary cards under one rule, with no label of its own. */
-  .front__picks { margin-top: 0.3rem; border-top: 1px solid var(--rule); }
 
   .figures__list { display: grid; }
   .figures__item { border-top: 1px solid var(--rule); }
@@ -159,15 +138,6 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.6; color: var(--ink-2); }
   .figures__item a:hover .figures__story { color: var(--green); }
 
-  .picks { display: grid; }
-  .picks__item { position: relative; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
-  .picks__item:first-child { border-top: 0; }
-  .picks__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; display: block; }
-  .picks__title:hover, .picks__item:hover .picks__title { color: var(--green); }
-  /* The headline's hit area covers the item, as the digest's does (a one-line headline was a 24px target on a phone). */
-  .picks__title::after { content: ""; position: absolute; inset: 0; }
-  .picks .meta { margin-top: 0.1rem; font-size: var(--fs-xs); }
-  .picks .meta a { position: relative; z-index: 1; }
 
   @media (max-width: 1023px) {
     .front { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
