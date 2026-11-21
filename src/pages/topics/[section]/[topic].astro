@@ -21,7 +21,7 @@ import { getSection, sectionHref, newsSections, kindLabel } from "@lib/sections"
 import { analysisLabel, readingHref } from "@lib/analysis";
 import { menuTopics, topicsOf, topicArticles, topicHref, type Topic } from "@lib/topics";
 import { quotes, TOPIC_QUOTE_IDS } from "@lib/markets";
-import { countLabel, formatShortDate, formatMonth } from "@lib/format";
+import { formatShortDate, formatMonth } from "@lib/format";
 import { headline } from "@lib/bidi";
 
 export async function getStaticPaths() {
@@ -44,7 +44,6 @@ interface Props {
 const { section, topic, items, fallback } = Astro.props;
 const sec = getSection(section);
 const n = items.length;
-const countWord = countLabel(n);
 // The neighbours we are writing about (menuTopics), never an empty page.
 const all = await getArticles();
 const siblings = menuTopics(all, section).map((t) => t.topic).filter((t) => t.id !== topic.id);
@@ -77,7 +76,7 @@ const pics = firstPictures(n > 0 ? [lead, ...beside, ...recent] : fallback);
     <header class="page-head">
       <p class="page-head__section ui"><a href={sectionHref(section)}>{sec.name}</a></p>
       <h1 class="page-title">{topic.name}</h1>
-      <p class="page-intro">{n > 0 ? <span>{countWord} من تغطية خازندار، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
+      <p class="page-intro">{n > 0 ? <span>تغطية خازندار لهذا الموضوع، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر مواد تحت هذا الموضوع بعد؛ تعمل غرفة الأخبار على مدار الساعة. في الأثناء، أحدث ما نشرناه في {sec.name}.</span>}</p>
       <LinkRow label={`مواضيع ${sec.name}:`} links={siblings.map((t) => ({ href: topicHref(section, t.id), name: t.name }))} />
     </header>
 

@@ -75,17 +75,17 @@ interface Props {
 }
 const { tag, place, parent, places, regions, page } = Astro.props;
 const first = page.currentPage === 1;
-const n = page.total;
 const pics = firstPictures(page.data);
-/** "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
-const countLabel = n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
-const countObject = n === 2 ? "مادتين" : countLabel;
+// No count in the sentence since 2026-11-21 (the owner, of «ملف يجمع 266 مادة عن الخليج»: "i do not think we really should
+// mention how many articles are there, no?"): the archive's bookkeeping, as on the front's region block (18 November)
+// and the sections' rows (20 November). A place's sentence says what the page is; a file's what it gathers.
+const intro = place ? `أخبار ${tag} الاقتصادية، من الأحدث إلى الأقدم.` : `كل ما نشره خازندار عن ${tag}، من الأحدث إلى الأقدم.`;
 // A day is named once in the thread's margin; the rows after it on the same day give their hour alone.
 const days = page.data.map((a) => formatShortDate(a.data.publishedAt));
 const name = place ? tag : `ملف: ${tag}`;
 ---
 
-<Base title={first ? name : `${name} — صفحة ${page.currentPage}`} description={`ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={page.url.current} printed={page.data.map((a) => a.id)}>
+<Base title={first ? name : `${name} — صفحة ${page.currentPage}`} description={`ملف خازندار عن ${tag}: كل ما نُشر عنه، من الأحدث إلى الأقدم`} path={page.url.current} printed={page.data.map((a) => a.id)}>
   <section class="wrap block" data-place={place ? "" : undefined}>
     <header class="page-head">
       {parent && <p class="page-head__section ui"><a href={parent.href}>{parent.name}</a></p>}
@@ -93,7 +93,7 @@ const name = place ? tag : `ملف: ${tag}`;
       {/* No «آخر تحديث» since 2026-11-20: the newest story's date and hour stand in the margin right under it, the repeat
           the owner cleared from the front's region block on 18 November. */}
       <p class="page-intro">
-        <span>ملف يجمع <bdi>{countObject}</bdi> عن {tag}، من الأحدث إلى الأقدم.</span>
+        <span>{intro}</span>
         <a class="thread__intro-link" href="/tags/">{place ? "كل الملفات والمناطق" : "كل الملفات"}</a>
       </p>
       {first && <LinkRow label={parent ? "أيضاً:" : "الدول:"} links={places} />}

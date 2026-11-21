@@ -80,13 +80,10 @@ const { secondary, digest, picks, figures, chart, photoIds, band = false } = Ast
 
   <aside class="front__side">
     <Agenda limit={5} />
-    {chart?.data.chart && (
-      <section class="module" aria-labelledby="chart-head">
-        <h2 id="chart-head" class="module__head">بالرسم البياني</h2>
-        <Chart chart={chart.data.chart} id="front-chart" narrow href={`${articleHref(chart)}#story-chart`} />
-        <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
-      </section>
-    )}
+    {/* Above the chart since 2026-11-21 (the owner: "is this todays numbers section easy to notice or easy to miss?"): it
+        had stood last in the column, 1,888px down at 1366px, each figure in ink at 20px over a bold 17px headline, so
+        the list read as three more headlines. The figure is now the house green at the feature size and its story's
+        headline a line of reading text under it. */}
     {figures.length > 0 && (
       <section class:list={["module", "figures", { "figures--wide": band }]} aria-labelledby="figures-head">
         <h2 id="figures-head" class="module__head">أرقام اليوم</h2>
@@ -101,6 +98,13 @@ const { secondary, digest, picks, figures, chart, photoIds, band = false } = Ast
             </li>
           ))}
         </ul>
+      </section>
+    )}
+    {chart?.data.chart && (
+      <section class="module" aria-labelledby="chart-head">
+        <h2 id="chart-head" class="module__head">بالرسم البياني</h2>
+        <Chart chart={chart.data.chart} id="front-chart" narrow href={`${articleHref(chart)}#story-chart`} />
+        <p class="module__from"><span class="module__from-label ui">من مادة</span><a href={articleHref(chart)} set:html={isolateNumbers(chart.data.title)} /></p>
       </section>
     )}
   </aside>
@@ -149,11 +153,11 @@ const { secondary, digest, picks, figures, chart, photoIds, band = false } = Ast
   .figures__item { border-top: 1px solid var(--rule); }
   .figures__item:first-child { border-top: 0; }
   .figures__item a { display: block; padding-block: 0.5rem; text-decoration: none; }
-  .figures__item a:hover .figures__value { color: var(--green); }
-  .figures__value { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.3; font-variant-numeric: tabular-nums lining-nums; }
+  .figures__item a:hover .figures__value { color: var(--green-deep); }
+  .figures__value { display: block; font-family: var(--font-title); font-weight: 700; font-size: var(--t-feature); line-height: 1.3; color: var(--green); font-variant-numeric: tabular-nums lining-nums; }
   .figures__label { display: block; font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--ink-3); line-height: 1.4; }
-  /* A number without its story is a riddle: the headline it comes from follows, small. */
-  .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; color: var(--ink-2); }
+  /* A number without its story is a riddle: the headline it comes from follows, in the reading face so the figure leads. */
+  .figures__story { display: block; margin-top: 0.2rem; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.6; color: var(--ink-2); }
   .figures__item a:hover .figures__story { color: var(--green); }
 
   .picks { display: grid; }
