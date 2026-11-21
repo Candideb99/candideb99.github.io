@@ -470,12 +470,11 @@ const EC_SOURCE = {
  * its robots file too) and the European Council (consilium.europa.eu shows a browser check); China's sites (all rights
  * reserved); the Arab presidencies and royal courts (no licence stated; SPA forbids republishing).
  */
-export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, EC_SOURCE];
+export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE];
 
 /**
- * Built, licence checked, and held back: pmindia.gov.in answers 403 to any reader that names itself a bot or gives a
- * contact address, as the newsroom's own does on every request (util.mjs USER_AGENT), and 200 to the same request
- * without them (2026-11-21, three names tried). A reader is never renamed to pass a site's filter, so India waits until
- * its site lets a declared reader in; its photographs reach the desk through Commons meanwhile. One line moves it above.
+ * Offices built and licence-checked but not read. India's waited here for an hour on 2026-11-21: pmindia.gov.in answers
+ * 403 to a reader that names itself a bot or gives an address, as the newsroom's did; the owner then had the reader named
+ * plainly (util.mjs USER_AGENT), which it answers.
  */
-export const HELD_SOURCES = [PMINDIA_SOURCE];
+export const HELD_SOURCES = [];

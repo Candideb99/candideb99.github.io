@@ -21,7 +21,7 @@
  * Every date is the institution's own; a reader that cannot place a date drops the event rather than guess, and a
  * layout it does not recognise yields nothing, so the stored events stay.
  */
-import { USER_AGENT } from "./util.mjs";
+import { USER_AGENT, fetchWithTimeout } from "./util.mjs";
 
 const MONTHS_EN = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 export const MONTHS_AR = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
@@ -45,9 +45,10 @@ export const text = (html) =>
     .trim();
 
 /** The newsroom's own reader, never a browser's name (2026-10-28: the Fed, the ECB and the Bank of England answer it;
- *  bls.gov refused the disguise as well). */
+ *  bls.gov refused the disguise as well, and the declared name; since 2026-11-21 the plain name, which bls.gov answers,
+ *  with the declared one asked after a refusal: util.mjs fetchWithTimeout()). */
 export async function get(url) {
-  const res = await fetch(url, { headers: { "user-agent": USER_AGENT, accept: "text/html,application/json,*/*" }, signal: AbortSignal.timeout(25000) });
+  const res = await fetchWithTimeout(url, { headers: { "user-agent": USER_AGENT, accept: "text/html,application/json,*/*" } }, 25000);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
 }

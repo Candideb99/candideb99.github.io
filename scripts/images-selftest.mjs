@@ -2036,7 +2036,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     [officeOwn("Shigeru Ishiba", byId.kantei, [{ title: "a", summary: "Prime Minister Ishiba met…" }, { title: "b", summary: "Prime Minister Ishiba attended…" }, { title: "c", summary: "Prime Minister Ishiba received…" }, { title: "d", summary: "a cabinet meeting" }]), officeOwn("Sanae Takaichi", byId.kantei, []), officeOwn("Xi Jinping", byId.kantei, kanteiEvents)],
     [true, true, false],
   );
-  // India (held back: its site refuses a reader that names itself a bot): the gallery's groups, PIB's light copy for the judge, the original kept.
+  // India: the gallery's groups, PIB's light copy for the judge, the original kept.
   const pmLink = (group, file, caption, event) => `<a data-fancybox="gallery${group}" href="https://www.pmindia.gov.in/wp-content/uploads/2026/11/${file}" data-caption="${caption}" title="${caption}" id="1" onmouseover="this.title='${event}'" onclick="this.title='${caption}'" > <div class="photo"> <img src="https://www.pmindia.gov.in/wp-content/uploads/2026/11/${file}" alt="${caption}"> </div> </a>`;
   const pmGallery = [
     `<a class="group1168 fancybox" data-fancybox="gallery1168" href="https://www.pmindia.gov.in/wp-content/uploads/2025/12/02.jpg" data-caption=" " title=" " id="16605130"></a>`,
@@ -2080,7 +2080,7 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
   check(
     "an office is read by the headline's own title for its holder, a Commission official's name or the Commission, and never for an ordinary story",
     [officialSourcesFor({ title: "رئيسة الوزراء اليابانية تتعهد بحزمة تحفيز" }).map((s) => s.id), officialSourcesFor({ title: "فون دير لاين: الاتحاد سيرد على الرسوم" }).map((s) => s.id), officialSourcesFor({ title: "المفوضية الأوروبية تقترح رسوماً على الصلب" }).map((s) => s.id), officialSourcesFor({ title: "مودي يلتقي بوتين" }).map((s) => s.id), officialSourcesFor({ title: "أسعار النفط ترتفع" }).map((s) => s.id)],
-    [["kantei"], ["ec"], ["ec"], ["kremlin"], []],
+    [["kantei"], ["ec"], ["ec"], ["kremlin", "pmindia"], []],
   );
   const poland = { title: "المفوضية الأوروبية وبولندا تبحثان تمويل الطاقة", tags: ["الاتحاد الأوروبي", "بولندا"] };
   check(

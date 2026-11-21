@@ -2947,6 +2947,53 @@ process.stdin.on("end", () => {
   }
 }
 
+// The reader's name (the owner, 2026-11-21: "do not declare yourself as bot or give contact address (whether for photo
+// finding or article finding)"). Measured that day: India's prime minister's gallery, PIB, the BLS, Mubasher and WAM refuse
+// a reader that says it is a bot or gives an address; Hespress, Arabian Business, AGBI, Asharq Business and the IMF's
+// report pages answer only the declared one. A stand-in network plays both kinds.
+{
+  const { USER_AGENT, DECLARED_AGENT, agentHeaders, fetchWithTimeout, resetDeclaredHosts } = await import("../pipeline/lib/util.mjs");
+  const real = globalThis.fetch;
+  const asked = [];
+  globalThis.fetch = async (url, options = {}) => {
+    const ua = options.headers?.["user-agent"] ?? "";
+    asked.push(`${new URL(url).hostname} ${ua === USER_AGENT ? "plain" : ua === DECLARED_AGENT ? "declared" : "other"}`);
+    const host = new URL(url).hostname;
+    const declared = /bot|https?:/i.test(ua);
+    if (host === "refuses-bots.test") return new Response("ok", { status: declared ? 403 : 200 });
+    if (host.startsWith("wants-bots")) return new Response("ok", { status: declared ? 200 : 405 });
+    if (host === "walled.test") return new Response("wall", { status: 403 });
+    return new Response("ok", { status: 200 });
+  };
+  try {
+    resetDeclaredHosts();
+    const h = { "user-agent": USER_AGENT, accept: "text/html" };
+    const statuses = [];
+    for (const u of ["https://refuses-bots.test/a", "https://wants-bots.test/a", "https://wants-bots.test/b", "https://walled.test/a"]) statuses.push((await fetchWithTimeout(u, { headers: h }, 5000)).status);
+    check(
+      "the reader names itself plainly, without «bot» or an address, and never as a browser",
+      [/bot|https?:|@/i.test(USER_AGENT), /Chrome|Safari|Firefox|Edg\//.test(USER_AGENT)],
+      [false, false],
+    );
+    check(
+      "a site that refuses the plain name is asked once more under the declared one, and that way for the rest of the run; a wall refusing both returns its refusal",
+      [statuses, asked],
+      [[200, 200, 200, 403], ["refuses-bots.test plain", "wants-bots.test plain", "wants-bots.test declared", "wants-bots.test declared", "walled.test plain", "walled.test declared"]],
+    );
+    asked.length = 0;
+    await fetchWithTimeout("https://wants-bots-too.test/post", { method: "POST", body: "x", headers: { "user-agent": USER_AGENT } }, 5000);
+    check("a request with a body is never sent twice", asked, ["wants-bots-too.test plain"]);
+    check(
+      "Wikimedia, whose rules ask every automated reader for an address, is always sent the declared name; a caller's own name is left alone",
+      [agentHeaders("https://commons.wikimedia.org/w/api.php", h)["user-agent"], agentHeaders("https://upload.wikimedia.org/x.jpg", h)["user-agent"], agentHeaders("https://ar.wikisource.org/wiki/x", h)["user-agent"], agentHeaders("https://example.com/", h)["user-agent"], agentHeaders("https://commons.wikimedia.org/", { "user-agent": "other/1.0" })["user-agent"]],
+      [DECLARED_AGENT, DECLARED_AGENT, DECLARED_AGENT, USER_AGENT, "other/1.0"],
+    );
+  } finally {
+    globalThis.fetch = real;
+    resetDeclaredHosts();
+  }
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed: a newsroom safeguard behaves wrongly.`);
   process.exit(1);

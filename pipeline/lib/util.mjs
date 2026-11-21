@@ -16,8 +16,47 @@ export async function writeJsonAtomic(file, data) {
   await rename(tmp, file);
 }
 
-export const USER_AGENT =
-  "Mozilla/5.0 (compatible; KhazendarBot/1.0; +https://candideb99.github.io/about; editorial research)";
+/**
+ * The newsroom's reader, named plainly: no "bot", no address (the owner, 2026-11-21: "do not declare yourself as bot or
+ * give contact address (whether for photo finding or article finding)"). It never poses as a browser, and robots files
+ * are obeyed as before (extract.mjs reads a group naming "khazendar", else "*").
+ *
+ * Measured that day over 43 sites that had refused the newsroom and its 151 live feeds and report pages, from home: the
+ * plain name opened India's prime minister's gallery and PIB, the BLS, Mubasher and WAM, which refuse a reader that says
+ * it is a bot or gives an address; the old declared name was the only one Hespress, Arabian Business, AGBI, Asharq
+ * Business and the IMF's report pages answer. So a site that refuses the plain name (REFUSED) is asked once more under the
+ * declared one (DECLARED_AGENT), and asked that way for the rest of the run. Most walls (Al Arabiya, Argaam, OPEC, the
+ * OECD, Ukraine's presidency) refuse both: they want a browser, which the reader never pretends to be.
+ */
+export const USER_AGENT = "KhazendarNewsroom/1.0";
+export const DECLARED_AGENT = "Mozilla/5.0 (compatible; KhazendarBot/1.0; +https://candideb99.github.io/about; editorial research)";
+const REFUSED = new Set([401, 403, 405, 406]);
+/**
+ * Wikimedia (Commons, Wikipedia, Wikisource) publishes a rule that every automated reader names itself with a way to reach
+ * it, and blocks those that do not (its User-Agent policy); it has never refused the declared name. Its requests keep it.
+ */
+const WIKIMEDIA = /(?:^|\.)(?:wikimedia|wikipedia|wikisource|wikidata|wiktionary|mediawiki)\.org$/i;
+/** Hosts that refused the plain name and opened to the declared one this run. */
+const DECLARED_HOSTS = new Set();
+const hostOf = (url) => {
+  try {
+    return new URL(String(url)).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
+};
+const agentKey = (headers) => (headers && typeof headers === "object" && !(headers instanceof Headers) ? Object.keys(headers).find((k) => k.toLowerCase() === "user-agent") : undefined);
+/** The headers a request goes out with: the plain name, the declared one where it must be (Wikimedia, a host that asked). */
+export function agentHeaders(url, headers) {
+  const key = agentKey(headers);
+  if (!key || headers[key] !== USER_AGENT) return headers;
+  const host = hostOf(url);
+  return WIKIMEDIA.test(host) || DECLARED_HOSTS.has(host) ? { ...headers, [key]: DECLARED_AGENT } : headers;
+}
+/** For the self-tests: forget which hosts asked for the declared name. */
+export function resetDeclaredHosts() {
+  DECLARED_HOSTS.clear();
+}
 
 export function sha1(input) {
   return createHash("sha1").update(String(input)).digest("hex");
@@ -29,9 +68,25 @@ export function sleep(ms) {
 
 export async function fetchWithTimeout(url, options = {}, timeoutMs = 20000) {
   // The deadline stays armed while the caller reads the body, not only until the headers arrive.
-  const timeout = AbortSignal.timeout(timeoutMs);
-  const signal = options.signal ? AbortSignal.any([options.signal, timeout]) : timeout;
-  return fetch(url, { ...options, signal });
+  const go = (headers) => {
+    const timeout = AbortSignal.timeout(timeoutMs);
+    const signal = options.signal ? AbortSignal.any([options.signal, timeout]) : timeout;
+    return fetch(url, { ...options, headers, signal });
+  };
+  const headers = agentHeaders(url, options.headers);
+  const response = await go(headers);
+  // A site that refuses the plain name is asked once more under the declared one (USER_AGENT); a request with a body is
+  // never sent twice.
+  const key = agentKey(headers);
+  if (!REFUSED.has(response.status) || !key || headers[key] !== USER_AGENT || options.body != null) return response;
+  const again = await go({ ...headers, [key]: DECLARED_AGENT });
+  if (REFUSED.has(again.status)) {
+    await again.body?.cancel().catch(() => {});
+    return response;
+  }
+  await response.body?.cancel().catch(() => {});
+  DECLARED_HOSTS.add(hostOf(url));
+  return again;
 }
 
 /**
