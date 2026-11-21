@@ -61,7 +61,8 @@ export function sniffImage(bytes) {
 }
 
 /** Vision providers cannot fetch Wikimedia URLs themselves; inline the thumbnails as data URLs. */
-export async function inlineImage(url, log = () => {}) {
+/** `maxWidth`: a large original is shown to the judge at that width (an office's 2,200-pixel photograph, officialPhoto()). */
+export async function inlineImage(url, log = () => {}, { maxWidth = 0 } = {}) {
   try {
     const response = await fetchPublic(url, { headers: { "user-agent": USER_AGENT } }, 25000);
     if (!response.ok) {
@@ -89,6 +90,15 @@ export async function inlineImage(url, log = () => {}) {
       if (!type) {
         log(`image: unlabelled bytes that are not a JPEG, PNG, WebP or GIF (${url.slice(0, 90)})`);
         return null;
+      }
+    }
+    if (maxWidth && bytes.length > 400_000) {
+      try {
+        const sharp = (await import("sharp")).default;
+        const small = await sharp(bytes).rotate().resize({ width: maxWidth, withoutEnlargement: true }).jpeg({ quality: 78 }).toBuffer();
+        return `data:image/jpeg;base64,${small.toString("base64")}`;
+      } catch (error) {
+        log(`image: could not shrink ${url.slice(0, 90)} (${String(error.message).slice(0, 80)})`);
       }
     }
     return `data:${type};base64,${bytes.toString("base64")}`;
@@ -1495,7 +1505,8 @@ async function shortlist(candidates, log, stockFirst = false) {
     // The judge looks at a small copy: 500 pixels of a Commons file, the libraries' own thumbnails. Flickr's servers
     // refuse some requests from a bot that names itself (403, 2026-09-27: three of four Flickr photos of a fruit
     // packing search were never looked at); Openverse's own thumbnail of the same photo is then asked for instead.
-    const dataUrl = (await outside.inlineImage(candidate.thumb ?? String(candidate.url).replace(/\/1280px-/, "/500px-"), log)) ?? (candidate.thumbAlt ? await outside.inlineImage(candidate.thumbAlt, log) : null);
+    const small = candidate.official ? { maxWidth: 800 } : undefined;
+    const dataUrl = (await outside.inlineImage(candidate.thumb ?? String(candidate.url).replace(/\/1280px-/, "/500px-"), log, small)) ?? (candidate.thumbAlt ? await outside.inlineImage(candidate.thumbAlt, log, small) : null);
     if (!dataUrl) continue;
     list.push(candidate);
     inlined.push(dataUrl);
@@ -3017,7 +3028,20 @@ const sameSurname = (a, b) => surnameOf(a).length >= 3 && surnameOf(a) === surna
 /** The offices whose leader the headline is about. */
 export function officialSourcesFor(draft, people = []) {
   const forms = headlineForms(draft?.title ?? "");
-  return OFFICIAL_SOURCES.filter((s) => s.leaders.some((l) => people.some((p) => sameSurname(p, l.name)) || inForms(forms, l.ar)));
+  const headline = String(draft?.title ?? "").replace(/[ً-ْـ]/g, "");
+  return OFFICIAL_SOURCES.filter((s) => s.leaders.some((l) => people.some((p) => sameSurname(p, l.name)) || inForms(forms, l.ar)) || (s.titles ?? []).some((t) => headline.includes(t)));
+}
+/**
+ * The office's own people among the headline's: its listed holders, and anyone most of its listed events name (a prime
+ * minister who took office after the list was written: Japan's office names «Prime Minister Takaichi» in almost every
+ * entry). An event naming only them is not this story's occasion by that alone.
+ */
+export function officeOwn(person, source, listed = []) {
+  if (source.leaders.some((l) => sameSurname(person, l.name))) return true;
+  const surname = surnameOf(person);
+  if (listed.length < 3 || surname.length < 3) return false;
+  const re = new RegExp(`(?<![\\p{L}])${escapeRe(surname)}(?![\\p{L}])`, "u");
+  return listed.filter((e) => re.test(fold(`${e.title} | ${e.summary ?? ""}`).toLowerCase())).length >= Math.max(3, Math.ceil(listed.length * 0.4));
 }
 /** Words of an event's name that say which event it is: never its kind («Summit», «Forum») or a word every event has. */
 const EVENT_GENERIC = new Set(["summit", "forum", "meeting", "meetings", "conference", "session", "plenary", "annual", "international", "world", "global", "leaders", "leaders'", "economic", "talks", "visit", "state", "official", "the", "and", "with", "president", "presidents", "summit's"]);
@@ -3026,13 +3050,25 @@ const EVENT_GENERIC = new Set(["summit", "forum", "meeting", "meetings", "confer
  * the story's countries than the office's own (the Kremlin's «Meeting with President of China and President of the United
  * States» under a story about the three leaders), or a word of the story's own event as the planner named it («APEC»).
  */
+/** The countries a story names one by one, in its headline or tags: no region, desk or institution's seat. */
+export function countriesByName(story) {
+  const out = new Set();
+  for (const text of [...(story?.tags ?? []).map((t) => String(t).trim()), String(story?.title ?? "")]) {
+    if (STORY_COUNTRIES[text]) out.add(STORY_COUNTRIES[text]);
+    for (const [re, countries] of COUNTRY_WORDS) if (re.test(text)) countries.forEach((c) => out.add(c));
+    for (const [stem, country] of STORY_STEMS) if (text.includes(stem)) out.add(country);
+  }
+  return out;
+}
 export function officialEventFits(event, { source, draft, others = [], events = [] }) {
   const said = `${event?.title ?? ""} | ${event?.place ?? ""} | ${event?.summary ?? ""}`;
   const person = others.find((name) => namesPerson(fold(said).toLowerCase(), name.toLowerCase()));
   if (person) return `it names ${person}`;
   // Not where the leader was that day: every event of a trip to China is placed in Shenzhen, a call to Tajikistan's
-  // president among them.
-  const home = storyCountries(draft);
+  // president among them. And only a country the story names as itself: «الاتحاد الأوروبي» stands for every European
+  // country in the place rule (storyCountries()), which matched a Commission president's visit to Britain under a story
+  // about Poland.
+  const home = countriesByName(draft);
   const country = recordCountries({ title: `${event?.title ?? ""} | ${event?.summary ?? ""}` }).found.find((c) => c !== source.country && home.has(c));
   if (country) return `it names ${country}`;
   const words = events.flatMap((e) => String(e).split(/[^\p{L}\p{N}]+/u)).filter((w) => w.length >= 3 && /^\p{Lu}/u.test(w) && !EVENT_GENERIC.has(w.toLowerCase()));
@@ -3058,7 +3094,7 @@ async function officialPhoto({ people = [], eventNames = [], draft, story, log, 
       log(`image: ${source.officeEn}'s events could not be read (${String(error.message).split("\n")[0].slice(0, 100)})`);
       continue;
     }
-    const others = people.filter((p) => !source.leaders.some((l) => sameSurname(p, l.name)));
+    const others = people.filter((p) => !officeOwn(p, source, listed));
     // Newest first, as the offices list them; three events an office at most.
     const fitting = listed.map((e) => ({ e, why: officialEventFits(e, { source, draft, others, events: eventNames }) })).filter((x) => x.why).slice(0, 3);
     if (!fitting.length && listed.length) log(`image: none of ${source.officeEn}'s ${listed.length} event(s) names the story's people, countries or event`);

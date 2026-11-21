@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (240 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (250 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,8 +8,8 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, officialSourcesFor, officialEventFits, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
-import { parseKremlinList, parseKremlinPhotos, parseWhiteHouseList, parseWhiteHousePhotos, englishDate, OFFICIAL_SOURCES } from "../pipeline/lib/official-photos.mjs";
+import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, officialSourcesFor, officialEventFits, officeOwn, countriesByName, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { parseKremlinList, parseKremlinPhotos, parseWhiteHouseList, parseWhiteHousePhotos, englishDate, kanteiActionsPath, parseKanteiList, parseKanteiPhotos, parsePmIndiaGallery, parseEcReportages, parseEcPhotos, OFFICIAL_SOURCES, HELD_SOURCES } from "../pipeline/lib/official-photos.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -2003,6 +2003,98 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     // The judge refuses the occasion (the story reports something else): no photograph is kept, the cascade goes on.
     const r = await scenario({ draft: summit, plan: summitPlan, official, photoDir: "C:/site/public/photos/handouts", judge: () => 0 });
     check("a judge who refuses the offices' frames keeps none of them", [r.image?.basis ?? null, r.saved.length, r.searched.length > 0], [null, 0, true]);
+  }
+}
+
+// Japan's, India's and the European Commission's offices (the owner, 2026-11-21: "add the other offices too, ukraine, EU,
+// india, japan"). Pages and answers trimmed from the offices' own of 21 November. Ukraine's presidency and the European
+// Council wall off every automated reader and are not in the registry.
+{
+  const byId = Object.fromEntries([...OFFICIAL_SOURCES, ...HELD_SOURCES].map((s) => [s.id, s]));
+  const KANTEI = "https://japan.kantei.go.jp";
+  const kanteiHome = `<a href="/105/actions/index.html">Prime Minister in Action</a> <a href="/105/speech/index.html">Speeches</a>`;
+  const kanteiItem = (href, title, date, desc) => `<li class="list-photo__item"> <a class="list-photo__link" href="${href}"> <div class="list-photo__media"> <img alt="x" src="/contents/topics/1_ext_29_0.jpg" class="list-photo__image" width="480" height="320"> </div> <div class="list-photo__content"> <div class="list-photo__heading"> <p class="list-photo__title">${title}</p> <time class="list-photo__date" datetime="${date}"> ${date} </time> </div> <p class="list-photo__description">${desc}</p> </div> </a> </li>`;
+  const kanteiList = [
+    kanteiItem("/105/actions/202611/19apec.html", "APEC Economic Leaders’ Meeting and Other Events (2)", "2026-11-19", "On November 19, 2026 (local time), Prime Minister Takaichi, who was visiting Shenzhen, the People&#39;s Republic of China, attended the APEC Economic Leaders’ Meeting."),
+    kanteiItem("/105/actions/202611/18apec.html", "Japan-China Summit Meeting", "2026-11-18", "Prime Minister Takaichi held a summit meeting with President Xi Jinping."),
+    kanteiItem("/105/actions/202611/12teigen.html", "Courtesy Call from the Keidanren", "2026-11-12", "Prime Minister Takaichi received a courtesy call from the Keidanren."),
+    kanteiItem("/105/actions/202610/30cabinet.html", "Cabinet Meeting", "2026-10-30", "Prime Minister Takaichi attended the cabinet meeting."),
+  ].join("\n");
+  const kanteiFigure = (n, caption, w = 980, h = 654) => `<figure class="carousel__item swiper-slide" data-slide-label="${n}/2"> <div class="carousel__media"> <img alt="${caption}" src="/contents/topics/32011_ext_8_${n}.jpg" class="carousel__image" width="${w}" height="${h}"> </div> <figcaption class="carousel__caption">${caption}</figcaption> </figure>`;
+  const kanteiPage = `${kanteiFigure(1, "Prime Minister Takaichi being welcomed by President Xi Jinping (1)")}${kanteiFigure(2, "Family photo (portrait)", 654, 980)}`;
+  check("Japan's office: its actions page is found from its home page, never by a cabinet number written in code", kanteiActionsPath(kanteiHome), "/105/actions/index.html");
+  const kanteiEvents = parseKanteiList(kanteiList);
+  check("Japan's office lists its events with their dates and the description that names who was met", [kanteiEvents.length, kanteiEvents[1].title, kanteiEvents[1].date, kanteiEvents[1].summary.includes("Xi Jinping"), kanteiEvents[0].url], [4, "Japan-China Summit Meeting", "2026-11-18", true, `${KANTEI}/105/actions/202611/19apec.html`]);
+  const kanteiPhotos = parseKanteiPhotos(kanteiPage, kanteiEvents[1], byId.kantei);
+  check(
+    "a Japanese event's landscape frames, credited to the office under its licence and kept under the topic's own number",
+    [kanteiPhotos.length, kanteiPhotos[0].url, kanteiPhotos[0].width, attributionLine(kanteiPhotos[0]), kanteiPhotos[0].stored, photoKey(kanteiPhotos[0].url) === photoKey(`/photos/handouts/${kanteiPhotos[0].stored}`)],
+    [1, `${KANTEI}/contents/topics/32011_ext_8_1.jpg`, 980, "Prime Minister's Office of Japan · PDL 1.0 · مكتب رئيس وزراء اليابان", "official-kantei-32011-1.jpg", true],
+  );
+  check(
+    "a prime minister the registry does not name yet is the office's own when most of its events name her; a guest is not",
+    [officeOwn("Shigeru Ishiba", byId.kantei, [{ title: "a", summary: "Prime Minister Ishiba met…" }, { title: "b", summary: "Prime Minister Ishiba attended…" }, { title: "c", summary: "Prime Minister Ishiba received…" }, { title: "d", summary: "a cabinet meeting" }]), officeOwn("Sanae Takaichi", byId.kantei, []), officeOwn("Xi Jinping", byId.kantei, kanteiEvents)],
+    [true, true, false],
+  );
+  // India (held back: its site refuses a reader that names itself a bot): the gallery's groups, PIB's light copy for the judge, the original kept.
+  const pmLink = (group, file, caption, event) => `<a data-fancybox="gallery${group}" href="https://www.pmindia.gov.in/wp-content/uploads/2026/11/${file}" data-caption="${caption}" title="${caption}" id="1" onmouseover="this.title='${event}'" onclick="this.title='${caption}'" > <div class="photo"> <img src="https://www.pmindia.gov.in/wp-content/uploads/2026/11/${file}" alt="${caption}"> </div> </a>`;
+  const pmGallery = [
+    `<a class="group1168 fancybox" data-fancybox="gallery1168" href="https://www.pmindia.gov.in/wp-content/uploads/2025/12/02.jpg" data-caption=" " title=" " id="16605130"></a>`,
+    pmLink(16983339, "H20261120220723.jpeg", "PM with the leaders at the First SCO Civilisational Dialogue Forum in New Delhi on November 20, 2026.", "PM participates in the First Shanghai Cooperation Organisation (SCO) Civilisational Dialogue Forum at Purana Qila, in New Delhi (November 20, 2026)"),
+    pmLink(16983339, "H20261120220732.jpeg", "PM took a walkthrough of the exhibition at Purana Qila on November 20, 2026.", "PM participates in the First Shanghai Cooperation Organisation (SCO) Civilisational Dialogue Forum at Purana Qila, in New Delhi (November 20, 2026)"),
+    pmLink(16980001, "H20261117220329.jpeg", "PM at the 23rd India-ASEAN Summit in Manila.", "PM participates in the 23rd India-ASEAN Summit in Manila (November 17, 2026)"),
+  ].join("\n");
+  const pmEvents = parsePmIndiaGallery(pmGallery);
+  const pmPhotos = await byId.pmindia.photos(pmEvents[0], { read: async () => null });
+  check(
+    "India's gallery groups its photographs by event, dated, and shows the judge PIB's light copy while the original is kept",
+    [pmEvents.map((e) => [e.title, e.date, e.photos.length]), pmPhotos[1].thumb, pmPhotos[1].thumbAlt, attributionLine(pmPhotos[1]), pmPhotos[1].stored, photoKey(pmPhotos[1].thumb) === photoKey(pmPhotos[1].url)],
+    [
+      [["PM participates in the First Shanghai Cooperation Organisation (SCO) Civilisational Dialogue Forum at Purana Qila, in New Delhi", "2026-11-20", 2], ["PM participates in the 23rd India-ASEAN Summit in Manila", "2026-11-17", 1]],
+      "https://static.pib.gov.in/WriteReadData/Gallery/PhotoGallery/2026/Nov/T20261120220732.JPG",
+      "https://www.pmindia.gov.in/wp-content/uploads/2026/11/H20261120220732.jpeg",
+      "PIB · Free reuse with credit · مكتب رئيس وزراء الهند",
+      "official-pmindia-20261120220732.jpg",
+      true,
+    ],
+  );
+  // The European Commission: its interface's answers, the Union's own work only.
+  const euHolders = { year: "2026", holders: [{ language: "EN", content: "European Union" }], scopes: [] };
+  const reportage = (ref, title, start, extra = {}) => ({ reference: ref, type: "REPORTAGE", titles: [{ language: "EN", content: title }], summaries: [], personalities: [], locations: [], copyright: euHolders, startDateTime: start, photosCount: 4, ...extra });
+  const ecList = JSON.stringify({ completeItemsCount: 3, items: [
+    reportage("P-071029", "Visit of Dan Jørgensen, European Commissioner, to Poland", "2026-11-18T23:00:00.000Z", { personalities: [{ title: "Dan Jørgensen" }, { title: "Andrzej Domański" }], locations: [{ titles: [{ language: "EN", content: "Poland" }] }] }),
+    reportage("P-071075", "Participation of Ursula von der Leyen in a summit in London", "2026-11-19T23:00:00.000Z", { locations: [{ titles: [{ language: "EN", content: "United Kingdom" }] }] }),
+    reportage("P-071080", "A broadcaster's interview", "2026-11-19T23:00:00.000Z", { copyright: { year: "2026", holders: [{ language: "EN", content: "Euronews" }], scopes: [] } }),
+  ] });
+  const ecEventsRead = parseEcReportages(ecList);
+  check("the Commission's reportages: the Union's own only, dated in Brussels, its people named", [ecEventsRead.map((e) => [e.id, e.date]), ecEventsRead[0].summary.includes("Andrzej Domański"), ecEventsRead[0].url], [[["P-071029", "2026-11-19"], ["P-071075", "2026-11-20"]], true, "https://audiovisual.ec.europa.eu/en/media/photo/P-071029"]);
+  const sizes = (n, w = 1200, h = 892) => [{ quality: "HIGH", path: `/07/10/29/P-071029_00-0${n}_02-HIGH-1.jpg`, width: w, height: h }, { quality: "MEDIUM", path: `/07/10/29/P-071029_00-0${n}_03-MED-1.jpg`, width: 800, height: 594 }];
+  const ecPhoto = (n, extra = {}) => ({ reference: `P-071029/00-0${n}`, summaries: [{ language: "EN", content: `Andrzej Domanski and Dan Jørgensen (${n})` }], ccBy: [{ version: `P-071029/00-0${n}` }], copyright: { holders: [], scopes: [] }, imagesByQualities: sizes(n), cooperators: [{ name: "Janek Skarzynski", roles: [{ roleKey: "PHOTOGRAPHER" }] }], ...extra });
+  const ecDetail = JSON.stringify({ reference: "P-071029", photos: [ecPhoto(1), ecPhoto(2, { ccBy: [] }), ecPhoto(3, { copyright: { holders: [{ language: "EN", content: "Reuters" }], scopes: [] } }), ecPhoto(4, { imagesByQualities: sizes(4, 800, 1200) })] });
+  const ecPhotosRead = parseEcPhotos(ecDetail, ecEventsRead[0], byId.ec);
+  check(
+    "a Commission reportage gives only its CC BY, Union-held, landscape frames: 800 pixels to judge, 1200 kept, «© European Union»",
+    [ecPhotosRead.length, ecPhotosRead[0].thumb.includes("_03-MED-"), ecPhotosRead[0].url.includes("_02-HIGH-"), attributionLine(ecPhotosRead[0]), ecPhotosRead[0].stored, photoKey(ecPhotosRead[0].url) === photoKey(`/photos/handouts/${ecPhotosRead[0].stored}`)],
+    [1, true, true, "© European Union, 2026 · CC BY 4.0 · المفوضية الأوروبية", "official-ec-P-071029_00-01.jpg", true],
+  );
+  check(
+    "an office is read by the headline's own title for its holder, a Commission official's name or the Commission, and never for an ordinary story",
+    [officialSourcesFor({ title: "رئيسة الوزراء اليابانية تتعهد بحزمة تحفيز" }).map((s) => s.id), officialSourcesFor({ title: "فون دير لاين: الاتحاد سيرد على الرسوم" }).map((s) => s.id), officialSourcesFor({ title: "المفوضية الأوروبية تقترح رسوماً على الصلب" }).map((s) => s.id), officialSourcesFor({ title: "مودي يلتقي بوتين" }).map((s) => s.id), officialSourcesFor({ title: "أسعار النفط ترتفع" }).map((s) => s.id)],
+    [["kantei"], ["ec"], ["ec"], ["kremlin"], []],
+  );
+  const poland = { title: "المفوضية الأوروبية وبولندا تبحثان تمويل الطاقة", tags: ["الاتحاد الأوروبي", "بولندا"] };
+  check(
+    "an event matches the countries a story names one by one, never every European country its EU tag stands for",
+    [[...countriesByName(poland)], officialEventFits(ecEventsRead[0], { source: byId.ec, draft: poland, others: [] }), officialEventFits(ecEventsRead[1], { source: byId.ec, draft: poland, others: [] })],
+    [["Poland"], "it names Poland", null],
+  );
+  // The cascade: a Japanese summit story runs the office's own frame of the meeting.
+  {
+    const draft = { title: "رئيسة الوزراء اليابانية وشي يتفقان على استئناف الحوار الاقتصادي", subtitle: "لقاء على هامش قمة آسيا والمحيط الهادئ", lede: "اتفقت رئيسة الوزراء اليابانية ساناي تاكايتشي والرئيس الصيني شي جين بينغ على استئناف الحوار.", body: "فقرة.", tags: ["اليابان", "الصين"], regions: ["آسيا"], kind: "news", section: "economy", publishedAt: "2026-11-19T09:00:00Z", imageQueries: [] };
+    const official = { [`${KANTEI}/`]: kanteiHome, [`${KANTEI}/105/actions/index.html`]: kanteiList, [`${KANTEI}/105/actions/202611/18apec.html`]: kanteiPage };
+    const plan = planFor({ queries: ["Japan China trade"], place: [], focus: "people", people: [{ name: "Sanae Takaichi", ar: "ساناي تاكايتشي", headline: "رئيسة الوزراء اليابانية" }, { name: "Xi Jinping", ar: "شي جين بينغ", headline: "شي" }] });
+    const r = await scenario({ draft, plan, official, photoDir: "C:/site/public/photos/handouts", judge: () => 1 });
+    check("a Japanese summit story runs the office's own frame of the meeting, kept on the site, before any library", [r.image?.basis, r.image?.url, r.image?.credit, r.searched.length], ["official", "/photos/handouts/official-kantei-32011-1.jpg", "Prime Minister's Office of Japan · PDL 1.0 · مكتب رئيس وزراء اليابان", 0]);
   }
 }
 

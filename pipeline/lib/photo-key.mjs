@@ -37,6 +37,14 @@ export function photoKey(url) {
   if (whiteHouse) return `flickr:${whiteHouse[1]}`;
   const kremlin = u.match(/static\.kremlin\.ru\/media\/events\/photos\/big2x\/([A-Za-z0-9]{16,})\.jpg/) ?? u.match(/\/photos\/handouts\/official-kremlin-([A-Za-z0-9]{16,})\.jpg$/);
   if (kremlin) return `kremlin:${kremlin[1]}`;
+  // Japan's prime minister's office (its topic and frame), India's (PIB's date and number, the original or its light copy)
+  // and the European Commission's (its photograph's reference), at the office or kept on the site.
+  const kantei = u.match(/kantei\.go\.jp\/contents\/topics\/(\d+)_ext_\d+_(\d+)\.jpe?g/i) ?? u.match(/\/photos\/handouts\/official-kantei-(\d+)-(\d+)\.jpg$/);
+  if (kantei) return `kantei:${kantei[1]}-${kantei[2]}`;
+  const pib = u.match(/(?:pmindia\.gov\.in\/wp-content\/uploads\/\d{4}\/\d{2}\/H|static\.pib\.gov\.in\/.*\/T)(\d{9,})\.(?:jpe?g|JPG)/i) ?? u.match(/\/photos\/handouts\/official-pmindia-(\d{9,})\.jpg$/);
+  if (pib) return `pib:${pib[1]}`;
+  const ec = u.match(/avservices\/repository\/photo\/.*\/(P-\d{6}_\d{2}-\d{2})_\d{2}-/) ?? u.match(/\/photos\/handouts\/official-ec-(P-\d{6}_\d{2}-\d{2})\.jpg$/);
+  if (ec) return `ec:${ec[1]}`;
   const pexels =u.match(/images\.pexels\.com\/photos\/(\d+)\//i);
   if (pexels) return `pexels:${pexels[1]}`;
   const unsplash = u.match(/images\.unsplash\.com\/(photo-[\w-]+)/i);
