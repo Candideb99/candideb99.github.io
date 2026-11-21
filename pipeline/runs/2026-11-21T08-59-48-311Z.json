@@ -1,0 +1,117 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-11-21T08:50:40.834Z",
+  "durationSec": 547,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "لم تخسر إنفيديا زبوناً واحداً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟",
+      "section": "explainers",
+      "outcome": "published",
+      "mendedAfterReview": 1,
+      "mendIssues": [
+        "بلا خيط في الخاتمة (المشكلة 2 من المراجعة السابقة باقية): الفقرة الأخيرة «هوى السهم إذن لأن ثمنه تقدير لأرباح سنوات مقبلة… وما سيتكشف عن تلك العمليات هو ما سيعيد تقدير السهم» تجيب عن سؤال العنوان من دون نتيجة المثال المحسوب. والقسم الثالث قدّم هذه النتيجة بنفسه: «يخصها نحو 8.4 نقطة مئوية» من هبوط 13.7%. الإصلاح: تُدمج النتيجة في جملة الخاتمة عن السوق، مثل: «وكان المستثمرون في السوق كلها يطلبون في اليوم نفسه عائداً أعلى مقابل النمو، فيعود نحو 5.3 نقطة من الهبوط إلى تراجع ناسداك، ويخص إنفيديا وحدها نحو 8.4 نقطة مئوية من هبوطها البالغ 13.7%، وهي الحصة التي يسعّر بها المستثمرون الشك في حساباتها». بذلك يلتقي جواب العنوان مع الحساب الذي يرتكز عليه."
+      ],
+      "slug": "why-nvidia-stock-fell-on-accounting-probe-reports-cc423b",
+      "title": "لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟",
+      "score": 8,
+      "image": "none"
+    }
+  ],
+  "llm": {
+    "calls": 12,
+    "failures": 0,
+    "promptTokens": 270849,
+    "completionTokens": 67010,
+    "cacheReadTokens": 94854,
+    "costUsd": 2.1832,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 12
+    },
+    "byRole": {
+      "editor": {
+        "calls": 2,
+        "in": 11045,
+        "read": 0,
+        "out": 1421,
+        "usd": 0.0726
+      },
+      "planner": {
+        "calls": 1,
+        "in": 24158,
+        "read": 0,
+        "out": 10461,
+        "usd": 0.33
+      },
+      "writer": {
+        "calls": 3,
+        "in": 52643,
+        "read": 53973,
+        "out": 24223,
+        "usd": 0.7585
+      },
+      "desk": {
+        "calls": 4,
+        "in": 43309,
+        "read": 40881,
+        "out": 23553,
+        "usd": 0.6957
+      },
+      "critic": {
+        "calls": 2,
+        "in": 44840,
+        "read": 0,
+        "out": 7352,
+        "usd": 0.3264
+      }
+    }
+  },
+  "log": [
+    "[08:50:40] newsroom start mode=explainer limit=4 dry-run=false",
+    "[08:50:58] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1022 in=7835 read=0 out=1412 attempt=1 ms=16304",
+    "[08:50:58] explainer question: لم تخسر إنفيديا زبوناً واحداً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟ (Stock valuation as the present value of expected future earnings, and the risk premium); opens on \"سهم إنفيديا يهبط 14% مع تقارير عن تحقيق أمريكي في حساباتها\"",
+    "[08:52:41] llm ok role=planner provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4252 in=24158 read=0 out=10461 attempt=1 ms=103460",
+    "[08:52:41] explainer plan: سعر سهم إنفيديا لا يدفع ثمن ما باعته الشركة أمس، بل ثمن ما يُتوقع أن تربحه لسنوات طويلة. وهذه التوقعات تُبنى على أرقامها المعلنة، فحين يُشكّ في تلك الأرقام يهتز",
+    "[08:52:41]   plan step 1: لم يتغير شيء في مصانع إنفيديا أو في طلبيات زبائنها بين الخميس والجمعة، ومع ذلك فقدت سبع قيمتها في جلسة واحدة. فعلامَ كان → ماذا يشتري المستثمر حين يشتري سهماً؟",
+    "[08:52:41]   plan step 2: إذا كان السعر ثمناً لأرباح مقبلة، فإن تحقيقاً في حسابات الماضي يبدو بعيداً عنه، إلا إذا كانت تلك الحسابات هي ما يُبنى عل → كيف يمسّ تحقيقٌ في حسابات سابقة أرباحاً لم تأتِ بعد؟",
+    "[08:52:41]   plan step 3: لكن خفضاً معتدلاً في التوقعات أو زيادة طفيفة في العائد المطلوب تبدو أصغر من أن تمحو 14% من قيمة شركة لم تخسر شيئاً ملموس → لماذا يكون أثر تعديل صغير في التوقعات أكبر بكثير على سعر السهم؟",
+    "[08:52:41]   plan leaves out: إفصاح جنسن هوانغ عن علاقة خارج إطار الزواج وخروجه من منصب الرئيس التنفيذي، وما أثاره من مخاوف تتعلق بالأمن القومي، ونفي ",
+    "[08:52:41]   plan leaves out: استعداد هوانغ للعودة إلى قيادة الشركة، وأن مجلس الإدارة لا يدرس هذه الخطوة حالياً",
+    "[08:52:41]   plan leaves out: تراجع السهم 22% منذ بداية العام حتى إغلاق الخميس",
+    "[08:52:41]   plan leaves out: طرح «سبيس إكس» سندات لتمويل أكبر صفقة شراء لرقائق إنفيديا على الإطلاق، وهبوط سهمي تسلا وسبيس إكس بأكثر من 7.6%. هذه الوا",
+    "[08:52:41]   plan leaves out: طرح «أنثروبيك» وتقلب سهمها في يومي تداوله الأولين",
+    "[08:52:41]   plan leaves out: دخول «ستاندرد آند بورز 500» و«داو جونز» منطقة التصحيح وتعريفها",
+    "[08:52:41]   plan leaves out: هبوط الأسواق الآسيوية وأكبر تراجع أسبوعي لسوق تايوان منذ 1990، وتراجع الأسواق الأوروبية",
+    "[08:52:41]   plan leaves out: إنفاق كبرى شركات التكنولوجيا أكثر من تريليون دولار على الذكاء الاصطناعي، والمخاوف من فقاعة",
+    "[08:52:41]   plan leaves out: فوز الديمقراطيين في انتخابات التجديد النصفي ومخاوف تراجع تطوير الذكاء الاصطناعي",
+    "[08:52:41]   plan leaves out: هبوط أسهم ميتا وأمازون وأبل وألفابت",
+    "[08:54:12] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6596 in=16174 read=17991 out=10982 attempt=1 ms=91149",
+    "[08:54:15] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=0 in=3210 read=0 out=9 attempt=1 ms=1535",
+    "[08:54:15] data chart: none fits this piece",
+    "[08:54:55] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2099 in=21179 read=0 out=5517 attempt=1 ms=40834",
+    "[08:55:27] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1164 in=7126 read=13627 out=4238 attempt=1 ms=31720",
+    "[08:55:27] desk: body accepted on the second try",
+    "[08:55:27] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[08:55:27] desk \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\": rewrote body",
+    "[08:55:27] checks explainer \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\": 812 words, 0 issues, 0 warnings",
+    "[08:56:04] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2563 in=21685 read=0 out=4095 attempt=1 ms=36847",
+    "[08:56:04] critic explainer: revise score=8 issues=6",
+    "[08:56:04]   · تخمين يتجاوز المصادر: «وقد يكون موضع السؤال نفسه هل سُجّلت بعض المبيعات كما وقعت». الخبر الأول ينقل عن رويترز و«دنيا» أن العمليات التي يتناولها التحقيق لم تُعرف",
+    "[08:56:04]   · بلا خيط في الخاتمة: الفقرة الأخيرة («هوى السهم إذن…») تجيب عن سؤال العنوان من دون أن تذكر نتيجة المثال المحسوب. الإصلاح: تدمج الخاتمة الرقم فتقول إن نحو 8.4 نقط",
+    "[08:56:04]   · عبارة ملتبسة تقلب المعنى: «في يوم كانت السوق كلها ترفع فيه الثمن الذي تطلبه مقابل النمو». ما نقله مويا أن المستثمرين يعيدون تحديد الثمن الذي يقبلون دفعه مقابل ا",
+    "[08:56:04]   · عنوان فرعي لا يطابق قسمه: تحت «أرقام الماضي تبني توقعات المستقبل» تأتي فقرتا القناة الثانية، أي العائد المطلوب وعلاوة المخاطرة وأبحاث كلفة رأس المال. وهما لا تت",
+    "[08:56:59] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2926 in=17963 read=17991 out=7443 attempt=1 ms=54734",
+    "[08:58:06] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4614 in=7384 read=13627 out=8848 attempt=1 ms=66897",
+    "[08:58:06] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[08:58:06] desk \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\": rewrote body",
+    "[08:58:33] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2613 in=23155 read=0 out=3257 attempt=1 ms=27685",
+    "[08:58:33] critic (second pass) explainer: revise score=8",
+    "[08:59:13] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1194 in=18506 read=17991 out=5798 attempt=1 ms=39852",
+    "[08:59:48] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1034 in=7620 read=13627 out=4950 attempt=1 ms=34484",
+    "[08:59:48] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[08:59:48] desk \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\": rewrote body",
+    "[08:59:48] mended explainer \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\": the second pass's 1 finding(s) sent back once more",
+    "[08:59:48] published explainer \"لم تخسر إنفيديا زبوناً، فلماذا هوى سهمها 14% لمجرد تقارير عن تحقيق؟\" -> why-nvidia-stock-fell-on-accounting-probe-reports-cc423b"
+  ]
+}
