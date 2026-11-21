@@ -559,23 +559,39 @@ check(
   check("the Maghreb's desk is quiet after three days (its old joint desk name counts), Africa after seven (an explainer is no news); the US is served",
     [quiet.desks.map((d) => d.name), quiet.areas.find((a) => a.name === "السودان والقرن الأفريقي")?.days === Infinity, quiet.areas.some((a) => a.name === "أفريقيا جنوب الصحراء"), quiet.served.has("الولايات المتحدة"), quiet.areas.some((a) => a.name === "الولايات المتحدة")],
     [["المغرب العربي"], true, true, true, false]);
-  const pick = (headlineHint, importance, regions = [], rotation = "") => ({ ids: [headlineHint], section: "economy", importance, headlineHint, regions, rotation });
-  const kenya = pick("المركزي الكيني يخفض الفائدة إلى 9%", 5, ["أفريقيا"], "أفريقيا جنوب الصحراء");
-  const apple = pick("أبل الأمريكية ترفع أسعار هواتفها", 6, ["الولايات المتحدة"]);
-  const nvidia = pick("سهم إنفيديا يهبط 14%", 6, ["الولايات المتحدة"]);
-  const saudi = pick("السعودية تطرح سندات بقيمة 5 مليارات دولار", 6, ["الخليج"]);
-  const algeria = pick("الجزائر ترفع أسعار الوقود 10%", 5, ["المغرب العربي"], "المغرب العربي");
-  const brazil = pick("المركزي البرازيلي يرفع الفائدة", 8, ["الأمريكتان"]);
+  const pick = (headlineHint, importance, regions = [], tie = "", rotation = "") => ({ ids: [headlineHint], section: "economy", importance, headlineHint, regions, tie, rotation });
+  const kenya = pick("المركزي الكيني يخفض الفائدة إلى 9%", 5, ["أفريقيا"], "none", "أفريقيا جنوب الصحراء");
+  const kenyaGulf = pick("جهاز قطر للاستثمار يضخ مليار دولار في موانئ كينيا", 5, ["أفريقيا", "الخليج"], "direct", "أفريقيا جنوب الصحراء");
+  const apple = pick("أبل الأمريكية ترفع أسعار هواتفها", 6, ["الولايات المتحدة"], "none");
+  const nvidia = pick("سهم إنفيديا يهبط 14%", 6, ["الولايات المتحدة"], "none");
+  const fed = pick("والر الأمريكي يدعو إلى رفع الفائدة", 6, ["الولايات المتحدة"], "global");
+  const grain = pick("أوكرانيا تستأنف شحن القمح إلى مصر عبر أوديسا", 6, ["أوروبا"], "direct");
+  const saudi = pick("السعودية تطرح سندات بقيمة 5 مليارات دولار", 6, ["الخليج"], "arab");
+  const sipchem = pick("«سبكيم» تكمل توسعة مصانعها", 6, ["الخليج"]);
+  const moroccoEu = pick("المغرب والاتحاد الأوروبي يوقعان اتفاقاً للهيدروجين", 6, ["المغرب العربي", "أوروبا"], "arab");
+  const algeria = pick("الجزائر ترفع أسعار الوقود 10%", 5, ["المغرب العربي"], "arab", "المغرب العربي");
+  const brazil = pick("المركزي البرازيلي يرفع الفائدة", 8, ["الأمريكتان"], "global");
   const swap = (args) => { const r = rotationSwap({ runLimit: 2, minImportance: 6, quiet, ...args }); return r ? [r.pick.headlineHint, r.drop?.headlineHint ?? null] : null; };
-  check("a quiet desk's story runs first, in place of the weakest story from a served part of the world; Africa's waits",
+  check("a quiet desk's story runs first, in place of the weakest non-Arab story within a point; Africa's waits",
     swap({ chosen: [saudi, apple], stories: [saudi, apple, kenya, algeria] }), [algeria.headlineHint, apple.headlineHint]);
-  check("a quiet part of the world takes the place of an American company's story (it names no place)",
-    swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, kenya] }), [kenya.headlineHint, nvidia.headlineHint]);
-  check("never in place of an Arab story, nor of a clearly stronger one, nor of a story from a part not yet served",
-    [swap({ chosen: [saudi, { ...saudi, headlineHint: "قطر تبيع غازاً لليابان", regions: ["الخليج"] }], stories: [saudi, kenya] }), swap({ chosen: [saudi, { ...apple, importance: 8 }], stories: [saudi, kenya] }), swap({ chosen: [saudi, brazil], stories: [saudi, brazil, kenya] })],
-    [null, null, null]);
+  check("a quiet part of the world with a stronger tie takes the place of a company's story with none (within a point)",
+    swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, kenyaGulf] }), [kenyaGulf.headlineHint, nvidia.headlineHint]);
+  check("a tie-breaker only: the same tie must be no weaker; a weaker tie never comes in",
+    [swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, kenya] }), swap({ chosen: [saudi, nvidia], stories: [saudi, nvidia, { ...kenya, importance: 6 }] }), swap({ chosen: [saudi, fed], stories: [saudi, fed, { ...kenya, importance: 6 }] })],
+    [null, [kenya.headlineHint, nvidia.headlineHint], null]);
+  check("never in place of Ukraine's grain for Egypt, a Morocco–EU deal, a Saudi company's story without a place word, a clearly stronger story or one from a part not yet served",
+    [swap({ chosen: [saudi, grain], stories: [saudi, grain, { ...kenya, importance: 6 }] }), swap({ chosen: [saudi, moroccoEu], stories: [saudi, moroccoEu, kenyaGulf] }), swap({ chosen: [saudi, sipchem], stories: [saudi, sipchem, kenyaGulf] }), swap({ chosen: [saudi, { ...apple, importance: 8 }], stories: [saudi, kenyaGulf] }), swap({ chosen: [saudi, brazil], stories: [saudi, brazil, kenyaGulf] })],
+    [null, null, null, null, null]);
+  // The live check of 2026-11-21: the longest-quiet place's story could displace nothing, the next one's could.
+  const indonesia = pick("أقاليم إندونيسيا ترفع الحد الأدنى للأجور 42%", 5, ["آسيا"], "none", "جنوب شرق آسيا وأستراليا");
+  const xrg = pick("الأرجنتين تقر حوافز مشروع غاز مسال تشارك فيه «إكس آر جي»", 6, ["الأمريكتان"], "arab", "الأمريكتان");
+  const euBudget = pick("كوستا يقترح خفض ميزانية الاتحاد الأوروبي 204 مليارات يورو", 7, ["أوروبا"], "global");
+  const evening = quietPlaces([...published, story("ميناء سنغافورة يسجل رقماً قياسياً", ["آسيا"], 20), story("صادرات البرازيل ترتفع", ["الأمريكتان"], 10)], now);
+  check("when the longest-quiet place's story can break no tie, the next place's is tried",
+    (() => { const r = rotationSwap({ chosen: [saudi, euBudget], stories: [saudi, euBudget, indonesia, xrg], quiet: evening, runLimit: 2, minImportance: 6 }); return r && [r.pick.headlineHint, r.drop.headlineHint]; })(),
+    [xrg.headlineHint, euBudget.headlineHint]);
   check("with room in the run the rotation story is added; a story whose headline names no quiet place is never one",
-    [swap({ chosen: [saudi], stories: [saudi, kenya] }), swap({ chosen: [saudi], stories: [saudi, pick("الأسهم الأفريقية ترتفع", 6, ["أفريقيا"], "أفريقيا جنوب الصحراء")] }), swap({ chosen: [saudi, apple], stories: [saudi, apple, { ...kenya, importance: 4 }] })],
+    [swap({ chosen: [saudi], stories: [saudi, kenya] }), swap({ chosen: [saudi], stories: [saudi, pick("الأسهم الأفريقية ترتفع", 6, ["أفريقيا"], "none", "أفريقيا جنوب الصحراء")] }), swap({ chosen: [saudi, apple], stories: [saudi, apple, { ...kenya, importance: 4 }] })],
     [[kenya.headlineHint, null], null, null]);
   let prompt = "";
   const answer = await selectStories({
@@ -583,14 +599,14 @@ check(
     recentTitles: [], sections: [{ id: "economy", name: "الاقتصاد", description: "" }], quiet, limit: 1, log: () => {},
     chatWith: async ({ user, validate }) => {
       prompt = user;
-      const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه", rotation: "الصين" }, { ids: ["c2"], section: "economy", importance: 5, angle: "a", headline_hint: kenya.headlineHint, rotation: " أفريقيا جنوب الصحراء " }] };
+      const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه", rotation: "الصين", tie: "Global" }, { ids: ["c2"], section: "economy", importance: 5, angle: "a", headline_hint: kenya.headlineHint, rotation: " أفريقيا جنوب الصحراء ", tie: "close" }] };
       validate(data);
       return { data, model: "stand-in" };
     },
   });
-  check("the editor is told the quiet places and the weights, and a rotation is kept only for a place it was told",
-    [prompt.includes("PLACES WITH NO STORY LATELY"), prompt.includes("المغرب العربي (5 days)"), prompt.includes("THE WEIGHTS"), prompt.includes('"rotation"'), answer.stories.map((s) => s.rotation)],
-    [true, true, true, true, ["", "أفريقيا جنوب الصحراء"]]);
+  check("the editor is told the quiet places, the weights and the ties; a rotation is kept only for a place it was told, a tie only from the four",
+    [prompt.includes("PLACES WITH NO STORY LATELY"), prompt.includes("المغرب العربي (5 days)"), prompt.includes("THE WEIGHTS"), prompt.includes('"rotation"'), prompt.includes('"tie":"<arab|direct|global|none>"'), answer.stories.map((s) => s.rotation), answer.stories.map((s) => s.tie)],
+    [true, true, true, true, true, ["", "أفريقيا جنوب الصحراء"], ["global", ""]]);
 }
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
