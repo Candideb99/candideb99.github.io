@@ -76,7 +76,9 @@ const { secondary, digest, picks, figures, chart, photoIds } = Astro.props;
   </div>
 
   <aside class="front__side">
-    <Agenda limit={5} />
+    {/* Without «أرقام اليوم» (it rests while «بالأرقام» runs) the column ended 324px above the centre one at 1366px
+        (2026-11-21): the agenda then lists eight dates, not five. */}
+    <Agenda limit={figures.length > 0 ? 5 : 8} />
     {/* Above the chart since 2026-11-21 (the owner: "is this todays numbers section easy to notice or easy to miss?"): it
         had stood last in the column, 1,888px down at 1366px, each figure in ink at 20px over a bold 17px headline, so
         the list read as three more headlines. The figure is now the house green at the feature size and its story's

@@ -19,10 +19,10 @@ export const newsSections = sections.filter((s) => !HUB_SECTIONS.has(s.id));
  * `take` newest) and its line in the section bar's panel. One list, read by all three.
  */
 export const EXPLAINER_KINDS = [
-  { id: "concepts", kind: "explainer", name: "شروح مبسّطة", all: "كل الشروح المبسّطة", take: 6, intro: "مفاهيم الاقتصاد من أولها: ما هي، وكيف تُقاس، ولماذا تهمّك." },
+  { id: "concepts", kind: "explainer", name: "شروح مبسّطة", all: "كل الشروح المبسّطة", take: 6, intro: "مفاهيم الاقتصاد من أولها، مشروحة بأمثلة وأرقام." },
   // «الفكر الاقتصادي», not «أفكار اقتصادية», which the owner read as business or project ideas (2026-11-20).
   { id: "thought", kind: "idea", name: "الفكر الاقتصادي", all: "كل حلقات الفكر الاقتصادي", take: 3, intro: "كل أسبوع فكرة من أفكار علم الاقتصاد ومن قالها: كيف تعمل، وما الذي غيّرته، وأين يختلف الاقتصاديون فيها، مشروحة بخبر من أخبار الأسبوع." },
-  { id: "papers", kind: "paper", name: "قراءات في أوراق بحثية", all: "كل القراءات", take: 3, intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة: ماذا تسأل، وماذا تجد، وما حدودها." },
+  { id: "papers", kind: "paper", name: "قراءات في أوراق بحثية", all: "كل القراءات", take: 3, intro: "أوراق بحثية متاحة مجاناً، مشروحة بالعربية الواضحة." },
 ] as const;
 
 /** The label a story carries in a meta line: its kind when the kind is a hub, else its section. */

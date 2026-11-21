@@ -196,7 +196,7 @@ const data = JSON.stringify({
   .pchart__top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.9rem; }
   .pchart__top .module__head { border-bottom: 0; margin-bottom: 0; flex: none; }
   .pchart__periods { display: flex; gap: 0.25rem; }
-  .pchart__period { min-height: 2rem; padding: 0.2rem 0.7rem; border: 1px solid transparent; border-radius: 999px; background: none; font: inherit; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); cursor: pointer; white-space: nowrap; }
+  .pchart__period { min-height: 2rem; padding: 0.2rem 0.7rem; border: 1px solid transparent; background: none; font: inherit; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); cursor: pointer; white-space: nowrap; }
   .pchart__period:hover { color: var(--ink); border-color: var(--rule); }
   .pchart__period[aria-pressed="true"] { color: var(--paper); background: var(--green); }
 
@@ -213,7 +213,7 @@ const data = JSON.stringify({
   .pchart__ticks :global(li) { position: absolute; left: 0.4rem; transform: translateY(-50%); font-size: var(--fs-xs); line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .pchart__dot { position: absolute; width: 0.6rem; height: 0.6rem; margin: -0.3rem 0 0 -0.3rem; border-radius: 50%; background: var(--line); box-shadow: 0 0 0 2px var(--paper); pointer-events: none; }
   .pchart__dot[hidden], .pchart__tip[hidden] { display: none; }
-  .pchart__tip { position: absolute; top: 0; left: 0; z-index: 2; display: grid; padding: 0.4rem 0.6rem; background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 2px 10px rgb(0 0 0 / 0.12); font-size: var(--fs-sm); line-height: 1.45; color: var(--ink); white-space: nowrap; pointer-events: none; }
+  .pchart__tip { position: absolute; top: 0; left: 0; z-index: 2; display: grid; padding: 0.4rem 0.6rem; background: var(--paper); border: 1px solid var(--ink); font-size: var(--fs-sm); line-height: 1.45; color: var(--ink); white-space: nowrap; pointer-events: none; }
   .pchart__tip :global(.pchart__tip-day), .pchart__tip :global(.pchart__tip-since) { font-size: var(--fs-xs); color: var(--ink-3); }
   .pchart__tip :global(b) { font-size: var(--fs-data); font-variant-numeric: tabular-nums; }
   /* The dates run with the drawing, left to right, each centred under its session; the first and last keep inside. */

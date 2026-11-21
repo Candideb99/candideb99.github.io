@@ -2,11 +2,19 @@
 /**
  * «بالأرقام»: the front's band of figure cards (2026-11-16, the owner on Sky News Arabia's «إنفوغرافيك» strip: "should
  * the website have colorful interactive graphs or infographics like these"). Their posters are drawn by designers;
- * ours are drawn by this file from what a story already carries, its «الأرقام» box: the headline over three of its
- * figures, each large over its label, on the house green. No model call and no picture is made for it.
+ * ours are drawn by this file from what a story already carries, its «الأرقام» box. No model call and no picture is
+ * made for it.
+ *
+ * Redrawn on 2026-11-21 (the owner, with a screenshot of two cards: "i find it hard to distinguish between article and
+ * numbers coming from it, they seem all different and unrelated", then "check if the website has ai slop and fix it").
+ * The first form was the dashboard's metric tile: a plate of the house green, the headline at the list size, and under
+ * it three figures twice its size, each on a rule of its own, so the headline read as one more row and the figures as
+ * three unrelated facts; and the plate was a colour field the house rules do not allow. A card is now a story as the
+ * rest of the front sets one: its headline leads at the feature size under an ink rule, and its figures follow as one
+ * short table, each figure in green beside what it measures, so a line reads «4.0% التضخم السنوي في منطقة اليورو».
  *
  * A card is a story's own, so it is placed like any other module (index.astro): a story on a card is printed nowhere
- * else on the front; «أرقام اليوم» in the numbers column takes one number each from other stories.
+ * else on the front, and «أرقام اليوم» in the numbers column does not run while the band does.
  */
 import type { Article } from "@lib/articles";
 import { articleHref } from "@lib/articles";
@@ -31,50 +39,56 @@ const { cards } = Astro.props;
   <ul class="figcards__list" style={`--n:${cards.length}`}>
     {cards.map(({ article, facts }) => (
       <li class="figcard">
-        <p class="figcard__meta ui">
-          <span>{kindLabel(article.data.kind, article.data.section)}</span>
-          <time datetime={article.data.publishedAt} data-relative>{timeAgo(article.data.publishedAt)}</time>
-        </p>
         <h3 class="figcard__title"><a href={articleHref(article)} set:html={headline(article.data.title)} /></h3>
         <dl class="figcard__facts">
           {facts.map((f) => (
             <div class="figcard__fact">
-              <dt class="figcard__label ui" set:html={isolateNumbers(f.label)} />
+              <dt class="figcard__label" set:html={isolateNumbers(f.label)} />
               <dd class="figcard__value" set:html={isolateNumbers(f.value)} />
             </div>
           ))}
         </dl>
+        <p class="meta figcard__meta">
+          <span>{kindLabel(article.data.kind, article.data.section)}</span>
+          <time datetime={article.data.publishedAt} data-relative>{timeAgo(article.data.publishedAt)}</time>
+        </p>
       </li>
     ))}
   </ul>
 </section>
 
 <style>
-  .figcards__list { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--col-gap); margin: 0; padding: 0; list-style: none; }
-  /* The plate: the house green as a field, as the section bar is, with the paper's colour as its ink; in the dark
-     theme the same two tokens give dark figures on the lighter green. */
-  .figcard { position: relative; display: flex; flex-direction: column; padding: 1.1rem 1.2rem 1.2rem; background: var(--green); color: var(--paper); transition: background-color 0.15s; }
-  .figcard:hover { background: var(--green-deep); }
-  .figcard__meta { display: flex; justify-content: space-between; gap: 0.75rem; font-size: var(--fs-xs); font-weight: 700; opacity: 0.85; }
-  .figcard__meta time { font-weight: 500; white-space: nowrap; }
-  .figcard__title { margin-top: 0.3rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; }
-  .figcard__title a { color: inherit; text-decoration: none; }
-  /* The headline is the link and the whole plate is its target. */
+  /* Ruled columns, as the front's other rows of stories run: no plate, no box. */
+  .figcards__list { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); column-gap: 0; margin: 0; padding: 0; list-style: none; }
+  .figcard { position: relative; min-width: 0; padding-inline: var(--col-gap); }
+  .figcard:first-child { padding-inline-start: 0; }
+  .figcard:last-child { padding-inline-end: 0; }
+  .figcard + .figcard { border-inline-start: 1px solid var(--rule); }
+  .figcard__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-feature); line-height: 1.38; text-wrap: balance; }
+  .figcard__title a { color: var(--ink); text-decoration: none; }
+  /* The headline is the link and the whole card is its target. */
   .figcard__title a::after { content: ""; position: absolute; inset: 0; }
-  .figcard__title a:focus-visible { outline: none; }
-  .figcard:has(a:focus-visible) { outline: 2px solid var(--ink); outline-offset: 3px; }
-  .figcard__facts { margin: 0.8rem 0 0; display: grid; }
-  /* Value over label, the label first in the markup as a definition list requires (as the «الأرقام» box does). */
-  .figcard__fact { display: flex; flex-direction: column-reverse; padding-block: 0.6rem; border-top: 1px solid color-mix(in srgb, var(--paper) 35%, transparent); }
-  .figcard__value { margin: 0; font-family: var(--font-title); font-weight: 700; font-size: var(--t-lead); line-height: 1.2; font-variant-numeric: tabular-nums lining-nums; }
-  .figcard__label { font-size: var(--fs-sm); font-weight: 500; line-height: 1.45; opacity: 0.9; }
+  .figcard:hover .figcard__title a { color: var(--green); }
+  /* The story's figures, as one table under its headline: the figure, then what it measures, on one line. The label
+     comes first in the markup, as a definition list requires; the figure is placed first in the row. */
+  .figcard__facts { margin: 0.7rem 0 0; display: grid; border-top: 1px solid var(--ink); }
+  .figcard__fact { display: grid; grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr); column-gap: 0.9rem; align-items: baseline; padding-block: 0.5rem; border-top: 1px solid var(--rule); }
+  .figcard__fact:first-child { border-top: 0; }
+  .figcard__value { grid-column: 1; grid-row: 1; margin: 0; font-family: var(--font-title); font-weight: 700; font-size: var(--t-head); line-height: 1.3; color: var(--green); font-variant-numeric: tabular-nums lining-nums; }
+  .figcard__label { grid-column: 2; grid-row: 1; font-family: var(--font-body); font-size: var(--n-text); line-height: 1.55; color: var(--ink-2); }
+  .figcard__meta { margin-top: 0.5rem; font-size: var(--fs-xs); }
 
-  @media (max-width: 719px) {
-    /* On a phone the cards run in one row the thumb pulls sideways, each stopping at its edge; the next card's edge
-       shows, so the row reads as more than one. */
-    .figcards__list { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
-    .figcards__list::-webkit-scrollbar { display: none; }
-    .figcard { scroll-snap-align: start; }
+  @media (max-width: 1023px) and (min-width: 720px) {
+    /* Three cards across a tablet leave each figure's label a few words wide: the figure stands over its label. */
+    .figcard__fact { grid-template-columns: minmax(0, 1fr); }
+    .figcard__value, .figcard__label { grid-column: 1; }
+    .figcard__label { grid-row: 2; }
   }
-  @media (prefers-reduced-motion: reduce) { .figcard { transition: none; } }
+  @media (max-width: 719px) {
+    /* On a phone the cards follow one another down the page, each under its own rule, as the front's other lists do:
+       until 2026-11-21 they ran in a row pulled sideways, which hid all but the first. */
+    .figcards__list { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
+    .figcard { padding-inline: 0; }
+    .figcard + .figcard { border-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 1.1rem; }
+  }
 </style>

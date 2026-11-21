@@ -281,7 +281,7 @@ const plain = chart.series.length === 1 && (horizontal || showValueLabels);
   .chart__legend li { display: inline-flex; align-items: center; gap: 0.45rem; }
   .chart__swatch { width: 0.75rem; height: 0.75rem; display: inline-block; }
   /* A series' name is its switch: under the pointer or the keyboard it lights its series, pressed it keeps it lit. */
-  .chart__key { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 1.75rem; padding: 0.1rem 0.5rem; margin-inline-start: -0.5rem; border: 1px solid transparent; border-radius: 999px; background: none; font: inherit; color: inherit; cursor: pointer; transition: opacity 0.15s, border-color 0.15s; }
+  .chart__key { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 1.75rem; padding: 0.1rem 0.5rem; margin-inline-start: -0.5rem; border: 1px solid transparent; background: none; font: inherit; color: inherit; cursor: pointer; transition: opacity 0.15s, border-color 0.15s; }
   .chart__key:hover, .chart__key[aria-pressed="true"] { border-color: var(--rule); color: var(--ink); }
   .chart__key[aria-pressed="true"] { background: var(--paper-2); }
   .chart__key.is-dim { opacity: 0.45; }
@@ -309,7 +309,7 @@ const plain = chart.series.length === 1 && (horizontal || showValueLabels);
   .chart__guide.is-on { visibility: visible; }
   .chart__hit { cursor: crosshair; }
   /* The note: the category, then each series' value, on paper with an ink rule, where the pointer is. */
-  .chart__tip { position: absolute; z-index: 2; top: 0; left: 0; max-width: min(16rem, 80%); padding: 0.45rem 0.65rem; background: var(--paper); border: 1px solid var(--ink); box-shadow: 0 2px 10px rgb(0 0 0 / 0.12); font-size: var(--fs-sm); line-height: 1.5; color: var(--ink); pointer-events: none; }
+  .chart__tip { position: absolute; z-index: 2; top: 0; left: 0; max-width: min(16rem, 80%); padding: 0.45rem 0.65rem; background: var(--paper); border: 1px solid var(--ink); font-size: var(--fs-sm); line-height: 1.5; color: var(--ink); pointer-events: none; }
   .chart__tip[hidden] { display: none; }
   .chart__tip :global(.chart__tip-cat) { display: block; font-weight: 700; }
   .chart__tip :global(.chart__tip-row) { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
