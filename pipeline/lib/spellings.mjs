@@ -46,6 +46,13 @@ export const NAME_FIXES = [
   [/جيه بي مورغان/g, "جي بي مورغان"],
   [/مورجان/g, "مورغان"],
   [/(?<![؀-ۿ])([وفبل]?)نفيديا/g, "$1إنفيديا"],
+  // The owner's spellings, 2026-11-20 ("i think use بيتكوين and نيكاي"): the archive wrote bitcoin «بتكوين» beside
+  // «بيتكوين» and the Nikkei «نيكي» beside «نيكاي». «نيكي» is respelled only where it is the index (after «مؤشر», in «»,
+  // before «225» or «الياباني»), never a person's first name («نيكي هيلي»).
+  [/(?<![؀-ۿ])((?:[وفبلك]|[وفبلك]?ال|لل)?)بتكوين/g, "$1بيتكوين"],
+  [/(مؤشر\s+«?)نيكي(?![؀-ۿ])/g, "$1نيكاي"],
+  [/«نيكي»/g, "«نيكاي»"],
+  [/(?<![؀-ۿ])([وفبل]?)نيكي(?=»?\s+(?:225|الياباني|اليابانية)(?![؀-ۿ]))/g, "$1نيكاي"],
   // A name glossed with itself, as the AGBI respelling left «أرابيان غلف بزنس إنسايت» (أرابيان غلف بزنس إنسايت).
   [/«([^«»]+)»\s*\(\1\)/g, "«$1»"],
   // A decimal comma reads as a thousands group under the house's own comma: «2,22 مليون برميل», copied from an Arabic

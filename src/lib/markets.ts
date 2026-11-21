@@ -92,7 +92,7 @@ export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
  * on the last 120 stories' 565 figures, it takes 56, all of them quotes. A forecast, a physical quantity, a reserve and
  * the local price of a gold coin or of jewellery gold are not quotes.
  */
-const QUOTE_NAMES = /برنت|غرب تكساس|خام تكساس|الخام الأمريكي|الخام الأميركي|\bWTI\b|الذهب|الفضة|النحاس|القمح|هنري هب|تاسي|إيجي إكس|\bEGX|مصر 30|المؤشر الرئيسي|ستاندرد آند بورز 500|S&P 500|ناسداك المركب|مؤشر ناسداك|داو جونز الصناعي|مؤشر داو|ستوكس|فوتسي|نيكاي|شنغهاي المركب|بتكوين|سندات الخزانة|مؤشر الدولار|سعر الصرف|سعر صرف|مقابل الدولار|للدولار/;
+const QUOTE_NAMES = /برنت|غرب تكساس|خام تكساس|الخام الأمريكي|الخام الأميركي|\bWTI\b|الذهب|الفضة|النحاس|القمح|هنري هب|تاسي|إيجي إكس|\bEGX|مصر 30|المؤشر الرئيسي|ستاندرد آند بورز 500|S&P 500|ناسداك المركب|مؤشر ناسداك|داو جونز الصناعي|مؤشر داو|ستوكس|فوتسي|نيكاي|شنغهاي المركب|بي?تكوين|سندات الخزانة|مؤشر الدولار|سعر الصرف|سعر صرف|مقابل الدولار|للدولار/;
 const NOT_A_QUOTE = /توقع|الجنيه الذهب|عيار|احتياطيات|الاحتياطي الاستراتيجي|(?:^|\s)(?:طن|طناً|أطنان)/;
 export function isMarketQuote(text: string): boolean {
   return QUOTE_NAMES.test(text) && !NOT_A_QUOTE.test(text);

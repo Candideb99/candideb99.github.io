@@ -354,6 +354,11 @@ for (const [name, checks] of [
 {
   // The house spelling table (lib/copydesk.mjs), 2026-10-28.
   check("a decimal comma becomes the decimal point; a thousands group stays", [fixNames("2,22 مليون برميل"), fixNames("4,000 دولار"), fixNames("1,234,567")], ["2.22 مليون برميل", "4,000 دولار", "1,234,567"]);
+  // The owner's spellings of 2026-11-20 ("i think use بيتكوين and نيكاي"): every form the archive wrote, with its clitics,
+  // and a first name left as it is.
+  check("bitcoin is «بيتكوين» and the Nikkei «نيكاي», never a person called Nikki", [
+    fixNames("فهبط البتكوين بأكثر من 3%"), fixNames("محفوظ بالكامل ببتكوين"), fixNames("وتراجع مؤشر «نيكي» الياباني 4.41%"), fixNames("ونيكي 225 الياباني 2.7%"), fixNames("وتضغط على «نيكي»"), fixNames("التقت نيكي هيلي بالمستثمرين"),
+  ], ["فهبط البيتكوين بأكثر من 3%", "محفوظ بالكامل ببيتكوين", "وتراجع مؤشر «نيكاي» الياباني 4.41%", "ونيكاي 225 الياباني 2.7%", "وتضغط على «نيكاي»", "التقت نيكي هيلي بالمستثمرين"]);
   check("one outlet, one spelling", [fixNames("بحسب «إيه جي بي آي»"), fixNames("يرجّح موقع AGBI أن"), fixNames("«أرابيان غلف بزنس إنسايت» (AGBI)"), fixNames("فاينانشال تايمز")], ["بحسب «أرابيان غلف بزنس إنسايت»", "يرجّح موقع «أرابيان غلف بزنس إنسايت» أن", "«أرابيان غلف بزنس إنسايت» (AGBI)", "فايننشال تايمز"]);
   check("a name glossed with itself loses the gloss", fixNames("وقال موقع «إيه جي بي آي» (أرابيان غلف بيزنس إنسايت) إنه"), "وقال موقع «أرابيان غلف بزنس إنسايت» إنه");
   check("a box value keeps its figure, not a list after a colon", [figureOnly("3 أنظمة: التجاري والأوراق التجارية والدفاتر التجارية"), figureOnly("02:22"), figureOnly("نحو 70%")], ["3 أنظمة", "02:22", "نحو 70%"]);
@@ -1970,6 +1975,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
       articleFootFaults(page({ also: "/articles/gold-week/", side: "/articles/oil-week/", item: citeNew, note: "كُتب هذا التحليل" })).length,
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
+  }
+  // The privacy page (2026-11-20): the host is Cloudflare Pages (GitHub Pages the mirror), the reader's two stored choices
+  // are said, and no library is named that no story uses.
+  {
+    const privacy = readFileSync(path.join("src", "pages", "privacy.astro"), "utf8").replace(/\{\/\*[\s\S]*?\*\/\}/g, "");
+    check("the privacy page names the real host, the browser's stored choices, and no unused library", [/Cloudflare Pages/.test(privacy), /على خدمة GitHub Pages، التي/.test(privacy), /الوضع الليلي/.test(privacy) && /حجم الخط/.test(privacy), /أنسبلاش/.test(privacy)], [true, false, true, false]);
   }
   // Where readers write (2026-11-20): the methodology page sent them to «البريد المذكور في صفحة عن خازندار», an address no
   // page has printed since the contact form of 19 November; it now links the form.

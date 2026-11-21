@@ -158,8 +158,8 @@ for (const page of pages) {
   }
 }
 for (const key of broken.keys()) faults.push(`broken link: ${key}`);
-// The about and methodology pages name every library the credits use, and the handouts when any run (2026-11-20).
-for (const rel of ["about/index.html", "methodology/index.html"]) {
+// The about, methodology and privacy pages name every library the credits use, and the handouts when any run (2026-11-20).
+for (const rel of ["about/index.html", "methodology/index.html", "privacy/index.html"]) {
   const file = path.join(DIST, rel);
   if (existsSync(file)) for (const what of photoSourceFaults(readFileSync(file, "utf8"), credited)) faults.push(`${rel}: ${what}`);
 }

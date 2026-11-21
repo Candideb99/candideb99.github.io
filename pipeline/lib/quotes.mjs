@@ -52,7 +52,7 @@ export const INSTRUMENTS = [
   { id: "us10y", group: "rates", symbol: "^TNX", name: "عائد سندات الخزانة الأمريكية لعشر سنوات", short: "الخزانة 10 سنوات", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
   { id: "us30y", group: "rates", symbol: "^TYX", name: "عائد سندات الخزانة الأمريكية لثلاثين سنة", short: "الخزانة 30 سنة", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
   // العملات المشفرة: bitcoin was filed with the Treasury yields until 2026-11-15 (src/lib/markets.ts, GROUP_NAMES).
-  { id: "btc", group: "crypto", symbol: "BTC-USD", name: "بتكوين", short: "بتكوين", unit: "دولار", decimals: 0, limit: 40 },
+  { id: "btc", group: "crypto", symbol: "BTC-USD", name: "بيتكوين", short: "بيتكوين", unit: "دولار", decimals: 0, limit: 40 },
 ];
 
 export async function fetchJson(url, headers = {}) {

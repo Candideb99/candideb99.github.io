@@ -5,7 +5,9 @@
  * The names a headline uses (2026-11-20, the owner: "check the instrument pages design and organization too"): the page
  * matched the board's own name only, and the newsroom names the two Arab indices by their markets, «الأسهم السعودية»
  * (3 headlines) and «البورصة المصرية» (6), never «تاسي» or «إيجي إكس 30», so neither page listed a story; the Nikkei is
- * «نيكي» in one headline and «نيكاي» in another; bitcoin «بيتكوين» beside the board's «بتكوين». Each name here means the
+ * «نيكي» in one headline and «نيكاي» in another; bitcoin «بتكوين» beside «بيتكوين». The owner chose «نيكاي» and «بيتكوين»
+ * the same night (the spelling table and the board write them); the old forms stay here for the stories written before.
+ * Each name here means the
  * instrument and nothing else in a headline: never «اليورو» (the euro area's «منطقة اليورو» is not the euro's page's
  * news), never «السوق السعودية» (a company that «تدخل السوق السعودية» is entering a market, not moving an index), never
  * «ستاندرد آند بورز» without its 500 (the rating agency).
@@ -15,7 +17,7 @@ export const NEWS_NAMES = {
   egx30: ["البورصة المصرية", "الأسهم المصرية"],
   spx: ["إس آند بي 500"],
   n225: ["نيكي"],
-  btc: ["بيتكوين"],
+  btc: ["بتكوين"],
   wti: ["الخام الأمريكي"],
   usdegp: ["الجنيه المصري"],
   usdtry: ["الليرة التركية"],

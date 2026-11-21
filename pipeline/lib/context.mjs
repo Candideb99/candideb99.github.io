@@ -34,7 +34,8 @@ const NAMES = {
   dji: /داو جونز|\bDow\b/i,
   sx5e: /ستوكس|\bSTOXX\b/i,
   ftse: /فوتسي|\bFTSE\b/i,
-  n225: /نيكاي|\bNikkei\b/i,
+  // A source may write «نيكي» (2026-11-20; the house writes «نيكاي»): only where it is the index, never «نيكي هيلي».
+  n225: /نيكاي|مؤشر\s+«?نيكي|«نيكي»|نيكي»?\s+(?:225|الياباني)|\bNikkei\b/i,
   sse: /شنغهاي المركب|Shanghai Composite/i,
   usdegp: /الجنيه المصري|Egyptian pound/i,
   usdtry: /الليرة التركية|Turkish lira/i,
@@ -43,7 +44,7 @@ const NAMES = {
   dxy: /مؤشر الدولار|dollar index/i,
   // The yield, not the bonds: «الإمارات ترفع حيازتها من سندات الخزانة» is a holding, not a price.
   us10y: /عائد(?:ات)? (?:سندات الخزانة|السندات الأمريكية)|Treasury yields?/i,
-  btc: /بتكوين|\bbitcoin\b/i,
+  btc: /بي?تكوين|\bbitcoin\b/i,
 };
 /** A headline about a price, not one that merely names a commodity or a currency («استثمارات بـ40 مليار يورو»). */
 const PRICE_WORDS = /سعر|أسعار|يرتفع|ترتفع|يتراجع|تتراجع|يقفز|تقفز|يهبط|تهبط|ينخفض|تنخفض|يصعد|تصعد|يربح|تربح|يخسر|تخسر|مكاسب|خسائر|خسارة|مستوى|عائد|صرف|يسجل|تسجل|يغلق|تغلق|ينهي|تنهي|\b(?:rise|rises|falls?|slips?|jumps?|drops?|gains?|surges?|tumbles?|climbs?|hits?|price|prices|yields?)\b/i;
