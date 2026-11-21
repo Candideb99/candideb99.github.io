@@ -2058,6 +2058,29 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ],
     [1, 0, 1, 0, 1, 0],
   );
+  // A negative figure in a worked sum (2026-11-21, the owner on the Card–Krueger piece: "-1--1= 0 or something like
+  // that, it was writing in confusing way for me as an arabic reader"): the component printed «−1 − −1 = 0», two signs
+  // side by side and, from the right, the first figure's sign against the operator. Each negative operand is bracketed;
+  // the result keeps its bare sign. The old component had no workingOf() and printed the bare form the site check finds.
+  {
+    const { workingOf } = await import("../src/lib/worked.mjs");
+    const term = (value) => ({ label: "x", value });
+    const sumOf = (op, values, result) => workingOf({ op, terms: values.map(term), result: { label: "r", value: result } });
+    const working = (s) => `<p class="worked__working">${isolateNumbers(s)}</p>`;
+    check(
+      "a worked sum brackets each negative figure it works on, keeps the result's sign bare, and the site check finds a bare one",
+      [
+        sumOf("difference", [-1, -1], 0),
+        sumOf("difference", [5, 8], -3),
+        sumOf("sum", [4, -1.5], 2.5),
+        sumOf("change", [-2, 5], -350),
+        readingFaults(working("−1 − −1 = 0")).length,
+        readingFaults(working(sumOf("difference", [-1, -1], 0))).length,
+        readingFaults(working(sumOf("difference", [5, 8], -3))).length,
+      ],
+      ["(−1) − (−1) = 0", "5 − 8 = −3", "4 + (−1.5) = 2.5", "(5 − (−2)) ÷ (−2) × 100 = −350%", 2, 0, 0],
+    );
+  }
   // Nothing a reader reads is cut by a style either (2026-11-20): the cover's numbered row clamped its headlines at four
   // lines and cut that day's third at 1280px with «…». No line clamp and no ellipsis anywhere in the site's styles.
   {

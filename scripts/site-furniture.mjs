@@ -72,6 +72,10 @@ export function readingFaults(html) {
   for (const m of html.matchAll(/<p class="worked__working"[^>]*>([\s\S]*?)<\/p>/g)) {
     for (const run of m[1].matchAll(/<bdi dir="ltr"[^>]*>([\s\S]*?)<\/bdi>/g)) {
       if (/[=÷×]/.test(run[1])) out.push(`a worked sum printed left to right as one run, the mirror of its formula: «${text(run[1])}»`);
+      // A negative figure the sum works on stands in brackets (2026-11-21, the owner on the Card–Krueger piece's
+      // «−1 − −1 = 0»): bare, its sign met the operator's. Only the result, after «=», keeps its sign bare.
+      const before = text(m[1].slice(0, run.index));
+      if (/^[−\-]/.test(text(run[1])) && !/[(=]$/.test(before)) out.push(`a negative figure in a worked sum without its brackets: «${text(m[1])}»`);
     }
   }
   return out;
