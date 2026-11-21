@@ -1,0 +1,28 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-11-21T10:16:46.845Z",
+  "durationSec": 11,
+  "published": 0,
+  "refreshed": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "byRole": {}
+  },
+  "log": [
+    "[10:16:46] newsroom start mode=reports limit=4 dry-run=false",
+    "[10:16:51] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
+    "[10:16:51] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
+    "[10:16:51] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[10:16:51] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[10:16:54] report un-tourism-barometer: page not read (http-403)",
+    "[10:16:57] reports: 1 new edition(s): sa-trade «International trade in goods for Saudi Arabia in September 2026»",
+    "[10:16:57] report sa-trade: «International trade in goods for Saudi Arabia in September 2026» failed twice; left"
+  ]
+}
