@@ -44,7 +44,7 @@ import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
 import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
-import { issuesToClose } from "../pipeline/lib/health.mjs";
+import { ROUND_CLOSED, issuesToClose, silentFeeds, standingStories } from "../pipeline/lib/health.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
 import { applySettings, jobProgress, progressLines, runProgram, siteLight } from "./desk-lib.mjs";
@@ -1453,6 +1453,30 @@ if (spawnSync("git", ["--version"]).status === 0) {
       [issuesToClose(open, { mark, findings: [], cleared: new Set([feeds]) }).map((i) => i.number), issuesToClose(open, { mark, findings: [{ key: "stall" }], cleared: new Set() }).map((i) => i.number)],
       [[3, 7], []],
     );
+    // 2026-11-21: the corrections issue says "close this issue if the story stands", and the next round opened it again
+    // with the same three stories; a story listed in an issue closed by hand stands, back to the round's own last close.
+    const corrections = "خازندار: published stories with a proved error the corrections desk could not fix";
+    const list = (...slugs) => `The second look proved…:\n\n${slugs.map((s) => `- ${s}: [figure] …`).join("\n")}\n\n${mark}`;
+    const closed = [
+      { title: corrections, closedAt: "2026-11-10T00:00:00Z", body: list("old-story-a1"), comments: [{ body: `${ROUND_CLOSED} what this issue reported, so this is closed.` }] },
+      { title: corrections, closedAt: "2026-11-22T00:00:00Z", body: list("hormuz-1", "binance-2"), comments: [] },
+      { title: corrections, closedAt: "2026-11-01T00:00:00Z", body: list("older-story-b2"), comments: [] },
+      { title: corrections, closedAt: "2026-11-15T00:00:00Z", body: list("anthropic-3"), comments: [{ body: "it stands" }] },
+      { title: feeds, closedAt: "2026-11-21T00:00:00Z", body: list("not-a-story"), comments: [] },
+      { title: corrections, closedAt: "2026-11-21T00:00:00Z", body: "- by-hand-4: no mark", comments: [] },
+    ];
+    check(
+      "stories in corrections issues closed by hand stand, back to the round's own close; another title or no mark counts for nothing",
+      [...standingStories(closed, { title: corrections, mark })].sort(),
+      ["anthropic-3", "binance-2", "hormuz-1"],
+    );
+    check("with no closed issue, no story stands", standingStories(null, { title: corrections, mark }).size, 0);
+    // 2026-11-21: Guardian Australia's economy tag is quiet at weekends; a feed may allow itself a longer quiet spell.
+    const at = Date.parse("2026-11-23T08:00:00Z");
+    const ago = (h) => new Date(at - h * 36e5).toISOString();
+    const heard = { a: { readAt: ago(2), newestAt: ago(80) }, b: { readAt: ago(2), newestAt: ago(80) }, c: { readAt: ago(2), newestAt: ago(130) }, d: { readAt: ago(60), newestAt: ago(200) }, e: { readAt: ago(2), newestAt: ago(200) }, f: { readAt: ago(2), newestAt: ago(200) } };
+    const feedList = [{ id: "a", kind: "news" }, { id: "b", kind: "news", quietHours: 120 }, { id: "c", kind: "news", quietHours: 120 }, { id: "d", kind: "news" }, { id: "e", kind: "news", disabled: true }, { id: "f", kind: "official" }];
+    check("a feed is silent past three days, or past its own quiet spell; not one unread for two days, disabled or official", silentFeeds(feedList, heard, at).map((s) => s.id), ["a", "c"]);
   }
   // 2026-10-18: no explainer or analysis had been published since 1 October; the two of that day were thrown away by
   // rules that contradicted each other or a sound phrase.

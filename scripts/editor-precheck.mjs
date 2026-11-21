@@ -28,7 +28,7 @@ import { createHash } from "node:crypto";
 import { appendFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
-import { PHOTO_SEARCHES, checkCommons, checkPages, commonsTitle, confirmLoss, issuesToClose, renamedUrl } from "../pipeline/lib/health.mjs";
+import { PHOTO_SEARCHES, ROUND_CLOSED, checkCommons, checkPages, commonsTitle, confirmLoss, issuesToClose, renamedUrl, silentFeeds, standingStories } from "../pipeline/lib/health.mjs";
 import { sharedPhotos } from "../pipeline/lib/photo-key.mjs";
 import { quietHours } from "./news-clock.mjs";
 
@@ -242,17 +242,15 @@ if (silent.length) {
 // else: Sky News Arabia's business desk moved to its own site, snabusiness.com, on 2026-10-29 and its old feed stood
 // still for two days until an audit found it; cnbc-finance stood still for ten. The newsroom records each feed's newest
 // item of any age (pipeline/state/feeds.json). A news feed read in the last two days whose newest item is three days old
-// goes to the owner: the editor cannot read the web to find where a feed went.
+// (or its own `quietHours`, silentFeeds()) goes to the owner: the editor cannot read the web to find where a feed went.
 const feedsHeard = readJson(path.join("pipeline", "state", "feeds.json"))?.feeds ?? {};
-const stillFeeds = (readJson(path.join("pipeline", "sources.json"))?.sources ?? [])
-  .filter((s) => !s.disabled && s.kind === "news")
-  .filter((s) => feedsHeard[s.id]?.readAt && hoursAgo(feedsHeard[s.id].readAt) < 48 && feedsHeard[s.id].newestAt && hoursAgo(feedsHeard[s.id].newestAt) > 72);
+const stillFeeds = silentFeeds(readJson(path.join("pipeline", "sources.json"))?.sources ?? [], feedsHeard, now);
 const feedsTitle = "خازندار: news feeds that have served nothing new for three days";
 if (stillFeeds.length) {
   owner.push({
     key: "feeds",
     title: feedsTitle,
-    text: `These feeds still answer the newsroom, but their newest item is three days old or more, so they give it nothing: ${stillFeeds.map((s) => `${s.id} (${s.nameEn}, ${s.url}; newest item ${feedsHeard[s.id].newestAt.slice(0, 10)})`).join("; ")}. A publisher may have moved its feed (Sky News Arabia's business desk moved to snabusiness.com on 2026-10-29 and its old feed stood still). Open the publisher's site: if it has published since, take the feed its pages name in their head (<link rel="alternate" type="application/rss+xml">) or its news sitemap, read it with \`node pipeline/run.mjs --dry-run --source=<its id>,<another id>\`, and put its address in pipeline/sources.json. If the publisher itself has not published, close this issue.`,
+    text: `These feeds still answer the newsroom, but their newest item is three days old or more (or older than the quiet spell their entry allows), so they give it nothing: ${stillFeeds.map((s) => `${s.id} (${s.nameEn}, ${s.url}; newest item ${feedsHeard[s.id].newestAt.slice(0, 10)})`).join("; ")}. A publisher may have moved its feed (Sky News Arabia's business desk moved to snabusiness.com on 2026-10-29 and its old feed stood still). Open the publisher's site: if it has published since, take the feed its pages name in their head (<link rel="alternate" type="application/rss+xml">) or its news sitemap, read it with \`node pipeline/run.mjs --dry-run --source=<its id>,<another id>\`, and put its address in pipeline/sources.json. If the publisher itself has not published, close this issue.`,
   });
 } else if (Object.keys(feedsHeard).length) {
   fine.push("Every news feed read in the last two days has an item from the last three days.");
@@ -307,14 +305,10 @@ if (!OFFLINE && builds && site?.url && newest) {
 const ledgerNow = readJson(path.join("pipeline", "state", "factcheck.json"))?.stories ?? {};
 const stuckCorrections = Object.entries(ledgerNow).filter(([, e]) => (["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) >= 2) || e.verified?.resolved === false);
 const correctionsTitle = "خازندار: published stories with a proved error the corrections desk could not fix";
+const correctionsText = (list) =>
+  `The second look proved an error in these published stories against their own sources, and the corrections desk could not correct it in two tries (or its correction left the error standing). Each is listed in pipeline/state/factcheck.json with the source sentence; correct it with \`node pipeline/correct.mjs --slug=… --issue="…"\`, or close this issue if the story stands (a story listed in an issue closed by hand is not raised again):\n\n${list.map(([slug, e]) => `- ${slug}: ${e.problems?.join("; ") || e.reason || (e.verified?.remaining ?? []).map((r) => `[${r.class}] ${String(r.sentence).slice(0, 120)}`).join("; ") || e.outcome}`).join("\n")}`;
 if (!stuckCorrections.length && Object.keys(ledgerNow).length) cleared.add(correctionsTitle);
-if (stuckCorrections.length) {
-  owner.push({
-    key: "corrections",
-    title: correctionsTitle,
-    text: `The second look proved an error in these published stories against their own sources, and the corrections desk could not correct it in two tries (or its correction left the error standing). Each is listed in pipeline/state/factcheck.json with the source sentence; correct it with \`node pipeline/correct.mjs --slug=… --issue="…"\`, or close this issue if the story stands:\n\n${stuckCorrections.map(([slug, e]) => `- ${slug}: ${e.problems?.join("; ") || e.reason || (e.verified?.remaining ?? []).map((r) => `[${r.class}] ${String(r.sentence).slice(0, 120)}`).join("; ") || e.outcome}`).join("\n")}`,
-  });
-}
+if (stuckCorrections.length) owner.push({ key: "corrections", title: correctionsTitle, text: correctionsText(stuckCorrections) });
 
 // A finding wakes the editor at most once in three days, and at most twice while it lasts: a fault still there after
 // two rounds of the editor's work goes to the owner as one issue, and the editor is not woken for it again (2026-09-26:
@@ -345,6 +339,22 @@ if (ON_GITHUB) {
   } catch (error) {
     console.log(`could not list the open issues: ${String(error.message).split("\n")[0]}`);
   }
+  // A story the owner let stand (he closed an issue that listed it) is not raised again; only a new one opens the issue
+  // (standingStories()), and an open issue's text, kept current below, does not take the stood ones back. With the
+  // closed issues unreadable, every story is listed, as before.
+  const corrections = owner.find((o) => o.key === "corrections");
+  if (corrections) {
+    try {
+      const closed = JSON.parse(execFileSync("gh", ["issue", "list", "--state", "closed", "--limit", "200", "--json", "number,title,body,closedAt,comments"], { encoding: "utf8", maxBuffer: 1 << 26 }));
+      const standing = standingStories(closed, { title: correctionsTitle, mark: ISSUE_MARK });
+      const left = stuckCorrections.filter(([slug]) => !standing.has(slug));
+      if (left.length < stuckCorrections.length) fine.push(`${stuckCorrections.length - left.length} published stories with a proved error stand by the owner's word (he closed the issue that listed them).`);
+      if (left.length) corrections.text = correctionsText(left);
+      else owner.splice(owner.indexOf(corrections), 1);
+    } catch (error) {
+      console.log(`could not list the closed issues: ${String(error.message).split("\n")[0]}`);
+    }
+  }
   for (const o of owner) {
     const body = `${o.text}\n\n${ISSUE_MARK} Close this issue once it is mended.`;
     try {
@@ -357,7 +367,7 @@ if (ON_GITHUB) {
   }
   for (const { number, what } of issuesToClose(openIssues, { mark: ISSUE_MARK, findings, cleared })) {
     try {
-      execFileSync("gh", ["issue", "close", String(number), "--comment", `The daily round no longer finds ${what}, so this is closed; a new issue opens if it returns.`]);
+      execFileSync("gh", ["issue", "close", String(number), "--comment", `${ROUND_CLOSED} ${what}, so this is closed; a new issue opens if it returns.`]);
     } catch (error) {
       console.log(`could not close the issue #${number}: ${String(error.message).split("\n")[0]}`);
     }

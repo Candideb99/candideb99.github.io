@@ -159,3 +159,39 @@ export function issuesToClose(openIssues, { mark, findings = [], cleared = new S
     return cleared.has(issue.title) ? [{ number: issue.number, what: "what this issue reported" }] : [];
   });
 }
+
+/** How the round's own closing comment begins (editor-precheck.mjs writes it; `standingStories()` reads it). */
+export const ROUND_CLOSED = "The daily round no longer finds";
+
+/**
+ * The stories the owner has let stand: the corrections issue tells him to close it "if the story stands", yet until
+ * 2026-11-21 the next round opened it again with the same stories, so the three stories of 1 November stood under
+ * «Needs you» every day after his ruling of 28 October had left them. `closedIssues` are the repository's closed issues
+ * ({ title, body, closedAt, comments }); every story listed («- slug: …») in one of the round's issues of this `title`
+ * closed by hand stands, newest first, back to the last one the round closed itself (its list was clean then, so a story
+ * seen before that is new again). Returns a Set of slugs.
+ */
+export function standingStories(closedIssues, { title, mark }) {
+  const standing = new Set();
+  const ours = (closedIssues ?? [])
+    .filter((i) => i?.title === title && mark && String(i.body ?? "").includes(mark))
+    .sort((a, b) => (Date.parse(b.closedAt ?? "") || 0) - (Date.parse(a.closedAt ?? "") || 0));
+  for (const issue of ours) {
+    if ((issue.comments ?? []).some((c) => String(c?.body ?? "").startsWith(ROUND_CLOSED))) break;
+    for (const m of String(issue.body).matchAll(/^- ([^\s:]+):/gm)) standing.add(m[1]);
+  }
+  return standing;
+}
+
+/**
+ * The news feeds that answer but have stopped moving: read in the last two days, newest item older than the source's
+ * `quietHours` (72 unless it says otherwise). A feed of one topic from one desk can be quiet over a weekend: Guardian
+ * Australia's economy tag runs about two items a weekday and none on Saturday or Sunday (2026-11-21). `heard` is
+ * pipeline/state/feeds.json's `feeds`.
+ */
+export function silentFeeds(sources, heard, now = Date.now()) {
+  const hours = (iso) => (now - Date.parse(iso)) / 36e5;
+  return (sources ?? [])
+    .filter((s) => !s.disabled && s.kind === "news")
+    .filter((s) => heard?.[s.id]?.readAt && hours(heard[s.id].readAt) < 48 && heard[s.id].newestAt && hours(heard[s.id].newestAt) > (s.quietHours ?? 72));
+}
