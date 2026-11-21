@@ -437,6 +437,22 @@ check(
 check("a story's 2500000000 stands in a Russian «2,5 млрд», 1.2 trillion in «1,2 трлн руб.», 300000 in «300 тыс.»", [
   ungroundedNumbers("ارتفع العجز إلى 2500000000 روبل والإنفاق إلى 1.2 تريليون روبل وبلغ عدد العاملين 300000", ["Дефицит вырос до 2,5 млрд руб., расходы — до 1,2 трлн руб., занято 300 тыс. человек"]),
 ], [[]]);
+// 2026-11-21: the Balkans', Greece's, Sudan's and Somalia's press joined, and Ukraine's; «محمد شياع السوداني» is Iraq's
+// prime minister, never Sudan.
+check(
+  "Serbia, Croatia, Greece, Romania, Sudan and Somalia are read, Ukraine by Kyiv; the Iraqi prime minister is not Sudan; a Serbian and a Romanian rate rise are two events",
+  [
+    [...countriesNamed("المركزي الصربي يرفع الفائدة")], [...countriesNamed("كرواتيا تخفض الضرائب")], [...countriesNamed("اليونان تبيع سندات")], [...countriesNamed("رومانيا تسجل عجزاً")],
+    [...countriesNamed("الجنيه السوداني يهوي")], [...countriesNamed("الصومال تطرد السفير")], [...countriesNamed("قصف محطة كهرباء في كييف")], [...countriesNamed("محمد شياع السوداني يبحث مع وزير المالية")],
+    Boolean(repeatsRecent("المركزي الصربي يرفع الفائدة 0.25% للمرة الأولى منذ 2023", ["المركزي الروماني يرفع الفائدة 0.25% للمرة الأولى منذ 2023"])),
+  ],
+  [["صرب"], ["كروات"], ["يونان"], ["رومان"], ["سودان"], ["صومال"], ["اوكران"], ["عراق"], false],
+);
+check("a story's figures stand in Italian, Romanian, Polish, Croatian, Ukrainian and Greek scale words", [
+  ungroundedNumbers("بلغ عدد الأسر 2400000 أسرة وقيمة المشروع 1300000000 يورو", ["2,4 milioni di famiglie", "Adevărata valoare: 1,3 miliarde de euro"]),
+  ungroundedNumbers("تبلغ الحزمة 5000000000 زلوتي وتضخ الدولة 2000000000 يورو ويعمل فيها 300000", ["Pakiet wart 5 mld zł", "Država želi aktivirati 2 milijarde eura; zaposleno je 300 tisuća radnika"]),
+  ungroundedNumbers("خصصت أوكرانيا 4000000000 دولار وبلغت إيرادات اليونان 1200000000 يورو", ["Україна виділила 4 мільярди доларів", "Τα έσοδα έφτασαν τα 1,2 δισ. ευρώ"]),
+], [[], [], []]);
 check(
   "an Egyptian and a Bahraini decision are two events; a cause clause's country does not split one",
   [repeatsRecent("المركزي المصري يبقي الفائدة دون تغيير", ["مصرف البحرين المركزي يبقي الفائدة دون تغيير"]), Boolean(repeatsRecent("أرامكو ترفع سعر البيع الرسمي لآسيا في ديسمبر مع تراجع صادرات العراق", ["أرامكو السعودية ترفع سعر البيع الرسمي لآسيا في ديسمبر"]))],

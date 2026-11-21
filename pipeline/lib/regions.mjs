@@ -161,7 +161,12 @@ const NATIONALITIES = {
   "زامبي": ["زامبي", "لوساكا"], "سنغالي": ["السنغال", "داكار"], "إيفواري": ["ساحل العاج", "كوت ديفوار", "إيفواري", "أبيدجان"], "موريتاني": ["موريتاني", "نواكشوط"],
   "موزمبيقي": ["موزمبيق", "مابوتو"], "زيمبابوي": ["زيمبابوي", "هراري"], "كونغولي": ["الكونغو", "كونغولي", "كينشاسا"], "كاميروني": ["الكاميرون", "ياوندي", "دوالا"],
   "بوتسواني": ["بوتسوانا", "بوتسواني", "غابورون"], "ناميبي": ["ناميبي", "ويندهوك"],
-  "أوكراني": ["أوكراني"], "بريطاني": ["بريطاني", "المملكة المتحدة", "لندن"], "ألماني": ["ألماني", "الألماني", "برلين", "فرانكفورت"], "فرنسي": ["فرنس", "باريس"],
+  // 2026-11-21: Serbia, Croatia, Greece and Romania, Sudan and Somalia, whose own press joined the sources that day, and
+  // Ukraine's capital and port. «السودان» reads its adjective too, «السوداني», which is also the Iraqi prime minister's
+  // family name: countryText() reads «شياع السوداني» as Iraq's, and the family name alone is still read as Sudan.
+  "صربي": ["صربي", "بلغراد"], "كرواتي": ["كرواتي", "زغرب"], "يوناني": ["يونان", "أثينا", "بيرايوس"], "روماني": ["روماني", "بوخارست"],
+  "سوداني": ["سودان", "الخرطوم", "بورتسودان"], "صومالي": ["صومال", "مقديشو"],
+  "أوكراني": ["أوكراني", "كييف", "أوديسا"], "بريطاني": ["بريطاني", "المملكة المتحدة", "لندن"], "ألماني": ["ألماني", "الألماني", "برلين", "فرانكفورت"], "فرنسي": ["فرنس", "باريس"],
   "إيطالي": ["إيطالي", "روما", "ميلانو"], "إسباني": ["إسباني", "مدريد"], "هولندي": ["هولند", "أمستردام", "روتردام"], "سويسري": ["سويسر", "زيورخ"], "سويدي": ["سويد"], "نرويجي": ["نرويج"],
   "دنماركي": ["دنمارك"], "بولندي": ["بولند", "وارسو"], "فنلندي": ["فنلند"], "بلجيكي": ["بلجيك"], "نمساوي": ["نمسا", "نمساو"], "نيجيري": ["نيجيري"], "فنزويلي": ["فنزويل"],
 };
@@ -174,8 +179,8 @@ const HOUSEHOLD = new Set(["بي بي", "شل", "توتال إنرجيز", "إك
 const nationalityKey = (word) => normalizePlace(word).replace(/(?:يه|يين|يون|ين|ي)$/, "");
 const NATIONALITY_BY_KEY = new Map(Object.entries(NATIONALITIES).map(([nisba, places]) => [nationalityKey(nisba), places.map((p) => placeRe(p, { country: true }))]));
 /** Text as the country readers read it: «المملكة المتحدة» is Britain, never also «المملكة»; «عمّان» with its shadda is
- *  Amman, never Oman. */
-export const countryText = (text) => normalizePlace(String(text ?? "").replace(/عمّان/g, "الأردن")).replace(/المملكه المتحده/g, "بريطانيا");
+ *  Amman, never Oman; «محمد شياع السوداني» is Iraq's prime minister, never Sudan. */
+export const countryText = (text) => normalizePlace(String(text ?? "").replace(/عمّان/g, "الأردن")).replace(/المملكه المتحده/g, "بريطانيا").replace(/شياع السوداني/g, "شياع العراقي");
 // A name in «», a Latin gloss in brackets allowed, then its nisba: «أكوا» السعودية، «إي آي جي» (EIG) الأمريكية.
 const NAMED_NATIONALITY = /«([^»]{2,40})»(?:\s*\([^)]{1,60}\))?\s+(ال[ء-ي]+)/g;
 

@@ -320,8 +320,21 @@ export function sourceNumbers(text) {
     ribu: 1e3, juta: 1e6, miliar: 1e9, triliun: 1e12, milliards: 1e9, milliard: 1e9, millions: 1e6, million: 1e6, mille: 1e3,
     "тыс": 1e3, "тысяч": 1e3, "тысячи": 1e3, "тысяча": 1e3, "млн": 1e6, "миллионов": 1e6, "миллиона": 1e6, "миллион": 1e6,
     "млрд": 1e9, "миллиардов": 1e9, "миллиарда": 1e9, "миллиард": 1e9, "трлн": 1e12, "триллионов": 1e12, "триллиона": 1e12, "триллион": 1e12,
+    // 2026-11-21, when the Italian, Ukrainian, Serbian, Croatian, Polish, Romanian and Greek press joined: «2,4 milioni»,
+    // «1,3 miliarde de euro», «510 miliarde de lei», «5 mld zł», «2 milijarde eura», «4 мільярди», «1,2 δισ. ευρώ».
+    miliardi: 1e9, miliardo: 1e9, milioni: 1e6, milione: 1e6, mila: 1e3, mld: 1e9, mln: 1e6, mlrd: 1e9,
+    "miliardów": 1e9, miliardy: 1e9, miliard: 1e9, "milionów": 1e6, miliony: 1e6, milion: 1e6, tys: 1e3, bln: 1e12,
+    miliarde: 1e9, milioane: 1e6, mii: 1e3,
+    milijardi: 1e9, milijarde: 1e9, milijarda: 1e9, milijuna: 1e6, miliona: 1e6, "tisuća": 1e3, "tisuće": 1e3, hiljada: 1e3, hiljade: 1e3,
+    "мільярдів": 1e9, "мільярди": 1e9, "мільярда": 1e9, "мільярд": 1e9, "мільйонів": 1e6, "мільйони": 1e6, "мільйона": 1e6, "мільйон": 1e6,
+    "тис": 1e3, "тисяч": 1e3, "тисячі": 1e3,
+    "δισ": 1e9, "δισεκατομμύρια": 1e9, "δισεκατομμύριο": 1e9, "εκατ": 1e6, "εκατομμύρια": 1e6, "εκατομμύριο": 1e6, "χιλ": 1e3, "χιλιάδες": 1e3, "τρισ": 1e12,
   };
-  const SCALE_WORDS = "bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد|mil millones|millones|millón|billones|billón|milhões|milhão|bilhões|bilhão|trilhões|trilhão|milliards|milliard|millions|million|mille|mil|ribu|juta|miliar|triliun|тысячи|тысяча|тысяч|тыс|миллионов|миллиона|миллион|млн|миллиардов|миллиарда|миллиард|млрд|триллионов|триллиона|триллион|трлн";
+  const SCALE_WORDS = "bin|milyon|milyar|trilyon|هزار|میلیون|میلیارد|mil millones|millones|millón|billones|billón|milhões|milhão|bilhões|bilhão|trilhões|trilhão|milliards|milliard|millions|million|mille|mil|ribu|juta|miliar|triliun|тысячи|тысяча|тысяч|тыс|миллионов|миллиона|миллион|млн|миллиардов|миллиарда|миллиард|млрд|триллионов|триллиона|триллион|трлн"
+    + "|miliardi|miliardo|milioni|milione|mila|mld|mln|mlrd|miliardów|miliardy|miliarde|miliard|milionów|miliony|milioane|miliona|milion|tys|bln|mii"
+    + "|milijardi|milijarde|milijarda|milijuna|tisuća|tisuće|hiljada|hiljade"
+    + "|мільярдів|мільярди|мільярда|мільярд|мільйонів|мільйони|мільйона|мільйон|тисячі|тисяч|тис"
+    + "|δισεκατομμύρια|δισεκατομμύριο|δισ|εκατομμύρια|εκατομμύριο|εκατ|χιλιάδες|χιλ|τρισ";
   // French groups thousands with a space, often a narrow or non-breaking one («219 620 milliards de FCFA», «1 234,5»).
   for (const m of normalized.matchAll(new RegExp(`(?<![\\d.,])(\\d{1,3}(?:[ \\u00A0\\u202F]\\d{3})+)(?:,(\\d+))?(?![\\d])(?:\\s*(${SCALE_WORDS})(?![\\p{L}]))?`, "giu"))) {
     const value = Number(`${m[1].replace(/[   ]/g, "")}${m[2] ? `.${m[2]}` : ""}`);

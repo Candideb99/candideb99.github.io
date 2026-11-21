@@ -475,6 +475,8 @@ const STORY_COUNTRIES = {
   "موزمبيق": "Mozambique", "زيمبابوي": "Zimbabwe", "الكونغو": "DR Congo", "الكاميرون": "Cameroon", "بوتسوانا": "Botswana", "ناميبيا": "Namibia", "هونغ كونغ": "China",
   // 2026-11-20: Taiwan and South Asia (their own press joined the sources).
   "تايوان": "Taiwan", "بنغلاديش": "Bangladesh", "سريلانكا": "Sri Lanka", "سري لانكا": "Sri Lanka",
+  // 2026-11-21: the Balkans' and Somalia's own press joined the sources.
+  "صربيا": "Serbia", "كرواتيا": "Croatia", "اليونان": "Greece", "رومانيا": "Romania", "الصومال": "Somalia",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
@@ -488,6 +490,8 @@ const STORY_STEMS = [
   ["الأوغندي", "Uganda"], ["الرواندي", "Rwanda"], ["الأنغولي", "Angola"], ["الزامبي", "Zambia"], ["السنغالي", "Senegal"], ["الإيفواري", "Ivory Coast"], ["الموريتاني", "Mauritania"],
   ["الموزمبيقي", "Mozambique"], ["الزيمبابوي", "Zimbabwe"], ["الكونغولي", "DR Congo"], ["الكاميروني", "Cameroon"], ["البوتسواني", "Botswana"], ["الناميبي", "Namibia"],
   ["التايواني", "Taiwan"], ["الباكستاني", "Pakistan"], ["البنغلاديشي", "Bangladesh"], ["السريلانكي", "Sri Lanka"], ["الكوري الجنوبي", "South Korea"],
+  // Not «السوداني»: the Iraqi prime minister's family name.
+  ["الصربي", "Serbia"], ["الكرواتي", "Croatia"], ["اليوناني", "Greece"], ["الروماني", "Romania"], ["الصومالي", "Somalia"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -504,7 +508,7 @@ const PHOTO_PLACES = {
   Algeria: ["Algeria", "Algérie", "Algiers", "Alger", "Oran"], Tunisia: ["Tunisia", "Tunisie", "Tunis", "Sfax", "Sousse"], Libya: ["Libya", "Tripoli"], Sudan: ["Sudan", "Khartoum"],
   China: ["China", "Shanghai", "Beijing", "Shenzhen", "Guangzhou", "Hong Kong"], Japan: ["Japan", "Tokyo", "Yokohama", "Osaka"], India: ["India", "Mumbai", "New Delhi"], "South Korea": ["South Korea", "Seoul", "Busan"], Pakistan: ["Pakistan", "Karachi", "Lahore", "Islamabad"],
   Taiwan: ["Taiwan", "Taipei", "Kaohsiung", "Hsinchu"], Bangladesh: ["Bangladesh", "Dhaka", "Chittagong"], "Sri Lanka": ["Sri Lanka", "Colombo"],
-  Indonesia: ["Indonesia", "Jakarta", "Bali", "Surabaya", "Bandung", "Yogyakarta"], Malaysia: ["Malaysia", "Kuala Lumpur"], Singapore: ["Singapore"], Russia: ["Russia", "Moscow", "Saint Petersburg"], Ukraine: ["Ukraine", "Kyiv", "Kiev"],
+  Indonesia: ["Indonesia", "Jakarta", "Bali", "Surabaya", "Bandung", "Yogyakarta"], Malaysia: ["Malaysia", "Kuala Lumpur"], Singapore: ["Singapore"], Russia: ["Russia", "Moscow", "Saint Petersburg"], Ukraine: ["Ukraine", "Kyiv", "Kiev", "Odesa", "Odessa"],
   Germany: ["Germany", "Berlin", "Hamburg", "Frankfurt", "Munich"], France: ["France", "Paris", "Marseille"], "United Kingdom": ["United Kingdom", "England", "Scotland", "Wales", "London", "Solent", "Southampton"],
   Italy: ["Italy", "Rome", "Milan"], Spain: ["Spain", "Madrid", "Barcelona"], Netherlands: ["Netherlands", "Rotterdam", "Amsterdam"], Belgium: ["Belgium", "Brussels", "Antwerp"], Austria: ["Austria", "Vienna", "Schwechat"], Switzerland: ["Switzerland", "Geneva", "Zurich", "Vevey"],
   Norway: ["Norway", "Oslo"], Sweden: ["Sweden", "Stockholm", "Gothenburg"], Finland: ["Finland", "Helsinki"], Denmark: ["Denmark", "Copenhagen"], Poland: ["Poland", "Warsaw"],
@@ -517,6 +521,9 @@ const PHOTO_PLACES = {
   Rwanda: ["Rwanda", "Kigali"], Angola: ["Angola", "Luanda"], Zambia: ["Zambia", "Lusaka"], Senegal: ["Senegal", "Dakar"], "Ivory Coast": ["Ivory Coast", "Côte d'Ivoire", "Cote d'Ivoire", "Abidjan"],
   Mauritania: ["Mauritania", "Nouakchott"], Mozambique: ["Mozambique", "Maputo"], Zimbabwe: ["Zimbabwe", "Harare"], "DR Congo": ["Democratic Republic of the Congo", "DR Congo", "Kinshasa", "Lubumbashi"],
   Cameroon: ["Cameroon", "Douala", "Yaoundé"], Botswana: ["Botswana", "Gaborone"], Namibia: ["Namibia", "Windhoek", "Walvis Bay"],
+  // Not Croatia's «Split», a word.
+  Serbia: ["Serbia", "Belgrade", "Novi Sad"], Croatia: ["Croatia", "Zagreb", "Rijeka", "Dubrovnik"], Greece: ["Greece", "Athens", "Piraeus", "Thessaloniki"],
+  Romania: ["Romania", "Bucharest", "Constanța", "Constanta"], Somalia: ["Somalia", "Mogadishu"],
 };
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const PHOTO_PLACE_RE = Object.entries(PHOTO_PLACES).map(([country, names]) => [country, new RegExp(`(?<![A-Za-z])(?:${names.map(escapeRe).join("|")})(?![A-Za-z])`)]);
@@ -537,6 +544,7 @@ const DEMONYMS = {
   Denmark: ["Danish"], Poland: ["Polish"], Canada: ["Canadian"], Mexico: ["Mexican"], Brazil: ["Brazilian"], Australia: ["Australian"], Nigeria: ["Nigerian"], "South Africa": ["South African"],
   Kazakhstan: ["Kazakh"], Uzbekistan: ["Uzbek"], Azerbaijan: ["Azerbaijani"], Philippines: ["Filipino", "Philippine"], Vietnam: ["Vietnamese"], Thailand: ["Thai"], Argentina: ["Argentine", "Argentinian"],
   Chile: ["Chilean"], Colombia: ["Colombian"], Peru: ["Peruvian"], Kenya: ["Kenyan"], Ghana: ["Ghanaian"], Ethiopia: ["Ethiopian"], Tanzania: ["Tanzanian"], Uganda: ["Ugandan"], Senegal: ["Senegalese"],
+  Serbia: ["Serbian"], Croatia: ["Croatian"], Greece: ["Greek"], Romania: ["Romanian"], Somalia: ["Somali"],
 };
 // The places an adjective names, as the libraries write them, capitalised or not, up to two words after it («Indonesian
 // wet market», «Moroccan Traditional Market»).
@@ -547,14 +555,14 @@ const DEMONYM_PLACE_RE = new Map(Object.entries(DEMONYMS).map(([country, adjecti
 /** Waters and regions a story names by themselves: «مضيق هرمز» is Iran's, Oman's and the Emirates' shore,
  *  «الأسهم الأوروبية» any European market's. */
 const GULF = ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Iraq", "Iran"];
-const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland"];
-const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland"];
-const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland"];
+const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland", "Greece", "Croatia", "Romania", "Serbia"];
+const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland", "Greece", "Croatia"];
+const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland", "Romania"];
 const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vietnam", "Thailand"];
 const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];
 const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", "Taiwan", "Bangladesh", "Sri Lanka", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
 const LATIN_AMERICA = ["Mexico", "Brazil", "Argentina", "Chile", "Colombia", "Peru"];
-const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia"];
+const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia", "Somalia"];
 const MIDDLE_EAST = [...GULF, "Egypt", "Jordan", "Lebanon", "Syria", "Yemen", "Israel", "Turkey"];
 const PLACE_STEMS = [
   ["الخليج", GULF], ["خليجي", GULF], ["هرمز", ["Iran", "Oman", "United Arab Emirates"]], ["الحوثي", ["Yemen"]], ["باب المندب", ["Yemen"]],

@@ -69,6 +69,13 @@ check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ ti
   const mozambican = { title: "موزمبيق تعدل موازنتها", tags: ["موزمبيق"], regions: ["أفريقيا"] };
   check("a Mozambican story keeps Maputo and refuses Harare; Hong Kong is China's", [placedAbroad({ title: "Maputo port.jpg" }, mozambican), placedAbroad({ title: "Harare street.jpg" }, mozambican), placedAbroad({ title: "Hong Kong skyline.jpg" }, { title: "أسهم هونغ كونغ تتراجع", tags: ["هونغ كونغ"] })], [null, "Zimbabwe", null]);
   check("a Taiwanese story keeps Taipei and refuses Shanghai; a Bangladeshi one refuses Colombo", [placedAbroad({ title: "Taipei 101 and Xinyi district.jpg" }, { title: "صادرات تايوان تقفز", tags: ["تايوان"] }), placedAbroad({ title: "Shanghai port.jpg" }, { title: "صادرات تايوان تقفز", tags: ["تايوان"] }), placedAbroad({ title: "Colombo port.jpg" }, { title: "صادرات الملابس البنغلاديشية", tags: ["بنغلاديش"] })], [null, "China", "Sri Lanka"]);
+  // 2026-11-21: the Balkans' and Somalia's own press joined the sources.
+  const greek = { title: "اليونان تبيع سندات لأجل 10 سنوات", tags: ["اليونان"], regions: ["أوروبا"] };
+  check("a Greek story keeps Piraeus and refuses Bucharest and a Serbian market; a Somali one keeps Mogadishu", [
+    placedAbroad({ title: "Piraeus container terminal.jpg" }, greek), placedAbroad({ title: "Bucharest Victoria Square.jpg" }, greek),
+    placedAbroad({ title: "x.jpg", description: "Serbian farmers market in the morning" }, greek),
+    placedAbroad({ title: "Mogadishu port.jpg" }, { title: "الصومال تطرد سفير الإمارات", tags: ["الصومال"] }),
+  ], [null, "Romania", "Serbia", null]);
 }
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 
