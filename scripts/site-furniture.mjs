@@ -197,6 +197,32 @@ export function filePageFaults(html) {
 }
 
 /**
+ * A count of stories in a page's own furniture (2026-11-21, the owner, of a region page's «ملف يجمع 266 مادة عن الخليج»:
+ * "i do not think we really should mention how many articles are there, no?"): the sentence under a page's title and
+ * the files index's cells and lists (39 counts on /tags/). The archive's bookkeeping, as on the front's region block
+ * (18 November) and the sections' rows (20 November). A search's own count of results is not read here.
+ */
+export function countFaults(html) {
+  const out = [];
+  const COUNT = /(?:\d[\d,]*\s*(?:مادة|مواد)|مادتان|مادتين|مادة واحدة)(?![ء-ي])/;
+  const strip = (h) => h.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  for (const m of html.matchAll(/<p class="page-intro"[^>]*>([\s\S]*?)<\/p>/g)) if (COUNT.test(strip(m[1]))) out.push("a count of stories in the sentence under a page's title");
+  const lists = [...html.matchAll(/<(?:p class="files-index__count|ul class="(?:files-all__list|regions__list))[^>]*>([\s\S]*?)<\/(?:p|ul)>/g)];
+  const counted = lists.filter((m) => COUNT.test(strip(m[1])) || /<bdi[^>]*>\s*\d+\s*<\/bdi>/.test(m[1])).length;
+  if (counted) out.push(`${counted} cell(s) or list(s) of the files index printing a count of stories`);
+  return out;
+}
+
+/**
+ * The front's figures (2026-11-21, the owner: "we have أرقام اليوم and بالأرقام, is this redundancy?"): one module of
+ * figures at a time. The list in the side column and the band of cards under the first screen had both run on a wide
+ * screen whenever the band did.
+ */
+export function figureModuleFaults(html) {
+  return /id="figures-head"/.test(html) && /id="figcards-head"/.test(html) ? ["«أرقام اليوم» and «بالأرقام» on one page: two modules of figures"] : [];
+}
+
+/**
  * The latest page (2026-11-20, the owner: "check the latest news page design and organization too"): a line under a
  * day's head prints its hour («14:29»), never its date again («21 أكتوبر 2026» under «الأربعاء 21 أكتوبر 2026», on every
  * line of the older pages) or its age («منذ يوم» under a head naming the day).

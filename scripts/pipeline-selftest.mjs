@@ -2062,6 +2062,22 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const day = (times) => `<section class="latest__day"><h2 class="latest__date ui">الأربعاء 21 أكتوبر 2026</h2>${times.map((t) => `<article class="card"><p class="meta card__meta"><a href="/economy/">الاقتصاد</a><time datetime="x">${t}</time></p></article>`).join("")}</section>`;
     check("the site check finds a date or an age under a day's head, and passes hours", [latestPageFaults(day(["21 أكتوبر 2026", "منذ يوم"])).length, latestPageFaults(day(["14:29", "09:05"])).length], [1, 0]);
   }
+  // Counts of stories (2026-11-21): the old sentences and the old index fail; the new sentence, the index's «آخر تحديث»
+  // line and a figure that is not a count of stories («271 مادة» of a law is story text, never a page's sentence) pass.
+  {
+    const { countFaults } = await import("./site-furniture.mjs");
+    const intro = (t) => `<p class="page-intro" data-x><span>${t}</span></p>`;
+    const oldIndex = '<p class="files-index__count ui"><bdi>106 مادة</bdi> · آخر تحديث <time>منذ يوم</time></p><ul class="files-all__list"><li><a href="/x/">أدنوك</a><bdi class="ui">12</bdi></li></ul><ul class="regions__list"><li><a href="/y/">الخليج</a><span class="ui"><bdi>266 مادة</bdi></span></li></ul>';
+    const newIndex = '<p class="files-index__count ui">آخر تحديث <time>منذ يوم</time></p><ul class="files-all__list"><li><a href="/x/">أدنوك</a></li></ul><ul class="regions__list"><li><a href="/y/">الخليج</a></li></ul>';
+    check("the site check finds a count of stories under a title and in the files index, and passes the pages without one", [countFaults(intro("ملف يجمع <bdi>266 مادة</bdi> عن الخليج، من الأحدث إلى الأقدم.")).length, countFaults(intro("ملف يجمع <bdi>مادتين</bdi> عن أدنوك")).length, countFaults(intro("154 مادة من تغطية خازندار")).length, countFaults(oldIndex)[0], countFaults(intro("أخبار الخليج الاقتصادية، من الأحدث إلى الأقدم.")).length, countFaults(newIndex).length], [1, 1, 1, "3 cell(s) or list(s) of the files index printing a count of stories", 0, 0]);
+  }
+  // The front's figures (2026-11-21): the list and the band together fail; either alone passes.
+  {
+    const { figureModuleFaults } = await import("./site-furniture.mjs");
+    const list = '<h2 id="figures-head" class="module__head">أرقام اليوم</h2>';
+    const band = '<h2 id="figcards-head">بالأرقام</h2>';
+    check("the site check finds «أرقام اليوم» beside «بالأرقام», and passes either alone", [figureModuleFaults(list + band).length, figureModuleFaults(list).length, figureModuleFaults(band).length], [1, 0, 0]);
+  }
   // A file's page (2026-11-20): a file of one story and a page of more than twenty fail; twenty with a pager pass.
   {
     const { filePageFaults } = await import("./site-furniture.mjs");

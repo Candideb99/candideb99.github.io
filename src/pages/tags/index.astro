@@ -6,19 +6,24 @@
  *
  * Since 2026-09-27 (one page per subject) the files are the running stories, companies, institutions and people; a
  * standing subject («التضخم», «النفط») lives on its section's sub-topic page, listed here under المواضيع الثابتة.
+ *
+ * No counts since 2026-11-21 (the owner, of a region page's «266 مادة»: "i do not think we really should mention how many
+ * articles are there, no?", then "check if there are any similar issues across the website and fix them"): this index
+ * was the last place printing them, 39 on one page. The order still says which files are largest; a cell keeps «آخر
+ * تحديث», since its story is not always the file's newest.
  */
 import Base from "@layouts/Base.astro";
 import { getArticles, dossiers, articleHref } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
 import { canonicalTag } from "@lib/tag-map.mjs";
 import { TOPICS, topicArticles, topicHref } from "@lib/topics";
-import { formatShortDate, timeAgo, countLabel as countWord } from "@lib/format";
+import { formatShortDate, timeAgo } from "@lib/format";
 import { headline } from "@lib/bidi";
 
 const articles = await getArticles();
 const topics = dossiers(articles, { min: 2, max: 400 });
 // The largest and freshest files lead as cells, each with its newest story that no cell before it has printed; the rest
-// follow as an index, name and count in alphabetical order. Every file as a cell made a wall of 12 screens of identical
+// follow as an index of names in alphabetical order. Every file as a cell made a wall of 12 screens of identical
 // cells, the same headline under neighbouring files (the critique of 2026-11-09).
 const LEAD_FILES = 9;
 const printed = new Set<string>();
@@ -52,7 +57,7 @@ const subjects = Object.entries(TOPICS)
           <article class="files-index__item">
             <h2 class="files-index__name"><a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a></h2>
             <p class="files-index__count ui">
-              <bdi>{countWord(t.items.length)}</bdi> · آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
+              آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
             </p>
             {t.story && (
               <p class="files-index__latest">
@@ -74,7 +79,6 @@ const subjects = Object.entries(TOPICS)
           {others.map((t) => (
             <li>
               <a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a>
-              <bdi class="ui">{t.items.length}</bdi>
             </li>
           ))}
         </ul>
@@ -88,7 +92,6 @@ const subjects = Object.entries(TOPICS)
           {subjects.map((x) => (
             <li>
               <a href={x.href}>{x.name}</a>
-              <span class="ui"><bdi>{countWord(x.count)}</bdi></span>
             </li>
           ))}
         </ul>
@@ -102,7 +105,6 @@ const subjects = Object.entries(TOPICS)
           {regions.map((r) => (
             <li>
               <a href={`/tags/${encodeURIComponent(r.tag)}/`}>{r.tag}</a>
-              <span class="ui"><bdi>{countWord(r.count)}</bdi></span>
             </li>
           ))}
         </ul>
@@ -131,7 +133,6 @@ const subjects = Object.entries(TOPICS)
   .files-all__list li { break-inside: avoid; display: flex; align-items: baseline; gap: 0.45rem; padding-block: 0.28rem; }
   .files-all__list a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink-2); text-decoration: none; }
   .files-all__list a:hover { color: var(--green); text-decoration: underline; }
-  .files-all__list bdi { font-size: var(--fs-xs); color: var(--ink-3); }
   @media (pointer: coarse) {
     .files-all__list li { padding-block: 0; }
     .files-all__list a { display: inline-flex; align-items: center; min-height: var(--tap); }
@@ -143,7 +144,6 @@ const subjects = Object.entries(TOPICS)
   .regions__list li { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); }
   .regions__list a { text-decoration: none; }
   .regions__list a:hover { color: var(--green); }
-  .regions__list span { font-size: var(--fs-xs); color: var(--ink-3); }
 
   @media (max-width: 1023px) { .files-index { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 599px) { .files-index { grid-template-columns: 1fr; } }

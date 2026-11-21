@@ -103,9 +103,12 @@ const sameFigure = (a: { value: string; label?: string }, b: { value: string; la
 };
 // «بالأرقام», the band of figure cards under the first screen (2026-11-16, FigureCards.astro): a story with three
 // telling figures or more is drawn as a card of its own, its headline over three of them in the box's own order. The
-// band runs with two cards or more. A card's story is placed, so it is printed nowhere below, and «أرقام اليوم» in
-// the column above (one number each from other stories) is chosen after it: without that list the numbers column
-// ended 400px above the centre column at 1366px (measured the day the band was built).
+// band runs with two cards or more. A card's story is placed, so it is printed nowhere below. One module of figures
+// at a time since 2026-11-21 (the owner: "we have أرقام اليوم and بالأرقام, is this redundancy? how about readability and
+// understanding?"): while the band runs, «أرقام اليوم» in the column above does not. It had stayed on wide screens to
+// close the numbers column level with the other two (it ended 400px short without it on 16 November); two lists of
+// figures under two names that say the same thing cost more than a shorter column. The cards are the clearer form (a
+// headline, then its three figures), so they win when there are stories enough for them.
 const goodFact = (f: { label?: string; value: string }) => figureScore(f.value) >= 0 && (f.label ?? "").length > 0 && (f.label ?? "").length <= 48 && !isMarketQuote(`${f.label ?? ""} ${f.value}`);
 const cards = unplaced(articles)
   .filter((a) => a.data.kind !== "explainer" && a.data.kind !== "idea" && citable(a))
@@ -118,7 +121,7 @@ const cards = unplaced(articles)
   .slice(0, 3);
 if (cards.length < 2) cards.length = 0;
 place(cards.map((c) => c.article));
-const figures = unplaced(articles)
+const figures = (cards.length > 0 ? [] : unplaced(articles))
   .filter((a) => a.data.kind !== "explainer" && a.data.kind !== "idea" && citable(a))
   .slice(0, 8)
   .flatMap((a) => {
@@ -227,7 +230,7 @@ const jsonLd = {
     <>
       <div class="first">
         <Cover stories={cover} readings={readings} photoIds={photoIds} all={articles} />
-        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} band={cards.length > 0} />
+        <Front secondary={secondary} digest={digest} picks={picks} figures={figures} chart={chart} photoIds={photoIds} />
       </div>
       {cards.length > 0 && <FigureCards cards={cards} />}
     </>
