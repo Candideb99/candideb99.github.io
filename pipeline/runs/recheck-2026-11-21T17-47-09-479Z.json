@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-21T17:47:09.479Z",
+  "durationSec": 68,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-crude-storage-japan-hormuz-transits-823e53",
+      "title": "السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 39,
+        "checked": 39,
+        "supported": 28,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 7,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 13243,
+    "completionTokens": 9141,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2358,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 13243,
+        "read": 0,
+        "out": 9141,
+        "usd": 0.2358
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[17:47:10] second look: 1 to read now (1 published pieces not yet read; 296 read clean before publication and left out of the audit sample)",
+    "[17:48:17] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2602 in=13243 read=0 out=9141 attempt=1 ms=67023",
+    "[17:48:17] saudi-crude-storage-japan-hormuz-transits-823e53: 39 of 39 sentences checked · 28 supported · 7 without a source · 0 confirmed error(s)"
+  ]
+}

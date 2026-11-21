@@ -1,173 +1,152 @@
 {
-  "mode": "analysis",
-  "startedAt": "2026-11-21T14:57:01.510Z",
-  "durationSec": 738,
-  "published": 1,
+  "mode": "news",
+  "startedAt": "2026-11-21T17:48:18.199Z",
+  "durationSec": 411,
+  "published": 0,
   "refreshed": 0,
   "report": [
     {
-      "headline": "وزن سعة التخزين السعودية في اليابان أمام تراجع عبور الناقلات في هرمز",
-      "section": "analysis",
-      "outcome": "published",
-      "mendedAfterReview": 5,
-      "mendIssues": [
-        "(خطأ فعلي) يعمّم «لماذا يهمّ» والمتن قاعدة المصدر 2 على كل صادرات المملكة إلى آسيا. ورد في الصندوق: «صار ما تصدّره المملكة إلى آسيا في أسابيع الهجمات يتبع عدد الناقلات التي يقبل مالكوها عبور هرمز»، وفي المتن: «وتظل الكميات التي تشحنها إلى بقية مشتريها في آسيا مرتبطة بعدد الناقلات التي تعبر المضيق». المصدر 2 يتحدث عن كميات منتجي الشرق الأوسط «عبر هرمز»، والمصدر 1 يذكر خط أنابيب «شرق–غرب» وزيادة طاقته مساراً آخر للصادرات، وهو ما تعود إليه الفقرة الأخيرة نفسها. الإصلاح: «صار ما تشحنه المملكة عبر هرمز يتبع عدد الناقلات…» و«وتظل الكميات التي تشحنها عبر المضيق إلى بقية مشتريها مرتبطة بعدد الناقلات العابرة».",
-        "تكرار المعنى نفسه بصيغ مختلفة. فكرة التسليم من المخزون من دون ناقلة تتكرر ثلاث مرات: في العنوان الفرعي «يتيح المخزون في اليابان تسليم الخام من دون انتظار ناقلة»، وفي المتن «والخام الموجود في خزانات اليابان يصل إلى المشتري الياباني من دون انتظار ناقلة»، وفي الصندوق «خاماً جاهزاً داخل اليابان يتيح تسليم المشتري شحناته حين تتعثر الملاحة». وتتكرر فكرة الموقع لدى المشتري مرتين: في المقدمة «موقعاً ثابتاً لخامها لدى مشترٍ آسيوي يعيد ملء مخزوناته»، ثم في المتن «أما المملكة فتكسب، في ما يبدو، موقعاً لخامها لدى مشترٍ يعيد ملء ما استنزفه». الإصلاح: تبقى كل فكرة في موضع واحد يؤدي فيه عملاً. ويكتفي الصندوق بالاستنتاج المشروط عن نقص الناقلات، فتُحذف الجملة التي تعيد شرح المتن.",
-        "سلسلة قراءات محوَّطة متتالية بالأداة نفسها: «والأرجح أن الاتفاق يخدم حاجتين…»، ثم «والأرجح أمام رقم كهذا أن يبقى…»، ثم «والأرجح أن يحمي ذلك وفاء المملكة…»، ثم «في ما يبدو». هذا التكرار يُثقل الحجة ويجعلها تبدو مترددة. الإصلاح: تُقال القراءة المركزية مرة واحدة بوضوح، مثل «يُرجَّح أن تكمن قيمة الاتفاق في مكان الخام لا في حجمه». وتُصاغ الجمل الأخرى وصفاً لما يتيحه المخزون، مثل «يتيح الخام المخزن في اليابان…»، من دون إعادة «الأرجح».",
-        "العنوان الفرعي يحمل ثلاث أفكار: هبوط الناقلات إلى 37، والتسليم من دون ناقلة، وصغر السعة أمام فاقد المضيق. المطلوب فكرة واحدة تكمل العنوان. الإصلاح: «يتيح المخزون في اليابان تسليم الخام السعودي قرب المشتري حين تتعثر الناقلات العابرة لهرمز». وتنتقل مقارنة الحجم إلى المتن، حيث تُعرض أصلاً.",
-        "المقدمة تقرر قراءةً على أنها حقيقة، وتربط حدثين مختلفي التاريخ. ورد فيها: «وتكسب المملكة بهذه السعة موقعاً ثابتاً لخامها لدى مشترٍ آسيوي» بلا تحويط، و«ثابتاً» لا يسندها المصدر 1، فالسعة الإضافية «لمدة محددة». ثم تربط «مع» الاتفاق المعلن في 9 نوفمبر (المصدر 1) بأرقام الأسبوع المنتهي في 18 نوفمبر كأنهما متزامنان. الإصلاح: «اتفقت السعودية واليابان في 9 نوفمبر على… وجاء ذلك قبل أن يهبط عدد ناقلات النفط…». ويُحذف «ثابتاً» وتُحوَّط القراءة: «وقد تكسب المملكة بهذه السعة موقعاً لخامها…»."
+      "headline": "إصابة ناقلتين بمقذوفات قرب خصب العمانية في مضيق هرمز رغم الحراسة الأمريكية",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://www.bbc.com/arabic/articles/cm20vxl62wy4o",
+        "https://www.aljazeera.com/news/2026/11/21/tankers-hit-in-strait-of-hormuz-as-iran-tightens-grip-on-shipping",
+        "https://www.arabnews.com/middle-east/maritime-agency-says-2-tankers-struck-in-hormuz-as-iran-says-ship-on-fire-3013341",
+        "https://gulfnews.com/world/mena/two-tankers-attacked-in-hormuz-strait-maritime-agency-1.500756027"
       ],
-      "precheck": {
-        "ok": true,
-        "repairs": 0,
-        "rounds": 1,
-        "found": 0
-      },
-      "slug": "saudi-crude-storage-japan-hormuz-transits-823e53",
-      "title": "السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل",
-      "score": 9,
-      "image": "photo"
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد المكان (خصب العمانية، هرمز) والجهة. لكنه يجزم بـ«ناقلتان» والمصادر تقول إنه لم يتضح هل البلاغان يخصان سفينة واحدة أم اثنتين، وإن كان المتن يورد هذا التحفظ. وعبارة «رغم الحراسة الأمريكية» توحي بأن الناقلتين المصابتين كانتا مرافَقتين، ولا مصدر يقول ذلك. أما «رغم» في الدك فتصنع تناقضاً بين منطقة محظورة والممرات الرئيسية.",
+              "repair": "يُستحسن «بلاغان عن إصابة ناقلات بمقذوفات قرب خصب العمانية في هرمز رغم المرافقة الأمريكية للناقلات»، ويُعاد بناء الدك من دون «رغم» مع ذكر «منطقة محظورة شرق المضيق»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الخلفية حاضرة: الحرب منذ فبراير، والقيود الإيرانية، والحصار والمرافقة، وخُمس النفط. وكذلك الدافع المنسوب، أي رأي سردار في رسالة طهران ومطالبة غريب أبادي برفع الحصار (المصدران 1 و2). لكن «لماذا يهمّ» يربط الحصار بصادرات الخليج بلا سند، ويحمّل المقذوفات المجهولة على الشرط الإيراني.",
+              "repair": "يُعاد كتابة الصندوق كما في البند الثالث من قائمة المشكلات: ادعاء أمريكي منسوب، ومقذوفات مجهولة المصدر، والاستنتاج أن المرافقة لم تُخرج النفط الخليجي من دائرة الاستهداف."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقول إن الجديد إصابة ناقلتين رغم الحراسة، والفقرة الأولى بعد التمهيد تطوّره جيداً. لكن الروايات الإيرانية عن الألغام موزعة على الفقرة الثانية والفقرة الخامسة. والفقرة الخامسة تقع تحت عنوان فرعي لا يصفها وتفتتح بـ«لكن» تقابلية غير مسندة. ويُختم التقرير بتصريح غريب أبادي ملصقاً بعد رأي سردار من غير صلة واضحة.",
+              "repair": "تُجمع الروايات الإيرانية (بحرية الجيش، والحرس الثوري، وتكرار إعلانات الألغام) متتالية بعد الحادثتين، ثم الخلفية والرد الأمريكي، ثم وتيرة الحوادث وقراءة سردار، ثم موقف غريب أبادي من الحصار مقروناً بالرد الأمريكي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "المسافتان 11 و17 ميلاً بحرياً متسقتان مع المصدرين 1 و2، و«قبل ظهر السبت» و«رحلة خروج» صحيحتان. أما «نحو 25 حادثة» فهو حصر المراسل لا بيان إيراني، و«لافتة» تخفف «quite dramatic»، و«ناقلة النفط» بالتعريف تُوهم أنها إحدى الناقلتين.",
+              "repair": "نسبة الحصر إلى سردار استناداً إلى بيانات القوات المسلحة، و«حادة» بدل «لافتة»، و«ناقلة نفط» بالتنكير."
+            }
+          }
+        }
+      ],
+      "outcome": "rejected after revision: وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («وقال رسول سردار، مراسل قناة «الجزيرة» في طهران، إن هذه الحوا…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقال أو المصدر، أو اتركها بلا إسناد إن كانت علنية، ولا تخترع مصدراً؛ ولا تُسمّى الوسيلة إلا لما انفردت به (مصادرها، مقابلتها)."
+    },
+    {
+      "headline": "انفجار خط غاز يوقف محطة الهارثة للكهرباء في البصرة",
+      "section": "energy",
+      "outcome": "deferred: the model's allowance is spent",
+      "retryAt": "Nov 25, 8am (UTC)"
+    },
+    {
+      "headline": "الاتحاد الأوروبي يقترح خفض ميزانيته الطويلة الأجل وضريبة 3% على شركات التكنولوجيا",
+      "section": "economy",
+      "outcome": "deferred: the model's allowance is spent",
+      "retryAt": "Nov 25, 8am (UTC)"
+    },
+    {
+      "headline": "بتكوين تهبط إلى أدنى مستوى منذ سبتمبر 2024 قبل أن تعود فوق 60 ألف دولار",
+      "section": "markets",
+      "outcome": "deferred: the model's allowance is spent",
+      "retryAt": "Nov 25, 8am (UTC)"
     }
   ],
   "llm": {
-    "calls": 16,
-    "failures": 0,
-    "promptTokens": 327835,
-    "completionTokens": 87013,
-    "cacheReadTokens": 104375,
-    "costUsd": 2.7693,
+    "calls": 8,
+    "failures": 1,
+    "promptTokens": 316124,
+    "completionTokens": 44670,
+    "cacheReadTokens": 45245,
+    "costUsd": 2.0595,
     "byModel": {
-      "claude-cli/claude-opus-5-5": 16
+      "claude-cli/claude-opus-5-5": 8
     },
     "byRole": {
       "editor": {
         "calls": 1,
-        "in": 12503,
+        "in": 164425,
         "read": 0,
-        "out": 2244,
-        "usd": 0.0949
-      },
-      "writer": {
-        "calls": 4,
-        "in": 71239,
-        "read": 36240,
-        "out": 32242,
-        "usd": 0.9969
+        "out": 3332,
+        "usd": 0.7243
       },
       "desk": {
-        "calls": 6,
-        "in": 54699,
-        "read": 68135,
-        "out": 29839,
-        "usd": 0.8837
+        "calls": 4,
+        "in": 42340,
+        "read": 27254,
+        "out": 15161,
+        "usd": 0.5105
+      },
+      "writer": {
+        "calls": 2,
+        "in": 41169,
+        "read": 17991,
+        "out": 18179,
+        "usd": 0.573
       },
       "critic": {
-        "calls": 3,
-        "in": 56906,
-        "read": 0,
-        "out": 11587,
-        "usd": 0.4594
-      },
-      "checker": {
         "calls": 1,
-        "in": 13238,
+        "in": 22945,
         "read": 0,
-        "out": 10154,
-        "usd": 0.256
-      },
-      "vision": {
-        "calls": 1,
-        "in": 14875,
-        "read": 0,
-        "out": 947,
-        "usd": 0.0784
+        "out": 7998,
+        "usd": 0.2517
       }
     }
   },
   "log": [
-    "[14:57:01] newsroom start mode=analysis limit=4 dry-run=false",
-    "[14:57:25] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1569 in=12503 read=0 out=2244 attempt=1 ms=23434",
-    "[14:57:25] analysis theme: وزن سعة التخزين السعودية في اليابان أمام تراجع عبور الناقلات في هرمز (How much Saudi storage capacity in Japan weighs against falling tanker transits through Hormuz); question: ماذا تعني سعة 24 مليون برميل من الخام السعودي في اليابان لقدرة المملكة على الوفاء بطلب آسيا، في أسبوع تراجع فيه عدد الناقلات العابرة لهرمز من 52 إلى 37؟",
-    "[14:57:25]   related: السعودية تتفق مع اليابان على تخزين 16 مليون برميل إضافي من نفطها",
-    "[14:57:25]   related: عبور السفن في مضيق هرمز يتراجع 15% مع تصاعد الهجمات الإيرانية",
-    "[14:57:25]   related: وكالة الطاقة: النفط العابر لهرمز قد ينحسر إلى مليوني برميل يومياً",
-    "[14:59:34] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=10219 in=29828 read=0 out=13971 attempt=1 ms=128669",
-    "[15:00:22] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2229 in=20815 read=0 out=6193 attempt=1 ms=46702",
-    "[15:00:52] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1017 in=6327 read=13627 out=3822 attempt=1 ms=30079",
-    "[15:00:52] desk: body refused again (a hedge was dropped («ويزداد هذا الدور وزناً إذا صح تحذير خورخي ليون، رئيس التحليل»))",
-    "[15:00:52] desk model=claude-cli/claude-opus-5-5 applied=[] rejected=[whyItMatters:a hedge was dropped («وإذا وقع نقص السفن المتوقع خلال شهرين أو ثلاثة في حال استمرت»),body:a hedge was dropped («وقالت «بلومبرغ» إن الاتفاق يهدف إلى المساعدة في إعادة ملء مخ»)]",
-    "[15:00:52] checks analysis \"السعودية تؤمّن خامها لليابان بسعة تعادل يوماً ونيفاً من نفط هرمز قبل الحرب\": 760 words, 1 issues, 0 warnings",
-    "[15:01:38] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3193 in=22747 read=0 out=5029 attempt=1 ms=46621",
-    "[15:01:38] critic analysis: revise score=9 issues=6",
-    "[15:01:38]   · جمل طويلة جداً (3): «ويزداد هذا الدور وزناً إذا صح تحذير خورخي ليون، رئيس التحليل الجيوسياسي…»؛ اقسم كل جملة تتجاوز 40 كلمة إلى جملتين، فكرة واحدة في كل جملة.",
-    "[15:01:38]   · (خطأ فعلي) يحوّل «لماذا يهمّ» تحذيراً مشروطاً إلى توقع: «وإذا وقع نقص السفن المتوقع خلال شهرين أو ثلاثة في حال استمرت وتيرة الهجمات». في المصدر 2 قال خورخي ليون",
-    "[15:01:38]   · العنوان «السعودية تؤمّن خامها لليابان بسعة تعادل يوماً ونيفاً من نفط هرمز قبل الحرب» ملتبس وغير دقيق في المقارنة. «تؤمّن خامها لليابان» توحي بضمان إمداد اليابان",
-    "[15:01:38]   · دوافع البلدين مقدّمة حقيقةً لا قراءةً: «فالحاجة يابانية بقدر ما هي سعودية: طوكيو تريد خاماً في خزاناتها، والرياض تريد لخامها مكاناً قريباً من المصافي التي تشتري",
-    "[15:02:40] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4393 in=14290 read=18120 out=8257 attempt=1 ms=61239",
-    "[15:03:24] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1852 in=7180 read=13627 out=5686 attempt=1 ms=44109",
-    "[15:03:24] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[15:03:24] desk \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\": rewrote body",
-    "[15:04:10] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3726 in=24538 read=0 out=5632 attempt=1 ms=46588",
-    "[15:04:10] critic (second pass) analysis: revise score=9",
-    "[15:05:08] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3510 in=15780 read=18120 out=7195 attempt=1 ms=57542",
-    "[15:06:00] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2667 in=6996 read=13627 out=6472 attempt=1 ms=51926",
-    "[15:06:22] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=363 in=6303 read=13627 out=3040 attempt=1 ms=21967",
-    "[15:06:22] desk: body accepted on the second try",
-    "[15:06:22] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[15:06:22] desk \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\": rewrote body",
-    "[15:06:22] last desk pass for 2 fault(s): عبارة مترجمة أو حشو: «وجاء ذلك»؛ احذفها؛ الخلفية في جملة مست | جمل طويلة جداً (1): «ويضع تقرير وكالة الطاقة «آفاق الطاقة ال",
-    "[15:06:56] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1183 in=7078 read=13627 out=4626 attempt=1 ms=34730",
-    "[15:06:56] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
-    "[15:06:56] desk \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\": rewrote body",
-    "[15:06:56] last desk pass: clean",
-    "[15:06:56] mended analysis \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\": the second pass's 5 finding(s) sent back once more",
-    "[15:08:11] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3534 in=13238 read=0 out=10154 attempt=1 ms=74351",
-    "[15:08:11] precheck analysis \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\": clean",
-    "[15:08:39] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2451 in=11341 read=0 out=2819 attempt=1 ms=27786",
-    "[15:08:39] image: the picture should say: Saudi crude already sitting in Japanese tanks reaches the buyer without risking a Hormuz crossing.",
-    "[15:08:39] image: tier 1, the story's own place (Shibushi National Petroleum Stockpiling Base, Shirashima Oil Storage Base, Mutsu-Ogawara National Petroleum Stockpiling Base): Shibushi National Petroleum Stockpiling Base | Shirashima oil storage | Mutsu-Ogawara oil stockpiling base; categories: Shibushi National Petroleum Stockpiling Base | Shirashima Oil Storage Base | Mutsu-Ogawara National Petroleum Stockpiling Base | Oil storage tanks in Japan | Oil tankers | Ras Tanura",
-    "[15:08:39] pexels \"Shibushi National Petroleum Stockpiling Base\": 8 usable",
-    "[15:08:39] commons \"Shibushi National Petroleum Stockpiling Base\": 2 usable of 2",
-    "[15:08:39] pexels \"Mutsu-Ogawara oil stockpiling base\": 8 usable",
-    "[15:08:39] pexels \"Shirashima oil storage\": 8 usable",
-    "[15:08:42] openverse \"Shibushi National Petroleum Stockpiling Base\": 0 usable of 0",
-    "[15:08:42] openverse \"Shirashima oil storage\": 0 usable of 0",
-    "[15:08:46] openverse \"Mutsu-Ogawara oil stockpiling base\": 0 usable of 0",
-    "[15:08:47] openverse \"Shibushi National\": 0 usable of 0",
-    "[15:08:47] image: dropped \"Vibrant stack of colorful industrial barrels, ideal for environmental \" — names too little of shibushi, national, petroleum, stockpiling, base",
-    "[15:08:47] image: dropped \"Distant view of an offshore oil rig with cranes on a sunny day.\" — names too little of shibushi, national, petroleum, stockpiling, base",
-    "[15:08:47] image: dropped \"A vibrant offshore oil rig with large cranes at a busy sea port during\" — names too little of shibushi, national, petroleum, stockpiling, base",
-    "[15:08:47] image: dropped \"A detailed view of a refinery's towers against a cloudy dusk sky, show\" — names too little of shibushi, national, petroleum, stockpiling, base",
-    "[15:08:47] commons \"Shirashima oil storage\": 0 usable of 0",
-    "[15:08:47] openverse \"storage Shirashima\": 0 usable of 0",
-    "[15:08:47] image: dropped \"Black and white image of an industrial facility by a mountain range an\" — names too little of oil, storage",
-    "[15:08:48] commons \"Mutsu-Ogawara oil stockpiling base\": 0 usable of 0",
-    "[15:08:53] openverse \"base Mutsu-Ogawara\": 0 usable of 0",
-    "[15:08:53] image: dropped \"Vibrant stack of colorful industrial barrels, ideal for environmental \" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"A large pile of scrap metal and waste at a landfill against a cloudy s\" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"Aerial shot of an active mining site with machinery in Banten, Indones\" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"Quarry scene with conveyor belt and large sand piles under a blue sky.\" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"A serene summer view of a coastal port with lush green hills and clear\" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"Close-up image of a pile of fresh, unshelled peanuts in natural light.\" — names too little of oil, stockpiling, base",
-    "[15:08:53] image: dropped \"Serene coastal landscape featuring an offshore drilling rig under an e\" — names too little of oil, stockpiling, base",
-    "[15:08:53] commons Category:Shibushi National Petroleum Stockpiling Base: 2 usable of 2",
-    "[15:08:53] commons category \"Shirashima Oil Storage Base\": none carries its name",
-    "[15:08:53] commons category \"Mutsu-Ogawara National Petroleum Stockpiling Base\": none carries its name",
-    "[15:08:54] commons category \"Oil storage tanks in Japan\": none carries its name",
-    "[15:08:54] commons Category:Oil tankers: 5 usable of 48",
-    "[15:08:55] commons Category:Ras Tanura: 16 usable of 42",
-    "[15:08:55] image: dropped \"Ras Tanura Oil Burn Off-1959.jpg\" — dated 1959, an archival picture",
-    "[15:08:55] image: dropped \"Ras Tanura refinary 01.jpg\" — dated 1949, an archival picture",
-    "[15:08:55] image: dropped \"By Aramco Expats ph Drew-Irving-SF-MHT-SA 05.jpg\" — dated 1980, an archival picture",
-    "[15:08:55] image: dropped \"Alaskan Navigator Silhouetted in Long Beach Harbor.jpg\" — taken in United States, which the story does not name",
-    "[15:08:55] image: dropped \"Alaskan Explorer and Alaskan Navigator at VMT.jpg\" — taken in United States, which the story does not name",
-    "[15:08:55] image: dropped \"Navigator SFO.jpg\" — taken in United States, which the story does not name",
-    "[15:08:55] image: dropped \"AK Navigator Inbound Golden Gate.jpg\" — taken in United States, which the story does not name",
-    "[15:08:55] image: dropped \"Vertical shot of large steel oil storage tanks with stairs in Antwerp,\" — taken in Belgium, which the story does not name",
-    "[15:08:55] image: 1 file(s) dropped for naming none of Shibushi National Petroleum Stockpiling Base, Shirashima Oil Storage Base, Mutsu-Ogawara National Petroleum Stockpiling Base",
-    "[15:09:08] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=686 in=14875 read=0 out=947 attempt=1 ms=11959",
-    "[15:09:19] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=828 in=9621 read=0 out=926 attempt=1 ms=11165",
-    "[15:09:19] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Shibushi Oil Stockpile Site 2009.JPG\": It shows the white crude tank farm on the artificial island at Shibushi, one of Japan's national stockpiling bases where",
-    "[15:09:19] published analysis \"السعودية تقرّب خامها من المشتري الياباني بسعة 24 مليون برميل\" -> saudi-crude-storage-japan-hormuz-transits-823e53"
+    "[17:48:18] newsroom start mode=news limit=4 dry-run=false",
+    "[17:48:18] lessons: version 72, 10 active, read by the desk notes and the writer",
+    "[17:48:52] candidates: 5 price-service items left out (gold, dollar and share price tables)",
+    "[17:48:52] candidates: 1173 fresh unseen items",
+    "[17:48:52] rotation: quiet السودان والقرن الأفريقي (never), جنوب شرق آسيا وأستراليا (18d), الأمريكتان (17d), روسيا وأوروبا الشرقية والبلقان (10d)",
+    "[17:49:22] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1294 in=164425 read=0 out=3332 attempt=1 ms=29861",
+    "[17:49:22] editor raw: 7 stories; first ids=[\"c189\",\"c287\",\"c577\",\"c553\",\"c12\"] section=energy",
+    "[17:49:22] editor (claude-cli/claude-opus-5-5) selected 7 stories",
+    "[17:49:22]   [8] energy (arab) — إصابة ناقلتين بمقذوفات قرب خصب العمانية في مضيق هرمز رغم الحراسة الأمريكية (c189,c287,c577,c553,c12)",
+    "[17:49:22]   [6] energy (arab) — انفجار خط غاز يوقف محطة الهارثة للكهرباء في البصرة (c606,c621,c647,c584,c216)",
+    "[17:49:22]   [6] economy (global) — الاتحاد الأوروبي يقترح خفض ميزانيته الطويلة الأجل وضريبة 3% على شركات التكنولوجيا (c329,c375,c307,c474,c423)",
+    "[17:49:22]   [6] markets (global) — بتكوين تهبط إلى أدنى مستوى منذ سبتمبر 2024 قبل أن تعود فوق 60 ألف دولار (c292,c787,c541,c573,c366)",
+    "[17:49:22]   [5] economy (none) — الاتحاد الأوروبي وإندونيسيا يوقعان اتفاقية تلغي الرسوم عن أكثر من 90% من السلع (c357,c154) (rotation for جنوب شرق آسيا وأستراليا: not run)",
+    "[17:49:22]   [5] markets (none) — مخاطر الأرجنتين السيادية تتجاوز 1000 نقطة مع هبوط سنداتها (c812,c947,c302,c657,c215) (rotation for الأمريكتان: not run)",
+    "[17:49:22]   [5] economy (none) — استهداف سفينة شحن روسية بمسيّرات في خليج فنلندا يهدد ممرات صادرات البلطيق (c424,c416,c354,c10,c224) (rotation for روسيا وأوروبا الشرقية والبلقان: not run)",
+    "[17:49:22] control group: \"إصابة ناقلتين بمقذوفات قرب خصب العمانية في مضيق هرمز رغم الحراسة الأمريكية\" is written without the lessons",
+    "[17:49:22] already published, for the desk notes to judge: \"عبور السفن في مضيق هرمز يتراجع 15% مع تصاعد الهجمات الإيرانية\"",
+    "[17:49:53] desk notes: 2 of 31 facts dropped (not in their source or copied from it)",
+    "[17:49:53] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=760 in=9947 read=0 out=3785 attempt=1 ms=30967",
+    "[17:49:53] desk notes: 29 facts (? 3, news 9, driver 4, background 5, reaction 5, numbers 3), 2 quotes (claude-cli/claude-opus-5-5)",
+    "[17:51:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=6909 in=27800 read=0 out=9776 attempt=1 ms=84586",
+    "[17:51:49] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1323 in=19842 read=0 out=3814 attempt=1 ms=30516",
+    "[17:51:49] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[17:51:49] desk \"ناقلتان تصابان بمقذوفات قرب خصب العمانية في هرمز رغم الحراسة الأمريكية\": rewrote body",
+    "[17:53:01] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4647 in=22945 read=0 out=7998 attempt=1 ms=71495",
+    "[17:53:01] critic \"ناقلتان تصابان بمقذوفات قرب خصب العمانية في هرمز رغم الحراسة الأمريكية\": revise score=7 issues=10",
+    "[17:53:01]   · عبارة مترجمة أو حشو: «تعتبر»؛ اذكر الواقعة مباشرة، أو «يُعد» عند الضرورة.",
+    "[17:53:01]   · وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («ووصف رسول سردار، مراسل قناة «الجزيرة» في طهران، هذه الوتيرة …»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة",
+    "[17:53:01]   · إسناد خاطئ: «وبحسب بيانات القوات المسلحة الإيرانية، سُجلت نحو 25 حادثة في المضيق منذ السبت السابق» يجعل الرقم إحصاءً إيرانياً رسمياً. في المصدر 2 الرقم من حصر ر",
+    "[17:53:01]   · تناقض مخترع في الدك: «…اشتعلت بعد ارتطامها بلغم بحري، رغم إعلان الجيش الأمريكي إزالة الألغام من الممرات الرئيسية». البيان الإيراني يضع الناقلة في «منطقة محظورة ",
+    "[17:54:08] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5428 in=13369 read=17991 out=8403 attempt=1 ms=66834",
+    "[17:54:40] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1671 in=6390 read=13627 out=4170 attempt=1 ms=32770",
+    "[17:54:40] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[]",
+    "[17:54:40] desk \"مقذوفات مجهولة تصيب ناقلات قرب خصب العمانية في مضيق هرمز\": rewrote whyItMatters, body",
+    "[17:54:40] last desk pass for 1 fault(s): وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («وتُظهر بيانات ",
+    "[17:55:07] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=979 in=6161 read=13627 out=3392 attempt=1 ms=26467",
+    "[17:55:07] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[17:55:07] desk \"مقذوفات مجهولة تصيب ناقلات قرب خصب العمانية في مضيق هرمز\": rewrote lede, body",
+    "[17:55:07] last desk pass: still 1 fault(s)",
+    "[17:55:07] reject \"مقذوفات مجهولة تصيب ناقلات قرب خصب العمانية في مضيق هرمز\" after revision: وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («وقال رسول سردار، مراسل قناة «الجزيرة» في طهران، إن هذه الحوا…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقال أو المصدر، أو اتركها بلا إسناد إن كانت علنية، ولا تخترع مصدراً؛ ولا تُسمّى الوسيلة إلا لما انفردت به (مصادرها، مقابلتها).",
+    "[17:55:09] llm fail role=desk provider=claude model=claude-opus-5-5 attempt=1: claude cli: You've hit your weekly limit · resets Nov 25, 8am (UTC)",
+    "[17:55:09] desk paused, the model's allowance is spent: claude cli: You've hit your weekly limit · resets Nov 25, 8am (UTC)"
   ]
 }

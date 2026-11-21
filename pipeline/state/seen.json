@@ -7,36 +7,6 @@
       "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
       "title": "\"فيتش\" تحوّل نظرتها لفرنسا إلى سلبية وسط تفاقم أزمة الديون"
     },
-    "7a0775e1548d2649": {
-      "at": "2026-10-31T13:06:48.435Z",
-      "decision": "published",
-      "slug": "russia-extends-diesel-export-ban-january-c76a48",
-      "title": "Russia Extends Ban on Most Diesel Exports Through January"
-    },
-    "abe491a9a99cd848": {
-      "at": "2026-10-31T13:06:48.435Z",
-      "decision": "published",
-      "slug": "russia-extends-diesel-export-ban-january-c76a48",
-      "title": "Rusya dizel ihracatı yasağını uzattı"
-    },
-    "6abc0aae0e2b6edb": {
-      "at": "2026-10-31T13:06:48.435Z",
-      "decision": "published",
-      "slug": "russia-extends-diesel-export-ban-january-c76a48",
-      "title": "روسیه بیش از ۲ میلیون تن گازوئیل در نوامبر صادر می‌کند"
-    },
-    "1b6afda293a30111": {
-      "at": "2026-10-31T13:22:59.174Z",
-      "decision": "published",
-      "slug": "openai-cuts-funding-target-10-billion-a127c9",
-      "title": "\"أوبن إيه آي\" تخفض مستهدف التمويل بمقدار 10 مليارات دولار"
-    },
-    "2c53a06342fbc13b": {
-      "at": "2026-10-31T13:22:59.174Z",
-      "decision": "published",
-      "slug": "openai-cuts-funding-target-10-billion-a127c9",
-      "title": "OpenAI slashes funding target by $10bn as tech anxieties mount"
-    },
     "eea9854ff6d1618c": {
       "at": "2026-11-01T00:24:54.595Z",
       "decision": "published",
@@ -5177,6 +5147,36 @@
       "decision": "published",
       "slug": "taiwan-expands-short-selling-curbs-stocks-8b10d3",
       "title": "Taiwan bans short sales of stocks in new move to calm markets"
+    },
+    "15c725b8f536fe71": {
+      "at": "2026-11-21T17:55:07.387Z",
+      "decision": "rejected",
+      "title": "إيران تقول إنّ محادثات الوساطة مع قطر مستمرة، وإصابة ناقلات نفط في مضيق هرمز رغم الحراسة الأمريكية",
+      "strikes": 1
+    },
+    "17173d03ce65f9f0": {
+      "at": "2026-11-21T17:55:07.387Z",
+      "decision": "rejected",
+      "title": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
+      "strikes": 1
+    },
+    "a7a01baa62f8b80c": {
+      "at": "2026-11-21T17:55:07.387Z",
+      "decision": "rejected",
+      "title": "Maritime agency says 2 tankers struck in Hormuz, as Iran says ship on fire",
+      "strikes": 1
+    },
+    "49102d0cb2330804": {
+      "at": "2026-11-21T17:55:07.387Z",
+      "decision": "rejected",
+      "title": "Two tankers attacked in Hormuz strait: maritime agency",
+      "strikes": 1
+    },
+    "7ff29181c7c9fe42": {
+      "at": "2026-11-21T17:55:07.387Z",
+      "decision": "rejected",
+      "title": "هيئة بحرية: إصابة ناقلتين بمقذوفات مجهولة قرب خصب العمانية",
+      "strikes": 1
     }
   }
 }
