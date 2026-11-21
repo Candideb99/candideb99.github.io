@@ -45,6 +45,12 @@ export function photoKey(url) {
   if (pib) return `pib:${pib[1]}`;
   const ec = u.match(/avservices\/repository\/photo\/.*\/(P-\d{6}_\d{2}-\d{2})_\d{2}-/) ?? u.match(/\/photos\/handouts\/official-ec-(P-\d{6}_\d{2}-\d{2})\.jpg$/);
   if (ec) return `ec:${ec[1]}`;
+  // Argentina's presidency (its month folder and file name), and an office's Flickr photograph kept on the site, which is
+  // that Flickr photograph.
+  const casaRosada = u.match(/casarosada\.gob\.ar\/images\/(\d{6})\/([\w.-]+?)\.(?:jpe?g|png)/i) ?? u.match(/\/photos\/handouts\/official-casarosada-(\d{6})-([\w.-]+?)\.jpg$/);
+  if (casaRosada) return `casarosada:${casaRosada[1]}-${casaRosada[2]}`;
+  const flickrKept = u.match(/\/photos\/handouts\/official-flickr-(\d{9,12})\.jpg$/);
+  if (flickrKept) return `flickr:${flickrKept[1]}`;
   const pexels =u.match(/images\.pexels\.com\/photos\/(\d+)\//i);
   if (pexels) return `pexels:${pexels[1]}`;
   const unsplash = u.match(/images\.unsplash\.com\/(photo-[\w-]+)/i);

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (250 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (258 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -9,7 +9,7 @@
  *   node scripts/images-selftest.mjs
  */
 import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, officialSourcesFor, officialEventFits, officeOwn, countriesByName, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
-import { parseKremlinList, parseKremlinPhotos, parseWhiteHouseList, parseWhiteHousePhotos, englishDate, kanteiActionsPath, parseKanteiList, parseKanteiPhotos, parsePmIndiaGallery, parseEcReportages, parseEcPhotos, OFFICIAL_SOURCES, HELD_SOURCES } from "../pipeline/lib/official-photos.mjs";
+import { parseKremlinList, parseKremlinPhotos, parseWhiteHouseList, parseWhiteHousePhotos, englishDate, kanteiActionsPath, parseKanteiList, parseKanteiPhotos, parsePmIndiaGallery, parseEcReportages, parseEcPhotos, parseRssItems, parseCasaRosadaPhotos, parseFlickrFeed, flickrLicence, withEnglishCountries, OFFICIAL_SOURCES, HELD_SOURCES } from "../pipeline/lib/official-photos.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -2096,6 +2096,65 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     const r = await scenario({ draft, plan, official, photoDir: "C:/site/public/photos/handouts", judge: () => 1 });
     check("a Japanese summit story runs the office's own frame of the meeting, kept on the site, before any library", [r.image?.basis, r.image?.url, r.image?.credit, r.searched.length], ["official", "/photos/handouts/official-kantei-32011-1.jpg", "Prime Minister's Office of Japan · PDL 1.0 · مكتب رئيس وزراء اليابان", 0]);
   }
+}
+
+// Argentina's presidency and the Flickr reader (the owner, 2026-11-21: "build the Flickr reader with the UK … how about
+// argentina and brazil official offices … also important countries like canada and mexico"). Of those, Argentina's
+// licence is free; the UK's Flickr photographs turned CC BY-NC-ND 4.0, Brazil's site is no-derivatives, Mexico's and
+// Canada's forbid commercial reuse. Ecuador's presidency posts on Flickr in the public domain.
+{
+  const byId = Object.fromEntries(OFFICIAL_SOURCES.map((s) => [s.id, s]));
+  check(
+    "the registry holds Argentina and Ecuador, and never the UK, Brazil, Mexico or Canada, whose licences forbid an advertised site's use",
+    [Boolean(byId.casarosada), Boolean(byId.ecuador), OFFICIAL_SOURCES.some((s) => /uk|britain|brazil|planalto|mexic|canad/i.test(`${s.id} ${s.officeEn}`))],
+    [true, true, false],
+  );
+  check(
+    "a Spanish title names its countries in the English the matcher reads",
+    [withEnglishCountries("Reunión del Presidente con su par de Estados Unidos y el canciller de Brasil"), withEnglishCountries("Día de la Soberanía Nacional")],
+    ["Reunión del Presidente con su par de Estados Unidos y el canciller de Brasil (United States, Brazil)", "Día de la Soberanía Nacional"],
+  );
+  const rss = `<rss><channel><item>
+    <title>Discurso del Presidente Javier Milei en el lanzamiento oficial de Tesla en la Argentina</title>
+    <link>https://www.casarosada.gob.ar/slider-principal/51440-discurso-del-presidente-javier-milei-en-el-lanzamiento-oficial-de-tesla-en-la-argentina</link>
+    <description><![CDATA[]]></description>
+    <pubDate>Sat, 21 Nov 2026 02:30:34 +0000</pubDate>
+  </item></channel></rss>`;
+  const items = parseRssItems(rss);
+  check("Casa Rosada's feed: each event's title, page and its Buenos Aires date (02:30 UTC is the evening before there)", [items.length, items[0].date, items[0].link.endsWith("tesla-en-la-argentina")], [1, "2026-11-20", true]);
+  const event = { id: items[0].link, title: items[0].title, date: items[0].date, place: "", summary: items[0].title, url: items[0].link };
+  const page = `<meta property="og:image" content="https://www.casarosada.gob.ar/images/202611/teslamilei.jpg" /><meta name="description" content="El Presidente encabezó el lanzamiento de Tesla en la Argentina." />`;
+  const cr = parseCasaRosadaPhotos(page, event, byId.casarosada);
+  check(
+    "an Argentine event's main photograph, credited to Casa Rosada under its licence and kept under its own name",
+    [cr.length, cr[0].url, attributionLine(cr[0]), cr[0].stored, photoKey(cr[0].url) === photoKey(`/photos/handouts/${cr[0].stored}`)],
+    [1, "https://www.casarosada.gob.ar/images/202611/teslamilei.jpg", "Casa Rosada · CC BY 2.5 AR · الرئاسة الأرجنتينية", "official-casarosada-202611-teslamilei.jpg", true],
+  );
+  check(
+    "an office's event naming the story's company is its occasion (the president launching Tesla's cars in Argentina)",
+    [officialEventFits(event, { source: byId.casarosada, draft: { title: "تسلا تبدأ بيع سياراتها في الأرجنتين", tags: ["الأرجنتين"], imageCompany: "Tesla" }, others: [] }), officialEventFits(event, { source: byId.casarosada, draft: { title: "ميلي يخفض الضرائب على الصادرات", tags: ["الأرجنتين"] }, others: [] })],
+    ["it names Tesla", null],
+  );
+  // Flickr: the feed's frames grouped by event, and each frame's own licence read before it is offered.
+  const feed = JSON.stringify({ items: [
+    { title: "PRESIDENTE DANIEL NOBOA EN AZUAY", link: "https://www.flickr.com/photos/presidenciaecuador/55663376880/", media: { m: "https://live.staticflickr.com/65535/55663376880_865841ba31_m.jpg" }, date_taken: "2026-11-19T10:00:00-08:00", description: "<p>Presidencia posted a photo:</p> Encuentro con empresarios de China" },
+    { title: "PRESIDENTE DANIEL NOBOA EN AZUAY", link: "https://www.flickr.com/photos/presidenciaecuador/55663376881/", media: { m: "https://live.staticflickr.com/65535/55663376881_aaaaaaaaaa_m.jpg" }, date_taken: "2026-11-19T10:05:00-08:00", description: "" },
+    { title: "DSC_0001", link: "https://www.flickr.com/photos/presidenciaecuador/1/", media: { m: "https://live.staticflickr.com/65535/1111111111_bbbbbbbbbb_m.jpg" }, date_taken: "2026-11-19T10:05:00-08:00", description: "" },
+  ] });
+  const fe = parseFlickrFeed(feed);
+  check("a Flickr feed's frames are grouped by their event's title, a camera's file name is no event, and Spanish countries are read", [fe.length, fe[0].photos.length, fe[0].date, fe[0].summary.includes("(China)")], [1, 2, "2026-11-19", true]);
+  check(
+    "a frame's licence is read from its own page: public domain and CC BY pass, CC BY-NC-ND and all rights reserved do not",
+    [flickrLicence('{"license":10,"x":1}'), flickrLicence('"license":4'), flickrLicence('"license":16'), flickrLicence('"license":0'), flickrLicence("no licence")],
+    ["Public domain", "CC BY 2.0", null, null, null],
+  );
+  const pages = { "https://www.flickr.com/photos/presidenciaecuador/55663376880/": '{"license":10}', "https://www.flickr.com/photos/presidenciaecuador/55663376881/": '{"license":16}' };
+  const fl = await byId.ecuador.photos(fe[0], { read: async (u) => pages[u] ?? null });
+  check(
+    "only the frame under a free licence is offered, at 640 pixels to judge and 1024 to keep, credited with its own licence",
+    [fl.length, fl[0].thumb.endsWith("_z.jpg"), fl[0].url.endsWith("_b.jpg"), attributionLine(fl[0]), fl[0].stored, photoKey(fl[0].url) === photoKey(`/photos/handouts/${fl[0].stored}`)],
+    [1, true, true, "Presidencia de la República del Ecuador · Public domain · الرئاسة الإكوادورية", "official-flickr-55663376880.jpg", true],
+  );
 }
 
 console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");

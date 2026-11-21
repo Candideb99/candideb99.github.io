@@ -10,11 +10,24 @@ const parser = new XMLParser({
   htmlEntities: true,
 });
 
+/** Every text inside an element, its own and its children's, attributes left out. */
+function deepText(node) {
+  if (node == null) return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(deepText).join(" ");
+  // The element's own text first: the parser keeps it apart from its children («Retail trade,» and «September 2026»).
+  if (typeof node === "object") return [node["#text"], ...Object.entries(node).filter(([k]) => !k.startsWith("@_") && k !== "#text").map(([, v]) => v)].map(deepText).filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+  return "";
+}
+
 function textOf(node) {
   if (node == null) return "";
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return textOf(node[0]);
   if (typeof node === "object") {
+    // Atom's `type="xhtml"` puts the text in a <div> with its own markup: Statistics Canada's «The Daily» titles each
+    // release «Retail trade, <span>September 2026</span>», and every entry read as untitled (2026-11-21).
+    if (node["@_type"] === "xhtml") return deepText(node);
     if (node.__cdata != null) return textOf(node.__cdata);
     if (node["#text"] != null) return textOf(node["#text"]);
     if (node["@_href"]) return String(node["@_href"]);

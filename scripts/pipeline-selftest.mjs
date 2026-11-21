@@ -551,6 +551,15 @@ check(
   check("a news sitemap is read, and its Arabic sections filtered", items.map((i) => i.title), ['لماذا هبط "تاسي"؟']);
 }
 
+// 2a''. An Atom title of type XHTML (Statistics Canada's «The Daily», 2026-11-21: every release read as untitled, so the
+// feed gave nothing): its text is read in order, the element's own words before its children's.
+{
+  const fresh = new Date(Date.now() - 3600 * 1000).toISOString();
+  const atom = `<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>The Daily</title><entry><title type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Retail trade, <span class="refper">September 2026</span></div></title><link href="https://www.statcan.gc.ca/daily-quotidien/261120/dq261120a-eng.htm"></link><id>x</id><updated>${fresh}</updated><summary type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Retail sales increased 0.8% to $75.3 billion in September.</div></summary></entry></feed>`;
+  const items = await fetchFeed({ id: "statcan", url: `data:text/xml;charset=utf-8,${encodeURIComponent(atom)}` });
+  check("an Atom title and summary of type XHTML are read, in order", [items.map((i) => i.title), items[0]?.summary], [["Retail trade, September 2026"], "Retail sales increased 0.8% to $75.3 billion in September."]);
+}
+
 // 2a'. A feed that answers but has stopped moving (2026-10-31: Sky News Arabia's business feed stood still for two days
 // after its desk moved to snabusiness.com) is told by its newest item of any age, never a future-dated one; a feed that
 // fails tells nothing.

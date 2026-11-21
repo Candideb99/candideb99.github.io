@@ -345,6 +345,130 @@ async function ecPhotos(event, { read }) {
   return parseEcPhotos(await read(`${EC_API}/media?reference=${encodeURIComponent(event.id)}`), event, EC_SOURCE);
 }
 
+// ------------------------------------------------------------------------------------------------- Spanish-speaking offices
+
+/**
+ * The countries a Spanish title names, in the English the picture desk matches on (images.mjs officialEventFits() reads
+ * English country names): «Reunión del Presidente con su par de Estados Unidos» names the United States.
+ */
+const SPANISH_COUNTRIES = [
+  ["Estados Unidos", "United States"], ["China", "China"], ["Brasil", "Brazil"], ["Chile", "Chile"], ["Uruguay", "Uruguay"], ["Paraguay", "Paraguay"],
+  ["Bolivia", "Bolivia"], ["México", "Mexico"], ["Perú", "Peru"], ["Colombia", "Colombia"], ["Venezuela", "Venezuela"], ["Ecuador", "Ecuador"],
+  ["Argentina", "Argentina"], ["Canadá", "Canada"], ["España", "Spain"], ["Francia", "France"], ["Alemania", "Germany"], ["Italia", "Italy"],
+  ["Reino Unido", "United Kingdom"], ["Japón", "Japan"], ["India", "India"], ["Rusia", "Russia"], ["Corea", "South Korea"], ["Turquía", "Turkey"],
+  ["Israel", "Israel"], ["Arabia Saudita", "Saudi Arabia"], ["Emiratos Árabes", "United Arab Emirates"], ["Qatar", "Qatar"], ["Catar", "Qatar"], ["Egipto", "Egypt"],
+];
+export function withEnglishCountries(text) {
+  const found = SPANISH_COUNTRIES.filter(([es]) => new RegExp(`(?<![\\p{L}])${es}(?![\\p{L}])`, "u").test(String(text ?? ""))).map(([, en]) => en);
+  return found.length ? `${text} (${[...new Set(found)].join(", ")})` : String(text ?? "");
+}
+
+/** RSS items as { title, link, date } (Joomla's feeds, as Casa Rosada's). */
+export function parseRssItems(xml) {
+  return [...String(xml ?? "").matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => {
+    const get = (tag) => text(m[1].match(new RegExp(`<${tag}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</${tag}>`))?.[1]);
+    const when = Date.parse(get("pubDate"));
+    return { title: get("title"), link: get("link"), date: Number.isFinite(when) ? new Date(when - 3 * 60 * 60 * 1000).toISOString().slice(0, 10) : null };
+  });
+}
+
+const CASA_ROSADA = "https://www.casarosada.gob.ar";
+/**
+ * Argentina's presidency (casarosada.gob.ar, «Actividad oficial»): its RSS feed lists each official event, and each event's
+ * page names its main photograph (og:image, 1,280 pixels, on the site's own /images/<yyyymm>/). The date is Buenos Aires'.
+ */
+async function casaRosadaEvents({ since, until, read, log = () => {} }) {
+  const out = parseRssItems(await read(`${CASA_ROSADA}/informacion/actividad-oficial?format=feed&type=rss`))
+    .filter((i) => i.title && /^https:\/\/www\.casarosada\.gob\.ar\//.test(i.link) && within(i.date, since, until))
+    .map((i) => ({ id: i.link, title: i.title, date: i.date, place: "", summary: withEnglishCountries(i.title), url: i.link }));
+  log(`official: Argentina's presidency lists ${out.length} event(s) from ${since} to ${until}`);
+  return out;
+}
+export function parseCasaRosadaPhotos(html, event, source) {
+  const page = String(html ?? "");
+  const out = [];
+  const seen = new Set();
+  const og = page.match(/<meta property="og:image" content="(https:\/\/www\.casarosada\.gob\.ar\/images\/(\d{6})\/([\w.-]+?)\.(?:jpe?g|png))"/i);
+  const description = text(page.match(/<meta (?:name|property)="(?:og:)?description" content="([^"]*)"/i)?.[1]);
+  for (const m of og ? [og] : []) {
+    if (seen.has(m[1]) || /-cropped$/i.test(m[3])) continue;
+    seen.add(m[1]);
+    out.push(candidate(source, event, { caption: event.title, summary: withEnglishCountries([description, event.summary].filter(Boolean).join(" | ")), url: m[1], thumb: m[1], width: 1280, height: 854, key: `${m[2]}-${m[3]}`, artist: source.author }));
+  }
+  return out;
+}
+async function casaRosadaPhotos(event, { read }) {
+  return parseCasaRosadaPhotos(await read(event.url), event, CASA_ROSADA_SOURCE);
+}
+
+// ----------------------------------------------------------------------------------------------------------------- Flickr
+
+/**
+ * An office that publishes on Flickr (flickr.com/services/feeds: its 20 newest photographs, no key). The feed carries no
+ * licence, and an account's licence changes: the UK Prime Minister's and the UK Government's photographs were CC BY for
+ * years and are CC BY-NC-ND 4.0 now (2026-11-21), which an advertised site may not run. So each photograph's own page is
+ * read for its licence before it is offered (`"license":<n>` in Flickr's page data), and only a free one passes.
+ */
+const FLICKR_LICENCES = { 4: "CC BY 2.0", 5: "CC BY-SA 2.0", 8: "Public domain (US Government Work)", 9: "CC0", 10: "Public domain", 11: "CC BY 4.0", 12: "CC BY-SA 4.0" };
+export function flickrLicence(html) {
+  const n = String(html ?? "").match(/"license":(\d+)/)?.[1];
+  return n !== undefined && FLICKR_LICENCES[n] ? FLICKR_LICENCES[n] : null;
+}
+/** The feed's photographs grouped by their title (one event's frames share it), dated by when each was taken. */
+export function parseFlickrFeed(json) {
+  let data;
+  try {
+    data = typeof json === "string" ? JSON.parse(json) : json;
+  } catch {
+    return [];
+  }
+  const events = new Map();
+  for (const it of data?.items ?? []) {
+    const m = String(it?.media?.m ?? "").match(/^(https:\/\/live\.staticflickr\.com\/\d+\/(\d+)_[0-9a-f]+)_m\.jpg$/);
+    const title = text(it?.title);
+    if (!m || !title || /^(?:IMG|DSCN?|DJI|P)[_-]?\d|^[\w-]+\.jpe?g$/i.test(title)) continue;
+    const date = String(it.date_taken ?? it.published ?? "").slice(0, 10);
+    const event = events.get(title) ?? { id: title, title, date, place: "", summary: withEnglishCountries(text(String(it.description ?? "").replace(/^[\s\S]*?posted a photo:\s*/i, "")).slice(0, 500)), url: String(it.link ?? ""), photos: [] };
+    event.photos.push({ base: m[1], id: m[2], link: String(it.link ?? ""), caption: title });
+    events.set(title, event);
+  }
+  return [...events.values()];
+}
+function flickrSource({ id, nsid, office, officeEn, author, country, leaders, titles }) {
+  const source = {
+    id,
+    office,
+    officeEn,
+    author,
+    country,
+    leaders,
+    titles,
+    license: "",
+    licenseUrl: "",
+    flickr: nsid,
+    checked: "each photograph's licence is read on its own Flickr page before it is offered",
+    async events({ since, until, read, log = () => {} }) {
+      const out = parseFlickrFeed(await read(`https://www.flickr.com/services/feeds/photos_public.gne?id=${encodeURIComponent(nsid)}&format=json&nojsoncallback=1`)).filter((e) => within(e.date, since, until));
+      log(`official: ${officeEn}'s Flickr lists ${out.length} event(s) from ${since} to ${until}`);
+      return out;
+    },
+    async photos(event, { read, log = () => {} }) {
+      const out = [];
+      // Eight frames an event at most: each costs one page read for its licence.
+      for (const p of (event.photos ?? []).slice(0, 8)) {
+        const licence = flickrLicence(await read(p.link));
+        if (!licence) {
+          log(`official: ${officeEn}'s photograph ${p.id} is not under a free licence; passed over`);
+          continue;
+        }
+        out.push({ ...candidate(source, event, { caption: p.caption, summary: event.summary, url: `${p.base}_b.jpg`, thumb: `${p.base}_z.jpg`, width: 1024, height: 683, key: p.id, artist: author }), license: licence, licenseUrl: p.link, pageUrl: p.link, stored: `official-flickr-${p.id}.jpg` });
+      }
+      return out;
+    },
+  };
+  return source;
+}
+
 // --------------------------------------------------------------------------------------------------------------- registry
 
 /** A photograph of an office's event as the picture desk's candidate (the shape the libraries give, commons.mjs). */
@@ -467,10 +591,41 @@ const EC_SOURCE = {
  * The offices the picture desk may read. Before adding one, read its licence on its own site and keep only its own
  * photographers' frames; never an office that reposts agency pictures under its name without saying whose they are.
  * Looked at and left out on 2026-11-21: Ukraine's presidency (president.gov.ua answers «Access Denied» to every request,
- * its robots file too) and the European Council (consilium.europa.eu shows a browser check); China's sites (all rights
- * reserved); the Arab presidencies and royal courts (no licence stated; SPA forbids republishing).
+ * its robots file too; its Flickr is CC0 but stopped in February 2026) and the European Council (consilium.europa.eu
+ * shows a browser check); China's sites (all rights reserved); the Arab presidencies and royal courts (no licence stated;
+ * SPA forbids republishing); the UK Prime Minister and the UK Government (their Flickr photographs are CC BY-NC-ND 4.0
+ * now); Brazil's presidency (gov.br: «Creative Commons Atribuição-SemDerivações 3.0», no derivatives, and the site crops)
+ * and Agência Brasil («Todos os direitos reservados pela EBC»); Mexico (gob.mx/terminos: download «solamente para su uso
+ * personal y no para un uso comercial»); Canada (pm.gc.ca/en/important-notices: commercial reproduction «prohibited
+ * except with written permission from the Privy Council Office», which the owner could ask for).
  */
-export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE];
+const CASA_ROSADA_SOURCE = {
+  id: "casarosada",
+  office: "الرئاسة الأرجنتينية",
+  officeEn: "Argentina's presidency",
+  author: "Casa Rosada",
+  country: "Argentina",
+  leaders: [{ name: "Javier Milei", ar: "ميلي" }],
+  titles: ["الرئيس الأرجنتيني", "رئيس الأرجنتين"],
+  license: "CC BY 2.5 AR",
+  licenseUrl: "https://creativecommons.org/licenses/by/2.5/ar/",
+  checked: "2026-11-21: casarosada.gob.ar's footer, «Los contenidos de Casa Rosada están licenciados bajo Creative Commons Reconocimiento 2.5 Argentina License»",
+  events: casaRosadaEvents,
+  photos: casaRosadaPhotos,
+};
+
+const ECUADOR_SOURCE = flickrSource({
+  id: "ecuador",
+  nsid: "7965504@N03",
+  office: "الرئاسة الإكوادورية",
+  officeEn: "Ecuador's presidency",
+  author: "Presidencia de la República del Ecuador",
+  country: "Ecuador",
+  leaders: [{ name: "Daniel Noboa", ar: "نوبوا" }],
+  titles: ["الرئيس الإكوادوري", "رئيس الإكوادور"],
+});
+
+export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE, CASA_ROSADA_SOURCE, ECUADOR_SOURCE];
 
 /**
  * Offices built and licence-checked but not read. India's waited here for an hour on 2026-11-21: pmindia.gov.in answers

@@ -3071,6 +3071,10 @@ export function officialEventFits(event, { source, draft, others = [], events = 
   const home = countriesByName(draft);
   const country = recordCountries({ title: `${event?.title ?? ""} | ${event?.summary ?? ""}` }).found.find((c) => c !== source.country && home.has(c));
   if (country) return `it names ${country}`;
+  // The company whose own news the story is (findImage(): `imageCompany`): Argentina's president launching Tesla's
+  // cars in Argentina is Tesla's story's occasion (casarosada.gob.ar, 2026-11-20).
+  const firm = companyNames(draft).find((name) => String(name).length >= 3 && new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(String(name))}(?![\\p{L}\\p{N}])`, "iu").test(said));
+  if (firm) return `it names ${firm}`;
   const words = events.flatMap((e) => String(e).split(/[^\p{L}\p{N}]+/u)).filter((w) => w.length >= 3 && /^\p{Lu}/u.test(w) && !EVENT_GENERIC.has(w.toLowerCase()));
   const word = words.find((w) => new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(w)}(?![\\p{L}\\p{N}])`, "u").test(said));
   return word ? `it names ${word}` : null;
