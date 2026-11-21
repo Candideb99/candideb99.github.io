@@ -186,6 +186,13 @@ export function filePageFaults(html) {
   if (!items) return out;
   if (items > 20) out.push(`a file printing ${items} stories on one page`);
   if (items === 1 && !/<nav class="pager"/.test(html)) out.push("a file of one story");
+  // A place is a desk, set out as a section's page (2026-11-21, the owner, of the Gulf's page: "is this the best
+  // depiction for articles when clicking on regions?"): never the thread. And the thread names a day once: «20 نوفمبر»
+  // had stood in the margin of row after row.
+  if (/<section class="wrap block"[^>]*\bdata-place\b/.test(html)) out.push("a region's or a country's page printed as a file's thread");
+  const days = [...html.matchAll(/<div class="thread__when[^"]*"[^>]*>([\s\S]*?)<\/div>/g)].map((m) => /<time[^>]*>([^<]*)<\/time>/.exec(m[1])?.[1].trim());
+  const again = days.filter((d, i) => d && days.slice(0, i).includes(d)).length;
+  if (again) out.push(`${again} thread row(s) naming a day the thread has already named`);
   return out;
 }
 

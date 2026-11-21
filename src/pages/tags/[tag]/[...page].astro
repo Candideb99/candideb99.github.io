@@ -11,14 +11,22 @@
  * regional desk always; lib/files.ts): 617 of the 907 file pages had held only the story a reader came from by its chip.
  * And a file runs in pages of twenty, as a section does: «العالم» listed its 363 stories on one page, 1.1 MB of HTML and
  * 80,800px on a phone, «الخليج» 266.
+ *
+ * A place is a desk, not a story (2026-11-21, the owner, of the Gulf's page: "is this the best depiction for articles
+ * when clicking on regions?"): a regional desk's or a country's page had been the same thread, 266 stories as thumbnails
+ * with «20 نوفمبر» in the margin of row after row. It is set out as a section's page now (StoryFront.astro, twelve to a
+ * page), a country under its desk's name, with the desk's countries and the other desks as rows under the title. The
+ * thread stays for a running story, a company, an institution or a person, and names a day once.
  */
 import type { GetStaticPaths, Page } from "astro";
 import Base from "@layouts/Base.astro";
 import StoryCard from "@components/StoryCard.astro";
+import StoryFront from "@components/StoryFront.astro";
+import LinkRow from "@components/LinkRow.astro";
 import Pager from "@components/Pager.astro";
 import type { Article } from "@lib/articles";
 import { getArticles, allTags, firstPictures } from "@lib/articles";
-import { DESKS, desksOf } from "@lib/regions";
+import { DESKS, desksOf, deskOf, GROUPINGS, PLACE_TAGS } from "@lib/regions";
 import { isFileTag } from "@lib/topics";
 import { FILE_MIN } from "@lib/files";
 import { formatShortDate, formatTime } from "@lib/format";
@@ -34,41 +42,72 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     if (merged.size) files.set(desk.name, [...merged.values()].sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt)));
   }
   const desks = new Set(DESKS.map((d) => d.name));
-  return [...files.entries()]
-    .filter(([tag, items]) => desks.has(tag) || (isFileTag(tag) && items.length >= FILE_MIN))
-    .flatMap(([tag, items]) => paginate(items, { params: { tag }, props: { tag }, pageSize: 20 }));
+  const built = [...files.entries()].filter(([tag, items]) => desks.has(tag) || (isFileTag(tag) && items.length >= FILE_MIN));
+  const size = new Map(built.map(([tag, items]) => [tag, items.length]));
+  const link = (name: string) => ({ href: `/tags/${encodeURIComponent(name)}/`, name });
+  /** A desk's countries that have a page, the largest first: at most ten («العالم» folds four continents). */
+  // Egypt and the United States are one country each: their other names («أمريكا», «واشنطن») are not countries of theirs.
+  const placesOf = (desk: (typeof DESKS)[number]) =>
+    (desk.id === "egypt" || desk.id === "usa" ? [] : [...new Set(desk.match)]).filter((m) => !GROUPINGS.has(m) && !desks.has(m) && size.has(m)).sort((a, b) => size.get(b)! - size.get(a)!).slice(0, 10);
+  return built.flatMap(([tag, items]) => {
+    const place = PLACE_TAGS.has(tag);
+    const desk = place ? (DESKS.find((d) => d.name === tag) ?? deskOf(tag)) : undefined;
+    const own = desk?.name === tag;
+    const props = {
+      tag,
+      place,
+      // A country stands under its desk's name; a desk lists its countries and the other desks.
+      parent: desk && !own ? link(desk.name) : undefined,
+      places: desk ? placesOf(desk).filter((m) => m !== tag).map(link) : [],
+      regions: own ? DESKS.filter((d) => d.name !== tag && size.has(d.name)).map((d) => link(d.name)) : [],
+    };
+    return paginate(items, { params: { tag }, props, pageSize: place ? 12 : 20 });
+  });
 };
 
 interface Props {
   tag: string;
+  place: boolean;
+  parent?: { href: string; name: string };
+  places: { href: string; name: string }[];
+  regions: { href: string; name: string }[];
   page: Page<Article>;
 }
-const { tag, page } = Astro.props;
+const { tag, place, parent, places, regions, page } = Astro.props;
 const first = page.currentPage === 1;
 const n = page.total;
 const pics = firstPictures(page.data);
 /** "مادتان", "5 مواد", "12 مادة"; after يجمع the pair reads مادتين. */
 const countLabel = n === 2 ? "مادتان" : n <= 10 ? `${n} مواد` : `${n} مادة`;
 const countObject = n === 2 ? "مادتين" : countLabel;
+// A day is named once in the thread's margin; the rows after it on the same day give their hour alone.
+const days = page.data.map((a) => formatShortDate(a.data.publishedAt));
+const name = place ? tag : `ملف: ${tag}`;
 ---
 
-<Base title={first ? `ملف: ${tag}` : `ملف: ${tag} — صفحة ${page.currentPage}`} description={`ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={page.url.current} printed={page.data.map((a) => a.id)}>
-  <section class="wrap block">
+<Base title={first ? name : `${name} — صفحة ${page.currentPage}`} description={`ملف خازندار عن ${tag}: ${countLabel} من الأحدث إلى الأقدم`} path={page.url.current} printed={page.data.map((a) => a.id)}>
+  <section class="wrap block" data-place={place ? "" : undefined}>
     <header class="page-head">
+      {parent && <p class="page-head__section ui"><a href={parent.href}>{parent.name}</a></p>}
       <h1 class="page-title">{tag}</h1>
       {/* No «آخر تحديث» since 2026-11-20: the newest story's date and hour stand in the margin right under it, the repeat
           the owner cleared from the front's region block on 18 November. */}
       <p class="page-intro">
         <span>ملف يجمع <bdi>{countObject}</bdi> عن {tag}، من الأحدث إلى الأقدم.</span>
-        <a class="thread__intro-link" href="/tags/">كل الملفات</a>
+        <a class="thread__intro-link" href="/tags/">{place ? "كل الملفات والمناطق" : "كل الملفات"}</a>
       </p>
+      {first && <LinkRow label={parent ? "أيضاً:" : "الدول:"} links={places} />}
+      {first && <LinkRow label="المناطق:" links={regions} />}
     </header>
 
+    {place ? (
+      <StoryFront articles={page.data} first={first} showSection />
+    ) : (
     <ol class:list={["thread", { "thread--first": first }]} aria-label={`مواد الملف: ${tag}`}>
       {page.data.map((a, i) => (
         <li class="thread__item">
           <div class="thread__when ui">
-            <time datetime={a.data.publishedAt}>{formatShortDate(a.data.publishedAt)}</time>
+            {days[i] !== days[i - 1] && <time datetime={a.data.publishedAt}>{days[i]}</time>}
             <span class="thread__time">{formatTime(a.data.publishedAt)}</span>
           </div>
           <div class="thread__body">
@@ -77,8 +116,9 @@ const countObject = n === 2 ? "مادتين" : countLabel;
         </li>
       ))}
     </ol>
+    )}
 
-    <Pager page={page} label="صفحات الملف" narrow />
+    <Pager page={page} label="صفحات الملف" narrow={!place} />
   </section>
 </Base>
 

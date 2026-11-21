@@ -45,6 +45,15 @@ const OTHER_PLACES = [
 /** Every place a region tag can name, desks and countries alike: a label above a headline never shows one. */
 export const PLACE_TAGS: Set<string> = new Set(RAW.flatMap((d) => [d.name, ...d.match]).concat(["العالم"], OTHER_PLACES));
 
+/**
+ * Names in the desks' lists that are a grouping or a wider region, not a country: a desk's page lists its countries
+ * (2026-11-21), and «مجلس التعاون الخليجي» had stood among the Gulf's.
+ */
+export const GROUPINGS: Set<string> = new Set([
+  ...RAW.map((d) => d.name),
+  "العالم", "الخليج العربي", "دول الخليج", "مجلس التعاون الخليجي", "المشرق", "المشرق العربي", "شمال أفريقيا", "شمال إفريقيا", "منطقة اليورو", "الاتحاد الأوروبي", "الأسواق الناشئة",
+]);
+
 // The Arab desks come first and keep a name the world desk also lists.
 const byTag = new Map<string, Desk>();
 for (const d of DESKS) {

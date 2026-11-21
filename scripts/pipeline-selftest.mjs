@@ -2067,6 +2067,10 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const { filePageFaults } = await import("./site-furniture.mjs");
     const thread = (n, pager = false) => `<ol class="thread">${'<li class="thread__item">x</li>'.repeat(n)}</ol>${pager ? '<nav class="pager"></nav>' : ""}`;
     check("the site check finds a file of one story and a file page of 363, and passes a page of twenty", [filePageFaults(thread(1)).length, filePageFaults(thread(363)).length, filePageFaults(thread(20, true)).length, filePageFaults(thread(1, true)).length], [1, 1, 0, 0]);
+    // 2026-11-21: a place's page as a thread, and a day named on two rows, fail; a day once with the hour after it passes.
+    const row = (day) => `<li class="thread__item"><div class="thread__when ui">${day ? `<time datetime="x">${day}</time>` : ""}<span class="thread__time">14:04</span></div></li>`;
+    const rows = (...d) => `<section class="wrap block"><ol class="thread">${d.map(row).join("")}</ol></section><nav class="pager"></nav>`;
+    check("the site check finds a region's page printed as a thread and a day named twice, and passes a day named once", [filePageFaults(`<section class="wrap block" data-place>${thread(12, true)}</section>`).length, filePageFaults(rows("20 نوفمبر", "20 نوفمبر", "19 نوفمبر")).length, filePageFaults(rows("20 نوفمبر", "", "19 نوفمبر")).length], [1, 1, 0]);
   }
   // A subject's page (2026-11-20): a lead without a photograph beside photographed stories, a bare «تحليل» label, and an
   // archive month after the newest printed open. The old page fails three times; the new one passes.

@@ -5,7 +5,7 @@
  * the others in between.
  */
 import Base from "@layouts/Base.astro";
-import StoryCard from "@components/StoryCard.astro";
+import StoryFront from "@components/StoryFront.astro";
 import LinkRow from "@components/LinkRow.astro";
 import { getArticles } from "@lib/articles";
 import { ANALYSIS_DESKS, analysisDesk, liveDesks } from "@lib/analysis";
@@ -38,14 +38,10 @@ const siblings = liveDesks(all).filter((d) => d.id !== desk);
       <p class="page-intro">{n > 0 ? <span>قراءات خازندار في هذا المجال، من الأحدث إلى الأقدم.</span> : <span>لم تُنشر قراءات في هذا المجال بعد؛ تُكتب التحليلات من تغطية خازندار نفسها حين تتراكم.</span>}</p>
       <LinkRow label="المجالات:" links={siblings.map((d) => ({ href: `/analysis/desk/${d.id}/`, name: d.label }))} />
     </header>
-    {n > 0 && (
-      <div class="cols cols--rows" style={`--n:${Math.min(n, 3)}`}>
-        {/* No label under each card: every one of them is this page's desk, its name the page's title (2026-11-20). */}
-        {items.map((a) => (
-          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
-        ))}
-      </div>
-    )}
+    {/* No label under each card: every one of them is this page's desk, its name the page's title (2026-11-20). Set
+        out as the section's page since 2026-11-21: every analysis carries a photograph, and the page had printed
+        columns of text. */}
+    {n > 0 && <StoryFront articles={items} />}
   </section>
 </Base>
 

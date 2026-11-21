@@ -6,7 +6,7 @@
  * ([section]/[...page].astro); every edition's label leads here (readingHref(), src/lib/analysis.ts).
  */
 import Base from "@layouts/Base.astro";
-import StoryCard from "@components/StoryCard.astro";
+import StoryFront from "@components/StoryFront.astro";
 import { getArticles } from "@lib/articles";
 import { WEEKLY_HREF } from "@lib/analysis";
 
@@ -22,12 +22,8 @@ const intro = "كل جمعة: أبرز ما جرى في الاقتصاد وال�
       <h1 class="page-title">حصاد الأسبوع</h1>
       <p class="page-intro">{intro}{n === 0 && <span> لم يُنشر حصاد بعد.</span>}</p>
     </header>
-    {n > 0 && (
-      <div class="cols cols--rows" style="--n:3">
-        {items.map((a) => (
-          <StoryCard article={a} variant="text" showSection={false} showExcerpt />
-        ))}
-      </div>
-    )}
+    {/* Set out as the section's page since 2026-11-21: every edition carries a photograph, and the page had printed
+        columns of text. */}
+    {n > 0 && <StoryFront articles={items} />}
   </section>
 </Base>

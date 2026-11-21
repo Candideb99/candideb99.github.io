@@ -1,0 +1,106 @@
+---
+/**
+ * A page of stories set out as a desk's front: on the first page the newest story with a photograph leads, three stand
+ * beside it and the rest run as rows of cards; later pages are the rows alone. It was the section page's own markup
+ * until 2026-11-21, when the owner asked of the Gulf's page ("is this the best depiction for articles when clicking on
+ * regions?"): a region, a country, an analysis desk and the week's review are desks too, and each had a plainer list of
+ * its own (a thread of thumbnails with the day in the margin, columns of text over photographed pieces). The slot
+ * stands between the top and the rows (the analysis section's «حصاد الأسبوع» block).
+ */
+import StoryCard from "./StoryCard.astro";
+import type { Article } from "@lib/articles";
+import { firstPictures } from "@lib/articles";
+import { analysisLabel } from "@lib/analysis";
+import { cardSizes } from "@lib/wikimedia";
+
+interface Props {
+  /** The page's stories, newest first. */
+  articles: Article[];
+  /** The first page opens on a lead; later pages are rows of cards. */
+  first?: boolean;
+  /** Each card names its section or kind (a hub, a region); a news section is its own label. */
+  showSection?: boolean;
+  /** The list an analysis's desk is read from (analysisLabel); without it StoryCard names the desk itself. */
+  labelPool?: Article[];
+  /** The kicker over the lead. */
+  showTopic?: boolean;
+}
+const { articles, first = true, showSection = false, labelPool, showTopic = true } = Astro.props;
+const label = (a: Article) => (labelPool ? analysisLabel(a, labelPool) : undefined);
+// The first page leads on its newest story with a photograph when one is among its first four (the critique of
+// 9 November: /energy/ opened on a text-only headline above three photographed cards). The stories it passes over stay
+// at the head of the list beside it, newest first.
+const leadAt = first ? articles.slice(0, 4).findIndex((a) => a.data.image) : 0;
+const ordered = leadAt > 0 ? [articles[leadAt], ...articles.filter((_, i) => i !== leadAt)] : articles;
+const [lead, ...others] = ordered;
+// Up to three stories beside the lead; when the list is small the ruled list takes them all,
+// so a page never ends with one orphan card under a rule.
+const besideCount = others.length <= 5 ? others.length : 3;
+const beside = first ? others.slice(0, besideCount) : [];
+const rest = first ? others.slice(besideCount) : articles;
+const pics = firstPictures(first ? [lead, ...beside, ...rest] : rest);
+// A lead without a photograph runs across the page with the stories beside it as a ruled row under it.
+const textLead = first && lead && !lead.data.image && beside.length > 0;
+---
+
+<div class="section-page">
+  {first && lead && (
+    <div class={`section-page__top${beside.length ? "" : " section-page__top--solo"}${textLead ? " section-page__top--text" : ""}`}>
+      <div class="section-page__lead">
+        <StoryCard article={lead} variant="lead" level={2} showSection={showSection} label={label(lead)} showTopic={showTopic} eager />
+      </div>
+      {beside.length > 0 && (
+        <div class="section-page__beside" style={textLead ? `--n:${Math.min(beside.length, 3)}` : undefined}>
+          {beside.map((a) => (
+            <StoryCard article={a} variant="list" showSection={showSection} label={label(a)} showExcerpt showPhoto={pics.has(a.id)} />
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+  <slot />
+  {rest.length > 0 && (
+    <div class={`section-page__rest ${rest.length < 3 ? "cards cards--list" : "cards"}`} style={`--n:${Math.min(rest.length, 4)}`}>
+      {rest.map((a, i) => (
+        <StoryCard article={a} variant={rest.length < 3 ? "list" : "card"} showSection={showSection} label={label(a)} showPhoto={pics.has(a.id)} showExcerpt={!pics.has(a.id)} eager={!first && i < 4} sizes={rest.length < 3 ? undefined : cardSizes(Math.min(rest.length, 4))} />
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .section-page__top { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); column-gap: 0; align-items: start; }
+  .section-page__lead { padding-inline-end: var(--col-gap); }
+  .section-page__top--solo { grid-template-columns: 1fr; }
+  .section-page__top--solo .section-page__lead { padding-inline-end: 0; max-width: 56rem; }
+  .section-page__beside { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--col-gap); display: grid; }
+  .section-page__beside > :global(.card) { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
+  .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
+  /* Beside a lead with a photograph the three stories run as headlines with their thumbnails, as the front's briefs do:
+     with an excerpt each, the list ran 103-248px past the lead and left that much blank paper under it on every news
+     section (827 by 269px on الاقتصاد at 1440, 2026-10-19); without, the two columns end within about 60px. Phones,
+     where the list runs under the lead, keep the excerpts. */
+  @media (min-width: 1024px) {
+    .section-page__top:not(.section-page__top--text) .section-page__beside :global(.card__summary) { display: none; }
+  }
+  /* A lead without a photograph: beside the list its column was a headline and a line over half a screen of blank
+     paper (الأسواق, 2026-10-19). It now runs across the page at the reading measure, and the next stories stand under
+     it in ruled columns, three to a row, as a text-only lead runs on a printed page. */
+  @media (min-width: 1024px) {
+    .section-page__top--text { grid-template-columns: 1fr; }
+    .section-page__top--text .section-page__lead { padding-inline-end: 0; max-width: 56rem; }
+    .section-page__top--text .section-page__beside { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); border-inline-start: 0; padding-inline-start: 0; margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+    .section-page__top--text .section-page__beside > :global(.card) { padding-block: 0; padding-inline: var(--col-gap); border-top: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(3n + 1)) { padding-inline-start: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(3n)), .section-page__top--text .section-page__beside > :global(.card:last-child) { padding-inline-end: 0; }
+    .section-page__top--text .section-page__beside > :global(.card:not(:nth-child(3n + 1))) { border-inline-start: 1px solid var(--rule); }
+    .section-page__top--text .section-page__beside > :global(.card:nth-child(n + 4)) { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  }
+  .section-page__rest { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--ink); padding-top: 1.25rem; }
+
+  @media (max-width: 1023px) {
+    .section-page__top { grid-template-columns: 1fr; row-gap: 1.25rem; }
+    .section-page__lead { padding-inline-end: 0; }
+    .section-page__beside { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 0.5rem; }
+  }
+</style>
