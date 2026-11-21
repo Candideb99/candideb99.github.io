@@ -4,6 +4,8 @@
  * «2026-2031» drew «2031-2026», «(15-30 م³)» «30-15» and «12.7%» «%12.7» (2026-11-09). Used by site-check.mjs; a module
  * of its own so the self-test can read it on a sample page.
  */
+import { INDEX_MAX, RUNNING_DAYS } from "../src/lib/files-index.mjs";
+
 /**
  * The faults of the parts a reader works with his pointer or finger (2026-11-16): a chart's note must have a line for
  * every category the drawing can be pointed at and a value for each from every series, a chart of several series a
@@ -214,6 +216,30 @@ export function countFaults(html) {
   const lists = [...html.matchAll(/<(?:p class="files-index__count|ul class="(?:files-all__list|regions__list))[^>]*>([\s\S]*?)<\/(?:p|ul)>/g)];
   const counted = lists.filter((m) => COUNT.test(strip(m[1])) || /<bdi[^>]*>\s*\d+\s*<\/bdi>/.test(m[1])).length;
   if (counted) out.push(`${counted} cell(s) or list(s) of the files index printing a count of stories`);
+  return out;
+}
+
+/**
+ * The files index (2026-11-21, the owner: "what would happen after one year of running the website if this part still
+ * exists?"): a bounded set of names, never every file. It had named all 244 files and grown by about 0.4 a story, and
+ * its cells, ranked by size, could stand on files nothing had been added to for weeks. Faults: more names than
+ * `INDEX_MAX` (src/lib/files-index.mjs), a file named twice, and a cell whose last update is more than the running window
+ * older than the newest cell's.
+ */
+export function filesIndexFaults(html) {
+  if (!/<div class="files-index"/.test(html)) return [];
+  const out = [];
+  const names = [];
+  for (const m of html.matchAll(/<(?:h2 class="files-index__name"|ul class="files-all__list)[^>]*>([\s\S]*?)<\/(?:h2|ul)>/g)) {
+    for (const a of m[1].matchAll(/<a href="\/tags\/([^"/]+)\/"/g)) names.push(decodeURIComponent(a[1]));
+  }
+  if (names.length > INDEX_MAX) out.push(`the files index names ${names.length} files (at most ${INDEX_MAX}): it grows with the archive`);
+  const twice = names.filter((n, i) => names.indexOf(n) !== i);
+  if (twice.length) out.push(`the files index names ${[...new Set(twice)].join("، ")} twice`);
+  const updated = [...html.matchAll(/<p class="files-index__count[^>]*>[\s\S]*?<time datetime="([^"]+)"/g)].map((m) => Date.parse(m[1]));
+  const newest = Math.max(...updated);
+  const stale = updated.filter((t) => newest - t > RUNNING_DAYS * 86_400_000).length;
+  if (stale) out.push(`${stale} cell(s) of the files index on a file not written about in the ${RUNNING_DAYS} days before the newest cell`);
   return out;
 }
 

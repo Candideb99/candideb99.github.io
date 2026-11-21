@@ -1,61 +1,66 @@
 ---
 /**
- * The files: every topic the paper has covered more than once, and the regions, so a reader can
- * follow a story or a place instead of hunting through sections. Topic files come first, ranked by
- * size and freshness, exactly as the front page ranks them.
+ * The files index: the running stories, companies, institutions and people the newsroom is following now, the largest
+ * of the other files, and the regions.
  *
  * Since 2026-09-27 (one page per subject) the files are the running stories, companies, institutions and people; a
- * standing subject («التضخم», «النفط») lives on its section's sub-topic page, listed here under المواضيع الثابتة.
+ * standing subject («التضخم», «النفط») lives on its section's sub-topic page.
  *
  * No counts since 2026-11-21 (the owner, of a region page's «266 مادة»: "i do not think we really should mention how many
- * articles are there, no?", then "check if there are any similar issues across the website and fix them"): this index
- * was the last place printing them, 39 on one page. The order still says which files are largest; a cell keeps «آخر
- * تحديث», since its story is not always the file's newest.
+ * articles are there, no?"): a cell keeps «آخر تحديث», since its story is not always the file's newest.
+ *
+ * A bounded index since 2026-11-21 (the owner: "is this part redundant? is it useful? what would happen after one year
+ * of running the website if this part still exists?"; lib/files-index.mjs has the measurements). It had named every
+ * file, the nine largest as cells and 235 more «أبجدياً», growing with every story, and cut at 400 without a word; its
+ * cells were ranked by size. Now the cells are the files most written about in the last two weeks, the list after them
+ * the other files running in that window, then the largest of the rest. The standing subjects' row went: it repeated
+ * the section menus and the sections' «المواضيع» rows.
  */
 import Base from "@layouts/Base.astro";
 import { getArticles, dossiers, articleHref } from "@lib/articles";
 import { DESKS, desksOf } from "@lib/regions";
 import { canonicalTag } from "@lib/tag-map.mjs";
-import { TOPICS, topicArticles, topicHref } from "@lib/topics";
+import { FILE_MIN } from "@lib/files";
+import { filesIndex } from "@lib/files-index.mjs";
 import { formatShortDate, timeAgo } from "@lib/format";
 import { headline } from "@lib/bidi";
 
 const articles = await getArticles();
-const topics = dossiers(articles, { min: 2, max: 400 });
-// The largest and freshest files lead as cells, each with its newest story that no cell before it has printed; the rest
-// follow as an index of names in alphabetical order. Every file as a cell made a wall of 12 screens of identical
-// cells, the same headline under neighbouring files (the critique of 2026-11-09).
-const LEAD_FILES = 9;
+// Every file with a page (the regions and places aside: a file follows a story, never a country).
+const files = dossiers(articles, { min: FILE_MIN, max: Infinity });
+const byTag = new Map(files.map((f) => [f.tag, f]));
+// "Now" is the newest story, so a pause in the newsroom leaves the index on what it was last following.
+const now = Math.max(...articles.map((a) => Date.parse(a.data.publishedAt)));
+const index = filesIndex(files.map((f) => ({ tag: f.tag, times: f.items.map((a) => Date.parse(a.data.publishedAt)) })), now);
+// Each cell prints its file's newest story that no cell before it has printed: neighbouring files often share one.
 const printed = new Set<string>();
-const leading = topics.slice(0, LEAD_FILES).map((t) => {
-  const story = t.items.find((a) => !printed.has(a.id));
+const leading = index.lead.map(({ tag }) => {
+  const file = byTag.get(tag)!;
+  const story = file.items.find((a) => !printed.has(a.id));
   if (story) printed.add(story.id);
-  return { ...t, story };
+  return { ...file, story };
 });
-const others = topics.slice(LEAD_FILES).sort((x, y) => x.tag.localeCompare(y.tag, "ar"));
-// The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world.
-// Counted as the desk's page gathers them ([tag].astro): its regions, and the stories tagged with its name (158 here
-// against 159 on the Gulf's page, 2026-10-31).
-const regions = DESKS.map((d) => ({ tag: d.name, count: articles.filter((a) => desksOf(a).some((x) => x.id === d.id) || a.data.tags.map(canonicalTag).includes(d.name)).length })).filter((r) => r.count > 0);
-// The standing subjects that the writers also tag (the sub-topics with tags of their own), biggest first.
-const subjects = Object.entries(TOPICS)
-  .flatMap(([section, list]) => list.filter((t) => t.tags?.length).map((t) => ({ name: t.name, href: topicHref(section, t.id), count: topicArticles(articles, section, t).length })))
-  .filter((x) => x.count > 0)
-  .sort((a, b) => b.count - a.count);
+const named = (list: { tag: string }[]) => list.map(({ tag }) => byTag.get(tag)!);
+const running = named(index.running);
+const largest = named(index.largest);
+// The four desks readers see (src/lib/regions.ts), in their order: three Arab desks, then the world; a desk is listed
+// when its page holds a story ([tag].astro gathers its regions and the stories tagged with its name).
+const regions = DESKS.map((d) => d.name).filter((name) => articles.some((a) => desksOf(a).some((x) => x.name === name) || a.data.tags.map(canonicalTag).includes(name)));
+const href = (tag: string) => `/tags/${encodeURIComponent(tag)}/`;
 ---
 
-<Base title="الملفات والمناطق" description="ملفات خازندار: القصص التي تتطور عبر أكثر من مادة، والمناطق التي نغطيها" path="/tags/">
+<Base title="الملفات والمناطق" description="ملفات خازندار: القصص والشركات والمؤسسات التي نتابعها، والمناطق التي نغطيها" path="/tags/">
   <section class="wrap block">
     <header class="page-head">
       <h1 class="page-title">الملفات والمناطق</h1>
-      <p class="page-intro">القصص الجارية والشركات والمؤسسات التي كتبنا عنها أكثر من مرة، ثم المواضيع والمناطق.</p>
+      <p class="page-intro">القصص والشركات والمؤسسات التي نتابعها هذه الأيام، والمناطق التي نغطيها.</p>
     </header>
 
-    {topics.length > 0 ? (
+    {leading.length > 0 && (
       <div class="files-index" style={`--n:${Math.min(3, leading.length)}`}>
         {leading.map((t) => (
           <article class="files-index__item">
-            <h2 class="files-index__name"><a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a></h2>
+            <h2 class="files-index__name"><a href={href(t.tag)}>{t.tag}</a></h2>
             <p class="files-index__count ui">
               آخر تحديث <time datetime={t.latest.data.publishedAt} data-relative>{timeAgo(t.latest.data.publishedAt)}</time>
             </p>
@@ -68,30 +73,29 @@ const subjects = Object.entries(TOPICS)
           </article>
         ))}
       </div>
-    ) : (
-      <p class="files-index__empty">لا ملفات بعد؛ يتكوّن الملف حين تتناول مادتان الموضوع نفسه.</p>
     )}
+    {files.length === 0 && <p class="files-index__empty">لا ملفات بعد؛ يتكوّن الملف حين تتناول مادتان الموضوع نفسه.</p>}
 
-    {others.length > 0 && (
-      <section class="files-all" aria-labelledby="files-all-head">
-        <h2 id="files-all-head" class="module__head">سائر الملفات، أبجدياً</h2>
+    {running.length > 0 && (
+      <section class="files-all" aria-labelledby="files-running-head">
+        <h2 id="files-running-head" class="module__head">ملفات أخرى نتابعها</h2>
         <ul class="files-all__list">
-          {others.map((t) => (
+          {running.map((t) => (
             <li>
-              <a href={`/tags/${encodeURIComponent(t.tag)}/`}>{t.tag}</a>
+              <a href={href(t.tag)}>{t.tag}</a>
             </li>
           ))}
         </ul>
       </section>
     )}
 
-    {subjects.length > 0 && (
-      <section class="regions" aria-labelledby="subjects-head">
-        <h2 id="subjects-head" class="module__head">المواضيع الثابتة</h2>
-        <ul class="regions__list">
-          {subjects.map((x) => (
+    {largest.length > 0 && (
+      <section class="files-all" aria-labelledby="files-largest-head">
+        <h2 id="files-largest-head" class="module__head">ملفات كبرى</h2>
+        <ul class="files-all__list">
+          {largest.map((t) => (
             <li>
-              <a href={x.href}>{x.name}</a>
+              <a href={href(t.tag)}>{t.tag}</a>
             </li>
           ))}
         </ul>
@@ -102,9 +106,9 @@ const subjects = Object.entries(TOPICS)
       <section class="regions" aria-labelledby="regions-head">
         <h2 id="regions-head" class="module__head">بحسب المنطقة</h2>
         <ul class="regions__list">
-          {regions.map((r) => (
+          {regions.map((name) => (
             <li>
-              <a href={`/tags/${encodeURIComponent(r.tag)}/`}>{r.tag}</a>
+              <a href={href(name)}>{name}</a>
             </li>
           ))}
         </ul>
@@ -126,11 +130,11 @@ const subjects = Object.entries(TOPICS)
   .files-index__latest time { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; }
   .files-index__empty { font-family: var(--font-ui); color: var(--ink-3); }
 
-  /* The index: each file's name in the reading face's bold, as a section page lists its subjects, with its count in the
-     furniture face, in ruled newspaper columns that balance themselves. */
+  /* The lists: each file's name in the reading face's bold, as a section page lists its subjects, in ruled newspaper
+     columns that balance themselves. */
   .files-all { margin-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   .files-all__list { columns: 4 13rem; column-gap: var(--col-gap); column-rule: 1px solid var(--rule); }
-  .files-all__list li { break-inside: avoid; display: flex; align-items: baseline; gap: 0.45rem; padding-block: 0.28rem; }
+  .files-all__list li { break-inside: avoid; padding-block: 0.28rem; }
   .files-all__list a { font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink-2); text-decoration: none; }
   .files-all__list a:hover { color: var(--green); text-decoration: underline; }
   @media (pointer: coarse) {
@@ -141,7 +145,7 @@ const subjects = Object.entries(TOPICS)
   /* Full width, so its head's rule runs as far as the files' rules above it (it stopped at 56rem). */
   .regions { margin-top: clamp(2.25rem, 4.5vw, 3.75rem); }
   .regions__list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-  .regions__list li { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); }
+  .regions__list li { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); }
   .regions__list a { text-decoration: none; }
   .regions__list a:hover { color: var(--green); }
 

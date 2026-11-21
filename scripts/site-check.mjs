@@ -15,7 +15,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { isFigure } from "../pipeline/lib/keyfacts.mjs";
-import { agendaFaults, articleFootFaults, bareFigures, boardFaults, countFaults, figureModuleFaults, filePageFaults, interactiveFaults, latestPageFaults, pageHeadFaults, photoCredit, photoSourceFaults, readingFaults, selfLabelLinks, topicPageFaults } from "./site-furniture.mjs";
+import { agendaFaults, articleFootFaults, bareFigures, boardFaults, countFaults, figureModuleFaults, filePageFaults, filesIndexFaults, interactiveFaults, latestPageFaults, pageHeadFaults, photoCredit, photoSourceFaults, readingFaults, selfLabelLinks, topicPageFaults } from "./site-furniture.mjs";
 
 const DIST = path.resolve(process.argv[2] ?? "dist");
 if (!existsSync(DIST)) {
@@ -95,6 +95,8 @@ for (const page of pages) {
   for (const what of latestPageFaults(html)) fault(page, what);
   // A count of stories under a page's title or in the files index (countFaults(), 2026-11-21).
   for (const what of countFaults(html)) fault(page, what);
+  // The files index naming every file, a file twice, or a cell on a file gone quiet (filesIndexFaults(), 2026-11-21).
+  for (const what of filesIndexFaults(html)) fault(page, what);
   // «أرقام اليوم» and «بالأرقام» on one page (figureModuleFaults(), 2026-11-21).
   for (const what of figureModuleFaults(html)) fault(page, what);
   // An agenda note said again under a later event (agendaFaults(), 2026-11-20).

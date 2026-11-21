@@ -2195,6 +2195,40 @@ if (spawnSync("git", ["--version"]).status === 0) {
     const newIndex = '<p class="files-index__count ui">آخر تحديث <time>منذ يوم</time></p><ul class="files-all__list"><li><a href="/x/">أدنوك</a></li></ul><ul class="regions__list"><li><a href="/y/">الخليج</a></li></ul>';
     check("the site check finds a count of stories under a title and in the files index, and passes the pages without one", [countFaults(intro("ملف يجمع <bdi>266 مادة</bdi> عن الخليج، من الأحدث إلى الأقدم.")).length, countFaults(intro("ملف يجمع <bdi>مادتين</bdi> عن أدنوك")).length, countFaults(intro("154 مادة من تغطية خازندار")).length, countFaults(oldIndex)[0], countFaults(intro("أخبار الخليج الاقتصادية، من الأحدث إلى الأقدم.")).length, countFaults(newIndex).length], [1, 1, 1, "3 cell(s) or list(s) of the files index printing a count of stories", 0, 0]);
   }
+  // The files index (2026-11-21): a bounded set of names, however large the archive. The cells are the files most written
+  // about in the last two weeks (not the largest of all time), the list after them the others with three stories in the
+  // window, alphabetical, then the largest of the rest; no file twice. The old index (every file, cells by size) fails
+  // the site check.
+  {
+    const { filesIndex, INDEX_MAX, LEAD_FILES, LARGEST, RUNNING_MIN } = await import("../src/lib/files-index.mjs");
+    const { filesIndexFaults } = await import("./site-furniture.mjs");
+    const D = 86_400_000;
+    const now = 400 * D;
+    const at = (...days) => days.map((d) => now - d * D);
+    const sample = [
+      { tag: "قديم كبير", times: at(...Array.from({ length: 60 }, (_, i) => 30 + i)) },
+      { tag: "قديم صغير", times: at(40, 41) },
+      { tag: "قصة يومين", times: at(1, 1) },
+      // File i has 3 + i stories, all in the window: the nine with most lead, the three left run in the list.
+      ...["أ", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س"].map((l, i) => ({ tag: `جار ${l}`, times: at(...Array.from({ length: 3 + i }, (_, k) => k % 13)) })),
+    ];
+    const idx = filesIndex(sample, now);
+    const tags = (l) => l.map((f) => f.tag);
+    check("the files index leads on the files most written about in two weeks, never the largest of all time", [idx.lead.length, idx.lead[0].tag, tags(idx.lead).includes("قديم كبير")], [LEAD_FILES, "جار س", false]);
+    check("the list after the cells holds the running files alphabetically and not one event told twice", [tags(idx.running), idx.running.every((f) => f.recent >= RUNNING_MIN), tags(idx.running).includes("قصة يومين")], [["جار أ", "جار ب", "جار ت"], true, false]);
+    check("the largest of the rest come last, largest first, and no file is named twice", [idx.largest[0].tag, new Set([...idx.lead, ...idx.running, ...idx.largest].map((f) => f.tag)).size], ["قديم كبير", idx.lead.length + idx.running.length + idx.largest.length]);
+    // A year of the newsroom: 2,000 files, the index still names INDEX_MAX at most.
+    const year = Array.from({ length: 2000 }, (_, i) => ({ tag: `ملف ${i}`, times: at(...Array.from({ length: 2 + (i % 7) }, (_, k) => (i * 7 + k * 3) % 365)) }));
+    const big = filesIndex(year, now);
+    check("a year's 2,000 files leave the index bounded", [big.lead.length + big.running.length + big.largest.length <= INDEX_MAX, big.largest.length], [true, LARGEST]);
+    const cell = (tag, iso) => `<article class="files-index__item"><h2 class="files-index__name"><a href="/tags/${encodeURIComponent(tag)}/">${tag}</a></h2><p class="files-index__count ui">آخر تحديث <time datetime="${iso}" data-relative>x</time></p></article>`;
+    const list = (names) => `<ul class="files-all__list">${names.map((n) => `<li><a href="/tags/${encodeURIComponent(n)}/">${n}</a></li>`).join("")}</ul>`;
+    const page = (cells, ...lists) => `<div class="files-index">${cells.join("")}</div>${lists.map(list).join("")}<ul class="regions__list"><li><a href="/tags/${encodeURIComponent("الخليج")}/">الخليج</a></li></ul>`;
+    const oldPage = page([cell("مضيق هرمز", "2026-11-21T10:00:00Z"), cell("أوبن إيه آي", "2026-11-01T10:00:00Z")], Array.from({ length: 235 }, (_, i) => `ملف ${i}`));
+    const newPage = page([cell("مضيق هرمز", "2026-11-21T10:00:00Z"), cell("إنفيديا", "2026-11-20T10:00:00Z")], ["قناة السويس", "الأسمدة"], ["أرامكو"]);
+    const twice = page([cell("مضيق هرمز", "2026-11-21T10:00:00Z")], ["أرامكو"], ["أرامكو"]);
+    check("the site check finds an index of every file, a stale cell and a file named twice, and passes the bounded index", [filesIndexFaults(oldPage).length, filesIndexFaults(twice).length, filesIndexFaults(newPage).length, filesIndexFaults("<p>no index</p>").length], [2, 1, 0, 0]);
+  }
   // The front's figures (2026-11-21): the list and the band together fail; either alone passes.
   {
     const { figureModuleFaults } = await import("./site-furniture.mjs");
