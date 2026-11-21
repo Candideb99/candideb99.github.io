@@ -117,7 +117,7 @@ for (const s of sections) {
     <nav class="masthead__tools ui" aria-label="أدوات الموقع">
       <a href="/latest/">الأحدث</a>
       <a href="/markets/data/">لوحة الأسواق</a>
-      <a href="/calendar/">الأجندة</a>
+      <a href="/calendar/">الأجندة الاقتصادية</a>
       <a class="masthead__search" href="/search/">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
         <span>بحث</span>
@@ -262,7 +262,13 @@ for (const s of sections) {
   const deviceDark = window.matchMedia("(prefers-color-scheme: dark)");
   const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : deviceDark.matches);
   const toggles = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
-  const syncToggles = () => toggles.forEach((b) => b.setAttribute("aria-pressed", String(isDark())));
+  // The tooltip names what a tap does (the owner, 2026-11-21: the sun said «الوضع الليلي» on a dark page); the
+  // accessible name stays «الوضع الليلي» with its pressed state, as a toggle button's must.
+  const syncToggles = () =>
+    toggles.forEach((b) => {
+      b.setAttribute("aria-pressed", String(isDark()));
+      b.title = isDark() ? "الوضع النهاري" : "الوضع الليلي";
+    });
   syncToggles();
   deviceDark.addEventListener("change", syncToggles);
   toggles.forEach((b) =>
