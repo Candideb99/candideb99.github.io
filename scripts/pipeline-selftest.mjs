@@ -1971,6 +1971,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
     ], [4, 0]);
     check("the site check finds an empty side column ruled beside a short story", [articleFootFaults(`<div class="article__layout"><div class="article__main"></div><aside class="article__side" data-astro-cid-x> </aside></div>`).length, articleFootFaults(`<div class="article__layout"><div class="article__main"></div></div>`).length], [1, 0]);
   }
+  // Where readers write (2026-11-20): the methodology page sent them to «البريد المذكور في صفحة عن خازندار», an address no
+  // page has printed since the contact form of 19 November; it now links the form.
+  {
+    const methodology = readFileSync(path.join("src", "pages", "methodology.astro"), "utf8");
+    check("the methodology page sends readers to the contact form, not to an address no page prints", [/البريد المذكور/.test(methodology), /href="\/contact\/"/.test(methodology)], [false, true]);
+  }
   // Where the photographs come from (2026-11-20): a caption names its library or its source; the about and methodology
   // pages must name every library the credits use, and the handouts when any run.
   {
