@@ -29,7 +29,15 @@ export function photoKey(url) {
   }
   const flickr = u.match(/staticflickr\.com\/(?:\d+\/)*(\d+)_[0-9a-f]+/i);
   if (flickr) return `flickr:${flickr[1]}`;
-  const pexels = u.match(/images\.pexels\.com\/photos\/(\d+)\//i);
+  // A head of state's office's photograph (official-photos.mjs), at the office or kept on the site as
+  // /photos/handouts/official-<office>-<its number>.jpg: the White House names its file by the Flickr number it gave the
+  // photograph, which the Commons copy carries too («… (55662874378).jpg»), so the three are one photograph; the Kremlin's
+  // number is its large copy's own name.
+  const whiteHouse = u.match(/whitehouse\.gov\/wp-content\/uploads\/\d{4}\/\d{2}\/[^/?#]*?_(\d{9,12})_o\.jpe?g/i) ?? u.match(/\/photos\/handouts\/official-whitehouse-(\d{9,12})\.jpg$/);
+  if (whiteHouse) return `flickr:${whiteHouse[1]}`;
+  const kremlin = u.match(/static\.kremlin\.ru\/media\/events\/photos\/big2x\/([A-Za-z0-9]{16,})\.jpg/) ?? u.match(/\/photos\/handouts\/official-kremlin-([A-Za-z0-9]{16,})\.jpg$/);
+  if (kremlin) return `kremlin:${kremlin[1]}`;
+  const pexels =u.match(/images\.pexels\.com\/photos\/(\d+)\//i);
   if (pexels) return `pexels:${pexels[1]}`;
   const unsplash = u.match(/images\.unsplash\.com\/(photo-[\w-]+)/i);
   if (unsplash) return `unsplash:${unsplash[1]}`;

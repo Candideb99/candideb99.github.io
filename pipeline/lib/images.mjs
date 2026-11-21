@@ -11,6 +11,7 @@ import { fixNames } from "./copydesk.mjs";
 import { USER_AGENT, fetchPublic, readCapped } from "./util.mjs";
 import { photoKey, PHOTO_REST_DAYS, SHOOT_REST_DAYS } from "./photo-key.mjs";
 import { countriesNamed } from "./regions.mjs";
+import { OFFICIAL_SOURCES, readPage } from "./official-photos.mjs";
 
 /**
  * Everything the picture desk reaches outside itself for: the model, the libraries, the thumbnails. The desk calls
@@ -19,10 +20,11 @@ import { countriesNamed } from "./regions.mjs";
  * Nothing else swaps them.
  */
 // Every call of the picture desk thinks at the owner's chosen effort (lib/claude-effort.mjs); the newsroom's other calls do not.
-const outside = { chat: (options) => chat({ effort: claudeEffort(), ...options }), searchCommons, searchCommonsCategory, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a), recentHubs: async () => recentHubs() };
+const outside = { chat: (options) => chat({ effort: claudeEffort(), ...options }), searchCommons, searchCommonsCategory, searchLibraries, noteUse, inlineImage, fetchHandout: (...a) => fetchHandout(...a), saveHandout: (...a) => saveHandout(...a), recentHubs: async () => recentHubs(), officialRead: (url, log) => readPage(url, log) };
 export function withStandIns(standIns) {
   const saved = { ...outside };
-  Object.assign(outside, standIns);
+  // A scripted world reads no office's site unless it says what the site answers (officialPhoto()).
+  Object.assign(outside, { officialRead: async () => null }, standIns);
   // A city photograph one case chose must not ration the next (hubRationed()).
   RUN_HUBS.length = 0;
   return () => {
@@ -2725,6 +2727,12 @@ async function findImage({ draft, story, log, exclude = new Set(), sources = [],
     story = { ...(story ?? {}), message };
     log(`image: the picture should say: ${message}`);
   }
+  // A head of state's own photographers' frames of the story's own occasion, before any library (officialPhoto()):
+  // Commons copies them hours later, if at all.
+  {
+    const image = await officialPhoto({ people, eventNames: event, draft, story, log, exclude, photoDir, known, side });
+    if (image) return image;
+  }
   // The story's people before any building or scene when they are the news (the owner, 2026-09-23: a Trump–Xi summit
   // story ran the White House's facade, "boring"; the desks run the two leaders from an earlier summit). When the news
   // is a thing, its scene comes first and the leader only after it: the photo trial of 2026-09-27 scored the leaders'
@@ -2987,6 +2995,119 @@ async function peoplePhoto({ people, ar = {}, draft, story, log, exclude, civili
   }
   log(`image: nothing of them since ${oldest} fits; their newest older photographs, run as file photos: ${older.slice(0, 4).map((c) => `${photoYear(c)} ${String(c.title).slice(0, 40)}`).join(" | ")}`);
   return twoLooks({ candidates: older, draft, story, log, exclude, relaxed: false, people, ...desk });
+}
+
+/**
+ * A head of state's own photographers (official-photos.mjs; the owner, 2026-11-21, on the US-China-Russia summit: "these
+ * countries must have published images", then "Yes, build it"). «ترامب وشي وبوتين يعتزمون زيادة إنتاج المشتقات النفطية»
+ * ran Trump stepping off his aircraft at Shenzhen while the Kremlin had posted the three leaders' meeting three and a half
+ * hours earlier; Commons copied it an hour after the story ran.
+ *
+ * An office is read when the headline's people include its leader (the planner's names, or the leader's Arabic name in
+ * the headline when the planner failed), and an event it posted from OFFICIAL_DAYS before the story to the day after is
+ * offered only when it names another of the headline's people, another of the story's countries, or the story's own event
+ * (officialEventFits()): a Trump story about something done at home reads one listing page and calls no model. Its frames
+ * come before every library, the event's own photographs as a handout is, and the judge is told to take one only when the
+ * story reports that occasion. The one chosen is kept on the site under the office's licence and credit (keepOfficial()).
+ */
+const OFFICIAL_DAYS = 4;
+const OFFICIAL_DAY_MS = 24 * 60 * 60 * 1000;
+const surnameOf = (name) => fold(String(name ?? "")).toLowerCase().split(/[^\p{L}\p{N}'’-]+/u).filter(Boolean).pop() ?? "";
+const sameSurname = (a, b) => surnameOf(a).length >= 3 && surnameOf(a) === surnameOf(b);
+/** The offices whose leader the headline is about. */
+export function officialSourcesFor(draft, people = []) {
+  const forms = headlineForms(draft?.title ?? "");
+  return OFFICIAL_SOURCES.filter((s) => s.leaders.some((l) => people.some((p) => sameSurname(p, l.name)) || inForms(forms, l.ar)));
+}
+/** Words of an event's name that say which event it is: never its kind («Summit», «Forum») or a word every event has. */
+const EVENT_GENERIC = new Set(["summit", "forum", "meeting", "meetings", "conference", "session", "plenary", "annual", "international", "world", "global", "leaders", "leaders'", "economic", "talks", "visit", "state", "official", "the", "and", "with", "president", "presidents", "summit's"]);
+/**
+ * Why an office's event may be the story's own, or null: it names another of the headline's people (`others`), another of
+ * the story's countries than the office's own (the Kremlin's «Meeting with President of China and President of the United
+ * States» under a story about the three leaders), or a word of the story's own event as the planner named it («APEC»).
+ */
+export function officialEventFits(event, { source, draft, others = [], events = [] }) {
+  const said = `${event?.title ?? ""} | ${event?.place ?? ""} | ${event?.summary ?? ""}`;
+  const person = others.find((name) => namesPerson(fold(said).toLowerCase(), name.toLowerCase()));
+  if (person) return `it names ${person}`;
+  // Not where the leader was that day: every event of a trip to China is placed in Shenzhen, a call to Tajikistan's
+  // president among them.
+  const home = storyCountries(draft);
+  const country = recordCountries({ title: `${event?.title ?? ""} | ${event?.summary ?? ""}` }).found.find((c) => c !== source.country && home.has(c));
+  if (country) return `it names ${country}`;
+  const words = events.flatMap((e) => String(e).split(/[^\p{L}\p{N}]+/u)).filter((w) => w.length >= 3 && /^\p{Lu}/u.test(w) && !EVENT_GENERIC.has(w.toLowerCase()));
+  const word = words.find((w) => new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(w)}(?![\\p{L}\\p{N}])`, "u").test(said));
+  return word ? `it names ${word}` : null;
+}
+function officialTierNote(sources) {
+  return `THE OFFICES' OWN PHOTOGRAPHS: these were taken by ${sources.map((s) => s.officeEn).join(" and ")}'s own photographers at the occasions each description names, days before this story at most, and may be published. Choose one only when the story reports what was said, agreed or done at that occasion (the meeting, the talks, the summit, the signing). Then the occasion's own frame is the first choice, and of its frames the one that shows the headline's people together, their faces plain, at the table or shaking hands, large and sharp at the printed size; a wide room where they are small, a frame of officials who are not the headline's people, or the leader alone when the story is about his meeting with another, is the weaker choice. When the story reports something else (a decision at home, a statement, another occasion), choose 0: an occasion's photograph would tell a reader the news happened there. The caption names the occasion and its place as the description gives them.`;
+}
+async function officialPhoto({ people = [], eventNames = [], draft, story, log, exclude, photoDir = null, known = [], side = [] }) {
+  const sources = officialSourcesFor(draft, people);
+  if (!sources.length) return null;
+  const at = Date.parse(draft?.publishedAt ?? draft?.date ?? "") || Date.now();
+  const since = new Date(at - OFFICIAL_DAYS * OFFICIAL_DAY_MS).toISOString().slice(0, 10);
+  const until = new Date(at + OFFICIAL_DAY_MS).toISOString().slice(0, 10);
+  const read = (url) => outside.officialRead(url, log);
+  const pool = [];
+  for (const source of sources) {
+    let listed = [];
+    try {
+      listed = await source.events({ since, until, read, log });
+    } catch (error) {
+      log(`image: ${source.officeEn}'s events could not be read (${String(error.message).split("\n")[0].slice(0, 100)})`);
+      continue;
+    }
+    const others = people.filter((p) => !source.leaders.some((l) => sameSurname(p, l.name)));
+    // Newest first, as the offices list them; three events an office at most.
+    const fitting = listed.map((e) => ({ e, why: officialEventFits(e, { source, draft, others, events: eventNames }) })).filter((x) => x.why).slice(0, 3);
+    if (!fitting.length && listed.length) log(`image: none of ${source.officeEn}'s ${listed.length} event(s) names the story's people, countries or event`);
+    for (const { e, why } of fitting) {
+      log(`image: ${source.officeEn}'s own event «${e.title}» (${e.date}) may be the story's: ${why}`);
+      try {
+        pool.push(...(await source.photos(e, { read, log })));
+      } catch (error) {
+        log(`image: ${source.officeEn}'s photographs of «${e.title}» could not be read (${String(error.message).split("\n")[0].slice(0, 100)})`);
+      }
+    }
+  }
+  // Never one another story runs, under any of its addresses: a White House frame is its Commons copy (photoKey()).
+  const fresh = pool.filter((c) => !excluded(exclude, c) && !exclude.has(`/photos/handouts/${c.stored}`));
+  if (pool.length > fresh.length) log(`image: ${pool.length - fresh.length} of the offices' photographs already run on other stories`);
+  if (!fresh.length) return null;
+  // The frames whose caption names most of the headline's people first (a Kremlin caption names Putin's guests, never him).
+  const named = (c) => people.filter((p) => namesPerson(fold(c.title).toLowerCase(), p.toLowerCase())).length;
+  const ranked = fresh.map((c, i) => ({ c, i, n: named(c) })).sort((a, b) => b.n - a.n || a.i - b.i).map((x) => x.c);
+  log(`image: ${ranked.length} photograph(s) by the offices' own photographers: ${ranked.slice(0, 4).map((c) => String(c.title).slice(0, 50)).join(" | ")}`);
+  const image = await twoLooks({ candidates: ranked, draft, story, log, exclude, relaxed: false, people, known, side, tierNote: officialTierNote(sources) });
+  return image ? keepOfficial(image, ranked, photoDir, log) : null;
+}
+/**
+ * An office's photograph is kept on the site (public/photos/handouts/official-<office>-<its own number>.jpg), never linked:
+ * the Kremlin serves its photographs over plain HTTP, which a secure page does not load, and an office's site moves. It is
+ * credited to its photographer, or the office, with the office's licence, and the credit links its event's page.
+ */
+async function keepOfficial(image, candidates, photoDir, log) {
+  const chosen = candidates.find((c) => c.url === image.url);
+  if (!chosen) return null;
+  const got = await outside.fetchHandout(chosen.url, log);
+  if (!got || got.width < 700) {
+    log(`image: ${chosen.libraryName}'s photograph could not be kept (${got ? `${got.width} pixels wide` : "not read"})`);
+    return null;
+  }
+  if (photoDir) await outside.saveHandout(got, path.join(photoDir, chosen.stored));
+  log(`image: ${chosen.libraryName}'s own photograph of «${chosen.event}» (${chosen.date}), kept on the site: ${image.alt}`);
+  return {
+    ...image,
+    url: photoDir ? `/photos/handouts/${chosen.stored}` : chosen.url,
+    width: got.savedWidth,
+    height: got.savedHeight,
+    credit: attributionLine(chosen),
+    license: chosen.license,
+    licenseUrl: chosen.licenseUrl,
+    pageUrl: chosen.pageUrl,
+    basis: "official",
+  };
 }
 
 /**

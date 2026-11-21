@@ -1090,7 +1090,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // The piece's kind tells the picture desk it explains or analyses: its subject at work, never a facade. A piece written
   // again under its own address keeps its photograph, and is pictured only when it had none.
   // «مدخل إلى الاقتصاد» runs no photograph (the owner, 2026-11-20): its figures carry the page (photoFree(), photo-key.mjs).
-  const image = TEXT_ONLY || replace?.hasImage || photoFree(section) ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing) });
+  // `photoDir`: a head of state's office's photograph is kept on the site, never linked from the office (images.mjs keepOfficial()).
+  const image = TEXT_ONLY || replace?.hasImage || photoFree(section) ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing), photoDir: HANDOUT_DIR });
   if (image?.url) RUN_IMAGES.add(image.url);
   const slug = replace?.slug ?? buildSlug(draft, { headlineHint });
   let markdown = serializeArticle({

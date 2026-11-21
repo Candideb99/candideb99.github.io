@@ -235,7 +235,8 @@ const LIBRARIES = { flickr: "فليكر", pexels: "بيكسلز", unsplash: "أ�
 
 export function attributionLine(image) {
   const library = String(image.library ?? "");
-  const where = LIBRARIES[library] ?? (library.startsWith("openverse:") ? "أوبن فيرس" : "ويكيميديا كومنز");
+  // A head of state's office names itself (official-photos.mjs: «… · CC BY 4.0 · الكرملين»).
+  const where = image.libraryName ?? LIBRARIES[library] ?? (library.startsWith("openverse:") ? "أوبن فيرس" : "ويكيميديا كومنز");
   const author = image.artist || (where === "ويكيميديا كومنز" ? "Wikimedia Commons" : where);
   // Pexels and Unsplash name no licence of the CC kind; their own licence is linked from the credit. With no
   // photographer named, the library alone («بيكسلز», not «بيكسلز · بيكسلز»).

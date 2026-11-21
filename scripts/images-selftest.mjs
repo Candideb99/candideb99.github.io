@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (226 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (240 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -8,7 +8,8 @@
  *
  *   node scripts/images-selftest.mjs
  */
-import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { withStandIns, pickImage, standInUnplaced, placedAtHome, neutralQueries, simplerQueries, headlinePeople, headlineCompany, namesCompany, namesBrand, namesPerson, namesAPlace, seriesKey, marketCity, namesHub, hubByCity, recentHubs, storyText, offeredSourcePhotos, placedAbroad, closeUpOfMaterial, creditedBody, handoutFault, fold, frontOfBuilding, stockFault, aboutBuildings, captionFlaws, photoRules, publishedFault, treasuryStory, arabicSearches, sniffImage, noveltyFault, groundedClaimant, stampedSource, officialSourcesFor, officialEventFits, RATE_DECISION, ILLUSTRATIVE } from "../pipeline/lib/images.mjs";
+import { parseKremlinList, parseKremlinPhotos, parseWhiteHouseList, parseWhiteHousePhotos, englishDate, OFFICIAL_SOURCES } from "../pipeline/lib/official-photos.mjs";
 import { createHash } from "node:crypto";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -95,7 +96,7 @@ const fileNameIn = (prompt) => String(prompt).match(/^File name: (.*)$/m)?.[1] ?
  * "throw"); `judge(titles, prompt)` returns the 1-based choice or 0; `verify(fileName, prompt)` returns a verdict or
  * throws; `brief` is the source-photo reader's answer. Returns the photo, every search asked, and the calls made.
  */
-async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null, recentHubs = [] }) {
+async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan, judge, verify = () => "RIGHT", brief = null, byText = null, sources = [], exclude = new Set(), lastResort = { scene: null, country: null, institution: null, city: null }, handout = null, handoutWidth = 975, photoDir = null, recentHubs = [], official = {} }) {
   const searched = [];
   const calls = [];
   const judgePrompts = [];
@@ -103,7 +104,10 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
   const plannerPrompts = [];
   const inlined = [];
   const saved = [];
+  const officialReads = [];
   const restore = withStandIns({
+    // A head of state's office's pages (officialPhoto()): what each address answers, null for any other.
+    officialRead: async (url) => (officialReads.push(url), official[url] ?? null),
     fetchHandout: async (url) => ({ width: handoutWidth, height: 557, savedWidth: Math.min(handoutWidth, 1280), savedHeight: 557, buffer: Buffer.from("x"), preview: "data:image/jpeg;base64,AAAA", url }),
     saveHandout: async (got, file) => { saved.push(file); },
     searchCommons: async (query) => {
@@ -170,7 +174,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
     // IMAGES_SELFTEST_LOG=1 prints the desk's own log for every case.
     const log = process.env.IMAGES_SELFTEST_LOG ? (line) => console.log(`      ${line}`) : () => {};
     const image = await pickImage({ draft, story: { angle: "" }, log, exclude, sources, photoDir, onError: (error) => errors.push(error) });
-    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, plannerPrompts, saved, errors };
+    return { image, searched, calls, inlined, judgePrompts, verifyPrompts, plannerPrompts, saved, errors, officialReads };
   } finally {
     restore();
   }
@@ -1871,6 +1875,135 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     [r.judgePrompts.every((p) => p.includes("ONE SECTOR FOR MANY") && (p.includes("LAST PASS") || p.includes("THE STORY'S OWN VESSEL"))), strictRules.includes("a scene of one business or sector standing for news that spans several"), strictRules.includes("another named ship, aircraft or rig"), neutralRules.includes("another named ship, aircraft or rig"), strictRules.includes("People in distress")],
     [true, true, true, false, true],
   );
+}
+
+// Heads of state's own photographers (the owner, 2026-11-21, on the US-China-Russia summit: "these countries must have
+// published images", then "Yes, build it"). The summit story ran Trump stepping off his aircraft while the Kremlin had
+// posted the three leaders' meeting hours before. Pages trimmed from the offices' own markup of 21 November.
+{
+  const KR = "http://en.kremlin.ru";
+  const WH = "https://www.whitehouse.gov";
+  const krItem = (id, title, date, { place = "Shenzhen", photos = 0 } = {}) =>
+    `<div class="hentry h-entry hentry_event" data-id="${id}" itemscope="itemscope" role="listitem"> <h3 class="hentry__title"> <a href="/events/president/news/${id}" rel="bookmark"><span class="entry-title p-name" itemprop="name">${title}</span> <span class="hentry__meta"> <time class="published dt-published" datetime="${date}" itemprop="datePublished">${date}, 11:30</time> <span class="hentry__location p-location">${place}</span> </span> </a> </h3> <div class="hentry__assets">${photos ? ` <a href="/events/president/news/${id}/photos" itemprop="url" class="tabs_photo item" title="Related photos" rel="bookmark" hidden> <i><span class="tabs__count">${photos}</span></i> </a>` : ""} </div> </div>`;
+  const krList = [
+    krItem(900, "Meeting with President of China and President of the United States", "2026-11-19", { photos: 2 }),
+    krItem(899, "Conversation with President of Tajikistan Emomali Rahmon", "2026-11-18", { photos: 1 }),
+    krItem(898, "Greetings to the Transport of Russia Forum", "2026-11-18"),
+    krItem(850, "Meeting with Security Council members", "2026-11-01", { photos: 4, place: "Moscow" }),
+  ].join("\n");
+  const slide = (caption, n) => `<div class="slide" data-cycle-desc="${caption}"> <div class="slider__block" data-text="${caption}"> <img src="http://static.kremlin.ru/media/events/photos/big/SmallCopyNumber00${n}.jpg" srcset="http://static.kremlin.ru/media/events/photos/big2x/LargeCopyNumber00${n}.jpg 2x" width="940" height="580" alt="${caption}"/> </div> </div>`;
+  const krEvent = `<div class="read__lead entry-summary p-summary" itemprop="description"><p>A trilateral meeting between President of Russia Vladimir Putin, President of China Xi Jinping and US President Donald Trump took place on the sidelines of the APEC Summit in Shenzhen.</p></div> ${slide("With President of the People&#8217;s Republic of China Xi Jinping and President of the United States Donald Trump.", 1)} ${slide("Before the meeting.", 2)}`;
+  const whItem = (slug, cover) => `<li data-wp-key="post-template-item-1" class="wp-block-post gallery"> <div class="wp-block-cover"><a class="wp-block-cover__action" href="${WH}/gallery/${slug}/"></a><img width="1024" height="683" src="${WH}/wp-content/uploads/2026/11/cover_o.jpg?w=1024" class="wp-post-image" alt="${cover}" /></div></li>`;
+  const whList = [
+    whItem("president-donald-j-trump-visits-china-november-18-19-2026", "President Donald J. Trump participates in a trilateral meeting with Russian President Vladimir Putin and Chinese President Xi Jinping at Kylin Villa in Shenzhen, China, Thursday, November 19, 2026. (Official White House Photo by Daniel Torok)"),
+    whItem("president-donald-j-trump-signs-executive-orders-november-20-2026", "President Donald J. Trump signs executive orders in the Oval Office, Friday, November 20, 2026. (Official White House Photo by Molly Riley)"),
+  ].join("\n");
+  const whImg = (file, w, h, alt) => `<figure class="wp-block-image size-large"><img decoding="async" height="${h}" width="${w}" data-id="1" src="${WH}/wp-content/uploads/2026/11/${file}?w=1200" alt="${alt}" class="wp-image-1 wh-gallery-lightbox-image" /></figure>`;
+  const whGallery = [
+    whImg("p20261119dt-0839_55662874378_o.jpg", 1200, 800, "President Donald J. Trump participates in a trilateral meeting with Russian President Vladimir Putin and Chinese President Xi Jinping at Kylin Villa in Shenzhen, China, Thursday, November 19, 2026. (Official White House Photo by Daniel Torok)"),
+    // A pool photographer's frame the site reposts, and a portrait frame: never offered.
+    whImg("pool_55660000001_o.jpg", 1200, 800, "President Donald J. Trump shakes hands with Chinese President Xi Jinping. (AP Photo/Mark Schiefelbein)"),
+    whImg("p20261119dt-0900_55662874399_o.jpg", 1200, 1800, "President Donald J. Trump walks with Chinese President Xi Jinping. (Official White House Photograph by Daniel Torok)"),
+  ].join("\n");
+  const [whSource, krSource] = OFFICIAL_SOURCES;
+  const krEvents = parseKremlinList(krList);
+  check("the Kremlin's list gives its events with photographs, with their dates and places", krEvents.map((e) => [e.id, e.date, e.place, e.photos]), [["900", "2026-11-19", "Shenzhen", 2], ["899", "2026-11-18", "Shenzhen", 1], ["850", "2026-11-01", "Moscow", 4]]);
+  const krPhotos = parseKremlinPhotos(krEvent, krEvents[0], krSource);
+  check(
+    "a Kremlin event's frames: the caption, the 940 copy to judge, the 1880 copy to keep, its credit and where it is kept",
+    [krPhotos.length, krPhotos[0].title, krPhotos[0].thumb.endsWith("/big/SmallCopyNumber001.jpg"), krPhotos[0].url.endsWith("/big2x/LargeCopyNumber001.jpg"), [krPhotos[0].width, krPhotos[0].height], krPhotos[0].description.includes("Xi Jinping"), krPhotos[0].pageUrl, attributionLine(krPhotos[0]), krPhotos[0].stored],
+    [2, "With President of the People’s Republic of China Xi Jinping and President of the United States Donald Trump.", true, true, [1880, 1160], true, `${KR}/events/president/news/900/photos`, "kremlin.ru · CC BY 4.0 · الكرملين", "official-kremlin-LargeCopyNumber001.jpg"],
+  );
+  const whEvents = parseWhiteHouseList(whList);
+  check("the White House's galleries, dated by their own addresses", whEvents.map((e) => [e.date, e.title]), [["2026-11-19", "President Donald J Trump Visits China"], ["2026-11-20", "President Donald J Trump Signs Executive Orders"]]);
+  const whPhotos = parseWhiteHousePhotos(whGallery, whEvents[0], whSource);
+  check(
+    "a White House gallery gives only its own photographers' landscape frames, credited to the photographer, kept under the Flickr number",
+    [whPhotos.length, whPhotos[0]?.artist, attributionLine(whPhotos[0] ?? {}), whPhotos[0]?.stored, whPhotos[0]?.title.includes("Official White House")],
+    [1, "Daniel Torok", "Daniel Torok · Public domain · البيت الأبيض", "official-whitehouse-55662874378.jpg", false],
+  );
+  check("a date written out, a range's last day, none", [englishDate("Thursday, November 19, 2026"), englishDate("visits-china-november-18-19-2026"), englishDate("veterans-day-2026")], ["2026-11-19", "2026-11-19", null]);
+  const commonsCopy = file("Xi–Putin–Trump summit - P20261119DT-0839 (55662874378).jpg").url;
+  check(
+    "a White House frame, its copy kept on the site and its Commons copy are one photograph; so are a Kremlin frame and its kept copy",
+    [photoKey(whPhotos[0]?.url), photoKey("/photos/handouts/official-whitehouse-55662874378.jpg"), photoKey(commonsCopy), photoKey(krPhotos[0].url) === photoKey(`/photos/handouts/${krPhotos[0].stored}`)],
+    ["flickr:55662874378", "flickr:55662874378", "flickr:55662874378", true],
+  );
+  const summit = {
+    title: "ترامب وشي وبوتين يعتزمون زيادة إنتاج المشتقات النفطية وإمداداتها",
+    subtitle: "تعهد ثلاثي خلال قمة شنتشن",
+    lede: "اتفق الرؤساء الثلاثة خلال اجتماعهم في شنتشن على زيادة إنتاج المشتقات.",
+    body: "فقرة من المتن.",
+    tags: ["المشتقات النفطية", "الولايات المتحدة", "الصين", "روسيا"],
+    regions: ["عالمي", "آسيا"],
+    kind: "news",
+    section: "energy",
+    publishedAt: "2026-11-19T11:54:48Z",
+    imageQueries: [],
+  };
+  check(
+    "an office is read when its leader is the headline's: by the planner's names, by the Arabic name alone, never for another leader",
+    [officialSourcesFor(summit, []).map((s) => s.id), officialSourcesFor({ title: "الصين تخفض الفائدة" }, ["Donald J. Trump"]).map((s) => s.id), officialSourcesFor({ title: "شي يدعو إلى التعاون" }, ["Xi Jinping"]).map((s) => s.id)],
+    [["whitehouse", "kremlin"], ["whitehouse"], []],
+  );
+  const home = { title: "ترامب يدرس حظر صادرات الديزل", tags: ["الولايات المتحدة"], regions: ["الولايات المتحدة"] };
+  check(
+    "an office's event is the story's when it names another of its people, another of its countries or its own event; never the office's own country alone",
+    [
+      officialEventFits(whEvents[0], { source: whSource, draft: summit, others: ["Xi Jinping", "Vladimir Putin"] }),
+      officialEventFits(krEvents[0], { source: krSource, draft: summit, others: [] }),
+      officialEventFits(krEvents[1], { source: krSource, draft: summit, others: ["Xi Jinping"] }),
+      officialEventFits({ title: "Plenary session of the APEC Summit", place: "Shenzhen" }, { source: krSource, draft: { title: "بوتين يدعو إلى تجارة حرة", tags: ["روسيا"] }, events: ["APEC Summit 2026"] }),
+      officialEventFits({ title: "Plenary session of the Leaders' Summit", place: "Moscow" }, { source: krSource, draft: { title: "بوتين يدعو إلى تجارة حرة", tags: ["روسيا"] }, events: ["Leaders' Summit"] }),
+      officialEventFits(whEvents[1], { source: whSource, draft: home, others: [] }),
+      officialEventFits(whEvents[0], { source: whSource, draft: home, others: [] }),
+    ],
+    ["it names Xi Jinping", "it names China", null, "it names APEC", null, null, null],
+  );
+  const official = { [`${KR}/events/president/news`]: krList, [`${KR}/events/president/news/900`]: krEvent, [`${WH}/gallery/`]: whList, [`${WH}/gallery/president-donald-j-trump-visits-china-november-18-19-2026/`]: whGallery };
+  const summitPlan = planFor({
+    queries: ["oil refinery"],
+    place: [],
+    focus: "people",
+    people: [
+      { name: "Donald Trump", ar: "دونالد ترامب", headline: "ترامب" },
+      { name: "Xi Jinping", ar: "شي جين بينغ", headline: "شي" },
+      { name: "Vladimir Putin", ar: "فلاديمير بوتين", headline: "بوتين" },
+    ],
+  });
+  {
+    const r = await scenario({ draft: summit, plan: summitPlan, official, photoDir: "C:/site/public/photos/handouts", judge: pickTitle("trilateral") });
+    check(
+      "the summit runs the White House's own frame of the three leaders, kept on the site and credited to its photographer, before any library is searched",
+      [r.image?.basis, r.image?.url, r.image?.credit, r.image?.license, r.image?.pageUrl, r.saved.map((p) => path.basename(p)), r.searched.length, r.judgePrompts[0]?.includes("THE OFFICES' OWN PHOTOGRAPHS")],
+      ["official", "/photos/handouts/official-whitehouse-55662874378.jpg", "Daniel Torok · Public domain · البيت الأبيض", "Public domain", `${WH}/gallery/president-donald-j-trump-visits-china-november-18-19-2026/`, ["official-whitehouse-55662874378.jpg"], 0, true],
+    );
+    check(
+      "the judge sees the frames naming most of the headline's people first, and never the pool photographer's or a portrait",
+      [titlesIn(r.judgePrompts[0]).slice(0, 2).map((t) => t.split(" ").slice(0, 4).join(" ")), r.judgePrompts.some((p) => p.includes("AP Photo") || p.includes("walks with"))],
+      [["President Donald J. Trump", "With President of the"], false],
+    );
+  }
+  {
+    // A story that ran the White House frame's Commons copy a week ago keeps it: the Kremlin's frame runs instead.
+    const r = await scenario({ draft: summit, plan: summitPlan, official, photoDir: "C:/site/public/photos/handouts", exclude: new Set([commonsCopy]), judge: () => 1 });
+    check("a frame another story runs as its Commons copy is never offered again; the other office's frame runs", [r.image?.url, r.image?.credit], ["/photos/handouts/official-kremlin-LargeCopyNumber001.jpg", "kremlin.ru · CC BY 4.0 · الكرملين"]);
+  }
+  {
+    // A Trump story about a decision at home: one listing read, no gallery opened, no judge shown an office's frame.
+    const r = await scenario({ draft: { ...summit, title: "ترامب يدرس حظر صادرات الديزل", tags: ["الولايات المتحدة"], regions: ["الولايات المتحدة"] }, plan: planFor({ queries: ["diesel pump"], place: [], people: [{ name: "Donald Trump", ar: "دونالد ترامب", headline: "ترامب" }], focus: "subject" }), official, judge: () => 0 });
+    check("a story about something done at home reads one listing and shows no office's frame", [r.officialReads, r.judgePrompts.some((p) => p.includes("THE OFFICES' OWN PHOTOGRAPHS"))], [[`${WH}/gallery/`], false]);
+  }
+  {
+    // The offices do not answer: the cascade goes on to the Commons people search, as before.
+    const r = await scenario({ draft: summit, plan: summitPlan, official: {}, judge: () => 0 });
+    check("offices that do not answer leave the cascade as it was", [r.image?.basis ?? null, r.officialReads.length > 0, r.searched.some((q) => q.startsWith("Donald Trump Xi Jinping"))], [null, true, true]);
+  }
+  {
+    // The judge refuses the occasion (the story reports something else): no photograph is kept, the cascade goes on.
+    const r = await scenario({ draft: summit, plan: summitPlan, official, photoDir: "C:/site/public/photos/handouts", judge: () => 0 });
+    check("a judge who refuses the offices' frames keeps none of them", [r.image?.basis ?? null, r.saved.length, r.searched.length > 0], [null, 0, true]);
+  }
 }
 
 console.log(failed ?`\n${failed} check(s) FAILED` : "\nall checks passed");

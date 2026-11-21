@@ -126,8 +126,9 @@ if (APPLY) {
       log(`${entry.file}: has a photograph now; skipped`);
       continue;
     }
-    if (entry.basis === "handout") {
-      log(`${entry.file}: a handout is kept on the site only by a real run; skipped`);
+    // So is a head of state's office's photograph (images.mjs keepOfficial()): a dry run keeps the office's address.
+    if (entry.basis === "handout" || entry.basis === "official") {
+      log(`${entry.file}: ${entry.basis === "official" ? "an office's own photograph" : "a handout"} is kept on the site only by a real run; skipped`);
       continue;
     }
     const key = photoKey(entry.image?.url);
@@ -177,7 +178,7 @@ for (const file of files) {
   tried += 1;
   log(`${file}: searching`);
   // The whole story, as the newsroom hands it to the picture desk: its body, «لماذا يهمّ» and box, not the headline alone.
-  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, body: match[2], whyItMatters: data.whyItMatters, keyFacts: data.keyFacts ?? [], imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind, section: data.section };
+  const draft = { title: data.title, subtitle: data.subtitle, lede: data.lede, body: match[2], whyItMatters: data.whyItMatters, keyFacts: data.keyFacts ?? [], imageQueries: [], tags: data.tags ?? [], regions: data.regions ?? [], kind: data.kind, section: data.section, publishedAt: data.publishedAt };
   const story = { angle: String(data.whyItMatters ?? "").slice(0, 300) };
   // The sources' pages, read again: their text for the planner and their lead photographs for the cascade's second tier
   // (never republished).
