@@ -2983,6 +2983,28 @@ process.stdin.on("end", () => {
     asked.length = 0;
     await fetchWithTimeout("https://wants-bots-too.test/post", { method: "POST", body: "x", headers: { "user-agent": USER_AGENT } }, 5000);
     check("a request with a body is never sent twice", asked, ["wants-bots-too.test plain"]);
+    // Moneycontrol gives its news sitemap only to a reader that names itself a bot, and the plain name a story's page,
+    // 200 and no error: a web page where a feed was asked for sends the feed reader back under the declared name.
+    const { servedPageForFeed } = await import("../pipeline/lib/feeds.mjs");
+    const typed = (t) => ({ headers: new Headers({ "content-type": t }) });
+    check(
+      "a web page answered for a feed is one; a feed or sitemap is not, whatever type its server gives it",
+      [
+        servedPageForFeed("<html>\n<head><title>Karnataka CM to meet Toyota</title>", typed("text/html; charset=UTF-8")),
+        servedPageForFeed('<!DOCTYPE html><html lang="en">', typed("")),
+        servedPageForFeed('<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', typed("text/xml")),
+        servedPageForFeed('<?xml version="1.0"?><rss version="2.0"><channel>', typed("text/html")),
+        servedPageForFeed('<feed xmlns="http://www.w3.org/2005/Atom">', typed("application/atom+xml")),
+      ],
+      [true, true, false, false, false],
+    );
+    const { askDeclared, declaredFor } = await import("../pipeline/lib/util.mjs");
+    askDeclared("https://www.moneycontrol.com/news/news-sitemap.xml");
+    check(
+      "a host that served a page for its feed is asked under the declared name for the rest of the run",
+      [declaredFor("https://www.moneycontrol.com/news/x.html"), agentHeaders("https://www.moneycontrol.com/news/x.html", h)["user-agent"] === DECLARED_AGENT, declaredFor("https://example.com/")],
+      [true, true, false],
+    );
     check(
       "Wikimedia, whose rules ask every automated reader for an address, is always sent the declared name; a caller's own name is left alone",
       [agentHeaders("https://commons.wikimedia.org/w/api.php", h)["user-agent"], agentHeaders("https://upload.wikimedia.org/x.jpg", h)["user-agent"], agentHeaders("https://ar.wikisource.org/wiki/x", h)["user-agent"], agentHeaders("https://example.com/", h)["user-agent"], agentHeaders("https://commons.wikimedia.org/", { "user-agent": "other/1.0" })["user-agent"]],

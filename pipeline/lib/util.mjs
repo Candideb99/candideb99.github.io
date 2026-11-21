@@ -57,6 +57,17 @@ export function agentHeaders(url, headers) {
 export function resetDeclaredHosts() {
   DECLARED_HOSTS.clear();
 }
+/** A host that answered the plain name with something other than what was asked (a web page for a feed, feeds.mjs) is
+ *  asked under the declared name from now on in this run. */
+export function askDeclared(url) {
+  const host = hostOf(url);
+  if (host) DECLARED_HOSTS.add(host);
+}
+/** Whether a host is asked under the declared name already (Wikimedia, or one that asked this run). */
+export function declaredFor(url) {
+  const host = hostOf(url);
+  return WIKIMEDIA.test(host) || DECLARED_HOSTS.has(host);
+}
 
 export function sha1(input) {
   return createHash("sha1").update(String(input)).digest("hex");

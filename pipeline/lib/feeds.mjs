@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import { USER_AGENT, canonicalUrl, fetchPublic, hoursSince, readCapped, safeIsoDate, stripHtml, truncate } from "./util.mjs";
+import { USER_AGENT, askDeclared, canonicalUrl, declaredFor, fetchPublic, hoursSince, readCapped, safeIsoDate, stripHtml, truncate } from "./util.mjs";
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -128,6 +128,14 @@ function normalizeItems(doc, zone) {
   return [];
 }
 
+/** A web page answered where a feed was asked for: HTML by its type or its opening, with no feed or sitemap element. */
+export function servedPageForFeed(raw, response) {
+  const head = String(raw ?? "").slice(0, 4000);
+  const type = String(response?.headers?.get?.("content-type") ?? "");
+  if (/<(?:rss|feed|rdf:RDF|urlset|sitemapindex)[\s>]/i.test(head)) return false;
+  return /text\/html/i.test(type) || /^\s*(?:<!doctype html|<html[\s>])/i.test(head);
+}
+
 /**
  * Fetches and normalizes one feed. Returns [] on any failure (the run must never
  * die because a single publisher is down). `onRead` hears, from a feed that answered and parsed, the date of its
@@ -142,24 +150,40 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     // not seen. Our reader still names itself; a reader asks no more than once an hour.
     const hour = new Date().toISOString().slice(0, 13).replace(/\D/g, "");
     const url = source.hourKey ? `${source.url}${source.url.includes("?") ? "&" : "?"}t=${hour}` : source.url;
-    const response = await fetchPublic(
-      url,
-      {
-        headers: {
-          "user-agent": USER_AGENT,
-          accept: "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.5",
+    const ask = () =>
+      fetchPublic(
+        url,
+        {
+          headers: {
+            "user-agent": USER_AGENT,
+            accept: "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.5",
+          },
+          redirect: "follow",
         },
-        redirect: "follow",
-      },
-      25000,
-    );
+        25000,
+      );
+    let response = await ask();
     if (!response.ok) {
       log(`feed ${source.id}: HTTP ${response.status}`);
       return [];
     }
     // Read only so far: a body past the cap is cut off as it arrives (readCapped()), never held whole first.
-    const { bytes, cut } = await readCapped(response, 8_000_000);
-    const raw = bytes.toString("utf8");
+    let { bytes, cut } = await readCapped(response, 8_000_000);
+    let raw = bytes.toString("utf8");
+    // A web page where a feed was asked for: Moneycontrol gives its news sitemap only to a reader that names itself a bot,
+    // and the plain name a story's page, 200 and no error (2026-11-21). The feed is asked for once more under the declared
+    // name (util.mjs), which this host then gets for the rest of the run.
+    if (servedPageForFeed(raw, response) && !declaredFor(url)) {
+      askDeclared(url);
+      response = await ask();
+      if (!response.ok) {
+        log(`feed ${source.id}: HTTP ${response.status} under the declared name`);
+        return [];
+      }
+      ({ bytes, cut } = await readCapped(response, 8_000_000));
+      raw = bytes.toString("utf8");
+      log(`feed ${source.id}: a web page under the plain name; read under the declared name`);
+    }
     if (cut || raw.length > 4_000_000) {
       log(`feed ${source.id}: oversized response`);
       return [];
