@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The picture desk, tested on cases whose right answer is known (260 checks), with scripted stand-ins for Claude, Wikimedia Commons,
+ * The picture desk, tested on cases whose right answer is known (261 checks), with scripted stand-ins for Claude, Wikimedia Commons,
  * the other libraries and the thumbnails: no model call, no network. Written 2026-09-28 after the owner asked for the
  * image engine to be stress-tested ("it might still be buggy"), so that the cascade's order, its place filter, the
  * repeat guard, its behaviour when a service fails, and the reading of accented names cannot regress unseen. The gate
@@ -2172,6 +2172,16 @@ const office = file("Staff at work in an open-plan office in London, England.jpg
     "Spain's gallery gives only its own photographers' landscape frames, never the agency's",
     [es.map((p) => p.artist), attributionLine(es[0] ?? {}), es[0]?.thumb.endsWith("?RenditionID=34")],
     [["Pool Moncloa/Fernando Calvo"], "Pool Moncloa/Fernando Calvo · Reuse authorised · الحكومة الإسبانية", true],
+  );
+  // Romania (reproduction authorised with the source): its photo section, read page by page.
+  const { parseGovRoList, parseGovRoPhotos, dayMonthYear } = await import("../pipeline/lib/official-photos.mjs");
+  const list = parseGovRoList(`<a href="https://gov.ro/en/media/photo/prime-minister-luca-niculescu-meets-the-president-of-the-united-states&amp;page=1">x</a><a href="https://gov.ro/en/media/photo/prime-minister-luca-niculescu-meets-the-president-of-the-united-states&amp;page=1">y</a>`);
+  const roEvent = { ...list[0], date: dayMonthYear("Published 19 Nov 2026, 14:00"), summary: list[0]?.title };
+  const ro = parseGovRoPhotos(`<img src="https://gov.ro/fisiere/galerie_foto/1795095832big_6.jpeg"><a href="https://gov.ro/fisiere/galerie_foto/1795095832original_6.jpeg">`, roEvent, byId.govro);
+  check(
+    "Romania's photo section: one event per page, titled with its capitals, dated, its original frame kept and its large copy judged",
+    [list.length, list[0]?.title, roEvent.date, ro.length, ro[0]?.thumb.includes("big_6"), attributionLine(ro[0] ?? {}), photoKey(ro[0]?.url) === photoKey(`/photos/handouts/${ro[0]?.stored}`), officialEventFits(roEvent, { source: byId.govro, draft: { title: "رومانيا والولايات المتحدة", tags: ["رومانيا", "الولايات المتحدة"] }, others: [] })],
+    [1, "Prime Minister Luca Niculescu Meets The President of The United States", "2026-11-19", 1, true, "Government of Romania · Reproduction authorised · الحكومة الرومانية", true, "it names United States"],
   );
 }
 

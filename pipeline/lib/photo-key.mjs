@@ -54,6 +54,8 @@ export function photoKey(url) {
   if (governo) return `governo:${governo[1]}`;
   const moncloa = u.match(/lamoncloa\.gob\.es\/multimedia\/fotos\/.*?\/([\w.-]+?)\.jpe?g/i) ?? u.match(/\/photos\/handouts\/official-moncloa-([\w.-]+?)\.jpg$/);
   if (moncloa) return `moncloa:${moncloa[1].toLowerCase()}`;
+  const govRo = u.match(/gov\.ro\/fisiere\/galerie_foto\/(\d+)(?:original|big|small)_(\d+)\.jpe?g/i) ?? u.match(/\/photos\/handouts\/official-govro-(\d+)-(\d+)\.jpg$/);
+  if (govRo) return `govro:${govRo[1]}-${govRo[2]}`;
   const flickrKept = u.match(/\/photos\/handouts\/official-flickr-(\d{9,12})\.jpg$/);
   if (flickrKept) return `flickr:${flickrKept[1]}`;
   const pexels =u.match(/images\.pexels\.com\/photos\/(\d+)\//i);

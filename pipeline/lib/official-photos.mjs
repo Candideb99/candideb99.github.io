@@ -461,6 +461,54 @@ async function moncloaPhotos(event, { read }) {
   return parseMoncloaPhotos(await read(event.url), event, MONCLOA_SOURCE);
 }
 
+// ---------------------------------------------------------------------------------------------------------------- Romania
+
+const GOV_RO = "https://gov.ro";
+/** «19 Nov 2026» as an ISO date, or null. */
+export function dayMonthYear(s) {
+  const m = String(s ?? "").match(/\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (20\d\d)\b/);
+  if (!m) return null;
+  const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].indexOf(m[2]) + 1;
+  return `${m[3]}-${String(month).padStart(2, "0")}-${m[1].padStart(2, "0")}`;
+}
+/** The event pages the photo section lists, newest first, titled by their own addresses. */
+export function parseGovRoList(html) {
+  const out = [];
+  for (const m of String(html ?? "").matchAll(/href="(https?:\/\/gov\.ro\/en\/media\/photo\/([a-z0-9-]+))(?:&amp;|&)page=1"/gi)) {
+    if (out.some((e) => e.url === m[1])) continue;
+    out.push({ id: m[1], url: m[1], title: m[2].split("-").map((w) => (w.length > 2 ? w[0].toUpperCase() + w.slice(1) : w)).join(" ") });
+  }
+  return out;
+}
+/**
+ * Romania's government (gov.ro: «Reproduction of materials from the site is authorized, indicating the source»): its photo
+ * section lists the prime minister's events, each page dated and holding its frames (galerie_foto/<n>original_<k>.jpeg, a
+ * «big» copy beside it). Its RSS links all lead to one page, so the section itself is read; six events at most.
+ */
+async function govRoEvents({ since, until, read, log = () => {} }) {
+  const out = [];
+  for (const e of parseGovRoList(await read(`${GOV_RO}/en/media/photo`)).slice(0, 6)) {
+    const html = await read(`${e.url}&page=1`);
+    const date = dayMonthYear(text(html));
+    if (within(date, since, until)) out.push({ ...e, date, place: "", summary: e.title, html });
+  }
+  log(`official: Romania's government lists ${out.length} event(s) from ${since} to ${until}`);
+  return out;
+}
+export function parseGovRoPhotos(html, event, source) {
+  const out = [];
+  const seen = new Set();
+  for (const m of String(html ?? "").matchAll(/https?:\/\/gov\.ro\/fisiere\/galerie_foto\/(\d+)original_(\d+)\.jpe?g/gi)) {
+    if (seen.has(m[0])) continue;
+    seen.add(m[0]);
+    out.push(candidate(source, event, { caption: event.title, summary: event.summary, url: m[0], thumb: m[0].replace("original_", "big_"), width: 1200, height: 800, key: `${m[1]}-${m[2]}`, artist: source.author }));
+  }
+  return out.slice(0, 10);
+}
+async function govRoPhotos(event, { read }) {
+  return parseGovRoPhotos(event.html ?? (await read(`${event.url}&page=1`)), event, GOV_RO_SOURCE);
+}
+
 // ----------------------------------------------------------------------------------------------------------------- Flickr
 
 /**
@@ -722,7 +770,31 @@ const MONCLOA_SOURCE = {
   photos: moncloaPhotos,
 };
 
-export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE, CASA_ROSADA_SOURCE, ECUADOR_SOURCE, GOVERNO_SOURCE, MONCLOA_SOURCE];
+/*
+ * The rest of the owner's list, read the same day: Greece (primeminister.gr: CC BY-ND 4.0, no derivatives), Morocco
+ * (maroc.ma: commercial use, reproduction or modification «sans notre consentement écrit est illicite»), the Netherlands
+ * (CC0 for text, but «almost no situations in which you are allowed to use visual materials»), Poland (gov.pl: photographs
+ * CC BY-NC-ND), Tunisia («جميع الحقوق محفوظة لرئاسة الجمهورية»), Oman (its terms grant no reuse); and no reuse statement
+ * the reader can find (a footer drawn by script, or none) for Algeria, Libya, Egypt, Iraq, Jordan, Lebanon, Yemen, Iran,
+ * Pakistan, Bangladesh, Kazakhstan, the Czech Republic, Bosnia, Serbia, Estonia, Lithuania, Ireland, Portugal, Kenya,
+ * Nigeria and the Philippines (several refuse the reader or fail their certificates).
+ */
+const GOV_RO_SOURCE = {
+  id: "govro",
+  office: "الحكومة الرومانية",
+  officeEn: "Romania's government",
+  author: "Government of Romania",
+  country: "Romania",
+  leaders: [{ name: "Luca Niculescu", ar: "نيكولسكو" }],
+  titles: ["رئيس الوزراء الروماني", "رئيس وزراء رومانيا", "الحكومة الرومانية"],
+  license: "Reproduction authorised",
+  licenseUrl: "https://gov.ro/en/legal-conditions",
+  checked: "2026-11-21: gov.ro/en/legal-conditions, «Reproduction of materials from the site is authorized, indicating the source … Restriction to reproduce materials from the site will be clearly indicated where appropriate»",
+  events: govRoEvents,
+  photos: govRoPhotos,
+};
+
+export const OFFICIAL_SOURCES = [WHITE_HOUSE_SOURCE, KREMLIN_SOURCE, KANTEI_SOURCE, PMINDIA_SOURCE, EC_SOURCE, CASA_ROSADA_SOURCE, ECUADOR_SOURCE, GOVERNO_SOURCE, MONCLOA_SOURCE, GOV_RO_SOURCE];
 
 /**
  * Offices built and licence-checked but not read. India's waited here for an hour on 2026-11-21: pmindia.gov.in answers

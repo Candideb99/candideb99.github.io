@@ -3069,7 +3069,11 @@ export function officialEventFits(event, { source, draft, others = [], events = 
   // country in the place rule (storyCountries()), which matched a Commission president's visit to Britain under a story
   // about Poland.
   const home = countriesByName(draft);
-  const country = recordCountries({ title: `${event?.title ?? ""} | ${event?.summary ?? ""}` }).found.find((c) => c !== source.country && home.has(c));
+  // An event names a country by its plain name or adjective too («Meets the President of the United States»), which the
+  // place rule leaves aside for a photograph's record.
+  const named = `${event?.title ?? ""} | ${event?.summary ?? ""}`;
+  const byName = (c) => [c, ...(DEMONYMS[c] ?? [])].some((n) => new RegExp(`(?<![A-Za-z])${escapeRe(n)}(?![A-Za-z])`, "i").test(named));
+  const country = [...recordCountries({ title: named }).found, ...[...home].filter(byName)].find((c) => c !== source.country && home.has(c));
   if (country) return `it names ${country}`;
   // The company whose own news the story is (findImage(): `imageCompany`): Argentina's president launching Tesla's
   // cars in Argentina is Tesla's story's occasion (casarosada.gob.ar, 2026-11-20).
