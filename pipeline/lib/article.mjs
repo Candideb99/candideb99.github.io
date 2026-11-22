@@ -89,6 +89,8 @@ export function serializeArticle({ draft, slug, section, sources, image, models,
     table: draft.table ?? null,
     // An explainer's worked example and diagram (lib/lesson.mjs), drawn by the site; nothing for other pieces.
     ...(draft.worked ? { worked: draft.worked } : {}),
+    // An idea piece's drawing of its idea's own time, when the newsroom chose one (lib/exhibit-desk.mjs, 2026-11-22).
+    ...(kind === "idea" && draft.exhibit ? { exhibit: draft.exhibit } : {}),
     ...(draft.diagram ? { diagram: draft.diagram } : {}),
     // An idea piece's record from the catalogue (lib/ideas.mjs ideaRecord): who, when, which field; the field map counts it.
     ...(kind === "idea" && idea ? { idea } : {}),

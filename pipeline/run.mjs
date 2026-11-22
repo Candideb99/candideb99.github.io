@@ -1150,6 +1150,14 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   const image = TEXT_ONLY || replace?.hasImage || photoFree(section) ? null : await pickImage({ draft: { ...draft, kind }, story, log, exclude: usedImages(existing), photoDir: HANDOUT_DIR });
   if (image?.url) RUN_IMAGES.add(image.url);
   const slug = replace?.slug ?? buildSlug(draft, { headlineHint });
+  // «من زمن الفكرة»: an idea piece whose idea has no drawing in the catalogue may get one the newsroom judges fits, most
+  // weeks none (lib/exhibit-desk.mjs; the owner, 2026-11-22: "only if it would fit or make sense"). Never a lost piece.
+  if (kind === "idea" && idea && !TEXT_ONLY && !draft.exhibit) {
+    const { findExhibit } = await import("./lib/exhibit-desk.mjs");
+    const exhibitDir = DRY_RUN ? (PREVIEW_DIR ? path.join(PREVIEW_DIR, "photos", "exhibits") : null) : path.join(root, "public", "photos", "exhibits");
+    const exhibit = await findExhibit({ draft, idea, slug, dir: exhibitDir, log });
+    if (exhibit) draft.exhibit = exhibit;
+  }
   let markdown = serializeArticle({
     pending: DRAFT,
     draft,

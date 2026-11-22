@@ -175,6 +175,25 @@ const articles = defineCollection({
         work: z.string().optional(),
       })
       .optional(),
+    /** An idea piece's drawing of its idea's own time chosen by the newsroom (pipeline/lib/exhibit-desk.mjs, 2026-11-22);
+        the catalogue's own drawing for the idea, when it has one, is printed first (pipeline/lib/exhibits.mjs). */
+    exhibit: z
+      .object({
+        file: z.string(),
+        width: z.number(),
+        height: z.number(),
+        kind: z.string().optional(),
+        title: z.string().optional(),
+        artist: z.string().optional(),
+        artistDied: z.number().optional(),
+        published: z.number(),
+        source: z.string(),
+        alt: z.string(),
+        caption: z.string(),
+        credit: z.string(),
+        chosenBy: z.string().optional(),
+      })
+      .optional(),
     /** "short": a short news story (150-250 words, no boxes; pipeline/lib/editorial.mjs SHORT_STORY), never the cover's lead. */
     format: z.enum(["full", "short"]).default("full"),
     publishedAt: isoString,

@@ -23,7 +23,7 @@ import { cardSizes, thumbnailUrl } from "@lib/wikimedia";
 import { safeHref } from "@lib/safe-url.mjs";
 import { hasPage } from "@lib/files";
 import { placeLessonParts } from "@lib/lesson-layout.mjs";
-import { exhibitOf } from "../../../pipeline/lib/exhibits.mjs";
+import { exhibitOf, printable } from "../../../pipeline/lib/exhibits.mjs";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -45,8 +45,9 @@ const ideaLabel = (d.idea?.economists.length ?? 0) > 1 ? "أصحاب الفكر�
 const ideaLine = d.kind === "idea" && d.idea?.economists.length
   ? `${d.idea.economists.map((e) => e.ar).join(" و")}${d.idea.year ? ` (${d.idea.year})` : ""}${d.idea.fieldName ? ` · ${d.idea.fieldName}` : ""}`
   : "";
-// …and a drawing of the idea's own time, from the catalogue by the piece's idea, never from the story (2026-11-22).
-const exhibit = d.kind === "idea" ? exhibitOf(d.idea?.id) : undefined;
+// …and a drawing of the idea's own time: the catalogue's for the piece's idea first, else the one the newsroom chose for
+// the piece (pipeline/lib/exhibit-desk.mjs), each printed only while its record passes printable() (2026-11-22).
+const exhibit = d.kind === "idea" ? exhibitOf(d.idea?.id) ?? (printable(d.exhibit) ? d.exhibit : undefined) : undefined;
 // Its figure and worked example print after the paragraph that leads into each (lib/lesson-layout.mjs), cut into the
 // body's rendered HTML; a part nothing leads into keeps its default place, the figure before the text, the example after.
 const lessonPieces = lesson && article.rendered?.html ? placeLessonParts(article.rendered.html, { diagram: d.diagram, worked: d.worked }) : null;
