@@ -108,6 +108,9 @@ const textLead = first && lead && !lead.data.image && beside.length > 0;
      changed shape twice in one screen (2026-11-22). */
   @media (max-width: 719px) {
     .section-page__beside :global(.card__summary) { display: none; }
-    .section-page__beside :global(.card--list .card__photo) { flex: 0 0 7.5rem; width: 7.5rem; }
+    /* Named twice so it outranks StoryCard's own list rule, which is printed later and had won: the thumbnails stayed
+       5.5rem squares over the rows' 7.5rem landscapes (found on the live pages the same day). */
+    .section-page .section-page__beside :global(.card--list .card__photo) { flex: 0 0 7.5rem; width: 7.5rem; }
+    .section-page .section-page__beside :global(.card--list .photo) { aspect-ratio: 16 / 9 !important; }
   }
 </style>
