@@ -1,0 +1,115 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-11-22T13:37:57.346Z",
+  "durationSec": 468,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟",
+      "section": "explainers",
+      "outcome": "published",
+      "mendedAfterReview": 3,
+      "mendIssues": [
+        "Most of the previous review's points are resolved: the text now defines quantity as the session's trading volume, separates the selling side from the buying side, explains liquidity in plain words, defines short selling at its first explanation, and fixes the bid-ask card. One inconsistency between the diagram and the text remains. The caption says the price settles «أعلى قليلاً مما كان سيبلغه دون حظر» with no qualification. The text, however, says the ban only «يبطئ النزول في اللحظة الأولى», and the Beber-Pagano and Boehmer-Jones-Zhang studies it cites found «أثره في دعم الأسعار غاب في معظم الحالات». The figure therefore suggests a lasting price support that the text itself denies. Fix: «…فيستقر السعر أدنى من قبل، وأعلى قليلاً في اللحظة الأولى مما كان سيبلغه دون حظر، مع صفقات أقل».",
+        "The diagram is placed in the third section (section: 3), «ماذا يفعل الحظر بالسوق نفسها؟». But the paragraph that explains what it shows is in the second section: «وهذا التغير انتقال لمنحنى الطلب… أما الحظر فيعمل على جانب العرض». The reader meets the explanation without the figure and the figure after the explanation. Fix: move the diagram to section 2.",
+        "The sentence «وإن تراجع حجمها تدريجياً» is ambiguous: it can be read as the concessive «وإنْ», meaning «even though». Source 1 says «لكن حجم هذه المبيعات يتراجع تدريجياً». Fix: «…صافي مبيعات منذ عدة جلسات، لكن حجمها يتراجع تدريجياً»."
+      ],
+      "slug": "taiwan-short-selling-ban-why-stocks-may-keep-falling-d364f9",
+      "title": "منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟",
+      "score": 8,
+      "image": "none"
+    }
+  ],
+  "llm": {
+    "calls": 11,
+    "failures": 0,
+    "promptTokens": 261554,
+    "completionTokens": 55511,
+    "cacheReadTokens": 81878,
+    "costUsd": 1.9664,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 11
+    },
+    "byRole": {
+      "editor": {
+        "calls": 2,
+        "in": 9963,
+        "read": 0,
+        "out": 1380,
+        "usd": 0.0674
+      },
+      "planner": {
+        "calls": 1,
+        "in": 26469,
+        "read": 0,
+        "out": 10253,
+        "usd": 0.3374
+      },
+      "writer": {
+        "calls": 3,
+        "in": 60163,
+        "read": 54624,
+        "out": 20764,
+        "usd": 0.727
+      },
+      "desk": {
+        "calls": 3,
+        "in": 34473,
+        "read": 27254,
+        "out": 13569,
+        "usd": 0.4492
+      },
+      "critic": {
+        "calls": 2,
+        "in": 48608,
+        "read": 0,
+        "out": 9545,
+        "usd": 0.3854
+      }
+    }
+  },
+  "log": [
+    "[13:37:57] newsroom start mode=explainer limit=4 dry-run=false",
+    "[13:38:11] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=804 in=6774 read=0 out=1301 attempt=1 ms=13111",
+    "[13:38:11] explainer question: منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟ (Supply and demand for shares: how short-selling bans affect liquidity and price discovery); opens on \"تايوان توسّع قيود البيع على المكشوف بعد أسوأ أسبوع لأسهمها منذ 1991\"",
+    "[13:39:49] llm ok role=planner provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3604 in=26469 read=0 out=10253 attempt=1 ms=97540",
+    "[13:39:49] explainer plan: سعر السهم يهبط لأن من يملكونه ومن كانوا سيشترونه خفّضوا تقديرهم لقيمته، والبائع على المكشوف واحد فقط من طرق التعبير عن هذا التقدير. لذلك يقيّد الحظر طريقة واحدة",
+    "[13:39:49]   plan step 1: يوحي العنوان بأن تايوان أغلقت باب البيع على المكشوف كله، والقارئ يحتاج أولاً إلى معرفة حدود ما أُغلق. → ما الذي منعته تايوان بالضبط؟",
+    "[13:39:49]   plan step 2: إذا كان الحظر يقيّد بائعاً واحداً ويترك الباقين أحراراً، فالسؤال هو: من يبيع الآن، ولماذا يقبل أسعاراً أدنى؟ → ما الذي يدفع الأسعار إلى الهبوط إن لم يكن البائعون على المكشوف؟",
+    "[13:39:49]   plan step 3: الحظر إذن لا يصل إلى مصدر الهبوط، لكنه يغيّر شيئاً في السوق. ويبقى أن نعرف هل يغيّره نحو الأفضل أم نحو الأسوأ. → ماذا يفعل تقييد البائعين على المكشوف بالسوق نفسها؟",
+    "[13:39:49]   plan leaves out: تحقيق هيئة الأوراق المالية والبورصات الأمريكية في محاسبة إنفيديا، وأزمة جنسن هوانغ وخروجه، وتحقيق كاليفورنيا: أسباب لهبو",
+    "[13:39:49]   plan leaves out: هبوط سهم إنفيديا 13.7% (أو 14%) وتراجعه 22% منذ بداية العام",
+    "[13:39:49]   plan leaves out: طرح «أنثروبيك» وتقلب سهمها في يومه الثاني، وطرح «سبيس إكس» وسنداتها لشراء رقائق إنفيديا",
+    "[13:39:49]   plan leaves out: فوز الديمقراطيين في انتخابات التجديد النصفي الأمريكية بوصفه سبباً للقلق",
+    "[13:39:49]   plan leaves out: دخول ستاندرد آند بورز 500 وداو جونز منطقة التصحيح، وتعريف التصحيح، وأداء الأسواق الأوروبية",
+    "[13:39:49]   plan leaves out: قول إد مويا إن وول ستريت تتحول إلى المطالبة بتدفقات نقدية أقوى: مغرٍ لكنه يكرر الخطوة الثانية برأي محلل، ولا يضيف إلى ال",
+    "[13:39:49]   plan leaves out: نمو الاقتصاد التايواني 14.4% في الربع الثالث وارتفاع طلبيات التصدير 78% في أكتوبر: يبدو ردّاً على التشاؤم، لكنه يُدخل جد",
+    "[13:39:49]   plan leaves out: رواية مقال ستاندرد آند بورز عن خسارة أسبوعية تتجاوز 17% وأكبر تراجع منذ 1990: تُعتمد أرقام المقال الأول عن تايوان (نحو 1",
+    "[13:41:04] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=5046 in=18708 read=18208 out=8832 attempt=1 ms=75972",
+    "[13:41:07] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=70 in=3189 read=0 out=79 attempt=1 ms=1943",
+    "[13:41:07] data chart: none fits this piece",
+    "[13:41:35] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=752 in=20480 read=0 out=3701 attempt=1 ms=27729",
+    "[13:41:35] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[13:41:35] desk \"منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟\": rewrote body",
+    "[13:41:35] checks explainer \"منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟\": 673 words, 0 issues, 0 warnings",
+    "[13:42:25] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3541 in=23267 read=0 out=5515 attempt=1 ms=50120",
+    "[13:42:25] critic explainer: revise score=8 issues=7",
+    "[13:42:25]   · قفزة وخطأ يعترض عليه المتخصص: يقول النص «ولأن عدد الأسهم ثابت في المدى القصير، يظهر الانتقال كله في سعر التداول»، أي أن العرض عمودي والكمية لا تتغير. لكن الرسم ",
+    "[13:42:25]   · قفزة في الجواب الأخير: تبدأ الفقرة الأخيرة بـ«الإجراءات تعمل على جانب البيع»، ثم تقول «ويضيف الصندوق... طلباً بمشترياته»، فتجعل مشتريات الصندوق، وهي طلب، مثالاً",
+    "[13:42:25]   · مجرد: جملة «لكنه يُخرج متعاملين يوفّرون السيولة، ومعهم مشترون مقبلون لن يحتاجوا إلى إغلاق مراكز لم يفتحوها» لا يتبعها قارئ بلا اقتصاد، فلم يُشرح «السيولة» ولا «",
+    "[13:42:25]   · النفي بدل الشرح: تتكرر صيغ النفي في مواضع الشرح، ومنها «فالهبوط لا يعني أن البائعين صاروا أكثر من المشترين. معناه…» و«والحظر لا يمسّ تلك التوقعات» و«ولا يكشف عم",
+    "[13:43:20] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3230 in=20411 read=18208 out=7336 attempt=1 ms=54838",
+    "[13:43:47] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=607 in=7038 read=13627 out=3737 attempt=1 ms=26512",
+    "[13:43:47] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[13:43:47] desk \"منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟\": rewrote body",
+    "[13:44:25] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3302 in=25341 read=0 out=4030 attempt=1 ms=38591",
+    "[13:44:25] critic (second pass) explainer: revise score=8",
+    "[13:44:57] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=473 in=21044 read=18208 out=4596 attempt=1 ms=31782",
+    "[13:45:45] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2722 in=6955 read=13627 out=6131 attempt=1 ms=47928",
+    "[13:45:45] desk model=claude-cli/claude-opus-5-5 applied=[title,body] rejected=[]",
+    "[13:45:45] desk \"حظرت تايوان البيع على المكشوف دون سعر الإغلاق، فلماذا قد لا يتوقف هبوط أسهمها؟\": rewrote title, body",
+    "[13:45:45] mended explainer \"منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟\": the second pass's 3 finding(s) sent back once more",
+    "[13:45:45] published explainer \"منعت تايوان البيع على المكشوف، فلماذا قد لا يتوقف هبوط أسهمها؟\" -> taiwan-short-selling-ban-why-stocks-may-keep-falling-d364f9"
+  ]
+}
