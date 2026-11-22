@@ -622,6 +622,45 @@ check(
     [prompt.includes("PLACES WITH NO STORY LATELY"), prompt.includes("المغرب العربي (5 days)"), prompt.includes("THE WEIGHTS"), prompt.includes('"rotation"'), prompt.includes('"tie":"<arab|direct|global|none>"'), answer.stories.map((s) => s.rotation), answer.stories.map((s) => s.tie)],
     [true, true, true, true, true, ["", "أفريقيا جنوب الصحراء"], ["global", ""]]);
 }
+// The business of sport (the owner, 2026-11-22: no sports section, "cover the business of sport inside the existing
+// sections"): the editor takes it as business and marks it, code runs one a run and two in 24 hours, and the sources
+// that carry it are read.
+{
+  const { SPORT_LIMITS, sportCap, selectStories } = await import("../pipeline/lib/select.mjs");
+  const pick = (headlineHint, importance, sport = false, rotation = "") => ({ ids: [headlineHint], section: "companies", importance, headlineHint, sport, rotation });
+  const club = pick("صندوق سعودي يشتري حصة في ناد إنجليزي", 8, true);
+  const rights = pick("صفقة حقوق بث بمليار دولار", 7, true);
+  const bank = pick("أرباح بنك ترتفع", 7);
+  const rate = pick("المركزي يثبت الفائدة", 6);
+  const far = pick("أجور إندونيسيا", 6, false, "جنوب شرق آسيا وأستراليا");
+  const weak = pick("خبر صغير", 5);
+  const cap = (args) => { const r = sportCap({ runLimit: 3, minImportance: 6, ...args }); return [r.chosen.map((s) => s.headlineHint), r.dropped.map((s) => s.headlineHint)]; };
+  check("one story on the business of sport a run: the weaker one gives its place to the next story that is not sport, never to a rotation story or one under the bar",
+    cap({ chosen: [club, rights, bank], stories: [club, rights, bank, far, weak, rate] }), [[club.headlineHint, bank.headlineHint, rate.headlineHint], [rights.headlineHint]]);
+  check("…and with nothing else worthy the run is a story shorter", cap({ chosen: [club, rights], stories: [club, rights, weak] }), [[club.headlineHint], [rights.headlineHint]]);
+  check("a run with one sport story, or none, is left as it is", [cap({ chosen: [club, bank], stories: [club, bank, rate] }), cap({ chosen: [bank, rate], stories: [bank, rate] })],
+    [[[club.headlineHint, bank.headlineHint], []], [[bank.headlineHint, rate.headlineHint], []]]);
+  check("after the day's two, no sport story runs", [SPORT_LIMITS.day, cap({ chosen: [club, bank], stories: [club, bank, rate], today: 2 })], [2, [[bank.headlineHint, rate.headlineHint], [club.headlineHint]]]);
+  let prompt = "";
+  const answer = await selectStories({
+    candidates: [{ id: "c1", title: "t", sourceNameEn: "Sportcal", reliability: 2, kind: "news", lang: "en", publishedAt: new Date().toISOString() }, { id: "c2", title: "k", sourceNameEn: "BBC", reliability: 2, kind: "news", lang: "en", publishedAt: new Date().toISOString() }],
+    recentTitles: [], sections: JSON.parse(readFileSync("src/data/sections.json", "utf8")), limit: 2, log: () => {},
+    chatWith: async ({ user, validate }) => {
+      prompt = user;
+      const data = { stories: [{ ids: ["c1"], section: "companies", importance: 7, angle: "a", headline_hint: "ه", sport: true }, { ids: ["c2"], section: "economy", importance: 7, angle: "a", headline_hint: "و", sport: "false" }] };
+      validate(data);
+      return { data, model: "stand-in" };
+    },
+  });
+  check("the editor is told to take the business of sport as business, no longer to skip it, where it is filed, and marks it",
+    [prompt.includes("THE BUSINESS OF SPORT"), /lifestyle, sports business,/.test(prompt), prompt.includes('"sport":'), /The business of sport files here/.test(prompt), /hosting a tournament costs or earns a state is economy/.test(prompt), answer.stories.map((s) => s.sport)],
+    [true, false, true, true, true, [true, false]]);
+  const feeds = JSON.parse(readFileSync("pipeline/sources.json", "utf8")).sources;
+  const aleqt = feeds.find((s) => s.id === "aleqt");
+  check("Al Eqtisadiah's sport section, which is the business of sport, is read; its culture and opinion are not",
+    ["https://www.aleqt.com/الرياضة/x", "https://www.aleqt.com/الرأي/x"].map((u) => new RegExp(aleqt.excludePath).test(u)), [false, true]);
+  check("a sports-business outlet stands beside it, so such a story has two", feeds.some((s) => s.id === "sportcal" && !s.disabled), true);
+}
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
   [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],

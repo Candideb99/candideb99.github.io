@@ -27,7 +27,7 @@ import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
-import { newsSectionsOf, quietPlaces, rotationSwap, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
+import { SPORT_LIMITS, newsSectionsOf, quietPlaces, rotationSwap, sportCap, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
 import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
@@ -884,7 +884,14 @@ async function runNews(report) {
     chosen.push(rotation.pick);
     log(`rotation: ${rotation.place.name} has had no story for ${Number.isFinite(rotation.place.days) ? `${Math.floor(rotation.place.days)} days` : "as long as the record runs"}; "${rotation.pick.headlineHint}" [${rotation.pick.importance}] added`);
   }
-  for (const s of stories) log(`  [${s.importance}] ${s.section}${s.tie ? ` (${s.tie})` : ""} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : s.rotation ? ` (rotation for ${s.rotation}: not run)` : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
+  // The business of sport takes one story a run and SPORT_LIMITS.day in 24 hours (select.mjs, the owner, 2026-11-22):
+  // the newsroom writes about three stories a run, and sport is not to take the economy's places. Counted from the
+  // items a published sport story was written from (markItems below).
+  const sportToday = new Set(Object.values(state.items).filter((i) => i.sport && i.decision === "published" && hoursSince(i.at) < 24).map((i) => i.slug)).size;
+  const capped = sportCap({ chosen, stories, runLimit, minImportance: MIN_IMPORTANCE, today: sportToday });
+  for (const s of capped.dropped) log(`sport: "${s.headlineHint}" (${s.importance}) waits: one story on the business of sport a run, ${SPORT_LIMITS.day} in 24 hours (${sportToday} so far)`);
+  chosen = capped.chosen;
+  for (const s of stories) log(`  [${s.importance}] ${s.section}${s.tie ? ` (${s.tie})` : ""}${s.sport ? " (sport)" : ""} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : capped.dropped.includes(s) ? " (sport: over its limit)" : s.rotation ? ` (rotation for ${s.rotation}: not run)` : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;
   const publishedTitles = [...recentTitles];
@@ -901,6 +908,7 @@ async function runNews(report) {
         markItems(state, result.items, "rejected");
       } else {
         markItems(state, result.items, "published", result.slug);
+        if (story.sport) for (const item of result.items) state.items[fingerprint(item.url)].sport = true;
         publishedTitles.push(result.title);
         published += 1;
         if (result.pairing && inPairSample(result.pairing.story)) await evidencePair(result.pairing);
