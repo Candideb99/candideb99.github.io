@@ -150,10 +150,12 @@ export function writeOrder(chosen, first = new Set()) {
  * The editor's reading list within a size it can read (2026-11-22, the owner: "the news room could be overwhelmed").
  * The list grew with every batch of feeds: 600 candidates in October, 1,173 on 21 November, when it was 164,000 tokens
  * of one call. A candidate's line is its headline (140 characters) and its feed summary (220), so a day of long
- * summaries could run a quarter past that with nothing to stop it, and a list the model cannot take fails the whole
- * round, on the busiest day. Measured that day: 1,045 items made 288,000 characters (about two characters a token), a
- * full list at the day's mean 323,000, at the longest lines 497,000. Past CANDIDATE_CHARS, above an ordinary full list,
- * the summaries are shortened for every candidate alike, then left out; no candidate is dropped and no headline cut.
+ * summaries could run half as long again with nothing to stop it. Measured that day: 1,045 items made 288,000
+ * characters (about two characters a token), a full list at the day's mean 323,000, at the longest lines 497,000. The
+ * model itself would still read that: asked the same day with a list far too long, the Claude CLI answered «Prompt is
+ * too long … (limit 1000000)», a million tokens, four times the longest list. So this bounds what a round's first call
+ * costs and how long it takes, not whether it runs. Past CANDIDATE_CHARS, above an ordinary full list, the summaries
+ * are shortened for every candidate alike, then left out; no candidate is dropped and no headline cut.
  */
 export const CANDIDATE_CHARS = 360_000;
 
