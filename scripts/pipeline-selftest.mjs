@@ -661,6 +661,53 @@ check(
     ["https://www.aleqt.com/الرياضة/x", "https://www.aleqt.com/الرأي/x"].map((u) => new RegExp(aleqt.excludePath).test(u)), [false, true]);
   check("a sports-business outlet stands beside it, so such a story has two", feeds.some((s) => s.id === "sportcal" && !s.disabled), true);
 }
+// What the newsroom lost in the rounds of 15-21 November (the owner, 2026-11-22: "the weight setting of how important each
+// news is might be buggy ... the news room could be overwhelmed"): the editor's 8s thrown away for one sentence, a
+// balance's pick written last, and a reading list with no bound on its size.
+{
+  const { cutFaultySentences } = await import("../pipeline/lib/verify.mjs");
+  const { writeOrder, candidateLines, CANDIDATE_CHARS, selectStories } = await import("../pipeline/lib/select.mjs");
+  // A stand-in for the checks: a sentence naming a channel is a fault, a sentence of more than twelve words is another, and a body under four sentences is too short.
+  const sentences = (d) => String(d.body).split("\n").filter((l) => l.trim() && !l.startsWith("#")).join(" ").split(/(?<=\.)\s+/).filter(Boolean);
+  const recheck = (d) => {
+    const s = sentences(d);
+    const issues = [...(s.some((x) => x.includes("قناة")) ? ["وسيلة إعلام عربية مذكورة"] : []), ...(s.some((x) => x.split(/\s+/).length > 12) ? ["جمل طويلة جداً"] : []), ...(s.length < 4 ? ["قصير جداً"] : [])];
+    return { ok: !issues.length, issues };
+  };
+  const body = (extra = "") => `ارتفع السعر اليوم. وقال الوزير إن الإنتاج مستقر.\n\n## ردود\n\nوقال مراسل قناة إخبارية إن الحوادث تتكرر. وهذه الحوادث رفعت كلفة التأمين.\n\nوتراجعت الشحنات هذا الشهر. وأغلق الميناء أبوابه. ${extra}`.trim();
+  const draft = { title: "ع", lede: "مقدمة تسمي قناة ولا تُمس.", body: body() };
+  const one = cutFaultySentences(draft, recheck(draft), recheck);
+  check("a story held back by one sentence loses that sentence, and the one after it that points back, never its lede",
+    [one?.checks.ok, one?.cut.length, /قناة/.test(one?.draft.body ?? "قناة"), /وهذه الحوادث/.test(one?.draft.body ?? "وهذه الحوادث"), one?.draft.lede, /## ردود/.test(one?.draft.body ?? "")],
+    [true, 1, false, false, draft.lede, true]);
+  const orphan = { ...draft, body: "ارتفع السعر اليوم. وقال الوزير إن الإنتاج مستقر. وتراجعت الشحنات هذا الشهر. وأغلق الميناء أبوابه.\n\n## ردود\n\nوقال مراسل قناة إخبارية إن الحوادث تتكرر." };
+  check("a subhead left over nothing goes with its section; one that still heads a paragraph stays",
+    [/## ردود/.test(cutFaultySentences(orphan, recheck(orphan), recheck)?.draft.body ?? "## ردود"), /## ردود/.test(one?.draft.body ?? "")], [false, true]);
+  const pointing = { ...draft, body: "ارتفع السعر اليوم. وقال الوزير إن الإنتاج مستقر. وتراجعت الشحنات هذا الشهر. وزادت كلفة التأمين. وأغلق الميناء أبوابه. وهذا ما أكده مراسل قناة إخبارية." };
+  check("the smallest cut that clears the fault: a sound sentence stays though the faulty one after it points back at it",
+    [cutFaultySentences(pointing, recheck(pointing), recheck)?.cut, /وأغلق الميناء أبوابه/.test(cutFaultySentences(pointing, recheck(pointing), recheck)?.draft.body ?? "")], [["وهذا ما أكده مراسل قناة إخبارية."], true]);
+  const long = "وأضافت الشركة أن النتائج جاءت أعلى من المتوقع في كل الأسواق التي تعمل فيها منذ بداية العام الحالي.";
+  const two = { ...draft, body: body(long) };
+  check("two faults in two sentences are both cut; three are not, and the story is left as it was",
+    [cutFaultySentences(two, recheck(two), recheck)?.cut.length, cutFaultySentences({ ...two, body: `${two.body} ${long}` }, recheck({ ...two, body: `${two.body} ${long}` }), recheck, { max: 1 })], [2, null]);
+  const thin = { ...draft, body: "ارتفع السعر اليوم. وقال مراسل قناة إخبارية إن الحوادث تتكرر. وتراجعت الشحنات. وأغلق الميناء." };
+  check("a cut that would leave the story under its floor is not made", cutFaultySentences(thin, recheck(thin), recheck), null);
+  const s = (headlineHint, importance) => ({ headlineHint, importance });
+  const [lead, mid, weak, arab, quiet] = [s("lead", 8), s("mid", 7), s("weak", 6), s("arab", 5), s("quiet", 5)];
+  check("the lead is written first, then what a balance brought in, then the rest by importance; a rotation story keeps its rank",
+    [writeOrder([lead, mid, weak, quiet, arab], new Set([arab])).map((x) => x.headlineHint), writeOrder([mid, lead]).map((x) => x.headlineHint), writeOrder([])],
+    [["lead", "arab", "mid", "weak", "quiet"], ["lead", "mid"], []]);
+  const many = Array.from({ length: 1173 }, (_, i) => ({ id: `c${i + 1}`, title: "ع".repeat(140), summary: "م".repeat(400), sourceNameEn: "Asharq Business", reliability: 3, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }));
+  const size = (lines) => lines.reduce((n, l) => n + l.length + 1, 0);
+  const few = many.slice(0, 600);
+  check("the editor's list stays within its size on the fullest day: summaries shortened for all alike, no candidate dropped, no headline cut; an ordinary list is untouched",
+    [size(candidateLines(many)) <= CANDIDATE_CHARS, candidateLines(many).length, candidateLines(many).every((l) => l.includes("ع".repeat(140))), size(candidateLines(many, Infinity)) > CANDIDATE_CHARS, candidateLines(few).join("\n") === candidateLines(few, Infinity).join("\n")],
+    [true, 1173, true, true, true]);
+  let prompt = "";
+  await selectStories({ candidates: many, recentTitles: [], sections: [{ id: "economy", name: "الاقتصاد", description: "" }], limit: 1, log: () => {},
+    chatWith: async ({ user, validate }) => { prompt = user; const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه" }] }; validate(data); return { data, model: "stand-in" }; } });
+  check("…and that is the list the editor is sent", [prompt.length < CANDIDATE_CHARS + 30000, prompt.includes("[c1173]")], [true, true]);
+}
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
   [macroMarketOf("مصرف الإمارات المركزي يخفض الفائدة"), macroMarketOf("مصرف قطر المركزي يبقي الفائدة"), macroMarketOf("المركزي المصري يرفع الفائدة")],

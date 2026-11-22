@@ -27,10 +27,10 @@ import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
-import { SPORT_LIMITS, newsSectionsOf, quietPlaces, rotationSwap, sportCap, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
+import { SPORT_LIMITS, newsSectionsOf, quietPlaces, rotationSwap, sportCap, writeOrder, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
-import { critique, CUTTABLE, cutToSources, programmaticChecks } from "./lib/verify.mjs";
+import { critique, CUTTABLE, cutFaultySentences, cutToSources, programmaticChecks } from "./lib/verify.mjs";
 import { READOUT, readoutRoute, structural } from "./lib/style.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
@@ -330,6 +330,22 @@ async function lastDeskPass(draft, checks, { sources, kind = "news", recheck, mi
 }
 
 /**
+ * The sentence cut (lib/verify.mjs cutFaultySentences): a draft the last desk pass could not clear of a fault of the
+ * desk's trade loses the sentence that carries it, in code, instead of the whole story (2026-11-22: three of the four
+ * stories lost in a week were the editor's 8s, each for one sentence). Never for a writer's fault, as the desk pass.
+ */
+function sentenceCut(draft, checks, { recheck }) {
+  if (checks.ok || checks.issues.some((i) => WRITERS_FAULT.test(i))) return { draft, checks };
+  const cut = cutFaultySentences(draft, checks, recheck);
+  if (!cut) {
+    log("sentence cut: no one or two sentences of the body clear the faults");
+    return { draft, checks };
+  }
+  log(`sentence cut: ${cut.cut.length} sentence(s) removed (${cut.cut.map((s) => `«${s.slice(0, 50)}…»`).join(" ")}); clean`);
+  return { draft: cut.draft, checks: cut.checks, removed: cut.cut.length };
+}
+
+/**
  * The newsroom's lessons (lib/lessons.mjs), learned from the mistakes the second look proved and the corrections editor
  * corrected: read once a news run, handed to the desk notes, the writer and the reviser, and named in each story's
  * `models.lessons`, so the second look can tell the stories written with them from the rest (2026-09-25).
@@ -579,6 +595,9 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
     if (cut.removed) entry.lastCut = cut.removed;
     ({ draft, checks } = cut);
     ({ draft, checks } = await lastDeskPass(draft, checks, { sources, minWords, recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) }));
+    const trimmed = sentenceCut(draft, checks, { recheck: (d) => programmaticChecks(d, sources, { recentTitles, minWords }) });
+    if (trimmed.removed) entry.sentenceCut = trimmed.removed;
+    ({ draft, checks } = trimmed);
     if (!checks.ok) {
       await checkpoint("rejected-checks", { finalDraft: draft, checks });
       entry.outcome = `rejected after revision: ${checks.issues.join(" | ")}`;
@@ -634,6 +653,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
         if (!mendedChecks.ok) {
           ({ draft: mended, checks: mendedChecks } = lastCut(mended, mendedChecks, { sources, recheck }));
           ({ draft: mended, checks: mendedChecks } = await lastDeskPass(mended, mendedChecks, { sources, minWords: mendFloor, recheck }));
+          ({ draft: mended, checks: mendedChecks } = sentenceCut(mended, mendedChecks, { recheck }));
         }
         if (mendedChecks.ok) {
           draft = mended;
@@ -840,6 +860,8 @@ async function runNews(report) {
   const sectionIds = sections.map((x) => (typeof x === "string" ? x : x.id));
   // The stories a balance brought in: the rotation, a tie-breaker, never undoes one.
   const balanced = new Set();
+  // …and the ones a balance owes the run a place for (the section's and the Arab world's): writeOrder() below.
+  const owed = new Set();
   const starved = SECTIONS.length ? [] : sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
   for (const sec of starved) {
     const pick = stories.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
@@ -852,6 +874,7 @@ async function runNews(report) {
     }
     chosen.push(pick);
     balanced.add(pick);
+    owed.add(pick);
     log(`section balance: ${sec} has had nothing for three days; "${pick.headlineHint}" [${pick.importance}] added`);
   }
   // Region balance: our readers live in the Gulf, Egypt and the Maghreb, and their own economies come first
@@ -870,6 +893,7 @@ async function runNews(report) {
         chosen.splice(chosen.indexOf(elsewhere), 1, pick);
         log(`region balance: "${elsewhere.headlineHint}" (${elsewhere.importance}) gives way`);
       }
+      if (chosen.includes(pick)) owed.add(pick);
       if (chosen.includes(pick)) log(`region balance: ${arabToday} Gulf, Egyptian or Maghreb stories in 24 hours; "${pick.headlineHint}" [${pick.importance}] added`);
     }
   }
@@ -890,7 +914,9 @@ async function runNews(report) {
   const sportToday = new Set(Object.values(state.items).filter((i) => i.sport && i.decision === "published" && hoursSince(i.at) < 24).map((i) => i.slug)).size;
   const capped = sportCap({ chosen, stories, runLimit, minImportance: MIN_IMPORTANCE, today: sportToday });
   for (const s of capped.dropped) log(`sport: "${s.headlineHint}" (${s.importance}) waits: one story on the business of sport a run, ${SPORT_LIMITS.day} in 24 hours (${sportToday} so far)`);
-  chosen = capped.chosen;
+  // The order they are written in: the run's budget drops the last ones (8 of 55 picks in the rounds of 15-21 November,
+  // most never chosen again), and a balance's pick, pushed onto the end, would be the first to go.
+  chosen = writeOrder(capped.chosen, owed);
   for (const s of stories) log(`  [${s.importance}] ${s.section}${s.tie ? ` (${s.tie})` : ""}${s.sport ? " (sport)" : ""} — ${s.headlineHint} (${s.ids.join(",")})${chosen.includes(s) ? "" : capped.dropped.includes(s) ? " (sport: over its limit)" : s.rotation ? ` (rotation for ${s.rotation}: not run)` : s.importance < MIN_IMPORTANCE ? " (below threshold)" : " (deferred: over limit)"}`);
 
   let published = 0;

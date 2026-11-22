@@ -273,6 +273,52 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   return { ok: issues.length === 0, issues, warnings, metrics: { arabicRatio: ratio, words, latin: latin.length } };
 }
 
+/**
+ * The sentence cut, the last thing tried before a revised news draft is thrown away for the desk's own trade (the
+ * owner, 2026-11-22: "i am also worried that the weight setting of how important each news is might be buggy"). It was
+ * not the ranking: of the four stories lost in the rounds of 15-21 November, three were the editor's 8s, each rejected
+ * after revision for ONE sentence the last desk pass had not mended (a sentence over the length limit in the Nikkei
+ * rout, a correspondent's outlet named in the Hormuz tanker attack, passages too close to an Arabic source in the Fed's
+ * minutes), after the notes, the writer, the desk, the critic and the revision had been paid for, while the 6s beside
+ * them ran. A sub-editor cuts the sentence and runs the story. In code, without a model: each sentence of the body in
+ * turn is left out (with the sentences after it that point back at it, util.mjs refersBack) and the checks run again;
+ * the cut that clears the most faults is kept, twice at most, and only a draft that then passes every check (its word
+ * floor among them) is returned. Never the lede, a subhead or a table row; a subhead left over nothing goes with its
+ * section. The critic's second pass and the check before publication read the cut story as they read any other.
+ * Returns { draft, checks, cut: [the sentences removed] } or null.
+ */
+export function cutFaultySentences(draft, checks, recheck, { max = 2 } = {}) {
+  const notProse = (line) => /^\s*(?:#|\|)/.test(line) || !line.trim();
+  // A subhead with no paragraph left under it is dropped.
+  const tidy = (lines) => lines.filter((line, i) => !(/^\s*#/.test(line) && (lines.slice(i + 1).find((l) => l.trim()) ?? "#").trimStart().startsWith("#"))).join("\n").replace(/\n{3,}/g, "\n\n").trim();
+  let current = { draft, checks };
+  const cut = [];
+  for (let round = 0; round < max && !current.checks.ok; round++) {
+    const lines = String(current.draft.body ?? "").split("\n");
+    let best = null;
+    for (let li = 0; li < lines.length; li++) {
+      if (notProse(lines[li])) continue;
+      const units = sentenceUnits(lines[li]);
+      for (let si = 0; si < units.length; si++) {
+        let end = si + 1;
+        while (end < units.length && refersBack(units[end])) end++;
+        const removed = units.slice(si, end).join(" ");
+        const rest = [...units.slice(0, si), ...units.slice(end)].join(" ").trimEnd();
+        const candidate = { ...current.draft, body: tidy([...lines.slice(0, li), rest, ...lines.slice(li + 1)]) };
+        const again = recheck(candidate);
+        if (again.issues.length >= current.checks.issues.length) continue;
+        // The cut that clears the most faults, and of those the smallest: a sound sentence before a faulty one that
+        // points back at it would take both, where the faulty one alone is enough.
+        if (!best || again.issues.length < best.checks.issues.length || (again.issues.length === best.checks.issues.length && removed.length < best.removed.length)) best = { draft: candidate, checks: again, removed };
+      }
+    }
+    if (!best) break;
+    cut.push(best.removed);
+    current = { draft: best.draft, checks: best.checks };
+  }
+  return cut.length && current.checks.ok ? { ...current, cut } : null;
+}
+
 /** The faults the last cut can take out of a revised news draft (cutToSources below). */
 export const CUTTABLE = /أرقام لا تظهر في المصادر|خبر ثانٍ ملحق بالخبر/;
 

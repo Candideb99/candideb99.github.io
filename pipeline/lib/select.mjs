@@ -134,15 +134,46 @@ export function sportCap({ chosen, stories, runLimit, minImportance, today = 0 }
   return { chosen: [...kept, ...next.slice(0, Math.max(0, runLimit - kept.length))], dropped };
 }
 
+/**
+ * The order a run writes its stories in (2026-11-22). A run stops taking stories after its budget of minutes, so the
+ * last ones wait, and in the rounds of 15-21 November most that waited were never chosen again. By importance, the
+ * editor's order among equals; but a story a balance brought in (`first`: a section with nothing in three days, the
+ * Arab world's story of the run) was pushed onto the end and would be the first to go, undoing the balance: those are
+ * written right after the lead. A rotation story is a tie-breaker and keeps its own rank.
+ */
+export function writeOrder(chosen, first = new Set()) {
+  const [lead, ...rest] = [...chosen].sort((a, b) => b.importance - a.importance);
+  return lead ? [lead, ...rest.filter((s) => first.has(s)), ...rest.filter((s) => !first.has(s))] : [];
+}
+
+/**
+ * The editor's reading list within a size it can read (2026-11-22, the owner: "the news room could be overwhelmed").
+ * The list grew with every batch of feeds: 600 candidates in October, 1,173 on 21 November, when it was 164,000 tokens
+ * of one call. A candidate's line is its headline (140 characters) and its feed summary (220), so a day of long
+ * summaries could run a quarter past that with nothing to stop it, and a list the model cannot take fails the whole
+ * round, on the busiest day. Measured that day: 1,045 items made 288,000 characters (about two characters a token), a
+ * full list at the day's mean 323,000, at the longest lines 497,000. Past CANDIDATE_CHARS, above an ordinary full list,
+ * the summaries are shortened for every candidate alike, then left out; no candidate is dropped and no headline cut.
+ */
+export const CANDIDATE_CHARS = 360_000;
+
+export function candidateLines(candidates, budget = CANDIDATE_CHARS) {
+  for (const room of [220, 150, 90, 40]) {
+    const lines = candidates.map((c) => formatCandidate(c, room));
+    if (lines.reduce((n, l) => n + l.length + 1, 0) <= budget) return lines;
+  }
+  return candidates.map((c) => formatCandidate(c, 0));
+}
+
 const daysLabel = (days) => (Number.isFinite(days) ? `${Math.floor(days)} days` : "none on record");
 
-function formatCandidate(c) {
+function formatCandidate(c, summaryChars = 220) {
   const age = Number.isFinite(hoursSince(c.publishedAt)) ? `${Math.round(hoursSince(c.publishedAt))}h` : "?";
   const tier = c.reliability === 3 ? "A" : c.reliability === 2 ? "B" : "C";
   // An outlet running another's reporting is named with it, so a cluster of the two is seen as one outlet.
   const origin = reportingOrigin(c);
   const outlet = origin && origin !== c.sourceNameEn ? `${c.sourceNameEn}, ${origin}'s reporting` : c.sourceNameEn;
-  return `[${c.id}] (${outlet}; tier ${tier}; ${c.kind}; ${c.lang}; ${age} ago) ${truncate(c.title, 140)}${c.summary ? ` — ${truncate(c.summary, 220)}` : ""}`;
+  return `[${c.id}] (${outlet}; tier ${tier}; ${c.kind}; ${c.lang}; ${age} ago) ${truncate(c.title, 140)}${c.summary && summaryChars ? ` — ${truncate(c.summary, summaryChars)}` : ""}`;
 }
 
 /**
@@ -182,7 +213,7 @@ export async function selectStories({ candidates, recentTitles, recent = null, s
   const user = `Today is ${new Date().toISOString().slice(0, 10)} (UTC).
 
 CANDIDATE ITEMS from the last hours (one per line; tier A = official institution or top-tier outlet):
-${candidates.map(formatCandidate).join("\n")}
+${candidateLines(candidates).join("\n")}
 
 STORIES ALREADY PUBLISHED RECENTLY (do not select stories that merely repeat these; a genuinely new development is fine):
 ${publishedLines.length ? publishedLines.join("\n") : "- (none)"}
