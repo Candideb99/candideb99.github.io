@@ -480,21 +480,31 @@
       "read": 3,
       "confirmedPerStory": 0,
       "photosPending": 0
+    },
+    {
+      "date": "2026-11-22",
+      "published": 1,
+      "news": 0,
+      "styleFaultsPerStory": null,
+      "corrections": 0,
+      "read": 1,
+      "confirmedPerStory": 0,
+      "photosPending": 0
     }
   ],
-  "updatedAt": "2026-11-21T15:32:31.879Z",
+  "updatedAt": "2026-11-22T15:28:25.042Z",
   "week": {
-    "published": 60,
-    "news": 51,
+    "published": 46,
+    "news": 38,
     "revisedShare": 1,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.27,
-    "corrections": 1,
+    "styleWarningsPerStory": 0.21,
+    "corrections": 0,
     "usefulness": {
       "withLessons": {
-        "stories": 44,
-        "words": 428,
-        "keyFacts": 3.3
+        "stories": 31,
+        "words": 451,
+        "keyFacts": 3.4
       },
       "control": {
         "stories": 6,
@@ -503,35 +513,35 @@
       }
     },
     "precheck": {
-      "checked": 57,
-      "clean": 54,
-      "repaired": 2,
+      "checked": 43,
+      "clean": 42,
+      "repaired": 0,
       "held": 1,
-      "errorsFound": 3,
+      "errorsFound": 1,
       "unsourcedCut": 1,
       "heldTitles": [
         "وكالة الطاقة الدولية: استهلاك مراكز البيانات للكهرباء قد يتضاعف بحلول 2030"
       ]
     },
     "outcomes": {
-      "repairedBeforePublication": 2,
-      "correctionsVerifiedClean": 1,
+      "repairedBeforePublication": 0,
+      "correctionsVerifiedClean": 0,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 1,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 21,
-      "clean": 13,
-      "corrected": 1,
+      "read": 14,
+      "clean": 10,
+      "corrected": 0,
       "stands": 0,
       "refused": 0,
-      "listed": 7,
+      "listed": 4,
       "unverifiable": 0,
-      "confirmedPerStory": 0.05,
+      "confirmedPerStory": 0,
       "withLessons": {
-        "read": 17,
-        "confirmedPerStory": 0.06
+        "read": 10,
+        "confirmedPerStory": 0
       },
       "claudeWithout": {
         "read": 4,
@@ -540,71 +550,65 @@
     },
     "runs": {
       "count": 24,
-      "written": 45,
+      "written": 42,
       "refused": 4,
-      "callsPerStory": 26.2,
-      "tokensPerStory": 526253,
-      "costPerStory": 4.15,
+      "callsPerStory": 26.5,
+      "tokensPerStory": 539382,
+      "costPerStory": 4.22,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": [
-      {
-        "what": "newsroom: skipped: nothing readable in the report's pages",
-        "stories": 2,
-        "examples": []
-      }
-    ]
+    "recurring": []
   },
   "weekBefore": {
-    "published": 93,
-    "news": 78,
+    "published": 98,
+    "news": 83,
     "revisedShare": 0.99,
     "styleFaultsPerStory": 0,
-    "styleWarningsPerStory": 0.71,
-    "corrections": 2,
+    "styleWarningsPerStory": 0.66,
+    "corrections": 3,
     "usefulness": {
       "withLessons": {
-        "stories": 58,
-        "words": 466,
-        "keyFacts": 3.9
+        "stories": 65,
+        "words": 451,
+        "keyFacts": 3.8
       },
       "control": {
-        "stories": 20,
-        "words": 442,
-        "keyFacts": 3.5
+        "stories": 18,
+        "words": 449,
+        "keyFacts": 3.6
       }
     },
     "precheck": {
-      "checked": 87,
-      "clean": 71,
-      "repaired": 16,
+      "checked": 92,
+      "clean": 75,
+      "repaired": 17,
       "held": 0,
-      "errorsFound": 18,
+      "errorsFound": 19,
       "unsourcedCut": 1,
       "heldTitles": []
     },
     "outcomes": {
-      "repairedBeforePublication": 18,
-      "correctionsVerifiedClean": 2,
+      "repairedBeforePublication": 19,
+      "correctionsVerifiedClean": 3,
       "correctionsNotVerifiedYet": 0,
       "heldBeforePublication": 0,
       "correctionsStuck": 0
     },
     "secondLook": {
-      "read": 42,
-      "clean": 30,
-      "corrected": 2,
+      "read": 48,
+      "clean": 32,
+      "corrected": 3,
       "stands": 0,
       "refused": 0,
-      "listed": 10,
+      "listed": 13,
       "unverifiable": 0,
-      "confirmedPerStory": 0.05,
+      "confirmedPerStory": 0.06,
       "withLessons": {
-        "read": 31,
-        "confirmedPerStory": 0.06
+        "read": 36,
+        "confirmedPerStory": 0.08
       },
       "claudeWithout": {
-        "read": 11,
+        "read": 12,
         "confirmedPerStory": 0
       }
     },
@@ -617,7 +621,16 @@
       "costPerStory": null,
       "note": "from the run reports kept (the newest 24)"
     },
-    "recurring": []
+    "recurring": [
+      {
+        "what": "second look: attribution errors",
+        "stories": 2,
+        "examples": [
+          "dip-holding-shares-rise-dubai-debut-da4063: قال خالد بن كلبان، رئيس مجلس إدارة الشركة، إن طلبات الاكتتاب بلغت نحو أربعة أضعاف الأسهم المعروضة.",
+          "irgc-hormuz-closed-three-tankers-mines-92bbd3: ولم تتمكن رويترز من التحقق من الرواية الإيرانية بشأن الناقلات."
+        ]
+      }
+    ]
   },
   "lessons": {
     "version": 72,
