@@ -18709,6 +18709,69 @@
           "noted": []
         }
       ]
+    },
+    "saudi-banks-lead-tasi-below-10000-wall-street-selloff-492040": {
+      "at": "2026-11-22T16:49:43.766Z",
+      "title": "البنوك السعودية تقود هبوط «تاسي» دون 10 آلاف نقطة مع امتداد بيع «وول ستريت»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 25,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 9,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 36,
+              "field": "body",
+              "class": "other",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وفي واشنطن، قالت ليزا كوك، عضوة مجلس محافظي الاحتياطي الفيدرالي، الجمعة إن نطاق الفائدة الحالي بين 3.75% و4% أدنى مما تتطلبه مواجهة التضخم، وعدّت الاستثمار في الذكاء الاصطناعي من المحركات المهمة للتضخم هذا العام.",
+              "quote": "وقدّمت كوك في كلمتها أمام مؤتمر للسياسات النقدية في سانتياغو بتشيلي أول شرح علني لتصويتها ضد قرار الفيدرالي الإبقاء على الفائدة دون تغيير في اجتماع 27 و28 أكتوبر، وهو أول اعتراض لها على قرار الأغلبية منذ انضمامها إلى المجلس قبل أربع سنوات.",
+              "source": "Khazendar",
+              "sourceN": 3,
+              "correction": "Cook made her remarks at a monetary policy conference in Santiago, Chile, not in Washington."
+            }
+          ],
+          "noted": [],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 38,
+            "checked": 38,
+            "supported": 26,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 9,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

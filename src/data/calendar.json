@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-22T16:23:12.586Z",
+  "updatedAt": "2026-11-22T16:53:35.777Z",
   "sources": [
     {
       "id": "fed",
       "name": "الاحتياطي الفيدرالي الأمريكي",
       "what": "جدول اجتماعات لجنة السوق المفتوحة",
       "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-11-17"
     },
     {
@@ -14,7 +14,7 @@
       "name": "الاحتياطي الفيدرالي الأمريكي",
       "what": "مواعيد نشر محاضر الاجتماعات",
       "url": "https://www.federalreserve.gov/newsevents/calendar.htm",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2026-12-30"
     },
     {
@@ -22,7 +22,7 @@
       "name": "البنك المركزي الأوروبي",
       "what": "جدول اجتماعات مجلس المحافظين",
       "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2028-12-07"
     },
     {
@@ -30,7 +30,7 @@
       "name": "بنك إنجلترا",
       "what": "مواعيد لجنة السياسة النقدية",
       "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-12-16"
     },
     {
@@ -38,7 +38,7 @@
       "name": "بنك اليابان",
       "what": "جدول اجتماعات السياسة النقدية",
       "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-12-17"
     },
     {
@@ -46,7 +46,7 @@
       "name": "البنك المركزي التركي",
       "what": "تقويم لجنة السياسة النقدية",
       "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Calendar",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-06-10"
     },
     {
@@ -54,7 +54,7 @@
       "name": "مكتب إحصاءات العمل الأمريكي",
       "what": "مواعيد إصدار مؤشر أسعار المستهلكين",
       "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-12-10"
     },
     {
@@ -62,7 +62,7 @@
       "name": "مكتب إحصاءات العمل الأمريكي",
       "what": "مواعيد إصدار تقرير الوظائف",
       "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-12-03"
     },
     {
@@ -70,7 +70,7 @@
       "name": "مكتب التحليل الاقتصادي الأمريكي",
       "what": "جدول إصدار الناتج المحلي ونفقات الاستهلاك الشخصي",
       "url": "https://www.bea.gov/news/schedule",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-12-22"
     },
     {
@@ -78,7 +78,7 @@
       "name": "مكتب الإحصاء الأوروبي (يوروستات)",
       "what": "تقويم الإصدارات: التقديرات الأولية للتضخم والناتج المحلي",
       "url": "https://ec.europa.eu/eurostat/news/release-calendar",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2027-11-04"
     },
     {
@@ -86,7 +86,7 @@
       "name": "المكتب الوطني للإحصاء في الصين",
       "what": "تقويم الإصدارات الدورية",
       "url": "https://www.stats.gov.cn/english/PressRelease/ReleaseCalendar/",
-      "readAt": "2026-11-22T16:23:12.586Z",
+      "readAt": "2026-11-22T16:53:35.777Z",
       "until": "2026-12-15"
     }
   ],
