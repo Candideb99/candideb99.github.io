@@ -1,0 +1,36 @@
+---
+/**
+ * «من زمن الفكرة»: a «الفكر الاقتصادي» piece's drawing of its idea's own time, a cartoon or an engraving from the
+ * debate the idea answered (pipeline/lib/exhibits.mjs has the rule and why). A document inside the text, set as the
+ * worked example is set, never the piece's photograph: the section prints none (2026-11-20).
+ */
+import { isolateNumbers } from "@lib/bidi";
+import { safeHref } from "@lib/safe-url.mjs";
+
+interface Props {
+  exhibit: { file: string; width: number; height: number; alt: string; caption: string; credit: string; source: string };
+}
+const { exhibit } = Astro.props;
+const href = safeHref(exhibit.source);
+---
+
+<figure class="exhibit" data-pagefind-ignore>
+  <p class="exhibit__kicker ui">من زمن الفكرة</p>
+  <img class="exhibit__img" src={exhibit.file} width={exhibit.width} height={exhibit.height} alt={exhibit.alt} loading="lazy" decoding="async" />
+  <figcaption class="exhibit__caption">
+    <span set:html={isolateNumbers(exhibit.caption)} />
+    <span class="exhibit__credit ui">
+      الرسم: {href ? <a href={href} rel="noopener" target="_blank"><bdi>{exhibit.credit}</bdi></a> : <bdi>{exhibit.credit}</bdi>}
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .exhibit { margin: 1.75rem 0; max-width: var(--measure); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 0.8rem 0 0.9rem; }
+  .exhibit__kicker { font-size: var(--fs-xs); font-weight: 700; color: var(--green); }
+  /* A tall drawing (a magazine's cover, an engraving of a street) keeps to the screen: its height is held, its shape kept. */
+  .exhibit__img { display: block; margin: 0.6rem auto 0; width: auto; height: auto; max-width: 100%; max-height: min(78vh, 38rem); }
+  .exhibit__caption { margin-top: 0.6rem; display: grid; gap: 0.3rem; font-family: var(--font-body); font-size: var(--fs-sm); line-height: 1.7; color: var(--ink-2); }
+  .exhibit__credit { font-size: var(--fs-xs); color: var(--ink-3); }
+  .exhibit__credit a { color: var(--ink-3); }
+</style>

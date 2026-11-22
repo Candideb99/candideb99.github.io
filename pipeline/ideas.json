@@ -199,7 +199,19 @@
       "sources": [
         { "url": "https://www.nobelprize.org/prizes/economic-sciences/2022/popular-information/" },
         { "url": "https://en.wikipedia.org/wiki/Diamond%E2%80%93Dybvig_model" }
-      ]
+      ],
+      "exhibit": {
+        "file": "/photos/exhibits/diamond-dybvig-runs.jpg",
+        "width": 925,
+        "height": 1330,
+        "kind": "engraving",
+        "title": "Scenes in Wall Street during the panic. Run on the Union Trust Company",
+        "published": 1873,
+        "source": "https://commons.wikimedia.org/wiki/File%3AScenes_in_Wall_Street_during_the_panic._Run_on_the_Union_Trust_Company_LCCN90707111.jpg",
+        "alt": "حشد من المودعين يتزاحم أمام مدخل شركة يونيون ترست في نيويورك",
+        "caption": "مودعون يتزاحمون أمام شركة «يونيون ترست» في نيويورك لسحب أموالهم خلال الذعر المالي عام 1873، في رسم محفور على الخشب من ذلك العام.",
+        "credit": "حفر على الخشب، 1873 · ملكية عامة · مكتبة الكونغرس"
+      }
     },
     {
       "id": "modigliani-miller",
@@ -298,7 +310,22 @@
       "sources": [
         { "url": "https://en.wikipedia.org/wiki/Stolper%E2%80%93Samuelson_theorem" },
         { "url": "https://www.econlib.org/library/Enc/bios/Samuelson.html" }
-      ]
+      ],
+      "exhibit": {
+        "file": "/photos/exhibits/stolper-samuelson.jpg",
+        "width": 734,
+        "height": 874,
+        "kind": "cartoon",
+        "title": "\"Beg for it, doggie!\"",
+        "artist": "Louis M. Glackens",
+        "artistDied": 1933,
+        "publication": "Puck",
+        "published": 1912,
+        "source": "https://commons.wikimedia.org/wiki/File%3A%22Beg_for_it%2C_doggie!%22_-_L.M._Glackens._LCCN2011649129.jpg",
+        "alt": "رسم ساخر: حرف K يأكل على مائدة ويمد لعامل صغير عظمة",
+        "caption": "غلاف مجلة «باك» الأمريكية في مارس 1912: «البند K»، باب الصوف ومنسوجاته في التعرفة الجمركية الأمريكية، يأكل من مائدة «منافع الحماية» ويمدّ إلى عامل صغير عظمةً كُتب عليها «أجور الكفاف»، وعنوان الرسم يأمر العامل أن يتوسّل إليها كما يتوسّل الكلب.",
+        "credit": "L. M. Glackens · ملكية عامة · مكتبة الكونغرس"
+      }
     },
     {
       "id": "dutch-disease",
@@ -679,7 +706,21 @@
       "sources": [
         { "url": "https://www.econlib.org/library/Enc/bios/Smith.html" },
         { "url": "https://plato.stanford.edu/entries/smith-moral-political/", "anchor": "Wealth of Nations" }
-      ]
+      ],
+      "exhibit": {
+        "file": "/photos/exhibits/smith-division-of-labour.jpg",
+        "width": 960,
+        "height": 737,
+        "kind": "engraving",
+        "title": "Épinglier, plate II (Encyclopédie)",
+        "artist": "Louis-Jacques Goussier; engraved by Defehrt",
+        "artistDied": 1799,
+        "published": 1762,
+        "source": "https://commons.wikimedia.org/wiki/File%3ADefehrt_epinglier_pl2.jpg",
+        "alt": "ورشة لصنع الدبابيس يعمل فيها عدة عمال، وتحتها رسوم أدواتهم",
+        "caption": "لوحة «صانع الدبابيس» من موسوعة ديدرو ودالمبير، 1762: ورشة يتوزّع عمّالها مراحل صنع الدبوس، وتحتها أدوات كل مرحلة. وبهذه الصناعة نفسها افتتح آدم سميث «ثروة الأمم» بعد أربعة عشر عاماً ليشرح تقسيم العمل.",
+        "credit": "Goussier, Defehrt · ملكية عامة · ويكيميديا كومنز"
+      }
     },
     {
       "id": "marx-capital",
@@ -693,7 +734,22 @@
       "sources": [
         { "url": "https://plato.stanford.edu/entries/marx/", "anchor": "Capital" },
         { "url": "https://www.econlib.org/library/Enc/bios/Marx.html" }
-      ]
+      ],
+      "exhibit": {
+        "file": "/photos/exhibits/marx-capital.jpg",
+        "width": 748,
+        "height": 586,
+        "kind": "cartoon",
+        "title": "The protectors of our industries",
+        "artist": "Bernhard Gillam",
+        "artistDied": 1896,
+        "publication": "Puck",
+        "published": 1883,
+        "source": "https://commons.wikimedia.org/wiki/File%3AThe_protectors_of_our_industries_-_Gillam_%3B_Mayer_Merkel_%26_Ottmann_lith.%2C_N.Y._LCCN94507245.jpg",
+        "alt": "رسم ساخر: أثرياء جالسون على أكياس المال فوق طوف يحمله عمال في الماء",
+        "caption": "«حُماة صناعاتنا»، رسم ساخر من مجلة «باك» الأمريكية عام 1883: كبار أثرياء ذلك العصر، ومنهم فاندربيلت وغولد وفيلد، جالسون على أكياس ملايينهم فوق طوف يحمله عمّال يخوضون بحر «الأوقات الصعبة»، وعلى الحمولة لافتات بأجورهم: بين 6 و11 دولاراً في الأسبوع.",
+        "credit": "Bernhard Gillam · ملكية عامة · مكتبة الكونغرس"
+      }
     },
     {
       "id": "hayek-knowledge",
@@ -722,7 +778,22 @@
       "sources": [
         { "url": "https://www.econlib.org/library/Enc/bios/Schumpeter.html" },
         { "url": "https://www.econlib.org/library/Enc/CreativeDestruction.html" }
-      ]
+      ],
+      "exhibit": {
+        "file": "/photos/exhibits/schumpeter-creative-destruction.jpg",
+        "width": 893,
+        "height": 542,
+        "kind": "cartoon",
+        "title": "The passing of the horse",
+        "artist": "John S. Pughe",
+        "artistDied": 1909,
+        "publication": "Puck",
+        "published": 1899,
+        "source": "https://commons.wikimedia.org/wiki/File%3AThe_passing_of_the_horse_-_J.S._Pughe_%3B_J._Ottmann_Lith._Co.%2C_N.Y._LCCN00650802.jpg",
+        "alt": "رسم ساخر: حيوانات تركب السيارات والدراجات وحصان في سيارة يمسح دموعه",
+        "caption": "«رحيل الحصان»، رسم من مجلة «باك» الأمريكية عام 1899: الحيوانات تركب السيارات والدراجات، والحصان بينها في سيارة يمسح دموعه، ولافتة على الطريق تشير إلى «متحف التاريخ الطبيعي».",
+        "credit": "J. S. Pughe · ملكية عامة · مكتبة الكونغرس"
+      }
     },
     {
       "id": "bastiat-seen-unseen",

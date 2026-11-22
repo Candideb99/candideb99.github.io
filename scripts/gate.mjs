@@ -86,6 +86,13 @@ const safeguards = spawnSync(process.execPath, [path.join("scripts", "pipeline-s
 if (safeguards.status !== 0) fail("the newsroom's safeguards (scripts/pipeline-selftest.mjs)", safeguards.stdout + safeguards.stderr);
 console.log(`[ok] the newsroom's safeguards pass their known cases (${seconds(t)})`);
 
+// 1c-1. «من زمن الفكرة»: every drawing of an idea's time is free, kept at its size, captioned and printed by its idea
+// (scripts/exhibits-selftest.mjs, 2026-11-22).
+t = Date.now();
+const exhibits = spawnSync(process.execPath, [path.join("scripts", "exhibits-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (exhibits.status !== 0) fail("the ideas' period drawings (scripts/exhibits-selftest.mjs)", exhibits.stdout + exhibits.stderr);
+console.log(`[ok] the ideas' period drawings are free, kept and printed by their idea (${seconds(t)})`);
+
 t = Date.now();
 const newsEvidence = spawnSync(process.execPath, [path.join("scripts", "news-evidence-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
 if (newsEvidence.status !== 0) fail("news evidence collection (scripts/news-evidence-selftest.mjs)", newsEvidence.stdout + newsEvidence.stderr);

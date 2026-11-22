@@ -148,7 +148,9 @@ export function firstOfEachPhoto(items) {
  * the intro to economy part ... we can only rely on graphs, tables, mathematics, analysis etc ... the intro to economy
  * section should not be treated as normal news section articles". The newsroom picks none for them (run.mjs), the
  * morning round never fills one (backfill-images.mjs), and the site prints none, the published pieces' included
- * (src/lib/articles.ts), so their figures, tables and worked examples carry the page. One list for all three.
+ * (src/lib/articles.ts), so their figures, tables and worked examples carry the page. One list for all three. A
+ * «الفكر الاقتصادي» piece may print a drawing of its idea's own time inside its text (pipeline/lib/exhibits.mjs,
+ * 2026-11-22): a document beside the figures, never the piece's photograph, card or preview.
  */
 export const PHOTO_FREE_SECTIONS = new Set(["explainers"]);
 /** @param {string | undefined | null} section */

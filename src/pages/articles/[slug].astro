@@ -9,6 +9,7 @@ import Chart from "@components/Chart.astro";
 import DataTable from "@components/DataTable.astro";
 import Diagram from "@components/Diagram.astro";
 import WorkedExample from "@components/WorkedExample.astro";
+import Exhibit from "@components/Exhibit.astro";
 import Share from "@components/Share.astro";
 import TextSize from "@components/TextSize.astro";
 import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
@@ -22,6 +23,7 @@ import { cardSizes, thumbnailUrl } from "@lib/wikimedia";
 import { safeHref } from "@lib/safe-url.mjs";
 import { hasPage } from "@lib/files";
 import { placeLessonParts } from "@lib/lesson-layout.mjs";
+import { exhibitOf } from "../../../pipeline/lib/exhibits.mjs";
 import site from "@data/site.json";
 
 export async function getStaticPaths() {
@@ -43,6 +45,8 @@ const ideaLabel = (d.idea?.economists.length ?? 0) > 1 ? "أصحاب الفكر�
 const ideaLine = d.kind === "idea" && d.idea?.economists.length
   ? `${d.idea.economists.map((e) => e.ar).join(" و")}${d.idea.year ? ` (${d.idea.year})` : ""}${d.idea.fieldName ? ` · ${d.idea.fieldName}` : ""}`
   : "";
+// …and a drawing of the idea's own time, from the catalogue by the piece's idea, never from the story (2026-11-22).
+const exhibit = d.kind === "idea" ? exhibitOf(d.idea?.id) : undefined;
 // Its figure and worked example print after the paragraph that leads into each (lib/lesson-layout.mjs), cut into the
 // body's rendered HTML; a part nothing leads into keeps its default place, the figure before the text, the example after.
 const lessonPieces = lesson && article.rendered?.html ? placeLessonParts(article.rendered.html, { diagram: d.diagram, worked: d.worked }) : null;
@@ -208,6 +212,8 @@ const jsonLd = [articleLd, breadcrumbLd];
         )}
         {lesson && d.worked && !placedInline.has("worked") && <WorkedExample worked={d.worked} />}
         {d.chart && lesson && <Chart chart={d.chart} id="story-chart" />}
+        {/* «من زمن الفكرة» closes the lesson: how the idea's own time drew the question it answered. */}
+        {exhibit && <Exhibit exhibit={exhibit} />}
         {more.length > 0 && (
           <aside class="also" data-also data-pagefind-ignore aria-labelledby="also-head">
             <span id="also-head" class="also__head ui">اقرأ أيضاً</span>
