@@ -1,27 +1,501 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-11-22T14:56:02.864Z",
-  "durationSec": 15,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-22T15:42:30.813Z",
+  "durationSec": 2433,
+  "published": 3,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "المؤشر السعودي يهبط 2% إلى ما دون 10 آلاف نقطة تحت ضغط بيع «وول ستريت»",
+      "section": "markets",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financial-markets/157368/%D9%85%D9%88%D8%AC%D8%A9-%D8%A8%D9%8A%D8%B9-%D9%88%D9%88%D9%84-%D8%B3%D8%AA%D8%B1%D9%8A%D8%AA-%D8%AA%D8%B6%D8%BA%D8%B7-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%B5%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/",
+        "https://aawsat.com/node/5344275",
+        "https://aawsat.com/node/5344217",
+        "https://asharqbusiness.com/financial-markets/157330/%D8%A3%D8%AF%D8%A7%D8%A1-%D8%B3%D9%88%D9%82-%D8%A7%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-22-%D9%86%D9%88%D9%81%D9%85%D8%A8%D8%B1-2026/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (المؤشر السعودي) والتغير (هبوط نحو 2% دون 10 آلاف نقطة) والقطاع القائد (البنوك 2.5%)، ولا تناقض بين 1.95% في المقدمة و«نحو 2%» في العنوان.",
+              "repair": "يُستحسن «مع امتداد موجة بيع «وول ستريت»» بدل «امتداد بيع «وول ستريت»» لاكتمال العبارة."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تذكر المصادر ثلاثة تفسيرات: سبب التغير (موجة بيع «وول ستريت» على شكوك الذكاء الاصطناعي، والتوترات الإقليمية وحوادث هرمز في SOURCE 1 وSOURCE 4، وضعف السيولة)، ورد فعل مسمّى (الميموني، وقسم التداول في «غولدمان ساكس»)، وخلفية (فشل طرح «أنثروبيك» في إنعاش شهية المخاطرة، SOURCE 1). المسودة تحمل السبب الأمريكي والسيولة ورد الفعل، وتُسقط التوترات الإقليمية وخلفية «أنثروبيك». ويبني صندوق «لماذا يهمّ» استدلاله على قناة واحدة.",
+              "repair": "إضافة جملة التوترات الإقليمية وهرمز منسوبة، وسبب تراجع البحرين (SOURCE 3)، وجملة «أنثروبيك»، ثم توسيع استدلال الصندوق ليشمل القناتين."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو الهبوط دون 10 آلاف نقطة مع امتداد بيع «وول ستريت». يعود المتن إلى الرابط الأمريكي في القسم الثاني، لكن تصريح الميموني الذي يشرحه وُضع في فقرة نسب الخليج، وفقرة السيولة معزولة، وفقرة الخليج تقرأ صفوف الرسم.",
+              "repair": "جمع ما يشرح الانتقال من «وول ستريت» (الأرقام الأمريكية، و«غولدمان ساكس»، والميموني) في فقرة متصلة، ثم السيولة والتوترات الإقليمية، ثم بورصات الخليج بما يظهره الرسم لا بصفوفه."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة: 9960 نقطة و1.95% (SOURCE 1 وSOURCE 4)، والخميس 0.4% عند 10159 (SOURCE 2)، و640 مليون دولار، والراجحي 2.5% والأهلي 2.2% و«معادن» 3.2% (SOURCE 2)، والرسم مطابق لإغلاقات SOURCE 1، وصيغة «بالتزامن» محفوظة لهبوط «معادن» مع الذهب.",
+              "repair": "«ضاعف أثر عمليات البيع» تحتمل معنى المضاعفة الحسابية، والأدق ما في SOURCE 4: «فاقم أثر عمليات البيع»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد والسوق والرقم الحاسم (نحو 2% دون 10 آلاف نقطة) والسبب الخارجي. ويضيف السطر الفرعي قيادة البنوك وحجم التداول، والفقرة الأولى تحدد موقع اليوم من الأسبوع الماضي ومن جلسة الخميس.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة التفسيرات التي توردها المصادر كلها: سبب الهبوط (شكوك العائد على استثمارات الذكاء الاصطناعي في «وول ستريت»، وضعف السيولة، والتوترات الإقليمية وحوادث هرمز، SOURCE 1 وSOURCE 4)، وسبب تراجع البحرين (SOURCE 3)، وخلفية «أنثروبيك» (SOURCE 1)، وردّي «غولدمان ساكس» والميموني. وتقرن المسودة هبوط «معادن» بتراجع الذهب تزامناً لا سبباً، كما في SOURCE 2. ولا تورد المصادر موعداً أو حدثاً تالياً.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان، أي امتداد بيع «وول ستريت»، يتطور مباشرة بعد الفقرة الأولى في كتلة متصلة: الأرقام الأمريكية ثم «غولدمان» والميموني، ثم السيولة والتوترات، ثم بورصات الخليج بما يظهره الرسم، ثم القطاعات. لكن الجملة الأولى في «لماذا يهمّ» تعيد فقرة السيولة والتوتر، وتنسب إليهما معاً تصدّر الرياض للخسائر.",
+              "repair": "إعادة صياغة الجملة الأولى في الصندوق على أساس شح السيولة في الرياض، كما في الملاحظة الثانية."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام كلها مطابقة للمصادر: 1.95% و9960 و10159 و2.4 مليار ريال و640 مليون دولار و3.7% و5.6%، وكذلك القطاعات والأسهم وأرقام الرسم. أما «وفي الرياض» قبل تصريح الميموني فتوحي بمكان لا يذكره SOURCE 1.",
+              "repair": "حذف «وفي الرياض،» من جملة الميموني."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "«وفي الرياض، قال محمد الميموني، الخبير في الأسواق المالية، في مقابلة مع «الشرق بلومبرغ»…»: تُقرأ «وفي الرياض» في صدر جملة القول على أنها مكان التصريح، وSOURCE 1 لا يذكر أين أدلى الميموني بتصريحه. الإصلاح: «وقال محمد الميموني، الخبير في الأسواق المالية، في مقابلة مع «الشرق بلومبرغ»، إن الضغوط البيعية التي تعرضت لها السوق السعودية الأحد…»، فالجملة نفسها تحدد السوق المقصودة.",
+        "«لماذا يهمّ»: «…في جلسة شحيحة السيولة وفي ظل توتر إقليمي زاد حذر المستثمرين، فكانت خسارتها الأكبر بين بورصات الخليج المفتوحة» تجعل التوتر الإقليمي سبباً لتصدّر الرياض الخسائر. لكن هذا التوتر يطال قطر والبحرين أيضاً، ويربطه SOURCE 3 بتراجع البحرين تحديداً. ما يخص السعودية وحدها في المصادر هو ضعف السيولة («وفاقم ضعف السيولة أثر البيع في السعودية»، SOURCE 1). الإصلاح: أن تُبنى الجملة الأولى على السيولة وحدها، مثلاً: «انتقلت صدمة «وول ستريت» إلى بورصات الخليج كلها، لكن شح السيولة في الرياض جعل خسارتها الأكبر بينها». ويبقى الشرط والاستدلال في الجملة الثانية كما هما. بهذا يتوقف الصندوق أيضاً عن تكرار فقرة السيولة في المتن بصيغة أخرى.",
+        "الجديد في العنوان، أي امتداد بيع «وول ستريت»، يتطور مباشرة بعد الفقرة الأولى في كتلة متصلة: الأرقام الأمريكية ثم «غولدمان» والميموني، ثم السيولة والتوترات، ثم بورصات الخليج بما يظهره الرسم، ثم القطاعات. لكن الجملة الأولى في «لماذا يهمّ» تعيد فقرة السيولة والتوتر، وتنسب إليهما معاً تصدّر الرياض للخسائر. — إعادة صياغة الجملة الأولى في الصندوق على أساس شح السيولة في الرياض، كما في الملاحظة الثانية.",
+        "الأرقام كلها مطابقة للمصادر: 1.95% و9960 و10159 و2.4 مليار ريال و640 مليون دولار و3.7% و5.6%، وكذلك القطاعات والأسهم وأرقام الرسم. أما «وفي الرياض» قبل تصريح الميموني فتوحي بمكان لا يذكره SOURCE 1. — حذف «وفي الرياض،» من جملة الميموني."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "اتسعت موجة البيع في «وول ستريت» الجمعة مع تزايد الشكوك في العائد على استثمارات الذكاء الاصطناعي، وامتدت إلى بورصات الخليج الأحد",
+          "source": 4
+        },
+        {
+          "fact": "فاقم ضعف السيولة أثر البيع في السعودية، ولم تتجاوز قيمة التداولات 2.4 مليار ريال",
+          "source": 1
+        },
+        {
+          "fact": "هبط مؤشر قطر 1.6% ومسقط 0.8% والكويت والبحرين 0.5% لكل منهما، مقابل 1.95% لـ«تاسي»",
+          "source": 1
+        },
+        {
+          "fact": "زادت التوترات الإقليمية وتجدد حوادث الملاحة في مضيق هرمز حذر المستثمرين",
+          "source": 4
+        }
+      ],
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "المؤشر السعودي يهبط نحو 2% دون 10 آلاف نقطة مع امتداد بيع «وول ستريت»",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "السعودية تقر توطين 50% من وظائف 17 مهنة مالية بدءاً من مايو 2027",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/157338/%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D9%82%D8%B1-%D8%AA%D9%88%D8%B7%D9%8A%D9%86-50-%D9%85%D9%86-%D9%88%D8%B8%D8%A7%D8%A6%D9%81-17-%D9%85%D9%87%D9%86%D8%A9-%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%A8%D8%AF%D8%A1%D8%A7-%D9%85%D9%86-%D9%85%D8%A7%D9%8A%D9%88/",
+        "https://gulfnews.com/world/gulf/saudi/saudi-arabia-to-saudise-50-of-jobs-in-17-financial-professions-from-may-2027-1.500757057",
+        "https://www.aleqt.com/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D8%AA%D8%B1%D9%81%D8%B9-%D8%AA%D9%88%D8%B7%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%A5%D9%84%D9%89-50-%D9%81%D9%8A-%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-16703"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يذكر البلد والنسبة وعدد المهن وتاريخ البدء. والمقدّمة الفرعية تضيف شرط الموظفَين فأكثر ومهلة الأشهر الستة. والجهتان (وزارة الموارد البشرية والهيئة السعودية للمراجعين والمحاسبين) معرّفتان في المقدمة. لا تناقض ولا شرط ناقص.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "الغاية المعلنة من القرار، أي توفير وظائف متخصصة للسعوديين والسعوديات ورفع مشاركتهم، منسوبة إلى الوزارة في المقدمة، والعقوبات حاضرة. أما الحوافز فلم يبق منها إلا الأولوية في البرامج. والسابقة المقارنة غائبة، وهي قرار توطين مهن إدارة المشاريع بنسبة 70% من فبراير 2027 (SOURCE 1). وأرقام البطالة جاءت بلا رقم الربع السابق (6.4%)، فلا يعرف القارئ اتجاهها.",
+              "repair": "إكمال حزمة الحوافز من SOURCE 1 وSOURCE 2 وSOURCE 3، وإضافة سابقة إدارة المشاريع مكان الجملة العامة، وإضافة «من 6.4%» إلى رقم بطالة السعوديين."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقدّمه العنوان جديداً هو «17 مهنة مالية»، ولا يعود إليه المتن بعد المقدمة. الفقرة الأولى تنتقل مباشرة إلى إجراءات الدليل والمهلة. ثم تأتي فقرة البطالة في الخاتمة منفصلة عما قبلها، بلا ربط بالقرار.",
+              "repair": "ترتيب مقترح: المقدمة، ثم فقرة المهن المشمولة مجمّعة بحسب المجال، ثم فقرة المهلة والدليل والعقوبات مع الحوافز، ثم السابقة وأرقام البطالة باتجاهها في فقرة واحدة تبدأ بأن القرار يأتي في وقت ارتفعت فيه بطالة السعوديين طفيفاً."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 50%، و17 مهنة، و23 مايو 2027، ومهلة ستة أشهر من تاريخ الإعلان، وشرط موظفَين فأكثر، و3% من 3.1%، و9.6% بعد 9%. وأحسن المحرر حين تجنّب رقم 4.9% في الربع الأول الوارد في SOURCE 1، إذ يتعارض مع رقم 6.4% في المصدر نفسه. الغاية منسوبة إلى الوزارة بوصفها هدفاً معلناً، لا نتيجة متحققة.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "The headline names the country, the share, the number of professions and the start date. The dek adds the scope (establishments employing two or more people in these professions) and the six-month deadline. There is no contradiction or missing qualification.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "SOURCE 2 states the purpose: creating skilled jobs for Saudi men and women and raising their labour-market participation. The draft carries it in the lede, attributed to the ministry. It also carries the incentives and penalties, which are the measure's mechanism, and the August precedent from SOURCE 1. The sources give no named party's reaction and no expectation the decision met or missed. Nothing is padded.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "The headline's element, «17 مهنة مالية», is developed in the first paragraph after the lede, grouped by field with examples of job titles. The ending «وأظهرت بيانات الهيئة العامة للإحصاء...» comes after the precedent without saying why it is there, so it reads as a separate statistic.",
+              "repair": "Open the unemployment sentence with the concurrence SOURCE 1 supplies («ويأتي القرار في وقت ارتفعت فيه بطالة السعوديين طفيفاً...»), and do not add a cause."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "The figures match the sources:\n- 50% and 23 May 2027.\n- Two or more employees in the targeted professions.\n- A six-month deadline counted from the announcement.\n- Project management at 70% from February 2027.\n- Saudi unemployment 6.5% from 6.4%, overall 3% from 3.1%.\n- Saudi women's unemployment 9% then 9.6%.\n\nThe draft rightly left out SOURCE 1's figure of 4.9% for the first quarter, which contradicts the 6.4%. The only gap is the missing year for the quarter, which is covered under flow.",
+              "repair": "Add «من 2026» after «الربع الثاني»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 2,
+      "mendIssues": [
+        "Issue 6 from the previous review is only partly resolved. The order is now correct: lede, professions, deadline and guide, penalties with incentives, then precedent and unemployment. But the last paragraph puts the unemployment figures directly after the project-management precedent with no link to the decision: «وأظهرت بيانات الهيئة العامة للإحصاء أن بطالة السعوديين ارتفعت طفيفاً إلى 6.5% في الربع الثاني...». It reads as a statistic tacked onto the end. SOURCE 1 gives the link as a concurrence, not a cause: «تأتي الخطوة الجديدة في وقت أظهرت فيه أحدث البيانات...». The quarter also has no year, and it sits right after «فبراير 2027». Suggested fix: «ويأتي القرار في وقت ارتفعت فيه بطالة السعوديين طفيفاً إلى 6.5% في الربع الثاني من 2026، من 6.4% في الربع السابق، بحسب الهيئة العامة للإحصاء، في حين تراجع المعدل الإجمالي إلى 3% من 3.1%.» Keep the precedent in its own sentence, without a causal link.",
+        "The headline's element, «17 مهنة مالية», is developed in the first paragraph after the lede, grouped by field with examples of job titles. The ending «وأظهرت بيانات الهيئة العامة للإحصاء...» comes after the precedent without saying why it is there, so it reads as a separate statistic. — Open the unemployment sentence with the concurrence SOURCE 1 supplies («ويأتي القرار في وقت ارتفعت فيه بطالة السعوديين طفيفاً...»), and do not add a cause."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 1,
+        "rounds": 2,
+        "found": 1
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "saudi-arabia-saudisation-financial-professions-50-percent-bf921a",
+      "title": "السعودية تقر توطين 50% من وظائف 17 مهنة مالية بدءاً من مايو 2027",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "مصر تبدأ إنتاج بطاريات السيارات الكهربائية مع «CATL» الصينية منتصف 2027",
+      "section": "companies",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/157341/%D9%85%D8%B5%D8%B1-%D8%AA%D8%A8%D8%AF%D8%A3-%D8%A5%D9%86%D8%AA%D8%A7%D8%AC-%D8%A8%D8%B7%D8%A7%D8%B1%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A8%D8%AD%D9%84%D9%88%D9%84-%D9%85%D9%86%D8%AA%D8%B5%D9%81-2027/",
+        "https://www.youm7.com/story/2026/11/22/%D9%85%D8%B5%D8%B1-%D8%AA%D8%B3%D8%AA%D9%82%D8%B7%D8%A8-%D8%A3%D9%83%D8%A8%D8%B1-%D8%B4%D8%B1%D9%83%D8%A9-%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D8%A8%D8%B7%D8%A7%D8%B1%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A%D8%A9-%D9%88%D8%A8%D8%AF%D8%A1/7628365"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التمهيدي يحددان البلد (مصر) والشريك («كاتل» الصينية) وصناعته (بطاريات السيارات الكهربائية). ويستخدم العنوان فعل نية «تستهدف» مع موعد منتصف 2027، ويوضح السطر التمهيدي أن الإنشاء جارٍ ولم يبدأ التشغيل بعد.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير الدافع المعلن (التحول من التجميع إلى المكونات، والبطارية أهم مكونات السيارة الكهربائية)، والخطوة التالية (حوافز البرنامج الوطني قبل نهاية العام، ومبادرة الإحلال). لكنه يغفل قاعدة الـ25 مصنع تجميع و170 شركة مكونات (المصدر 1)، ونطاق الحوافز الذي يشمل المكونات والقوالب والإسطمبات (المصدر 2). واستنتاج «لماذا يهمّ» يطبق أرقام السوق كلها على طلب البطاريات.",
+              "repair": "إضافة قاعدة الموردين ونطاق الحوافز من المصدرين، وحصر استنتاج الصندوق في آلية التشوه الجمركي وتراجع حصة التجميع المحلي."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "ما يقدمه العنوان جديداً، أي مصنع البطاريات مع «كاتل» ومنتصف 2027، يُطوَّر في الفقرة الأولى بعد السطر التمهيدي. لكن قسم المبيعات يقرأ صفوف الرسم، وعنوانه الفرعي لا يسمّي فقرته الأولى. وجملة «بحسب «الشرق»، التي ترى…» تقطع خط الإسناد إلى الوزير.",
+              "repair": "اختصار فقرة الفئات إلى ما يظهره الرسم، وتعديل العنوان الفرعي، ونسبة هدف التحول إلى هاشم."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والنسب مطابقة للمصدر 1. لكن «موعد حددته «الشرق» بمايو أو يونيو» يوحي باختلاف بين المصادر. وتسمية الوزير لـ«كاتل» غير واردة في المصدر 2. والصندوق يعامل نمو مبيعات المركبات كلها كأنه طلب على البطاريات.",
+              "repair": "«بحلول منتصف 2027، أي في مايو أو يونيو»، و«قال الوزير إن مصر استقطبت أكبر شركة في العالم لصناعة البطاريات»، وتقييد استنتاج الصندوق بما تثبته المقدمات."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدك يقولان بوضوح إن البلد مصر، وإن الشريك «كاتل» الصينية، والسلعة بطاريات السيارات الكهربائية. ويقدّم الفعل «تستهدف» المشروع هدفاً لا إنجازاً، ويحدد الدك الحالة الفعلية للمشروع (الإنشاء جارٍ). ويوضح المتن أن الحكومة تستهدف التشغيل والشركة تستهدف الإنتاج، كما في المصدرين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير الدافع المعلن من المصدرين (الانتقال من التجميع إلى المكونات، والبطارية من أهم مكونات السيارة الكهربائية)، والقاعدة الصناعية من المصدر 1 (25 مصنع تجميع و170 شركة مكونات، منسوبة إلى غرفة التجارة الأمريكية)، والسوق ومفارقة المستورد، والخطوة التالية من المصدر 2 (حوافز قبل نهاية العام تشمل المكونات والقوالب والإسطمبات، ومبادرة الإحلال). ويستند صندوق «لماذا يهمّ» إلى مقدمات صحيحة (تراجع حصة المجمّع محلياً تثبته الأرقام، ومراجعة التشوهات الجمركية)، ويستنتج منها استنتاجاً محدوداً يربط الأداة الجمركية بكلفة التصنيع المحلي مقارنة بالاستيراد، ويقيّده بشرط الإنتاج في الموعد، ولم يعد يفترض وجهة مبيعات المصنع.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان (المصنع مع «كاتل» ومنتصف 2027) يُطوَّر في الفقرة الأولى بعد المقدمة، لكنها تبدأ بإعادة الموعد («في مايو أو يونيو 2027») بدل الاكتفاء بما يضيفه المصدر 2. ثم تأتي جملة إدارية عن الجلسة الحوارية قبل الدافع. القسمان الفرعيان يغطي كل منهما فقرتين أو أكثر، وعنوان كل منهما يسمّي محتواه.",
+              "repair": "حذف تكرار الموعد من الفقرة الأولى وإبقاء صفة الشركة وتقدير الوزير لأهمية الخطوة، وبدء الفقرة الثانية بقول هاشم عن الانتقال من التجميع إلى المكونات دون جملة الجلسة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام كلها مطابقة للمصدر 1 (26.3%، 155.3 ألف، 122.9 ألف، 42.6%، 74.4 ألف، 14.3%، 80.9 ألف، 25 مصنعاً، 170 شركة)، وقيم الرسم صحيحة. لكن «في مايو أو يونيو 2027» تحوّل الموعد النهائي «بحلول» إلى نافذة محددة وتنسبه إلى تصريح الوزير. و«تقارب ثلاثة أضعاف» حساب لم يرد في المصادر.",
+              "repair": "«بحلول منتصف 2027، أي في مايو أو يونيو» مرة واحدة في المقدمة، واستبدال «ثلاثة أضعاف» بـ«أسرع بكثير» مع الإبقاء على الرقمين."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 5,
+      "mendIssues": [
+        "تكرار الموعد مع تغيير صيغته (المصدر 1 والمصدر 2): يقول العنوان والمقدمة «بحلول منتصف 2027»، ثم تعود الفقرة الأولى من المتن إلى الموعد نفسه في «وإن الشركة تستهدف بدء الإنتاج في السوق المصرية في مايو أو يونيو 2027». المصدر 2 ينسب إلى الوزير قوله إن الشركة تستهدف الإنتاج «بحلول منتصف عام 2027». أما «مايو أو يونيو» فهي صيغة المصدر 1 لهدف الحكومة، وقد وردت هناك مع «بحلول» لا «في»، فتحوّل الموعد النهائي إلى نافذة محددة. الإصلاح: يُذكر الموعد مرة واحدة في المقدمة «بحلول منتصف 2027، أي في مايو أو يونيو»، وتقتصر الفقرة الأولى على ما يضيفه المصدر 2: «وقال الوزير إن مصر نجحت في استقطاب أكبر شركة في العالم لتصنيع بطاريات السيارات الكهربائية، وعدّ ذلك تطوراً مهماً…».",
+        "حساب لم يرد في المصادر (المصدر 1): «نمت بوتيرة تقارب ثلاثة أضعاف وتيرة المجمّعة محلياً» نسبة استخرجها المحرر (42.6 مقسومة على 14.3). صحيحة رقمياً، لكنها حساب مضاف إلى المادة المصدرية، والرقمان مذكوران بعدها مباشرة. الإصلاح: «لكن مبيعات المركبات المستوردة بالكامل نمت أسرع بكثير؛ فقد قفزت 42.6%…»، أو الاكتفاء بالرقمين.",
+        "افتتاح إداري يفصل الدافع عن الخبر: «وتحدث هاشم في جلسة حوارية ضمن الدورة الحادية عشرة للقمة، خُصصت لمستجدات خطة الوزارة…» يأتي بين خبر المصنع ودافعه (الانتقال من التجميع إلى المكونات)، والقمة مسمّاة في المقدمة أصلاً. الإصلاح: حذف جملة الجلسة أو اختصارها إلى «في جلسة حوارية» داخل جملة الدافع، لتبدأ الفقرة بـ«وقال هاشم إن الحكومة تريد نقل صناعة السيارات من التجميع إلى إنتاج المكونات…».",
+        "الجديد في العنوان (المصنع مع «كاتل» ومنتصف 2027) يُطوَّر في الفقرة الأولى بعد المقدمة، لكنها تبدأ بإعادة الموعد («في مايو أو يونيو 2027») بدل الاكتفاء بما يضيفه المصدر 2. ثم تأتي جملة إدارية عن الجلسة الحوارية قبل الدافع. القسمان الفرعيان يغطي كل منهما فقرتين أو أكثر، وعنوان كل منهما يسمّي محتواه. — حذف تكرار الموعد من الفقرة الأولى وإبقاء صفة الشركة وتقدير الوزير لأهمية الخطوة، وبدء الفقرة الثانية بقول هاشم عن الانتقال من التجميع إلى المكونات دون جملة الجلسة.",
+        "الأرقام كلها مطابقة للمصدر 1 (26.3%، 155.3 ألف، 122.9 ألف، 42.6%، 74.4 ألف، 14.3%، 80.9 ألف، 25 مصنعاً، 170 شركة)، وقيم الرسم صحيحة. لكن «في مايو أو يونيو 2027» تحوّل الموعد النهائي «بحلول» إلى نافذة محددة وتنسبه إلى تصريح الوزير. و«تقارب ثلاثة أضعاف» حساب لم يرد في المصادر. — «بحلول منتصف 2027، أي في مايو أو يونيو» مرة واحدة في المقدمة، واستبدال «ثلاثة أضعاف» بـ«أسرع بكثير» مع الإبقاء على الرقمين."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال وزير الصناعة إن إنشاء مصنع بطاريات السيارات الكهربائية مع CATL جارٍ وإن الحكومة تستهدف تشغيله بحلول منتصف 2027، وإن الحكومة تريد الانتقال من التجميع إلى توطين إنتاج المكونات.",
+          "source": 1
+        },
+        {
+          "fact": "قفزت مبيعات المركبات المستوردة بالكامل 42.6% إلى 74.4 ألف مركبة، وزادت المجمّعة محلياً 14.3% إلى نحو 80.9 ألف في الأشهر التسعة الأولى من 2026، وفق أميك.",
+          "source": 1
+        },
+        {
+          "fact": "قال هاشم إن الوزارة تدرس التشوهات الجمركية بين مستلزمات الإنتاج والمنتجات النهائية وتعدّ تعديلات تشريعية مقترحة لدعم التصنيع المحلي.",
+          "source": 2
+        }
+      ],
+      "slug": "egypt-catl-ev-battery-plant-2027-eee099",
+      "title": "مصر تستهدف إنتاج بطاريات السيارات الكهربائية مع «كاتل» الصينية بحلول منتصف 2027",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "«كوب 31» ينتهي دون اتفاق على الوقود الأحفوري وتمويل المناخ",
+      "section": "energy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
-    "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {},
-    "byRole": {}
+    "calls": 78,
+    "failures": 1,
+    "promptTokens": 1288715,
+    "completionTokens": 222698,
+    "cacheReadTokens": 250099,
+    "costUsd": 8.9381,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 78
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 139932,
+        "read": 0,
+        "out": 3973,
+        "usd": 0.6392
+      },
+      "desk": {
+        "calls": 16,
+        "in": 148516,
+        "read": 122643,
+        "out": 57989,
+        "usd": 1.881
+      },
+      "writer": {
+        "calls": 18,
+        "in": 245295,
+        "read": 127456,
+        "out": 62016,
+        "usd": 2.4239
+      },
+      "critic": {
+        "calls": 11,
+        "in": 180562,
+        "read": 0,
+        "out": 37844,
+        "usd": 1.4792
+      },
+      "checker": {
+        "calls": 6,
+        "in": 48714,
+        "read": 0,
+        "out": 41004,
+        "usd": 1.0149
+      },
+      "vision": {
+        "calls": 26,
+        "in": 275597,
+        "read": 0,
+        "out": 19872,
+        "usd": 1.4999
+      }
+    }
   },
   "log": [
-    "[14:56:02] newsroom start mode=reports limit=4 dry-run=false",
-    "[14:56:09] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
-    "[14:56:09] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[14:56:09] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[14:56:09] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[14:56:13] report un-tourism-barometer: page not read (http-403)",
-    "[14:56:17] reports: 0 new edition(s)"
+    "[16:21:18] openverse \"electric car battery production\": HTTP 504",
+    "[16:21:26] openverse \"electric car Egypt\": HTTP 500",
+    "[16:21:35] openverse \"battery factory\": HTTP 504",
+    "[16:21:35] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[16:21:35] image: dropped \"Aerial shot of multiple silver pickup trucks aligned in rows, showcasi\" — names too little of car, assembly, line",
+    "[16:21:35] image: dropped \"Vast industrial factory floor with machinery, crates, and structured w\" — names too little of car, assembly, line",
+    "[16:21:37] commons \"electric car battery production\": 19 usable of 24",
+    "[16:21:37] image: dropped \"Burg Thorr; (2) Eingang, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Burg Thorr; (5) Wetterfahne, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr90 DNr96.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim-Thorr, Römerturm.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Burg Thorr; (6) Treppenhaus, Denkmal-Nr.5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr12 DNr98Haus.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr12 DNr98.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Burg Thorr; (1) Eingang, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr68 DNr65.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr68 DNr46.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Bergheim Thorr Römerstr66 DNr64 Haus.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Lotus Eletre (rear three-quarter view) at Grand Green Osaka.jpg\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Electric vehicles charging at an indoor station in a modern undergroun\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Close-up of an electric vehicle being charged at a station.\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"A worker checking many industrial batteries inside a facility. Indoor,\" — names too little of electric, car, battery, production",
+    "[16:21:37] image: dropped \"Electric vehicle charging station in an outdoor natural setting, highl\" — names too little of electric, car, battery, production",
+    "[16:21:37] commons \"electric car charging Egypt\": 0 usable of 0",
+    "[16:21:38] commons \"charging Egypt\": 18 usable of 24",
+    "[16:21:38] image: dropped \"King Tut charging enemies, 18th dynasty.jpg\" — shows tut, tut, not the story's people",
+    "[16:21:38] image: dropped \"Ramses II charging Nubians.jpg\" — a scan of a note's or a coin's face, not a photograph",
+    "[16:21:38] image: dropped \"Beyond the Flightline- U S Builds Coalition Readiness at Egypt Interna\" — names too little of charging",
+    "[16:21:38] image: dropped \"1995 in Egypt. Schoolgirls with hijab at Temple of Isis, Philae. Spiel\" — names too little of charging",
+    "[16:21:38] image: dropped \"Detail No. 2 Australian General Hospital Camp section in charge of Maj\" — names too little of charging",
+    "[16:21:38] image: dropped \"The struggle of the nations - Egypt, Syria, and Assyria (1896) (145916\" — names too little of charging",
+    "[16:21:38] image: dropped \"The struggle of the nations - Egypt, Syria, and Assyria (1896) (147780\" — names too little of charging",
+    "[16:21:38] image: dropped \"The struggle of the nations - Egypt, Syria, and Assyria (1896) (147553\" — names too little of charging",
+    "[16:21:38] image: dropped \"Egypt painted and described (1902) (14576537460).jpg\" — names too little of charging",
+    "[16:21:38] image: dropped \"Secretary Kerry Is Greeted By Charge Satterfield and Egyptian Chief Of\" — names too little of charging",
+    "[16:21:38] image: dropped \"The struggle of the nations - Egypt, Syria, and Assyria (1896) (147784\" — names too little of charging",
+    "[16:21:38] commons \"car factory Egypt\": 10 usable of 14",
+    "[16:21:38] image: dropped \"Harvest Sugar Cane 3.jpg\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"Harvest Sugar Cane 1.jpg\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"Harvest Sugar Cane 2.jpg\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"Beheira Governor and Police Generals.jpg\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"Canadian forest industries 1916 (1916) (20340040568).jpg\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"From above of rows with many modern new shiny automobiles of contempor\" — names too little of car, factory",
+    "[16:21:38] image: dropped \"Street view of downtown Alexandria with vehicles and buildings under b\" — names too little of car, factory",
+    "[16:21:42] commons \"electric car Egypt\": 4 usable of 16",
+    "[16:21:42] image: dropped \"The Street railway journal (1902) (14781990993).jpg\" — dated 1902, an archival picture",
+    "[16:21:42] image: dropped \"The Street railway journal (1902) (14758949821).jpg\" — dated 1902, an archival picture",
+    "[16:21:42] image: dropped \"The street railway review (1891) (14574599050).jpg\" — names too little of electric, car",
+    "[16:21:42] image: dropped \"The street railway review (1891) (14760524875).jpg\" — names too little of electric, car",
+    "[16:21:42] commons \"battery factory\": 18 usable of 24",
+    "[16:21:42] image: dropped \"Tudor Battery Factory plaque Bp13 Váci135-139.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:21:42] image: dropped \"Hwaseong Battery Factory Fire building (01).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:21:42] image: dropped \"Hwaseong Battery Factory Fire building (02).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:21:42] image: set aside \"A worker checking many industrial batteries inside a facility. Indoor,\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:21:42] image: dropped \"Aerial shot showcasing a large industrial park in Thành phố Thủ Dầu Mộ\" — names too little of battery, factory",
+    "[16:21:43] image: dropped \"Aerial view showcasing the vast industrial park landscape under a clea\" — names too little of battery, factory",
+    "[16:21:43] image: dropped \"Aricell battery factory fire.jpg\" — taken in South Korea, which the story does not name",
+    "[16:21:43] image: dropped \"Aricell battery factory fire 2.jpg\" — taken in South Korea, which the story does not name",
+    "[16:21:43] image: dropped \"Three men sit outside Aboaish Alabaster Factory, featuring vivid wall \" — a stranger's face: nothing places it in the story's country, and a reader takes a face for the story's own people",
+    "[16:21:43] image: dropped \"High-angle aerial shot of a massive car parking area, filled with vehi\" — taken in Brazil, which the story does not name",
+    "[16:22:15] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=2795 in=12366 read=0 out=3051 attempt=1 ms=31509",
+    "[16:22:15] image: \"Lively street view capturing cars and taxis in Alexandria, E\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[16:22:30] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1072 in=11787 read=0 out=1306 attempt=1 ms=14739",
+    "[16:22:30] image: \"Detailed view of an orange car battery inside a vehicle's en\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[16:22:30] image: the company's own brand (CATL): CATL sign | CATL booth | CATL battery | CATL headquarters",
+    "[16:22:31] pexels \"CATL booth\": 8 usable",
+    "[16:22:31] pexels \"CATL headquarters\": 8 usable",
+    "[16:22:31] commons \"CATL sign 2026\": 0 usable of 0",
+    "[16:22:31] pexels \"CATL battery\": 8 usable",
+    "[16:22:31] pexels \"CATL sign\": 8 usable",
+    "[16:22:31] commons \"CATL sign\": 0 usable of 2",
+    "[16:22:31] image: dropped \"Vibrant urban street in Ho Chi Minh City with cars and motorbikes.\" — names too little of sign",
+    "[16:22:31] commons \"CATL booth 2026\": 0 usable of 0",
+    "[16:22:32] commons \"CATL booth\": 0 usable of 0",
+    "[16:22:32] image: dropped \"A view of advanced industrial machinery displayed at a trade fair exhi\" — names too little of booth",
+    "[16:22:32] image: dropped \"Vibrant indoor scene at London Tech Week with attendees and colorful d\" — names too little of booth",
+    "[16:22:32] image: dropped \"Aerial view of vintage car at rural entrance under warm sunset light, \" — names too little of booth",
+    "[16:22:32] image: dropped \"Modern exhibition stand with a blank backdrop, perfect for branding an\" — names too little of booth",
+    "[16:22:32] image: dropped \"Vibrant night market stall at festival with traditional lanterns and s\" — names too little of booth",
+    "[16:22:32] commons \"CATL battery 2026\": 0 usable of 0",
+    "[16:22:33] commons \"CATL battery\": 19 usable of 24",
+    "[16:22:33] image: dropped \"Close-up of an electric vehicle being charged at a station.\" — names too little of battery",
+    "[16:22:33] commons \"CATL headquarters 2026\": 0 usable of 0",
+    "[16:22:33] commons \"CATL headquarters\": 0 usable of 1",
+    "[16:22:33] image: dropped \"Modern architectural marvel with reflective glass panels by a water bo\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Contemporary glass office building with Vanke signage in urban area.\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Two modern office buildings with glass facades under a clear blue sky.\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Sleek modern building in China with stunning dusk reflections, showcas\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Close-up of a modern office building with glass facade under a clear b\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"Glass facade skyscraper with trees in downtown urban scene, perfect fo\" — names too little of headquarters",
+    "[16:22:33] image: dropped \"A contemporary office building featuring a striking glass facade and l\" — names too little of headquarters",
+    "[16:22:33] image: 21 file(s) dropped for not naming CATL",
+    "[16:22:33] image: no photograph of CATL's brand",
+    "[16:22:33] image: an illustration of the story's own subject, to set beside the photograph held: car assembly line | electric car battery production | electric car charging | car factory | electric car | battery factory",
+    "[16:22:33] pexels \"car assembly line\": 8 usable",
+    "[16:22:33] pexels \"battery factory\": 8 usable",
+    "[16:22:33] pexels \"electric car battery production\": 8 usable",
+    "[16:22:33] pexels \"car factory\": 8 usable",
+    "[16:22:34] pexels \"electric car\": 8 usable",
+    "[16:22:34] commons \"car assembly line\": 17 usable of 24",
+    "[16:22:34] image: set aside \"Geely assembly line in Beilun, Ningbo.JPG\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:22:34] image: dropped \"Volkswagen Assembly Line in Wolfsburg (1960).jpg\" — dated 1960, an archival picture",
+    "[16:22:34] image: dropped \"Aerial shot of multiple silver pickup trucks aligned in rows, showcasi\" — names too little of car, assembly, line",
+    "[16:22:34] image: dropped \"Vast industrial factory floor with machinery, crates, and structured w\" — names too little of car, assembly, line",
+    "[16:22:34] commons \"electric car battery production\": 19 usable of 24",
+    "[16:22:34] image: dropped \"Burg Thorr; (2) Eingang, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Burg Thorr; (5) Wetterfahne, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr90 DNr96.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim-Thorr, Römerturm.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Burg Thorr; (6) Treppenhaus, Denkmal-Nr.5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr12 DNr98Haus.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr12 DNr98.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Burg Thorr; (1) Eingang, Denkmal-Nr. 5, Bergheim.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr68 DNr65.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr68 DNr46.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Bergheim Thorr Römerstr66 DNr64 Haus.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Lotus Eletre (rear three-quarter view) at Grand Green Osaka.jpg\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Electric vehicles charging at an indoor station in a modern undergroun\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Close-up of an electric vehicle being charged at a station.\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"A worker checking many industrial batteries inside a facility. Indoor,\" — names too little of electric, car, battery, production",
+    "[16:22:34] image: dropped \"Electric vehicle charging station in an outdoor natural setting, highl\" — names too little of electric, car, battery, production",
+    "[16:22:34] pexels \"electric car charging\": 8 usable",
+    "[16:22:34] commons \"electric car charging\": 22 usable of 24",
+    "[16:22:34] image: dropped \"Cologne Germany Electric-Car-Charging-Point-at-TUV-Rheinland-01.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:34] image: dropped \"Woman with rectifier and electric car.jpg\" — dated 1912, an archival picture",
+    "[16:22:35] commons \"car factory\": 16 usable of 24",
+    "[16:22:35] image: dropped \"Final assembly 2.jpg\" — names too little of car, factory",
+    "[16:22:35] image: dropped \"Black and white photo of an empty industrial warehouse with vintage ve\" — names too little of car, factory",
+    "[16:22:35] image: dropped \"From above of rows with many modern new shiny automobiles of contempor\" — names too little of car, factory",
+    "[16:22:35] image: dropped \"Interior of a modern workshop featuring detailed automotive machinery \" — names too little of car, factory",
+    "[16:22:35] commons \"electric car\": 13 usable of 24",
+    "[16:22:35] image: dropped \"Ford experimental electric car (1914).jpg\" — dated 1914, an archival picture",
+    "[16:22:35] image: dropped \"Detroit Electric Car Mt. Rainier.jpg\" — dated 1919, an archival picture",
+    "[16:22:35] image: dropped \"Electric car part of RAC electric highway project.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:35] image: dropped \"Blue car driving on asphalt race track in city center while racing ral\" — an event's photograph, people and banners",
+    "[16:22:35] image: dropped \"A sleek white Tesla Model 3 parked on a city street under trees, showc\" — names too little of electric, car",
+    "[16:22:35] image: dropped \"A sleek red electric car parked beside a modern building in an urban e\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:36] commons \"battery factory\": 18 usable of 24",
+    "[16:22:36] image: dropped \"Tudor Battery Factory plaque Bp13 Váci135-139.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:36] image: dropped \"Hwaseong Battery Factory Fire building (01).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:36] image: dropped \"Hwaseong Battery Factory Fire building (02).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:22:36] image: set aside \"A worker checking many industrial batteries inside a facility. Indoor,\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:22:36] image: dropped \"Aerial shot showcasing a large industrial park in Thành phố Thủ Dầu Mộ\" — names too little of battery, factory",
+    "[16:22:36] image: dropped \"Aerial view showcasing the vast industrial park landscape under a clea\" — names too little of battery, factory",
+    "[16:22:55] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1448 in=12975 read=0 out=1698 attempt=1 ms=17962",
+    "[16:23:04] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=685 in=11067 read=0 out=917 attempt=1 ms=9032",
+    "[16:23:04] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"CATL, IAA 2024, Hanover (P1190829).jpg\"",
+    "[16:23:04] published \"مصر تستهدف إنتاج بطاريات السيارات الكهربائية مع «كاتل» الصينية بحلول منتصف 2027\" -> egypt-catl-ev-battery-plant-2027-eee099",
+    "[16:23:04] run budget of 35 minutes spent; \"«كوب 31» ينتهي دون اتفاق على الوقود الأحفوري وتمويل المناخ\" waits for the next run"
   ]
 }

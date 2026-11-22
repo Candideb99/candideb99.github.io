@@ -18566,6 +18566,149 @@
           "noted": []
         }
       ]
+    },
+    "saudi-tasi-falls-below-10000-points-8d389d": {
+      "at": "2026-11-22T15:55:25.833Z",
+      "title": "المؤشر السعودي يهبط نحو 2% دون 10 آلاف نقطة مع امتداد بيع «وول ستريت»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 27,
+            "checked": 27,
+            "supported": 21,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-arabia-saudisation-financial-professions-50-percent-bf921a": {
+      "at": "2026-11-22T16:10:10.166Z",
+      "title": "السعودية تقر توطين 50% من وظائف 17 مهنة مالية بدءاً من مايو 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 1,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 10,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 1,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 8,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وقالت الوزارة إن مهلة الأشهر الستة، المحتسبة من تاريخ الإعلان، تتيح للمنشآت ترتيب أوضاعها الوظيفية قبل بدء التطبيق.",
+              "quote": "وتهدف المهلة إلى تمكين المنشآت من تهيئة أوضاعها الوظيفية، واستكمال متطلبات الامتثال، وتوفير الاحتياجات اللازمة لتحقيق نسبة التوطين المستهدفة وفق الآليات المعتمدة.",
+              "source": "Al Eqtisadiah",
+              "sourceN": 3,
+              "correction": "The purpose of the grace period (letting establishments arrange their staffing) is Al Eqtisadiah's own explanation, not a statement attributed to the ministry."
+            }
+          ],
+          "noted": [
+            {
+              "id": 12,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتزامن القرار الجديد مع ارتفاع طفيف في بطالة السعوديين إلى 6.5% في الربع الثاني من العام الجاري، من 6.4% في الربع الأول، بحسب الهيئة العامة للإحصاء.",
+              "quote": "وكان معدل البطالة بين السعوديين قد سجل 4.9% في الربع الأول من العام، مع وصول بطالة السعوديات إلى أدنى مستوى تاريخي عند 9%، قبل ارتفاعها إلى 9.6% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ],
+          "repaired": {
+            "attempt": 1,
+            "sentencesChanged": 1
+          }
+        },
+        {
+          "counts": {
+            "sentences": 13,
+            "checked": 13,
+            "supported": 12,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 12,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وتزامن القرار الجديد مع ارتفاع طفيف في بطالة السعوديين إلى 6.5% في الربع الثاني من العام الجاري، من 6.4% في الربع الأول، بحسب الهيئة العامة للإحصاء.",
+              "quote": "وكان معدل البطالة بين السعوديين قد سجل 4.9% في الربع الأول من العام، مع وصول بطالة السعوديات إلى أدنى مستوى تاريخي عند 9%، قبل ارتفاعها إلى 9.6% في الربع الثاني.",
+              "source": "Asharq Business",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "egypt-catl-ev-battery-plant-2027-eee099": {
+      "at": "2026-11-22T16:23:04.093Z",
+      "title": "مصر تستهدف إنتاج بطاريات السيارات الكهربائية مع «كاتل» الصينية بحلول منتصف 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v72",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

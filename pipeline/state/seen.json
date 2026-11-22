@@ -1,294 +1,6 @@
 {
   "version": 1,
   "items": {
-    "c4ca1cf8bfec0f87": {
-      "at": "2026-11-01T06:47:16.823Z",
-      "decision": "published",
-      "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
-      "title": "\"فيتش\" تحوّل نظرتها لفرنسا إلى سلبية وسط تفاقم أزمة الديون"
-    },
-    "eea9854ff6d1618c": {
-      "at": "2026-11-01T00:24:54.595Z",
-      "decision": "published",
-      "slug": "binance-covers-90-percent-hack-losses-39ca3c",
-      "title": "\"بينانس\" تعوض 90% من العملات المشفرة المسروقة وتعتزم استئناف السحب الأحد"
-    },
-    "68538fbfbf41d376": {
-      "at": "2026-11-01T00:24:54.595Z",
-      "decision": "published",
-      "slug": "binance-covers-90-percent-hack-losses-39ca3c",
-      "title": "Binance says 90% of $6.3 billion hack losses are now covered, plans to resume withdrawals Sunday"
-    },
-    "7d968577e0ca1ac4": {
-      "at": "2026-11-01T00:24:54.595Z",
-      "decision": "published",
-      "slug": "binance-covers-90-percent-hack-losses-39ca3c",
-      "title": "Binance CEO says 90 percent of stolen assets have been ‘replenished’"
-    },
-    "33ece87981400a4d": {
-      "at": "2026-11-01T00:24:54.595Z",
-      "decision": "published",
-      "slug": "binance-covers-90-percent-hack-losses-39ca3c",
-      "title": "Binance covers 90 per cent of assets stolen in $6.3 billion hack"
-    },
-    "f7efa77abee19933": {
-      "at": "2026-11-01T00:24:54.595Z",
-      "decision": "published",
-      "slug": "binance-covers-90-percent-hack-losses-39ca3c",
-      "title": "\"بينانس\" تعوض 90% من العملات المشفرة المسروقة وتعتزم استئناف السحب غدا"
-    },
-    "066d57f34c49039d": {
-      "at": "2026-11-01T00:36:08.130Z",
-      "decision": "published",
-      "slug": "turkey-names-new-capital-markets-regulator-chief-9ab65e",
-      "title": "أردوغان يغيّر قيادة هيئة أسواق المال التركية لاحتواء أزمة صناديق الاستثمار"
-    },
-    "c110f42c3774f920": {
-      "at": "2026-11-01T00:36:08.130Z",
-      "decision": "published",
-      "slug": "turkey-names-new-capital-markets-regulator-chief-9ab65e",
-      "title": "Turkey Appoints New Top Market Regulator in Fund Crisis Response"
-    },
-    "ce2b5af3004dd4ea": {
-      "at": "2026-11-01T00:36:08.130Z",
-      "decision": "published",
-      "slug": "turkey-names-new-capital-markets-regulator-chief-9ab65e",
-      "title": "SPK Başkanlığına Muhsin Atcı atandı"
-    },
-    "61b3ca1db90c0253": {
-      "at": "2026-11-01T00:36:08.130Z",
-      "decision": "published",
-      "slug": "turkey-names-new-capital-markets-regulator-chief-9ab65e",
-      "title": "Son dakika... SPK'da üst düzey atama kararı: Yeni başkan belli oldu"
-    },
-    "881ce5ff728da0a5": {
-      "at": "2026-11-01T00:36:08.130Z",
-      "decision": "published",
-      "slug": "turkey-names-new-capital-markets-regulator-chief-9ab65e",
-      "title": "SPK'ya yeni başkan atandı!"
-    },
-    "abdda0c28f227a97": {
-      "at": "2026-11-01T00:48:18.159Z",
-      "decision": "published",
-      "slug": "middle-east-fertiliser-exports-fall-hormuz-7d205e",
-      "title": "سقوط ۷۰ درصدی صادرات کود خاورمیانه"
-    },
-    "ea6811e8aecc08b8": {
-      "at": "2026-11-01T00:48:18.159Z",
-      "decision": "published",
-      "slug": "middle-east-fertiliser-exports-fall-hormuz-7d205e",
-      "title": "Middle East fertiliser exports decline by 70% as Iran war disrupts supplies"
-    },
-    "3744537d04a1525b": {
-      "at": "2026-11-01T01:02:17.401Z",
-      "decision": "published",
-      "slug": "egypt-first-locally-assembled-electric-car-f79ba4",
-      "title": "مصر تخطط لتصنيع بطاريات السيارات الكهربائية محلياً"
-    },
-    "7b9808f43cb707dd": {
-      "at": "2026-11-01T01:02:17.401Z",
-      "decision": "published",
-      "slug": "egypt-first-locally-assembled-electric-car-f79ba4",
-      "title": "7 معلومات حول السيارة الكهربائية للنصر للسيارات بخبرات دونج فينج الصينية"
-    },
-    "2b779b0157e82b67": {
-      "at": "2026-11-01T01:02:17.401Z",
-      "decision": "published",
-      "slug": "egypt-first-locally-assembled-electric-car-f79ba4",
-      "title": "«إس إن أوتوموتيف» تطلق أول سيارة كهربائية مجمعة محليًا بـ”النصر للسيارات”"
-    },
-    "150ae970b444303b": {
-      "at": "2026-11-01T06:31:36.056Z",
-      "decision": "published",
-      "slug": "binance-resumes-withdrawals-after-covering-95-percent-29bc64",
-      "title": "«بينانس» تستأنف سحب أموال العملاء على مراحل بعد تعرضها للاختراق"
-    },
-    "86d8f6be1849a412": {
-      "at": "2026-11-01T06:31:36.056Z",
-      "decision": "published",
-      "slug": "binance-resumes-withdrawals-after-covering-95-percent-29bc64",
-      "title": "بينانس تستعد لاستئناف السحب بعد تغطية 95% من العملات المسروقة"
-    },
-    "69e473dced269f3b": {
-      "at": "2026-11-01T06:31:36.056Z",
-      "decision": "published",
-      "slug": "binance-resumes-withdrawals-after-covering-95-percent-29bc64",
-      "title": "Binance to resume withdrawals after covering 95% of $6.3bn crypto heist"
-    },
-    "ecb7fce5ac0473e4": {
-      "at": "2026-11-01T06:31:36.056Z",
-      "decision": "published",
-      "slug": "binance-resumes-withdrawals-after-covering-95-percent-29bc64",
-      "title": "بينانس تسترد 90% من الأصول المسروقة... والسحب يعود الأحد"
-    },
-    "7beb7454153f59d7": {
-      "at": "2026-11-01T06:31:37.255Z",
-      "decision": "rejected",
-      "title": "تركيا تحتجز الرئيس التنفيذي لبورصة إسطنبول في قضية صناديق الاستثمار",
-      "strikes": 1
-    },
-    "3045815d1e80867c": {
-      "at": "2026-11-01T06:31:37.255Z",
-      "decision": "rejected",
-      "title": "Borsa İstanbul Genel Müdürü Korkmaz Enes Ergun gözaltına alındı",
-      "strikes": 1
-    },
-    "6232e2f67ecb473e": {
-      "at": "2026-11-01T06:47:16.823Z",
-      "decision": "published",
-      "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
-      "title": "Rating agency Fitch hits France with unscheduled outlook downgrade"
-    },
-    "1796548919b05156": {
-      "at": "2026-11-01T06:47:16.823Z",
-      "decision": "published",
-      "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
-      "title": "«فيتش» تنقل فرنسا إلى النظرة «السلبية» وسط تصاعد مخاطر الديْن"
-    },
-    "a50290c36f4a791c": {
-      "at": "2026-11-01T06:47:16.823Z",
-      "decision": "published",
-      "slug": "fitch-cuts-france-outlook-negative-contraction-3bef5e",
-      "title": "France aims for 'responsible' 2027 budget as Fitch downgrades outlook"
-    },
-    "607198e9edc8c468": {
-      "at": "2026-11-01T06:54:47.260Z",
-      "decision": "published",
-      "slug": "egypt-ida-industrial-building-permits-mechanism-9dc933",
-      "title": "IDA streamlines industrial building permit procedures from 1 November"
-    },
-    "a158f0df3b6bc41f": {
-      "at": "2026-11-01T06:54:47.260Z",
-      "decision": "published",
-      "slug": "egypt-ida-industrial-building-permits-mechanism-9dc933",
-      "title": "“التنمية الصناعية” تطبق آلية جديدة لتسريع إصدار تراخيص البناء"
-    },
-    "257393ed8225e042": {
-      "at": "2026-11-01T09:30:01.729Z",
-      "decision": "published",
-      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
-      "title": "Saudi Economy Shrank at Slower Pace Before Houthi War Escalation"
-    },
-    "5ac85da166c04886": {
-      "at": "2026-11-01T09:30:01.729Z",
-      "decision": "published",
-      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
-      "title": "النشاط غير النفطي يواصل النمو في السعودية رغم انكماش الناتج المحلي"
-    },
-    "e30d42d0431c1036": {
-      "at": "2026-11-01T09:30:01.729Z",
-      "decision": "published",
-      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
-      "title": "تباطؤ انكماش الاقتصاد السعودي في الربع الثالث مع تسارع نمو القطاع غير النفطي"
-    },
-    "a3767764d129a161": {
-      "at": "2026-11-01T09:30:01.729Z",
-      "decision": "published",
-      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
-      "title": "تسارع نمو القطاع غير النفطي السعودي مواصلاً صعوده للفصل الـ23 على التوالي"
-    },
-    "126cc36a6d76776e": {
-      "at": "2026-11-01T09:30:01.729Z",
-      "decision": "published",
-      "slug": "saudi-economy-contraction-slows-third-quarter-aba15b",
-      "title": "تراجع الاقتصاد السعودي يتقلص إلى 3.8% خلال الربع الثالث"
-    },
-    "27a1a277e91f2ebc": {
-      "at": "2026-11-01T09:41:24.815Z",
-      "decision": "published",
-      "slug": "qatar-lng-tanker-al-mayeda-attacked-gulf-fb0a85",
-      "title": "\"قطر لنقل الغاز\": الناقلة \"المايده\" تتعرض لهجوم بأجسام مجهولة أثناء إبحارها في الخليج"
-    },
-    "3db4e78ee23f58ed": {
-      "at": "2026-11-01T09:41:24.815Z",
-      "decision": "published",
-      "slug": "qatar-lng-tanker-al-mayeda-attacked-gulf-fb0a85",
-      "title": "Middle East latest: Qatar LNG carrier Al Mayeda hit by unidentified objects while transiting the Gulf"
-    },
-    "39e0bfe1fd7c10fc": {
-      "at": "2026-11-01T09:41:24.815Z",
-      "decision": "published",
-      "slug": "qatar-lng-tanker-al-mayeda-attacked-gulf-fb0a85",
-      "title": "Qatari gas tanker struck in Gulf: state media"
-    },
-    "3410b5f4fc38d534": {
-      "at": "2026-11-01T09:54:47.461Z",
-      "decision": "published",
-      "slug": "aramco-completes-humain-stake-acquisition-8c73b9",
-      "title": "أرامكو تكمل الاستحواذ على 49% من \"هيوماين\" بضخ 9.9 مليار ريال وأصول"
-    },
-    "96a184e71b211d4f": {
-      "at": "2026-11-01T09:54:47.461Z",
-      "decision": "published",
-      "slug": "aramco-completes-humain-stake-acquisition-8c73b9",
-      "title": "«أرامكو» تستحوذ على 49 % من «هيوماين» باستثمار نقدي وأصول تقنية"
-    },
-    "cf6b7248cee42ec6": {
-      "at": "2026-11-01T09:54:47.461Z",
-      "decision": "published",
-      "slug": "aramco-completes-humain-stake-acquisition-8c73b9",
-      "title": "\"أرامكو\" تكمل الاستحواذ على 49% من \"هيوماين\" بضخ 9.9 مليار ريال"
-    },
-    "0268a03ec479e240": {
-      "at": "2026-11-01T13:49:58.516Z",
-      "decision": "published",
-      "slug": "opec-plus-holds-december-oil-quotas-b01552",
-      "title": "OPEC+ Leaves Oil Output Targets Unchanged for December"
-    },
-    "580bfd163aa1b0f2": {
-      "at": "2026-11-01T13:49:58.516Z",
-      "decision": "published",
-      "slug": "opec-plus-holds-december-oil-quotas-b01552",
-      "title": "«أوبك بلس» يبقي أهداف إنتاج النفط دون تغيير في ديسمبر"
-    },
-    "24225549580b7797": {
-      "at": "2026-11-01T13:49:58.516Z",
-      "decision": "published",
-      "slug": "opec-plus-holds-december-oil-quotas-b01552",
-      "title": "\"أوبك+\" يبقي على حصص إنتاج النفط في ديسمبر للشهر الثالث توالياً"
-    },
-    "96dbdff06d7c4fdc": {
-      "at": "2026-11-01T13:49:58.516Z",
-      "decision": "published",
-      "slug": "opec-plus-holds-december-oil-quotas-b01552",
-      "title": "OPEC+ Sticks With Plan for Steady Oil Output Quotas in December"
-    },
-    "6d71bb0ad28c0d3d": {
-      "at": "2026-11-01T13:49:58.516Z",
-      "decision": "published",
-      "slug": "opec-plus-holds-december-oil-quotas-b01552",
-      "title": "Opec+ holds December oil output targets steady as Iran war disrupts supply"
-    },
-    "a3f559aef1861716": {
-      "at": "2026-11-01T14:01:38.105Z",
-      "decision": "published",
-      "slug": "elm-saudi-q3-profit-rises-39-percent-534177",
-      "title": "«علم» ترفع أرباحها الفصلية 39 % إلى 207 ملايين دولار"
-    },
-    "6cfc12b48102d694": {
-      "at": "2026-11-01T14:01:38.105Z",
-      "decision": "published",
-      "slug": "elm-saudi-q3-profit-rises-39-percent-534177",
-      "title": "أرباح علم السعودية تتجاوز التوقعات بأقوى نمو منذ مطلع 2022"
-    },
-    "5462357e7c2f1b01": {
-      "at": "2026-11-01T14:01:38.105Z",
-      "decision": "published",
-      "slug": "elm-saudi-q3-profit-rises-39-percent-534177",
-      "title": "الإيرادات تدفع أرباح \"علم\" الفصلية لتسجيل أقوى نمو منذ 2022"
-    },
-    "617aecc608648b27": {
-      "at": "2026-11-01T14:12:44.504Z",
-      "decision": "published",
-      "slug": "egypt-chemical-fertilizer-exports-rise-34-percent-8c1575",
-      "title": "34% نمواً في صادرات الصناعات الكيماوية المصرية خلال 9 أشهر"
-    },
-    "d177ebdecf96f86c": {
-      "at": "2026-11-01T14:12:44.504Z",
-      "decision": "published",
-      "slug": "egypt-chemical-fertilizer-exports-rise-34-percent-8c1575",
-      "title": "الصناعات الكيماوية والأسمدة تحقق 9.54 مليار دولار صادرات خلال 9 أشهر بنمو 34%"
-    },
     "6c3cccebeeafe226": {
       "at": "2026-11-01T19:58:37.700Z",
       "decision": "published",
@@ -5177,6 +4889,66 @@
       "decision": "rejected",
       "title": "هيئة بحرية: إصابة ناقلتين بمقذوفات مجهولة قرب خصب العمانية",
       "strikes": 1
+    },
+    "1ab44ce31423abce": {
+      "at": "2026-11-22T15:55:25.867Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "موجة بيع \"وول ستريت\" تضغط على البورصات العربية"
+    },
+    "af8b207176d28d26": {
+      "at": "2026-11-22T15:55:25.867Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "الأسهم السعودية تهبط 2 % وتسجل أدنى مستوى في أسبوعين"
+    },
+    "23cec3536329a390": {
+      "at": "2026-11-22T15:55:25.867Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "الأسواق الخليجية تتراجع تحت ضغط التوترات الإقليمية"
+    },
+    "087758465c97a0c8": {
+      "at": "2026-11-22T15:55:25.867Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "خسائر البورصة السعودية تتفاقم مع امتداد موجة بيع \"وول ستريت\" إلى الخليج"
+    },
+    "b52f7790c5096510": {
+      "at": "2026-11-22T15:55:25.867Z",
+      "decision": "published",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "title": "موجة بيع حادة تهوي بـالمؤشر السعودي لما دون 10 آلاف نقطة"
+    },
+    "bde0d606b8eee63c": {
+      "at": "2026-11-22T16:10:10.199Z",
+      "decision": "published",
+      "slug": "saudi-arabia-saudisation-financial-professions-50-percent-bf921a",
+      "title": "السعودية تقر توطين 50% من وظائف 17 مهنة مالية بدءاً من مايو"
+    },
+    "7f264c389ffa3b9e": {
+      "at": "2026-11-22T16:10:10.199Z",
+      "decision": "published",
+      "slug": "saudi-arabia-saudisation-financial-professions-50-percent-bf921a",
+      "title": "Saudi Arabia to Saudise 50% of jobs in 17 financial professions from May 2027"
+    },
+    "6d1ab95e27e17857": {
+      "at": "2026-11-22T16:10:10.199Z",
+      "decision": "published",
+      "slug": "saudi-arabia-saudisation-financial-professions-50-percent-bf921a",
+      "title": "السعودية ترفع توطين المهن المالية إلى 50% في القطاع الخاص"
+    },
+    "42bee5906c9d3a46": {
+      "at": "2026-11-22T16:23:04.125Z",
+      "decision": "published",
+      "slug": "egypt-catl-ev-battery-plant-2027-eee099",
+      "title": "مصر تبدأ إنتاج بطاريات السيارات الكهربائية بحلول منتصف 2027"
+    },
+    "2335d0c6eb140e49": {
+      "at": "2026-11-22T16:23:04.125Z",
+      "decision": "published",
+      "slug": "egypt-catl-ev-battery-plant-2027-eee099",
+      "title": "مصر تستقطب أكبر شركة عالمية لتصنيع بطاريات السيارات الكهربائية.. وبدء الإنتاج منتصف 2027"
     }
   }
 }

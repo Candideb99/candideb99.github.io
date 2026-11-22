@@ -3143,6 +3143,50 @@
         "classes": [],
         "programmatic": 0
       }
+    },
+    {
+      "at": "2026-11-22T15:55:25.868Z",
+      "slug": "saudi-tasi-falls-below-10000-points-8d389d",
+      "checker": "8abd70ec7f.2",
+      "lessons": "v72",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 15,
+        "notFound": 7,
+        "checked": 26,
+        "words": 361,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 2
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 4,
+        "checked": 24,
+        "words": 332,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 3
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 17,
+        "notFound": 4,
+        "checked": 24,
+        "words": 332,
+        "keyFacts": 6,
+        "classes": [],
+        "programmatic": 3
+      }
     }
   ]
 }
