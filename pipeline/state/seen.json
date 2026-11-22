@@ -1,54 +1,6 @@
 {
   "version": 1,
   "items": {
-    "6c3cccebeeafe226": {
-      "at": "2026-11-01T19:58:37.700Z",
-      "decision": "published",
-      "slug": "egypt-signs-1bn-world-bank-dpf-b46b95",
-      "title": "Egypt signs $1bn World Bank financing agreement under second phase of reform programme"
-    },
-    "f0a4fd6cdf1f712d": {
-      "at": "2026-11-01T19:58:37.700Z",
-      "decision": "published",
-      "slug": "egypt-signs-1bn-world-bank-dpf-b46b95",
-      "title": "مصر توقع اتفاق تمويل مع البنك الدولي بقيمة مليار دولار"
-    },
-    "ded7ea33283bd1be": {
-      "at": "2026-11-01T19:58:37.700Z",
-      "decision": "published",
-      "slug": "egypt-signs-1bn-world-bank-dpf-b46b95",
-      "title": "مصر توقع اتفاقية تمويل مع البنك الدولي بقيمة مليار دولار ضمن برنامج DPF"
-    },
-    "18db6214a1dec22b": {
-      "at": "2026-11-01T20:13:24.728Z",
-      "decision": "published",
-      "slug": "iraq-receives-first-batch-3-billion-cash-dollars-dinar-90b3e7",
-      "title": "العراق يترقب 3 مليارات دولار نقداً لكبح تراجع الدينار"
-    },
-    "bf53fa7edc9ab5d1": {
-      "at": "2026-11-01T20:13:24.728Z",
-      "decision": "published",
-      "slug": "iraq-receives-first-batch-3-billion-cash-dollars-dinar-90b3e7",
-      "title": "«المركزي العراقي»: لا أزمة سيولة... وشحنات دولار تتجاوز المليار في الطريق"
-    },
-    "edd3735f5de216cd": {
-      "at": "2026-11-01T20:24:30.392Z",
-      "decision": "published",
-      "slug": "pakistan-lng-tanker-attacked-despite-iran-approval-09b70f",
-      "title": "ناقلة غاز باكستانية تتعرض لهجوم رغم موافقة إيران على عبورها"
-    },
-    "3731cb74ae4f7daa": {
-      "at": "2026-11-01T20:24:30.392Z",
-      "decision": "published",
-      "slug": "pakistan-lng-tanker-attacked-despite-iran-approval-09b70f",
-      "title": "Pakistan LNG Cargo Attacked Near Hormuz Had Iranian Approval"
-    },
-    "9ff4afea423c8f4b": {
-      "at": "2026-11-01T20:24:30.392Z",
-      "decision": "published",
-      "slug": "pakistan-lng-tanker-attacked-despite-iran-approval-09b70f",
-      "title": "هجوم بأجسام مجهولة يستهدف ناقلة غاز قطرية"
-    },
     "ff254917f921cc63": {
       "at": "2026-11-02T01:02:41.073Z",
       "decision": "published",
@@ -4949,6 +4901,78 @@
       "decision": "published",
       "slug": "egypt-catl-ev-battery-plant-2027-eee099",
       "title": "مصر تستقطب أكبر شركة عالمية لتصنيع بطاريات السيارات الكهربائية.. وبدء الإنتاج منتصف 2027"
+    },
+    "87376eea90d137b3": {
+      "at": "2026-11-22T23:01:50.641Z",
+      "decision": "published",
+      "slug": "iran-two-tankers-hit-mines-east-hormuz-d760a9",
+      "title": "انفجار دو سوپرنفتکش متخلف در شرق تنگه هرمز"
+    },
+    "1e953815a647bb5f": {
+      "at": "2026-11-22T23:01:50.641Z",
+      "decision": "published",
+      "slug": "iran-two-tankers-hit-mines-east-hormuz-d760a9",
+      "title": "Two oil tankers explode in east of Hormuz: Iran Army"
+    },
+    "fb10685f482ba027": {
+      "at": "2026-11-22T23:01:50.642Z",
+      "decision": "published",
+      "slug": "iran-two-tankers-hit-mines-east-hormuz-d760a9",
+      "title": "ارتش: دو نفتکش متخلف در شرق تنگه هرمز دچار حریق شدند"
+    },
+    "f58ce804f831d762": {
+      "at": "2026-11-22T23:01:50.642Z",
+      "decision": "published",
+      "slug": "iran-two-tankers-hit-mines-east-hormuz-d760a9",
+      "title": "Middle East latest: Tanker incident reported in Gulf as Iran claims two ships catch fire"
+    },
+    "e0409b6d20b9d941": {
+      "at": "2026-11-22T23:10:39.689Z",
+      "decision": "published",
+      "slug": "riyadh-white-land-fees-21-million-sqm-275aae",
+      "title": "السعودية تضيف 21 مليون متر مربع إلى نطاق رسوم الأراضي البيضاء في الرياض"
+    },
+    "4f67d27226faa11a": {
+      "at": "2026-11-22T23:10:39.689Z",
+      "decision": "published",
+      "slug": "riyadh-white-land-fees-21-million-sqm-275aae",
+      "title": "تحديث نطاقات تطبيق رسوم الأراضي البيضاء في مدينة الرياض"
+    },
+    "4b39a0398a0c6b6b": {
+      "at": "2026-11-22T23:10:39.689Z",
+      "decision": "published",
+      "slug": "riyadh-white-land-fees-21-million-sqm-275aae",
+      "title": "تحديث نطاقات رسوم الأراضي البيضاء في الرياض بإضافة مساحات جديدة"
+    },
+    "00d60eb5e7c7ec29": {
+      "at": "2026-11-22T23:20:32.339Z",
+      "decision": "published",
+      "slug": "china-cuts-margin-requirement-to-80-percent-ee37e8",
+      "title": "هبوط وول ستريت يستنفر آسيا.. وتحركات متسارعة لإنقاذ أسواق الأسهم"
+    },
+    "b1c6df2fb0487382": {
+      "at": "2026-11-22T23:20:32.339Z",
+      "decision": "published",
+      "slug": "china-cuts-margin-requirement-to-80-percent-ee37e8",
+      "title": "Bolsas chinesas flexibilizam regras para impulsionar mercado de ações"
+    },
+    "e5a2cbc1c08fa824": {
+      "at": "2026-11-22T23:20:32.339Z",
+      "decision": "published",
+      "slug": "china-cuts-margin-requirement-to-80-percent-ee37e8",
+      "title": "China lowers margin requirement to 80% to boost stock liquidity"
+    },
+    "49ac3cc12bb5044a": {
+      "at": "2026-11-22T23:29:05.081Z",
+      "decision": "published",
+      "slug": "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f",
+      "title": "تطوير خدمات \"أبشر\" في السعودية يحقق وفورات سنوية بنحو 26 مليار ريال"
+    },
+    "9346d11d40fcaa29": {
+      "at": "2026-11-22T23:29:05.081Z",
+      "decision": "published",
+      "slug": "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f",
+      "title": "السعودية توفر 26 مليار ريال سنوياً بالتحول الرقمي"
     }
   }
 }

@@ -1,0 +1,79 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-22T22:48:25.000Z",
+  "durationSec": 62,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-arabia-saudisation-financial-professions-50-percent-bf921a",
+      "title": "السعودية تقر توطين 50% من وظائف 17 مهنة مالية بدءاً من مايو 2027",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 13,
+        "checked": 13,
+        "supported": 12,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "saudi-banks-lead-tasi-below-10000-wall-street-selloff-492040",
+      "title": "البنوك السعودية تقود هبوط «تاسي» دون 10 آلاف نقطة مع امتداد بيع «وول ستريت»",
+      "kind": "analysis",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 38,
+        "checked": 38,
+        "supported": 26,
+        "weak": 4,
+        "noEvidence": 0,
+        "notFound": 8,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 20675,
+    "completionTokens": 12838,
+    "cacheReadTokens": 0,
+    "costUsd": 0.3394,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 20675,
+        "read": 0,
+        "out": 12838,
+        "usd": 0.3394
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[22:48:26] second look: 2 to read now (2 published pieces not yet read; 298 read clean before publication and left out of the audit sample)",
+    "[22:49:01] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1501 in=7800 read=0 out=4572 attempt=1 ms=32977",
+    "[22:49:01] saudi-arabia-saudisation-financial-professions-50-percent-bf921a: 13 of 13 sentences checked · 12 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[22:49:27] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2440 in=12875 read=0 out=8266 attempt=1 ms=61160",
+    "[22:49:27] saudi-banks-lead-tasi-below-10000-wall-street-selloff-492040: 38 of 38 sentences checked · 26 supported · 8 without a source · 0 confirmed error(s)"
+  ]
+}

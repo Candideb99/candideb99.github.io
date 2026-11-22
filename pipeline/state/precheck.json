@@ -18772,6 +18772,152 @@
           "noted": []
         }
       ]
+    },
+    "iran-two-tankers-hit-mines-east-hormuz-d760a9": {
+      "at": "2026-11-22T23:01:50.610Z",
+      "title": "الحرس الثوري: ألغام تفجّر ناقلتي نفط عملاقتين شرق مضيق هرمز",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 9,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "riyadh-white-land-fees-21-million-sqm-275aae": {
+      "at": "2026-11-22T23:10:39.661Z",
+      "title": "السعودية تضيف أكثر من 21 مليون متر مربع إلى نطاق رسوم الأراضي البيضاء في الرياض",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 21,
+            "checked": 21,
+            "supported": 20,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "china-cuts-margin-requirement-to-80-percent-ee37e8": {
+      "at": "2026-11-22T23:20:32.322Z",
+      "title": "بورصات الصين تخفض الحد الأدنى للهامش إلى 80% لتعزيز السيولة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 24,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f": {
+      "at": "2026-11-22T23:29:05.064Z",
+      "title": "السعودية تقدّر وفر تسريع خدمات «أبشر» بنحو 26 مليار ريال سنوياً",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 12,
+            "checked": 12,
+            "supported": 9,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 1,
+              "field": "title",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "السعودية تقدّر وفر تسريع خدمات «أبشر» بنحو 26 مليار ريال سنوياً",
+              "quote": "حققت السعودية وفورات سنوية تجاوزت 26 مليار ريال (6.93 مليار دولار أميركي)، بفضل التحول الرقمي، في وقت تقدمت البلاد إلى المرتبة الرابعة عالمياً في مؤشر تطور الحكومة الإلكترونية (EGDI) لعام 2026، مقارنة بالمرتبة الـ 52 عام 2018 من بين 194 دولة، مقتربة من مستهدف \"رؤية السعودية 2030\" بأن تكون ضمن أفضل خمس حكومات رقمية عالمياً.",
+              "source": "Independent Arabia",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 3,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "قال محافظ هيئة الحكومة الرقمية في السعودية أحمد الصويان، في المؤتمر الصحافي الحكومي بالرياض الأحد، إن تقليص زمن إنجاز عدد من الخدمات عبر منصة «أبشر» التابعة لوزارة الداخلية من أربع ساعات إلى 30 ثانية أسهم في وفر سنوي يُقدّر بنحو 26 مليار ريال (6.9 مليار دولار).",
+              "quote": "حققت السعودية وفورات سنوية تجاوزت 26 مليار ريال (6.93 مليار دولار أميركي)، بفضل التحول الرقمي، في وقت تقدمت البلاد إلى المرتبة الرابعة عالمياً في مؤشر تطور الحكومة الإلكترونية (EGDI) لعام 2026، مقارنة بالمرتبة الـ 52 عام 2018 من بين 194 دولة، مقتربة من مستهدف \"رؤية السعودية 2030\" بأن تكون ضمن أفضل خمس حكومات رقمية عالمياً.",
+              "source": "Independent Arabia",
+              "sourceN": 2,
+              "correction": ""
+            },
+            {
+              "id": 10,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وكانت الهيئة قد أعلنت في 19 نوفمبر أن المملكة بلغت بذلك مستهدف «رؤية 2030» بدخول أفضل خمس دول قبل موعده بأربع سنوات.",
+              "quote": "حققت السعودية وفورات سنوية تجاوزت 26 مليار ريال (6.93 مليار دولار أميركي)، بفضل التحول الرقمي، في وقت تقدمت البلاد إلى المرتبة الرابعة عالمياً في مؤشر تطور الحكومة الإلكترونية (EGDI) لعام 2026، مقارنة بالمرتبة الـ 52 عام 2018 من بين 194 دولة، مقتربة من مستهدف \"رؤية السعودية 2030\" بأن تكون ضمن أفضل خمس حكومات رقمية عالمياً.",
+              "source": "Independent Arabia",
+              "sourceN": 2,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": [
