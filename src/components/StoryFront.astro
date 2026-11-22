@@ -78,8 +78,8 @@ const textLead = first && lead && !lead.data.image && beside.length > 0;
   .section-page__beside > :global(.card:first-child) { border-top: 0; padding-top: 0.1rem; }
   /* Beside a lead with a photograph the three stories run as headlines with their thumbnails, as the front's briefs do:
      with an excerpt each, the list ran 103-248px past the lead and left that much blank paper under it on every news
-     section (827 by 269px on الاقتصاد at 1440, 2026-10-19); without, the two columns end within about 60px. Phones,
-     where the list runs under the lead, keep the excerpts. */
+     section (827 by 269px on الاقتصاد at 1440, 2026-10-19); without, the two columns end within about 60px. A tablet,
+     where the list runs under the lead, keeps the excerpts; a phone does not (below). */
   @media (min-width: 1024px) {
     .section-page__top:not(.section-page__top--text) .section-page__beside :global(.card__summary) { display: none; }
   }
@@ -102,5 +102,12 @@ const textLead = first && lead && !lead.data.image && beside.length > 0;
     .section-page__top { grid-template-columns: 1fr; row-gap: 1.25rem; }
     .section-page__lead { padding-inline-end: 0; }
     .section-page__beside { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--rule); padding-top: 0.5rem; }
+  }
+  /* On a phone the stories under the lead take the shape of the rows that follow them, a 7.5rem thumbnail beside a
+     headline: with a 5.5rem thumbnail and a summary each (a story without a photograph a paragraph alone) the list
+     changed shape twice in one screen (2026-11-22). */
+  @media (max-width: 719px) {
+    .section-page__beside :global(.card__summary) { display: none; }
+    .section-page__beside :global(.card--list .card__photo) { flex: 0 0 7.5rem; width: 7.5rem; }
   }
 </style>

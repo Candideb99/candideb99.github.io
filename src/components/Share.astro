@@ -32,9 +32,10 @@ const targets = [
 </div>
 
 <script is:inline>
-  (function () {
-    var root = document.querySelector("[data-share-url]");
-    if (!root) return;
+  // A story carries the row twice (under its head, and at its foot on a phone), and this script is printed with each:
+  // every row is set up once.
+  Array.prototype.forEach.call(document.querySelectorAll("[data-share-url]:not([data-share-ready])"), function (root) {
+    root.setAttribute("data-share-ready", "");
     var url = root.getAttribute("data-share-url");
     var status = root.querySelector("[data-share-status]");
     var copy = root.querySelector("[data-copy]");
@@ -59,7 +60,7 @@ const targets = [
         navigator.share({ title: root.getAttribute("data-share-title") || document.title, url: url }).catch(function () {});
       });
     }
-  })();
+  });
 </script>
 
 <style>

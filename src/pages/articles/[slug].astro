@@ -244,6 +244,12 @@ const jsonLd = [articleLd, breadcrumbLd];
             ))}
           </p>
         )}
+        {/* On a phone the share row stands here, where a reader who has finished the story is; under the head it and the
+            text size took two rows between the photograph and the first sentence (2026-11-22). Wider screens keep it
+            in the head, on one line with the text size. */}
+        <div class="article__share-foot" data-pagefind-ignore>
+          <Share url={new URL(path, site.url).toString()} title={d.title} />
+        </div>
         {/* A paper reading's source is the paper itself, outside the site: it was headed «مواد ذات صلة في خازندار» over
             an arXiv address and noted as a «شرح» (2026-11-09). Its facts are checked before publication as a story's are. */}
         {/* An idea piece lists its references and the week's stories under «المصادر», as a reading lists its paper. */}
@@ -345,6 +351,7 @@ const jsonLd = [articleLd, breadcrumbLd];
   .article__meta { margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); display: grid; gap: 0.2rem; }
   /* The share row at the start and the reader's text size at the end, on one line where they fit. */
   .article__tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 1.5rem; }
+  .article__share-foot { display: none; }
   .article__whole { white-space: nowrap; }
   .article__byline { font-weight: 700; color: var(--ink-2); }
   .crumbs { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.35rem; }
@@ -419,6 +426,9 @@ const jsonLd = [articleLd, breadcrumbLd];
     .article__head--kind > .article__kind { margin-top: 0; padding-top: 0.75rem; border-top: 3px solid var(--ink); }
     .article__tools { order: 1; }
     .article__layout { order: 2; }
+    /* The share row at the story's foot, the text size alone under the photograph. */
+    .article__tools :global(.share) { display: none; }
+    .article__share-foot { display: block; max-width: var(--measure); margin-top: 0.7rem; }
     .article__figure :global(.article__photo) { aspect-ratio: 3 / 2 !important; }
     /* In a 343px column a bold lede a size above the text justified with word gaps nearly four
        spaces wide; at the text's size it keeps the column even. Even so the phone's column still opened

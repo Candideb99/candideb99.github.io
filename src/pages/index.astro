@@ -214,6 +214,7 @@ const jsonLd = {
 
 <Base jsonLd={jsonLd} section="home">
   <h1 class="visually-hidden">{site.name} — {site.tagline}</h1>
+  <div class="frontpage">
   {cover.length > 0 ? (
     <>
       <div class="first">
@@ -290,6 +291,7 @@ const jsonLd = {
       </div>
     </section>
   ))}
+  </div>
 </Base>
 
 <style>
@@ -302,14 +304,25 @@ const jsonLd = {
      the picks and the numbers. Until 2026-09-22 the readings and the market box came before the news,
      and الأخبار في سطور began three screens down. The cover and the columns under it give up their own
      boxes (display: contents) so their parts can be ordered as one list. */
+  /* Since 2026-11-22 the whole page is that one list on a phone, so the sections' blocks come before the reference
+     modules: after the lead and the secondaries the page ran about 2,000px of text alone (the digest, the readings, the
+     agenda, the figures, the chart) and the first section's photograph stood 3,900px down. The news and its
+     photographs now run first (lead, secondaries, digest, the figure cards, the sections), then the readings, the
+     agenda, the figures and the chart, then the regions and the hubs. Each part takes the page's width itself, since
+     the boxes that gave it are gone. */
   @media (max-width: 719px) {
-    .first { display: flex; flex-direction: column; gap: 1.5rem; width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; padding-top: 1.1rem; }
-    .first > :global(.cover), .first > :global(.front), .first :global(.front__mid) { display: contents; }
-    .first :global(.cover__stage) { order: 1; padding-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
+    .frontpage { display: flex; flex-direction: column; }
+    .first, .first > :global(.cover), .first > :global(.front), .first :global(.front__mid) { display: contents; }
+    .first :global(:is(.cover__stage, .front__secondary, .front__top, .cover__beside, .front__side)) { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; margin-top: 1.5rem; }
+    .first :global(.cover__stage) { order: 1; margin-top: 1.1rem; padding-bottom: 1.25rem; border-bottom: 3px solid var(--ink); }
     .first :global(.front__secondary) { order: 2; }
     .first :global(.front__top) { order: 3; }
-    .first :global(.cover__beside) { order: 4; padding-top: 0; }
-    .first :global(.front__side) { order: 6; margin-top: 0; }
+    .frontpage > :global(.figcards) { order: 4; }
+    .frontpage > .row { order: 5; }
+    .first :global(.cover__beside) { order: 6; padding-top: 0; margin-top: clamp(2.25rem, 4.5vw, 3.75rem); }
+    .first :global(.front__side) { order: 7; }
+    .frontpage > .desks { order: 8; }
+    .frontpage > .hub { order: 9; }
   }
 
   /* One story leads each block, two or three briefs sit beside it (every block since 2026-11-10). */
