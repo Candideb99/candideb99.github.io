@@ -59,6 +59,9 @@ const headingId = `facts-${placement}`;
   .facts--inline.facts--terms .facts__list { grid-template-columns: 1fr; }
   @media (min-width: 600px) { .facts--inline:not(.facts--terms) .facts__item:nth-child(-n + 4) { border-top: 0; } }
   @media (max-width: 599px) { .facts--inline:not(.facts--terms) .facts__item:nth-child(-n + 2) { border-top: 0; } }
+  /* On a phone the box is two columns: an odd last figure takes the whole row, where it had stood in one column beside
+     blank paper with its label wrapped over three lines (2026-11-22). Under 520px the list never holds three columns. */
+  @media (max-width: 519px) { .facts--inline:not(.facts--terms) .facts__item:last-child:nth-child(odd) { grid-column: 1 / -1; } }
   @media (max-width: 1023px) {
     .facts--inline { display: block; }
     .facts--side { display: none; }
