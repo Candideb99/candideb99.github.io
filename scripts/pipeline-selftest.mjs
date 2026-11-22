@@ -3084,6 +3084,10 @@ check(
     [same.changed, changed.changed, changed.next.publisher, changed.next.googleSiteVerification, changed.next.private, Boolean(applySettings(current, { adsenseClient: "not-an-id" }).error), current.publisher],
     [false, true, "Khazendar", "abcDEF123456_-x", false, true, ""],
   );
+  // The news pace (the owner, 2026-11-22): saved like any setting, and only a pace that exists.
+  check("the news pace is saved from the settings; a pace that does not exist changes nothing",
+    [applySettings(current, { pace: "launch" }).next.pace, applySettings(current, { pace: "launch" }).changed, applySettings(current, { pace: "frantic" }).changed, applySettings({ ...current, pace: "launch" }, { publisher: "x" }).next.pace],
+    ["launch", true, false, "launch"]);
 }
 // A program's exit code is its verdict, not its words: gh signed out prints none of the words the desk looked for.
 {

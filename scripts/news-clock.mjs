@@ -39,13 +39,17 @@ import { execFileSync } from "node:child_process";
 import { appendFileSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { PACES, readPace } from "../pipeline/lib/pace.mjs";
 
 const H = 3_600_000;
 const DAY_MS = 24 * H;
 /** The readers' day in UTC hours: 07:00-22:00 in Riyadh, 06:00-21:00 in Cairo. */
 export const DAY_HOURS = [4, 19];
-/** Hours from the start of the last news round to the start of the next, by day and at night: as many rounds as before. */
-export const GAP = { day: 4.5, night: 7 };
+/**
+ * Hours from the start of the last news round to the start of the next, by day and at night: as many rounds as before.
+ * The day's gap is the pace's (pipeline/lib/pace.mjs): the owner's «launch» pace, saved in site.json, shortens it.
+ */
+export const GAP = { day: PACES.standard.gapDay, night: 7 };
 /**
  * The newsroom's timed pieces: the mode, its UTC time, and the UTC weekdays it runs on (0 = Sunday; none = every day).
  * The times are the ones newsroom.yml's own lines asked for until 2026-11-20.
@@ -69,9 +73,9 @@ const REPO = process.env.GITHUB_REPOSITORY || "Candideb99/candideb99.github.io";
 const clock = (t) => new Date(t).toISOString().slice(11, 16);
 
 /** The gap, in hours, that a news round starting at `at` (ms) must keep from the last one. */
-export function gapAt(at) {
+export function gapAt(at, gap = GAP) {
   const hour = (((at % DAY_MS) + DAY_MS) % DAY_MS) / H;
-  return hour >= DAY_HOURS[0] && hour < DAY_HOURS[1] ? GAP.day : GAP.night;
+  return hour >= DAY_HOURS[0] && hour < DAY_HOURS[1] ? gap.day : gap.night;
 }
 
 /** The mode a newsroom run's name carries ("Newsroom: explainer", newsroom.yml `run-name`), or null for an older run. */
@@ -121,8 +125,11 @@ export function duePieces(now, history) {
   return due.sort((a, b) => a.slot - b.slot);
 }
 
-/** Which run starts at `now` (ms): { start, mode, reason }. `runs` are the newsroom's on GitHub, `reports` pipeline/runs. */
-export function decide({ now, runs = [], reports = [] }) {
+/**
+ * Which run starts at `now` (ms): { start, mode, reason }. `runs` are the newsroom's on GitHub, `reports` pipeline/runs,
+ * `gap` the hours kept between news rounds (the pace's by day).
+ */
+export function decide({ now, runs = [], reports = [], gap: gaps = GAP }) {
   const busy = runs.find((r) => r.status !== "completed");
   if (busy) return { start: false, mode: null, reason: `newsroom run ${busy.id} is ${String(busy.status).replace("_", " ")}` };
   const history = { runs, reports };
@@ -131,13 +138,13 @@ export function decide({ now, runs = [], reports = [] }) {
   const urgent = pieces.find((p) => p.closes - now <= URGENT_H * H);
   if (urgent) return piece(urgent, `may start only until ${clock(urgent.closes)}`);
   const last = lastStart("news", history);
-  const gap = gapAt(now);
+  const gap = gapAt(now, gaps);
   const since = last === null ? Infinity : (now - last) / H;
   if (since >= gap) {
     return { start: true, mode: "news", reason: `${clock(now)} UTC; the last news round started ${last === null ? "before any record" : `at ${clock(last)} UTC, ${since.toFixed(1)} hours ago`}` };
   }
   if (pieces.length) return piece(pieces[0], "not started since");
-  return { start: false, mode: null, reason: `the last news round started at ${clock(last)} UTC, ${since.toFixed(1)} hours ago, under the ${gap} hours kept ${gap === GAP.day ? "by day" : "at night"}; no piece is due` };
+  return { start: false, mode: null, reason: `the last news round started at ${clock(last)} UTC, ${since.toFixed(1)} hours ago, under the ${gap} hours kept ${gap === gaps.day ? "by day" : "at night"}; no piece is due` };
 }
 
 /** The run reports the newsroom commits (it keeps the newest 24 of every mode): { mode, startedAt }. */
@@ -195,7 +202,7 @@ function main() {
     const runs = offline
       ? []
       : JSON.parse(gh(["api", `repos/${REPO}/actions/workflows/newsroom.yml/runs?per_page=40`, "--jq", "[.workflow_runs[] | {id, status, conclusion, event, created_at, actor: .triggering_actor.login, title: .display_title}]"]));
-    const verdict = decide({ now, runs, reports: readReports() });
+    const verdict = decide({ now, runs, reports: readReports(), gap: { ...GAP, day: readPace().gapDay } });
     finish(verdict.start, verdict.mode, verdict.reason);
     if (checkOnly && !offline) {
       // Enabling a workflow that is already enabled changes nothing, and needs the same `actions: write` that starting a

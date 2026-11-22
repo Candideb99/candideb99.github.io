@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PAUSED_WORKFLOWS, setPaused } from "./desk-lib.mjs";
 import { CLOCK_ACTOR, GAP, PIECES, WINDOW, decide, gapAt, lastStart, quietHours, readReports } from "./news-clock.mjs";
+import { PACES, paceName } from "../pipeline/lib/pace.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SCRIPT = path.resolve(process.argv.find((a) => a.startsWith("--script="))?.slice(9) ?? path.join(ROOT, "scripts", "news-clock.mjs"));
@@ -88,6 +89,23 @@ const news = (startedAt) => ({ mode: "news", startedAt });
   const dir = scratch({ ...piecesDone("2026-11-20"), "2026-11-20T01-00-00Z-news.json": news("2026-11-20T01:00:00Z") });
   await check("04:30 is day: 3.5 hours after the night round, none", () => assert.equal(verdict(dir, "2026-11-20T04:30:00Z"), "none"));
   await check("05:40, 4.7 hours after: a round", () => assert.equal(verdict(dir, "2026-11-20T05:40:00Z"), "news"));
+}
+// 1b. The pace (pipeline/lib/pace.mjs; the owner, 2026-11-22: 15 stories a day spread through the day, his to switch on at
+// launch): the gap by day is the pace saved in the checkout's site.json, the night's is the same, and a file that names
+// no pace, or one that does not exist, is the standard one.
+{
+  const files = { ...piecesDone("2026-11-19"), ...piecesDone("2026-11-20"), "2026-11-19T10-00-00Z-news.json": news("2026-11-19T10:00:00Z") };
+  const withPace = (pace) => { const dir = scratch(files); mkdirSync(path.join(dir, "src", "data"), { recursive: true }); writeFileSync(path.join(dir, "src", "data", "site.json"), JSON.stringify(pace === undefined ? { private: true } : { pace, private: true })); return dir; };
+  await check("at the launch pace, 2.6 hours after the last round by day: a round; at the standard pace, none", () =>
+    assert.deepEqual([verdict(withPace("launch"), "2026-11-19T12:36:00Z"), verdict(withPace("standard"), "2026-11-19T12:36:00Z"), verdict(withPace(undefined), "2026-11-19T12:36:00Z"), verdict(withPace("frantic"), "2026-11-19T12:36:00Z")], ["news", "none", "none", "none"]));
+  await check("at the launch pace, 2.4 hours after: none yet", () => assert.equal(verdict(withPace("launch"), "2026-11-19T12:24:00Z"), "none"));
+  const night = (pace) => { const dir = withPace(pace); writeFileSync(path.join(dir, "pipeline", "runs", "2026-11-19T17-30-00Z-news.json"), JSON.stringify(news("2026-11-19T17:30:00Z"))); return dir; };
+  await check("the night's gap is the same at either pace: 5 hours after, none", () => assert.deepEqual([verdict(night("launch"), "2026-11-19T22:30:00Z"), verdict(night("standard"), "2026-11-19T22:30:00Z")], ["none", "none"]));
+  await check("the launch pace is more news by day, capped; the standard one is November's", () => {
+    assert.ok(PACES.launch.gapDay < PACES.standard.gapDay && PACES.launch.dailyCap === 15 && PACES.standard.gapDay === GAP.day && PACES.standard.dailyCap === 20);
+    assert.deepEqual([paceName({ pace: "launch" }), paceName({ pace: "x" }), paceName({}), paceName(null)], ["launch", "standard", "standard", "standard"]);
+    assert.equal(paceName(JSON.parse(readFileSync(path.join(ROOT, "src", "data", "site.json"), "utf8"))) in PACES, true);
+  });
 }
 await check("no report at all, 02:00 UTC: a round", () => assert.equal(verdict(scratch({}), "2026-11-20T02:00:00Z"), "news"));
 {

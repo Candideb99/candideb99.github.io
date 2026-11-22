@@ -32,6 +32,7 @@ import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
 import { applySettings, jobProgress, progressLines, runProgram, setPaused, siteLight } from "./desk-lib.mjs";
+import { PACES, paceName } from "../pipeline/lib/pace.mjs";
 import { GAP, PIECES } from "./news-clock.mjs";
 
 const root = process.cwd();
@@ -1006,6 +1007,21 @@ const ICON = {
   spin: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 3a7 7 0 1 1-6.3 4"/></svg>',
 };
 
+/** What a pace means, in the words both the setting and the reminder use. */
+const paceLine = (name) => `about ${PACES[name].about} news stories a day, a round every ${PACES[name].gapDay} hours by day`;
+
+/**
+ * The reminder the owner asked for (2026-11-22: "add this as visible alert in the news room so i do not forget"): the
+ * launch pace is his to switch on when the site opens, and until he does, the Desk says so. Gone once it is on.
+ */
+function launchNote(current) {
+  if (paceName(current) === "launch") return "";
+  const open = current.private === false;
+  return `<div class="alert" id="launch-note"><b>${open ? "The site is public, and the news pace is still the standard one" : "For launch day: the news pace"}</b>
+    <ul><li>Now: <strong>Standard</strong>, ${paceLine("standard")}.</li><li>For launch: <strong>Launch</strong>, ${paceLine("launch")}, spread through the day. About 40% more news spend, so it stays off until you turn it on.</li></ul>
+    <a class="m" href="#" onclick="show('set');showSub('publish');return false">Turn it on in Settings → Publishing → News pace →</a></div>`;
+}
+
 function page() {
   const current = JSON.parse(readFileSync(SITE_FILE, "utf8"));
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>خازندار — Control room</title>
@@ -1250,6 +1266,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
   </div>
 
   <div class="alert" id="needs" style="display:none"><b>Needs you <span class="m" id="needs-when" style="font-weight:400"></span></b><ul id="needs-list"></ul><a class="m" href="${REPO_URL}/issues" target="_blank">Open the list on GitHub →</a></div>
+
+  ${launchNote(current)}
 
   <div id="drafts-wrap" style="display:none">
     <h2>Waiting for your approval <span class="n" id="n-drafts">0</span></h2>
@@ -1530,6 +1548,8 @@ code{background:var(--paper-3);padding:2px 6px;font-size:13px;border-radius:2px}
       <label><span>Google verification code</span><input type="text" id="googleSiteVerification" value="${esc(current.googleSiteVerification)}"></label>
       <label><span>Visible to search engines?</span>
         <select id="private"><option value="true"${current.private ? " selected" : ""}>No — keep it unlisted (before launch)</option><option value="false"${current.private ? "" : " selected"}>Yes — ask Google and Bing to list it (launch)</option></select></label>
+      <label><span>News pace <span class="m">— how many news stories a day; analyses and explainers keep their own times</span></span>
+        <select id="pace"><option value="standard"${paceName(current) === "standard" ? " selected" : ""}>Standard — ${paceLine("standard")}</option><option value="launch"${paceName(current) === "launch" ? " selected" : ""}>Launch — ${paceLine("launch")} (about 40% more news spend)</option></select></label>
       <button class="go" onclick="saveSettings()">Save and publish</button> <span class="m" id="saved"></span>
     </div>
 </section>
@@ -1979,7 +1999,7 @@ function saveWriters(localOnly){var n=document.getElementById('writersaved');n.t
 function togglePause(){if(!PAUSED&&!confirm('Pause everything? The cloud will stop writing and publishing until you press Resume, and a run in progress is stopped. Stories already live stay live.'))return;post('/pause?value='+(PAUSED?0:1)).then(function(r){return r.text()}).then(function(t){alert(t);loadHealth()})}
 function reveal(id){var w=document.getElementById('w_'+id);w.style.display=w.style.display==='none'?'grid':'none';if(w.style.display==='grid')document.getElementById(id).focus()}
 function saveReview(){var n=document.getElementById('reviewsaved');n.textContent='applying…';post('/review?value='+document.getElementById('reviewSel').value).then(function(r){return r.text()}).then(function(t){n.textContent=t;loadHealth()})}
-function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true'};post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t})}
+function saveSettings(){var body={contactEmail:contactEmail.value,publisher:publisher.value,adsenseClient:adsenseClient.value,googleSiteVerification:googleSiteVerification.value,private:document.getElementById('private').value==='true',pace:document.getElementById('pace').value};post('/settings',body).then(function(r){return r.text()}).then(function(t){document.getElementById('saved').textContent=t})}
 
 // ---- chat
 var thread=document.getElementById('thread');

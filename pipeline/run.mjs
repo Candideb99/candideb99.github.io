@@ -27,6 +27,7 @@ import { allowedByRobots, extractArticle } from "./lib/extract.mjs";
 import { collectNewsEvidence, eventSourcesOf, independentOutletCount } from "./lib/news-evidence.mjs";
 import { marketData, repeatsInstrument } from "./lib/context.mjs";
 import { MARKET_QUOTE_URL } from "./lib/quotes.mjs";
+import { readPace } from "./lib/pace.mjs";
 import { SPORT_LIMITS, newsSectionsOf, quietPlaces, rotationSwap, sportCap, writeOrder, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
@@ -84,7 +85,7 @@ const LIMIT = Math.max(1, Math.min(Number(option("limit", 4)) || 4, 10));
  * 2026-09-24 with the owner's yes, after الشرق الأوسط's economy desk filed about 30 stories on a day Khazendar
  * filed 7 in all sections; he accepted the larger use of his Claude subscription that it costs.
  */
-const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || 20;
+const DAILY_CAP = Number(process.env.KHAZENDAR_DAILY_CAP) || readPace().dailyCap;
 /** `--source=`: the feeds a run reads, one id or several; a story needs two outlets, so a test of new feeds names two or more. */
 const ONLY_SOURCES = option("source", null)?.split(",").map((s) => s.trim()).filter(Boolean) ?? null;
 /** `--report=<id>`: the reports desk looks at that report alone (lib/reports.mjs, pipeline/reports.json). */

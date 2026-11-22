@@ -3,6 +3,7 @@
  * (scripts/control-room.mjs), kept apart from the server, which starts listening as soon as it is loaded, so that
  * scripts/pipeline-selftest.mjs can run it.
  */
+import { PACES } from "../pipeline/lib/pace.mjs";
 import { spawn } from "node:child_process";
 
 /**
@@ -154,5 +155,7 @@ export function applySettings(current, patch = {}) {
   const next = { ...current };
   for (const key of ["contactEmail", "publisher", "adsenseClient", "googleSiteVerification"]) if (typeof given[key] === "string") next[key] = given[key].trim();
   if (typeof given.private === "boolean") next.private = given.private;
+  // The news pace (pipeline/lib/pace.mjs): only a pace that exists, so a stray value never reaches the clock.
+  if (Object.hasOwn(PACES, given.pace)) next.pace = given.pace;
   return { next, changed: JSON.stringify(next) !== JSON.stringify(current) };
 }
