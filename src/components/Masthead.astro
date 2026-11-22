@@ -445,6 +445,12 @@ for (const s of sections) {
     .masthead__tools { justify-content: flex-end; }
     .brand { justify-self: center; }
   }
+  /* A tablet held upright (768px) cut the bar's last name mid-word, «مدخل إلى علم الاق», since the name grew by a word
+     on 2026-11-21: the eight names stand closer there and all fit; under about 750px the bar still scrolls, with its
+     fade (2026-11-22). */
+  @media (min-width: 720px) and (max-width: 899px) {
+    .nav__link { padding-inline: 0.6rem; }
+  }
 
   @media (max-width: 719px) {
     /* The front's nameplate on a phone: the date over the logo at 64px, the other pages' laptop size, a little tighter

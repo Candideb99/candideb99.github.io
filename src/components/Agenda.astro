@@ -36,9 +36,14 @@ const events = upcoming(limit);
 )}
 
 <style>
-  .agenda__list { display: grid; }
+  .agenda__list { display: grid; container-type: inline-size; }
   .agenda__item { position: relative; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 0.6rem; align-items: baseline; padding-block: 0.42rem; border-top: 1px solid var(--rule); }
   .agenda__item:first-child { border-top: 0; padding-top: 0; }
+  /* In a narrow column the day stands over its event: beside it, the front's side column at 1024px (about 215px) left
+     the event 90px and «الناتج المحلي الأمريكي للربع الثالث» ran four lines (2026-11-22). After the rule above, which it overrides. */
+  @container (max-width: 16rem) {
+    .agenda__item { grid-template-columns: minmax(0, 1fr); }
+  }
   .agenda__day { font-size: var(--fs-sm); font-weight: 700; color: var(--green); line-height: 1.5; white-space: nowrap; }
   .agenda__title { font-family: var(--font-title); font-weight: 700; font-size: var(--t-list); line-height: 1.45; text-decoration: none; color: var(--ink); }
   .agenda__title:hover, .agenda__item:hover .agenda__title { color: var(--green); }
