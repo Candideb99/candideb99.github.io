@@ -18,6 +18,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { gunzipSync, gzipSync } from "node:zlib";
 import { extractNumbers, sourceNumbers } from "./util.mjs";
+// A cycle with factcheck.mjs, which reads the saved copies; the function is used only when a copy is saved.
+import { quoteFound } from "./factcheck.mjs";
 
 export const SNAPSHOT_DIR = path.join(process.cwd(), "evidence");
 /** At most this much text a source: passages, never the page. */
@@ -102,7 +104,15 @@ export function passagesOf(text, quotes, storyFigures) {
  * against that copy found it (Codex's review: 106 such claims in 54 saved copies).
  */
 export const QUOTE_FOUND = new Set(["supported", "weak", "confirmed", "listed", "drift", "conflict"]);
-const unfound = (claim) => Boolean(claim?.quote) && Boolean(claim.status) && !QUOTE_FOUND.has(claim.status);
+/**
+ * A claim whose quote the check looked for in its source and did not find: "no-evidence" or "unverified", and four
+ * words or more. A shorter quote is never looked for (factcheck.mjs quoteFound() takes none as evidence), and a
+ * "not_found" verdict's quote was never tested, so either may be the page's own words: taken out of an older copy,
+ * they took real source text with them (a review of the first version, the same day).
+ */
+const unfound = (claim) => ["no-evidence", "unverified"].includes(claim?.status) && squash(claim?.quote).split(" ").length >= 4;
+/** Whether a quote may be kept with a source: code finds it there, or it stands there letter for letter. */
+const standsIn = (quote, text) => squash(text).includes(squash(quote)) || quoteFound(quote, text);
 
 /**
  * Saves a story's evidence. Never overwrites: the first copy is the publication's. `storyText` is the story as published
@@ -129,7 +139,7 @@ export async function saveSnapshot({ slug, title, publishedAt = null, sources, c
       lang: s.lang ?? null,
       sourceKind: s.kind ?? null,
       discoveredFrom: s.discoveredFrom ?? null,
-      passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote && !unfound(c)).map((c) => c.quote), storyFigures),
+      passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote && standsIn(c.quote, [s.title, s.text].filter(Boolean).join("\n"))).map((c) => c.quote), storyFigures),
     })),
     claims: checks.map((c) => ({ field: c.field, sentence: c.sentence, verdict: c.verdict, status: c.status, source: c.sourceN ?? c.source ?? null, quote: c.quote ?? "" })),
   };

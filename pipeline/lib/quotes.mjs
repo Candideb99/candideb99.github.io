@@ -231,7 +231,7 @@ export function recordedPrev(inst, quote, record = []) {
  *  months and a year, each offered once the record fills it; the first refresh brings the three months Yahoo answers with. */
 export const HISTORY_SESSIONS = 260;
 
-export function mergeHistory(inst, old = [], fresh = [], quote = null) {
+export function mergeHistory(inst, old = [], fresh = [], quote = null, now = Date.now()) {
   const byDate = new Map();
   const usable = (p) => p && Number.isFinite(p.c) && isSessionDay(p.d, inst);
   for (const p of old ?? []) if (usable(p)) byDate.set(p.d, p.c);
@@ -240,7 +240,10 @@ export function mergeHistory(inst, old = [], fresh = [], quote = null) {
   if (quote && Number.isFinite(quote.price) && isSessionDay(quote.session, inst)) byDate.set(quote.session, quote.price);
   // No close is later than the latest price's own session: a point dated ahead of it (the Monday of 2026-11-22 above)
   // goes with the refresh that knows better.
-  if (quote && isSessionDay(quote.session, inst)) for (const d of [...byDate.keys()]) if (d > quote.session) byDate.delete(d);
+  // Only a date still ahead of today's: an index Yahoo keeps one bar for can answer with a price some sessions old, which
+  // nothing refuses, and its session must not take the real closes recorded since.
+  const today = new Date(now).toISOString().slice(0, 10);
+  if (quote && isSessionDay(quote.session, inst)) for (const d of [...byDate.keys()]) if (d > quote.session && d > today) byDate.delete(d);
   const round = (v) => Number(v.toFixed(inst.decimals + 2));
   return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-HISTORY_SESSIONS).map(([d, c]) => ({ d, c: round(c) }));
 }

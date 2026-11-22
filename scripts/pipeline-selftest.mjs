@@ -2803,7 +2803,9 @@ if (spawnSync("git", ["--version"]).status === 0) {
       ["2026-11-09", "2026-11-23", "2026-11-23", "2026-11-23"]);
     const pound = INSTRUMENTS.find((i) => i.id === "gbpusd");
     check("a stored close dated after the latest price's session goes with the next refresh",
-      mergeHistory(pound, [{ d: "2026-11-19", c: 1.3 }, { d: "2026-11-20", c: 1.31 }, { d: "2026-11-23", c: 1.32 }], [], { price: 1.315, session: "2026-11-20" }).map((p) => p.d), ["2026-11-19", "2026-11-20"]);
+      mergeHistory(pound, [{ d: "2026-11-19", c: 1.3 }, { d: "2026-11-20", c: 1.31 }, { d: "2026-11-23", c: 1.32 }], [], { price: 1.315, session: "2026-11-20" }, Date.parse("2026-11-22T10:00:00Z")).map((p) => p.d), ["2026-11-19", "2026-11-20"]);
+    check("…and a price some sessions old takes no real close recorded since",
+      mergeHistory(INSTRUMENTS.find((i) => i.id === "egx30"), [{ d: "2026-11-17", c: 50000 }, { d: "2026-11-18", c: 50100 }, { d: "2026-11-19", c: 50200 }], [], { price: 50010, session: "2026-11-17" }, Date.parse("2026-11-22T10:00:00Z")).map((p) => p.d), ["2026-11-17", "2026-11-18", "2026-11-19"]);
   }
   // Bitcoin with Sunday's bar empty: the feed's own Sunday close, not Saturday's.
   const coin = await quoteOf({ instrumentType: "CRYPTOCURRENCY", exchangeTimezoneName: "UTC", regularMarketPrice: 74723.66, time: "2026-11-09T00:14:48Z", chartPreviousClose: 74719.82 }, [["2026-11-09T00:14:48Z", 74723.66]], [["2026-11-03T00:00:00Z", 77345.05], ["2026-11-04T00:00:00Z", 80405.29], ["2026-11-05T00:00:00Z", 75942.13], ["2026-11-06T00:00:00Z", 75746.93], ["2026-11-07T00:00:00Z", 75747.58], ["2026-11-08T00:00:00Z", null], ["2026-11-09T00:00:00Z", 74723.66]]);

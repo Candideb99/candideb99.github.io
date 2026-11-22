@@ -178,8 +178,9 @@ async function check(story, ledger, report, corrections) {
     } catch (error) {
       // The plan's allowance is spent (ChatGPT's, or Claude's session limit): the second look stops, and the story is
       // read in a later run, its tries untouched (two failures and it would be read no more).
-      if (error.meta?.quota) {
-        if (!paused) log(`the model's allowance is spent; the second look stops here (${String(error.message).split("\n").pop().slice(0, 160)})`);
+      // A refused login is the newsroom's fault too, and counts against no story (2026-11-22).
+      if (error.meta?.quota || error.meta?.status === 401) {
+        if (!paused) log(`${error.meta?.quota ? "the model's allowance is spent" : "the model refused the newsroom's login"}; the second look stops here (${String(error.message).split("\n").pop().slice(0, 160)})`);
         paused = true;
         return;
       }

@@ -695,7 +695,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
           if (mendShort) goShort(`about ${mendRoute.left} words would have remained once its table read out gave way, so the mend wrote it short`);
         } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
       } catch (error) {
-        if (error.meta?.quota) throw error;
+        if (error.meta?.quota || error.meta?.status === 401) throw error;
         log(`mend failed (${String(error.message).split("\n")[0].slice(0, 120)}); the reviewed draft goes on`);
       }
     }
@@ -1148,7 +1148,7 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
           log(`mended ${kind} "${draft.title}": the second pass's ${mendIssues.length} finding(s) sent back once more`);
         } else log(`mend refused by the checks (${mendedChecks.issues.map((i) => i.slice(0, 60)).join(" | ")}); the reviewed draft goes on`);
       } catch (error) {
-        if (error.meta?.quota) throw error;
+        if (error.meta?.quota || error.meta?.status === 401) throw error;
         log(`mend failed (${String(error.message).split("\n")[0].slice(0, 120)}); the reviewed draft goes on`);
       }
     }
@@ -1610,7 +1610,7 @@ async function runRewrite(report) {
       const result = old.kind === "explainer" ? await rewriteExplainer(old, { existing, report, replace }) : await rewritePaper(old, { existing, report, replace, papers: config.papers ?? [] });
       published += result.published;
     } catch (error) {
-      if (error.meta?.quota) throw error;
+      if (error.meta?.quota || error.meta?.status === 401) throw error;
       const message = String(error.message).split("\n")[0];
       log(`rewrite ${slug} failed: ${message}`);
       report.push({ headline: old.title, section: old.section, outcome: `error: ${message}` });

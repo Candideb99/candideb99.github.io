@@ -36,6 +36,8 @@ const dirOf = (v: number) => (Math.abs(v) < 1e-9 ? "flat" : v > 0 ? "up" : "down
 // gone on announcing the opening period's dates after another was chosen, 2026-11-22).
 const nameOf = (sessions: number) => {
   const span = closes.slice(-sessions);
+  // A record with no close has no span to name (and no chart is drawn for it).
+  if (!span.length) return "";
   return `مسار إغلاق ${q.name} من ${formatDate(noon(span[0].d), { weekday: false })} إلى ${formatDate(noon(span[span.length - 1].d), { weekday: false })}`;
 };
 const data = JSON.stringify({

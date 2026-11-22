@@ -245,7 +245,7 @@ async function trimUnsourced({ draft, sources, checks, validate, log, judgeWith 
   try {
     answers = new Map((await judgeWith({ draft, sources, sentences: asked, log })).answers.map((a) => [Number(a?.id), a]));
   } catch (error) {
-    if (error.meta?.quota) throw error;
+    if (error.meta?.quota || error.meta?.status === 401) throw error;
     // A reading that cannot run takes nothing out: the story goes as it would have before this step.
     record.failed = short(error);
     log(`precheck: the reading of ${asked.length} sentence(s) no source bears on failed (${record.failed}); the story goes as written`);
@@ -345,7 +345,7 @@ export async function precheck({ draft, sources, log = () => {}, validate = null
     try {
       v = await verify({ story: current, sources: check, log });
     } catch (error) {
-      if (error.meta?.quota) throw error;
+      if (error.meta?.quota || error.meta?.status === 401) throw error;
       // A check that cannot run is not a check passed: the story waits for a round in which it can.
       return { ok: false, held: `the fact-check could not run (${short(error)})`, draft: current, rounds, repairs };
     }
@@ -367,7 +367,7 @@ export async function precheck({ draft, sources, log = () => {}, validate = null
       try {
         r = await repairWith({ draft: current, sources: check, found, refusal, log });
       } catch (error) {
-        if (error.meta?.quota) throw error;
+        if (error.meta?.quota || error.meta?.status === 401) throw error;
         r = { draft: null, problems: [`the repair call failed (${short(error)})`] };
       }
       let problems = r.problems;

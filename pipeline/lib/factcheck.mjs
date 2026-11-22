@@ -108,7 +108,13 @@ function tokens(text) {
  */
 // Words that turn a sentence round. A near match may drop a word, never one of these: «الموافقة على تنفيذ المشروع» was
 // found in a source saying «عدم الموافقة على تنفيذ المشروع», a refusal read as an approval (2026-11-22).
-const NEGATIONS = new Set(["عدم", "لا", "لم", "لن", "ليس", "ليست", "غير", "دون", "بدون", "بلا", "رفض", "رفضت", "not", "no", "never", "without", "neither", "nor", "cannot", "isn", "aren", "wasn", "weren", "doesn", "didn", "hasn", "haven", "hadn", "wouldn", "couldn", "shouldn"]);
+// With the letters Arabic attaches («ولن»، «فلم»، «بعدم»), «ألا» as tokens() spells it, and the «t» an English «n't»
+// leaves once its apostrophe has parted it («won't» is «won», «t»).
+const NEGATIONS = new Set([
+  ...["عدم", "لا", "لم", "لن", "ليس", "ليست", "غير", "دون"].flatMap((w) => [w, `و${w}`, `ف${w}`]),
+  "بعدم", "لعدم", "وبعدم", "ولعدم", "بدون", "وبدون", "بلا", "وبلا", "الا", "والا", "رفض", "رفضت", "ورفض", "ورفضت",
+  "not", "no", "never", "without", "neither", "nor", "cannot", "t",
+]);
 
 export function quoteFound(quote, text) {
   const q = tokens(quote);

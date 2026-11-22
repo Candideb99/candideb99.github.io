@@ -366,7 +366,7 @@ export function sourceNumbers(text) {
     miliarde: 1e9, milioane: 1e6, mii: 1e3,
     // English and Arabic scale words (2026-11-22), so «455,758 thousand» and «455 ألف» carry their whole value: the
     // check of a story's scale word below reads a count against it.
-    thousand: 1e3, billion: 1e9, billions: 1e9, trillion: 1e12, "ألف": 1e3, "آلاف": 1e3, "مليون": 1e6, "ملايين": 1e6, "مليار": 1e9, "مليارات": 1e9, "تريليون": 1e12,
+    thousand: 1e3, billion: 1e9, billions: 1e9, trillion: 1e12, k: 1e3, mn: 1e6, bn: 1e9, tn: 1e12, m: 1e6, "ألف": 1e3, "آلاف": 1e3, "مليون": 1e6, "ملايين": 1e6, "مليار": 1e9, "مليارات": 1e9, "تريليون": 1e12,
     milijardi: 1e9, milijarde: 1e9, milijarda: 1e9, milijuna: 1e6, miliona: 1e6, "tisuća": 1e3, "tisuće": 1e3, hiljada: 1e3, hiljade: 1e3,
     "мільярдів": 1e9, "мільярди": 1e9, "мільярда": 1e9, "мільярд": 1e9, "мільйонів": 1e6, "мільйони": 1e6, "мільйона": 1e6, "мільйон": 1e6,
     "тис": 1e3, "тисяч": 1e3, "тисячі": 1e3,
@@ -377,7 +377,7 @@ export function sourceNumbers(text) {
     + "|milijardi|milijarde|milijarda|milijuna|tisuća|tisuće|hiljada|hiljade"
     + "|мільярдів|мільярди|мільярда|мільярд|мільйонів|мільйони|мільйона|мільйон|тисячі|тисяч|тис"
     + "|δισεκατομμύρια|δισεκατομμύριο|δισ|εκατομμύρια|εκατομμύριο|εκατ|χιλιάδες|χιλ|τρισ"
-    + "|thousand|billions|billion|trillion|ألف|آلاف|مليون|ملايين|مليارات|مليار|تريليون";
+    + "|thousand|billions|billion|trillion|ألف|آلاف|مليون|ملايين|مليارات|مليار|تريليون|mn|bn|tn|k|m";
   // French groups thousands with a space, often a narrow or non-breaking one («219 620 milliards de FCFA», «1 234,5»).
   for (const m of normalized.matchAll(new RegExp(`(?<![\\d.,])(\\d{1,3}(?:[ \\u00A0\\u202F]\\d{3})+)(?:,(\\d+))?(?![\\d])(?:\\s*(${SCALE_WORDS})(?![\\p{L}]))?`, "giu"))) {
     const value = Number(`${m[1].replace(/[   ]/g, "")}${m[2] ? `.${m[2]}` : ""}`);
@@ -424,7 +424,13 @@ export function scaledCounts(text) {
 }
 
 /** Whether «`count` + its scale word» is `whole` as the desks round it: 455,758 is «456 ألف», never «456 مليون». */
-export const roundsTo = (count, whole) => Number.isFinite(whole) && Number((whole / count.scale).toFixed(count.decimals)) === count.value;
+// Or within half a percent of it, the tolerance every other figure has: «نحو 455 ألف» for 455,758 and «2.68 مليون»
+// for 2,675,000 are the desks' own cuts, not another number (a review of the first version, the same day).
+export const roundsTo = (count, whole) => {
+  if (!Number.isFinite(whole) || whole <= 0) return false;
+  const scaled = whole / count.scale;
+  return Number(scaled.toFixed(count.decimals)) === count.value || Math.abs(scaled - count.value) / scaled < 0.005;
+};
 
 /**
  * Numbers in `text` that do not appear in any of the `sources` texts, ignoring trivial values. `everyFigure`: no
@@ -477,7 +483,11 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true, everyFigu
   // (2026-11-22). A figure a source carries as written is not held to this: its own page gives its unit.
   // A source's own short forms («$4,500m», «17,000bn») are not read as scales, so a round or a small figure may also be
   // thousands or millions of its unit; a whole count such as 455,758 is only itself.
-  const readings = (v) => (v < 10000 || v % 1000 === 0 ? [v, v * 1e3, v * 1e6, v * 1e9] : [v]);
+  // So may any figure of a source that states its figures in thousands or millions (a results table headed «SAR
+  // thousands», «بآلاف الريالات»): there 455,758 is 455.8 million. The first version read every whole count as itself
+  // and refused such a story's true figures (a review the same day).
+  const stated = sources.some((s) => /\b(?:thousands|millions|billions|000s?)\b|\((?:000|mn|m|bn)\)|بال?آلاف|بال?ملايين|بال?مليون|بال?ألف|ألف (?:ريال|جنيه|درهم|دينار|دولار)/i.test(String(s ?? "")));
+  const readings = (v) => (stated || v < 10000 || v % 1000 === 0 ? [v, v * 1e3, v * 1e6, v * 1e9] : [v]);
   const wrongScale = new Set(scaledCounts(text).filter((c) => !direct.has(c.token) && !values.some((v) => readings(v).some((r) => roundsTo(c, r)))).map((c) => c.token));
   for (const n of extractNumbers(text)) {
     const value = Number(n);
@@ -486,6 +496,8 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true, everyFigu
     const small = value >= 0 && value <= 31 && Number.isInteger(value); // days, small counts, ordinals
     // A year or a small count is trivial only when no unit follows it: "12%" and "2,000 دولار" are figures.
     if (!everyFigure && (yearLike || small) && !unitBound.has(n)) continue;
+    // A zero is no figure to find: a series' «0» is often a source's «unchanged» or «flat».
+    if (everyFigure && value === 0) continue;
     if (wrongScale.has(n) && !thresholds.has(n)) {
       missing.push(n);
       continue;

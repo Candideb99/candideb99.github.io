@@ -75,6 +75,19 @@ try {
   check("the copy desk takes the rounding with its own scale word and refuses it with another",
     [Object.keys(desk("شارك نحو 456 ألف مستثمر في الطرح.").accepted), desk("شارك نحو 456 مليون مستثمر في الطرح.").rejected.map((r) => r.field)], [["lede"], ["lede"]]);
 
+  // …and what a review of that first version found the same day: true figures refused, real text cut, forms missed.
+  check("a source's short scale forms, a table stated in thousands and the desks' own cuts are the same figure",
+    [ungroundedNumbers("12.3 مليار دولار", ["revenue of $12,345m"]), ungroundedNumbers("455.8 مليون ريال", ["Net profit (SAR thousands): 455,758"]), ungroundedNumbers("123.5 تريليون ين", ["¥123,456bn"]), ungroundedNumbers("نحو 455 ألف مستثمر", ["455,758 investors"]), ungroundedNumbers("2.68 مليون برميل", ["2,675,000 barrels"])],
+    [[], [], [], [], []]);
+  check("a zero in a chart is no figure to find", ungroundedNumbers("0 3 4", ["growth of 3% and 4%"], { ignoreYears: false, everyFigure: true }), []);
+  writeFileSync(path.join(dir, "short-quote.json.gz"), gzipSync(Buffer.from(JSON.stringify({ slug: "short-quote", sources: [{ url: "https://example.com/s", passages: "The Fed held rates steady on Wednesday. Powell said inflation remains elevated." }], claims: [{ status: "no-evidence", source: 1, quote: "held rates steady" }, { status: "not_found", source: 1, quote: "Powell said inflation remains elevated." }] }))));
+  check("a quote too short to be looked for, or one never tested, stays in the copy: it may be the page's own words", loadSnapshot("short-quote", { dir }).sources[0].passages, "The Fed held rates steady on Wednesday. Powell said inflation remains elevated.");
+  check("a near match keeps «won't», «ألا» and an attached «ولن» too",
+    [quoteFound("the company said it will cut jobs across its European plants this year", "the company said it won't cut jobs across its European plants this year"), quoteFound("وقالت الوزارة إنها قررت أن ترفع أسعار الوقود في الربع المقبل من العام", "وقالت الوزارة إنها قررت ألا ترفع أسعار الوقود في الربع المقبل من العام"), quoteFound("وقالت الشركة إنها تغير خطتها الاستثمارية في المنطقة هذا العام", "وقالت الشركة إنها ولن تغير خطتها الاستثمارية في المنطقة هذا العام")],
+    [false, false, false]);
+  const { roundupFrame } = await import("../pipeline/lib/select.mjs");
+  check("«بين الأكثر تداولاً وسط…» is one event, a market set between two things still a roundup", [roundupFrame("أسهم أرامكو بين الأكثر تداولاً وسط ارتفاع النفط"), roundupFrame("النفط بين مخاوف الإمدادات وضعف الطلب")], [false, true]);
+
   // 6. A chart's values are all figures.
   check("a chart's small whole values are held to the sources like any figure",
     [ungroundedNumbers("12 27", ["The share rose to 40%."], { ignoreYears: false }), ungroundedNumbers("12 27", ["The share rose to 40%."], { ignoreYears: false, everyFigure: true }), ungroundedNumbers("40", ["The share rose to 40%."], { ignoreYears: false, everyFigure: true }), /everyFigure: true/.test(source("pipeline/lib/verify.mjs"))],

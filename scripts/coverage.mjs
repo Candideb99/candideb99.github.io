@@ -267,7 +267,7 @@ function main() {
   console.log("\nThe six sources of 2026-11-09: news stories citing each, and the feed when it was last read.");
   for (const [id, domain] of NEW_SOURCES) {
     const f = feeds[id];
-    const feed = f ? `newest item ${f.newestAt ? when(Date.parse(f.newestAt)) : "undated"}, read ${when(Date.parse(f.readAt))} UTC` : "never read";
+    const feed = f ? `newest item ${f.newestAt ? when(Date.parse(f.newestAt)) : "undated"}, ${f.readAt ? `read ${when(Date.parse(f.readAt))} UTC` : "asked, never read"}` : "never read";
     console.log(`  ${id.padEnd(16)}${String(before.filter((s) => cites(s, domain)).length).padStart(3)} before  ${String(after.filter((s) => cites(s, domain)).length).padStart(3)} after   (${feed})`);
   }
 
