@@ -346,13 +346,18 @@ async function callClaudeApi({ model, system, user, images = [], timeoutMs, temp
   usage.calls += 1;
   usage.promptTokens += (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0) + (used.cache_read_input_tokens ?? 0);
   usage.completionTokens += used.output_tokens ?? 0;
+  usage.cacheReadTokens += used.cache_read_input_tokens ?? 0;
   const modelKey = `claude/${actualModel}`;
   usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
+  // The call's tokens for the per-desk report, as the CLI path gives them (2026-11-22: with an API key the desks' rows
+  // stayed empty and cached reads were counted as none). No price: the API's rates are not recorded here.
+  const tokens = { in: (used.input_tokens ?? 0) + (used.cache_creation_input_tokens ?? 0), read: used.cache_read_input_tokens ?? 0, out: used.output_tokens ?? 0, usd: 0 };
 
   return {
     content: text,
     ms: Date.now() - started,
     usage: { completion_tokens: used.output_tokens },
+    tokens,
     model: modelKey,
   };
 }
@@ -542,7 +547,7 @@ async function callOpenAI({ model, system, user, images = [], timeoutMs, tempera
   usage.byModel[modelKey] = (usage.byModel[modelKey] ?? 0) + 1;
 
   if (choice?.message?.refusal) throw new LlmError(`openai (${actualModel}): request refused`);
-  if (choice?.finish_reason === "length") throw new LlmError(`openai (${actualModel}): completion token limit reached; increase maxTokens to leave room for reasoning and the answer`);
+  if (choice?.finish_reason === "length") throw new LlmError(`openai (${actualModel}): completion token limit reached; increase maxTokens to leave room for reasoning and the answer`, { truncated: true });
   if (!text.trim()) throw new LlmError(`openai (${actualModel}): empty answer`);
 
   return {
@@ -762,6 +767,7 @@ export async function chat({ role, system, user, images = [], json = true, valid
   }
   const errors = [];
   let refusal = "";
+  let refused = false;
   for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
     await acquire();
     try {
@@ -790,7 +796,16 @@ export async function chat({ role, system, user, images = [], json = true, valid
       // from the run report to tell the owner (scripts/editor-precheck.mjs).
       log(`llm fail role=${role} provider=${provider} model=${modelName} attempt=${attempt}${error.meta?.status === 401 ? " login=refused" : ""}: ${String(error.message).slice(0, 200)}${sample}`);
       if (error.meta?.quota) throw error;
-      if (error.meta?.status === 401) break;
+      if (error.meta?.status === 401) {
+        refused = true;
+        break;
+      }
+      // An answer cut at the token limit is cut there again by the same limit: the next try gets twice the room, or,
+      // with no limit of the call's own to raise, is not made (three tries had spent three full allowances, 2026-11-22).
+      if (error.meta?.truncated) {
+        if (!maxTokens) break;
+        maxTokens *= 2;
+      }
       if (attempt < ATTEMPTS) {
         const is503 = /503|high demand|temporarily unavailable/i.test(error.message);
         const is429 = error.meta?.status === 429 || /rate limit|quota|resource exhausted/i.test(error.message);
@@ -801,5 +816,6 @@ export async function chat({ role, system, user, images = [], json = true, valid
       release();
     }
   }
-  throw new LlmError(`Model (${provider}/${modelName}) failed for role ${role}:\n${errors.join("\n")}`);
+  // A refused login keeps its mark, so the caller can tell the newsroom's fault from the story's (run.mjs).
+  throw new LlmError(`Model (${provider}/${modelName}) failed for role ${role}:\n${errors.join("\n")}`, refused ? { status: 401 } : {});
 }

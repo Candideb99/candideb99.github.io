@@ -185,7 +185,7 @@ export function standingStories(closedIssues, { title, mark }) {
 
 /**
  * The news feeds that answer but have stopped moving: read in the last two days, newest item older than the source's
- * `quietHours` (72 unless it says otherwise). A feed of one topic from one desk can be quiet over a weekend: Guardian
+ * `quietHours` (72 unless it says otherwise), or that have not answered at all for that long. A feed of one topic from one desk can be quiet over a weekend: Guardian
  * Australia's economy tag runs about two items a weekday and none on Saturday or Sunday (2026-11-21). `heard` is
  * pipeline/state/feeds.json's `feeds`.
  */
@@ -193,5 +193,14 @@ export function silentFeeds(sources, heard, now = Date.now()) {
   const hours = (iso) => (now - Date.parse(iso)) / 36e5;
   return (sources ?? [])
     .filter((s) => !s.disabled && s.kind === "news")
-    .filter((s) => heard?.[s.id]?.readAt && hours(heard[s.id].readAt) < 48 && heard[s.id].newestAt && hours(heard[s.id].newestAt) > (s.quietHours ?? 72));
+    .filter((s) => {
+      const h = heard?.[s.id];
+      const quiet = s.quietHours ?? 72;
+      // Asked in the last two days (`triedAt`; `readAt` in a record older than 2026-11-22).
+      if (!h || !(hours(h.triedAt ?? h.readAt) < 48)) return false;
+      // A feed that has stopped answering is as silent as one that answers with nothing new: it had left the list after
+      // 48 hours without an answer, the moment it most needed a look (2026-11-22).
+      if (h.readAt && hours(h.readAt) > quiet) return true;
+      return Boolean(h.newestAt) && hours(h.newestAt) > quiet;
+    });
 }

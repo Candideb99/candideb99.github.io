@@ -106,6 +106,10 @@ function tokens(text) {
  * a word dropped or a comma turned into a dash). A quote of fewer than four words is no evidence, unless it carries
  * a figure and two words.
  */
+// Words that turn a sentence round. A near match may drop a word, never one of these: «الموافقة على تنفيذ المشروع» was
+// found in a source saying «عدم الموافقة على تنفيذ المشروع», a refusal read as an approval (2026-11-22).
+const NEGATIONS = new Set(["عدم", "لا", "لم", "لن", "ليس", "ليست", "غير", "دون", "بدون", "بلا", "رفض", "رفضت", "not", "no", "never", "without", "neither", "nor", "cannot", "isn", "aren", "wasn", "weren", "doesn", "didn", "hasn", "haven", "hadn", "wouldn", "couldn", "shouldn"]);
+
 export function quoteFound(quote, text) {
   const q = tokens(quote);
   if (q.length < 4 && !(q.length >= 2 && q.some((t) => /\d/.test(t)))) return false;
@@ -132,7 +136,15 @@ export function quoteFound(quote, text) {
       win.set(old, win.get(old) - 1);
       if (win.get(old) < (want.get(old) ?? 0)) overlap -= 1;
     }
-    if (overlap >= need && figures.every((t) => (win.get(t) ?? 0) >= want.get(t))) return true;
+    if (overlap >= need && figures.every((t) => (win.get(t) ?? 0) >= want.get(t))) {
+      // The stretch from the quote's first word to its last holds the same negations as the quote, no more and no fewer.
+      const stretch = s.slice(Math.max(0, i - size + 1), i + 1);
+      const from = stretch.findIndex((t) => want.has(t));
+      const to = stretch.findLastIndex((t) => want.has(t));
+      const count = (list, word) => list.filter((t) => t === word).length;
+      const inside = stretch.slice(from, to + 1);
+      if ([...NEGATIONS].every((word) => count(inside, word) === (want.get(word) ?? 0))) return true;
+    }
   }
   return false;
 }
@@ -244,7 +256,7 @@ Answer with one JSON object:
  * the old reading had left «unverified» into confirmed errors, which changes what a pair counts.
  */
 export const CHECKER_VERSION = createHash("sha1")
-  .update([SYSTEM, prompt.toString(), tokens.toString(), quoteFound.toString(), validateChecks.toString(), verifyStory.toString(), getActiveProvider(), getActiveModel()].join(" | "))
+  .update([SYSTEM, prompt.toString(), tokens.toString(), quoteFound.toString(), [...NEGATIONS].join(","), validateChecks.toString(), verifyStory.toString(), getActiveProvider(), getActiveModel()].join(" | "))
   .digest("hex")
   .slice(0, 10);
 

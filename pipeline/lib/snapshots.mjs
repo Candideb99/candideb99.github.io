@@ -13,7 +13,7 @@
  * quoted. One small compressed file a story, evidence/<slug>.json.gz, committed with the story; written once, at
  * publication, and never replaced by a later reading.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { gunzipSync, gzipSync } from "node:zlib";
@@ -96,6 +96,15 @@ export function passagesOf(text, quotes, storyFigures) {
 }
 
 /**
+ * The verdicts whose quoted source sentence code found in the source (lib/factcheck.mjs verifyStory()). Only those are
+ * evidence. Until 2026-11-22 every quote was kept with its source, a quote the check could not find there among them
+ * ("no-evidence", "unverified"): saved as a loose passage, it became part of the source's copy, and a later reading
+ * against that copy found it (Codex's review: 106 such claims in 54 saved copies).
+ */
+export const QUOTE_FOUND = new Set(["supported", "weak", "confirmed", "listed", "drift", "conflict"]);
+const unfound = (claim) => Boolean(claim?.quote) && Boolean(claim.status) && !QUOTE_FOUND.has(claim.status);
+
+/**
  * Saves a story's evidence. Never overwrites: the first copy is the publication's. `storyText` is the story as published
  * (for its figures); `checks` the check before publication's verdicts (sentence, source number, quote). `kind`
  * "backfill" marks a copy taken later, for a story published before copies were kept.
@@ -120,7 +129,7 @@ export async function saveSnapshot({ slug, title, publishedAt = null, sources, c
       lang: s.lang ?? null,
       sourceKind: s.kind ?? null,
       discoveredFrom: s.discoveredFrom ?? null,
-      passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote).map((c) => c.quote), storyFigures),
+      passages: passagesOf(s.text, checks.filter((c) => Number(c.sourceN ?? c.source) === i + 1 && c.quote && !unfound(c)).map((c) => c.quote), storyFigures),
     })),
     claims: checks.map((c) => ({ field: c.field, sentence: c.sentence, verdict: c.verdict, status: c.status, source: c.sourceN ?? c.source ?? null, quote: c.quote ?? "" })),
   };
@@ -129,11 +138,42 @@ export async function saveSnapshot({ slug, title, publishedAt = null, sources, c
   return file;
 }
 
-/** A story's publication evidence, or null. */
+/**
+ * The file of a story's evidence: its newest editorial refresh's copy (run.mjs saves one as <slug>-refresh-<time>, the
+ * text readers now see and the sources it was checked against), else the publication's. Read by the story's own slug
+ * alone, the second look of a refreshed story got the first version's sources and claims (2026-11-22: the Moody's story,
+ * four sources and 30 claims, was read against its first three and 18).
+ */
+function evidenceFile(slug, dir) {
+  let newest = null;
+  try {
+    const head = `${slug}-refresh-`;
+    for (const name of readdirSync(dir)) {
+      const m = name.startsWith(head) ? name.slice(head.length).match(/^(\d+)\.json\.gz$/) : null;
+      if (m && (!newest || Number(m[1]) > newest.at)) newest = { at: Number(m[1]), file: path.join(dir, name) };
+    }
+  } catch {
+    /* no evidence folder yet */
+  }
+  return newest?.file ?? fileOf(slug, dir);
+}
+
+/**
+ * A story's evidence, or null. A copy saved before 2026-11-22 may hold, as a loose passage of a source, a quote the
+ * check never found there (QUOTE_FOUND above): such a quote is taken out of that source's passages as the copy is
+ * read, so the files stay as they were written and no reader takes it for the source's words.
+ */
 export function loadSnapshot(slug, { dir = SNAPSHOT_DIR } = {}) {
   try {
-    const file = fileOf(slug, dir);
-    if (existsSync(file)) return JSON.parse(gunzipSync(readFileSync(file)).toString("utf8"));
+    const file = evidenceFile(slug, dir);
+    if (!existsSync(file)) return null;
+    const copy = JSON.parse(gunzipSync(readFileSync(file)).toString("utf8"));
+    for (const claim of copy.claims ?? []) {
+      const source = unfound(claim) ? copy.sources?.[Number(claim.source) - 1] : null;
+      const quote = squash(claim.quote);
+      if (source?.passages && quote && source.passages.includes(quote)) source.passages = squash(source.passages.split(quote).join(" "));
+    }
+    return copy;
   } catch {
     /* a copy that cannot be read counts as none */
   }

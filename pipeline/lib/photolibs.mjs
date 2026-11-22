@@ -103,7 +103,10 @@ export async function searchOpenverse(query, { limit = 10, log = () => {}, simpl
       // A minute's limit says to wait seconds, the day's limit hours: only the second ends Openverse for the run.
       const wait = Number(response.headers.get("retry-after"));
       if (Number.isFinite(wait) && wait <= 120) {
-        log(`openverse "${query}": busy for ${wait} s; this search is left`);
+        // …and so are the searches of the seconds it asked for: they went out at once, each answered the same way and
+        // each lost its chance (2026-11-22).
+        openverseRestUntil = Math.max(openverseRestUntil, Date.now() + Math.max(1, wait) * 1000);
+        log(`openverse "${query}": busy for ${wait} s; this search is left, and Openverse is for that long`);
         return [];
       }
       openverseRefused = true;

@@ -96,6 +96,10 @@ console.log(`[ok] the ideas' period drawings are free, kept and printed by their
 t = Date.now();
 const newsEvidence = spawnSync(process.execPath, [path.join("scripts", "news-evidence-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
 if (newsEvidence.status !== 0) fail("news evidence collection (scripts/news-evidence-selftest.mjs)", newsEvidence.stdout + newsEvidence.stderr);
+// Codex's second review of 2026-11-22: the evidence archive, the last reading, the number and quote guards, the feeds' record.
+const codexReview = spawnSync(process.execPath, [path.join("scripts", "codex-nov22-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (codexReview.status !== 0) fail("the review of 22 November (scripts/codex-nov22-selftest.mjs)", codexReview.stdout + codexReview.stderr);
+console.log("[ok] the evidence archive, the last reading and the number and quote guards pass their known cases");
 console.log(`[ok] source metadata, cited primary documents and fetch failures pass offline (${seconds(t)})`);
 
 // 1c-2. The economic calendar's readers decide the institutions' own markup correctly (scripts/calendar-selftest.mjs,

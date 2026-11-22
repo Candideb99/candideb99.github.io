@@ -205,7 +205,7 @@ const NOTES_SYSTEM = `You are the chief sub-editor of خازندار, an Arabic 
  * Stage one of a news story: the desk notes, 15-30 atomic facts of the one event, each tied to its
  * source and checked against it (a fact whose figures are not in its source is dropped). The writer
  * then writes from these notes, so nothing enters the story that the sources do not carry.
- * Returns null when no usable notes can be made, and the writer works from the sources alone.
+ * Returns null when no usable notes can be made; the story is then not written this round (run.mjs, 2026-11-22).
  * `published` is the published stories this event may continue (lib/events.mjs relatedRecent()): the notes say which
  * one it continues and what happened since (`notes.followUp`, its `newSince` null when nothing did), and tag what that
  * story already told "earlier" (lib/editorial.mjs, the follow-up).
@@ -305,14 +305,18 @@ Return: {"event":"<one Arabic sentence naming the one event>",${cards.length ? `
         d.quotes = (Array.isArray(d.quotes) ? d.quotes : []).filter((q) => {
           const n = Number(q?.source);
           const text = String(q?.text ?? "").trim();
-          return text && Number.isInteger(n) && n >= 1 && n <= texts.length && sources[n - 1].lang === "ar" && texts[n - 1].includes(text.slice(0, 40));
+          // The whole quotation stands in its source, word for word: its first forty characters alone let «الموافقة على
+          // تنفيذ المشروع…» through for a source's «عدم الموافقة…» when the two opened alike (2026-11-22).
+          const flat = (t) => String(t ?? "").replace(/\s+/g, " ").trim();
+          return text && Number.isInteger(n) && n >= 1 && n <= texts.length && sources[n - 1].lang === "ar" && flat(texts[n - 1]).includes(flat(text));
         }).slice(0, 3);
       },
     });
     return { notes: { event: String(data.event ?? "").trim(), facts: data.facts, quotes: data.quotes, followUp: data.followUp ?? null }, model };
   } catch (error) {
-    if (error.meta?.quota) throw error;
-    log?.(`desk notes failed: ${String(error.message).split("\n")[0]}; the writer works from the sources alone`);
+    // A refused login is the newsroom's fault, as a spent allowance is: the caller defers the story (run.mjs).
+    if (error.meta?.quota || error.meta?.status === 401) throw error;
+    log?.(`desk notes failed: ${String(error.message).split("\n")[0]}`);
     return null;
   }
 }

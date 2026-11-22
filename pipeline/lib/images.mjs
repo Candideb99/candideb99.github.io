@@ -42,10 +42,15 @@ export function withStandIns(standIns) {
  */
 const failures = new AsyncLocalStorage();
 async function ask(options) {
+  const failed = failures.getStore();
+  // The plan's allowance is spent: every later call of this search would be refused the same way. The desk carries on
+  // past a failed call by design, and after the first refusal of 15 November it made twelve more in 25 seconds.
+  if (failed?.spent) throw failed.spent;
   try {
     return await outside.chat(options);
   } catch (error) {
-    failures.getStore()?.push(error);
+    failed?.push(error);
+    if (failed && error?.meta?.quota) failed.spent = error;
     throw error;
   }
 }
@@ -1494,6 +1499,7 @@ export function storyText(draft, max = 3000) {
 async function shortlist(candidates, log, stockFirst = false) {
   const list = [];
   const inlined = [];
+  let unseen = 0;
   // Two of the six places go to the other libraries when they offered anything: their photos carry no date, so the
   // ranking alone kept them behind Commons' dated but unusable files (named traders on every trading floor). One each
   // to Flickr's (through Openverse) and to Pexels' or Unsplash's best when both offered: Pexels describes a photograph in
@@ -1515,10 +1521,16 @@ async function shortlist(candidates, log, stockFirst = false) {
     // packing search were never looked at); Openverse's own thumbnail of the same photo is then asked for instead.
     const small = candidate.official ? { maxWidth: 800 } : undefined;
     const dataUrl = (await outside.inlineImage(candidate.thumb ?? String(candidate.url).replace(/\/1280px-/, "/500px-"), log, small)) ?? (candidate.thumbAlt ? await outside.inlineImage(candidate.thumbAlt, log, small) : null);
-    if (!dataUrl) continue;
+    if (!dataUrl) {
+      unseen += 1;
+      continue;
+    }
     list.push(candidate);
     inlined.push(dataUrl);
   }
+  // Candidates no judge could be shown is a search cut short, not «nothing fits»: with the thumbnails failing the desk
+  // found no photograph, reported no error, and the morning round left the story alone for good (2026-11-22).
+  if (!list.length && unseen) failures.getStore()?.push(new Error(`none of ${unseen} thumbnail(s) could be loaded`));
   return { list, inlined };
 }
 

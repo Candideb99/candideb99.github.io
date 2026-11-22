@@ -135,7 +135,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   // from the sources or a model: it is not held to the sources.
   if (draft.chart && !draft.dataChart) {
     const chartNumbers = [draft.chart.title, draft.chart.unit, ...draft.chart.categories, ...draft.chart.series.flatMap((s) => [s.name, ...s.values])].join(" ");
-    const bad = grounded ? ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false }) : [];
+    // The values by themselves, none of them trivial: joined with the rest they stood without their unit, and a whole
+    // number up to 31 passed as a day or a small count (a chart of 12% and 27% beside a source saying 40%, 2026-11-22).
+    const values = draft.chart.series.flatMap((s) => s.values).join(" ");
+    const bad = grounded ? [...new Set([...ungroundedNumbers(chartNumbers, sourceTexts, { ignoreYears: false }), ...ungroundedNumbers(values, sourceTexts, { ignoreYears: false, everyFigure: true })])] : [];
     if (bad.length || !grounded) {
       warnings.push(`chart dropped: ${grounded ? `ungrounded values ${bad.join(", ")}` : "explainers carry no source data"}`);
       draft.chart = null;

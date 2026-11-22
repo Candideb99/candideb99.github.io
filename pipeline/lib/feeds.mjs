@@ -228,12 +228,15 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
       // A PDF cannot be read as a page; a working-paper series that links only to PDFs sets `allowPdf` and is read from its abstract.
       .filter((item) => source.allowPdf || !item.url.toLowerCase().endsWith(".pdf"));
     // A date days ahead is a typo or a scheduled post, never "new"; a few hours ahead is local time labelled GMT.
-    const dated = kept.map((item) => Date.parse(item.publishedAt ?? "")).filter((t) => Number.isFinite(t) && t <= Date.now() + 6 * 3_600_000);
+    const ahead = (item) => Date.parse(item.publishedAt ?? "") > Date.now() + 6 * 3_600_000;
+    const dated = kept.filter((item) => !ahead(item)).map((item) => Date.parse(item.publishedAt ?? "")).filter((t) => Number.isFinite(t));
     onRead?.({ newestAt: dated.length ? new Date(Math.max(...dated)).toISOString() : null, items: kept.length });
     // An undated item has no age and cannot be "fresh": it is dropped (hoursSince(null) is Infinity). A feed that lists
     // only its newest items and dates none keeps them (`undatedFresh`): NBER's working papers, every one of which had been
     // dropped since the feed was added on 2026-09-12 (2026-11-10).
-    const items = kept.filter((item) => (source.undatedFresh && !item.publishedAt) || hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
+    // …and is not offered to the editor: its age is negative, so it passed as fresh, took a place of the feed's share
+    // and sorted ahead of every real item (2026-11-22).
+    const items = kept.filter((item) => !ahead(item)).filter((item) => (source.undatedFresh && !item.publishedAt) || hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
     log(`feed ${source.id}: ${items.length} fresh items`);
     return items;
   } catch (error) {

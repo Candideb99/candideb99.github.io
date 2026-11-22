@@ -364,6 +364,9 @@ export function sourceNumbers(text) {
     miliardi: 1e9, miliardo: 1e9, milioni: 1e6, milione: 1e6, mila: 1e3, mld: 1e9, mln: 1e6, mlrd: 1e9,
     "miliardów": 1e9, miliardy: 1e9, miliard: 1e9, "milionów": 1e6, miliony: 1e6, milion: 1e6, tys: 1e3, bln: 1e12,
     miliarde: 1e9, milioane: 1e6, mii: 1e3,
+    // English and Arabic scale words (2026-11-22), so «455,758 thousand» and «455 ألف» carry their whole value: the
+    // check of a story's scale word below reads a count against it.
+    thousand: 1e3, billion: 1e9, billions: 1e9, trillion: 1e12, "ألف": 1e3, "آلاف": 1e3, "مليون": 1e6, "ملايين": 1e6, "مليار": 1e9, "مليارات": 1e9, "تريليون": 1e12,
     milijardi: 1e9, milijarde: 1e9, milijarda: 1e9, milijuna: 1e6, miliona: 1e6, "tisuća": 1e3, "tisuće": 1e3, hiljada: 1e3, hiljade: 1e3,
     "мільярдів": 1e9, "мільярди": 1e9, "мільярда": 1e9, "мільярд": 1e9, "мільйонів": 1e6, "мільйони": 1e6, "мільйона": 1e6, "мільйон": 1e6,
     "тис": 1e3, "тисяч": 1e3, "тисячі": 1e3,
@@ -373,7 +376,8 @@ export function sourceNumbers(text) {
     + "|miliardi|miliardo|milioni|milione|mila|mld|mln|mlrd|miliardów|miliardy|miliarde|miliard|milionów|miliony|milioane|miliona|milion|tys|bln|mii"
     + "|milijardi|milijarde|milijarda|milijuna|tisuća|tisuće|hiljada|hiljade"
     + "|мільярдів|мільярди|мільярда|мільярд|мільйонів|мільйони|мільйона|мільйон|тисячі|тисяч|тис"
-    + "|δισεκατομμύρια|δισεκατομμύριο|δισ|εκατομμύρια|εκατομμύριο|εκατ|χιλιάδες|χιλ|τρισ";
+    + "|δισεκατομμύρια|δισεκατομμύριο|δισ|εκατομμύρια|εκατομμύριο|εκατ|χιλιάδες|χιλ|τρισ"
+    + "|thousand|billions|billion|trillion|ألف|آلاف|مليون|ملايين|مليارات|مليار|تريليون";
   // French groups thousands with a space, often a narrow or non-breaking one («219 620 milliards de FCFA», «1 234,5»).
   for (const m of normalized.matchAll(new RegExp(`(?<![\\d.,])(\\d{1,3}(?:[ \\u00A0\\u202F]\\d{3})+)(?:,(\\d+))?(?![\\d])(?:\\s*(${SCALE_WORDS})(?![\\p{L}]))?`, "giu"))) {
     const value = Number(`${m[1].replace(/[   ]/g, "")}${m[2] ? `.${m[2]}` : ""}`);
@@ -404,14 +408,41 @@ function unitBoundNumbers(text) {
   return out;
 }
 
-/** Numbers in `text` that do not appear in any of the `sources` texts, ignoring trivial values. */
-export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
+const ARABIC_SCALES = { "ألف": 1e3, "ألفا": 1e3, "ألفاً": 1e3, "آلاف": 1e3, "مليون": 1e6, "مليونا": 1e6, "مليوناً": 1e6, "ملايين": 1e6, "مليار": 1e9, "مليارا": 1e9, "ملياراً": 1e9, "مليارات": 1e9, "تريليون": 1e12, "تريليونات": 1e12 };
+const SCALED_COUNT = /(?<![\d.,])(\d[\d,]*(?:\.\d+)?)\s+(ألفاً|ألفا|ألف|آلاف|مليوناً|مليونا|مليون|ملايين|مليارات|ملياراً|مليارا|مليار|تريليونات|تريليون)(?![\u0600-\u06ff])/g;
+
+/**
+ * The counts an Arabic text writes with a scale word («456 ألف», «1.7 مليار»): each figure as written (thousands
+ * separators off), its value, its scale and its decimals.
+ */
+export function scaledCounts(text) {
+  const normalized = normalizeDigits(String(text ?? "")).replace(/٫/g, ".").replace(/٬/g, ",");
+  return [...normalized.matchAll(SCALED_COUNT)].map((m) => {
+    const token = m[1].replace(/,/g, "");
+    return { token, value: Number(token), scale: ARABIC_SCALES[m[2]], decimals: (token.split(".")[1] ?? "").length };
+  });
+}
+
+/** Whether «`count` + its scale word» is `whole` as the desks round it: 455,758 is «456 ألف», never «456 مليون». */
+export const roundsTo = (count, whole) => Number.isFinite(whole) && Number((whole / count.scale).toFixed(count.decimals)) === count.value;
+
+/**
+ * Numbers in `text` that do not appear in any of the `sources` texts, ignoring trivial values. `everyFigure`: no
+ * number is trivial (a chart's values, where 12 and 27 are percentages whose unit stands elsewhere).
+ */
+export function ungroundedNumbers(text, sources, { ignoreYears = true, everyFigure = false } = {}) {
   const pool = new Set();
   for (const source of sources) for (const n of sourceNumbers(source)) pool.add(n);
   const expanded = new Set(pool);
+  // What a source carries as written or plainly rounded; the rest of `expanded` is a count divided by a scale, which
+  // the story must write with that scale's word (below).
+  const direct = new Set(pool);
   for (const n of pool) {
     const value = Number(n);
     if (!Number.isFinite(value)) continue;
+    if (Number.isInteger(value * 10)) direct.add(String(value));
+    direct.add(String(Math.round(value)));
+    direct.add(String(Number(value.toFixed(1))));
     // Allow common unit conversions: 4,000 -> "4" (آلاف), 1,700,000,000 -> 1.7 (مليار); and, for a count of
     // 10,000 or more, the desks' own rounding in thousands or millions (455,758 -> «نحو 456 ألف», 455.8 ألف).
     for (const divisor of [1e3, 1e6, 1e9, 1e12]) {
@@ -441,13 +472,24 @@ export function ungroundedNumbers(text, sources, { ignoreYears = true } = {}) {
     if (values.some((v) => t > v && t <= v * 1.15)) thresholds.add(m[1].replace(/,/g, ""));
   }
   const missing = [];
+  // A count the sources give whole and the story gives divided («455,758» as «456») is the same fact only under the
+  // right scale word: «نحو 456 مليون مستثمر» passed for 455,758 investors, the 456 being known and its word unread
+  // (2026-11-22). A figure a source carries as written is not held to this: its own page gives its unit.
+  // A source's own short forms («$4,500m», «17,000bn») are not read as scales, so a round or a small figure may also be
+  // thousands or millions of its unit; a whole count such as 455,758 is only itself.
+  const readings = (v) => (v < 10000 || v % 1000 === 0 ? [v, v * 1e3, v * 1e6, v * 1e9] : [v]);
+  const wrongScale = new Set(scaledCounts(text).filter((c) => !direct.has(c.token) && !values.some((v) => readings(v).some((r) => roundsTo(c, r)))).map((c) => c.token));
   for (const n of extractNumbers(text)) {
     const value = Number(n);
     if (!Number.isFinite(value)) continue;
     const yearLike = ignoreYears && value >= 1900 && value <= 2100 && Number.isInteger(value);
     const small = value >= 0 && value <= 31 && Number.isInteger(value); // days, small counts, ordinals
     // A year or a small count is trivial only when no unit follows it: "12%" and "2,000 دولار" are figures.
-    if ((yearLike || small) && !unitBound.has(n)) continue;
+    if (!everyFigure && (yearLike || small) && !unitBound.has(n)) continue;
+    if (wrongScale.has(n) && !thresholds.has(n)) {
+      missing.push(n);
+      continue;
+    }
     if (expanded.has(n) || expanded.has(String(value)) || thresholds.has(n)) continue;
     // Half a percent of drift covers a source's own rounding; anything more is a different number.
     const tolerant = [...expanded].some((p) => {

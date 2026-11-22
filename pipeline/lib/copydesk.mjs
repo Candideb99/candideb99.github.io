@@ -16,7 +16,7 @@
  */
 import { chat, reusedSystem } from "./llm.mjs";
 import { EDITORIAL_CRAFT } from "./editorial.mjs";
-import { arabicRatio, normalizeDigits, wordCount } from "./util.mjs";
+import { arabicRatio, normalizeDigits, roundsTo, scaledCounts, wordCount } from "./util.mjs";
 import { fixNames } from "./spellings.mjs";
 import { ARAB_OUTLET_NAMES, BANNED, WRITER_ONLY, contentWords, styleIssues } from "./style.mjs";
 
@@ -336,7 +336,10 @@ export function judgeRewrite(draft, proposal, fields, { year = new Date().getUTC
       continue;
     }
     const tokens = numberTokens(after);
-    const invented = [...tokens.filter((t) => !known(t, tokens)), ...latinTokens(after).filter((t) => !had.latin.has(t)), ...dualsOf(after).filter((t) => !had.duals.has(t))];
+    // A rounding is the same fact under its own scale word alone: «نحو 456 مليون مستثمر» for 455758 passed, the 456
+    // being a known rounding and its word unread (2026-11-22).
+    const misScaled = scaledCounts(after).filter((c) => !had.numbers.has(c.token) && rounded.has(c.token) && ![...had.numbers].some((n) => roundsTo(c, Number(n)))).map((c) => c.token);
+    const invented = [...misScaled, ...tokens.filter((t) => !known(t, tokens)), ...latinTokens(after).filter((t) => !had.latin.has(t)), ...dualsOf(after).filter((t) => !had.duals.has(t))];
     if (invented.length) {
       rejected.push({ field: f, reason: `numbers changed (${[...new Set(invented)].slice(0, 4).join("، ")})`, proposal: f === "body" ? undefined : after });
       continue;

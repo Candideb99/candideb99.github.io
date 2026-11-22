@@ -299,7 +299,8 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
     .map((s) => ({
       ids: [...new Set(s.ids.map(normalizeId).filter(Boolean))],
       section: normalizeSection(s.section),
-      importance: Number(s.importance) || 0,
+      // 1 to 10, as the brief asks: a score outside it is no score (a «100» had led the run, 2026-11-22).
+      importance: Number(s.importance) >= 0 && Number(s.importance) <= 10 ? Number(s.importance) : 0,
       angle: String(s.angle ?? "").trim(),
       headlineHint: String(s.headline_hint ?? "").trim(),
       newsValue: String(s.news_value ?? "").trim(),

@@ -207,7 +207,9 @@ async function gatherCandidates(sources, state, existing) {
   async function worker() {
     while (queue.length) {
       const source = queue.shift();
-      const items = await fetchFeed(source, { log, onRead: ({ newestAt }) => (heard[source.id] = { readAt: isoNow(), newestAt }) });
+      // `triedAt` whatever the feed answers; `readAt` and its newest item only when it was read (health.mjs silentFeeds()).
+      heard[source.id] = { triedAt: isoNow() };
+      const items = await fetchFeed(source, { log, onRead: ({ newestAt }) => Object.assign(heard[source.id], { readAt: isoNow(), newestAt }) });
       for (const item of items) {
         all.push({
           ...item,
@@ -231,7 +233,12 @@ async function gatherCandidates(sources, state, existing) {
     // Each feed's last answer and its newest item of any age, for the morning round's list of feeds that have stopped
     // moving (a feed that still answers gives only "0 fresh items"; the merge driver keeps both writers' entries).
     const record = await readJson(FEEDS_PATH, { version: 1, feeds: {} });
-    record.feeds = { ...record.feeds, ...heard };
+    // A reading keeps what an earlier one knew: an answer with no dated item had erased the feed's newest date, and with
+    // it the feed's place on the morning round's list (the Taipei Times and The Korea Times, 2026-11-21).
+    for (const [id, now] of Object.entries(heard)) {
+      const old = record.feeds[id] ?? {};
+      record.feeds[id] = { ...old, ...now, newestAt: now.newestAt ?? old.newestAt ?? null };
+    }
     await writeJsonAtomic(FEEDS_PATH, record).catch((error) => log(`feeds record not saved: ${String(error.message).slice(0, 120)}`));
   }
 
@@ -502,6 +509,16 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   if (published.length) log(`already published, for the desk notes to judge: ${published.map((a) => `"${a.title}"`).join(" | ")}`);
   const notesResult = await deskNotes({ story, sources, log, lessons, published });
   const notes = notesResult?.notes ?? null;
+  // No notes, no story this round (2026-11-22). Without them the writer was handed the raw sources, an Arabic outlet's
+  // own sentences among them, and written long past the gates the notes hold (too few facts, nothing explaining the
+  // event): the failure of the desk that reads the sources became a licence to skip it. The items take the short mark
+  // and the event is tried again in a later round.
+  if (!notes) {
+    entry.outcome = "skipped: the desk notes could not be taken";
+    report.push(entry);
+    log(`skip "${story.headlineHint}": the desk notes failed; items marked for one retry`);
+    return { rejected: true, items };
+  }
   const followUp = notes?.followUp ?? null;
   // Nothing has happened since the story it follows: the event is told, and telling it again is a repeat. The items are
   // marked as a repeat's are.
@@ -958,6 +975,13 @@ async function runNews(report) {
         // for a later run, rather than taking the rejection mark for a refusal that was never about them.
         log(`desk paused, the model's allowance is spent: ${String(error.message).split("\n").pop()}`);
         for (const rest of chosen.slice(chosen.indexOf(story))) report.push({ headline: rest.headlineHint, section: rest.section, outcome: "deferred: the model's allowance is spent", retryAt: error.meta.retryAt ?? error.meta.resets ?? null });
+        break;
+      }
+      if (error.meta?.status === 401) {
+        // So is a refused login (2026-11-22): the fault is the newsroom's key, and a rejection mark would keep the
+        // event's items out for twelve hours, a second one for three weeks.
+        log(`desk paused, the model refused the newsroom's login: ${String(error.message).split("\n").pop().slice(0, 160)}`);
+        for (const rest of chosen.slice(chosen.indexOf(story))) report.push({ headline: rest.headlineHint, section: rest.section, outcome: "deferred: the model refused the newsroom's login" });
         break;
       }
       log(`story failed "${story.headlineHint}": ${String(error.message).split("\n")[0]}`);
@@ -1944,7 +1968,7 @@ function runReports() {
       try {
         result = await produceStory({ story, candidates: [], existing, recentTitles, models: { editor: "reports-desk" }, report, preset: { sources } });
       } catch (error) {
-        if (error.meta?.quota) throw error;
+        if (error.meta?.quota || error.meta?.status === 401) throw error;
         log(`report ${r.id}: ${String(error.message).split("\n")[0]}`);
         report.push({ headline: story.headlineHint, section: r.section, outcome: `error: ${String(error.message).split("\n")[0]}` });
       }
