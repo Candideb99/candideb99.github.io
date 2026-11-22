@@ -45,7 +45,7 @@ import { photoFree, usedPhotos } from "./lib/photo-key.mjs";
 import { cleanTags, storyText as tagsText } from "./lib/tags.mjs";
 import { ARTICLES_DIR, buildSlug, loadExistingArticles, mergeNewsRefresh, mergeRewrite, recentNews, serializeArticle, weekStories } from "./lib/article.mjs";
 import { usage as llmUsage } from "./lib/llm.mjs";
-import { USER_AGENT, domainOf, fetchPublic, fingerprint, hoursSince, isoNow, restoredFigures, sleep } from "./lib/util.mjs";
+import { USER_AGENT, domainOf, fetchPublic, fingerprint, hoursSince, isoNow, readState, restoredFigures, sleep } from "./lib/util.mjs";
 import { pickDataChart } from "./lib/datacharts.mjs";
 import { IDEA_MIN_CHARS, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "./lib/ideas.mjs";
 import { coveredBy, latestEdition, loadRegistry, monthKey, pdfPages, readEdition, releaseStory, reportStory } from "./lib/reports.mjs";
@@ -157,8 +157,19 @@ async function readJson(file, fallback) {
   }
 }
 
+/**
+ * The record of what the newsroom decided on each item. A file that is not there is a new record; one that is there and
+ * cannot be read stops the run before anything is paid for: read as empty, the next save replaced three weeks of
+ * discards and rejection counts with one decision, and every item came back as new (a review of 2026-11-22).
+ */
 async function loadState() {
-  const state = await readJson(STATE_PATH, { version: 1, items: {} });
+  let text = null;
+  try {
+    text = await readFile(STATE_PATH, "utf8");
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const state = text === null ? { version: 1, items: {} } : readState(text);
   const cutoff = Date.now() - 21 * 24 * 3600 * 1000;
   for (const [key, value] of Object.entries(state.items)) {
     if (new Date(value.at).getTime() < cutoff) delete state.items[key];
@@ -913,7 +924,7 @@ async function runNews(report) {
   // the newsroom writes about three stories a run, and sport is not to take the economy's places. Counted from the
   // items a published sport story was written from (markItems below).
   const sportToday = new Set(Object.values(state.items).filter((i) => i.sport && i.decision === "published" && hoursSince(i.at) < 24).map((i) => i.slug)).size;
-  const capped = sportCap({ chosen, stories, runLimit, minImportance: MIN_IMPORTANCE, today: sportToday });
+  const capped = sportCap({ chosen, stories, runLimit, minImportance: MIN_IMPORTANCE, today: sportToday, sections: SECTIONS });
   for (const s of capped.dropped) log(`sport: "${s.headlineHint}" (${s.importance}) waits: one story on the business of sport a run, ${SPORT_LIMITS.day} in 24 hours (${sportToday} so far)`);
   // The order they are written in: the run's budget drops the last ones (8 of 55 picks in the rounds of 15-21 November,
   // most never chosen again), and a balance's pick, pushed onto the end, would be the first to go.
@@ -1885,7 +1896,12 @@ function runReports() {
     }
     log(`reports: ${fresh.length} new edition(s)${fresh.length ? `: ${fresh.map((f) => `${f.r.id} «${f.edition.label}»`).join(", ")}` : ""}`);
     let published = 0;
-    for (const { r, edition } of fresh.slice(0, Math.min(LIMIT, 2))) {
+    // Two editions a run, counted when one is read and written from: an edition that waits for its document, is
+    // already told or was left takes no place, or two waiting releases kept a readable third from ever being read
+    // (a review of 2026-11-22).
+    let taken = 0;
+    for (const { r, edition } of fresh) {
+      if (taken >= Math.min(LIMIT, 2)) break;
       const prior = state.reports[r.id];
       const tries = prior?.edition === edition.key ? prior.tries ?? 0 : 0;
       const mark = (outcome, extra = {}) => (state.reports[r.id] = { edition: edition.key, label: edition.label, url: edition.url, at: isoNow(), outcome, tries, ...extra });
@@ -1916,6 +1932,7 @@ function runReports() {
         await save();
         continue;
       }
+      taken += 1;
       if (!sources.length) {
         mark("retry", { tries: tries + 1 });
         report.push({ headline: `${r.nameEn} ${edition.label}`, section: r.section, outcome: "skipped: nothing readable in the report's pages" });

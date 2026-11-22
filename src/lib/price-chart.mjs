@@ -12,10 +12,25 @@ export const PERIODS = [
   { id: "y1", label: "سنة", sessions: 260 },
 ];
 
+/**
+ * The same periods for a market with a close every day of the week (bitcoin): a month is 30 closes there, not 22.
+ * With the weekday count its «شهر» ran 22 days, and on 22 November printed −22.55% from 1 November where the month
+ * from 22 October was −25.47% (a review of 2026-11-22).
+ */
+export const DAILY_PERIODS = [
+  { id: "m1", label: "شهر", sessions: 30 },
+  { id: "m3", label: "3 أشهر", sessions: 91 },
+  { id: "m6", label: "6 أشهر", sessions: 182 },
+  { id: "y1", label: "سنة", sessions: 365 },
+];
+
+/** Whether an instrument of the board closes every day of the week (pipeline/lib/quotes.mjs tradingWeekdays()). */
+export const closesDaily = (quote) => quote?.id === "btc" || quote?.group === "crypto";
+
 /** The periods the record can fill: every one shorter than the record, and the record itself as the longest. */
-export function periodsFor(count) {
+export function periodsFor(count, daily = false) {
   const out = [];
-  for (const p of PERIODS) {
+  for (const p of daily ? DAILY_PERIODS : PERIODS) {
     if (count >= p.sessions) out.push(p);
     else {
       // What the record holds beyond the last period it fills is offered as «الكل», never under the name of a period

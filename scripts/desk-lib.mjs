@@ -93,6 +93,31 @@ export function progressLines(log) {
   return (meaningful.length ? meaningful.slice(-4) : lines.slice(-2)).map((l) => l.slice(0, 180));
 }
 
+/**
+ * A run's steps with the desk's choice of sections on the newsroom's own step. A new list each time: the choice was
+ * pushed onto the first step run by `node`, which since the sync became scripts/sync.mjs (2026-10-31) is the sync, a
+ * list every job shares, so «Energy» reached the Git sync and never the writer (a review of 2026-11-22).
+ */
+export function withSections(steps, sections) {
+  return steps.map(([command, args, ...rest]) => (command === "node" && args[0] === "pipeline/run.mjs" ? [command, [...args, `--sections=${sections}`], ...rest] : [command, args, ...rest]));
+}
+
+/** The schedule's line on news rounds, from the pace in force (pipeline/lib/pace.mjs) and the clock's night gap. */
+export function newsLine(pace, night) {
+  return `a round once ${String(pace.gapDay).replace(".5", "½")} hours have passed since the last, ${night} at night (19:00-04:00 UTC): about ${pace.about} stories a day`;
+}
+
+/**
+ * The files on the site a story's own file names: a handout photograph and, for an idea piece, the drawing the newsroom
+ * chose (lib/exhibit-desk.mjs). Published from the desk without them, each ran as a broken image (the handout
+ * 2026-10-31, the drawing 2026-11-22). Paths under public/, as the story writes them.
+ */
+export function siteFilesOf(data) {
+  const photo = String(data?.image?.url ?? "");
+  const drawing = String(data?.exhibit?.file ?? "");
+  return [/^\/photos\/handouts\/[\w.-]+$/.test(photo) ? photo : null, /^\/photos\/exhibits\/[\w.-]+$/.test(drawing) ? drawing : null].filter(Boolean);
+}
+
 /** «2 of 4 written · 1 refused», counted from the run's own log lines, so it is never a guess. */
 export function jobProgress(log) {
   const written = log.filter((l) => /\] (drafted|published) "/.test(l)).length;

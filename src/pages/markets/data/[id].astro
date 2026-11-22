@@ -7,6 +7,7 @@
  */
 import Base from "@layouts/Base.astro";
 import PriceChart from "@components/PriceChart.astro";
+import { periodsFor, closesDaily } from "@lib/price-chart.mjs";
 import MarketBoard from "@components/MarketBoard.astro";
 import StoryCard from "@components/StoryCard.astro";
 import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
@@ -27,7 +28,8 @@ const peers = board.quotes.filter((p) => p.group === q.group && p.id !== q.id);
 // The newest closes first, a month of them: the line above carries the rest. Each move is taken from the record, so the
 // oldest row has its own too (it printed «—», the session before it being outside the month, 2026-11-20).
 const record = [...(q.history ?? [])].reverse();
-const closes = record.slice(0, 22);
+// A month is 22 sessions, 30 for a market that closes every day (bitcoin).
+const closes = record.slice(0, periodsFor(Infinity, closesDaily(q))[0].sessions);
 const num = (v: number) => v.toLocaleString("en-US", { minimumFractionDigits: q.decimals, maximumFractionDigits: q.decimals }) + (q.unit === "%" ? "%" : "");
 const dayMove = (i: number) => {
   const prev = record[i + 1];

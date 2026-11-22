@@ -115,14 +115,23 @@ export function isSessionDay(day, market) {
 /**
  * The session a moment belongs to, as the date Yahoo files its daily bar under (2026-11-09). A future's trading day opens
  * at 18:00 New York time, so Sunday evening's prices are Monday's session (Yahoo stamps that bar on Monday); every other
- * market's day is its exchange's own calendar day. A moment on a day the market holds no session (a currency quoted on a
- * Saturday, the dollar index's Sunday evening) belongs to the next session. Dating a Sunday evening's price by its own
- * date had left a point in the history no bar ever replaced: Brent "closed" on three Sundays of October, the dollar
- * against the yen on a Saturday.
+ * market's day is its exchange's own calendar day. A moment on a day the market holds no session belongs to the
+ * session it is nearest in trading: the next one once the week has opened again (the dollar index's Sunday evening),
+ * the one before while the week is still shut. Dating a Sunday evening's price by its own date
+ * had left a point in the history no bar ever replaced: Brent "closed" on three Sundays of October, the dollar against
+ * the yen on a Saturday. Sending every such moment forward (2026-11-09) dated Friday's last currency prices, a
+ * Saturday in Shanghai, Kolkata or late London, as Monday's: on Sunday 22 November the pages of the pound, the yuan
+ * and the rupee listed a close of 23 November (a review of 2026-11-22).
  */
 export function sessionDay(meta, ms) {
   let day = meta?.instrumentType === "FUTURE" ? dateIn(ms + 6 * 3600000, "America/New_York") : dateIn(ms, meta?.exchangeTimezoneName);
-  for (let i = 0; i < 6 && !isSessionDay(day, meta); i++) day = dayAfter(day);
+  if (isSessionDay(day, meta)) return day;
+  // Shut from Friday 17:00 in New York to Sunday noon there, when the Pacific's Monday morning has begun to quote (the
+  // euro's first price of a week reached the board on a Sunday at 19:15 GMT). New York's clock moved on seven hours
+  // makes its Friday 17:00 a Saturday's first minute; moved on twelve, its Sunday noon a Monday's.
+  const nyDay = (hours) => weekdayOf(dateIn(ms + hours * 3600000, "America/New_York"));
+  const shut = nyDay(7) === 6 || nyDay(12) === 0;
+  for (let i = 0; i < 6 && !isSessionDay(day, meta); i++) day = dayAfter(day, shut ? -1 : 1);
   return day;
 }
 
@@ -229,6 +238,9 @@ export function mergeHistory(inst, old = [], fresh = [], quote = null) {
   for (const p of fresh ?? []) if (usable(p)) byDate.set(p.d, p.c);
   // A feed that answers with the price alone still adds its session's point.
   if (quote && Number.isFinite(quote.price) && isSessionDay(quote.session, inst)) byDate.set(quote.session, quote.price);
+  // No close is later than the latest price's own session: a point dated ahead of it (the Monday of 2026-11-22 above)
+  // goes with the refresh that knows better.
+  if (quote && isSessionDay(quote.session, inst)) for (const d of [...byDate.keys()]) if (d > quote.session) byDate.delete(d);
   const round = (v) => Number(v.toFixed(inst.decimals + 2));
   return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-HISTORY_SESSIONS).map(([d, c]) => ({ d, c: round(c) }));
 }

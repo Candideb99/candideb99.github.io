@@ -29,28 +29,44 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
     var out = root.querySelector("output");
     var reset = root.querySelector(".textsize__reset");
     // The house size on this screen (the token, without the reader's choice), so the control starts where the text is.
-    var probe = document.createElement("span");
-    probe.style.fontSize = "var(--n-body)";
-    root.appendChild(probe);
-    var base = Math.round(parseFloat(getComputedStyle(probe).fontSize)) || 20;
-    root.removeChild(probe);
+    function houseSize() {
+      var probe = document.createElement("span");
+      probe.style.fontSize = "var(--n-body)";
+      root.appendChild(probe);
+      var px = Math.round(parseFloat(getComputedStyle(probe).fontSize)) || 20;
+      root.removeChild(probe);
+      return px;
+    }
+    var base = houseSize();
     var saved = null;
     try { saved = Number(localStorage.getItem(key)) || null; } catch (e) {}
+    // Whether the reader has a size of their own; without one the control follows the house size.
+    var chosen = Boolean(saved && saved >= min && saved <= max);
     function show(px) {
       range.value = String(px);
       out.textContent = String(px);
       range.setAttribute("aria-valuetext", px + " بكسل");
       reset.hidden = px === base;
     }
-    show(saved && saved >= min && saved <= max ? saved : base);
+    show(chosen ? saved : base);
+    // The house size differs by screen width: a window widened from phone width drew the text at 20px while the
+    // control still said 18 (2026-11-22). Measured again when the window changes; a reader's own size stays.
+    window.addEventListener("resize", function () {
+      var now = houseSize();
+      if (now === base) return;
+      base = now;
+      show(chosen ? Number(range.value) : base);
+    });
     range.addEventListener("input", function () {
       var px = Number(range.value);
+      chosen = px !== base;
       show(px);
       document.documentElement.style.setProperty("--reader-size", px + "px");
       // The house size is no choice to remember: a reader back at it follows the house size if it changes.
       try { px === base ? localStorage.removeItem(key) : localStorage.setItem(key, String(px)); } catch (e) {}
     });
     reset.addEventListener("click", function () {
+      chosen = false;
       show(base);
       document.documentElement.style.removeProperty("--reader-size");
       try { localStorage.removeItem(key); } catch (e) {}

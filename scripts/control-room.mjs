@@ -31,7 +31,7 @@ import { validateCodexAuth } from "../pipeline/lib/codex-cloud.mjs";
 import { readQuotaState, refreshAccountUsage } from "../pipeline/lib/codex-pool.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
 import { chatRoute } from "./desk-chat.mjs";
-import { applySettings, jobProgress, progressLines, runProgram, setPaused, siteLight } from "./desk-lib.mjs";
+import { applySettings, jobProgress, newsLine, progressLines, runProgram, setPaused, siteFilesOf, siteLight, withSections } from "./desk-lib.mjs";
 import { PACES, paceName } from "../pipeline/lib/pace.mjs";
 import { GAP, PIECES } from "./news-clock.mjs";
 
@@ -54,7 +54,9 @@ const SECTION_NAME = { economy: "الاقتصاد", markets: "الأسواق", e
  * the page shows it in the owner's local time. */
 const pieceAt = (mode) => PIECES.find((p) => p.mode === mode).at;
 const SCHEDULE = [
-  { what: "News stories", when: `a round once ${String(GAP.day).replace(".5", "½")} hours have passed since the last, ${GAP.night} at night (19:00-04:00 UTC): about four a day`, utc: null },
+  // Read when asked for, from the pace saved in site.json, as the clock reads it: the line had gone on saying 4½ hours
+  // at the launch pace's 2½ (2026-11-22).
+  { what: "News stories", get when() { return newsLine(PACES[paceName(JSON.parse(readFileSync(SITE_FILE, "utf8")))], GAP.night); }, utc: null },
   { what: "An explainer", when: "daily", utc: pieceAt("explainer") },
   { what: "An economist's idea (الفكر الاقتصادي)", when: "Wednesdays", utc: pieceAt("idea") },
   { what: "An analysis", when: "daily", utc: pieceAt("analysis") },
@@ -2089,8 +2091,7 @@ async function filesOf(articleFiles) {
     const parsed = parseArticle(file, await readFile(path.join(ARTICLES, file), "utf8").catch(() => ""));
     const slug = parsed?.data?.slug;
     if (slug && existsSync(path.join(root, "evidence", `${slug}.json.gz`))) extra.push(`evidence/${slug}.json.gz`);
-    const photo = String(parsed?.data?.image?.url ?? "");
-    if (/^\/photos\/handouts\/[\w.-]+$/.test(photo) && existsSync(path.join(root, "public", photo))) extra.push(`public${photo}`);
+    for (const file of siteFilesOf(parsed?.data)) if (existsSync(path.join(root, "public", file))) extra.push(`public${file}`);
   }
   return extra;
 }
@@ -2206,7 +2207,7 @@ const server = http.createServer(async (req, res) => {
       if (!plan) return text(400, "unknown action");
       const sections = (url.searchParams.get("sections") ?? "").replace(/[^a-z,]/g, "");
       if (sections && (kind === "news" || kind === "analysis")) {
-        plan[1].find(([command]) => command === "node")[1].push(`--sections=${sections}`);
+        plan[1] = withSections(plan[1], sections);
         plan[0] += ` (${sections})`;
       }
       if (!runJob(plan[0], kind, plan[1], plan[2])) return text(409, `Still busy with "${job.name}". Wait for it to finish, or press Stop.`);

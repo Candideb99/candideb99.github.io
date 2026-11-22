@@ -9,6 +9,23 @@ import path from "node:path";
  * crash or a cancelled job can never leave half a file for the next run to read (2026-09-26: a stress test showed a
  * truncated lessons.json read as empty and overwritten, losing every lesson).
  */
+/**
+ * The newsroom's record of decisions (state/seen.json) from its file's text. Text that is not that record throws: the
+ * caller stops rather than start an empty record over it (run.mjs loadState()).
+ */
+export function readState(text) {
+  let state;
+  try {
+    state = JSON.parse(text);
+  } catch (error) {
+    throw new Error(`pipeline/state/seen.json cannot be read (${error.message}); the run stops so the record of earlier decisions is not replaced. Put the file back from git (git checkout pages/main -- pipeline/state/seen.json).`);
+  }
+  if (!state || typeof state.items !== "object" || state.items === null || Array.isArray(state.items)) {
+    throw new Error("pipeline/state/seen.json holds no record of items; the run stops so the record of earlier decisions is not replaced. Put the file back from git (git checkout pages/main -- pipeline/state/seen.json).");
+  }
+  return state;
+}
+
 export async function writeJsonAtomic(file, data) {
   await mkdir(path.dirname(file), { recursive: true });
   const tmp = `${file}.${process.pid}.${Date.now()}.tmp`;

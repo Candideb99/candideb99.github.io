@@ -640,6 +640,25 @@ check(
   check("…and with nothing else worthy the run is a story shorter", cap({ chosen: [club, rights], stories: [club, rights, weak] }), [[club.headlineHint], [rights.headlineHint]]);
   check("a run with one sport story, or none, is left as it is", [cap({ chosen: [club, bank], stories: [club, bank, rate] }), cap({ chosen: [bank, rate], stories: [bank, rate] })],
     [[[club.headlineHint, bank.headlineHint], []], [[bank.headlineHint, rate.headlineHint], []]]);
+  const oil = { ...pick("حقل غاز جديد", 8), section: "energy" };
+  check("a run asked for one section fills a sport story's place from that section alone",
+    [cap({ chosen: [club, rights], stories: [club, rights, oil, rate], sections: ["companies"] }), cap({ chosen: [club, rights], stories: [club, rights, oil], sections: ["companies"] })],
+    [[[club.headlineHint, rate.headlineHint], [rights.headlineHint]], [[club.headlineHint], [rights.headlineHint]]]);
+  {
+    // Codex's review of 2026-11-22: the roundup rule read a range, a period and two parties as roundups (7 of the 601
+    // published news headlines, each one event), and two full stops as one.
+    const { roundupFrame } = await import("../pipeline/lib/select.mjs");
+    check("a range, a period or two parties in a working headline is no roundup; a market set between two things is",
+      ["الفيدرالي الأمريكي يبقي الفائدة بين 3.75% و4% رغم مطالبة عضوتين برفعها", "تحويلات المصريين بالخارج تبلغ مستوى قياسياً عند 13 مليار دولار بين يوليو وسبتمبر", "النفط يتراجع مع ترقّب انفراجة دبلوماسية بين واشنطن وطهران", "المركزي يرفع توقعاته للنمو من 2% إلى 3%، ويثبت الفائدة",
+        "الأسواق بين قرار الفيدرالي وبيانات التضخم", "أسبوع المصارف المركزية", "الأسواق تترقب بيانات الوظائف", "من الفيدرالي إلى بنك اليابان، قرارات الفائدة"].map(roundupFrame),
+      [false, false, false, false, true, true, true, true]);
+    const kept = await selectStories({
+      candidates: [{ id: "c1", title: "t", sourceNameEn: "BBC", reliability: 2, kind: "news", lang: "en", publishedAt: new Date().toISOString() }],
+      recentTitles: [], sections: JSON.parse(readFileSync("src/data/sections.json", "utf8")), limit: 2, log: () => {},
+      chatWith: async () => ({ data: { stories: [{ ids: ["c1"], section: "economy", importance: 8, angle: "a", headline_hint: "السعودية.. الفائدة بين 3.75% و4%" }] }, model: "stand-in" }),
+    });
+    check("the editor's story with a range and two full stops in its working headline is kept, the stops taken out", kept.stories.map((s) => s.headlineHint), ["السعودية، الفائدة بين 3.75% و4%"]);
+  }
   check("after the day's two, no sport story runs", [SPORT_LIMITS.day, cap({ chosen: [club, bank], stories: [club, bank, rate], today: 2 })], [2, [[bank.headlineHint, rate.headlineHint], [club.headlineHint]]]);
   let prompt = "";
   const answer = await selectStories({
@@ -2771,6 +2790,21 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [...weekdays("2026-10-26", "2026-11-06", "12:00:00", [1.1171, 1.1162, 1.1158, 1.1183, 1.1175, 1.1170, 1.1190, 1.1215, 1.1230, 1.1171]), ...weekdays("2026-10-26", "2026-11-06", "21:00:00", [1.118, 1.115, 1.116, 1.1194, 1.1166, 1.1192, 1.1192, 1.1232, 1.1222, 1.1143])].sort(([a], [b]) => (a < b ? -1 : 1)),
   );
   check("a currency quoted at the weekend belongs to Monday, measured from Friday's last hourly price", [euro.session, euro.prev, euro.prevFrom, euro.history.at(-2)], ["2026-11-09", 1.1143, "bars", { d: "2026-11-06", c: 1.1143 }]);
+  // Friday's last prices are Friday's, whatever the day in the currency's own zone (Codex's review of 2026-11-22: on
+  // Sunday the 22nd the pound, the yuan and the rupee each listed a close of Monday the 23rd; the times are theirs).
+  {
+    const { sessionDay } = await import("../pipeline/lib/quotes.mjs");
+    const at = (zone, time, instrumentType = "CURRENCY") => sessionDay({ instrumentType, exchangeTimezoneName: zone }, Date.parse(time));
+    check("a currency's price of Saturday is the session before, never a close of the Monday to come",
+      [at("Europe/London", "2026-11-21T15:05:48Z"), at("Asia/Shanghai", "2026-11-21T16:04:41Z"), at("Asia/Kolkata", "2026-11-21T03:30:21Z"), at("Asia/Kolkata", "2026-11-20T22:00:00Z")],
+      ["2026-11-20", "2026-11-20", "2026-11-20", "2026-11-20"]);
+    check("…and once the week has opened again it is the session to come, a future's and the dollar index's too",
+      [at("Europe/London", "2026-11-08T19:15:31Z"), at("Asia/Tokyo", "2026-11-22T22:30:00Z"), at("America/New_York", "2026-11-22T23:30:00Z", "INDEX"), at("America/New_York", "2026-11-22T23:30:00Z", "FUTURE")],
+      ["2026-11-09", "2026-11-23", "2026-11-23", "2026-11-23"]);
+    const pound = INSTRUMENTS.find((i) => i.id === "gbpusd");
+    check("a stored close dated after the latest price's session goes with the next refresh",
+      mergeHistory(pound, [{ d: "2026-11-19", c: 1.3 }, { d: "2026-11-20", c: 1.31 }, { d: "2026-11-23", c: 1.32 }], [], { price: 1.315, session: "2026-11-20" }).map((p) => p.d), ["2026-11-19", "2026-11-20"]);
+  }
   // Bitcoin with Sunday's bar empty: the feed's own Sunday close, not Saturday's.
   const coin = await quoteOf({ instrumentType: "CRYPTOCURRENCY", exchangeTimezoneName: "UTC", regularMarketPrice: 74723.66, time: "2026-11-09T00:14:48Z", chartPreviousClose: 74719.82 }, [["2026-11-09T00:14:48Z", 74723.66]], [["2026-11-03T00:00:00Z", 77345.05], ["2026-11-04T00:00:00Z", 80405.29], ["2026-11-05T00:00:00Z", 75942.13], ["2026-11-06T00:00:00Z", 75746.93], ["2026-11-07T00:00:00Z", 75747.58], ["2026-11-08T00:00:00Z", null], ["2026-11-09T00:00:00Z", 74723.66]]);
   check("a session missing from the daily closes takes the feed's previous close", [coin.prev, coin.prevFrom], [74719.82, "feed"]);
@@ -2808,6 +2842,16 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [30, 22, 63, 70, 140, 260].map((n) => periodsFor(n).map((p) => `${p.id}:${p.sessions}`).join(" ")),
     ["m1:22 all:30", "m1:22", "m1:22 all:63", "m1:22 m3:66", "m1:22 m3:66 m6:130 all:140", "m1:22 m3:66 m6:130 y1:260"],
   );
+  {
+    const { closesDaily } = await import("../src/lib/price-chart.mjs");
+    const chartSource = readFileSync("src/components/PriceChart.astro", "utf8");
+    check("a market that closes every day counts a month as 30 closes (bitcoin's «شهر» had run 22 days), and the chart asks",
+      [[30, 95, 260].map((n) => periodsFor(n, true).map((p) => `${p.id}:${p.sessions}`).join(" ")), closesDaily({ id: "btc", group: "crypto" }), closesDaily({ id: "brent", group: "commodities" }), /periodsFor\(closes\.length, closesDaily\(q\)\)/.test(chartSource)],
+      [["m1:30", "m1:30 m3:91", "m1:30 m3:91 m6:182 all:260"], true, false, true]);
+    check("a chosen period renames the drawing for a screen reader", [/name: nameOf\(p\.sessions\)/.test(chartSource), /svg\.setAttribute\("aria-label", name\)/.test(chartSource), /draw\(p\.sessions, p\.name\)/.test(chartSource)], [true, true, true]);
+    const sizer = readFileSync("src/components/TextSize.astro", "utf8");
+    check("the text-size control measures the house size again when the window changes", [/addEventListener\("resize"/.test(sizer), /base = now;/.test(sizer)], [true, true]);
+  }
   const drawn = priceChart([{ d: "a", c: 100 }, { d: "b", c: 110 }, { d: "c", c: 95 }, { d: "d", c: 105 }]);
   check(
     "a price chart reads its period's change, high and low, runs left to right and draws a flat record",
@@ -3332,6 +3376,32 @@ process.stdin.on("end", () => {
     globalThis.fetch = real;
     resetDeclaredHosts();
   }
+}
+
+// Codex's review of 2026-11-22, the newsroom's and the desk's parts (each fails on the code before).
+{
+  const { readState } = await import("../pipeline/lib/util.mjs");
+  const refused = (text) => { try { readState(text); return "read"; } catch (error) { return /the run stops/.test(error.message) ? "stops" : "other"; } };
+  const runSource = readFileSync("pipeline/run.mjs", "utf8");
+  check("a record of decisions that cannot be read stops the run; it is never started again as empty",
+    [refused('{"version":1,"items":{"a":{"at":"2026-11-01T00:00:00Z"}}}'), refused('{"version":1,"items":{<<<<<<< HEAD'), refused(""), refused('{"version":1}'), refused("[]"), /readJson\(STATE_PATH/.test(runSource), /error\.code !== "ENOENT"/.test(runSource)],
+    ["read", "stops", "stops", "stops", "stops", false, true]);
+  check("the reports desk counts its two editions when one is read, not when one is listed",
+    [/for \(const \{ r, edition \} of fresh\) \{\s*if \(taken >= Math\.min\(LIMIT, 2\)\) break;/.test(runSource), /fresh\.slice\(0, Math\.min\(LIMIT, 2\)\)/.test(runSource), runSource.indexOf("taken += 1;") > runSource.indexOf('mark("retry", { waiting: true });')],
+    [true, false, true]);
+  const { withSections, newsLine, siteFilesOf } = await import("./desk-lib.mjs");
+  const { PACES } = await import("../pipeline/lib/pace.mjs");
+  const sync = ["node", ["scripts/sync.mjs", "pages", "main"]];
+  const steps = [sync, ["node", ["pipeline/run.mjs", "--draft", "--limit=4"]]];
+  const asked = withSections(steps, "energy");
+  check("the desk's choice of sections goes to the newsroom's step, and the sync every job shares is left as it was",
+    [asked[0][1], asked[1][1], sync[1], steps[1][1]],
+    [["scripts/sync.mjs", "pages", "main"], ["pipeline/run.mjs", "--draft", "--limit=4", "--sections=energy"], ["scripts/sync.mjs", "pages", "main"], ["pipeline/run.mjs", "--draft", "--limit=4"]]);
+  check("the schedule's news line follows the pace in force", [/once 4½ hours/.test(newsLine(PACES.standard, 7)), /once 2½ hours/.test(newsLine(PACES.launch, 7)), /about 15 stories a day/.test(newsLine(PACES.launch, 7))], [true, true, true]);
+  const deskSource = readFileSync("scripts/control-room.mjs", "utf8");
+  check("a story published from the desk takes its handout photograph and an idea piece's drawing, and nothing from elsewhere",
+    [siteFilesOf({ image: { url: "/photos/handouts/abc123.jpg" }, exhibit: { file: "/photos/exhibits/veblen-leisure.jpg" } }), siteFilesOf({ image: { url: "https://upload.wikimedia.org/a.jpg" }, exhibit: { file: "/photos/exhibits/../../.env" } }), siteFilesOf({}), /siteFilesOf\(parsed\?\.data\)/.test(deskSource), /get when\(\) \{ return newsLine\(/.test(deskSource), /plan\[1\] = withSections\(plan\[1\], sections\)/.test(deskSource)],
+    [["/photos/handouts/abc123.jpg", "/photos/exhibits/veblen-leisure.jpg"], [], [], true, true, true]);
 }
 
 if (failed) {

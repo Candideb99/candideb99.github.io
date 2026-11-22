@@ -135,6 +135,18 @@ function shared(a, b) {
   return [...terms(a)].filter((w) => right.has(w)).length;
 }
 
+/**
+ * The four of a story's items its evidence is gathered from, in the items' own order: up to three whose pages can be
+ * read first, then the best of the rest. Taken as the first four alone, four paywalled feeds ahead of a readable fifth
+ * (Bloomberg's and the FT's are tier A and sort first) left the story with no body, no fetch was tried, and all five
+ * items took the rejection mark (a review of 2026-11-22).
+ */
+export function evidenceItems(items) {
+  const readable = items.filter((item) => !item.paywalled).slice(0, 3);
+  const rest = items.filter((item) => !readable.includes(item)).slice(0, 4 - readable.length);
+  return items.filter((item) => readable.includes(item) || rest.includes(item));
+}
+
 /** Four selected items, at most three report bodies and one cited primary document.
  * Failed enrichment leaves the original evidence intact. No model call is added.
  */
@@ -143,7 +155,7 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
   items.sort((a, b) => b.reliability - a.reliability || hoursSince(a.publishedAt) - hoursSince(b.publishedAt));
   const sources = [];
   const links = [];
-  for (const item of items.slice(0, 4)) {
+  for (const item of evidenceItems(items)) {
     let fetched = null;
     const reads = !item.paywalled && sources.filter((s) => s.text).length < 3;
     if (reads) {

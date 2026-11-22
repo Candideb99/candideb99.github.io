@@ -8,7 +8,7 @@
  * below, so a period chosen by the reader draws as the build would have drawn it. With no script the page shows the
  * longest period, its figures and the table of closes.
  */
-import { priceChart, periodsFor } from "@lib/price-chart.mjs";
+import { priceChart, periodsFor, closesDaily } from "@lib/price-chart.mjs";
 import { formatShortDate, formatDate } from "@lib/format";
 import type { Quote } from "@lib/markets";
 
@@ -17,7 +17,8 @@ interface Props {
 }
 const { quote: q } = Astro.props;
 const closes = (q.history ?? []).filter((p) => Number.isFinite(p.c) && /^\d{4}-\d{2}-\d{2}$/.test(p.d));
-const periods = periodsFor(closes.length);
+// A market that closes every day counts its periods in days (bitcoin's month is 30 closes, not 22).
+const periods = periodsFor(closes.length, closesDaily(q));
 // The longest period opens the page: the history is what the page is for.
 const open = periods[periods.length - 1];
 const shown = closes.slice(-open.sessions);
@@ -31,13 +32,19 @@ const signed = (v: number, text: string) => (/^[0.,]+$/.test(text) ? text : (v >
 const periodMove = (s: NonNullable<typeof chart>["stats"]) =>
   q.changeMode === "abs" ? signed(s.change, Math.abs(s.change).toFixed(2)) : s.pct === null ? "" : `${signed(s.pct, Math.abs(s.pct).toFixed(2))}%`;
 const dirOf = (v: number) => (Math.abs(v) < 1e-9 ? "flat" : v > 0 ? "up" : "down");
+// The drawing's name for a screen reader, one for each period: the script puts the chosen period's in place (it had
+// gone on announcing the opening period's dates after another was chosen, 2026-11-22).
+const nameOf = (sessions: number) => {
+  const span = closes.slice(-sessions);
+  return `مسار إغلاق ${q.name} من ${formatDate(noon(span[0].d), { weekday: false })} إلى ${formatDate(noon(span[span.length - 1].d), { weekday: false })}`;
+};
 const data = JSON.stringify({
   c: closes.map((p) => p.c),
   d: closes.map((p) => day(p.d)),
   decimals: q.decimals,
   suffix,
   abs: q.changeMode === "abs",
-  periods: periods.map((p) => ({ id: p.id, sessions: p.sessions })),
+  periods: periods.map((p) => ({ id: p.id, sessions: p.sessions, name: nameOf(p.sessions) })),
 });
 ---
 
@@ -55,7 +62,7 @@ const data = JSON.stringify({
     </div>
 
     <div class="pchart__plot">
-      <svg class="pchart__svg" viewBox={`0 0 ${chart.width} ${chart.height}`} preserveAspectRatio="none" role="img" aria-label={`مسار إغلاق ${q.name} من ${formatDate(noon(chart.stats.from), { weekday: false })} إلى ${formatDate(noon(chart.stats.to), { weekday: false })}`}>
+      <svg class="pchart__svg" viewBox={`0 0 ${chart.width} ${chart.height}`} preserveAspectRatio="none" role="img" aria-label={nameOf(open.sessions)}>
         <g class="pchart__grid">
           {chart.ticks.map((t) => <line x1="0" x2={chart.width} y1={t.y} y2={t.y} vector-effect="non-scaling-stroke" />)}
         </g>
@@ -100,7 +107,7 @@ const data = JSON.stringify({
   import { priceChart } from "@lib/price-chart.mjs";
 
   for (const root of document.querySelectorAll<HTMLElement>("[data-pchart]")) {
-    let series: { c: number[]; d: string[]; decimals: number; suffix: string; abs: boolean; periods: { id: string; sessions: number }[] };
+    let series: { c: number[]; d: string[]; decimals: number; suffix: string; abs: boolean; periods: { id: string; sessions: number; name?: string }[] };
     try { series = JSON.parse(root.dataset.series ?? ""); } catch { continue; }
     const plot = root.querySelector<HTMLElement>(".pchart__plot")!;
     const svg = root.querySelector<SVGSVGElement>(".pchart__svg")!;
@@ -115,7 +122,8 @@ const data = JSON.stringify({
     let from = 0;
     let chart: ReturnType<typeof priceChart> = null;
 
-    function draw(sessions: number) {
+    function draw(sessions: number, name?: string) {
+      if (name) svg.setAttribute("aria-label", name);
       from = Math.max(0, series.c.length - sessions);
       const closes = series.c.slice(from).map((c, i) => ({ c, d: series.d[from + i] }));
       chart = priceChart(closes, { decimals: series.decimals });
@@ -181,11 +189,11 @@ const data = JSON.stringify({
         const p = series.periods.find((x) => x.id === b.dataset.period);
         if (!p) return;
         for (const o of buttons) o.setAttribute("aria-pressed", String(o === b));
-        draw(p.sessions);
+        draw(p.sessions, p.name);
       });
     }
     const open = series.periods.find((p) => p.id === buttons.find((b) => b.getAttribute("aria-pressed") === "true")?.dataset.period) ?? series.periods[series.periods.length - 1];
-    draw(open.sessions);
+    draw(open.sessions, open.name);
   }
 </script>
 

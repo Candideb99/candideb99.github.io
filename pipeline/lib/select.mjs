@@ -125,12 +125,16 @@ export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance, 
  */
 export const SPORT_LIMITS = { run: 1, day: 2 };
 
-export function sportCap({ chosen, stories, runLimit, minImportance, today = 0 }) {
+/**
+ * `sections`: the sections a run was asked for (`--sections=`); the story that takes a sport story's place comes from
+ * them too. Without it a companies-only run replaced its sport story with an energy story (a review of 2026-11-22).
+ */
+export function sportCap({ chosen, stories, runLimit, minImportance, today = 0, sections = [] }) {
   const room = Math.max(0, Math.min(SPORT_LIMITS.run, SPORT_LIMITS.day - today));
   const dropped = chosen.filter((s) => s.sport).sort((a, b) => b.importance - a.importance).slice(room);
   if (!dropped.length) return { chosen, dropped };
   const kept = chosen.filter((s) => !dropped.includes(s));
-  const next = stories.filter((s) => !s.sport && !s.rotation && !chosen.includes(s) && s.importance >= minImportance);
+  const next = stories.filter((s) => !s.sport && !s.rotation && !chosen.includes(s) && s.importance >= minImportance && (!sections.length || sections.includes(s.section)));
   return { chosen: [...kept, ...next.slice(0, Math.max(0, runLimit - kept.length))], dropped };
 }
 
@@ -166,6 +170,20 @@ export function candidateLines(candidates, budget = CANDIDATE_CHARS) {
   }
   return candidates.map((c) => formatCandidate(c, 0));
 }
+
+/**
+ * Whether the editor's working headline frames a roundup and not one event. Until 2026-11-22 «بين … و» and
+ * «من … إلى …» counted wherever they stood, so a range, a period and two parties were roundups: of the 601 published
+ * news headlines the «بين» arm matched 7, every one a single event («يبقي الفائدة بين 3.75% و4%», «بين يوليو
+ * وسبتمبر», «بين 2027 و2031», «انفراجة … بين واشنطن وطهران»), and none a roundup. A roundup's «بين» stands right after
+ * a market or a week as its subject («الأسواق بين قرار الفيدرالي وبيانات التضخم»), with no figure on either side.
+ */
+const ROUNDUP = [
+  /أسبوع (?:حافل|حاسم|المصارف|البنوك|المركزيات|التقارير)|المركزيات|تترقب/,
+  /^(?:ال)?(?:أسواق|أسهم|بورصات|نفط|ذهب|دولار|مستثمرون|متعاملون|أسبوع|وول ستريت)(?: \S+)? بين [^\d]{3,40} و(?!\d)/,
+  /^من [^\d]{3,30} إلى [^\d]{3,30}(?:،| و)/,
+];
+export const roundupFrame = (headline) => ROUNDUP.some((re) => re.test(String(headline ?? "").trim()));
 
 const daysLabel = (days) => (Number.isFinite(days) ? `${Math.floor(days)} days` : "none on record");
 
@@ -296,8 +314,10 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       sport: s.sport === true || String(s.sport).trim().toLowerCase() === "true",
     }))
     .filter((s) => s.ids.length && s.section)
+    // Two full stops are punctuation, not a roundup: the working headline loses them and the story stays.
+    .map((s) => ({ ...s, headlineHint: s.headlineHint.replace(/\s*\.{2,}\s*/g, "، ").replace(/^، |، $/g, "") }))
     .filter((s) => {
-      const roundup = /أسبوع (?:حافل|حاسم|المصارف|البنوك|المركزيات|التقارير)|المركزيات|تترقب|بين .{3,40} و|من .{3,30} إلى .{3,30}(?:،| و)|\.\.\.|\.\./.test(s.headlineHint);
+      const roundup = roundupFrame(s.headlineHint);
       if (roundup) log?.(`editor framed a roundup, dropped: "${s.headlineHint}"`);
       return !roundup;
     })

@@ -194,4 +194,14 @@ assert.equal(eventSourcesOf(withReference.sources).length, 1, "definitions do no
 assert.equal(eventSourcesOf([{ kind: "reference", text: "full definition body" }]).length, 0, "a reference alone cannot supply an event body");
 const referenceDown = await collectNewsEvidence({ ids: [1, 2] }, ratings, { extract: async (url) => url === referenceUrl ? { ok: false, reason: "offline" } : { ...extracted, text: distinctReportText(url), links: [] } });
 assert.equal(referenceDown.sources.length, 2, "an unavailable glossary keeps the distinct original reports");
+// Four paywalled tier-A feeds ahead of the story's one readable report (Codex's review of 2026-11-22): the first four
+// alone were taken, no page was fetched, and the story was rejected with all five items marked.
+{
+  const fetched = [];
+  const walled = [10, 11, 12, 13].map((id) => item(id, { paywalled: true, reliability: 3, summary: `Headline-only summary number ${id}` }));
+  const behind = await collectNewsEvidence({ ids: [10, 11, 12, 13, 14] }, [...walled, item(14)], { extract: async (url) => { fetched.push(url); return { ...extracted, text: distinctReportText(url), links: [] }; } });
+  assert.deepEqual(fetched, ["https://example.com/report14"], "the one readable report is fetched though four paywalled items sort ahead of it");
+  assert.equal(behind.sources.length, 4, "four items still");
+  assert.ok(behind.sources.some((s) => s.id === 14 && s.text), "and its body is among the evidence");
+}
 console.log("News evidence: body links, exact hosts, bounded enrichment, provenance, dates, fail-soft fetching, redirects/robots and definition/event separation pass.");
