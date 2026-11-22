@@ -72,6 +72,11 @@ export const BANNED = [
   // on «الأسهم السعودية تهبط 2.3% إلى أدنى إغلاق منذ 2021»: "reading this headline is not smooth"). The story's own
   // sources wrote «لتسجل أدنى إغلاق» (الشرق الأوسط) and «يسجل أدنى مستوى» (اندبندنت عربية); no other story carried it.
   { re: /إلى (?:أدنى|أعلى) (?:إغلاق|إقفال)/g, fix: "الإغلاق يُسجَّل ولا يُهبط إليه: «وتسجل أدنى إغلاق منذ…» أو «إلى أدنى مستوى منذ…»", hard: true },
+  // A sell-off squeezed into a headline (the owner, 2026-11-22, on «…مع امتداد بيع «وول ستريت»»: he reads «مع امتداد
+  // البيع في «وول ستريت»»). Its source wrote «مع امتداد موجة بيع "وول ستريت" إلى الخليج»; the headline dropped «موجة»
+  // and the place it reached, and a bare «بيع» + a name reads as that thing being sold. The critic had said so and
+  // nothing held it. Two headlines of 660 pieces; only after «امتداد/اتساع», since «استمرار بيع الأصول» is a real sale.
+  { re: /(?<![؀-ۿ])(?:و|ب|ل)?(?:امتداد|اتساع) بيع(?![؀-ۿ])/g, fix: "«بيع» وحدها تُقرأ بيعاً للشيء نفسه؛ اكتب «امتداد البيع في…» أو «امتداد موجة البيع في… إلى…»", hard: true },
   // "The median stock fell 3.32%", the same story's dek: a statistician's word. A warning, not a refusal: in the body,
   // explained («أي أن الضغط على غالبية الأسهم فاق…»), it is honest reporting; in a headline or a dek, say what it shows.
   { re: /(?<![؀-ۿ])(?:و|ف)?(?:ال)?وسيط (?:ال)?(?:تراجع(?:ات)?|ارتفاع(?:ات)?|تغير(?:ات)?|تغيّر(?:ات)?|عوائد|عائد|خسائر|مكاسب)(?![؀-ۿ])/g, fix: "مصطلح إحصائي منقول؛ في العنوان والوصف قل ما يعنيه («وأغلب الأسهم تتراجع بأكثر من المؤشر»)، وفي المتن اشرحه", hard: false },

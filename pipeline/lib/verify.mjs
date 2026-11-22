@@ -541,10 +541,15 @@ export function normalizeCritique(data, { news = false, model } = {}) {
   if (!["publish", "revise", "reject"].includes(verdict)) verdict = score >= 7 ? "publish" : score >= 4 ? "revise" : "reject";
   const readerIssues = news ? Object.entries(data.reader_check).filter(([area, observation]) => ["scope", "context", "flow", "precision"].includes(area) && observation.status === "revise").map(([, observation]) => `${observation.evidence} — ${observation.repair}`) : [];
   if (readerIssues.length && verdict === "publish") verdict = "revise";
+  // A repair the critic wrote beside "clear" is advice it thought too small to hold the story for, and it was dropped:
+  // the headline «…مع امتداد بيع «وول ستريت»» went out with the critic's own «يُستحسن «مع امتداد موجة بيع…»» unread
+  // (2026-11-22; 4 such repairs in the 34 stories whose reviews were kept, each a real wording point). It now rides with
+  // the revision or mend the story gets anyway and never asks for one: the verdict is untouched.
+  const advice = news ? Object.entries(data.reader_check).filter(([area, observation]) => ["scope", "context", "flow", "precision"].includes(area) && observation.status === "clear" && typeof observation.repair === "string" && observation.repair.trim().length > 8).map(([, observation]) => observation.repair.trim()) : [];
   return {
     verdict,
     score,
-    issues: [...new Set([...(Array.isArray(data.issues) ? data.issues.map(String).filter(Boolean) : []), ...readerIssues])].slice(0, 10),
+    issues: [...new Set([...(Array.isArray(data.issues) ? data.issues.map(String).filter(Boolean) : []), ...readerIssues, ...advice])].slice(0, 10),
     summary: String(data.summary ?? ""),
     model,
     ...(news ? { readerCheck: data.reader_check } : {}),

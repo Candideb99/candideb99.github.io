@@ -1217,6 +1217,12 @@ if (spawnSync("git", ["--version"]).status === 0) {
   };
   check("«تهبط 2.3% إلى أدنى إغلاق» is sent back, «وسيط تراجع الأسهم» warned", closeFaults("الأسهم السعودية تهبط 2.3% إلى أدنى إغلاق منذ 2021", "ووسيط تراجع الأسهم يبلغ 3.32%"), [1, 1]);
   check("«لتسجل أدنى إغلاق», «إلى أدنى مستوى» and a broker («وسيط مالي») pass", closeFaults("السوق السعودية تهبط 2.3% لتسجل أدنى إغلاق منذ 2021", "المؤشر يهبط إلى أدنى مستوى منذ 2021 ووسيط مالي يتوقع ارتداداً"), [0, 0]);
+  // A sell-off squeezed to a bare «بيع» (the owner, 2026-11-22).
+  const selloff = (title) => styleIssues({ title, subtitle: "", lede: "", body: "", whyItMatters: "", keyFacts: [] }).issues.filter((i) => /تُقرأ بيعاً للشيء نفسه/.test(i)).length;
+  check("«مع امتداد بيع «وول ستريت»» is sent back; «امتداد البيع في», «امتداد موجة البيع» and a real sale pass", [
+    selloff("المؤشر السعودي يهبط نحو 2% دون 10 آلاف نقطة مع امتداد بيع «وول ستريت»"), selloff("نيكاي يهبط مع اتساع بيع أسهم الذكاء الاصطناعي"),
+    selloff("المؤشر السعودي يهبط مع امتداد البيع في «وول ستريت»"), selloff("كوسبي يهبط مع امتداد موجة البيع إلى آسيا"), selloff("مصر تجمع 2 مليار دولار مع استمرار بيع الأصول"),
+  ], [1, 1, 0, 0, 0]);
   // WHO AND WHERE (the owner, 2026-10-29): a headline that drops the country its own story gives an actor.
   const acwa = { title: "«أكوا» و«إي آي جي» تؤسسان منصة كهرباء أمريكية برأسمال مستهدف 4 مليارات دولار", subtitle: "تملك «إي آي جي» 51% من منصة «بلينوم باور» و«أكوا» 49%", lede: "أعلنت «أكوا» السعودية و«إي آي جي» (EIG) الأمريكية إطلاق منصة مشتركة.", body: "", whyItMatters: "", keyFacts: [] };
   const unplacedOf = (draft) => styleIssues(draft).issues.filter((i) => i.startsWith("العنوان والوصف يسمّيان") && i.includes("دون بلدها"));
@@ -1645,6 +1651,9 @@ if (spawnSync("git", ["--version"]).status === 0) {
     check(`reader ${area} defect requests revision despite a 10/10 verdict`, [result.verdict, result.score, result.issues.some((i) => i.includes("بيّن نطاق"))], ["revise", 10, true]);
   }
   check("a clear brief does not acquire a new rejection threshold", normalizeCritique(review, { news: true }).verdict, "publish");
+  // Advice beside "clear" (2026-11-22): it reaches the reviser and never changes the verdict.
+  const advised = normalizeCritique({ ...review, reader_check: { ...clear, scope: { status: "clear", evidence: "العنوان يحدد البلد والرقم", repair: "يُستحسن «ميناء الحديدة اليمني» في العنوان الفرعي حتى يفهم قارئ البطاقة البلد." } } }, { news: true });
+  check("a repair written beside «clear» reaches the reviser, the verdict untouched", [advised.verdict, advised.issues.filter((i) => i.includes("ميناء الحديدة")).length], ["publish", 1]);
   check("a reader finding cannot erase a factual rejection", normalizeCritique({ ...review, verdict: "reject", score: 3 }, { news: true }).verdict, "reject");
   check("other genres keep their existing review contract", normalizeCritique({ score: 8, verdict: "publish", issues: [] }).verdict, "publish");
   const refuses = (reader_check) => { try { normalizeCritique({ ...review, reader_check }, { news: true }); return false; } catch { return true; } };
