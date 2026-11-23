@@ -18918,6 +18918,90 @@
           ]
         }
       ]
+    },
+    "libya-sharara-pipeline-valve-closure-output-a63679": {
+      "at": "2026-11-23T04:08:30.527Z",
+      "title": "ليبيا تفقد نحو 350 ألف برميل يومياً بإغلاق صمام على خط الشرارة",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 9,
+            "checked": 9,
+            "supported": 8,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "cop31-antalya-ends-without-deal-fossil-fuels-e0015a": {
+      "at": "2026-11-23T04:18:26.609Z",
+      "title": "«كوب 31» في تركيا ينتهي دون اتفاق ختامي إثر خلاف على الوقود الأحفوري",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 33,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "european-gas-jumps-cold-forecast-stockpiles-9a74e0": {
+      "at": "2026-11-23T04:35:02.052Z",
+      "title": "الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 19,
+            "checked": 19,
+            "supported": 17,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

@@ -1,96 +1,6 @@
 {
   "version": 1,
   "items": {
-    "ff254917f921cc63": {
-      "at": "2026-11-02T01:02:41.073Z",
-      "decision": "published",
-      "slug": "binance-net-withdrawals-after-record-hack-01d2c8",
-      "title": "Binance users withdraw $3.6bn after record crypto hack"
-    },
-    "c35b35b5fd241a62": {
-      "at": "2026-11-02T01:02:41.073Z",
-      "decision": "published",
-      "slug": "binance-net-withdrawals-after-record-hack-01d2c8",
-      "title": "Investors pull billions in funds from Binance after record $6.3bn hack"
-    },
-    "2ddf556248bb265c": {
-      "at": "2026-11-02T01:02:41.073Z",
-      "decision": "published",
-      "slug": "binance-net-withdrawals-after-record-hack-01d2c8",
-      "title": "Binance Reports $3.64 Billion in Outflows as It Resumes Normal Transactions"
-    },
-    "ee4f63a83a6ec139": {
-      "at": "2026-11-02T01:02:41.073Z",
-      "decision": "published",
-      "slug": "binance-net-withdrawals-after-record-hack-01d2c8",
-      "title": "Binance users pull $3.6bn as crypto exchange restarts services after heist"
-    },
-    "218ff81fddfef493": {
-      "at": "2026-11-02T01:02:41.073Z",
-      "decision": "published",
-      "slug": "binance-net-withdrawals-after-record-hack-01d2c8",
-      "title": "Binance sees $3.64 billion in net outflows as withdrawals resume after massive hack"
-    },
-    "2f9efaae96db8f66": {
-      "at": "2026-11-02T01:19:55.455Z",
-      "decision": "published",
-      "slug": "south-korea-exports-october-record-jump-424cdf",
-      "title": "صادرات كوريا الجنوبية تتضاعف في أكتوبر"
-    },
-    "6d2b68eddccfbbc4": {
-      "at": "2026-11-02T01:19:55.455Z",
-      "decision": "published",
-      "slug": "south-korea-exports-october-record-jump-424cdf",
-      "title": "S. Korea Exports Extend Robust Growth as Chip Boom Continues"
-    },
-    "8b59a0b87d6fd23f": {
-      "at": "2026-11-02T01:19:55.455Z",
-      "decision": "published",
-      "slug": "south-korea-exports-october-record-jump-424cdf",
-      "title": "صادرات كوريا الجنوبية تواصل نموها القوي بدعم من رقائق الذكاء الاصطناعي"
-    },
-    "c3dcfb71c5af08fa": {
-      "at": "2026-11-02T01:19:55.455Z",
-      "decision": "published",
-      "slug": "south-korea-exports-october-record-jump-424cdf",
-      "title": "South Korean exports post highest jump in over 50 years on AI demand"
-    },
-    "fc6f0b31dd98a13b": {
-      "at": "2026-11-02T01:19:55.455Z",
-      "decision": "published",
-      "slug": "south-korea-exports-october-record-jump-424cdf",
-      "title": "صادرات كوريا الجنوبية تسجل مستوى قياسياً عند 115.3 مليار دولار في أكتوبر"
-    },
-    "6b215382a4dc0067": {
-      "at": "2026-11-02T01:25:24.250Z",
-      "decision": "rejected",
-      "title": "جبل عمر السعودية تتحول للخسارة في الربع الثالث رغم نمو الإيرادات",
-      "strikes": 1
-    },
-    "b68e35116172c1ef": {
-      "at": "2026-11-02T01:25:24.250Z",
-      "decision": "rejected",
-      "title": "\"جبل عمر\" تعود للخسارة بعد 4 فصول من الربحية.. ماذا حدث؟",
-      "strikes": 1
-    },
-    "3f4f8088535d5fc0": {
-      "at": "2026-11-02T01:25:24.250Z",
-      "decision": "rejected",
-      "title": "\"جبل عمر\" تتحول من الربحية فصليا إلى خسارة 262 مليون ريال",
-      "strikes": 1
-    },
-    "cdc08acdba682d32": {
-      "at": "2026-11-02T01:45:14.607Z",
-      "decision": "published",
-      "slug": "germany-misses-winter-gas-storage-target-98f7ee",
-      "title": "انخفاض مخزونات الغاز في ألمانيا عن المستويات المستهدفة"
-    },
-    "73d7e45adfd54581": {
-      "at": "2026-11-02T01:45:14.607Z",
-      "decision": "published",
-      "slug": "germany-misses-winter-gas-storage-target-98f7ee",
-      "title": "Germany fails to meet winter gas storage target"
-    },
     "53186ef5e66dd890": {
       "at": "2026-11-02T09:40:10.845Z",
       "decision": "published",
@@ -4973,6 +4883,84 @@
       "decision": "published",
       "slug": "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f",
       "title": "السعودية توفر 26 مليار ريال سنوياً بالتحول الرقمي"
+    },
+    "7e33af4ae3711ea7": {
+      "at": "2026-11-23T04:08:30.558Z",
+      "decision": "published",
+      "slug": "libya-sharara-pipeline-valve-closure-output-a63679",
+      "title": "إغلاق صمام بخط \"الشرارة\" في ليبيا يعطل إنتاج 350 ألف برميل يومياً"
+    },
+    "4e8bc1baf4b4f5c0": {
+      "at": "2026-11-23T04:08:30.558Z",
+      "decision": "published",
+      "slug": "libya-sharara-pipeline-valve-closure-output-a63679",
+      "title": "ليبيا.. تخريب خط أنابيب نفط يفقد البلاد 365 ألف برميل يوميا"
+    },
+    "5a9b530f303c4793": {
+      "at": "2026-11-23T04:18:26.625Z",
+      "decision": "published",
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "فشل قمة \"كوب 31\" في تركيا بعد رفض عشرات الدول اتفاقاً بشأن المناخ"
+    },
+    "073065df79c4daea": {
+      "at": "2026-11-23T04:18:26.625Z",
+      "decision": "published",
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "«كوب 31» ينتهي دون اتفاق جامع بعد مفاوضات قياسية"
+    },
+    "37ebe1ed4d6f3d39": {
+      "at": "2026-11-23T04:18:26.625Z",
+      "decision": "published",
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "COP31 climate talks fail after stand-off over fossil fuels"
+    },
+    "86532ce44976d581": {
+      "at": "2026-11-23T04:18:26.625Z",
+      "decision": "published",
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "COP31 climate talks collapse as EU and others reject deal"
+    },
+    "74b3c446b8e2beb8": {
+      "at": "2026-11-23T04:18:26.625Z",
+      "decision": "published",
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "Climate talks collapse without deal at Cop31 in Turkey"
+    },
+    "e052a4e97f20d6b9": {
+      "at": "2026-11-23T04:35:02.084Z",
+      "decision": "published",
+      "slug": "european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+      "title": "أسعار الغاز في أوروبا تقفز وسط انخفاض المخزونات وتوقعات بموجة برد ممتدة"
+    },
+    "3119386edf2f27f0": {
+      "at": "2026-11-23T04:35:02.084Z",
+      "decision": "published",
+      "slug": "european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+      "title": "European Gas Surges as Cold Snap Threatens Tight Inventories"
+    },
+    "7056c43d16ead25a": {
+      "at": "2026-11-23T04:35:02.084Z",
+      "decision": "published",
+      "slug": "european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+      "title": "الغاز الأوروبي يقفز بنحو 9%.. والبرد يضغط على المخزونات"
+    },
+    "f5fc11c64208b451": {
+      "at": "2026-11-23T04:35:02.818Z",
+      "decision": "rejected",
+      "title": "بيسنت يحذر من مخاطر التشديد المفرط للسياسة النقدية على الاقتصاد الأميركي",
+      "strikes": 1
+    },
+    "387129c619463714": {
+      "at": "2026-11-23T04:35:02.818Z",
+      "decision": "rejected",
+      "title": "Bessent Says Fed Risks Overtightening as Markets Swoon",
+      "strikes": 1
+    },
+    "43bf7b84db1b773c": {
+      "at": "2026-11-23T04:35:02.818Z",
+      "decision": "rejected",
+      "title": "بيسنت يحذر من مخاطر التشديد المفرط للسياسة النقدية على الاقتصاد الأمريكي",
+      "strikes": 1
     }
   }
 }

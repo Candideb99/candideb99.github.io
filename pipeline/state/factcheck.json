@@ -14436,6 +14436,83 @@
         }
       ],
       "outcome": "clean"
+    },
+    "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f": {
+      "at": "2026-11-23T04:00:35.797Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-22T23:29:05.056Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وكانت الهيئة قد أعلنت في 19 نوفمبر أن المملكة بلغت بذلك مستهدف «رؤية 2030» بدخول أفضل خمس دول قبل موعده بأربع سنوات.",
+          "quote": "حققت السعودية وفورات سنوية تجاوزت 26 مليار ريال (6.93 مليار دولار أميركي)، بفضل التحول الرقمي، في وقت تقدمت البلاد إلى المرتبة الرابعة عالمياً في مؤشر تطور الحكومة الإلكترونية (EGDI) لعام 2026، مقارنة بالمرتبة الـ 52 عام 2018 من بين 194 دولة، مقتربة من مستهدف \"رؤية السعودية 2030\" بأن تكون ضمن أفضل خمس حكومات رقمية عالمياً.",
+          "source": "Independent Arabia"
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "china-cuts-margin-requirement-to-80-percent-ee37e8": {
+      "at": "2026-11-23T04:00:35.804Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-22T23:20:32.312Z",
+      "sourcesRead": 3,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "خفّضت بورصات شنغهاي وشنتشن وبكين الحد الأدنى للهامش المطلوب لشراء الأوراق المالية بأموال مقترضة من 100% إلى 80% اعتباراً من 30 نوفمبر، مع تراجع نشاط التمويل بالهامش وهبوط مؤشر شنغهاي المركب إلى أدنى مستوى في 16 شهراً.",
+          "quote": "O índice de referência Shanghai Composite .SSEC caiu quase 3% na semana passada, atingindo a mínima em 16 meses."
+        },
+        {
+          "sentence": "وإذا استجاب المستثمرون وتدفقت الأموال الإضافية التي تقدرها الهيئة بنحو 400 مليار يوان، فسترتفع معها الرافعة التي سعى قرار يناير إلى كبحها، وتبقى الضوابط الأشد على التداولات غير الاعتيادية أداة الرقابة على مخاطرها.",
+          "quote": "ويمكن لشركات الوساطة تطبيق القواعد المعدلة على عقود التمويل القائمة عند احتساب أرصدة الهامش المتاحة، في حين قد يخضع المستثمرون الذين يمارسون تداولات غير اعتيادية لمتطلبات أكثر صرامة وضوابط إضافية للحد من المخاطر."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }

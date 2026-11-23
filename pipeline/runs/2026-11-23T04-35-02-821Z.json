@@ -1,0 +1,513 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-23T04:01:28.638Z",
+  "durationSec": 2014,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "إغلاق صمام بخط حقل الشرارة يوقف نحو 350 ألف برميل يومياً من نفط ليبيا",
+      "section": "energy",
+      "importance": 8,
+      "sources": [
+        "https://asharqbusiness.com/power/157419/%D8%A5%D8%BA%D9%84%D8%A7%D9%82-%D8%B5%D9%85%D8%A7%D9%85-%D8%A8%D8%AE%D8%B7-%D8%A7%D9%84%D8%B4%D8%B1%D8%A7%D8%B1%D8%A9-%D8%A8%D9%84%D9%8A%D8%A8%D9%8A%D8%A7-%D9%8A%D8%B9%D8%B7%D9%84-%D8%A5%D9%86%D8%AA%D8%A7%D8%AC-350-%D8%A3%D9%84%D9%81-%D8%A8%D8%B1%D9%85%D9%8A%D9%84-%D9%8A%D9%88%D9%85%D9%8A%D8%A7/",
+        "https://www.skynewsarabia.com/middle-east/1906385-%D9%84%D9%8A%D8%A8%D9%8A%D8%A7-%D8%AA%D8%AE%D8%B1%D9%8A%D8%A8-%D8%AE%D8%B7-%D8%A3%D9%86%D8%A7%D8%A8%D9%8A%D8%A8-%D9%86%D9%81%D8%B7-%D9%8A%D9%81%D9%82%D8%AF-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%AF-365-%D8%A3%D9%84%D9%81-%D8%A8%D8%B1%D9%85%D9%8A%D9%84-%D9%8A%D9%88%D9%85%D9%8A%D8%A7"
+      ],
+      "format": "short",
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (ليبيا) والحدث والرقم الحاسم. لكن الحرس في المتن غير معرّف، وتصريحه المبتور يوحي بأن الإغلاق موضع نفي، مع أن الحرس أقرّ بحدوثه خارج نطاقه.",
+              "repair": "تعريف الحرس بتبعيته للقيادة العامة (الجيش الوطني الليبي)، ونقل قوله إن الإغلاق وقع على صمام في المنطقة الغربية شمال الحقل خارج نطاق مسؤوليته."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "السبب المعلن موجود (إغلاق بيد «مجموعة خارجة عن القانون»)، ورد فعل المؤسسة موجود. غير أن المقارنة السابقة (إغلاق سبتمبر في الشرارة، المصدر 1) غائبة، وكذلك كلفة إغلاق الحمادة (30.8 مليون دولار حتى 21 نوفمبر، ونحو 1.47 مليون دولار يومياً، المصدر 1). ورد فعل الحرس منقوص.",
+              "repair": "إضافة مدة إغلاق الحمادة وكلفته، وجملة عن إغلاق سبتمبر لخط الشرارة إلى ميناء الزاوية، وإكمال تصريح الحرس."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "العنوان عن فقدان 350 ألف برميل من الشرارة. الفقرة الأولى تبني عليه الإجمالي ونسبته إلى الإنتاج، والثانية ترصد موقف المؤسسة ومطالبها، والثالثة ترصد رد الحرس. البناء متماسك والطول نحو 170 كلمة.",
+              "repair": "يُستحسن فتح الفقرة الأخيرة بـ«وقال حرس المنشآت…» بدل «لكن»، إذ لا تضاد بين القولين بعد إكمال التصريح."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام 350 ألفاً و15 ألفاً و365 ألفاً و1.4 مليون مطابقة للمصادر، والاقتباس حرفي من المصدر 1. لكن نسبة رقم الحمادة إلى «بيان نشرته على صفحتها في فيسبوك» تخلط بين بيانين، وحذف موقع الإغلاق من تصريح الحرس يغيّر نطاق كلامه.",
+              "repair": "فصل إسناد رقم الحمادة إلى إعلان المؤسسة السابق («وكانت المؤسسة قد أعلنت…»)، وإثبات موقع الإغلاق كما ذكره الحرس."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يحدد العنوان البلد (ليبيا) والحدث (إغلاق صمام على خط الشرارة) والرقم الحاسم (350 ألف برميل يومياً). ويضيف العنوان الفرعي إغلاق الحمادة الذي يرفع الفاقد إلى نحو 365 ألفاً. ويعرّف المتن «حرس المنشآت» بتبعيته للقيادة العامة (الجيش الوطني الليبي)، وينقل إقراره بحدوث الإغلاق خارج نطاقه بعدما كانت الصيغة السابقة توحي بالنفي. الملاحظات 1 و2 و6 من المراجعة السابقة عولجت.",
+              "repair": "يمكن أن يحدد المطلع وقت الإعلان كما يتطلبه الخبر القصير، إن ثبت تاريخه من المصدر، بدل تركه بلا زمن."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة السبب المعلن (إغلاق بيد «مجموعة خارجة عن القانون»)، ورد فعل المؤسسة (التنديد والمناشدة والملاحقة القانونية)، ورد فعل الحرس كاملاً (المصدر 2). وتضيف كلفة إغلاق الحمادة: أكثر من 20 يوماً، و30.8 مليون دولار حتى 21 نوفمبر، ونحو 1.47 مليون دولار يومياً. وتذكر سابقة إغلاق سبتمبر لخط الشرارة إلى ميناء الزاوية (المصدر 1). الملاحظتان 3 و4 و7 عولجت.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "تتوزع الفقرات على وظائف متمايزة: الأولى للأرقام والفاقد الكلي، والثانية لموقف المؤسسة، والثالثة لرد الحرس، والرابعة للسابقة. وأزيلت «لكن» التي كانت تصنع تضاداً لا يقوله المصدر، وجاءت «أما الجهاز فقال» بلا تضاد مختلق. الطول نحو 200 كلمة، ضمن حدود الخبر القصير.",
+              "repair": "الرقم 365 ألفاً ورد في العنوان الفرعي، فيكفي أن يضيف المتن إليه المقام وحده: «...ليبلغ الفاقد من الخطين نحو ربع... »، أو الاقتصار على «من إنتاج إجمالي يقارب 1.4 مليون برميل يومياً» من دون إعادة صياغة الرقم نفسه."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام 350 ألفاً و15 ألفاً و365 ألفاً و1.4 مليون و30.8 مليون دولار و1.47 مليون دولار و21 نوفمبر مطابقة للمصادر. والاقتباس «الاضطلاع بمسؤولياتهم في حماية المنشآت والمرافق النفطية» حرفي من المصدر 1. وأصبح رقم الحمادة منسوباً إلى إعلان المؤسسة السابق («وكانت المؤسسة قد أعلنت»)، لا إلى بيان فيسبوك. الملاحظتان 5 و8 عولجتا.",
+              "repair": "تُكمل الوحدة في «من إنتاج إجمالي يقارب 1.4 مليون برميل» فتصير «1.4 مليون برميل يومياً»، ويُضاف «يومياً» بعد «نحو 1.47 مليون دولار من العائدات» كما في المصدر 1."
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [],
+      "slug": "libya-sharara-pipeline-valve-closure-output-a63679",
+      "title": "ليبيا تفقد نحو 350 ألف برميل يومياً بإغلاق صمام على خط الشرارة",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "كوب 31 ينتهي دون اتفاق بعد خلاف على الوقود الأحفوري بين المجموعة العربية وأوروبا",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/economics/157385/%D9%81%D8%B4%D9%84-%D9%82%D9%85%D8%A9-%D9%83%D9%88%D8%A8-31-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%A8%D8%B9%D8%AF-%D8%B1%D9%81%D8%B6-%D8%B9%D8%B4%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AF%D9%88%D9%84-%D8%A7%D8%AA%D9%81%D8%A7%D9%82%D8%A7-%D8%A8%D8%B4%D8%A3%D9%86-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%AE/",
+        "https://aawsat.com/node/5344330",
+        "https://www.ft.com/content/1b6089f6-2201-43b4-8ed4-0c689a916afa?syn-25a6b1a6=1",
+        "https://bworldonline.com/world/2026/11/23/795864/cop31-climate-talks-collapse-as-eu-and-others-reject-deal/"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان والعنوان الفرعي يحددان البلد (تركيا) والحدث والمقارنة بكوبنهاغن 2009. لكن «ينتهي دون اتفاق» لا تفرّق بين سقوط الوثيقة السياسية الختامية واعتماد قرارات أخرى مثل «التحول العادل» (المصدر 2)، والمتن لا يذكر هذه القرارات أبداً.",
+              "repair": "يُكتب العنوان «دون اتفاق ختامي»، وتُضاف بعد فقرة قاعدة التوافق جملة: «ومع ذلك اعتمدت الدول قرارات في ملفات أخرى، منها «التحول العادل» الذي يستهدف مساعدة العاملين في الصناعات كثيفة الانبعاثات على الانتقال إلى اقتصاد منخفض الكربون»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "سبب الخلاف على الوقود الأحفوري حاضر ومفصل، وردود الفعل حاضرة، والخطوة التالية (أديس أبابا 2027) حاضرة. أما خلاف التمويل فيقتصر على المسودة وكينيا، ويغيب عنه استبعاد الاتحاد الأوروبي مسبقاً لأي التزامات تمويل جديدة وانتقاد الدول الفقيرة للدول الغنية (المصدر 1). ويحمل «لماذا يهمّ» مقدمة غير مسندة عن مطالبة الدول النامية بالمضاعفة.",
+              "repair": "تُضاف معلومات المصدر 1 عن التمويل إلى فقرة الدول النامية، وتُصحح مقدمة الصندوق لتقول إن الدول النامية رأت المضاعفة غير كافية."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان الجديد، أي الخلاف على الوقود الأحفوري، يُطوَّر بعد الفقرة الأولى مباشرة في قسم متماسك يضم الاتحاد الأوروبي والسعودية وروسيا. لكن القسم الأخير يكدّس ردود كوروم وبوين وغوتيريش والصين تحت عنوان «ما بعد أنطاليا» الذي لا يصفها. والموقف الصيني ينتمي إلى قسم المواقف، وبقاء القرارات السابقة سارية مذكور مرتين.",
+              "repair": "يُنقل موقف الصين إلى قسم الخلاف، وقول بوين عن العقبتين إلى جوار قاعدة التوافق، ويُحذف تكرار سريان القرارات السابقة من فقرة كوروم أو من الخاتمة، ويُسمّى القسم بما يحويه."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: يومان بعد موعد الجمعة، 35% بحلول 2035 من نحو 23%، كوب 32 في نوفمبر 2027. لكن «فقد دعا إلى مضاعفة» تصنع علاقة تعليل لا يذكرها المصدر 4، وفي الصندوق «التي طالبت بها الدول النامية» مقدمة محرّفة.",
+              "repair": "«ومع أنه دعا إلى مضاعفة هذا التمويل ثلاث مرات، لم يحدد المستوى الذي تُحسب منه»، وتصحيح جملة الصندوق كما في المسألة الأولى."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد البلد (تركيا) والحدث (انتهاء المؤتمر دون اتفاق ختامي) وسببه الرئيسي. والعنوان الفرعي يضع الإخفاق في سياقه بالمقارنة مع كوبنهاغن 2009. والفقرة الأولى من المتن تحدد ما بقي قائماً: قرارات أخرى منها «التحول العادل» (المصدر 2)، فلم يعد العنوان يوحي بأن المؤتمر خرج بلا أي قرار.",
+              "repair": "يمكن تحسين العنوان: «كوب 31» في تركيا ينتهي دون اتفاق ختامي إثر خلاف على الوقود الأحفوري"
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المقال يحمل أسباب الإخفاق: قاعدة التوافق، والخلاف على الوقود الأحفوري، والخلاف على التمويل الذي سمّاه بوين عقبة ثانية (المصادر 1 و2 و4). ويحمل ردود الأطراف والمحطة التالية في أديس أبابا. لكنه يغفل ما ينقله المصدر 4 عن محللين: أن هذه المؤتمرات قدمت إشارات لاستثمارات الشركات وحفزت الطاقة المتجددة والسيارات الكهربائية، وهذا هو السياق الاقتصادي للإخفاق. وصندوق «لماذا يهمّ» يقدم موازنة محددة: نجا المنتجون من أي التزام جديد بالوقود الأحفوري، لكنهم خسروا بند إزالة الكربون، وخسرت الدول النامية الدعوة إلى المضاعفة. مقدماته مسندة، لكن جملته الثانية تكرر خاتمة المتن عن أديس أبابا.",
+              "repair": "تُضاف جملة المحللين من المصدر 4 منسوبة كما نقلتهم رويترز. وتُختصر الجملة الثانية في الصندوق إلى ما تضيفه، أي أن البندين يعودان إلى التفاوض من الصفر، أو تُدمج في الأولى."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنصر الجديد في العنوان، وهو الخلاف على الوقود الأحفوري، يأتي بعد القاعدة وقول بوين مباشرة، في قسم متماسك يضم الاتحاد الأوروبي والسعودية وروسيا والصين. وفي هذا القسم ثلاث فقرات، وكذلك في قسم المسودة، وتعليل خلاف التمويل مجتمع في فقرة واحدة. أما القسم الأخير «لا نص جديد قبل أديس أبابا» فيضم غوتيريش، ولا يصف عنوانه ما فيه. وجملة برنامج الأمم المتحدة للبيئة منفصلة عن عبارة «تجاوز متوقع لهدف الحرارة» التي تشرحها.",
+              "repair": "يُعاد تسمية القسم الأخير بما يحويه، وتُنقل جملة برنامج الأمم المتحدة للبيئة إلى جوار عبارة «أقرت المسودة بتجاوز متوقع»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: يومان بعد موعد الجمعة، و35% بحلول 2035 من نحو 23%، و«كوب 32» في نوفمبر 2027. وأُصلحت «فقد دعا» فصارت «ومع أنه دعا». لكن العنوان الفرعي «لا نص جديد قبل أديس أبابا» يمدّ قول كوروم إلى موعد لم يذكره. و«ثم» في فقرة التمويل تضيف تعاقباً لا يذكره المصدر 1. و«لي غاو» بلا صفته.",
+              "repair": "يُغيَّر العنوان الفرعي كما في المسائل أعلاه. وتُستبدل «و» بـ«ثم». ويُكتب: «نائب وزير البيئة الصيني رئيس الوفد لي غاو»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "ينقص التقرير: الخلفية الاقتصادية لمسار مؤتمرات المناخ. ينقل المصدر 4 (رويترز) عن محللين أن هذه المؤتمرات، رغم تعثر كثير منها، «قدمت إشارات مهمة لاستثمارات الشركات» و«حفزت التقدم في الطاقة المتجددة وتقنيات السيارات الكهربائية». وهذا هو المعنى الاقتصادي لإخفاق أنطاليا عند قارئ خازندار، ولا يذكره المقال. تُضاف جملة منسوبة إلى المحللين كما نقلتهم رويترز، ومكانها قرب فقرة أديس أبابا أو بعد فقرة القاعدة. لا يُبنى عليها أي استنتاج عن أثر الإخفاق في الاستثمار، لأن المصادر لا تقوله. وتُحذف في المقابل جملة أقل أهمية حتى يبقى طول التقرير في حدوده.",
+        "العنوان الفرعي «لا نص جديد قبل أديس أبابا» يجمع أمرين لم يقلهما مصدر واحد. كوروم قال إنه لن يطرح نصاً جديداً في ظل غياب الإجماع، أي في هذا المؤتمر (المصدران 2 و4). أما المصدر 2 فيقول إن الدول ستحتاج إلى التفاوض على صيغة جديدة، ولا يقول إنه لا نص قبل «كوب 32». ثم إن القسم يضم أيضاً خيبة أمل غوتيريش، وهي لا تدخل تحت هذا العنوان. يُسمّى القسم بما فيه، مثل «الرئاسة تغلق الملف والمحطة التالية أديس أبابا»، أو «ما بعد سقوط الإعلان».",
+        "تعريف غير مكتمل: «غير أن رئيس الوفد لي غاو عبّر عن خيبة أمله». الاسم وحده لا يعرّف القارئ بالرجل، والمصدر 2 يذكر صفته: نائب وزير البيئة الصيني ورئيس الوفد. يُكتب: «غير أن نائب وزير البيئة الصيني رئيس الوفد لي غاو عبّر عن خيبة أمله…».",
+        "بناء: جملة «وهذا أول مؤتمر منذ أكد برنامج الأمم المتحدة للبيئة في أكتوبر أن ارتفاع الحرارة العالمية في طريقه إلى تجاوز 1.5 درجة مئوية» جاءت بعد قول المنتقدين عن «رخصة لمواصلة ضخ النفط»، فانقطعت عن الأمر الذي تشرحه. فهي تفسر عبارة «أقرت المسودة بتجاوز متوقع لهدف الحرارة» (المصدر 4). تُنقل إلى جوار تلك العبارة، وتُسمّى العتبة هناك: «أقرت المسودة بالتجاوز المتوقع لعتبة 1.5 درجة مئوية، وهو أول مؤتمر منذ أكد برنامج الأمم المتحدة للبيئة في أكتوبر هذا التجاوز، ودعت إلى…».",
+        "ربط غير مسند: في «ثم انتقدت الدول الفقيرة والأكثر عرضة لتداعيات تغير المناخ في المفاوضات المغلقة» توحي «ثم» بتعاقب زمني بين موقف الاتحاد الأوروبي وانتقاد الدول الفقيرة، والمصدر 1 لا يذكر هذا التعاقب. يُكتب: «وانتقدت الدول الفقيرة… في المفاوضات المغلقة رفض الدول الغنية تسريع تمويل التكيف».",
+        "المقال يحمل أسباب الإخفاق: قاعدة التوافق، والخلاف على الوقود الأحفوري، والخلاف على التمويل الذي سمّاه بوين عقبة ثانية (المصادر 1 و2 و4). ويحمل ردود الأطراف والمحطة التالية في أديس أبابا. لكنه يغفل ما ينقله المصدر 4 عن محللين: أن هذه المؤتمرات قدمت إشارات لاستثمارات الشركات وحفزت الطاقة المتجددة والسيارات الكهربائية، وهذا هو السياق الاقتصادي للإخفاق. وصندوق «لماذا يهمّ» يقدم موازنة محددة: نجا المنتجون من أي التزام جديد بالوقود الأحفوري، لكنهم خسروا بند إزالة الكربون، وخسرت الدول النامية الدعوة إلى المضاعفة. مقدماته مسندة، لكن جملته الثانية تكرر خاتمة المتن عن أديس أبابا. — تُضاف جملة المحللين من المصدر 4 منسوبة كما نقلتهم رويترز. وتُختصر الجملة الثانية في الصندوق إلى ما تضيفه، أي أن البندين يعودان إلى التفاوض من الصفر، أو تُدمج في الأولى.",
+        "العنصر الجديد في العنوان، وهو الخلاف على الوقود الأحفوري، يأتي بعد القاعدة وقول بوين مباشرة، في قسم متماسك يضم الاتحاد الأوروبي والسعودية وروسيا والصين. وفي هذا القسم ثلاث فقرات، وكذلك في قسم المسودة، وتعليل خلاف التمويل مجتمع في فقرة واحدة. أما القسم الأخير «لا نص جديد قبل أديس أبابا» فيضم غوتيريش، ولا يصف عنوانه ما فيه. وجملة برنامج الأمم المتحدة للبيئة منفصلة عن عبارة «تجاوز متوقع لهدف الحرارة» التي تشرحها. — يُعاد تسمية القسم الأخير بما يحويه، وتُنقل جملة برنامج الأمم المتحدة للبيئة إلى جوار عبارة «أقرت المسودة بتجاوز متوقع».",
+        "الأرقام والتواريخ مطابقة للمصادر: يومان بعد موعد الجمعة، و35% بحلول 2035 من نحو 23%، و«كوب 32» في نوفمبر 2027. وأُصلحت «فقد دعا» فصارت «ومع أنه دعا». لكن العنوان الفرعي «لا نص جديد قبل أديس أبابا» يمدّ قول كوروم إلى موعد لم يذكره. و«ثم» في فقرة التمويل تضيف تعاقباً لا يذكره المصدر 1. و«لي غاو» بلا صفته. — يُغيَّر العنوان الفرعي كما في المسائل أعلاه. وتُستبدل «و» بـ«ثم». ويُكتب: «نائب وزير البيئة الصيني رئيس الوفد لي غاو».",
+        "يمكن تحسين العنوان: «كوب 31» في تركيا ينتهي دون اتفاق ختامي إثر خلاف على الوقود الأحفوري"
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "سعت السعودية إلى إبقاء أي ذكر للوقود الأحفوري خارج النص، بحسب مراقبين في القمة.",
+          "source": 4
+        },
+        {
+          "fact": "أقرت المسودة المرفوضة بتجاوز متوقع لهدف الحرارة، ودعت إلى تسريع تقنيات إزالة الكربون، وهو بند حرصت الدول المنتجة للنفط على إدراجه.",
+          "source": 4
+        },
+        {
+          "fact": "انتقدت الدول النامية المسودة لأن تمويل التكيف فيها غير كافٍ، رغم دعوتها إلى مضاعفته ثلاث مرات دون تحديد مستوى الأساس.",
+          "source": 4
+        },
+        {
+          "fact": "لن تُرحَّل المسودة رسمياً إلى «كوب 32»، ويتعين التفاوض على صيغة جديدة.",
+          "source": 2
+        }
+      ],
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "«كوب 31» في تركيا ينتهي دون اتفاق ختامي إثر خلاف على الوقود الأحفوري",
+      "score": 7,
+      "image": "photo"
+    },
+    {
+      "headline": "الغاز الأوروبي يقفز نحو 9% مع توقعات برد ممتد ومخزونات استنزفتها حرب إيران",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financial-markets/157433/%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%A8%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D8%A7-%D8%AA%D9%82%D9%81%D8%B2-%D9%88%D8%B3%D8%B7-%D8%B6%D8%B9%D9%81-%D8%A7%D9%84%D9%85%D8%AE%D8%B2%D9%88%D9%86%D8%A7%D8%AA-%D9%88%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D8%A8%D9%85%D9%88%D8%AC%D8%A9-%D8%A8%D8%B1%D8%AF/",
+        "https://www.bloomberg.com/news/articles/2026-11-23/european-gas-surges-as-cold-snap-threatens-tight-inventories",
+        "https://www.snabusiness.com/article/1906392-%D8%A7%D9%84%D8%BA%D8%A7%D8%B2-%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A-%D9%8A%D9%82%D9%81%D8%B2-%D8%A8%D9%86%D8%AD%D9%88-9-%D9%88%D8%A7%D9%84%D8%A8%D8%B1%D8%AF-%D9%8A%D8%B6%D8%BA%D8%B7-%D8%A7%D9%84%D9%85%D8%AE%D8%B2%D9%88%D9%86%D8%A7%D8%AA"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والمقدمة ما تغيّر: قفز سعر العقود القياسية في أوروبا بما يصل إلى 8.6% بعد تعديل توقعات الطقس، والمخزونات دون المعدل. وتربط المقدمة ذلك بالحرب الأمريكية الإيرانية وبالغاز المسال المقيد. ولا تحتاج البطاقة إلى تعريف بأي جهة.",
+              "repair": "صيغة أوضح للعنوان: «أسعار الغاز في أوروبا تقفز نحو 9% مع توقعات بموجة برد ممتدة ومخزونات دون المعدل»، فالامتداد حتى ديسمبر هو الجديد في التوقعات."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "تذكر المسودة السبب (تحول توقعات الطقس) والمقارنة (أكبر زيادة منذ أكثر من أسبوع، والمخزونات دون المتوسط). لكنها تُسقط ثلاثة عناصر من المصدر 1: امتداد البرد حتى أوائل ديسمبر بانخفاض 5 إلى 8 درجات، وآلية المنافسة الآسيوية على الغاز المسال، وتصاعد الاشتباكات الذي يُضعف فرص انحسار اضطرابات الإمدادات. أما «لماذا يهمّ» فاستنتاجه محدود ومبني على مقدمات صحيحة: المخزونات دون المتوسط، والإمدادات المسالة مقيدة، والسوق العالمية شحيحة.",
+              "repair": "تُضاف العناصر الثلاثة منسوبةً، كلٌّ إلى جانب الواقعة التي يفسرها، ويمكن أن يُذكر في الصندوق أن منافسة آسيا تزيد صعوبة التعويض بشحنات مسالة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يقود العنوان على البرد والمخزونات، والمتن يطور الاثنين بعد المقدمة مباشرة. لكن الفقرة الأخيرة عن آسيا تبدو نشرة طقس منفصلة لغياب آلية المنافسة على الغاز المسال. وعبارة «بخلاف شمال غربي أوروبا» تحيل إلى امتداد البرد حتى ديسمبر، والمتن لم يذكره قط.",
+              "repair": "يُصحح امتداد البرد في الفقرة الثانية، وتُفتتح فقرة آسيا بأثرها على المنافسة على الغاز المسال العالمي."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عبارة «يمتد على الأسبوع كله» تقصّر مدة التوقع الواردة في المصدر 1 (حتى أوائل ديسمبر). وبند «3 أيام» في صندوق الأرقام يحوّل «على مسار» إلى مكسب متحقق. أما «بما يصل إلى 8.6%» وعبارة «عند ذروة صعوده» فتحفظان صحيحاً أن الرقم ذروة الجلسة لا إغلاقها.",
+              "repair": "«يُتوقع أن يستمر حتى أوائل ديسمبر»، ويُحذف بند الأيام الثلاثة من الصندوق أو يُكتب «تتجه إلى مكسب ثالث»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والدك يقولان ما تغيّر: قفزة نحو 9% في عقود الغاز الأوروبية على توقعات برد أطول، مع مخزونات دون متوسطها استنزفتها اضطرابات الصادرات المرتبطة بالحرب الأمريكية الإيرانية. والمقدمة تحفظ أن 8.6% هو أقصى صعود خلال الجلسة لا الإغلاق.",
+              "repair": "«حتى أوائل ديسمبر» بدل «حتى ديسمبر» في العنوان."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تحمل السبب (تحول نماذج الطقس من برد قصير إلى برد حتى أوائل ديسمبر)، والمقارنة (أكبر زيادة منذ أكثر من أسبوع، والمخزونات دون المتوسط الموسمي)، والخلفية (تقيد الغاز المسال وتصاعد الاشتباكات)، وما يأتي بعدها (منافسة آسيا وانحسار بردها). لكن أثر آسيا صار في الفقرة الأخيرة واقعة: «فيتنافس المشترون الآسيويون على الشحنات». ومقدمات «لماذا يهمّ» صحيحة، واستنتاجه محدود ومعقول.",
+              "repair": "تُحذف «فيتنافس المشترون الآسيويون على الشحنات في النصف الأول من الأسبوع»، ويبقى الاحتمال «قد يشتد التنافس» كما في المصدر 1."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو امتداد البرد، والمتن يطوره بعد المقدمة مباشرة في فقرتين تحت عنوان فرعي مناسب. وبقي فيه عيبان: الفقرة الأولى القصيرة «وعادل السعر عند ذروة الجلسة 105.54 دولار» تفصل الرقم بالدولار عن رقمه باليورو في المقدمة، وتقيد الغاز المسال يُقال مرتين في فقرتين متتاليتين.",
+              "repair": "يُنقل المعادل بالدولار إلى المقدمة: «…لتبلغ 96.075 يورو (105.54 دولار)». وتبقى الفقرة الأولى للمقارنة: «وهذا أكبر ارتفاع خلال التداولات منذ أكثر من أسبوع، وتتجه السوق إلى مكسب لليوم الثالث على التوالي». ويُحذف التكرار من الفقرة الخامسة."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 8.6% و96.075 يورو و105.54 دولار، و3 إلى 5 درجات، و5 إلى 8 درجات. و«تتجه إلى مكسب لليوم الثالث» تحفظ أن الجلسة لم تُغلق. لكن «فيتنافس المشترون… في النصف الأول من الأسبوع» تجزم بما يطرحه المصدر احتمالاً وتضيف له توقيتاً، و«حتى ديسمبر» في العنوان أوسع من «أوائل ديسمبر».",
+              "repair": "تعاد صيغة الاحتمال كما في المصدر، ويُكتب «حتى أوائل ديسمبر» في العنوان."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 9,
+      "mendIssues": [
+        "خطأ في الحالة: تقول الفقرة الأخيرة «فيتنافس المشترون الآسيويون على الشحنات في النصف الأول من الأسبوع». هذه الجملة تحوّل احتمالاً إلى واقعة. المصدر 1 يقول إن الطقس الأبرد في آسيا «قد يؤدي إلى اشتداد المنافسة»، والمصدر 3 يقول «قد يزيد حدة المنافسة»، ولا يقول أي منهما إن المشترين يتنافسون فعلاً، ولا يحدد «النصف الأول من الأسبوع» زمناً للمنافسة. الإصلاح: تُحذف هذه الجملة، ويُكتفى بـ«وقد يشتد التنافس على الغاز المسال العالمي مع الطقس الأبرد في آسيا هذا الأسبوع، إذ يُتوقع أن تسجل اليابان وكوريا الجنوبية وشرق الصين وجنوبها درجات حرارة دون المعتاد».",
+        "تكرار المعنى: الفقرة الخامسة تقول «فيما لا تزال الحرب تقيد إمدادات الغاز المسال»، ثم تعيد الفقرة التي تليها مباشرة «ما زالت تدفقات الغاز الطبيعي المسال مقيدة» (المصدر 1). والحرب في المتن بلا اسم، فلا يعرف القارئ أي حرب إلا من الدك. الإصلاح: تُحذف العبارة من الفقرة الخامسة، وتُختم بـ«…بفارق كبير، بحسب بلومبرغ». وتُسمّى الحرب مرة في الفقرة السادسة: «ما زالت تدفقات الغاز المسال مقيدة بفعل الحرب بين الولايات المتحدة وإيران، رغم انتعاش صادرات النفط الخام من الخليج العربي».",
+        "جمل طويلة ما زالت قائمة (المشكلة 1 السابقة حُلّت في موضعها وبقيت في غيره): الفقرة الثالثة جملة واحدة من نحو 44 كلمة «وتتوقع بيانات «أتموسفيريك جي 2»… دون المعدل الطبيعي». الإصلاح: تُقسم عند «ثم»: «…عن متوسطها على مدى 30 عاماً. ويتعمق الانخفاض مع بداية ديسمبر إلى ما بين 5 و8 درجات دون المعدل الطبيعي».",
+        "صياغة «لماذا يهمّ»: الجملة الأولى نحو 45 كلمة، وفيها مفعول «ما يسحبه برد…» بعيد عن فعله «تعوّض»، فتصعب قراءتها. الإصلاح: «ويسحب برد يُتوقع أن يمتد حتى أوائل ديسمبر من مخزونات هي أصلاً دون متوسطها الموسمي، فيما لا تجد أوروبا ما تعوّض به سوى شحنات مسالة من سوق شحيحة قد تنافسها عليها آسيا هذا الأسبوع. وبذلك تصبح توقعات الطقس المحرك الأقرب لما تدفعه القارة ثمناً لغازها».",
+        "دقة العنوان: «حتى ديسمبر» قد تُقرأ «طوال ديسمبر»، والمصدر 1 يقول «حتى أوائل ديسمبر». الإصلاح: «الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر».",
+        "المسودة تحمل السبب (تحول نماذج الطقس من برد قصير إلى برد حتى أوائل ديسمبر)، والمقارنة (أكبر زيادة منذ أكثر من أسبوع، والمخزونات دون المتوسط الموسمي)، والخلفية (تقيد الغاز المسال وتصاعد الاشتباكات)، وما يأتي بعدها (منافسة آسيا وانحسار بردها). لكن أثر آسيا صار في الفقرة الأخيرة واقعة: «فيتنافس المشترون الآسيويون على الشحنات». ومقدمات «لماذا يهمّ» صحيحة، واستنتاجه محدود ومعقول. — تُحذف «فيتنافس المشترون الآسيويون على الشحنات في النصف الأول من الأسبوع»، ويبقى الاحتمال «قد يشتد التنافس» كما في المصدر 1.",
+        "الجديد في العنوان هو امتداد البرد، والمتن يطوره بعد المقدمة مباشرة في فقرتين تحت عنوان فرعي مناسب. وبقي فيه عيبان: الفقرة الأولى القصيرة «وعادل السعر عند ذروة الجلسة 105.54 دولار» تفصل الرقم بالدولار عن رقمه باليورو في المقدمة، وتقيد الغاز المسال يُقال مرتين في فقرتين متتاليتين. — يُنقل المعادل بالدولار إلى المقدمة: «…لتبلغ 96.075 يورو (105.54 دولار)». وتبقى الفقرة الأولى للمقارنة: «وهذا أكبر ارتفاع خلال التداولات منذ أكثر من أسبوع، وتتجه السوق إلى مكسب لليوم الثالث على التوالي». ويُحذف التكرار من الفقرة الخامسة.",
+        "الأرقام مطابقة للمصادر: 8.6% و96.075 يورو و105.54 دولار، و3 إلى 5 درجات، و5 إلى 8 درجات. و«تتجه إلى مكسب لليوم الثالث» تحفظ أن الجلسة لم تُغلق. لكن «فيتنافس المشترون… في النصف الأول من الأسبوع» تجزم بما يطرحه المصدر احتمالاً وتضيف له توقيتاً، و«حتى ديسمبر» في العنوان أوسع من «أوائل ديسمبر». — تعاد صيغة الاحتمال كما في المصدر، ويُكتب «حتى أوائل ديسمبر» في العنوان.",
+        "«حتى أوائل ديسمبر» بدل «حتى ديسمبر» في العنوان."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "مخزونات الغاز في أوروبا لا تزال دون متوسطها الموسمي بفارق كبير مع اقتراب ذروة الطلب الشتوي، بعد أن استنزفتها اضطرابات الصادرات المرتبطة بالحرب الأمريكية الإيرانية",
+          "source": 1
+        },
+        {
+          "fact": "تدفقات الغاز الطبيعي المسال من الخليج ما زالت مقيدة، ما يبقي السوق العالمية في حالة شح في الإمدادات",
+          "source": 1
+        },
+        {
+          "fact": "يُتوقع أن تستمر موجة البرد في شمال غربي أوروبا حتى أوائل ديسمبر",
+          "source": 1
+        },
+        {
+          "fact": "الطقس الأبرد في آسيا هذا الأسبوع قد يؤدي إلى اشتداد المنافسة على إمدادات الغاز الطبيعي المسال العالمية",
+          "source": 1
+        }
+      ],
+      "slug": "european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+      "title": "الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "بيسنت يحذر الفيدرالي من الإفراط في التشديد مع ظهور هشاشة في النظام المالي",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/financial-markets/157421/%D8%A8%D9%8A%D8%B3%D9%86%D8%AA-%D9%8A%D8%AD%D8%B0%D8%B1-%D9%85%D9%86-%D9%85%D8%AE%D8%A7%D8%B7%D8%B1-%D8%AA%D8%B4%D8%AF%D9%8A%D8%AF-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9-%D8%A7%D9%84%D9%86%D9%82%D8%AF%D9%8A%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D8%A7/",
+        "https://www.bloomberg.com/news/articles/2026-11-22/bessent-warns-fed-risks-overtightening-as-us-markets-swoon"
+      ],
+      "outcome": "skipped: a single independent non-official reporting origin (needs a second independently reported outlet, or an official primary source)"
+    }
+  ],
+  "llm": {
+    "calls": 56,
+    "failures": 1,
+    "promptTokens": 1019748,
+    "completionTokens": 227812,
+    "cacheReadTokens": 227426,
+    "costUsd": 7.9957,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 56
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 136653,
+        "read": 0,
+        "out": 4453,
+        "usd": 0.6357
+      },
+      "desk": {
+        "calls": 12,
+        "in": 123891,
+        "read": 81762,
+        "out": 51689,
+        "usd": 1.6355
+      },
+      "writer": {
+        "calls": 13,
+        "in": 171078,
+        "read": 145664,
+        "out": 97942,
+        "usd": 2.807
+      },
+      "critic": {
+        "calls": 13,
+        "in": 196329,
+        "read": 0,
+        "out": 42813,
+        "usd": 1.6417
+      },
+      "checker": {
+        "calls": 3,
+        "in": 24115,
+        "read": 0,
+        "out": 17048,
+        "usd": 0.4374
+      },
+      "vision": {
+        "calls": 14,
+        "in": 140256,
+        "read": 0,
+        "out": 13867,
+        "usd": 0.8384
+      }
+    }
+  },
+  "log": [
+    "[04:29:27] critic (second pass) \"الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى ديسمبر\": revise score=9 issues=9",
+    "[04:31:26] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=11207 in=13997 read=18208 out=13793 attempt=1 ms=119194",
+    "[04:32:09] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2910 in=5411 read=13627 out=5222 attempt=1 ms=42900",
+    "[04:32:09] desk model=claude-cli/claude-opus-5-5 applied=[whyItMatters,body] rejected=[lede:length 1.56x]",
+    "[04:32:09] desk \"الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر\": rewrote whyItMatters, body; refused lede (length 1.56x)",
+    "[04:32:09] mended \"الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر\": the second pass's 9 finding(s) sent back once more",
+    "[04:32:46] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1327 in=6515 read=0 out=5077 attempt=1 ms=37299",
+    "[04:32:46] precheck \"الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر\": clean",
+    "[04:32:46] image: handout passed over (Sky News Arabia): credited to «'https://www», not an official body or a company",
+    "[04:33:01] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1266 in=11654 read=0 out=1484 attempt=1 ms=15045",
+    "[04:33:01] image: the picture should say: A longer cold spell will drain Europe's already thin gas stocks, and buyers are paying up for gas from a tight world LNG market.",
+    "[04:33:14] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=940 in=5197 read=0 out=1154 attempt=1 ms=11496",
+    "[04:33:14] image: the source's photograph (Sky News Arabia) shows Large silver U-shaped pipes and gas-processing equipment at a European natural gas storage or compressor facility under ; searching gas storage facility Germany | natural gas compressor station Germany | gas pipelines storage facility | LNG terminal storage tanks",
+    "[04:33:14] image: tier 2, like the sources' own photograph: gas storage facility Germany | natural gas compressor station Germany | gas pipelines storage facility | LNG terminal storage tanks",
+    "[04:33:15] pexels \"gas storage facility Germany\": 8 usable",
+    "[04:33:15] pexels \"gas pipelines storage facility\": 8 usable",
+    "[04:33:15] openverse \"natural gas compressor station Germany\": 0 usable of 0",
+    "[04:33:15] pexels \"LNG terminal storage tanks\": 8 usable",
+    "[04:33:15] pexels \"natural gas compressor station Germany\": 8 usable",
+    "[04:33:15] openverse \"gas storage facility Germany\": 0 usable of 0",
+    "[04:33:15] openverse \"gas pipelines storage facility\": 4 usable of 6",
+    "[04:33:15] commons \"gas storage facility Germany\": 2 usable of 6",
+    "[04:33:15] image: dropped \"1992-05-19 Berlin-Reinickendorf Flughafen Berlin-Tegel.jpg\" — dated 1992, an archival picture",
+    "[04:33:15] openverse \"LNG terminal storage tanks\": 1 usable of 2",
+    "[04:33:15] openverse \"gas storage Germany\": 9 usable of 10",
+    "[04:33:15] image: dropped \"Abandoned Photochemical Factory (6)\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"54-1786 F-100C SUPER SABRE RIV MARCH FIELD MUSEUM\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"Black and white image of industrial tanks with pipes and ladders.\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"North American F-100C Super Sabre ’54-786 / SK’\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"Drone aerial view of industrial silos and pipelines in Banten, Indones\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"52-1519 EB-57B CANBERRA MARTIN USAF RIV MARCH FIELD MUSEUM\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"North American F-100C Super Sabre ’54-786 / SK’\" — names too little of gas, storage, facility",
+    "[04:33:15] image: dropped \"Martin EB-57B Canberra ‘0-21519’\" — names too little of gas, storage, facility",
+    "[04:33:15] openverse \"station Germany\": 10 usable of 20",
+    "[04:33:16] commons \"natural gas compressor station Germany\": 2 usable of 2",
+    "[04:33:16] image: dropped \"Cologne station, Germany - sausage stand\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Industrial air compressor setup with blue tanks and pipes inside a pla\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Wustrow Lifeboat station, Germany Sept 2010\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Breathtaking aerial view of Lubmin's industrial port and landscape, sh\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Dresseden Train Station, Germany\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Lomo gas station exterior in Bad Hersfeld, Germany under clear skies.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[04:33:16] image: dropped \"Gloomy industrial scene with metal pipes and valves under dark clouds.\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Aachen Rail Station - Germany.\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Koln MesseDeutz Station, Germany\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"Koln MesseDeutz Station, Germany\" — names too little of natural, gas, compressor, station",
+    "[04:33:16] image: dropped \"997236-5 STEAM ENGINE OF THE HARZ MOUNTAIN RAILWAY HSB AT THE BROCKEN \" — names too little of natural, gas, compressor, station",
+    "[04:33:16] commons \"gas pipelines storage facility\": 1 usable of 3",
+    "[04:33:16] image: \"United States Strategic Petroleum Reserve 018.jpg\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[04:33:16] image: dropped \"Vashon Stop PSE LNG doorstep HQ 20170921_155305 (1)\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"Drone aerial view of industrial silos and pipelines in Banten, Indones\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"Vashon Group up HQ 20170921_153718\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"Vashon Group at Closed Office Door HQ 20170921_160313\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"PSE No LNG\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"Detailed view of an industrial plumbing system featuring multiple pres\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"A detailed view of industrial pipelines in a Saudi Arabian factory set\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:16] image: dropped \"Oil refinery facility with tanker wagons in Trzebinia, Lesser Poland V\" — names too little of gas, pipelines, storage, facility",
+    "[04:33:17] commons \"LNG terminal storage tanks\": 14 usable of 20",
+    "[04:33:17] image: dropped \"Fsru-bhv.jpg\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"Olt-immagini-fsru-3.jpg\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"Exemplar Inkoo 2.JPG\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"Exemplar Inkoo 1.JPG\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"Golar Winter.jpg\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"View of an industrial port and concrete wavebreakers on a sunny day in\" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"A busy industrial port with cranes and cargo containers alongside the \" — names too little of terminal, storage, tanks",
+    "[04:33:17] image: dropped \"Aerial view of a large industrial oil refinery in Banten, Indonesia wi\" — taken in Indonesia, which the story does not name",
+    "[04:33:17] image: dropped \"United States Strategic Petroleum Reserve 018.jpg\" — taken in United States, which the story does not name",
+    "[04:33:33] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1072 in=12458 read=0 out=1303 attempt=1 ms=14713",
+    "[04:33:33] image: vision rejected all candidates (This pass needs the sources' subject: gas pipes and processing equipment at a European storage or compressor facility. Only #6 is that kind of site, but it is a distant amateur snapshot dominated by a field and sky, and at thumbnail size it reads as farm buildings. #5 (Wilhelmshaven FSRU) fits the story's LNG angle and is recent and professional, but a ship at a jetty is not the sources' scene, so a later search should take it. #1 is a protest, #2 is a red product tanker, #3 is a construction site and #4 is a 1981 archival frame. None qualifies here.)",
+    "[04:33:46] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=913 in=11275 read=0 out=1167 attempt=1 ms=12736",
+    "[04:33:46] image: \"Rothenstadt Natural Gas Compressor Station.jpg\" names the story's topic without saying its point (Only candidate 3 matches the sources' subject: a natural gas compressor station on the MEGAL transport line in Germany. It is a distant 2009 amateur shot, tagge); checked now and kept in reserve while the desk looks further",
+    "[04:33:52] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=320 in=8921 read=0 out=400 attempt=1 ms=5369",
+    "[04:33:52] image: second check (claude-cli/claude-opus-5-5) AMATEUR — refused \"Rothenstadt Natural Gas Compressor Station.jpg\": A low-quality old-camera snapshot from across a field, with power lines across the sky and a distant view of stacks that",
+    "[04:33:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=176 in=8791 read=0 out=247 attempt=1 ms=3401",
+    "[04:33:55] image: second check (claude-cli/claude-opus-5-5) UNCLEAR — refused \"Rothenstadt Natural Gas Compressor Station.jpg\": The compressor station is a small, distant cluster of stacks behind a green field and power lines, so a reader cannot te",
+    "[04:33:55] image: \"Rothenstadt Natural Gas Compressor Station.jpg\" is not held back either (UNCLEAR)",
+    "[04:33:55] image: tier 3, the writer's own subjects: LNG carrier | natural gas storage tanks | wind turbines winter Europe",
+    "[04:33:55] commons \"LNG carrier 2026\": 3 usable of 4",
+    "[04:33:56] commons \"LNG carrier\": 5 usable of 12",
+    "[04:33:56] commons \"natural gas storage tanks 2026\": 1 usable of 3",
+    "[04:33:57] commons \"natural gas storage tanks\": 5 usable of 12",
+    "[04:33:57] image: dropped \"STATEN ISLAND IS THE SITE OF THE WORLD'S LARGEST LIQUEFIED GAS STORAGE\" — dated 1973, an archival picture",
+    "[04:33:57] image: dropped \"THE TEXAS EASTERN GAS TANK THAT KILLED 41 WORKMEN WHEN IT IMPLODED IN \" — dated 1973, an archival picture",
+    "[04:33:57] image: dropped \"East Ohio Natural Gas Explosion sign.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[04:33:57] commons \"wind turbines winter Europe 2026\": 0 usable of 0",
+    "[04:33:58] commons \"wind turbines winter Europe\": 0 usable of 1",
+    "[04:33:59] commons \"winter Europe\": 10 usable of 12",
+    "[04:33:59] image: dropped \"Orvis State oil well and gas tanks and natural gas flare - Evanson Pla\" — taken in United States, which the story does not name",
+    "[04:33:59] image: dropped \"Winter X Europe - X Fest (4426896810).jpg\" — taken in United States, which the story does not name",
+    "[04:34:08] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=547 in=13677 read=0 out=751 attempt=1 ms=8869",
+    "[04:34:08] image: \"Buque gasero \"LNG AKWA IBOM\". Compañía NLNG. Tenerife, Españ\" names the story's topic without saying its point (A clear, recent daylight frame of a whole LNG carrier at a European port fits a story about Europe leaning on a tight LNG market. It is sharper and less clutter); checked now and kept in reserve while the desk looks further",
+    "[04:34:16] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=609 in=9058 read=0 out=711 attempt=1 ms=8317",
+    "[04:34:16] image: second check (claude-cli/claude-opus-5-5) RECAPTION \"Buque gasero \"LNG AKWA IBOM\". Compañía NLNG. Tenerife, Españ\": A clear, professional shot of an LNG carrier suits a European gas-and-LNG story, but the caption names Santa Cruz de Ten",
+    "[04:34:21] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=283 in=1330 read=0 out=336 attempt=1 ms=4716",
+    "[04:34:29] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=557 in=9053 read=0 out=650 attempt=1 ms=8098",
+    "[04:34:29] image: second check (claude-cli/claude-opus-5-5) GENERIC_OK \"Buque gasero \"LNG AKWA IBOM\". Compañía NLNG. Tenerife, Españ\": A sharp, well-composed LNG carrier, photographed in a Spanish port inside the story's own region, pictures the LNG suppl",
+    "[04:34:29] image: tier 4, the story's point and its subject: gas storage facility Germany | LNG tanker Rotterdam | heavy snow Netherlands | LNG tanker | gas storage facility | LNG import terminal",
+    "[04:34:29] openverse \"gas storage facility Germany\": 0 usable of 0",
+    "[04:34:29] pexels \"LNG import terminal\": 8 usable",
+    "[04:34:29] pexels \"gas storage facility\": 8 usable",
+    "[04:34:29] pexels \"LNG tanker\": 8 usable",
+    "[04:34:29] openverse \"heavy snow Netherlands\": 4 usable of 6",
+    "[04:34:29] openverse \"LNG tanker\": 10 usable of 20",
+    "[04:34:29] pexels \"gas storage facility Germany\": 8 usable",
+    "[04:34:29] pexels \"LNG tanker Rotterdam\": 8 usable",
+    "[04:34:29] commons \"gas storage facility Germany\": 2 usable of 6",
+    "[04:34:29] image: dropped \"1992-05-19 Berlin-Reinickendorf Flughafen Berlin-Tegel.jpg\" — dated 1992, an archival picture",
+    "[04:34:29] pexels \"heavy snow Netherlands\": 8 usable",
+    "[04:34:30] openverse \"LNG tanker Rotterdam\": 10 usable of 20",
+    "[04:34:30] openverse \"gas storage Germany\": 9 usable of 10",
+    "[04:34:30] image: dropped \"Abandoned Photochemical Factory (6)\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"54-1786 F-100C SUPER SABRE RIV MARCH FIELD MUSEUM\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"Black and white image of industrial tanks with pipes and ladders.\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"North American F-100C Super Sabre ’54-786 / SK’\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"Drone aerial view of industrial silos and pipelines in Banten, Indones\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"52-1519 EB-57B CANBERRA MARTIN USAF RIV MARCH FIELD MUSEUM\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"North American F-100C Super Sabre ’54-786 / SK’\" — names too little of gas, storage, facility",
+    "[04:34:30] image: dropped \"Martin EB-57B Canberra ‘0-21519’\" — names too little of gas, storage, facility",
+    "[04:34:30] openverse \"gas storage facility\": 7 usable of 20",
+    "[04:34:30] openverse \"LNG import terminal\": 7 usable of 20",
+    "[04:34:30] commons \"LNG tanker Rotterdam\": 24 usable of 24",
+    "[04:34:31] commons \"heavy snow Netherlands\": 15 usable of 24",
+    "[04:34:31] commons \"LNG tanker\": 13 usable of 24",
+    "[04:34:32] commons \"gas storage facility\": 6 usable of 24",
+    "[04:34:32] image: dropped \"Gas storage facility at catalyst testing plant - DPLA - 3f32b7d2114075\" — dated 1928, an archival picture",
+    "[04:34:32] image: dropped \"Blue Grass Chemical Agent-Destruction Pilot Plant Container Storage Fa\" — an event's photograph, people and banners",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Drone aerial view of industrial silos and pipelines in Banten, Indones\" — names too little of gas, storage, facility",
+    "[04:34:32] image: dropped \"Families begin move into new Army Family Housing - 11 March 2013, Camp\" — names too little of gas, storage, facility",
+    "[04:34:32] commons \"LNG import terminal\": 3 usable of 12",
+    "[04:34:32] image: dropped \"Protestaktion Brunsbüttel\" — names too little of import, terminal",
+    "[04:34:32] image: dropped \"Vivid view of a large CMA CGM container ship at Hamburg port, highligh\" — names too little of import, terminal",
+    "[04:34:32] image: dropped \"Aerial view of a large cargo ship at an industrial harbor in Libya dur\" — names too little of import, terminal",
+    "[04:34:32] image: dropped \"Low-angle view of cargo cranes and shipping containers at Hamburg port\" — names too little of import, terminal",
+    "[04:34:32] image: dropped \"Nasrul Hamid Addressing Workshop On LNG Terminal Construction In Dhaka\" — taken in Bangladesh, which the story does not name",
+    "[04:34:32] image: dropped \"LNG Carriers dilihat dari Sembawang 2021.jpg\" — taken in Singapore, which the story does not name",
+    "[04:34:32] image: dropped \"Manlove gas storage facility crop.jpg\" — taken in United States, which the story does not name",
+    "[04:34:32] image: dropped \"Manlove gas storage facility.jpg\" — taken in United States, which the story does not name",
+    "[04:34:41] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=470 in=11756 read=0 out=683 attempt=1 ms=8608",
+    "[04:34:41] image: \"Liquified Natural Gas (LNG) tanker - Stena Clear Sky - - Por\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[04:34:52] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=742 in=11225 read=0 out=946 attempt=1 ms=10208",
+    "[04:34:52] image: \"GASLOG SYDNEY\" names the story's topic without saying its point; kept beside the one the desk holds, and it looks further",
+    "[04:35:02] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=465 in=10569 read=0 out=731 attempt=1 ms=9275",
+    "[04:35:02] image: nothing said the story's point; the earlier pass's photograph of its topic runs: \"Buque gasero \"LNG AKWA IBOM\". Compañía NLNG. Tenerife, Españ\"",
+    "[04:35:02] published \"الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر\" -> european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+    "[04:35:02] evidence duplicate report skipped: Al Eqtisadiah repeats Asharq Business",
+    "[04:35:02] skip \"بيسنت يحذر الفيدرالي من الإفراط في التشديد مع ظهور هشاشة في النظام المالي\": fewer than two independent non-official reporting origins; items marked for one retry"
+  ]
+}

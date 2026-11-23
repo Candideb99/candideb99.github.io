@@ -1,0 +1,79 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-23T04:00:34.771Z",
+  "durationSec": 53,
+  "read": 2,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "saudi-digital-government-26-billion-riyal-savings-absher-8fd42f",
+      "title": "السعودية تقدّر وفر تسريع خدمات «أبشر» بنحو 26 مليار ريال سنوياً",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 12,
+        "checked": 12,
+        "supported": 11,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "china-cuts-margin-requirement-to-80-percent-ee37e8",
+      "title": "بورصات الصين تخفض الحد الأدنى للهامش إلى 80% لتعزيز السيولة",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 23,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 2,
+    "failures": 0,
+    "promptTokens": 16678,
+    "completionTokens": 11133,
+    "cacheReadTokens": 0,
+    "costUsd": 0.2893,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 2
+    },
+    "byRole": {
+      "checker": {
+        "calls": 2,
+        "in": 16678,
+        "read": 0,
+        "out": 11133,
+        "usd": 0.2893
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[04:00:35] second look: 2 to read now (2 published pieces not yet read; 300 read clean before publication and left out of the audit sample)",
+    "[04:01:10] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1391 in=8036 read=0 out=4455 attempt=1 ms=33844",
+    "[04:01:10] saudi-digital-government-26-billion-riyal-savings-absher-8fd42f: 12 of 12 sentences checked · 11 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person",
+    "[04:01:28] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2273 in=8642 read=0 out=6678 attempt=1 ms=49445",
+    "[04:01:28] china-cuts-margin-requirement-to-80-percent-ee37e8: 25 of 25 sentences checked · 23 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}
