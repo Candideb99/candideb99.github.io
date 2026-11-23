@@ -109,7 +109,9 @@ const browse = Object.entries(TOPICS)
       return fetch("/search-pages.json")
         .then(function (r) { return r.json(); })
         .then(function (list) { PAGES = new Map(list.map(function (p) { return [p[0], p]; })); return PAGES; })
-        .catch(function () { PAGES = new Map(); return PAGES; });
+        // A list that did not arrive is asked for again at the next search: kept as an empty one, a single failure left
+        // «مصر» without its region's line until the page was loaded again (2026-11-23).
+        .catch(function () { return new Map(); });
     }
     var KIND = { m: "صفحة الموضوع:", q: "صفحة القسم:", r: "صفحة المنطقة:", f: "صفحة الملف:" };
     function pageKey(s) {
@@ -365,6 +367,12 @@ const browse = Object.entries(TOPICS)
             return page(id, false);
           });
         });
+      }).catch(function () {
+        // The results did not arrive: say so, over an empty list. The search before's count had stayed above no rows at
+        // all (2026-11-23).
+        if (id !== current) return;
+        reset();
+        say("تعذّر تحميل النتائج. تحقق من الاتصال وحاول مرة أخرى.");
       });
     }
     sort.querySelectorAll("button").forEach(function (b) {

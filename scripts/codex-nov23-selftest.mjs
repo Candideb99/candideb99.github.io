@@ -132,6 +132,41 @@ check("the search reads neither the standing note under the sources nor the seco
     [true, true]);
 }
 
+// Codex's fifth review of the same day: the reader's controls, the search, the lesson's sums and a photograph's year.
+{
+  const { normalizeWorked, normalizeDiagram } = await import("../pipeline/lib/lesson.mjs");
+  const worked = (a, b) => normalizeWorked({ op: "share", title: "t", formula: "f", result: { label: "الحصة" }, terms: [{ label: "أ", value: a[0], unit: a[1] }, { label: "ب", value: b[0], unit: b[1] }] })?.result.value;
+  check("a share of two amounts written on two scales is computed on one", [worked([500, "مليون دولار"], [2, "مليار دولار"]), worked([22.5, "مليار دولار"], [57.5, "مليار دولار"])], [25, 39.1]);
+  const crossing = normalizeDiagram({ type: "schedule", title: "t", caption: "c", price: "السعر", quantity: "الكمية", hypothetical: true, rows: [{ price: 1, demand: 6, supply: 2 }, { price: 2, demand: 2, supply: 6 }, { price: 3, demand: 1, supply: 8 }] });
+  check("a schedule's equilibrium is where its lines cross, not the nearest whole price", crossing?.equilibrium, { price: 1.5, quantity: 4 });
+  const { selectIdea } = await import("../pipeline/lib/select.mjs");
+  const recent = [{ title: "الذهب يسجل خسارة أسبوعية ثانية مع صعود الدولار", lede: "l" }, { title: "هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة نتائجها علناً", lede: "l" }];
+  const idea = { id: "lemons", idea: "i", field: "micro", pegs: "p", economists: [{ en: "George Akerlof" }], year: 1970, work: "w" };
+  const pegged = async (peg) => {
+    try {
+      const out = await selectIdea({ candidates: [idea], recentArticles: recent, log: () => {}, chatWith: async ({ validate }) => { const data = { id: "lemons", question_ar: "سؤال؟", peg_titles: [peg] }; validate(data); return { data, model: "stand-in" }; } });
+      return out.related.map((a) => a.title);
+    } catch (error) {
+      return String(error.message).split("\n")[0];
+    }
+  };
+  check("two letters name no story; a headline by its whole or by a long opening does",
+    [await pegged("ال"), await pegged(recent[1].title), await pegged("هيئة السوق السعودية تلزم الشركات المدرجة بمناقشة")],
+    ["peg_titles names no story of the list", [recent[1].title], [recent[1].title]]);
+  check("a photograph's record dated before 1900 is its year", [source("pipeline/lib/commons.mjs").includes("const year = text.match(/(?<!\\d)((?:1[5-9]|20)\\d\\d)(?!\\d)/);"), source("pipeline/lib/images.mjs").includes('const fromDate = String(image.date ?? "").match(/(?<!\\d)((?:1[5-9]|20)\\d\\d)(?!\\d)/)?.[1];')], [true, true]);
+
+  const mast = source("src/components/Masthead.astro");
+  check("the phone bar fades its end, and the phone menu scrolls inside a short screen", [mast.includes("mask-image: linear-gradient(to right, transparent, #000 2.5rem); }"), mast.includes("max-block-size: calc(100dvh - 3.75rem); overflow-y: auto;")], [true, true]);
+  const chart = source("src/components/Chart.astro");
+  check("a line chart keeps its note, and its end labels are set apart", [chart.includes('const plain = chart.series.length === 1 && chart.type !== "line" && (horizontal || showValueLabels);'), chart.includes("y={endLabelY.get(si) ?? last[1]}")], [true, true]);
+  const pchart = source("src/components/PriceChart.astro");
+  check("an instrument's closes are walked with the arrow keys", [pchart.includes('<div class="pchart__plot" tabindex="0"'), pchart.includes("const step = { ArrowLeft: -1, ArrowRight: 1, Home: -last, End: last }[e.key];")], [true, true]);
+  check("a printed story opens its sources, the moving line heeds a change of motion setting, and the copy button keeps its own words",
+    [source("src/components/Sources.astro").includes('window.addEventListener("beforeprint"'), source("src/components/Marquee.astro").includes('calm.addEventListener("change"'), source("src/components/Share.astro").includes("clearTimeout(back);")], [true, true, true]);
+  const search = source("src/pages/search.astro");
+  check("a search whose results do not arrive says so, and a list that did not arrive is asked for again", [search.includes('say("تعذّر تحميل النتائج. تحقق من الاتصال وحاول مرة أخرى.");'), search.includes(".catch(function () { return new Map(); });"), search.includes("PAGES = new Map(); return PAGES; })")], [true, true, false]);
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed.`);
   process.exit(1);

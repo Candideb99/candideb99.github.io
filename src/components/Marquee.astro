@@ -24,7 +24,14 @@
       vp.addEventListener("focusin", function (e) {
         if (e.target && e.target.scrollIntoView) e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
       });
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      // Asked while the page is open too: read once at the start, a reader who switched motion off saw the line move
+      // on until the page was loaded again (2026-11-23).
+      var calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var started = false;
+      if (calm.addEventListener) calm.addEventListener("change", function () { if (!calm.matches && !started) start(); });
+      if (!calm.matches) start();
+      function start() {
+      started = true;
       // The list is printed twice; one period is the distance from the first item to its duplicate (the items' widths
       // plus their gaps), measured again once the web fonts are in, since the fallback face sets a different width.
       var items = list.children;
@@ -52,7 +59,7 @@
       var touch = false;
       var touchTimer = null;
       var last = null;
-      function held() { return hover || focus || touch; }
+      function held() { return hover || focus || touch || calm.matches; }
       // Wherever the reader left it by hand is where it moves on from.
       function adopt() {
         pos = Math.abs(vp.scrollLeft) % half;
@@ -85,6 +92,7 @@
         requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
+      }
     }
     function init() { [].forEach.call(document.querySelectorAll("[data-ticker]"), run); }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();

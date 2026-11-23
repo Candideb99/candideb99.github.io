@@ -387,7 +387,9 @@ for (const s of sections) {
   [data-theme-toggle][aria-pressed="true"] .icon-sun { display: block; }
   /* The sections the bar cannot show on a narrow screen: its end fades while more lie past it, so the cut name reads
      as a row that goes on (the owner, 2026-11-20, could not see the sections after الطاقة on a phone). */
-  .nav.has-more { -webkit-mask-image: linear-gradient(to left, transparent, #000 2.5rem); mask-image: linear-gradient(to left, transparent, #000 2.5rem); }
+  /* At the row's END, the left of a right-to-left row («to right» starts the gradient there): written «to left» it faded
+     the row's start, the current section's own name, and left the cut name at the other edge without a cue (2026-11-23). */
+  .nav.has-more { -webkit-mask-image: linear-gradient(to right, transparent, #000 2.5rem); mask-image: linear-gradient(to right, transparent, #000 2.5rem); }
   .masthead__nav.is-stuck .nav__item--home { display: none; }
   @media (prefers-reduced-motion: no-preference) {
     .masthead__nav.is-stuck .bar__brand, .masthead__nav.is-stuck .bar__search { animation: bar-in 0.18s var(--ease-out); }
@@ -401,7 +403,9 @@ for (const s of sections) {
   .menu { display: none; }
   .menu__button { list-style: none; cursor: pointer; }
   .menu__button::-webkit-details-marker { display: none; }
-  .menu__panel { position: absolute; inset-inline: 0; top: 100%; z-index: 40; display: grid; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 0.2rem 1rem 0.8rem; }
+  /* No taller than the screen under the bar, and scrolled inside itself: on a phone held sideways (320px high) its
+     last links lay under the screen's edge, and scrolling moved the page behind the pinned bar (2026-11-23). */
+  .menu__panel { position: absolute; inset-inline: 0; top: 100%; z-index: 40; display: grid; max-block-size: calc(100dvh - 3.75rem); overflow-y: auto; overscroll-behavior: contain; background: var(--paper); border: 1px solid var(--rule); border-top: 0; border-bottom: 2px solid var(--ink); padding: 0.2rem 1rem 0.8rem; }
   .menu__head { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-xs); color: var(--green); padding-block: 0.7rem 0.3rem; }
   .menu__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
   .menu__list a { display: block; padding-block: 0.62rem; border-top: 1px solid var(--rule); font-family: var(--font-body); font-weight: 700; font-size: var(--n-text); line-height: 1.5; color: var(--ink); text-decoration: none; }

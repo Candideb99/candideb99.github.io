@@ -451,7 +451,13 @@ function matchTitles(titles, articles, max = 5) {
   for (const raw of Array.isArray(titles) ? titles : []) {
     const key = looseTitle(raw);
     if (!key) continue;
-    const hit = byLoose.get(key) ?? articles.find((a) => looseTitle(a.title).startsWith(key.slice(0, 40)) || key.startsWith(looseTitle(a.title).slice(0, 40)));
+    // A headline by its opening only when that opening is long enough to be one: on «ال» alone, the first story of the
+    // list opening with the article was "named", and an idea piece could be pegged to it (2026-11-23).
+    const opening = (t) => (t.length >= 20 ? t.slice(0, 40) : null);
+    const hit = byLoose.get(key) ?? articles.find((a) => {
+      const title = looseTitle(a.title);
+      return (opening(key) && title.startsWith(opening(key))) || (opening(title) && key.startsWith(opening(title)));
+    });
     if (hit && !matched.includes(hit)) matched.push(hit);
   }
   return matched.slice(0, max);

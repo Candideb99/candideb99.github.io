@@ -63,7 +63,8 @@ const data = JSON.stringify({
       )}
     </div>
 
-    <div class="pchart__plot">
+    {/* Reached by the keyboard too: the arrow keys walk the closes (2026-11-23; a pointer alone could read them). */}
+    <div class="pchart__plot" tabindex="0" role="group" aria-label="إغلاقات الفترة: تنقّل بينها بمفتاحي السهمين">
       <svg class="pchart__svg" viewBox={`0 0 ${chart.width} ${chart.height}`} preserveAspectRatio="none" role="img" aria-label={nameOf(open.sessions)}>
         <g class="pchart__grid">
           {chart.ticks.map((t) => <line x1="0" x2={chart.width} y1={t.y} y2={t.y} vector-effect="non-scaling-stroke" />)}
@@ -154,12 +155,19 @@ const data = JSON.stringify({
       hide();
     }
 
+    let at = -1;
     function show(clientX: number) {
       if (!chart) return;
       const box = plot.getBoundingClientRect();
       const ux = ((clientX - box.left) / box.width) * chart.width;
       let i = 0;
       for (let k = 1; k < chart.xy.length; k++) if (Math.abs(chart.xy[k][0] - ux) < Math.abs(chart.xy[i][0] - ux)) i = k;
+      showAt(i);
+    }
+    function showAt(i: number) {
+      if (!chart) return;
+      at = i;
+      const box = plot.getBoundingClientRect();
       const [px, py] = chart.xy[i];
       guide.setAttribute("x1", String(px));
       guide.setAttribute("x2", String(px));
@@ -177,11 +185,22 @@ const data = JSON.stringify({
       tip.style.transform = `translate(${Math.round(left)}px, 0)`;
     }
     function hide() {
+      at = -1;
       tip.hidden = true;
       dot.hidden = true;
       guide.classList.remove("is-on");
     }
 
+    plot.addEventListener("keydown", (e) => {
+      if (!chart) return;
+      const last = chart.xy.length - 1;
+      const step = { ArrowLeft: -1, ArrowRight: 1, Home: -last, End: last }[e.key];
+      if (step === undefined) return;
+      e.preventDefault();
+      showAt(Math.max(0, Math.min(last, (at < 0 ? last : at) + step)));
+    });
+    plot.addEventListener("focus", () => { if (chart && at < 0 && plot.matches(":focus-visible")) showAt(chart.xy.length - 1); });
+    plot.addEventListener("blur", hide);
     plot.addEventListener("pointermove", (e) => show(e.clientX));
     plot.addEventListener("pointerdown", (e) => show(e.clientX));
     plot.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hide(); });
@@ -221,6 +240,7 @@ const data = JSON.stringify({
   .pchart__guide.is-on { visibility: visible; }
   .pchart__ticks { position: absolute; inset-block: 0; left: 100%; width: 4rem; margin: 0; padding: 0; list-style: none; direction: ltr; }
   .pchart__ticks :global(li) { position: absolute; left: 0.4rem; transform: translateY(-50%); font-size: var(--fs-xs); line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pchart__plot:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
   .pchart__dot { position: absolute; width: 0.6rem; height: 0.6rem; margin: -0.3rem 0 0 -0.3rem; border-radius: 50%; background: var(--line); box-shadow: 0 0 0 2px var(--paper); pointer-events: none; }
   .pchart__dot[hidden], .pchart__tip[hidden] { display: none; }
   .pchart__tip { position: absolute; top: 0; left: 0; z-index: 2; display: grid; padding: 0.4rem 0.6rem; background: var(--paper); border: 1px solid var(--ink); font-size: var(--fs-sm); line-height: 1.45; color: var(--ink); white-space: nowrap; pointer-events: none; }

@@ -147,7 +147,7 @@ export function simplerQueries(query) {
  * «2018 G20»), else (`upload`) the year it was uploaded. Null when nothing says.
  */
 function photoYear(image, { upload = true } = {}) {
-  const fromDate = String(image.date ?? "").match(/(?<!\d)((?:19|20)\d\d)(?!\d)/)?.[1];
+  const fromDate = String(image.date ?? "").match(/(?<!\d)((?:1[5-9]|20)\d\d)(?!\d)/)?.[1];
   // 18xx too: «Edward Angelo Goodall Copper market Cairo 1871.jpg», a painting, passed as undated (2026-09-24). A camera's
   // frame number is not a year: «IMG_1945» and «IMG_1871», photographs of the Egyptian Exchange, were dropped as
   // archival pictures of 1945 and 1871 (the stress test of 2026-09-28).

@@ -38,9 +38,11 @@ export function badTitle(title) {
  */
 function takenOn(value) {
   const text = stripHtml(String(value ?? ""));
-  const iso = text.match(/(?<!\d)((?:19|20)\d\d-[01]\d-[0-3]\d)(?!\d)/);
+  // From 1500: a record dated 1895 was read as undated, so the desk took the year it was uploaded, and a photograph of
+  // the nineteenth century passed the age filter and ranked as this year's (2026-11-23).
+  const iso = text.match(/(?<!\d)((?:1[5-9]|20)\d\d-[01]\d-[0-3]\d)(?!\d)/);
   if (iso) return iso[1];
-  const year = text.match(/(?<!\d)((?:19|20)\d\d)(?!\d)/);
+  const year = text.match(/(?<!\d)((?:1[5-9]|20)\d\d)(?!\d)/);
   return year ? year[1] : "";
 }
 

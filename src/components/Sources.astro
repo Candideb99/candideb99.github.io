@@ -109,6 +109,24 @@ const Fold = oneLine ? "details" : "div";
   </p>
 </section>
 
+<script is:inline>
+    // A printed story carries its sources: the list is folded on the screen, and a printout made without opening it had
+    // none of their links (2026-11-23). Opened for the print, closed again after it.
+    (function () {
+      if (window.__kzPrintSources) return;
+      window.__kzPrintSources = true;
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        opened = [].filter.call(document.querySelectorAll("details.sources__fold"), function (d) { return !d.open; });
+        opened.forEach(function (d) { d.open = true; });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; });
+        opened = [];
+      });
+    })();
+</script>
+
 <style>
   .sources { margin-top: 2.25rem; max-width: var(--measure); }
   .sources__list { margin-top: 0.4rem; display: grid; }

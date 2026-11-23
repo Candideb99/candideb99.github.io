@@ -65,6 +65,13 @@ export const WORKED_OPS = {
  * (a percentage and a ratio to one decimal). A hypothetical example must use round numbers (none above ten that is not
  * a multiple of five), which the page labels as an illustration.
  */
+const UNIT_SCALES = [[/(?:^|\s)(?:آلاف|ألف)(?=\s|$)/, 1e3], [/(?:^|\s)(?:ملايين|مليون)(?=\s|$)/, 1e6], [/(?:^|\s)(?:مليارات|مليار)(?=\s|$)/, 1e9], [/(?:^|\s)(?:تريليونات|تريليون)(?=\s|$)/, 1e12]];
+/** A unit's scale word and what is left of it: «مليار دولار» is 1e9 of «دولار». */
+function scaleOf(unit) {
+  for (const [word, factor] of UNIT_SCALES) if (word.test(unit)) return { factor, base: unit.replace(word, " ").replace(/\s+/g, " ").trim() };
+  return { factor: 1, base: String(unit ?? "").trim() };
+}
+
 export function normalizeWorked(w) {
   if (!w || typeof w !== "object") return null;
   const op = WORKED_OPS[w.op];
@@ -77,7 +84,11 @@ export function normalizeWorked(w) {
   if (op.sameUnit && new Set(terms.map((t) => t.unit)).size > 1) return null;
   const hypothetical = w.hypothetical === true;
   if (hypothetical && terms.some((t) => !Number.isInteger(t.value) || (Math.abs(t.value) > 10 && t.value % 5 !== 0))) return null;
-  const raw = op.compute(terms.map((t) => t.value));
+  // A share or a ratio of two amounts of one thing written on two scales («500 مليون دولار» of «2 مليار دولار») is
+  // computed on one: divided as written, 500 ÷ 2 × 100 gave 25,000% where the answer is 25% (2026-11-23).
+  const scaled = !op.sameUnit && terms.length === 2 ? terms.map((t) => ({ ...scaleOf(t.unit), value: t.value })) : null;
+  const convert = scaled && scaled[0].base === scaled[1].base && scaled[0].factor !== scaled[1].factor;
+  const raw = op.compute(convert ? scaled.map((s) => s.value * s.factor) : terms.map((t) => t.value));
   if (raw === null || !Number.isFinite(raw)) return null;
   const decimals = op.percent || w.op === "ratio" ? 1 : Math.min(2, Math.max(...terms.map((t) => decimalsOf(t.value))));
   const title = text(w.title, 120);
@@ -183,7 +194,10 @@ export function normalizeDiagram(d) {
     const eq = scheduleEquilibrium(rows);
     if (!eq) return null;
     const decimals = Math.min(2, Math.max(...values.map(decimalsOf)));
-    const fig = { type: "schedule", title, caption, section, price: text(d.price, 40), quantity: text(d.quantity, 40), priceUnit: text(d.price_unit ?? d.priceUnit, 24), quantityUnit: text(d.quantity_unit ?? d.quantityUnit, 24), rows, equilibrium: { price: round(eq.price, decimals), quantity: round(eq.quantity, decimals) }, hypothetical };
+    // The point where the lines cross keeps its own decimals, to two: rounded to the rows' whole numbers, a crossing at
+    // a price of 1.5 was drawn and captioned at 2, where the table itself shows demand of 2 and supply of 6 (2026-11-23).
+    const eqDecimals = Math.max(decimals, decimalsOf(round(eq.price, 2)), decimalsOf(round(eq.quantity, 2)));
+    const fig = { type: "schedule", title, caption, section, price: text(d.price, 40), quantity: text(d.quantity, 40), priceUnit: text(d.price_unit ?? d.priceUnit, 24), quantityUnit: text(d.quantity_unit ?? d.quantityUnit, 24), rows, equilibrium: { price: round(eq.price, eqDecimals), quantity: round(eq.quantity, eqDecimals) }, hypothetical };
     return fig.price && fig.quantity ? fig : null;
   }
   if (d.type === "curve") {

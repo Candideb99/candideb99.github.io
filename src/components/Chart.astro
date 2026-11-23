@@ -120,6 +120,16 @@ const barW = Math.max(6, Math.min(CAP, (slot * 0.62 - barGap * (chart.series.len
 const groupW = barW * chart.series.length + barGap * (chart.series.length - 1);
 const lineEndLabel = chart.series.length <= 3;
 const points = (s: Series) => s.values.map((v, i) => [x(i) + slot / 2, y(v)] as const);
+// Where each line's last value is printed: at its last point, or as near it as the labels above allow. Three rates
+// ending at 2%, 2.3% and 2.7% printed their figures on top of one another (2026-11-23).
+const endLabelY = (() => {
+  const gap = Math.round(TEXT * 1.05);
+  const ends = chart.series.map((s, si) => ({ si, y: y(s.values[s.values.length - 1]) })).sort((a, b) => a.y - b.y);
+  for (let k = 1; k < ends.length; k += 1) if (ends[k].y - ends[k - 1].y < gap) ends[k].y = ends[k - 1].y + gap;
+  const over = ends.length ? ends[ends.length - 1].y - (H - PAD.bottom) : 0;
+  if (over > 0) for (const e of ends) e.y -= over;
+  return new Map(ends.map((e) => [e.si, e.y]));
+})();
 
 // What the reader's pointer, finger or keyboard gets (2026-11-16, the owner on DW's and Sky News's charts: "should the
 // website have colorful interactive graphs"): the name of a series in the legend lights that series and fades the
@@ -133,7 +143,9 @@ const tips = JSON.stringify({
   cats: chart.categories.map((c) => isolateNumbers(c)),
   series: chart.series.map((s) => ({ name: isolateNumbers(s.name), values: s.values.map((v) => isolateNumbers(label(v))) })),
 });
-const plain = chart.series.length === 1 && (horizontal || showValueLabels);
+// Never a line: it prints its last value alone, and with the note switched off and the native tooltips removed its
+// earlier points could be read nowhere but in the table (21 published charts, 2026-11-23).
+const plain = chart.series.length === 1 && chart.type !== "line" && (horizontal || showValueLabels);
 ---
 
 <figure id={id} data-chart data-tips={tips} data-plain={plain ? "" : undefined} class={`chart${compact ? " chart--compact" : ""}${narrow ? " chart--narrow" : ""}${horizontal ? " chart--hbars" : ""}`} role="group" aria-labelledby={`${id}-title`}>
@@ -224,7 +236,7 @@ const plain = chart.series.length === 1 && (horizontal || showValueLabels);
                   </g>
                 ))}
                 {lineEndLabel && (
-                  <text x={last[0] + 8} y={last[1]} dy="0.35em" class="chart__value chart__value--end">{markValue(s.values[s.values.length - 1])}</text>
+                  <text x={last[0] + 8} y={endLabelY.get(si) ?? last[1]} dy="0.35em" class="chart__value chart__value--end">{markValue(s.values[s.values.length - 1])}</text>
                 )}
               </g>
             );
