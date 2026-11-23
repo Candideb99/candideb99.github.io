@@ -19002,6 +19002,113 @@
           "noted": []
         }
       ]
+    },
+    "brent-falls-despite-houthi-rabigh-claim-9e7221": {
+      "at": "2026-11-23T10:06:35.778Z",
+      "title": "برنت يتراجع دون 92 دولاراً رغم إعلان الحوثيين استهداف مصفاة رابغ السعودية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 23,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 2,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 2,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 8,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "تراجع غرب تكساس عن الإغلاق السابق: 1.12%",
+              "quote": "Brent crude futures fell 0.53 percent to $92.08 a barrel by 03:00 GMT. US West Texas Intermediate futures declined 0.44 percent to $83.04 a barrel.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            },
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ونزل عقد برنت تسليم يناير 0.66% إلى 91.96 دولار للبرميل مقارنة بإغلاقه السابق عند 92.57 دولار، وهبط خام غرب تكساس الوسيط تسليم يناير 1.12% إلى 83.04 دولار، من 83.98 دولار عند الإغلاق السابق.",
+              "quote": "Brent crude futures fell 0.53 percent to $92.08 a barrel by 03:00 GMT. US West Texas Intermediate futures declined 0.44 percent to $83.04 a barrel.",
+              "source": "AGBI (Arabian Gulf Business Insight)",
+              "sourceN": 1,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "jarir-minimum-tax-cost-130-million-riyals-2027-6b5146": {
+      "at": "2026-11-23T10:16:14.901Z",
+      "title": "«جرير» السعودية تقدّر كلفة الضريبة التكميلية عليها بنحو 130 مليون ريال في 2027",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 25,
+            "checked": 25,
+            "supported": 22,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "germany-pmi-high-offsets-france-slump-9bccb7": {
+      "at": "2026-11-23T10:35:42.310Z",
+      "title": "قفزة النشاط الألماني إلى أعلى مستوى منذ 2022 تعوّض انكماش فرنسا في منطقة اليورو",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "control",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 31,
+            "weak": 5,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

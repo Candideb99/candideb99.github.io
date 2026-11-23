@@ -1,0 +1,104 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-23T09:51:24.685Z",
+  "durationSec": 77,
+  "read": 3,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "european-gas-jumps-cold-forecast-stockpiles-9a74e0",
+      "title": "الغاز الأوروبي يقفز نحو 9% مع توقعات بامتداد موجة البرد حتى أوائل ديسمبر",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "cop31-antalya-ends-without-deal-fossil-fuels-e0015a",
+      "title": "«كوب 31» في تركيا ينتهي دون اتفاق ختامي إثر خلاف على الوقود الأحفوري",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 33,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "libya-sharara-pipeline-valve-closure-output-a63679",
+      "title": "ليبيا تفقد نحو 350 ألف برميل يومياً بإغلاق صمام على خط الشرارة",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 9,
+        "checked": 9,
+        "supported": 8,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 24980,
+    "completionTokens": 17204,
+    "cacheReadTokens": 0,
+    "costUsd": 0.444,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 24980,
+        "read": 0,
+        "out": 17204,
+        "usd": 0.444
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[09:51:25] second look: 3 to read now (3 published pieces not yet read; 300 read clean before publication and left out of the audit sample)",
+    "[09:51:26] european-gas-jumps-cold-forecast-stockpiles-9a74e0:   source https://www.bloomberg.com/news/articles/2026-11-23/european-gas-surges-as-cold-s: subscribers-only",
+    "[09:51:29] cop31-antalya-ends-without-deal-fossil-fuels-e0015a:   source https://www.ft.com/content/1b6089f6-2201-43b4-8ed4-0c689a916afa?syn-25a6b1a6=1: http-403; read from the copy saved at publication (fetched then)",
+    "[09:52:11] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2076 in=6887 read=0 out=5777 attempt=1 ms=44635",
+    "[09:52:11] european-gas-jumps-cold-forecast-stockpiles-9a74e0: 19 of 19 sentences checked · 17 supported · 2 without a source · 0 confirmed error(s)",
+    "[09:52:24] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1709 in=12691 read=0 out=7716 attempt=1 ms=55147",
+    "[09:52:24] cop31-antalya-ends-without-deal-fossil-fuels-e0015a: 33 of 33 sentences checked · 33 supported · 0 without a source · 0 confirmed error(s)",
+    "[09:52:41] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1277 in=5402 read=0 out=3711 attempt=1 ms=28619",
+    "[09:52:41] libya-sharara-pipeline-valve-closure-output-a63679: 9 of 9 sentences checked · 8 supported · 0 without a source · 0 confirmed error(s)"
+  ]
+}

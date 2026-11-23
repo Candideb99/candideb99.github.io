@@ -1,36 +1,6 @@
 {
   "version": 1,
   "items": {
-    "53186ef5e66dd890": {
-      "at": "2026-11-02T09:40:10.845Z",
-      "decision": "published",
-      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
-      "title": "سهم بنك القاهرة يقفز في أولى جلسات تداوله ببورصة مصر"
-    },
-    "fa03406cd2c88177": {
-      "at": "2026-11-02T09:40:10.845Z",
-      "decision": "published",
-      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
-      "title": "سهم بنك القاهرة يقفز 7% في الدقائق الأولى من بدء التداول بالبورصة المصرية"
-    },
-    "3af8419ea6779b07": {
-      "at": "2026-11-02T09:40:10.845Z",
-      "decision": "published",
-      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
-      "title": "محافظ البنك المركزي: طرح بنك القاهرة يعكس الثقة فى القطاع المصرفي"
-    },
-    "8c35af2514254c46": {
-      "at": "2026-11-02T09:40:10.845Z",
-      "decision": "published",
-      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
-      "title": "رئيس الوزراء: طرح بنك القاهرة حسم جدية الحكومة في تنفيذ وثيقة ملكية الدولة"
-    },
-    "01a9577a86a6ba90": {
-      "at": "2026-11-02T09:40:10.845Z",
-      "decision": "published",
-      "slug": "banque-du-caire-shares-jump-egx-debut-412cd0",
-      "title": "طرح القرن بـ36.3 مليار جنيه.. بنك القاهرة يدخل البورصة بأضخم صفقة فى تاريخ مصر"
-    },
     "252d60cdcae3ef48": {
       "at": "2026-11-02T09:55:18.408Z",
       "decision": "published",
@@ -4961,6 +4931,78 @@
       "decision": "rejected",
       "title": "بيسنت يحذر من مخاطر التشديد المفرط للسياسة النقدية على الاقتصاد الأمريكي",
       "strikes": 1
+    },
+    "16c5e1228438cd6f": {
+      "at": "2026-11-23T09:54:09.416Z",
+      "decision": "rejected",
+      "title": "Dubai Said to Eye Consolidating Lenders in Islamic Banking Push",
+      "strikes": 1
+    },
+    "2550d5fd4441aeb0": {
+      "at": "2026-11-23T09:54:09.416Z",
+      "decision": "rejected",
+      "title": "سهم بنك دبي الإسلامي يقفز 15% مع بحث فرصة استحواذ استراتيجي",
+      "strikes": 1
+    },
+    "5b4281a69207c335": {
+      "at": "2026-11-23T10:06:35.815Z",
+      "decision": "published",
+      "slug": "brent-falls-despite-houthi-rabigh-claim-9e7221",
+      "title": "Houthis claim strikes on Saudi oil facility and port"
+    },
+    "33613d30a88c11dd": {
+      "at": "2026-11-23T10:06:35.815Z",
+      "decision": "published",
+      "slug": "brent-falls-despite-houthi-rabigh-claim-9e7221",
+      "title": "Yemen's Houthis claim attacks on Saudi oil refinery as Trump warns of new strikes next year"
+    },
+    "8b8688b835ffbbf8": {
+      "at": "2026-11-23T10:16:14.940Z",
+      "decision": "published",
+      "slug": "jarir-minimum-tax-cost-130-million-riyals-2027-6b5146",
+      "title": "ضريبة الشركات الجديدة قد تكلف \"جرير\" السعودية 130 مليون ريال في 2027"
+    },
+    "b3144e42968b1853": {
+      "at": "2026-11-23T10:16:14.940Z",
+      "decision": "published",
+      "slug": "jarir-minimum-tax-cost-130-million-riyals-2027-6b5146",
+      "title": "بعد إعلان \"جرير\" و\"أكوا\" خضوعهما لها.. ما هي ضريبة الحد الأدنى المحلي؟"
+    },
+    "2f9cb786c3e6c150": {
+      "at": "2026-11-23T10:16:14.940Z",
+      "decision": "published",
+      "slug": "jarir-minimum-tax-cost-130-million-riyals-2027-6b5146",
+      "title": "\"جرير\" تتوقع تراجع أرباحها 11% بفعل ضريبة الحد الأدنى المحلية"
+    },
+    "c64e1c60f10575e4": {
+      "at": "2026-11-23T10:35:42.330Z",
+      "decision": "published",
+      "slug": "germany-pmi-high-offsets-france-slump-9bccb7",
+      "title": "Euro-Zone Activity Holds Steady as Germany Offsets French Slump"
+    },
+    "85d3d80f1ac99567": {
+      "at": "2026-11-23T10:35:42.331Z",
+      "decision": "published",
+      "slug": "germany-pmi-high-offsets-france-slump-9bccb7",
+      "title": "German Business Activity Gauge Surges to Highest Since 2022"
+    },
+    "dfc91cd615692242": {
+      "at": "2026-11-23T10:35:42.331Z",
+      "decision": "published",
+      "slug": "germany-pmi-high-offsets-france-slump-9bccb7",
+      "title": "Eurozona, indici PMI: a novembre, manifatturiero sale a 52,9 punti e servizi flette a 51,2"
+    },
+    "1f616e850e8a4a21": {
+      "at": "2026-11-23T10:35:42.331Z",
+      "decision": "published",
+      "slug": "germany-pmi-high-offsets-france-slump-9bccb7",
+      "title": "Strefa euro dwóch prędkości. Niemcy się budzą, Francja coraz bliżej recesji"
+    },
+    "ff6294585046e074": {
+      "at": "2026-11-23T10:35:42.331Z",
+      "decision": "published",
+      "slug": "germany-pmi-high-offsets-france-slump-9bccb7",
+      "title": "Euro Bölgesi'nde iş dünyası faaliyetleri büyüme eğilimini sürdürdü"
     }
   }
 }

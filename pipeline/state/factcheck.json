@@ -14513,6 +14513,105 @@
         }
       ],
       "outcome": "clean"
+    },
+    "european-gas-jumps-cold-forecast-stockpiles-9a74e0": {
+      "at": "2026-11-23T09:51:25.702Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T04:35:02.042Z",
+      "sourcesRead": 2,
+      "sourcesAll": 3,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 19,
+        "checked": 19,
+        "supported": 17,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 2,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [
+        "قفزت العقود الآجلة القياسية للغاز الطبيعي في أوروبا بما يصل إلى 8.6% الاثنين لتبلغ 96.075 يورو (105.54 دولار)، بعدما انقلبت توقعات الطقس نحو درجات حرارة أدنى من المعتاد، بحسب بلومبرغ.",
+        "لذلك تصبح توقعات الطقس في الأسابيع المقبلة المحرك الأقرب لما تدفعه القارة ثمناً لغازها."
+      ],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "cop31-antalya-ends-without-deal-fossil-fuels-e0015a": {
+      "at": "2026-11-23T09:51:25.709Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T04:18:26.599Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "fromCopy": 1,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 33,
+        "checked": 33,
+        "supported": 33,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [],
+      "outcome": "clean"
+    },
+    "libya-sharara-pipeline-valve-closure-output-a63679": {
+      "at": "2026-11-23T09:52:11.770Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T04:08:30.514Z",
+      "sourcesRead": 2,
+      "sourcesAll": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 9,
+        "checked": 9,
+        "supported": 8,
+        "weak": 1,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "ويُفقد هذا الخط في المتوسط نحو 15 ألف برميل يومياً، أي نحو 1.47 مليون دولار من العائدات، ليرتفع الفاقد من الخطين إلى نحو 365 ألف برميل يومياً من إنتاج إجمالي يقارب 1.4 مليون برميل.",
+          "quote": "وأوضحت المؤسسة  أن إغلاق صمام خط الشرارة تسبب في فقدان نحو 350 ألف برميل يوميا من إنتاج الحقل، في حين أدى استمرار إغلاق خط الحمادة منذ أكثر من أسبوعين إلى فقدان نحو 15 ألف برميل يوميا. وبذلك يصل إجمالي المفقود من الإنتاج النفطي الليبي إلى نحو 365 ألف برميل يوميا، من أصل نحو 1.4 مليون برميل يوميا، هي حجم الإنتاج الإجمالي."
+        }
+      ],
+      "outcome": "clean"
     }
   }
 }
