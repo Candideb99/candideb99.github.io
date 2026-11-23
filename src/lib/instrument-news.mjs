@@ -25,13 +25,26 @@ export const NEWS_NAMES = {
   usdinr: ["الروبية الهندية"],
   usdjpy: ["الين"],
   gbpusd: ["الجنيه الإسترليني", "الإسترليني"],
+  // 2026-11-23: the Gulf's other markets by their exchanges' names, never by their cities' or countries' alone (below).
+  dfm: ["سوق دبي المالي", "بورصة دبي", "أسهم دبي"],
+  adx: ["سوق أبوظبي للأوراق المالية", "بورصة أبوظبي", "أسهم أبوظبي"],
+  qe: ["بورصة قطر", "الأسهم القطرية"],
+  bkp: ["بورصة الكويت", "الأسهم الكويتية", "السوق الأول الكويتي"],
+  ttf: ["الغاز الأوروبي"],
+  aluminium: ["الألومنيوم"],
+  de10y: ["السندات الألمانية", "عائد السندات الألمانية"],
+  jp10y: ["السندات اليابانية", "عائد السندات اليابانية"],
+  eth: ["إيثيريوم", "إيثر"],
 };
+
+/** A short name that is a city or a country («دبي»، «قطر»، «الكويت») would take every headline about the place. */
+const PLACE_SHORT = new Set(["dfm", "adx", "qe", "bkp"]);
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** The names a headline may give an instrument: the board's name and short name, and the newsroom's. */
 export function headlineNames(q) {
-  return [...new Set([q.name, q.short, ...(NEWS_NAMES[q.id] ?? [])])].filter((n) => typeof n === "string" && n.length >= 3);
+  return [...new Set([q.name, PLACE_SHORT.has(q.id) ? null : q.short, ...(NEWS_NAMES[q.id] ?? [])])].filter((n) => typeof n === "string" && n.length >= 3);
 }
 
 /** A test of a headline for any of the names, as a whole word with a clinging و، ب، ل، ف، ك or the article. */

@@ -10,7 +10,7 @@ import PriceChart from "@components/PriceChart.astro";
 import { periodsFor, closesDaily } from "@lib/price-chart.mjs";
 import MarketBoard from "@components/MarketBoard.astro";
 import StoryCard from "@components/StoryCard.astro";
-import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, type Quote } from "@lib/markets";
+import { board, GROUP_NAMES, formatPrice, formatChange, formatPct, formatMove, direction, DIRECTION_LABEL, whenLabel, SOURCE_NAMES, type Quote } from "@lib/markets";
 import { getArticles } from "@lib/articles";
 import { formatShortDate, timeAgo } from "@lib/format";
 import { headlineNames, namesInHeadline } from "@lib/instrument-news.mjs";
@@ -64,7 +64,7 @@ const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر وال
         )}
       </p>
       <p class="inst__when ui">
-        {q.stale ? "آخر سعر وصل إلى اللوحة: " : "السعر في "}{whenLabel(q)} {site.timeZoneLabel}، والتغير عن إغلاق الجلسة السابقة.
+        {q.stale ? "آخر سعر وصل إلى اللوحة: " : q.endOfDay ? "" : "السعر في "}{whenLabel(q)}{q.endOfDay ? "" : ` ${site.timeZoneLabel}`}، والتغير عن إغلاق الجلسة السابقة.
         {board.updatedAt && <span> حُدّثت اللوحة <time datetime={board.updatedAt} data-relative>{timeAgo(board.updatedAt)}</time>.</span>}
       </p>
     </header>
@@ -102,7 +102,7 @@ const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر وال
       )}
     </div>
 
-    <p class="note ui">المصدر: {board.source}؛ أسعار مؤجّلة وللاطلاع لا للتداول. الإغلاق هو آخر سعر في جلسة السوق نفسها{q.group === "commodities" ? "، والعقد هو أقرب عقد آجل" : ""}.</p>
+    <p class="note ui">المصدر: {SOURCE_NAMES[q.source] ?? board.source}؛ {q.endOfDay ? "عائد الإغلاق كما تنشره الجهة في يوم العمل التالي" : "أسعار مؤجّلة"} وللاطلاع لا للتداول. الإغلاق هو آخر سعر في جلسة السوق نفسها{q.group === "commodities" ? "، والعقد هو أقرب عقد آجل" : ""}.</p>
 
     {news.length >= 2 && (
       <section class="inst__news" aria-labelledby="inst-news-head">

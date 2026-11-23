@@ -25,6 +25,8 @@ export interface Quote {
   currency: string | null;
   source: string;
   stale: boolean;
+  /** A closing yield from a state's daily file (pipeline/lib/yields.mjs): dated by its session, with no time of day. */
+  endOfDay?: boolean;
   /** Daily closes, oldest first, up to a year of sessions (`HISTORY_SESSIONS`, pipeline/lib/quotes.mjs). */
   history: { d: string; c: number }[];
 }
@@ -75,9 +77,9 @@ export const BOX_IDS = ["tasi", "egx30", "brent", "gold", "usdegp"];
  */
 export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
   "energy/oil": ["brent", "wti"],
-  "energy/gas": ["natgas"],
+  "energy/gas": ["natgas", "ttf"],
   "markets/stocks": ["tasi", "egx30", "spx"],
-  "markets/bonds": ["us10y", "us30y"],
+  "markets/bonds": ["us10y", "de10y", "jp10y"],
   "markets/currencies": ["usdegp", "eurusd", "dxy"],
   "markets/commodities": ["gold", "silver", "copper"],
 };
@@ -162,6 +164,7 @@ export const DIRECTION_LABEL: Record<Direction, string> = { up: "ارتفاع", 
 
 /** "11 سبتمبر 14:05": the quote's own time in the site's zone. Never "today": the page may be read days after it was built. */
 export function whenLabel(q: Quote): string {
+  if (q.endOfDay) return `إغلاق ${formatShortDate(q.time)}`;
   return `${formatShortDate(q.time)} ${formatTime(q.time)}`;
 }
 
@@ -183,11 +186,19 @@ export function sparkline(q: Quote, width = 96, height = 28, pad = 1.5): { point
   return { points, days: values.length };
 }
 
+/** Who publishes a quote, for the note under it: Yahoo's, or a state's own file (the German and Japanese yields). */
+export const SOURCE_NAMES: Record<string, string> = {
+  yahoo: "Yahoo Finance",
+  "er-api": "ExchangeRate-API",
+  bundesbank: "البنك المركزي الألماني (بوندسبنك)",
+  mof: "وزارة المالية اليابانية",
+};
+
 /** An instrument's own page: its price, its closes over the periods the record fills, its group. */
 export function quoteHref(q: Pick<Quote, "id">): string {
   return `/markets/data/${q.id}/`;
 }
 
 /** The strip's order when it carries every instrument (the front's moving line): the Arab markets, what their readers
- *  watch next (oil and gold), the currencies, the world's indices, the bonds and bitcoin. */
+ *  watch next (oil and gold), the currencies, the world's indices, the bonds and the coins. */
 export const STRIP_GROUPS: Group[] = ["arab", "commodities", "fx", "world", "rates", "crypto"];

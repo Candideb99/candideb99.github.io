@@ -2830,6 +2830,29 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [["2026-10-23", "2026-10-26"], ["2026-10-25"], ["2026-10-24", "2026-10-25"]],
   );
   check("the quote's own point goes under its session", days(mergeHistory(inst("brent"), [{ d: "2026-11-06", c: 98.32 }], [], { price: 97.69, session: "2026-11-09" })), ["2026-11-06", "2026-11-09"]);
+  // The board widened (2026-11-23): the Gulf's indices, ether, the German and Japanese yields.
+  {
+    const { tradingWeekdays, boardPrev } = await import("../pipeline/lib/quotes.mjs");
+    const { parseBundesbank, parseMof } = await import("../pipeline/lib/yields.mjs");
+    check("the UAE's markets trade Monday to Friday, Qatar's and Kuwait's Sunday to Thursday, ether every day, whoever files them",
+      [inst("dfm"), inst("adx"), inst("qe"), inst("bkp"), inst("eth"), { exchangeTimezoneName: "Asia/Dubai" }, { exchangeTimezoneName: "Europe/London" }, { exchangeTimezoneName: "Asia/Kuwait" }].map((m) => tradingWeekdays(m).join("")),
+      ["12345", "12345", "01234", "01234", "0123456", "12345", "12345", "01234"]);
+    const seed = [{ d: "2026-11-18", c: 10078.06 }, { d: "2026-11-19", c: 10062.79 }];
+    const raw = { price: 9902.87, prev: 10062.8, prevFrom: "unchecked", time: "2026-11-22T10:15:00.000Z", session: "2026-11-22", history: [{ d: "2026-11-22", c: 9902.87 }], seed };
+    const kuwaitish = { ...raw, prev: 10150.1, seed: [{ d: "2026-11-19", c: 10062.79 }] };
+    check("a seeded index's hourly close confirms the feed's previous close, and never replaces a close the board recorded",
+      [boardPrev(inst("qe"), raw).prev, boardPrev(inst("qe"), kuwaitish).prev, boardPrev(inst("qe"), raw, { history: [{ d: "2026-11-19", c: 10062.8 }] }).history.map((p) => p.d), boardPrev(inst("qe"), { ...raw, seed: undefined }).prev],
+      [10062.8, null, ["2026-11-18", "2026-11-22"], null]);
+    const weekend = { price: 6226.19, prev: null, prevFrom: null, time: "2026-11-20T11:00:21.000Z", session: "2026-11-20", history: [] };
+    check("the same price at the same moment keeps the move the board printed, and only that",
+      [boardPrev(inst("dfm"), weekend, { price: 6226.19, time: weekend.time, prev: 6221.92, history: [] }).prev, boardPrev(inst("dfm"), weekend, { price: 6230, time: weekend.time, prev: 6221.92, history: [] }).prev, boardPrev(inst("dfm"), weekend, { price: 6226.19, time: weekend.time, prev: 6221.92, stale: true, history: [] }).prev],
+      [6221.92, null, null]);
+    check("the Bundesbank's file reads with its decimal comma and skips a day with no value",
+      parseBundesbank('"";BBSIS.D.I\nDezimalstellen;2;\n2026-11-19;3,42;\n2026-11-20;.;\n2026-11-21;3,37;\n'), [{ d: "2026-11-19", c: 3.42 }, { d: "2026-11-21", c: 3.37 }]);
+    check("the Ministry of Finance's file is read by its 10Y column, whatever its place, and its notes are skipped",
+      parseMof("Interest Rate (November 2026),,,(Unit : %)\nDate,1Y,2Y,10Y,30Y\n2026/11/2,1.671,1.88,2.817,3.94\n2026/11/19,1.659,1.853,2.87,4.03\n2026/11/20,-,-,-,-\nIf you cannot download,,,,\n"),
+      [{ d: "2026-11-02", c: 2.817 }, { d: "2026-11-19", c: 2.87 }]);
+  }
   // The instrument pages (2026-11-16): the record keeps a year of sessions, where it kept thirty, and a period is
   // offered only when the record fills it.
   const yearOfDays = [];

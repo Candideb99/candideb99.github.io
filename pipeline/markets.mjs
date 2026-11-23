@@ -3,7 +3,8 @@
  * The market board: delayed quotes for the indices, currencies, commodities and yields the paper
  * prints in its strip and its board (`src/data/markets.json`).
  *
- * Source: Yahoo Finance's public chart endpoint (no key, delayed); currencies fall back to
+ * Source: Yahoo Finance's public chart endpoint (no key, delayed); the German and Japanese yields from the Bundesbank's and
+ * Japan's Ministry of Finance's daily files (lib/yields.mjs, 2026-11-23); currencies fall back to
  * open.er-api.com's daily reference rates when Yahoo fails. The script is best effort: an
  * instrument that cannot be fetched keeps its last good quote, marked stale, and the script never
  * fails a build. Run by the deploy workflow before every build and by the newsroom before it
@@ -14,7 +15,8 @@
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { INSTRUMENTS, fetchJson, mergeHistory, recordedPrev, withChange, yahooQuote } from "./lib/quotes.mjs";
+import { INSTRUMENTS, boardPrev, fetchJson, mergeHistory, withChange, yahooQuote } from "./lib/quotes.mjs";
+import { officialYield } from "./lib/yields.mjs";
 
 export { INSTRUMENTS };
 
@@ -55,11 +57,16 @@ async function main() {
 
   const results = await pool(INSTRUMENTS, 4, async (inst) => {
     try {
-      const raw = await yahooQuote(inst.symbol);
-      // An index Yahoo keeps one bar for: its previous close only when the board's own record bears it out.
-      const prev = raw.prevFrom === "unchecked" ? recordedPrev(inst, raw, previousById.get(inst.id)?.history) : raw.prev;
-      const quote = withChange(inst, { ...raw, prev });
+      const record = previousById.get(inst.id)?.history ?? [];
+      if (inst.source) {
+        const quote = withChange(inst, await officialYield(inst, record));
+        return { inst, quote: { ...quote, source: inst.source, stale: false }, ok: true };
+      }
+      const raw = await yahooQuote(inst.symbol, { seed: inst.seed });
+      const { prev, history } = boardPrev(inst, raw, previousById.get(inst.id));
+      const quote = withChange(inst, { ...raw, prev, history });
       delete quote.prevFrom;
+      delete quote.seed;
       return { inst, quote: { ...quote, source: "yahoo", stale: false }, ok: true };
     } catch (error) {
       return { inst, error: String(error.message || error), ok: false };
@@ -96,7 +103,7 @@ async function main() {
   const fresh = quotes.filter((q) => !q.stale).length;
   const data = {
     updatedAt: fresh ? new Date().toISOString() : previous.updatedAt || null,
-    source: "Yahoo Finance",
+    source: "Yahoo Finance، والبنك المركزي الألماني ووزارة المالية اليابانية لعائد سنداتهما",
     quotes,
   };
 

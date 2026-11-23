@@ -13,12 +13,11 @@ import { getArticlesBySection } from "@lib/articles";
 import { formatDate, formatTime, timeAgo } from "@lib/format";
 
 // The groups run down newspaper columns in this order (2026-10-19): the Arab markets over the commodities their readers
-// watch (oil, gold), then the bonds, the currencies and the world's indices. Three across, columns break before the
-// bonds and the indices: Arab markets and commodities | bonds and currencies | indices, ending within 174px of each
-// other at 1440. Two across, the browser balances them: Arab markets, commodities and bonds | currencies and indices,
-// within 49-94px (the order that suited three across left 338-383px there). Bitcoin, its own group since 2026-11-15, closes
-// the indices' column, the shortest of the three.
-const ORDER = ["arab", "commodities", "rates", "fx", "world", "crypto"];
+// watch (oil, gold), then the bonds, the currencies and the world's indices. Bitcoin, its own group since 2026-11-15.
+// On 2026-11-23 the board grew from 29 rows to 38 (four Gulf indices, three commodities, two yields, ether), and that
+// order put 16 rows in the first column and 9 in the last: now the stock markets, Arab then world (13), the commodities
+// and the coins (12), the bonds and the currencies (13). Three across, columns break before the commodities and the bonds.
+const ORDER = ["arab", "world", "commodities", "crypto", "rates", "fx"];
 const groups = grouped().sort((x, y) => ORDER.indexOf(x.group) - ORDER.indexOf(y.group));
 const news = (await getArticlesBySection("markets")).slice(0, 4);
 const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime(board.updatedAt)}` : "";
@@ -39,7 +38,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
       ))}
     </div>
 
-    <p class="note ui">المصدر: {board.source}؛ أسعار مؤجّلة. التغير محسوب من إغلاق الجلسة السابقة؛ عقود السلع هي أقرب عقد آجل؛ الخط الصغير هو مسار الإغلاق اليومي في الشهر الأخير. القيم التي لم يصلها تحديث تظهر بلون باهت.</p>
+    <p class="note ui">المصدر: {board.source}؛ أسعار مؤجّلة. التغير محسوب من إغلاق الجلسة السابقة؛ عقود السلع هي أقرب عقد آجل؛ عائد السندات الألمانية واليابانية هو إغلاق آخر يوم عمل نشرته الجهتان؛ الخط الصغير هو مسار الإغلاق اليومي في الشهر الأخير. القيم التي لم يصلها تحديث تظهر بلون باهت.</p>
 
     {news.length > 0 && (
       <section class="news" aria-labelledby="news-head">
@@ -62,7 +61,7 @@ const updated = board.updatedAt ? `${formatDate(board.updatedAt)}، ${formatTime
   .groups__cell { min-width: 0; break-inside: avoid; padding-bottom: 2rem; }
   .groups__cell:last-child { padding-bottom: 0; }
   @media (min-width: 1024px) {
-    .groups__cell[data-group="rates"], .groups__cell[data-group="world"] { break-before: column; }
+    .groups__cell[data-group="commodities"], .groups__cell[data-group="rates"] { break-before: column; }
   }
   .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: var(--measure); }
   .news { margin-top: clamp(2rem, 4vw, 3rem); }

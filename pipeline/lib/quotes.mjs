@@ -17,6 +17,16 @@ export const INSTRUMENTS = [
   // الأسواق العربية ثم العالمية
   { id: "tasi", group: "arab", symbol: "^TASI.SR", name: "تاسي", short: "تاسي", note: "السعودية", decimals: 2, limit: 15 },
   { id: "egx30", group: "arab", symbol: "^CASE30", name: "إيجي إكس 30", short: "مصر 30", note: "مصر", decimals: 2, limit: 15 },
+  // The Gulf's other markets (the owner, 2026-11-23: "can we add more arab markets?"). Yahoo keeps one daily bar for each,
+  // as for Tasi and the EGX30; for Dubai, Qatar and Kuwait its hourly prices give a record to start from (`seed`), whose
+  // session closes matched the feed's previous close to 0.04% on 22 November; Abu Dhabi's hourly series holds seven
+  // points in three months and its record starts with the board's own. The UAE's markets trade Monday to Friday since
+  // 2022 (`zone`), Qatar's and Kuwait's Sunday to Thursday. Morocco's MASI, Oman, Bahrain and Jordan are not on Yahoo,
+  // and the Casablanca exchange's own site did not answer from here or a runner (timeouts, 2026-11-23).
+  { id: "dfm", group: "arab", symbol: "DFMGI.AE", name: "مؤشر سوق دبي", short: "دبي", note: "الإمارات", zone: "Asia/Dubai", seed: true, decimals: 2, limit: 15 },
+  { id: "adx", group: "arab", symbol: "FADGI.FGI", name: "مؤشر سوق أبوظبي", short: "أبوظبي", note: "الإمارات", zone: "Asia/Dubai", decimals: 2, limit: 15 },
+  { id: "qe", group: "arab", symbol: "^GNRI.QA", name: "مؤشر بورصة قطر", short: "قطر", note: "قطر", zone: "Asia/Qatar", seed: true, decimals: 2, limit: 15 },
+  { id: "bkp", group: "arab", symbol: "^BKP.KW", name: "مؤشر السوق الأول", short: "الكويت", note: "الكويت", zone: "Asia/Kuwait", seed: true, decimals: 2, limit: 15 },
   { id: "spx", group: "world", symbol: "^GSPC", name: "ستاندرد آند بورز 500", short: "S&P 500", note: "الولايات المتحدة", decimals: 2, limit: 15 },
   { id: "ndq", group: "world", symbol: "^IXIC", name: "ناسداك المركب", short: "ناسداك", note: "الولايات المتحدة", decimals: 2, limit: 15 },
   { id: "dji", group: "world", symbol: "^DJI", name: "داو جونز", short: "داو جونز", note: "الولايات المتحدة", decimals: 2, limit: 15 },
@@ -48,11 +58,25 @@ export const INSTRUMENTS = [
   { id: "silver", group: "commodities", symbol: "SI=F", name: "الفضة", short: "الفضة", unit: "دولار/أونصة", decimals: 2, limit: 20 },
   { id: "copper", group: "commodities", symbol: "HG=F", name: "النحاس", short: "النحاس", unit: "دولار/رطل", decimals: 3, limit: 20 },
   { id: "wheat", group: "commodities", symbol: "ZW=F", name: "القمح (شيكاغو)", short: "القمح", unit: "سنت/بوشل", decimals: 2, limit: 20 },
+  // 2026-11-23 (the owner: "also add more commodities?"): Europe's gas price, which Qatari, Algerian and Egyptian cargoes
+  // are sold against (its largest daily move of a year 39%), aluminium, a Gulf export (EGA, Alba, Ma'aden; COMEX's
+  // contract, thinly traded, settling every day), and corn, which Egypt and the Gulf import for feed.
+  { id: "ttf", group: "commodities", symbol: "TTF=F", name: "الغاز الأوروبي (تي تي إف)", short: "الغاز الأوروبي", unit: "يورو/ميغاواط ساعة", decimals: 2, limit: 45 },
+  { id: "aluminium", group: "commodities", symbol: "ALI=F", name: "الألمنيوم", short: "الألمنيوم", unit: "دولار/طن", decimals: 2, limit: 15 },
+  { id: "corn", group: "commodities", symbol: "ZC=F", name: "الذرة (شيكاغو)", short: "الذرة", unit: "سنت/بوشل", decimals: 2, limit: 15 },
   // السندات
   { id: "us10y", group: "rates", symbol: "^TNX", name: "عائد سندات الخزانة الأمريكية لعشر سنوات", short: "الخزانة 10 سنوات", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
   { id: "us30y", group: "rates", symbol: "^TYX", name: "عائد سندات الخزانة الأمريكية لثلاثين سنة", short: "الخزانة 30 سنة", unit: "%", decimals: 2, changeMode: "abs", limit: 1.5 },
+  // Europe's and Japan's benchmarks (2026-11-23), which Yahoo does not carry: each from its own state's daily file, a
+  // closing yield published the next working day (`source`, lib/yields.mjs). The Bundesbank's is the ten-year yield of
+  // its fitted curve of federal securities, the Ministry of Finance's its ten-year JGB yield.
+  { id: "de10y", group: "rates", source: "bundesbank", symbol: "BBSIS.D.I.ZAR.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A", name: "عائد السندات الحكومية الألمانية لعشر سنوات", short: "ألمانيا 10 سنوات", unit: "%", decimals: 2, changeMode: "abs", limit: 1 },
+  { id: "jp10y", group: "rates", source: "mof", symbol: "JGB 10Y", name: "عائد السندات الحكومية اليابانية لعشر سنوات", short: "اليابان 10 سنوات", unit: "%", decimals: 2, changeMode: "abs", limit: 1 },
   // العملات المشفرة: bitcoin was filed with the Treasury yields until 2026-11-15 (src/lib/markets.ts, GROUP_NAMES).
+  // Ether beside it (2026-11-23); the other coins move more than 4% on one day in four (Solana, XRP), and a stablecoin
+  // prints 1.00 for ever.
   { id: "btc", group: "crypto", symbol: "BTC-USD", name: "بيتكوين", short: "بيتكوين", unit: "دولار", decimals: 0, limit: 40 },
+  { id: "eth", group: "crypto", symbol: "ETH-USD", name: "إيثريوم", short: "إيثريوم", unit: "دولار", decimals: 0, limit: 40 },
 ];
 
 export async function fetchJson(url, headers = {}) {
@@ -98,12 +122,14 @@ const weekdayOf = (day) => new Date(`${day}T12:00:00Z`).getUTCDay();
 const dayAfter = (day, step = 1) => new Date(Date.parse(`${day}T12:00:00Z`) + step * 86400000).toISOString().slice(0, 10);
 
 /**
- * The weekdays (0 is Sunday) a market holds sessions on, from an instrument of the board or from Yahoo's answer: the Saudi
- * and Egyptian exchanges Sunday to Thursday, crypto every day, every other market Monday to Friday.
+ * The weekdays (0 is Sunday) a market holds sessions on, from an instrument of the board or from Yahoo's answer: the Saudi,
+ * Egyptian, Qatari and Kuwaiti exchanges Sunday to Thursday, crypto every day, every other market Monday to Friday, the
+ * UAE's among them (an instrument's `zone`, else Yahoo's exchange zone; FTSE files Abu Dhabi's index under London).
  */
-export function tradingWeekdays({ id, group, instrumentType, exchangeTimezoneName } = {}) {
-  if (id === "btc" || instrumentType === "CRYPTOCURRENCY") return [0, 1, 2, 3, 4, 5, 6];
-  if (group === "arab" || /^(?:Asia\/Riyadh|Africa\/Cairo)$/.test(exchangeTimezoneName ?? "")) return [0, 1, 2, 3, 4];
+export function tradingWeekdays({ id, group, zone, instrumentType, exchangeTimezoneName } = {}) {
+  if (id === "btc" || group === "crypto" || instrumentType === "CRYPTOCURRENCY") return [0, 1, 2, 3, 4, 5, 6];
+  const tz = zone ?? exchangeTimezoneName ?? "";
+  if (/^(?:Asia\/Riyadh|Africa\/Cairo|Asia\/Qatar|Asia\/Kuwait)$/.test(tz) || (group === "arab" && !zone)) return [0, 1, 2, 3, 4];
   return [1, 2, 3, 4, 5];
 }
 
@@ -148,8 +174,9 @@ export function sessionDay(meta, ms) {
  * the one-day answer for natural gas gave a time of 15 October and a previous close of 3.533 beside Friday's price of
  * 2.998, and the board printed −15.14% dated 15 October.
  */
-export async function yahooQuote(symbol) {
+export async function yahooQuote(symbol, { seed = false } = {}) {
   const today = await yahooChart(symbol, "1d");
+  if (seed) return seededQuote(symbol, today);
   // A currency's daily closes are read from its hourly prices, each session's last (found later on 2026-11-09, after the
   // change above went live): Yahoo's daily currency bar carries roughly the price at the start of its day, not its end.
   // Over three weeks, 7 to 15 of each currency's 21 daily closes sat nearer the evening before than their own day's end,
@@ -202,6 +229,36 @@ export async function yahooQuote(symbol) {
   return { price, prev, prevFrom, time: new Date(ms).toISOString(), session: day, currency: meta.currency || null, history, historyRead: Boolean(months) };
 }
 
+/**
+ * An index Yahoo keeps one daily bar for, with its hourly prices as a record to start from (2026-11-23, the Gulf's indices).
+ * Each session's last hourly price is not always its close: a closing auction moves it (Tasi's last hourly price of 19
+ * November was 10,118.63, its close 10,158.90), so the hourly closes are `seed`, never the move's base. The move is the
+ * feed's previous close, checked by the board against its record (`recordedPrev()`), and a seed point never replaces a
+ * close the board recorded itself (pipeline/markets.mjs).
+ */
+async function seededQuote(symbol, today) {
+  let hours = null;
+  try {
+    hours = await yahooChart(symbol, "3mo", "60m");
+  } catch {}
+  const priced = (m) => typeof m?.regularMarketPrice === "number" && Number.isFinite(m.regularMarketPrice) && typeof m.regularMarketTime === "number" && Number.isFinite(m.regularMarketTime);
+  const meta = priced(today.meta) ? today.meta : null;
+  if (!meta) throw new Error("no price");
+  const price = meta.regularMarketPrice;
+  const ms = meta.regularMarketTime * 1000;
+  const day = sessionDay(meta, ms);
+  const closes = new Map();
+  for (const bar of barsOf(hours)) closes.set(sessionDay(meta, bar.t), bar.c);
+  const later = [...closes.keys()].filter((d) => d > day).sort();
+  if (later.length) throw new Error(`stale quote: dated ${day}, the hourly prices reach ${later.at(-1)}`);
+  const feed = Number(meta.chartPreviousClose);
+  // As in yahooQuote(): the feed's previous close only when its one-day range holds the quote's session.
+  const own = barsOf(today).some((bar) => sessionDay(meta, bar.t) === day);
+  const usable = own && Number.isFinite(feed) && feed > 0;
+  const seedCloses = [...closes.entries()].filter(([d]) => d < day).sort(([a], [b]) => (a < b ? -1 : 1)).map(([d, c]) => ({ d, c }));
+  return { price, prev: usable ? feed : null, prevFrom: usable ? "unchecked" : null, time: new Date(ms).toISOString(), session: day, currency: meta.currency || null, history: [{ d: day, c: price }], seed: seedCloses, historyRead: Boolean(hours) };
+}
+
 const sameClose = (a, b) => Math.abs(a - b) <= Math.abs(b) * 0.0005;
 
 /**
@@ -220,6 +277,25 @@ export function recordedPrev(inst, quote, record = []) {
   if (sameClose(quote.prev, last.c)) return quote.prev;
   if (closes.slice(0, -1).some((p) => sameClose(quote.prev, p.c))) return last.c;
   return null;
+}
+
+/**
+ * The board's previous close for a Yahoo quote, and the closes it adds to the record (pipeline/markets.mjs).
+ * - An index Yahoo keeps one bar for: the feed's previous close only when the board's record bears it out.
+ * - A seeded index's hourly closes (seededQuote()) fill only the sessions the record lacks, and count as the record for
+ *   that check; a close the board recorded itself is never replaced by one (2026-11-23).
+ * - Between a one-bar index's last trade and its next session the feed gives no previous close (its one-day range is
+ *   the new, empty day), and the board printed no move all weekend: the same price at the same moment keeps the move the
+ *   board printed for it (2026-11-23).
+ */
+export function boardPrev(inst, raw, old = null) {
+  const record = old?.history ?? [];
+  const recorded = new Set(record.map((p) => p.d));
+  const seed = (raw.seed ?? []).filter((p) => !recorded.has(p.d));
+  const known = seed.length ? mergeHistory(inst, seed, record) : record;
+  let prev = raw.prevFrom === "unchecked" ? recordedPrev(inst, raw, known) : raw.prev;
+  if (prev == null && raw.prevFrom == null && old && !old.stale && Number.isFinite(old.prev) && old.price === raw.price && old.time === raw.time) prev = old.prev;
+  return { prev, history: [...seed, ...(raw.history ?? [])] };
 }
 
 /**
