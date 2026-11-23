@@ -1,0 +1,27 @@
+{
+  "mode": "reports",
+  "startedAt": "2026-11-23T13:41:48.175Z",
+  "durationSec": 16,
+  "published": 0,
+  "refreshed": 0,
+  "report": [],
+  "llm": {
+    "calls": 0,
+    "failures": 0,
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "cacheReadTokens": 0,
+    "costUsd": 0,
+    "byModel": {},
+    "byRole": {}
+  },
+  "log": [
+    "[13:41:48] newsroom start mode=reports limit=4 dry-run=false",
+    "[13:41:55] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
+    "[13:41:55] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
+    "[13:41:55] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[13:41:55] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
+    "[13:41:59] report un-tourism-barometer: page not read (http-403)",
+    "[13:42:04] reports: 0 new edition(s)"
+  ]
+}
