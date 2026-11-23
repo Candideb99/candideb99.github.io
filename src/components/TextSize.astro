@@ -61,7 +61,10 @@ import { TEXT_SIZE_KEY, TEXT_SIZE_MIN, TEXT_SIZE_MAX } from "@lib/text-size";
       var px = Number(range.value);
       chosen = px !== base;
       show(px);
-      document.documentElement.style.setProperty("--reader-size", px + "px");
+      // Back at the house size is no size of the reader's own: the page's own rule draws it. Set as a size, 18px stayed
+      // on the text when the window was widened to where the house size is 20, under a control saying 20 (2026-11-23).
+      if (px === base) document.documentElement.style.removeProperty("--reader-size");
+      else document.documentElement.style.setProperty("--reader-size", px + "px");
       // The house size is no choice to remember: a reader back at it follows the house size if it changes.
       try { px === base ? localStorage.removeItem(key) : localStorage.setItem(key, String(px)); } catch (e) {}
     });

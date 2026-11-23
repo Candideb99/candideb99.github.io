@@ -304,7 +304,9 @@ const browse = Object.entries(TOPICS)
         var before = list.children.length;
         list.insertAdjacentHTML("beforeend", slice.map(function (e, i) {
           var at = start + i;
-          var label = e.passing && at > 0 && !entries[at - 1].passing ? '<li class="search__group ui">مواد ورد فيها ذكرٌ عابر</li>' : "";
+          // Over the first passing mention, the list's first row included: a search every result of which is one («بيرو»,
+          // two stories) had listed them under no heading, as if they were about it (2026-11-23).
+          var label = e.passing && (at === 0 || !entries[at - 1].passing) ? '<li class="search__group ui">مواد ورد فيها ذكرٌ عابر</li>' : "";
           return label + item(e.d);
         }).join(""));
         shown += slice.length;

@@ -2941,14 +2941,14 @@ if (spawnSync("git", ["--version"]).status === 0) {
   check(
     "a price chart offers only the periods its record fills, and what is left over as «الكل»",
     [30, 22, 63, 70, 140, 260].map((n) => periodsFor(n).map((p) => `${p.id}:${p.sessions}`).join(" ")),
-    ["m1:22 all:30", "m1:22", "m1:22 all:63", "m1:22 m3:66", "m1:22 m3:66 m6:130 all:140", "m1:22 m3:66 m6:130 y1:260"],
+    ["m1:22 all:30", "m1:22", "m1:22 all:63", "m1:22 m3:70", "m1:22 m3:66 m6:130 all:140", "m1:22 m3:66 m6:130 y1:260"],
   );
   {
     const { closesDaily } = await import("../src/lib/price-chart.mjs");
     const chartSource = readFileSync("src/components/PriceChart.astro", "utf8");
     check("a market that closes every day counts a month as 30 closes (bitcoin's «شهر» had run 22 days), and the chart asks",
       [[30, 95, 260].map((n) => periodsFor(n, true).map((p) => `${p.id}:${p.sessions}`).join(" ")), closesDaily({ id: "btc", group: "crypto" }), closesDaily({ id: "brent", group: "commodities" }), /periodsFor\(closes\.length, closesDaily\(q\)\)/.test(chartSource)],
-      [["m1:30", "m1:30 m3:91", "m1:30 m3:91 m6:182 all:260"], true, false, true]);
+      [["m1:30", "m1:30 m3:95", "m1:30 m3:91 m6:182 all:260"], true, false, true]);
     check("a chosen period renames the drawing for a screen reader", [/name: nameOf\(p\.sessions\)/.test(chartSource), /svg\.setAttribute\("aria-label", name\)/.test(chartSource), /draw\(p\.sessions, p\.name\)/.test(chartSource)], [true, true, true]);
     const sizer = readFileSync("src/components/TextSize.astro", "utf8");
     check("the text-size control measures the house size again when the window changes", [/addEventListener\("resize"/.test(sizer), /base = now;/.test(sizer)], [true, true]);

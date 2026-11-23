@@ -36,6 +36,9 @@ export function periodsFor(count, daily = false) {
       // What the record holds beyond the last period it fills is offered as «الكل», never under the name of a period
       // it does not fill (thirty sessions had been offered as «3 أشهر»).
       if (!out.length || count > out[out.length - 1].sessions + 5) out.push({ id: "all", label: "الكل", sessions: count });
+      // A few closes more than the last period it fills (too few for a «الكل» of their own) are drawn with that period:
+      // a record of 70 offered «3 أشهر» at 66, and its four oldest closes were in no chart and no table (2026-11-23).
+      else if (count > out[out.length - 1].sessions) out[out.length - 1] = { ...out[out.length - 1], sessions: count };
       break;
     }
   }

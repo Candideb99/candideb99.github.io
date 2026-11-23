@@ -167,6 +167,14 @@ check("the search reads neither the standing note under the sources nor the seco
   check("a search whose results do not arrive says so, and a list that did not arrive is asked for again", [search.includes('say("تعذّر تحميل النتائج. تحقق من الاتصال وحاول مرة أخرى.");'), search.includes(".catch(function () { return new Map(); });"), search.includes("PAGES = new Map(); return PAGES; })")], [true, true, false]);
 }
 
+// Codex's sixth review of the same day.
+{
+  const { periodsFor } = await import("../src/lib/price-chart.mjs");
+  check("a record a few closes longer than its last period draws them all in that period", [70, 66, 72, 27].map((n) => periodsFor(n).map((p) => p.id + ":" + p.sessions).join(" ")), ["m1:22 m3:70", "m1:22 m3:66", "m1:22 m3:66 all:72", "m1:27"]);
+  check("the text size back at the house size is no size of the reader's own, and a search of passing mentions alone is headed as one",
+    [source("src/components/TextSize.astro").includes('if (px === base) document.documentElement.style.removeProperty("--reader-size");'), source("src/pages/search.astro").includes("var label = e.passing && (at === 0 || !entries[at - 1].passing) ?")], [true, true]);
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed.`);
   process.exit(1);
