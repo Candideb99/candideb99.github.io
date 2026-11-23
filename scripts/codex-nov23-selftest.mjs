@@ -84,6 +84,54 @@ check("two different values of a chart never print alike", [[10.14, 10.06, 7.5].
 check("the search reads neither the standing note under the sources nor the second copy of the fact box",
   [source("src/components/Sources.astro").includes('<p class="sources__note" data-pagefind-ignore>'), source("src/components/KeyFacts.astro").includes('data-pagefind-ignore={placement === "side" ? "" : undefined}')], [true, true]);
 
+// Codex's fourth review of the same day: the reports desk, corrections, market data, the calendar, place pages.
+{
+  const { pressRelease, reportExcerpts } = await import("../pipeline/lib/reports.mjs");
+  const { parseBls, buildCalendar } = await import("../pipeline/lib/calendar.mjs");
+  const { mergeHistory, INSTRUMENTS, DAILY_HISTORY } = await import("../pipeline/lib/quotes.mjs");
+  const base = "https://www.worldbank.org/en/research/commodity-markets";
+  const links = `<html><body><a href="/en/news/press-release/2026/10/02/peru-hospital-network-financing">Press release: Peru hospital network</a><a href="/en/news/press-release/2026/10/28/commodity-markets-outlook-october-2026">Press release: Commodity Markets Outlook</a></body></html>`;
+  check("a report's press release is the one that names the report, not the first of the year on its page",
+    [pressRelease(links, base, { key: 202610 }, "Commodity Markets Outlook"), pressRelease(links, base, { key: 202610 }, "Global Wealth Report"), pressRelease(links, base, { key: 202610 })],
+    ["https://www.worldbank.org/en/news/press-release/2026/10/28/commodity-markets-outlook-october-2026", null, "https://www.worldbank.org/en/news/press-release/2026/10/02/peru-hospital-network-financing"]);
+  const finding = "Key findings\n" + "Global wealth grew 4.6% in 2025, led by North America, while the Gulf's grew faster than Europe's. ".repeat(8);
+  const pages = [finding, "Contents\nMethodology ..... 3\nAppendix ..... 4", "Methodology\n" + "The sample covers 56 markets and uses household balance sheets. ".repeat(10), "Appendix\n" + "Tables of the data by market follow in this appendix section. ".repeat(10)];
+  check("a report that opens on its key findings gives them to the writer; a cover is still passed over",
+    [JSON.stringify(reportExcerpts(pages)).includes("Global wealth grew 4.6%"), JSON.stringify(reportExcerpts(["Global Wealth Report 2026", ...pages.slice(1)])).includes("Global Wealth Report 2026")],
+    [true, false]);
+
+  const bls = { org: "BLS", local: "08:30", zone: "America/New_York", url: "https://www.bls.gov/x", title: (ref) => `t ${ref}`, short: (ref) => `s ${ref}` };
+  const table = `<table class="release-list"><tr><td>November 2026</td><td>Dec. 10, 2026</td><td>08:30 AM</td></tr><tr><td>December 2026</td><td>Jan. 13, 2027</td><td>10:00 AM</td></tr><tr><td>January 2027</td><td>Feb. 10, 2027</td><td>TBD</td></tr></table>`;
+  check("a release takes the hour its schedule prints, and none where the schedule says it is to be decided",
+    parseBls(table, bls).map((e) => e.time ?? null), ["13:30 UTC", "15:00 UTC", null]);
+
+  const bea = { id: "bea", org: "o", what: "w", url: "u" };
+  const stored = { updatedAt: "2026-11-20T00:00:00Z", sources: [{ id: "bea", readAt: "2026-11-20T00:00:00Z" }], events: [{ source: "bea", date: "2026-12-05", title: "a" }, { source: "bea", date: "2027-01-28", title: "b" }, { source: "bea", date: "2027-03-25", title: "c" }] };
+  const now = Date.parse("2026-11-23T12:00:00Z");
+  const partial = Object.assign([{ date: "2026-12-05", title: "a" }, { date: "2026-12-19", title: "new" }], { partial: true });
+  const whole = [{ date: "2026-12-05", title: "a" }, { date: "2026-12-19", title: "new" }];
+  const dates = (events) => buildCalendar(stored, new Map([["bea", { events }]]), now, [bea]).events.map((e) => e.date);
+  check("a reading that missed one of a source's pages keeps the stored dates beyond its reach; a whole reading replaces them",
+    [dates(partial), dates(whole)], [["2026-12-05", "2026-12-19", "2027-01-28", "2027-03-25"], ["2026-12-05", "2026-12-19"]]);
+
+  const days = Array.from({ length: 400 }, (_, i) => ({ d: new Date(Date.UTC(2025, 9, 1) + i * 86400000).toISOString().slice(0, 10), c: 60000 + i }));
+  check("a market that closes every day keeps a year of days", [mergeHistory(INSTRUMENTS.find((i) => i.id === "btc"), days, [], null).length, DAILY_HISTORY], [365, 365]);
+  check("a price older than the board's record is refused as stale", [source("pipeline/markets.mjs").includes("if (newest && raw.session && raw.session < newest) throw new Error(`stale quote:")], [true]);
+
+  const fix = source("pipeline/correct.mjs");
+  check("the corrections editor reads a story's sources as the fact-check does, refuses an answer that changes nothing, and a language fix moves no figure and no chart",
+    [fix.includes("const read = await loadSources({ slug, sources: story.sources ?? [] }"), fix.includes('if (!diff.length && !problems.length) problems.push("nothing was changed");'), fix.includes('problems.push("a language fix changed the order of the figures")'), fix.includes('problems.push("a language fix touched the table or the chart")'), /if \(!s\.url \|\| s\.url\.startsWith\("\/"\)\) continue;/.test(fix)],
+    [true, true, true, true, false]);
+  const look = source("pipeline/recheck.mjs");
+  check("the second look reads an unread story again, reopens a correction that came back in no report, and counts the second pass's calls",
+    [look.includes('const retryUnread = (e) => e.outcome === "unverifiable" && (e.unread ?? 1) < MAX_FAILURES && hoursSince(e.at) >= 12;'), look.includes('entry.reason = "the corrections editor wrote no report for it";'), look.includes("editorCalls += second.filter((i) => i.model).length;")],
+    [true, true, true]);
+  check("the region balance never takes the place of the story the section balance brought in", [source("pipeline/run.mjs").includes("chosen.filter((s) => !arabWorld(s.regions) && !balanced.has(s))")], [true]);
+  check("a city's page stands under its desk, and an instrument's newest row says it is its latest price",
+    [source("src/pages/tags/[tag]/[...page].astro").includes("deskOf(name) ?? DESKS.find((d) => d.name === groundedRegions([], { title: name })[0]) ?? DESKS.find((d) => d.id === \"world\")"), source("src/pages/markets/data/[id].astro").includes("const latest = !q.endOfDay && Boolean(q.time) && closes[0]?.d >= String(q.time).slice(0, 10);")],
+    [true, true]);
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed.`);
   process.exit(1);

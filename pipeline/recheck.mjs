@@ -108,7 +108,10 @@ function choose(all, ledger) {
   // A check that failed is tried again (twice at most); so is a correction the corrections desk refused or failed, once,
   // twelve hours later, with a fresh reading (2026-09-26: a refused correction had been left in print for good).
   const retryCorrection = (e) => ["refused", "correction-failed"].includes(e.outcome) && (e.correctionAttempts ?? 1) < 2 && hoursSince(e.at) >= 12;
-  const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES) || retryCorrection(ledger.stories[s.slug]);
+  // And a story none of whose sources could be read (a site down for an hour) is read again, twelve hours on, twice at
+  // most: «unverifiable» had been final, so one bad hour took a story out of the second look for good (2026-11-23).
+  const retryUnread = (e) => e.outcome === "unverifiable" && (e.unread ?? 1) < MAX_FAILURES && hoursSince(e.at) >= 12;
+  const open = (s) => REDO || !ledger.stories[s.slug] || (ledger.stories[s.slug].outcome === "failed" && (ledger.stories[s.slug].failures ?? 1) < MAX_FAILURES) || retryCorrection(ledger.stories[s.slug]) || retryUnread(ledger.stories[s.slug]);
   if (SLUGS.size) return all.filter((s) => SLUGS.has(s.slug) && CHECKABLE_KINDS.has(s.kind) && open(s));
   const checkable = all.filter((s) => CHECKABLE_KINDS.has(s.kind) && (s.sources ?? []).length && open(s) && auditSample(s));
   const age = (s) => hoursSince(s.publishedAt);
@@ -143,6 +146,7 @@ async function check(story, ledger, report, corrections) {
   entry.sourcesAll = sources.length;
   if (!entry.sourcesRead) {
     entry.outcome = "unverifiable";
+    entry.unread = (prior?.outcome === "unverifiable" ? prior.unread ?? 1 : 0) + 1;
     log(`${story.slug}: none of ${sources.length} source(s) could be read again; nothing spent`);
   } else {
     try {
@@ -255,6 +259,18 @@ async function main() {
     const items = await correct(corrections);
     // One call each, in the corrections editor's own process (its calls are not in this process's count).
     editorCalls = items.filter((i) => i.model).length;
+    // A story sent to the editor that came back in no report (the editor's process ended first) is a correction that
+    // failed, to be tried once more: left «flagged», a state nothing reopens, its proved error stayed in print
+    // (2026-11-23).
+    for (const sent of corrections) {
+      const entry = ledger.stories[sent.slug];
+      if (entry && !items.some((i) => i.slug === sent.slug)) {
+        entry.outcome = "correction-failed";
+        entry.reason = "the corrections editor wrote no report for it";
+        const row = report.find((r) => r.slug === sent.slug);
+        if (row) row.outcome = entry.outcome;
+      }
+    }
     for (const item of items) {
       const entry = ledger.stories[item.slug];
       if (!entry) continue;
@@ -295,7 +311,10 @@ async function main() {
       }
     }
     if (again.length) {
-      for (const item of await correct(again)) {
+      const second = await correct(again);
+      // The second pass's calls are calls too (17 stories of the ledger have one; the count had left them out).
+      editorCalls += second.filter((i) => i.model).length;
+      for (const item of second) {
         const entry = ledger.stories[item.slug];
         if (entry?.verified) entry.verified.secondCorrection = item.outcome;
         if (item.outcome === "corrected") corrected += 1;

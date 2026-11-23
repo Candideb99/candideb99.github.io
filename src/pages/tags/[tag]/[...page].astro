@@ -29,6 +29,7 @@ import { getArticles, allTags, firstPictures } from "@lib/articles";
 import { DESKS, desksOf, deskOf, GROUPINGS, PLACE_TAGS } from "@lib/regions";
 import { isFileTag } from "@lib/topics";
 import { FILE_MIN } from "@lib/files";
+import { groundedRegions } from "../../../../pipeline/lib/regions.mjs";
 import { formatShortDate, formatTime } from "@lib/format";
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
@@ -51,7 +52,11 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     (desk.id === "egypt" || desk.id === "usa" ? [] : [...new Set(desk.match)]).filter((m) => !GROUPINGS.has(m) && !desks.has(m) && size.has(m)).sort((a, b) => size.get(b)! - size.get(a)!).slice(0, 10);
   return built.flatMap(([tag, items]) => {
     const place = PLACE_TAGS.has(tag);
-    const desk = place ? (DESKS.find((d) => d.name === tag) ?? deskOf(tag)) : undefined;
+    // A place's desk: by the desks' lists, else the Arab desk the newsroom's own place words put it on («دبي» and «أبوظبي»
+    // are the Gulf's there and in no desk's list here), else the world's. Their pages had no way back to a desk, where
+    // «السعودية» showed its desk and neighbours (2026-11-23).
+    const deskOfPlace = (name: string) => deskOf(name) ?? DESKS.find((d) => d.name === groundedRegions([], { title: name })[0]) ?? DESKS.find((d) => d.id === "world");
+    const desk = place ? (DESKS.find((d) => d.name === tag) ?? deskOfPlace(tag)) : undefined;
     const own = desk?.name === tag;
     const props = {
       tag,

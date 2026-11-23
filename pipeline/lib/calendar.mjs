@@ -235,12 +235,16 @@ export function parseBls(html, source) {
     const refM = monthIndex(ref[1]);
     const relM = monthIndex(rel[1]);
     if (refM < 0 || relM < 0) continue;
-    events.push(blsEvent(source, iso(Number(rel[3]), relM, Number(rel[2])), MONTHS_AR[refM], source.url));
+    // The hour the table prints for this release, when it prints one; a «TBD» there is no hour at all. The column was
+    // read and dropped, and every release took the usual 08:30 (2026-11-23).
+    const printed = row[3].trim().match(/(\d{1,2}):(\d{2})\s*([AP])\.?M/i);
+    const local = printed ? `${String((Number(printed[1]) % 12) + (printed[3].toUpperCase() === "P" ? 12 : 0)).padStart(2, "0")}:${printed[2]}` : /\d/.test(row[3]) ? undefined : null;
+    events.push(blsEvent(source, iso(Number(rel[3]), relM, Number(rel[2])), MONTHS_AR[refM], source.url, local));
   }
   return events;
 }
 
-const blsEvent = (source, date, ref, url) => release(source, date, { title: source.title(ref), short: source.short(ref), url });
+const blsEvent = (source, date, ref, url, local = source.local) => release(source, date, { title: source.title(ref), short: source.short(ref), url, local });
 
 /**
  * The same release days from FRED, the St. Louis Fed's release calendar, when bls.gov refuses the reader: from October
@@ -512,7 +516,10 @@ const BEA = {
     const events = parseBea(await fetchPage(BEA.pages[0]));
     try {
       events.push(...parseBea(await fetchPage(BEA.pages[1])));
-    } catch {}
+    } catch {
+      // Next year's page did not answer: the dates of it already on record stay (buildCalendar(), `partial`).
+      events.partial = true;
+    }
     return events;
   },
 };
@@ -580,7 +587,13 @@ export function buildCalendar(previous, readings, now = Date.now(), sources = SO
   const listed = [];
   sources.forEach((source, order) => {
     const fresh = readings.get(source.id);
-    const own = (fresh ? fresh.events : (previous?.events ?? []).filter((e) => e.source === source.id)).filter((e) => e.date >= floor);
+    // A reading that could not reach all of a source's pages (`partial`) keeps the stored dates beyond its own last
+    // one: with the BEA's next-year page down for one request, its 24 releases of 2027 left the agenda and the source
+    // read as fresh (2026-11-23).
+    const before = (previous?.events ?? []).filter((e) => e.source === source.id);
+    const reach = fresh ? fresh.events.reduce((max, e) => (e.date > max ? e.date : max), "") : "";
+    const kept = fresh?.events.partial ? before.filter((e) => e.date > reach) : [];
+    const own = (fresh ? [...fresh.events, ...kept] : before).filter((e) => e.date >= floor);
     for (const e of own) events.push({ ...e, source: source.id, order });
     const was = stored.get(source.id);
     const via = fresh ? fresh.via : was?.via ? { note: was.via, url: was.url } : null;

@@ -306,6 +306,8 @@ export function boardPrev(inst, raw, old = null) {
 /** A year of sessions (thirty until 2026-11-16): an instrument's own page draws its closes over a month, three and six
  *  months and a year, each offered once the record fills it; the first refresh brings the three months Yahoo answers with. */
 export const HISTORY_SESSIONS = 260;
+/** …and a market with a close every day of the week keeps 365: at 260, bitcoin's «سنة» (365 closes, price-chart.mjs) could never be offered (2026-11-23). */
+export const DAILY_HISTORY = 365;
 
 export function mergeHistory(inst, old = [], fresh = [], quote = null, now = Date.now()) {
   const byDate = new Map();
@@ -321,7 +323,7 @@ export function mergeHistory(inst, old = [], fresh = [], quote = null, now = Dat
   const today = new Date(now).toISOString().slice(0, 10);
   if (quote && isSessionDay(quote.session, inst)) for (const d of [...byDate.keys()]) if (d > quote.session && d > today) byDate.delete(d);
   const round = (v) => Number(v.toFixed(inst.decimals + 2));
-  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-HISTORY_SESSIONS).map(([d, c]) => ({ d, c: round(c) }));
+  return [...byDate.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).slice(-(tradingWeekdays(inst).length === 7 ? DAILY_HISTORY : HISTORY_SESSIONS)).map(([d, c]) => ({ d, c: round(c) }));
 }
 
 export function withChange(inst, quote) {

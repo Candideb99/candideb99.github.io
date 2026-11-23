@@ -954,7 +954,10 @@ async function runNews(report) {
   if (!SECTIONS.length && arabToday < ARAB_DAILY && !chosen.some((s) => arabWorld(s.regions))) {
     const pick = ordinary.find((s) => arabWorld(s.regions) && !chosen.includes(s) && s.importance >= MIN_IMPORTANCE - 1);
     if (pick) {
-      const elsewhere = chosen.filter((s) => !arabWorld(s.regions)).sort((x, y) => x.importance - y.importance)[0];
+      // Never the story the section balance has just brought in (`balanced`): a technology story added for a section
+      // three days empty gave way at once to a Gulf markets story, and the run had two of markets and none of
+      // technology, where the other markets story could have gone (2026-11-23).
+      const elsewhere = chosen.filter((s) => !arabWorld(s.regions) && !balanced.has(s)).sort((x, y) => x.importance - y.importance)[0];
       if (chosen.length < runLimit) chosen.push(pick);
       else if (elsewhere && elsewhere.importance <= pick.importance + 1) {
         chosen.splice(chosen.indexOf(elsewhere), 1, pick);

@@ -63,6 +63,11 @@ async function main() {
         return { inst, quote: { ...quote, source: inst.source, stale: false }, ok: true };
       }
       const raw = await yahooQuote(inst.symbol, { seed: inst.seed });
+      // A price of a session before the newest close on record is an old answer (the feed keeps one bar for some
+      // indices, so nothing in it says so): it became the headline price over a history that ended three sessions
+      // later (2026-11-23). Refused, so the board keeps its last good quote, marked stale.
+      const newest = record.at(-1)?.d;
+      if (newest && raw.session && raw.session < newest) throw new Error(`stale quote: dated ${raw.session}, the record reaches ${newest}`);
       const { prev, history } = boardPrev(inst, raw, previousById.get(inst.id));
       const quote = withChange(inst, { ...raw, prev, history });
       delete quote.prevFrom;

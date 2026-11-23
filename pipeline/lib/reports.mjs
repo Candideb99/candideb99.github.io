@@ -207,7 +207,10 @@ export function reportExcerpts(pages, { summaryChars = 7000, countryChars = 9000
   // A heading may come out of the PDF letter-spaced («E X E C U T I V E S U M M A RY», the World Bank's Commodity Markets
   // Outlook of October 2026, whose summary was then its copyright page and acknowledgments): it is also looked for with
   // the spaces taken out.
-  const summaryAt = clean.findIndex((p, i) => i > 0 && (/executive summary|key findings|main findings|overview|highlights|résumé|zusammenfassung|ملخص/i.test(p.slice(0, 600)) || /executivesummary|keyfindings|mainfindings/i.test(p.slice(0, 600).replace(/\s+/g, ""))));
+  // The first page too, when it is the summary itself and not a cover or a contents list: a short report that opens
+  // «Key findings» on page one gave the writer its methodology and appendix and never its finding (2026-11-23).
+  const opens = (p) => p.length > 600 && !/\.{5,}|^\s*(?:table of )?contents\b/im.test(p);
+  const summaryAt = clean.findIndex((p, i) => (i > 0 || opens(p)) && (/executive summary|key findings|main findings|overview|highlights|résumé|zusammenfassung|ملخص/i.test(p.slice(0, 600)) || /executivesummary|keyfindings|mainfindings/i.test(p.slice(0, 600).replace(/\s+/g, ""))));
   const start = summaryAt >= 0 ? summaryAt : Math.min(2, clean.length - 1);
   let summary = "";
   for (let i = start; i < clean.length && summary.length < summaryChars; i += 1) {
@@ -309,10 +312,20 @@ export function releaseDocument(html, base, report, edition) {
 }
 
 /** The publisher's own press release for an edition, linked from its page and on its own site, or null. */
-export function pressRelease(html, base, edition = null) {
+/**
+ * `about`: the report's own name (reports.json `nameEn`). With it, a release is the edition's only when its link names
+ * the report: by at least one word of its own, the most first; the first «press release» link of the year on the page was taken whatever it was about, and a hospital
+ * announcement in Peru would have been cited as the Commodity Markets Outlook's release (2026-11-23).
+ */
+const RELEASE_WORDS = new Set("the and for with from report reports release releases press news world global annual update outlook edition bank fund international".split(" "));
+const releaseWords = (text) => new Set((String(text ?? "").toLowerCase().match(/[a-z\u0600-\u06ff]{4,}/g) ?? []).filter((w) => !RELEASE_WORDS.has(w)));
+
+export function pressRelease(html, base, edition = null, about = "") {
   const { document } = parseHTML(html);
   const host = (u) => new URL(u).hostname.replace(/^www\./, "");
   const year = String(Math.floor((edition?.key ?? 0) / 100));
+  const wanted = releaseWords(about);
+  let best = null;
   for (const a of document.querySelectorAll("a[href]")) {
     let url;
     try {
@@ -324,9 +337,11 @@ export function pressRelease(html, base, edition = null) {
     if (!/press[- ]release|news release|communiqué de presse|بيان صحفي/i.test(`${text} ${url}`)) continue;
     if (host(url) !== host(base) || /\.pdf(?:$|[?#])/i.test(url) || /\/(?:press[- ]releases?|news)\/?$/i.test(url)) continue;
     if (year !== "0" && !url.includes(year) && !text.includes(year)) continue;
-    return url;
+    if (!wanted.size) return url;
+    const named = [...releaseWords(`${text} ${decodeURIComponent(url).replace(/[-_/]+/g, " ")}`)].filter((w) => wanted.has(w)).length;
+    if (named >= 1 && (!best || named > best.named)) best = { url, named };
   }
-  return null;
+  return best?.url ?? null;
 }
 
 /**
@@ -351,7 +366,7 @@ export async function readEdition(report, edition, { log = () => {} } = {}) {
       pdfUrl = bestPdf(html.html, html.url, report, edition);
       // The publisher's press release for the edition carries its headline numbers (the World Bank's for the October
       // 2026 MENAAP update: the region shrinking 2.1% and the Gulf 4.3%, which the report's passages alone missed).
-      const releaseUrl = pressRelease(html.html, html.url, edition);
+      const releaseUrl = pressRelease(html.html, html.url, edition, `${report.nameEn ?? ""} ${report.name ?? ""}`);
       if (releaseUrl && releaseUrl !== edition.url) {
         const read = await extractArticle(releaseUrl, { maxChars: 6000, log });
         if (read.ok) release = { url: releaseUrl, text: read.text };

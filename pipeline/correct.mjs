@@ -40,7 +40,7 @@ import { arabicRatio, normalizeDigits, ungroundedNumbers } from "./lib/util.mjs"
 import { ARTICLES_DIR } from "./lib/article.mjs";
 import { boxFacts } from "./lib/keyfacts.mjs";
 import { fixNames } from "./lib/copydesk.mjs";
-import { loadSnapshot, snapshotSource } from "./lib/snapshots.mjs";
+import { loadSources } from "./lib/factcheck.mjs";
 
 const args = process.argv.slice(2);
 const option = (name) => args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? "";
@@ -86,19 +86,16 @@ const sentencesOf = (t) => String(t ?? "").split(/(?<=[.؟!])\s+|\n+/).map((s) =
 // Read through the house spelling table, which writes the decimal point: a «2,22» set right as «2.22» is the same figure.
 const numbersOf = (t) => (normalizeDigits(fixNames(String(t ?? ""))).match(/\d[\d.,]*\d|\d/g) ?? []).map((n) => n.replace(/[.,]+$/, "").replace(/,(?=\d{3}(?!\d))/g, ""));
 
+/**
+ * The story's sources as the fact-check reads them (lib/factcheck.mjs loadSources(), one reader for both since
+ * 2026-11-23): a page that no longer answers from the copy saved at publication, our own stories from their files, and a
+ * market quote only as it stood when the story was written. This desk's own reader had skipped every story of ours, so
+ * the 37 analyses and three weeks' reviews, which cite nothing else, came to it with no source and were called
+ * explainers; and it fetched a market quote's page again, where a later price could "correct" the price of the day.
+ */
 async function sourcesOf(story, slug) {
-  // A page that no longer answers is read from the copy saved at publication (lib/snapshots.mjs, 2026-09-26): the same
-  // night two sources of a story could not be read again here (a 403 and a robots refusal).
-  const saved = loadSnapshot(slug);
-  const out = [];
-  for (const s of story.sources ?? []) {
-    if (!s.url || s.url.startsWith("/")) continue;
-    const fetched = await extractArticle(s.url, { log });
-    const copy = fetched.ok ? null : snapshotSource(saved, s.url);
-    out.push({ name: s.name ?? s.nameEn ?? "", title: s.title ?? "", url: s.url, text: fetched.ok ? fetched.text : copy?.text ?? "" });
-    if (!fetched.ok) log(`  source ${s.url.slice(0, 70)}: ${fetched.reason}${copy?.text ? "; read from the copy saved at publication" : ""}`);
-  }
-  return out;
+  const read = await loadSources({ slug, sources: story.sources ?? [] }, { log: (m) => log(m), fetcher: (url, options) => extractArticle(url, options) });
+  return read.map((s) => ({ name: s.name, title: s.title, url: s.url, text: s.text }));
 }
 
 const report = { startedAt: new Date().toISOString(), dryRun: DRY, items: [] };
@@ -203,6 +200,10 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
     const kept = new Set(numbersOf(text(after)));
     const lost = [...had].filter((n) => !kept.has(n));
     if (added.length || lost.length) problems.push(`a language fix moved figures (${[...added, ...lost].slice(0, 4).join(", ")})`);
+    // …nor their order, nor the table or the chart: with every figure still somewhere in the story, sales up 20% and
+    // profit down 10% could change places and the chart go, with no note and no stamp (2026-11-23).
+    else if (numbersOf(text(before)).join(" ") !== numbersOf(text(after)).join(" ")) problems.push("a language fix changed the order of the figures");
+    if (nextVisuals.table !== visuals.table || nextVisuals.chart !== visuals.chart) problems.push("a language fix touched the table or the chart");
   }
   if (arabicRatio(after.body) < 0.5) problems.push("the body is not Arabic");
   const was = sentencesOf(text(before));
@@ -213,6 +214,9 @@ Answer with one JSON object: {"correct": false, "title": "...", "subtitle": "...
   const diff = FIELDS.filter((f) => before[f].trim() !== after[f].trim());
   if (JSON.stringify(before.keyFacts) !== JSON.stringify(after.keyFacts)) diff.push("keyFacts");
   for (const key of ["table", "chart"]) if (nextVisuals[key] !== visuals[key]) diff.push(key);
+  // An answer that changes nothing has corrected nothing: two runs of 2026-10-18 reported «corrected» with no field
+  // changed, and the error stayed in print as put right (2026-11-23). Refused, so the second look tries once more.
+  if (!diff.length && !problems.length) problems.push("nothing was changed");
   const shown = (f) => !["body", "keyFacts", "table", "chart"].includes(f);
   const item = { slug, issue, language: LANGUAGE || undefined, why: WHY || undefined, outcome: problems.length ? "refused" : DRY ? "would correct" : "corrected", problems, fields: diff, note, model, before: Object.fromEntries(diff.filter(shown).map((f) => [f, before[f]])), after: Object.fromEntries(diff.filter(shown).map((f) => [f, after[f]])), visuals: diff.some((f) => f === "table" || f === "chart") ? { table: nextVisuals.table ? nextVisuals.table.title : null, chart: nextVisuals.chart ? nextVisuals.chart.title : null } : undefined, changedSentences: was.filter((s) => !now.has(s)).slice(0, 12), newSentences: sentencesOf(text(after)).filter((s) => !new Set(was).has(s)).slice(0, 12) };
   report.items.push(item);

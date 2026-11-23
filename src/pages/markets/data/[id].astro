@@ -31,6 +31,9 @@ const record = [...(q.history ?? [])].reverse();
 // A month is 22 sessions, 30 for a market that closes every day (bitcoin).
 const closes = record.slice(0, periodsFor(Infinity, closesDaily(q))[0].sessions);
 const num = (v: number) => v.toLocaleString("en-US", { minimumFractionDigits: q.decimals, maximumFractionDigits: q.decimals }) + (q.unit === "%" ? "%" : "");
+// The newest row is the price as last read while its day is the quote's own: a market that never shuts (bitcoin at
+// 17:55 GMT) had it listed as that day's close (2026-11-23). A yield published at the day's end is a close.
+const latest = !q.endOfDay && Boolean(q.time) && closes[0]?.d >= String(q.time).slice(0, 10);
 const dayMove = (i: number) => {
   const prev = record[i + 1];
   if (!prev) return null;
@@ -85,7 +88,7 @@ const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر وال
                 return (
                   <tr>
                     {/* «20 نوفمبر», as the site's dated lists print a day: «2026» stood on every row. */}
-                    <th scope="row"><bdi>{formatShortDate(`${p.d}T12:00:00Z`)}</bdi></th>
+                    <th scope="row"><bdi>{formatShortDate(`${p.d}T12:00:00Z`)}</bdi>{i === 0 && latest && <span class="closes__latest"> · آخر سعر</span>}</th>
                     <td><bdi dir="ltr">{num(p.c)}</bdi></td>
                     <td class={m ? `closes__move--${m.dir}` : undefined}>{m ? <bdi dir="ltr">{m.text}</bdi> : "—"}</td>
                   </tr>
@@ -142,6 +145,7 @@ const description = `${q.name}${q.note ? ` (${q.note})` : ""}: السعر وال
   .closes__move--up { color: var(--up); font-weight: 700 !important; }
   .closes__move--down { color: var(--down); font-weight: 700 !important; }
   .closes__move--flat { color: var(--ink-3); }
+  .closes__latest { color: var(--ink-3); font-size: var(--fs-xs); }
   .note { margin-top: 1.5rem; font-size: var(--fs-xs); line-height: 1.6; color: var(--ink-3); max-width: var(--measure); }
   .inst__news { margin-top: clamp(2rem, 4vw, 3rem); }
   @media (max-width: 899px) {
