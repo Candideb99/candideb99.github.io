@@ -462,6 +462,39 @@ check(
   ],
   [["برتغال"], ["برتغال"], ["ارمين"], ["ارمين"], false, false, ["امريك", "اميرك"]],
 );
+// The same day's second batch (the owner: "also check spain, Scandinavian countries, latvia, esrtonia, finland, lithuania,
+// ... irland, soudan, south soudan, sahel countries ... peru"): Ireland, the Baltic states, South Sudan and the Sahel are
+// read. Unread, Sudan's and South Sudan's devaluations, Ireland's and Britain's surpluses, Estonia's and Latvia's VAT rises
+// and Bamako's and Ouagadougou's mining suspensions were one event each. Mali is read by Bamako alone: «مالي» is also
+// «financial», and a nisba keyed «مالي» would have made «X» المالية a Malian company.
+check(
+  "Ireland, the Baltics, South Sudan and the Sahel are read, each apart from its neighbour; «مالي» as «financial» is no country; Northern Ireland is Britain",
+  [
+    Boolean(repeatsRecent("المركزي في جنوب السودان يخفض قيمة الجنيه 20%", ["المركزي السوداني يخفض قيمة الجنيه 20%"])),
+    Boolean(repeatsRecent("أيرلندا تسجل فائضاً في الموازنة بـ8 مليارات يورو", ["بريطانيا تسجل فائضاً في الموازنة بـ8 مليارات يورو"])),
+    Boolean(repeatsRecent("إستونيا ترفع ضريبة القيمة المضافة إلى 24%", ["لاتفيا ترفع ضريبة القيمة المضافة إلى 24%"])),
+    Boolean(repeatsRecent("باماكو تعلق تصاريح تعدين الذهب", ["واغادوغو تعلق تصاريح تعدين الذهب"])),
+    [...countriesNamed("الجنيه الجنوب سوداني يهوي")], [...countriesNamed("ليتوانيا تشتري الغاز")], [...countriesNamed("النيجر تعلق صادرات اليورانيوم")], [...countriesNamed("تشاد ترفع أسعار الوقود")],
+    [...countriesNamed("دعم مالي من صندوق النقد لمصر")], [...countriesNamed("بلفاست في أيرلندا الشمالية تستقبل مصنعاً")], [...countriesNamed("أوسلو ترفع الفائدة")],
+    unplacedActors({ title: "«ثمار» المالية تطلق صندوقاً", lede: "أطلقت شركة «ثمار» المالية صندوقاً.", body: "" }).length,
+  ],
+  [false, false, false, false, ["جنوب سودان"], ["ليتوان"], ["نيجر"], ["تشاد"], ["مصر"], ["بريطان"], ["نرويج"], 0],
+);
+{
+  const feeds = JSON.parse(readFileSync("pipeline/sources.json", "utf8")).sources;
+  const entry = (id) => feeds.find((s) => s.id === id && !s.disabled) ?? null;
+  const ids = ["eleconomista-es", "europapress-eco", "realtid-se", "ssb-no", "err-news", "lsm-en", "businessplus-ie", "siliconrepublic", "sudantribune-ar", "sudanspost", "radiotamazuj", "lefaso", "maliactu", "lesahel-ne", "tchadinfos", "elcomercio-pe", "larepublica-pe"];
+  check("Spain, Sweden, Norway, Estonia, Latvia, Ireland, Sudan, South Sudan, the Sahel and Peru have the outlets of 23 November, every news outlet labelled, Niger's state daily as such",
+    [ids.filter((id) => !entry(id) || (entry(id).kind === "news" && (!entry(id).owner || !entry(id).firstMention))), entry("lesahel-ne")?.mustSay?.length > 0], [[], true]);
+  const fresh = new Date().toUTCString();
+  const rss = (items) => `data:text/xml;charset=utf-8,${encodeURIComponent(`<?xml version="1.0"?><rss version="2.0"><channel><title>t</title>${items.map(([url, title]) => `<item><title>${title}</title><link>${url}</link><pubDate>${fresh}</pubDate></item>`).join("")}</channel></rss>`)}`;
+  const kept = async (id, items) => (entry(id) ? (await fetchFeed({ ...entry(id), url: rss(items) })).map((i) => i.title) : null);
+  check("LSM keeps its economy pages; Lefaso leaves its obituaries; El Comercio leaves the day's dollar price", [
+    await kept("lsm-en", [["https://eng.lsm.lv/article/economy/business/23.11.2026-cee-top-500.a673007/", "CEE Top 500"], ["https://eng.lsm.lv/article/culture/culture/23.11.2026-festival.a673000/", "Festival"]]),
+    await kept("lefaso", [["https://lefaso.net/spip.php?article1", "Burkina : la SONABEL relève ses tarifs"], ["https://lefaso.net/spip.php?article2", "Décès de SOUGUÉ Alassane : Remerciements"]]),
+    await kept("elcomercio-pe", [["https://elcomercio.pe/economia/a/", "BCRP mantiene su tasa de referencia"], ["https://elcomercio.pe/economia/b/", "Precio del dólar en Perú: cuál fue el tipo de cambio del lunes"]]),
+  ], [["CEE Top 500"], ["Burkina : la SONABEL relève ses tarifs"], ["BCRP mantiene su tasa de referencia"]]);
+}
 {
   const feeds = JSON.parse(readFileSync("pipeline/sources.json", "utf8")).sources;
   const entry = (id) => feeds.find((s) => s.id === id && !s.disabled) ?? null;
@@ -756,16 +789,16 @@ check(
   check("the lead is written first, then what a balance brought in, then the rest by importance; a rotation story keeps its rank",
     [writeOrder([lead, mid, weak, quiet, arab], new Set([arab])).map((x) => x.headlineHint), writeOrder([mid, lead]).map((x) => x.headlineHint), writeOrder([])],
     [["lead", "arab", "mid", "weak", "quiet"], ["lead", "mid"], []]);
-  const many = Array.from({ length: 1250 }, (_, i) => ({ id: `c${i + 1}`, title: "ع".repeat(140), summary: "م".repeat(400), sourceNameEn: "Asharq Business", reliability: 3, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }));
+  const many = Array.from({ length: 1334 }, (_, i) => ({ id: `c${i + 1}`, title: "ع".repeat(140), summary: "م".repeat(400), sourceNameEn: "Asharq Business", reliability: 3, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }));
   const size = (lines) => lines.reduce((n, l) => n + l.length + 1, 0);
   const few = many.slice(0, 600);
   check("the editor's list stays within its size on the fullest day: summaries shortened for all alike, no candidate dropped, no headline cut; an ordinary list is untouched",
     [size(candidateLines(many)) <= CANDIDATE_CHARS, candidateLines(many).length, candidateLines(many).every((l) => l.includes("ع".repeat(140))), size(candidateLines(many, Infinity)) > CANDIDATE_CHARS, candidateLines(few).join("\n") === candidateLines(few, Infinity).join("\n")],
-    [true, 1250, true, true, true]);
+    [true, 1334, true, true, true]);
   let prompt = "";
   await selectStories({ candidates: many, recentTitles: [], sections: [{ id: "economy", name: "الاقتصاد", description: "" }], limit: 1, log: () => {},
     chatWith: async ({ user, validate }) => { prompt = user; const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه" }] }; validate(data); return { data, model: "stand-in" }; } });
-  check("…and that is the list the editor is sent", [prompt.length < CANDIDATE_CHARS + 30000, prompt.includes("[c1250]")], [true, true]);
+  check("…and that is the list the editor is sent", [prompt.length < CANDIDATE_CHARS + 30000, prompt.includes("[c1334]")], [true, true]);
 }
 check(
   "a central bank called «مصرف» is not given Egypt's markets",

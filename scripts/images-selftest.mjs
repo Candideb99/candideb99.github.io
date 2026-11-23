@@ -83,6 +83,14 @@ check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ ti
     placedAbroad({ title: "x.jpg", description: "Portuguese fish market in the morning" }, portuguese),
     placedAbroad({ title: "Yerevan Republic Square.jpg" }, { title: "أذربيجان تفتح ممر زنغزور", tags: ["أذربيجان"] }),
   ], [null, "Spain", null, "Armenia"]);
+  // The same day: Ireland, the Baltic states and the Sahel. Not «Niger» bare: the Niger Delta is Nigeria's.
+  const irish = { title: "أيرلندا تسجل فائضاً في الموازنة", tags: ["أيرلندا"], regions: ["أوروبا"] };
+  const nigerian = { title: "نيجيريا ترفع إنتاج النفط", tags: ["نيجيريا"], regions: ["أفريقيا"] };
+  check("an Irish story keeps Dublin and refuses Riga; a Nigerian one keeps the Niger Delta; a Malian one refuses Ouagadougou", [
+    placedAbroad({ title: "Dublin Docklands.jpg" }, irish), placedAbroad({ title: "Riga old town.jpg" }, irish),
+    placedAbroad({ title: "Oil field in the Niger Delta.jpg" }, nigerian),
+    placedAbroad({ title: "Ouagadougou central market.jpg" }, { title: "مالي تعلق تصاريح الذهب", tags: ["باماكو"] }),
+  ], [null, "Latvia", null, "Burkina Faso"]);
 }
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 

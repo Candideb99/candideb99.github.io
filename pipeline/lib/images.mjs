@@ -484,6 +484,9 @@ const STORY_COUNTRIES = {
   "صربيا": "Serbia", "كرواتيا": "Croatia", "اليونان": "Greece", "رومانيا": "Romania", "الصومال": "Somalia",
   // 2026-11-23: Portugal's own press joined the sources; Armenia beside Azerbaijan's.
   "البرتغال": "Portugal", "لشبونة": "Portugal", "أرمينيا": "Armenia", "يريفان": "Armenia",
+  // The same day: Ireland, the Baltic states, South Sudan and the Sahel. Mali by its capital: «مالي» is also «financial».
+  "أيرلندا": "Ireland", "إيرلندا": "Ireland", "دبلن": "Ireland", "إستونيا": "Estonia", "لاتفيا": "Latvia", "ليتوانيا": "Lithuania",
+  "جنوب السودان": "South Sudan", "جوبا": "South Sudan", "بوركينا فاسو": "Burkina Faso", "باماكو": "Mali", "النيجر": "Niger", "تشاد": "Chad",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
@@ -500,6 +503,8 @@ const STORY_STEMS = [
   // Not «السوداني»: the Iraqi prime minister's family name.
   ["الصربي", "Serbia"], ["الكرواتي", "Croatia"], ["اليوناني", "Greece"], ["الروماني", "Romania"], ["الصومالي", "Somalia"],
   ["البرتغالي", "Portugal"], ["الأرميني", "Armenia"], ["الأرمني", "Armenia"],
+  ["الأيرلندي", "Ireland"], ["الإيرلندي", "Ireland"], ["الإستوني", "Estonia"], ["اللاتفي", "Latvia"], ["الليتواني", "Lithuania"],
+  ["البوركيني", "Burkina Faso"], ["النيجري", "Niger"], ["التشادي", "Chad"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -533,6 +538,9 @@ const PHOTO_PLACES = {
   Serbia: ["Serbia", "Belgrade", "Novi Sad"], Croatia: ["Croatia", "Zagreb", "Rijeka", "Dubrovnik"], Greece: ["Greece", "Athens", "Piraeus", "Thessaloniki"],
   Romania: ["Romania", "Bucharest", "Constanța", "Constanta"], Somalia: ["Somalia", "Mogadishu"],
   Portugal: ["Portugal", "Lisbon", "Lisboa", "Porto", "Sines"], Armenia: ["Armenia", "Yerevan"],
+  // Not bare «Ireland» (Northern Ireland is Britain), «Niger» (the Niger Delta is Nigeria) or «Chad» (a first name).
+  Ireland: ["Republic of Ireland", "Dublin", "Cork", "Galway", "Limerick"], Estonia: ["Estonia", "Tallinn"], Latvia: ["Latvia", "Riga"], Lithuania: ["Lithuania", "Vilnius"],
+  "South Sudan": ["South Sudan", "Juba"], "Burkina Faso": ["Burkina Faso", "Ouagadougou"], Mali: ["Mali", "Bamako"], Niger: ["Niamey", "Agadez", "Republic of Niger"], Chad: ["N'Djamena", "Ndjamena", "Republic of Chad"],
 };
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const PHOTO_PLACE_RE = Object.entries(PHOTO_PLACES).map(([country, names]) => [country, new RegExp(`(?<![A-Za-z])(?:${names.map(escapeRe).join("|")})(?![A-Za-z])`)]);
@@ -555,6 +563,7 @@ const DEMONYMS = {
   Chile: ["Chilean"], Colombia: ["Colombian"], Peru: ["Peruvian"], Kenya: ["Kenyan"], Ghana: ["Ghanaian"], Ethiopia: ["Ethiopian"], Tanzania: ["Tanzanian"], Uganda: ["Ugandan"], Senegal: ["Senegalese"],
   Serbia: ["Serbian"], Croatia: ["Croatian"], Greece: ["Greek"], Romania: ["Romanian"], Somalia: ["Somali"],
   Portugal: ["Portuguese"], Armenia: ["Armenian"],
+  Ireland: ["Irish"], Estonia: ["Estonian"], Latvia: ["Latvian"], Lithuania: ["Lithuanian"], "South Sudan": ["South Sudanese"], "Burkina Faso": ["Burkinabe", "Burkinabè"], Mali: ["Malian"], Niger: ["Nigerien"], Chad: ["Chadian"],
 };
 // The places an adjective names, as the libraries write them, capitalised or not, up to two words after it («Indonesian
 // wet market», «Moroccan Traditional Market»).
@@ -565,14 +574,14 @@ const DEMONYM_PLACE_RE = new Map(Object.entries(DEMONYMS).map(([country, adjecti
 /** Waters and regions a story names by themselves: «مضيق هرمز» is Iran's, Oman's and the Emirates' shore,
  *  «الأسهم الأوروبية» any European market's. */
 const GULF = ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Iraq", "Iran"];
-const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland", "Greece", "Croatia", "Romania", "Serbia", "Portugal"];
-const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland", "Greece", "Croatia", "Portugal"];
+const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland", "Greece", "Croatia", "Romania", "Serbia", "Portugal", "Ireland", "Estonia", "Latvia", "Lithuania"];
+const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland", "Greece", "Croatia", "Portugal", "Ireland", "Estonia", "Latvia", "Lithuania"];
 const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland", "Romania"];
 const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vietnam", "Thailand"];
 const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];
 const ASIA = ["China", "Japan", "India", "South Korea", "Pakistan", "Taiwan", "Bangladesh", "Sri Lanka", ...SOUTHEAST_ASIA, ...CENTRAL_ASIA];
 const LATIN_AMERICA = ["Mexico", "Brazil", "Argentina", "Chile", "Colombia", "Peru"];
-const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia", "Somalia"];
+const AFRICA = ["Egypt", "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Tanzania", "Uganda", "Rwanda", "Angola", "Zambia", "Senegal", "Ivory Coast", "Mauritania", "Mozambique", "Zimbabwe", "DR Congo", "Cameroon", "Botswana", "Namibia", "Somalia", "South Sudan", "Burkina Faso", "Mali", "Niger", "Chad"];
 const MIDDLE_EAST = [...GULF, "Egypt", "Jordan", "Lebanon", "Syria", "Yemen", "Israel", "Turkey"];
 const PLACE_STEMS = [
   ["الخليج", GULF], ["خليجي", GULF], ["هرمز", ["Iran", "Oman", "United Arab Emirates"]], ["الحوثي", ["Yemen"]], ["باب المندب", ["Yemen"]],
