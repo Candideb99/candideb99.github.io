@@ -297,6 +297,21 @@ async function collectEvidence(story, candidates) {
  * is read once at the start, so two stories of one round could take the same photo minutes apart (a Kwinana tanker on
  * 25 September, the Treasury's sign on 17 October).
  */
+/**
+ * A piece's chart of official data, or null. The chart is an extra: a graphics editor that times out leaves the piece
+ * without one, where it had thrown away a draft already written and paid for (2026-11-23). A spent allowance or a
+ * refused login still stops the run.
+ */
+async function chartFor(draft) {
+  try {
+    return (await pickDataChart({ draft, log })).chart ?? null;
+  } catch (error) {
+    if (error.meta?.quota || error.meta?.status === 401) throw error;
+    log(`data chart: the graphics editor failed (${String(error.message).split("\n")[0].slice(0, 120)}); the piece goes on without one`);
+    return null;
+  }
+}
+
 const RUN_IMAGES = new Set();
 // …and the stories it has published, for the one-move-an-instrument rule: read from the stories loaded when the run
 // began, two moves of gold could run in one round (2026-11-23).
@@ -1286,7 +1301,7 @@ function runExplainer() {
     const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log });
     // A chart of official data when one shows what the piece explains (the owner, 2026-09-24: "explainers usually add
     // graphs"); Claude chooses from a menu, code fetches the figures from the IMF or the World Bank.
-    const { chart: dataChart } = await pickDataChart({ draft, log });
+    const dataChart = await chartFor(draft);
     if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
     return finishHubPiece({
       kind: "explainer",
@@ -1338,7 +1353,7 @@ function runIdea() {
         continue;
       }
       const { draft, model: writerModel } = await writeIdea({ idea, topic, references, relatedArticles: related, log });
-      const { chart: dataChart } = await pickDataChart({ draft, log });
+      const dataChart = await chartFor(draft);
       if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
       const stories = internalSources(related, { withText: true });
       return finishHubPiece({
@@ -1659,7 +1674,7 @@ async function rewriteExplainer(old, { existing, report, replace }) {
   const { topic, related, model: editorModel } = await selectExplainerTopic({ recentArticles: recent, existingExplainers: explainers, subject: old.title, log });
   log(`explainer question: ${topic.question_ar} (${topic.concept_en}); opens on "${related[0]?.title}"`);
   const { draft, model: writerModel } = await writeExplainer({ topic, relatedArticles: related, log, today: old.publishedAt });
-  const { chart: dataChart } = await pickDataChart({ draft, log });
+  const dataChart = await chartFor(draft);
   if (dataChart) Object.assign(draft, { chart: dataChart, dataChart: true });
   return finishHubPiece({
     kind: "explainer",

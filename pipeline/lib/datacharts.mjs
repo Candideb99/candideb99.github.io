@@ -57,7 +57,7 @@ async function fetchValues(ind, countries, from, to) {
     const all = data?.values?.[ind.code] ?? {};
     for (const c of countries) {
       out[c] = {};
-      for (const [year, value] of Object.entries(all[c] ?? {})) if (+year >= from && +year <= to && Number.isFinite(+value)) out[c][year] = +value;
+      for (const [year, value] of Object.entries(all[c] ?? {})) if (+year >= from && +year <= to && value != null && value !== "" && Number.isFinite(+value)) out[c][year] = +value;
     }
   } else {
     const data = await getJson(`https://api.worldbank.org/v2/country/${countries.join(";")}/indicator/${ind.code}?format=json&date=${from}:${to}&per_page=500`);

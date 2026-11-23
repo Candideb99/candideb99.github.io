@@ -17,7 +17,7 @@ const headingId = `facts-${placement}`;
 ---
 
 {facts.length > 0 && (
-  <aside class:list={["facts", `facts--${placement}`, { "facts--terms": terms }]} aria-labelledby={headingId}>
+  <aside class:list={["facts", `facts--${placement}`, { "facts--terms": terms }]} aria-labelledby={headingId} data-pagefind-ignore={placement === "side" ? "" : undefined}>
     <h2 id={headingId} class="module__head">{terms ? "مفاهيم أساسية" : "الأرقام"}</h2>
     <dl class="facts__list">
       {facts.map((f) => (

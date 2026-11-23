@@ -181,7 +181,10 @@ export async function collectNewsEvidence(story, candidates, { extract = extract
     try {
       // Redirects must stay on approved public document URLs too.
       const fetched = await extract(selected.url, { log, allowUrl: (url) => Boolean(officialDocument(url)) });
-      const context = `${items.map((s) => s.title).join(" ")} ${selected.context}`;
+      // By the reports' own headlines, never by the words around the link: a copper mine's closure linked a Fed survey
+      // of household budgets «for background», the link's own description made it relevant, and the survey passed as the
+      // story's official source (2026-11-23).
+      const context = items.map((s) => s.title).join(" ");
       // A homepage or unrelated linked release must never become a source just because it is official.
       if (fetched.ok && shared(context, fetched.title) >= 2) {
         sources.push({ id: `primary-${fingerprint(selected.url)}`, sourceId: hostOf(selected.url),

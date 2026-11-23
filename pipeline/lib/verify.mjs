@@ -163,7 +163,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
   if (draft.chart) {
     const about = `${draft.chart.title} ${draft.chart.series.map((s) => s.name).join(" ")}`;
     const values = draft.chart.series.flatMap((s) => s.values).filter((v) => Number.isFinite(v));
-    if (/تضخم/.test(about) && values.length && values.every((v) => Math.abs(v) < 1.5)) {
+    // Not a chart that says it is the annual rate: 0.4%, 0.7% and 1.1% «على أساس سنوي» is a low inflation, as Saudi
+    // Arabia's and China's often are, and was sent back as monthly (2026-11-23).
+    const annual = /سنوي|سنوياً|على أساس سنوي/.test(`${about} ${draft.chart.unit ?? ""}`);
+    if (/تضخم/.test(about) && !annual && values.length && values.every((v) => Math.abs(v) < 1.5)) {
       issues.push("الرسم البياني يعرض التغير الشهري للتضخم (أرقام حول الصفر)؛ اعرض المعدل السنوي الذي يعرفه القارئ، أو سعر الفائدة إلى جانب التضخم السنوي والأساسي، من أرقام المصادر.");
     }
     // A chart whose bars only repeat the numbers in their own labels shows no data (the audit of 2026-09-27: Canada's

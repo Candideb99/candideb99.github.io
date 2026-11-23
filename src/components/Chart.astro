@@ -47,7 +47,10 @@ const colors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
 
 function fmt(v: number): string {
   const abs = Math.abs(v);
-  const decimals = abs >= 100 ? 0 : abs >= 10 ? 1 : 2;
+  let decimals = abs >= 100 ? 0 : abs >= 10 ? 1 : 2;
+  // Two different values never print alike: India's 10.14% and 10.06% both read «10.1%», in the chart and in its
+  // table (2026-11-23). A digit more, to two at most, where the rounding makes them one.
+  while (decimals < 2 && all.some((o) => o !== v && o.toFixed(decimals) === v.toFixed(decimals))) decimals += 1;
   // A true minus, as the rest of the site prints a fall («−0.1%» in «الأرقام» beside the chart), never a hyphen.
   return v.toLocaleString("en-US", { maximumFractionDigits: decimals }).replace(/^-/, "−");
 }

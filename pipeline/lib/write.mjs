@@ -565,6 +565,8 @@ export function normalizeDraft(d, { kind = "news" } = {}) {
 
 function toNumber(value) {
   if (typeof value === "number") return Number.isFinite(value) ? value : null;
+  // An empty cell is a missing observation, never a zero (Number("") is 0; 2026-11-23).
+  if (value == null || !String(value).trim()) return null;
   const n = Number(String(value ?? "").replace(/[٠-٩]/g, (c) => "٠١٢٣٤٥٦٧٨٩".indexOf(c)).replace(/[,\s%]/g, "").replace(/٫/g, "."));
   return Number.isFinite(n) ? n : null;
 }

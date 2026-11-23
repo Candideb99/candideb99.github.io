@@ -104,6 +104,10 @@ console.log("[ok] the evidence archive, the last reading and the number and quot
 const weights = spawnSync(process.execPath, [path.join("scripts", "weights-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
 if (weights.status !== 0) fail("the weighting and ranking of news (scripts/weights-selftest.mjs)", weights.stdout + weights.stderr);
 console.log("[ok] the weighting and ranking of news pass their known cases");
+// Codex's third review of 2026-11-23: the page reader, credits, linked documents, chart figures, the search's markup.
+const gathering = spawnSync(process.execPath, [path.join("scripts", "codex-nov23-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (gathering.status !== 0) fail("the review of 23 November (scripts/codex-nov23-selftest.mjs)", gathering.stdout + gathering.stderr);
+console.log("[ok] the page reader, credits, linked documents and chart figures pass their known cases");
 console.log(`[ok] source metadata, cited primary documents and fetch failures pass offline (${seconds(t)})`);
 
 // 1c-2. The economic calendar's readers decide the institutions' own markup correctly (scripts/calendar-selftest.mjs,

@@ -82,10 +82,48 @@ function paragraphsFallback(html) {
  * article's whole text to a reader that does not log in, and a 716-character SPIEGEL+ teaser passed the 400-character
  * floor below).
  */
-export function subscribersOnly(html) {
-  return /"isAccessibleForFree"\s*:\s*"?false"?/i.test(html)
-    || /<[^>]*\bitemprop=["']isAccessibleForFree["'][^>]*\bcontent=["']false["']/i.test(html)
+export function subscribersOnly(html, url = "") {
+  const microdata = /<[^>]*\bitemprop=["']isAccessibleForFree["'][^>]*\bcontent=["']false["']/i.test(html)
     || /<[^>]*\bcontent=["']false["'][^>]*\bitemprop=["']isAccessibleForFree["']/i.test(html);
+  if (!/"isAccessibleForFree"\s*:\s*"?false"?/i.test(html)) return microdata;
+  // The mark is read on the story it stands on: a page that lists a premium story among its recommendations carries
+  // «isAccessibleForFree: false» for that story, and the free article above it was read as closed (2026-11-23). A
+  // marked story that names another address than the page's is not the page's; data that cannot be read, or a mark
+  // on nothing with an address, counts for the page as before.
+  const pathOf = (u) => {
+    try {
+      return new URL(String(u), url || "https://x.invalid/").pathname.replace(/\/+$/, "");
+    } catch {
+      return "";
+    }
+  };
+  const here = url ? pathOf(url) : "";
+  const closed = (v) => v === false || /^false$/i.test(String(v));
+  let read = 0;
+  let own = false;
+  for (const m of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    const visit = (node, depth = 0) => {
+      if (!node || typeof node !== "object" || depth > 5) return;
+      if (Array.isArray(node)) return node.forEach((n) => visit(n, depth + 1));
+      const parts = [].concat(node.hasPart ?? []);
+      if (closed(node.isAccessibleForFree) || parts.some((p) => closed(p?.isAccessibleForFree))) {
+        read += 1;
+        const address = pathOf(node.url ?? node.mainEntityOfPage?.["@id"] ?? (typeof node.mainEntityOfPage === "string" ? node.mainEntityOfPage : "") ?? "");
+        const named = Boolean(node.url ?? node.mainEntityOfPage);
+        if (!here || !named || address === here) own = true;
+        return;
+      }
+      for (const [key, v] of Object.entries(node)) if (key !== "hasPart" && v && typeof v === "object") visit(v, depth + 1);
+    };
+    visit(data);
+  }
+  return microdata || own || read === 0;
 }
 
 function metaContent(html, name) {
@@ -159,6 +197,17 @@ export async function extractArticle(url, { maxChars = 9000, log = () => {}, all
  * (lib/images.mjs, handoutTier(); the owner, 2026-10-18: "yes, use handouts credited to official sources"); the
  * outlet's own photographs and the agencies' are never taken. Logos, icons and drawings are left out here.
  */
+const SIZING = /^(?:w|h|width|height|resize|fit|quality|q|auto|format|fm|crop|dpr|s|sig|v|ver|itok|imwidth|impolicy|utm_\w+)$/i;
+function photoAddress(href) {
+  try {
+    const u = new URL(href);
+    const kept = [...u.searchParams.entries()].filter(([k]) => !SIZING.test(k)).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
+    return `${u.origin}${u.pathname}${kept.length ? `?${kept.map(([k, v]) => `${k}=${v}`).join("&")}` : ""}`;
+  } catch {
+    return href.split(/[?#]/)[0];
+  }
+}
+
 export function photosOf(html, url, document = null) {
   const found = new Map();
   const absolute = (u) => {
@@ -172,7 +221,9 @@ export function photosOf(html, url, document = null) {
   const add = (u, info = {}) => {
     const href = absolute(u);
     if (!/^https?:\/\//.test(href) || /\.(?:svg|gif)(?:[?#]|$)/i.test(href) || /logo|icon|sprite|avatar|placeholder|blank|banner|\/ads?\//i.test(href)) return;
-    const key = href.split(/[?#]/)[0];
+    // …less what only sizes or tracks it. Cut at the «?», two photographs a publisher tells apart by a number there
+    // («image.php?id=41», «?id=42») were one record, and a trading floor took a ministry's credit (2026-11-23).
+    const key = photoAddress(href);
     const photo = found.get(key) ?? { url: href, caption: "", credit: "", width: null, height: null };
     for (const k of ["caption", "credit"]) {
       const v = clean(info[k]);
@@ -281,8 +332,17 @@ export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } =
     } catch {
       document = null;
     }
-    const result = { ok: false, text: "", title: "", ogImage: metaContent(html, "og:image"),
-      photos: photosOf(html, url, document),
+    // The photographs from the page as trimmed (an appended story's photograph, in its own data, came with the page as
+    // served), and the lead photograph's address made whole («/photos/trams.jpg» was offered to no judge) (2026-11-23).
+    const lead = metaContent(html, "og:image");
+    let ogImage = lead;
+    try {
+      if (lead) ogImage = new URL(lead, url).href;
+    } catch {
+      ogImage = lead;
+    }
+    const result = { ok: false, text: "", title: "", ogImage,
+      photos: photosOf(pageHtml, url, document),
       lang: (html.match(/<html[^>]+lang=["']([a-zA-Z-]+)["']/i)?.[1] ?? "").toLowerCase(),
       links: [], publishedAt: null, reason: "" };
     let text = "";
@@ -319,7 +379,7 @@ export function readArticleHtml(html, url, { maxChars = 9000, log = () => {} } =
     }
     if (!title) title = metaContent(html, "og:title") || stripHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
     result.title = title;
-    if (subscribersOnly(html)) {
+    if (subscribersOnly(html, url)) {
       result.reason = "subscribers-only";
       return result;
     }

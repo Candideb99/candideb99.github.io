@@ -271,6 +271,8 @@ const jsonLd = [articleLd, breadcrumbLd];
           beside an empty column (21 stories, 2026-11-20). */}
       {(d.keyFacts.length > 0 || sideRelated.length > 0) && (
         <aside class="article__side">
+          {/* The box is printed twice, in the text for a narrow screen and here for a wide one: read by the search once,
+              or a word in it counted double and lifted a passing mention over the line (KeyFacts.astro leaves this copy out of it, 2026-11-23). */}
           <KeyFacts facts={d.keyFacts} placement="side" terms={lesson} />
           {sideRelated.length > 0 && (
             <section class="side-related" data-pagefind-ignore aria-labelledby="side-related-title">

@@ -96,7 +96,8 @@ const Fold = oneLine ? "details" : "div";
       <p class="sources__none">شرح مفاهيمي يستند إلى التعريفات الاقتصادية المتعارف عليها؛ الأرقام الواردة فيه أمثلة توضيحية لا إحصاءات جارية.</p>
     )}
   </Fold>
-  <p class="sources__note">
+  {/* The standing note is the same on every story: left out of the search, where «تدقيق» found all 704 (2026-11-23). */}
+  <p class="sources__note" data-pagefind-ignore>
     {note ?? (
       <>
         {explainer

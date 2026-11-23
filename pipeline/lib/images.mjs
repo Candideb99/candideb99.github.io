@@ -2487,7 +2487,11 @@ export function creditedBody(photo) {
     const m = text.match(re);
     if (m) return m[1].replace(/\s+/g, " ").trim();
   }
-  return "";
+  // The page's own data for the photograph (an ImageObject's creditText, its copyright holder) is a credit without a
+  // «Photo:» before it: «Ministry of Energy» there was read as no credit at all (2026-11-23). handoutFault() still
+  // decides whether that body is one this story may take a photograph from.
+  const own = String(photo?.credit ?? "").split("|")[0].replace(/\s+/g, " ").trim();
+  return own.length >= 3 && own.length <= 70 ? own : "";
 }
 
 /** Why a source's photograph is not a handout this story may run, or null when it is one. */
@@ -2588,7 +2592,9 @@ Return JSON: {"news_photo":true,"this_story":true,"watermark":false,"clear":true
         timeoutMs: 120000,
         log,
         validate: (d) => {
-          if (!d || typeof d.news_photo !== "boolean" || typeof d.this_story !== "boolean") throw new Error("handout verdict missing");
+          // Every verdict, each a boolean: an answer without «watermark», «clear» or «front» passed as a clean, clear
+          // photograph that is no building's front (2026-11-23).
+          for (const key of ["news_photo", "this_story", "watermark", "clear", "front"]) if (!d || typeof d[key] !== "boolean") throw new Error(`handout verdict missing: ${key}`);
         },
       });
     } catch (error) {

@@ -175,7 +175,7 @@ async function scenario({ draft, world = {}, categoryWorld = {}, libs = {}, plan
         data = { choice: (byText ?? (() => 1))(titlesIn(user), user), alt: "صورة اختبار", reason: "test" };
       } else if (user.includes("The outlet credits it to")) {
         calls.push("handout");
-        data = handout ?? { news_photo: true, this_story: true, watermark: false, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول المصرية", reason: "test" };
+        data = handout ?? { news_photo: true, this_story: true, watermark: false, clear: true, front: false, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول المصرية", reason: "test" };
       } else if (system.includes("strict newspaper picture editor")) {
         calls.push(`verify:${fileNameIn(user)}`);
         verifyPrompts.push(user);
@@ -643,7 +643,7 @@ const pickTitle = (needle) => (titles) => titles.findIndex((t) => t.includes(nee
     [r.image?.basis, /^\/photos\/handouts\/[0-9a-f]{12}\.jpg$/.test(r.image?.url ?? ""), r.image?.credit, r.image?.foundOn, r.saved.length, r.searched.length, r.calls.includes("planner")],
     ["handout", true, "وزارة البترول المصرية", "https://www.cnbcarabia.com/158331", 1, 0, false],
   );
-  const w = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: true, clear: true, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول", reason: "logo" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
+  const w = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: true, clear: true, front: false, caption_ar: "جانب من الاجتماع", credit_ar: "وزارة البترول", reason: "logo" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
   check("a watermarked handout is refused and the cascade goes on", [w.image?.basis ?? null, w.saved.length, w.calls.includes("planner")], [null, 0, true]);
   // A company's office towers from its press kit are a building's front (2PointZero, 2026-10-30).
   const f = await scenario({ draft, sources, photoDir: "C:/site/public/photos/handouts", handout: { news_photo: true, this_story: true, watermark: false, clear: true, front: true, caption_ar: "مقر الشركة", credit_ar: "الشركة", reason: "towers" }, plan: planFor(), world: { "construction site Egypt": [dahab] }, judge: pickTitle("Dahab") });
