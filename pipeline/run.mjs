@@ -126,8 +126,10 @@ const REJECT_RETRY_HOURS = 12;
  * them theirs. 1020 the same day for four Colombian and Chilean feeds (28 items at most by their maxItems). 1173 the
  * same evening, for 29 feeds from the Maghreb, Italy, Ukraine, Serbia, Croatia, Poland, Romania, Greece, Sudan and
  * Somalia: measured that afternoon (1,228 fresh items before, 1,381 after), they took 153 places; 1173 gives them back.
+ * 1250 since 2026-11-23, for eleven Israeli, Kuwaiti, Syrian, Azerbaijani, Portuguese and South African feeds: read
+ * that morning, 77 fresh items at most by their maxItems (77 at the time).
  */
-const CANDIDATE_CAP = 1173;
+const CANDIDATE_CAP = 1250;
 /** The regional desks that are our readers' own economies (src/data/regions.json), and how many of their stories a day the region balance aims for. */
 const ARAB_REGIONS = ["الخليج", "مصر", "المغرب العربي", "مصر والمغرب العربي"];
 const ARAB_DAILY = 8;

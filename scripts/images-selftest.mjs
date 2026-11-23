@@ -76,6 +76,13 @@ check("«Tbilisi, Georgia» is not read as an American state", placedAbroad({ ti
     placedAbroad({ title: "x.jpg", description: "Serbian farmers market in the morning" }, greek),
     placedAbroad({ title: "Mogadishu port.jpg" }, { title: "الصومال تطرد سفير الإمارات", tags: ["الصومال"] }),
   ], [null, "Romania", "Serbia", null]);
+  // 2026-11-23: Portugal's own press joined the sources, and Azerbaijan's beside Armenia.
+  const portuguese = { title: "البرلمان البرتغالي يقر موازنة 2027", tags: ["البرتغال"], regions: ["أوروبا"] };
+  check("a Portuguese story keeps Lisbon and refuses Madrid and a Spanish market; an Azerbaijani one refuses Yerevan", [
+    placedAbroad({ title: "Lisbon Praça do Comércio.jpg" }, portuguese), placedAbroad({ title: "Madrid Gran Vía.jpg" }, portuguese),
+    placedAbroad({ title: "x.jpg", description: "Portuguese fish market in the morning" }, portuguese),
+    placedAbroad({ title: "Yerevan Republic Square.jpg" }, { title: "أذربيجان تفتح ممر زنغزور", tags: ["أذربيجان"] }),
+  ], [null, "Spain", null, "Armenia"]);
 }
 check("«Houston, TX» is home for an American story", placedAbroad({ title: "Houston, TX refinery.jpg" }, { title: "وقود الديزل في الولايات المتحدة", tags: ["الولايات المتحدة"], regions: ["الأمريكتان"] }), null);
 

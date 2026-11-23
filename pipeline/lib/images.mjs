@@ -482,6 +482,8 @@ const STORY_COUNTRIES = {
   "تايوان": "Taiwan", "بنغلاديش": "Bangladesh", "سريلانكا": "Sri Lanka", "سري لانكا": "Sri Lanka",
   // 2026-11-21: the Balkans' and Somalia's own press joined the sources.
   "صربيا": "Serbia", "كرواتيا": "Croatia", "اليونان": "Greece", "رومانيا": "Romania", "الصومال": "Somalia",
+  // 2026-11-23: Portugal's own press joined the sources; Armenia beside Azerbaijan's.
+  "البرتغال": "Portugal", "لشبونة": "Portugal", "أرمينيا": "Armenia", "يريفان": "Armenia",
 };
 /** Tags that name a country by its adjective or its institutions («العقوبات الأمريكية», «الاحتياطي الفيدرالي»). */
 const STORY_STEMS = [
@@ -497,6 +499,7 @@ const STORY_STEMS = [
   ["التايواني", "Taiwan"], ["الباكستاني", "Pakistan"], ["البنغلاديشي", "Bangladesh"], ["السريلانكي", "Sri Lanka"], ["الكوري الجنوبي", "South Korea"],
   // Not «السوداني»: the Iraqi prime minister's family name.
   ["الصربي", "Serbia"], ["الكرواتي", "Croatia"], ["اليوناني", "Greece"], ["الروماني", "Romania"], ["الصومالي", "Somalia"],
+  ["البرتغالي", "Portugal"], ["الأرميني", "Armenia"], ["الأرمني", "Armenia"],
 ];
 // A United States Navy photograph is often taken in the Gulf, so "U.S."/"USA" alone never places a photo:
 // only a state, a city, or a category that says the photo was taken in the country.
@@ -529,6 +532,7 @@ const PHOTO_PLACES = {
   // Not Croatia's «Split», a word.
   Serbia: ["Serbia", "Belgrade", "Novi Sad"], Croatia: ["Croatia", "Zagreb", "Rijeka", "Dubrovnik"], Greece: ["Greece", "Athens", "Piraeus", "Thessaloniki"],
   Romania: ["Romania", "Bucharest", "Constanța", "Constanta"], Somalia: ["Somalia", "Mogadishu"],
+  Portugal: ["Portugal", "Lisbon", "Lisboa", "Porto", "Sines"], Armenia: ["Armenia", "Yerevan"],
 };
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const PHOTO_PLACE_RE = Object.entries(PHOTO_PLACES).map(([country, names]) => [country, new RegExp(`(?<![A-Za-z])(?:${names.map(escapeRe).join("|")})(?![A-Za-z])`)]);
@@ -550,6 +554,7 @@ const DEMONYMS = {
   Kazakhstan: ["Kazakh"], Uzbekistan: ["Uzbek"], Azerbaijan: ["Azerbaijani"], Philippines: ["Filipino", "Philippine"], Vietnam: ["Vietnamese"], Thailand: ["Thai"], Argentina: ["Argentine", "Argentinian"],
   Chile: ["Chilean"], Colombia: ["Colombian"], Peru: ["Peruvian"], Kenya: ["Kenyan"], Ghana: ["Ghanaian"], Ethiopia: ["Ethiopian"], Tanzania: ["Tanzanian"], Uganda: ["Ugandan"], Senegal: ["Senegalese"],
   Serbia: ["Serbian"], Croatia: ["Croatian"], Greece: ["Greek"], Romania: ["Romanian"], Somalia: ["Somali"],
+  Portugal: ["Portuguese"], Armenia: ["Armenian"],
 };
 // The places an adjective names, as the libraries write them, capitalised or not, up to two words after it («Indonesian
 // wet market», «Moroccan Traditional Market»).
@@ -560,8 +565,8 @@ const DEMONYM_PLACE_RE = new Map(Object.entries(DEMONYMS).map(([country, adjecti
 /** Waters and regions a story names by themselves: «مضيق هرمز» is Iran's, Oman's and the Emirates' shore,
  *  «الأسهم الأوروبية» any European market's. */
 const GULF = ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Iraq", "Iran"];
-const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland", "Greece", "Croatia", "Romania", "Serbia"];
-const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland", "Greece", "Croatia"];
+const EUROPE = ["United Kingdom", "France", "Germany", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Switzerland", "Norway", "Sweden", "Finland", "Denmark", "Poland", "Greece", "Croatia", "Romania", "Serbia", "Portugal"];
+const EURO_AREA = ["Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Austria", "Finland", "Greece", "Croatia", "Portugal"];
 const EU = [...EURO_AREA, "Sweden", "Denmark", "Poland", "Romania"];
 const SOUTHEAST_ASIA = ["Indonesia", "Malaysia", "Singapore", "Philippines", "Vietnam", "Thailand"];
 const CENTRAL_ASIA = ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"];

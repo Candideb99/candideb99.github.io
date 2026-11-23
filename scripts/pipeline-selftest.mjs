@@ -448,6 +448,46 @@ check(
   ],
   [["صرب"], ["كروات"], ["يونان"], ["رومان"], ["سودان"], ["صومال"], ["اوكران"], ["عراق"], false],
 );
+// 2026-11-23 (the owner: "did you add israeli news sources? ... also syrian, turkish, azerbijani, kuwaiti, armenian,
+// georgian, portuguese, south african"): Portugal's own press joined, and Azerbaijan's, whose economic news is often
+// Armenia's too. Unread, a Portuguese and a Spanish budget were one event, and so were Armenia's and Azerbaijan's opening
+// of one corridor. Georgia is not read by name: «جورجيا» is also the American state.
+check(
+  "Portugal and Armenia are read; a Portuguese and a Spanish budget, Armenia's and Azerbaijan's corridor, are two events; the American Georgia is America's",
+  [
+    [...countriesNamed("البرلمان البرتغالي يقر الموازنة")], [...countriesNamed("لشبونة ترفع الأجور")], [...countriesNamed("المركزي الأرميني يخفض الفائدة")], [...countriesNamed("أرمينيا تفتح الحدود")],
+    Boolean(repeatsRecent("البرلمان البرتغالي يقر موازنة 2027 بعجز 0.3% من الناتج", ["البرلمان الإسباني يقر موازنة 2027 بعجز 2.5% من الناتج"])),
+    Boolean(repeatsRecent("أرمينيا تفتح ممر زنغزور أمام الشحن", ["أذربيجان تفتح ممر زنغزور أمام الشحن"])),
+    [...countriesNamed("مصنع جديد في ولاية جورجيا الأمريكية")],
+  ],
+  [["برتغال"], ["برتغال"], ["ارمين"], ["ارمين"], false, false, ["امريك", "اميرك"]],
+);
+{
+  const feeds = JSON.parse(readFileSync("pipeline/sources.json", "utf8")).sources;
+  const entry = (id) => feeds.find((s) => s.id === id && !s.disabled) ?? null;
+  const ids = ["globes-en", "jpost-business", "aljarida-eco", "alrai-eco", "alwatan-sy", "report-az", "trend-economy", "eco-pt", "rtp-economia", "techcentral-za", "sanews"];
+  check("Israel, Kuwait, Syria, Azerbaijan, Portugal and South Africa each have the outlets of 23 November, every one labelled",
+    ids.filter((id) => !entry(id)?.owner || !entry(id)?.firstMention), []);
+  check("the state's and the government's own outlets say so the first time they are named",
+    ["alwatan-sy", "sanews", "report-az", "trend-economy"].map((id) => entry(id)?.mustSay?.length > 0), [true, true, true, true]);
+  // Syria's state daily is «الوطن السورية», never Saudi Arabia's «الوطن», which Arab outlets quote often.
+  const story = (body) => ({ title: "عنوان", subtitle: "", lede: "", body, whyItMatters: "", keyFacts: [] });
+  check("a story quoting Saudi Arabia's «الوطن» is not sent back; one naming Syria's state daily bare is", [
+    unlabelledOutlets(story("وارتفعت أسعار الإسمنت، بحسب صحيفة «الوطن» السعودية.")).map((o) => o.name),
+    unlabelledOutlets(story("وتجاوز الدولار 150 ليرة، بحسب صحيفة «الوطن السورية».")).map((o) => o.name),
+    unlabelledOutlets(story("وتجاوز الدولار 150 ليرة، بحسب صحيفة «الوطن السورية» الحكومية.")).map((o) => o.name),
+  ], [[], ["الوطن السورية"], []]);
+  // Each filter keeps the desk's economy and leaves the rest: Report's politics by its path, Al-Watan's sport and ECO's
+  // politics by their categories.
+  const fresh = new Date().toUTCString();
+  const rss = (items) => `data:text/xml;charset=utf-8,${encodeURIComponent(`<?xml version="1.0"?><rss version="2.0"><channel><title>t</title>${items.map(([url, title, cat]) => `<item><title>${title}</title><link>${url}</link><pubDate>${fresh}</pubDate>${cat ? `<category><![CDATA[${cat}]]></category>` : ""}</item>`).join("")}</channel></rss>`)}`;
+  const kept = async (id, items) => (entry(id) ? (await fetchFeed({ ...entry(id), url: rss(items) })).map((i) => i.title) : null);
+  check("Report keeps its business news and leaves its politics; Al-Watan keeps its economy; ECO leaves its politics", [
+    await kept("report-az", [["https://report.az/en/business/socar-seeks-partner/", "SOCAR seeks partner"], ["https://report.az/en/foreign-politics/fm-meets/", "FM meets"]]),
+    await kept("alwatan-sy", [["https://alwatan.sy/archives/1", "الدولار يتخطى 150 ليرة", "اقتصاد"], ["https://alwatan.sy/archives/2", "نادي قاسيون يفوز", "رياضة"]]),
+    await kept("eco-pt", [["https://eco.sapo.pt/2026/11/23/a/", "Iberdrola desiste", "Empresas"], ["https://eco.sapo.pt/2026/11/23/b/", "Ventura quer governar", "Política"]]),
+  ], [["SOCAR seeks partner"], ["الدولار يتخطى 150 ليرة"], ["Iberdrola desiste"]]);
+}
 // A page in another charset (the WTO's news pages, ISO-8859-1) is read in it; a wrong header over UTF-8 (Katadata) is not.
 {
   const { decodeText } = await import("../pipeline/lib/util.mjs");
@@ -716,16 +756,16 @@ check(
   check("the lead is written first, then what a balance brought in, then the rest by importance; a rotation story keeps its rank",
     [writeOrder([lead, mid, weak, quiet, arab], new Set([arab])).map((x) => x.headlineHint), writeOrder([mid, lead]).map((x) => x.headlineHint), writeOrder([])],
     [["lead", "arab", "mid", "weak", "quiet"], ["lead", "mid"], []]);
-  const many = Array.from({ length: 1173 }, (_, i) => ({ id: `c${i + 1}`, title: "ع".repeat(140), summary: "م".repeat(400), sourceNameEn: "Asharq Business", reliability: 3, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }));
+  const many = Array.from({ length: 1250 }, (_, i) => ({ id: `c${i + 1}`, title: "ع".repeat(140), summary: "م".repeat(400), sourceNameEn: "Asharq Business", reliability: 3, kind: "news", lang: "ar", publishedAt: new Date().toISOString() }));
   const size = (lines) => lines.reduce((n, l) => n + l.length + 1, 0);
   const few = many.slice(0, 600);
   check("the editor's list stays within its size on the fullest day: summaries shortened for all alike, no candidate dropped, no headline cut; an ordinary list is untouched",
     [size(candidateLines(many)) <= CANDIDATE_CHARS, candidateLines(many).length, candidateLines(many).every((l) => l.includes("ع".repeat(140))), size(candidateLines(many, Infinity)) > CANDIDATE_CHARS, candidateLines(few).join("\n") === candidateLines(few, Infinity).join("\n")],
-    [true, 1173, true, true, true]);
+    [true, 1250, true, true, true]);
   let prompt = "";
   await selectStories({ candidates: many, recentTitles: [], sections: [{ id: "economy", name: "الاقتصاد", description: "" }], limit: 1, log: () => {},
     chatWith: async ({ user, validate }) => { prompt = user; const data = { stories: [{ ids: ["c1"], section: "economy", importance: 7, angle: "a", headline_hint: "ه" }] }; validate(data); return { data, model: "stand-in" }; } });
-  check("…and that is the list the editor is sent", [prompt.length < CANDIDATE_CHARS + 30000, prompt.includes("[c1173]")], [true, true]);
+  check("…and that is the list the editor is sent", [prompt.length < CANDIDATE_CHARS + 30000, prompt.includes("[c1250]")], [true, true]);
 }
 check(
   "a central bank called «مصرف» is not given Egypt's markets",
