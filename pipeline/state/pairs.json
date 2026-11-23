@@ -3231,6 +3231,50 @@
         "classes": [],
         "programmatic": 1
       }
+    },
+    {
+      "at": "2026-11-23T15:33:12.962Z",
+      "slug": "nvidia-reinstates-jensen-huang-as-ceo-0c7b1b",
+      "checker": "63ea2c3866.2",
+      "lessons": "v73",
+      "lessonsHash": "e327459e7a",
+      "keptVersion": 0,
+      "live": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 1,
+        "checked": 25,
+        "words": 393,
+        "keyFacts": 4,
+        "classes": [],
+        "programmatic": 0
+      },
+      "kept": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 0,
+        "checked": 25,
+        "words": 402,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 1
+      },
+      "none": {
+        "errors": 0,
+        "drift": 0,
+        "severity": 0,
+        "supported": 21,
+        "notFound": 0,
+        "checked": 25,
+        "words": 402,
+        "keyFacts": 3,
+        "classes": [],
+        "programmatic": 1
+      }
     }
   ]
 }

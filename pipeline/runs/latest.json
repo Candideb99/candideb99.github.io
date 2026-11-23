@@ -1,27 +1,523 @@
 {
-  "mode": "reports",
-  "startedAt": "2026-11-23T13:41:48.175Z",
-  "durationSec": 16,
-  "published": 0,
+  "mode": "news",
+  "startedAt": "2026-11-23T15:23:56.060Z",
+  "durationSec": 2432,
+  "published": 3,
   "refreshed": 0,
-  "report": [],
+  "report": [
+    {
+      "headline": "إنفيديا تعيد جنسن هوانغ رئيساً تنفيذياً وسهمها يقفز أكثر من 30%",
+      "section": "technology",
+      "importance": 9,
+      "sources": [
+        "https://www.bbc.co.uk/news/videos/cqze7lwdglngo",
+        "https://www.aljazeera.com/economy/2026/11/23/nvidia-board-reinstates-jensen-huang-as-ceo",
+        "https://asharqbusiness.com/technology/157531/%D9%87%D9%88%D8%A7%D9%86%D8%BA-%D9%8A%D8%B9%D9%88%D8%AF-%D8%B1%D8%A6%D9%8A%D8%B3%D8%A7-%D9%84%D8%A5%D9%86%D9%81%D9%8A%D8%AF%D9%8A%D8%A7-%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%A7%D9%82-%D8%AA%D9%82%D9%81%D8%B2-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86/",
+        "https://aawsat.com/node/5344670"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التالي يوضحان ما تغيّر: عاد هوانغ إلى مناصبه الثلاثة بعد 11 يوماً، بعد استطلاع آراء مسؤولين أمريكيين. ويوضحان ما بقي قائماً: تحقيقات هيئة الأوراق المالية ووزارة العدل ما زالت جارية. إنفيديا اسم معروف، لكن البطاقة لا تقول من هو هوانغ.",
+              "repair": "يمكن أن يقول العنوان: «إنفيديا تعيد مؤسسها جنسن هوانغ رئيساً تنفيذياً بعد 11 يوماً من استقالته». وفي السطر التالي يُكتب «تلقى المجلس آراء» بدل «استطلع»، فالمصدر الثالث يقول «تلقى آراء من مسؤولين على مستويات عليا»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم ثلاثة تفسيرات. الأول سبب القرار: الطمأنة الحكومية والضغط بعد الاستقالة بعريضة من 180 ألف توقيع، والمسودة تحملهما. الثاني رد فعل الأطراف: السهم وترامب وآيفز وموناهان، والمسودة تحمله. الثالث خلفية تقلبات القطاع وسبب الاستقالة، وهنا تختصر المسودة. تُسقط تشكك الديمقراطيين في الذكاء الاصطناعي ومقترحات تقييد مراكز البيانات (SOURCE 2)، وتُسقط مخاوف تضارب المصالح والتحقيق المستقل الذي فتحه المجلس (SOURCE 3). وصندوق «لماذا يهمّ» يقيم استنتاجاً معقولاً من قفزة السهم ومن التحقيقات الجارية.",
+              "repair": "أضف صلة الانتخابات بالقطاع وتحقيق المجلس المستقل كما في البندين الأولين. ويمكن عند الحاجة إضافة جملة واحدة من SOURCE 3: ارتفعت العقود الآجلة لمؤشر «ناسداك 100» بنسبة 7% بعد الإعلان."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الجديد في العنوان هو العودة بعد 11 يوماً. المتن يتابعه بعد الاستهلال ببيان المجلس، لكن مواقف ترامب، وهي ما يفسر الطمأنة الأمنية وحدودها، مبعثرة على الفقرات الأولى والثانية والثالثة والأخيرة. أما مطالبته بالتحقيق في ضوابط التصدير فمعزولة في آخر التقرير بعيداً عن الطمأنة التي تقيّدها.",
+              "repair": "رتّب التقرير هكذا: بيان المجلس وبقاء كريس، ثم موقف ترامب كله مع شرط التحقيق الداخلي والتحقيقات الرسمية الجارية، ثم خلفية الاستقالة والتحقيق المستقل والعريضة، ثم رد فعل السهم والمحللين وتقلبات القطاع."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 12 نوفمبر، وأكثر من 33%، وأكثر من 180 ألف توقيع، وحتى 30%. والاقتباسات المنقولة حرفياً مأخوذة من SOURCE 3. وقد اختارت المسودة رقماً واحداً لقفزة السهم (33% عند الافتتاح) ولم تضع بجانبه رقم الـ30% في التعاملات المبكرة.",
+              "repair": "في صندوق الأرقام، تقدير آيفز السابق بخسارة حتى 30% توقع سابق وليس رقماً من حدث اليوم، فالأفضل أن يبقى في المتن وحده. وفي «لماذا يهمّ» يُستبدل «أول ما يتعرض للخطر» بـ«ما سيتعرض للتآكل»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "publish",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والسطر التالي يقولان ما تغيّر: عودة هوانغ رئيساً تنفيذياً بعد 11 يوماً (من 12 إلى 23 نوفمبر، SOURCE 2 وSOURCE 3)، والمجلس تلقى آراء مسؤولين حكوميين أمريكيين، وسبب المغادرة. إنفيديا اسم معروف، والحكومة الأمريكية تحدد البلد. والمتن يحفظ ما لم يتغير: التحقيقات الرسمية جارية وترامب يشترط مواصلة التحقيق الداخلي.",
+              "repair": "تُكتب أول إشارة في المتن إلى السيدة بالتنكير: «إحداها مع سيدة يُشتبه في ارتباطها بالمخابرات الصينية». فالقارئ الذي يبدأ من الاستهلال لم يقرأ عنها بعد، والتعريف في «السيدة التي» يحيل إلى السطر التالي للعنوان وحده."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تقدم المصادر ثلاثة تفسيرات والمسودة تحملها كلها. الأول سبب القرار: طمأنة المجلس وآراء المسؤولين، وتأكيد ترامب والمدعي العام، والعريضة ذات الـ180 ألف توقيع. الثاني رد الفعل: قفز السهم بأكثر من 33%، وارتفعت عقود ناسداك 100 الآجلة 7%، وعلّق آيفز وموناهان مع دور كل منهما ومؤسسته. الثالث الخلفية: تضارب المصالح والتحقيق المستقل (SOURCE 3)، وصلة الانتخابات بالقطاع ومراكز البيانات (SOURCE 2). صندوق «لماذا يهمّ» يبني على قفزة السهم والتحقيقات الجارية استنتاجاً متناسباً: صار بقاء هوانغ جزءاً من التقييم، والعلاوة معرضة للتآكل إن مست التحقيقات الشركة. والشرط مذكور مرة واحدة.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "الجديد في العنوان هو العودة، والمتن يطوره مباشرة بعد الاستهلال: بيان المجلس وبقاء كريس، ثم موقف ترامب كله في فقرتين متتاليتين مع حدوده والتحقيقات الجارية، ثم قسم الاستقالة بفقرتين، ثم قسم السوق والمحللين والقطاع بثلاث فقرات. عنوانان فرعيان في نحو 430 كلمة، ولكل منهما فقرتان أو أكثر.",
+              "repair": "يُتجنب تكرار «إعادة التعيين» في جملة واحدة: «وقال المجلس في بيانه الذي أعلن فيه القرار إنه واثق من أن عودة هوانغ لا تشكل أي مخاطر على الأمن القومي»."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام والتواريخ مطابقة للمصادر: أكثر من 33% عند الافتتاح (SOURCE 2)، و7% لعقود ناسداك 100 (SOURCE 3)، و12 نوفمبر، و180 ألف توقيع، و30% تقديراً سابقاً لآيفز. والتقدير منسوب إليه بصيغة الاحتمال «قد تخسر ما يصل إلى». واختارت المسودة رقماً واحداً لصعود السهم بدل الجمع بين 30% و33%. وتزامن العودة مع تقلبات القطاع مذكور تزامناً لا سبباً.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قفزت أسهم إنفيديا بأكثر من 33% بعد خبر عودة هوانغ مع افتتاح الأسواق الأمريكية يوم الاثنين",
+          "source": 2
+        },
+        {
+          "fact": "تحقيقات متعددة في الشركة، منها تحقيقات لهيئة الأوراق المالية والبورصات ووزارة العدل الأمريكيتين، لا تزال جارية",
+          "source": 2
+        },
+        {
+          "fact": "طالب ترمب إنفيديا بمواصلة تحقيقها الداخلي الشامل في مدى التزامها بضوابط التصدير الأمريكية",
+          "source": 3
+        }
+      ],
+      "slug": "nvidia-reinstates-jensen-huang-as-ceo-0c7b1b",
+      "title": "إنفيديا تعيد مؤسسها جنسن هوانغ رئيساً تنفيذياً بعد 11 يوماً من استقالته",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "سهم «دبي الإسلامي» يقفز 11% مع مباحثات اندماج محتملة مع «الإمارات الإسلامي»",
+      "section": "companies",
+      "importance": 8,
+      "sources": [
+        "https://www.albayan.ae/economy/business/1567134",
+        "https://www.thenationalnews.com/business/banking/2026/11/23/dubai-islamic-bank-shares-surge-11-on-potential-acquisition-deal/",
+        "https://gulfnews.com/business/banking/dib-emirates-islamic-in-talks-for-a-merger-1.500758026"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد الحدث بدقة: قفزة سهم مع تقارير عن محادثات لم تُحسم. أما العنوان الفرعي فيقول إن «مجلسا إدارة البنكين» يجتمعان، فيظن قارئ البطاقة أن مجلس «الإمارات الإسلامي» يجتمع. ولا تقول البطاقة إن «الإمارات الإسلامي» مملوك لـ«الإمارات دبي الوطني». البلد مفهوم من الاسمين (دبي، الإمارات).",
+              "repair": "«مجلسا «دبي الإسلامي» و«الإمارات دبي الوطني»، مالك «الإمارات الإسلامي»، يجتمعان الأربعاء لبحث صفقة محتملة لم يُتخذ قرار نهائي بشأنها»"
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير ما توفره المصادر: سبب القفزة (إفصاح البنك وتقرير بلومبرغ)، والهدف المعلن (مصرف أقدر على المنافسة عالمياً)، ورد فعل سهم «الإمارات دبي الوطني»، وسيناريوهي سيتي مع أسبابهما، وملكية مؤسسة دبي للاستثمارات للطرفين، وسوابق الدمج. ويغيب عنه شرط الموافقات التنظيمية وغياب أي إعلان رسمي (المصدر 1). صندوق «لماذا يهمّ» يستنتج من ملكية المؤسسة للطرفين أن سعر الصفقة يوزّع الأثر على المساهمين الآخرين، وهو استنتاج محدود ومشروط بالسيناريو الأرجح.",
+              "repair": "إضافة: «وتبقى أي صفقة مشروطة بنتائج المناقشات والموافقات التنظيمية، من دون إعلان رسمي حتى الآن» (المصدر 1)."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "العنوان يقوم على قفزة السهم مع تقارير المحادثات، والمتن يطوّر المحادثات واجتماعي الأربعاء مباشرة بعد التمهيد، ثم السوق، ثم سيتي، ثم السوابق. الخلل في فقرة السوق: حركة سهم «دبي الإسلامي» والربح الفصلي في فقرة، وسهم «الإمارات دبي الوطني» في فقرة يتيمة من جملة واحدة.",
+              "repair": "دمج حركة السهمين في فقرة واحدة للسوق، ونقل تراجع الربح الفصلي إلى جانب التراجع السنوي للسهم في جملة مستقلة."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 11% عند الإغلاق و14.8% خلال الجلسة، و427 و158 و585 مليار درهم، و37%، و28% و41%، ويونيو 2025، ونور بنك 2019 بـ5.49 سهم. ويحتفظ المتن بأن المحادثات أولية وقد لا تتحقق، وبأن 37% تخص السيناريو الأرجح لدى سيتي وحده.",
+              "repair": ""
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد الحدث بدقة: قفزة السهم مع تقارير عن محادثات. والعنوان الفرعي صُحّح ليسمّي المجلسين المجتمعَين («دبي الإسلامي» و«الإمارات دبي الوطني») ويعرّف الثاني بأنه مالك «الإمارات الإسلامي»، مع التنبيه إلى أن الصفقة لم تُحسم. البلد مفهوم من الاسمين.",
+              "repair": ""
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل التقرير ما توفره المصادر: السبب (إفصاح البنك وتقرير بلومبرغ، المصدران 2 و3)، والهدف المعلن (المصدر 3)، ورد فعل السهمين، وسيناريوهي سيتي وأسبابهما، وملكية المؤسسة للطرفين، والشروط التنظيمية وغياب الإعلان الرسمي (المصدر 1)، والسوابق. الخلل في الصندوق وحده: مقدماته صحيحة، لكنه يستنتج أن أثر السعر يقع على «المساهمين الآخرين» فقط، مع أن تفاوت الحصتين (28% و41%) يجعل المؤسسة نفسها طرفاً في توزيع القيمة. ويفترض أيضاً دفعاً نقدياً لم تكشفه المصادر.",
+              "repair": "إعادة صياغة الصندوق على أساس تفاوت الحصتين وعدم الكشف عن السعر وطريقة السداد، كما في المشكلة الأولى."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يطوّر المتن بعد التمهيد مباشرة المحادثاتِ واجتماعي الأربعاء وشروط الصفقة. ثم تأتي فقرة واحدة لرد فعل السهمين، تليها فقرة تضع ضعف السهم على مدى 12 شهراً إلى جانب تراجع الربح الفصلي. بعدها قسم سيتي في ثلاث فقرات (السيناريوهان، والأصول، وملكية المؤسسة)، ثم السوابق في فقرتين، وكل عنوان فرعي يرأس قسماً يطابق محتواه.",
+              "repair": "اختياري: دمج الفقرة القصيرة «وتبقى أي صفقة مشروطة…» في آخر الفقرة السابقة عن اجتماع «الإمارات دبي الوطني»، لأنها تكمل الحديث عن الخطوة التالية."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 11% عند الإغلاق و14.8% خلال الجلسة، وأكبر مكسب منذ ديسمبر 2014، و0.8% و25%، و7.66%، و1.79 مليار درهم بتراجع 3%، و427 و158 و585 مليار درهم، و37%، و28% و41%، ويونيو 2025، وسوابق 2017 و2019 و2012. ويميّز التقرير الإغلاق من أعلى الجلسة، ويحافظ على أن الصفقة لم تُحسم وقد لا تتحقق.",
+              "repair": "«أكبر بنوك الإمارات الإسلامية أصولاً» قد تُقرأ كأنها بنوك «مصرف الإمارات الإسلامي»، والأوضح: «أكبر البنوك الإسلامية في الإمارات من حيث الأصول». وفي التمهيد، «محادثات أولية تجري» تُقرأ أدق «محادثات أولية جرت» لتوافق «أجروا» في المتن والمصدرين 2 و3."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "استنتاج «لماذا يهمّ» يتجاوز مقدماته. النص: «فستبقى مؤسسة دبي للاستثمارات مساهمة في البائع والمشتري معاً أياً كان السعر. أما السعر نفسه فيقع أثره على المساهمين الآخرين في البنكين». المصدر 3 يذكر أن المؤسسة تملك نحو 28% من «دبي الإسلامي» و41% من «الإمارات دبي الوطني». الحصتان غير متساويتين، فالمؤسسة ليست بمعزل عن السعر: كل درهم إضافي يدفعه المشتري يذهب جزء منه إليها عبر حصتها الأكبر في البائع. كذلك يفترض الفعلان «يدفعونه» و«يقبضونه» صفقة نقدية، والمصدر 3 يقول إن أياً من البنكين لم يكشف الشروط أو التقييم، وصفقة نور بنك السابقة تمت بمبادلة أسهم. الإصلاح المقترح: «إذا انتهت الصفقة إلى بيع «الإمارات الإسلامي» إلى «دبي الإسلامي» كما يرجّح سيتي، فستقف مؤسسة دبي للاستثمارات على طرفيها بحصتين غير متساويتين: نحو 41% في البائع و28% في المشتري. لذلك يحدد السعر وطريقة السداد، ولم يُعلن أي منهما، كم يتحمل مساهمو «دبي الإسلامي» الآخرون من كلفة توسيع أصول بنكهم بنحو 37%.» وتُعدَّل why_basis لتشمل عدم الكشف عن الشروط (المصدر 3).",
+        "يحمل التقرير ما توفره المصادر: السبب (إفصاح البنك وتقرير بلومبرغ، المصدران 2 و3)، والهدف المعلن (المصدر 3)، ورد فعل السهمين، وسيناريوهي سيتي وأسبابهما، وملكية المؤسسة للطرفين، والشروط التنظيمية وغياب الإعلان الرسمي (المصدر 1)، والسوابق. الخلل في الصندوق وحده: مقدماته صحيحة، لكنه يستنتج أن أثر السعر يقع على «المساهمين الآخرين» فقط، مع أن تفاوت الحصتين (28% و41%) يجعل المؤسسة نفسها طرفاً في توزيع القيمة. ويفترض أيضاً دفعاً نقدياً لم تكشفه المصادر. — إعادة صياغة الصندوق على أساس تفاوت الحصتين وعدم الكشف عن السعر وطريقة السداد، كما في المشكلة الأولى.",
+        "اختياري: دمج الفقرة القصيرة «وتبقى أي صفقة مشروطة…» في آخر الفقرة السابقة عن اجتماع «الإمارات دبي الوطني»، لأنها تكمل الحديث عن الخطوة التالية.",
+        "«أكبر بنوك الإمارات الإسلامية أصولاً» قد تُقرأ كأنها بنوك «مصرف الإمارات الإسلامي»، والأوضح: «أكبر البنوك الإسلامية في الإمارات من حيث الأصول». وفي التمهيد، «محادثات أولية تجري» تُقرأ أدق «محادثات أولية جرت» لتوافق «أجروا» في المتن والمصدرين 2 و3."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "تملك مؤسسة دبي للاستثمارات نحو 28% من بنك دبي الإسلامي و41% من بنك الإمارات دبي الوطني.",
+          "source": 3
+        },
+        {
+          "fact": "في السيناريو الأرجح لدى سيتي يُباع مصرف الإمارات الإسلامي إلى بنك دبي الإسلامي، فتنمو أصول دبي الإسلامي بنحو 37% ويتخلى الإمارات دبي الوطني عن ذراعه الإسلامية.",
+          "source": 3
+        },
+        {
+          "fact": "لم يسمِّ أي من البنكين الطرف المقابل، ولم يكشف شروط الصفقة أو تقييمها أو توقيتها.",
+          "source": 3
+        },
+        {
+          "fact": "لا مساهمين من الجمهور في مصرف الإمارات الإسلامي منذ شطب إدراجه في يونيو 2025.",
+          "source": 3
+        }
+      ],
+      "slug": "dubai-islamic-bank-shares-jump-merger-talks-c7451f",
+      "title": "سهم «دبي الإسلامي» يقفز 11% مع تقارير عن محادثات لدمجه مع «الإمارات الإسلامي»",
+      "score": 9,
+      "image": "cover-art"
+    },
+    {
+      "headline": "ناسداك يرتد نحو 7% بعد أسوأ أسبوع منذ 2020",
+      "section": "markets",
+      "importance": 8,
+      "sources": [
+        "https://www.nytimes.com/2026/11/22/business/nvidia-stock-huang-ai-sp500-markets.html",
+        "https://aawsat.com/node/5344694",
+        "https://www.aljazeera.net/ebusiness/2026/11/23/%d8%b9%d8%a7%d8%ac%d9%84-%d9%85%d8%a4%d8%b4%d8%b1-%d9%86%d8%a7%d8%b3%d8%af%d8%a7%d9%83-%d9%8a%d9%81%d8%aa%d8%aa%d8%ad-%d9%85%d8%b1%d8%aa%d9%81%d8%b9%d8%a7-%d8%a8%d9%86%d8%ad%d9%88-7",
+        "https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html"
+      ],
+      "followUp": {
+        "title": "«ستاندرد آند بورز 500» الأمريكي يدخل منطقة التصحيح بهبوط 3.7% تقوده أسهم الرقائق",
+        "newSince": "ارتد ناسداك المركب الاثنين بنحو 6.89% وقفز سهم إنفيديا 30% بعدما أعاد مجلس إدارتها جنسن هوانغ رئيساً تنفيذياً، إثر الخسائر التي دفعت المؤشرات الرئيسية إلى منطقة التصحيح الجمعة."
+      },
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والعنوان الفرعي يبيّنان ما تغيّر: ارتداد ناسداك وقفزة إنفيديا بعد عودة هوانغ. إنفيديا وناسداك اسمان معروفان، والاسم الكامل يرد في المقدمة.",
+              "repair": "ناسداك يقفز نحو 7% بعد إعادة جنسن هوانغ رئيساً تنفيذياً لإنفيديا"
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يوفر SOURCE 3 سبباً لإعادة التعيين هو ضغوط ترمب، ويشرح وزن إنفيديا بأنها أبرز المستفيدين من إنفاق البنية التحتية للذكاء الاصطناعي، ويعرض أسباب البيع: الطلب على الرقائق، والإنفاق الرأسمالي، ومخاوف ما بعد انتخابات التجديد النصفي، وضعف سهم أنثروبيك. المسودة لا تنقل شيئاً من ذلك. أما الصندوق فيبني على مقدمة صحيحة لكنه يبالغ في نسبة القفزة إلى قرار واحد.",
+              "repair": "يُضاف دافع العودة ودور إنفيديا من SOURCE 3 بعد المقدمة، وتُربط خلفية البيع بأسبابها المذكورة، ويُخفَّف حكم الصندوق في ضوء SOURCE 1."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "المتن يتنقل بين إقصاء هوانغ، ثم «نيويورك تايمز» وعقود داو، ثم صفوف الجدول، ثم ميكرون وبرودكوم، ثم أنثروبيك منفصلة عن السياق. وتأتي «وجاءت قفزة سهم إنفيديا» قبل أي ذكر لهذه القفزة في المتن.",
+              "repair": "ترتيب مقترح: عودة هوانغ ودافعها وقفزة إنفيديا، ثم ردّ السوق بمقياس واحد لكل أصل، ثم خلفية البيع مع أنثروبيك، ثم جملة واحدة عن التقييمات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "عقود داو قبل الافتتاح وسهما ميكرون وبرودكوم قبل الافتتاح تُعرض بجوار أسعار الجلسة كأنها مقياس واحد، والمقدمة تحدد السعر بدقيقة بعينها.",
+              "repair": "تُوحَّد المقاييس على التغير عن الإغلاق السابق «في تعاملات الاثنين»، أو تُذكر صراحة أنها أرقام ما قبل الافتتاح في جملة مستقلة."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والعنوان الفرعي ما الذي تغيّر: ناسداك يقفز نحو 7% لأن إنفيديا أعادت هوانغ رئيساً تنفيذياً، وسهمها يرتفع 30% بعد أسوأ أسبوع للمؤشر منذ 2020. وناسداك وإنفيديا اسمان معروفان، ويقدّم العنوان هوانغ بمنصبه.",
+              "repair": "يمكن أن يُكتب العنوان الفرعي: «سهم إنفيديا يرتفع 30% وأسهم الذكاء الاصطناعي ترتد بعد أسوأ أسبوع لناسداك منذ 2020»، ليتضح أي مؤشر هو المقصود."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المسودة تنقل سبب العودة (ضغوط ترامب، SOURCE 3)، وسبب ثقل إنفيديا، وأسباب البيع، وموقف سي إن بي سي من التقييمات. لكن «شركات الحوسبة السحابية الجديدة» تبقى بلا وصف لوظيفتها، مع أن SOURCE 3 يقدّمه. وصندوق «لماذا يهمّ» يردّ اتساع الصعود إلى «وزن إنفيديا في المؤشر»، والمصادر لا تدعم ذلك.",
+              "repair": "يُستعمل وصف SOURCE 3 لهذه الشركات: «شركات مراكز البيانات التي توفر القدرة الحاسوبية لنماذج الذكاء الاصطناعي». ويُصاغ الصندوق على أن رهانات الذكاء الاصطناعي تتعلق بإنفيديا، لا على وزنها في المؤشر."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "يطوّر المتن ما يقوله العنوان بعد المقدمة مباشرة: عودة هوانغ ودافعها وقفزة إنفيديا. بعد ذلك يتعثر البناء. فقرة ميكرون جملة واحدة تقول إن الرقائق «تقدمت» الصعود، وتليها فقرة تقول إن شركات الحوسبة «قادت» الارتفاع. ثم يعيد قسم البيع حدث الأسبوع الماضي بتفصيل يتجاوز جملة أو جملتين.",
+              "repair": "تُدمج فقرتا الأسهم في فقرة واحدة فيها قائد واحد للصعود ورقم ما قبل الافتتاح معلَّم بوضوح. ويُختصر قسم الأسبوع الماضي إلى جملتين عن الأسباب وأنثروبيك."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«ثم أضاف 1559.39 نقطة إلى إغلاقه السابق» توحي بإضافة النقاط بعد الافتتاح، مع أنها مقيسة من الإغلاق السابق (SOURCE 5). و«كانت الأسهم الأمريكية مهيأة للارتفاع» تعمّم ما قالته SOURCE 1 عن «ستاندرد آند بورز 500» وحده. أما أرقام الجدول فتطابق SOURCE 4 خانةً خانة.",
+              "repair": "يُكتب: «افتتح مرتفعاً بأكثر من 6% عن إغلاق الجمعة عند 22617.73 نقطة». ويُكتب: «كان «ستاندرد آند بورز 500» مهيأً للارتفاع الاثنين، بحسب «نيويورك تايمز»»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 10,
+      "mendIssues": [
+        "ترجمة حرفية ومصطلح بلا شرح: «قادت شركات الحوسبة السحابية الجديدة» نقلٌ حرفي لكلمة neoclouds الواردة في SOURCE 4، ولا يعرف القارئ العربي ما هذه الشركات. يقدّم SOURCE 3 وصفها، فتُكتب: «شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي».",
+        "بناء: للصعود قائدان متعارضان في فقرتين متتاليتين. الأولى تقول «تقدمت أسهم الرقائق الصعود» قبل الافتتاح (SOURCE 3)، والثانية «قادت شركات الحوسبة السحابية الجديدة... الارتفاع» في الجلسة، ولا يصف SOURCE 4 هذه الشركات بأنها قادت. ثم إن فقرة ميكرون جملة واحدة معزولة. الإصلاح: تُدمج الفقرتان في فقرة واحدة تبدأ بأرقام الجلسة: «صعد سهم نيبيوس أكثر من 30%، بمكاسب تفوق مكاسب إنفيديا، وارتفعت كبرى شركات التكنولوجيا بين 4% و6%». وتُذكر ميكرون في جملة صريحة تقول إن رقمها من تداولات ما قبل الافتتاح، ويُحذف أحد الفعلين «تقدمت» و«قادت».",
+        "دقة وتكرار: «وافتتح ناسداك الجلسة مرتفعاً بأكثر من 6%، ثم أضاف 1559.39 نقطة إلى إغلاقه السابق» تعيد بالنقاط الصعودَ الذي ذكرته المقدمة (6.89%). وكلمة «ثم» توحي بأن المؤشر أضاف هذه النقاط بعد الافتتاح، مع أنها مقيسة من إغلاق الجمعة (SOURCE 5). الإصلاح: «وكان ناسداك قد افتتح مرتفعاً بأكثر من 6% (SOURCE 4) عن إغلاقه يوم الجمعة عند 22617.73 نقطة»، ويُحذف رقم النقاط.",
+        "تكرار: قسم «موجة البيع وقلق التقييمات» يروي من جديد حدث الأسبوع الماضي الذي غطّته قصة «ستاندرد آند بورز 500» قبل ثلاثة أيام: هبوط ناسداك 10%، والتحول إلى الخسارة منذ بداية العام، ومنطقة التصحيح، وصعود أنثروبيك 17% الخميس ثم هبوطها 8.5% الجمعة. ويعيد عبارة «في أسوأ أسبوع له منذ 2020» التي قالها العنوان الفرعي. الإصلاح: يُختصر القسم إلى جملتين. الأولى عن هبوط الأسبوع الماضي وأسبابه كما يذكرها SOURCE 3 (الشكوك في الطلب على الرقائق وفي جدوى الإنفاق على مراكز البيانات، ومخاوف ما بعد انتخابات التجديد النصفي). والثانية عن أنثروبيك: استقر سهمها الاثنين بعد طرح قياسي بقيمة 93.5 مليار دولار تراجع أداؤه سريعاً (SOURCE 4). ثم تُلحق بهما جملة «سي إن بي سي» الختامية عن التقييمات.",
+        "صندوق الأرقام: لم يُنفَّذ إلا نصف الملاحظة السابقة رقم 6. حُذف التراجع بأكثر من 40%، لكن ارتفاع سهم إنفيديا 30% الاثنين (SOURCE 4) لم يُضَف، مع أنه رقم الحدث المذكور في العنوان الفرعي. كما يكرر الصندوق ناسداك مرتين (النسبة والمستوى)، ويضع رقم ميكرون من تداولات ما قبل الافتتاح بجوار أرقام الجلسة. الإصلاح: يحل «ارتفاع سهم إنفيديا الاثنين: 30%» محل بند ميكرون.",
+        "لماذا يهمّ: «يكشف وزن إنفيديا في المؤشر» قفزة استنتاجية. فالمكاسب كانت واسعة، من نيبيوس وكور ويف إلى ألفابت وميتا (SOURCE 4)، وكلمة «مهيأة للارتفاع» في SOURCE 1 تخص «ستاندرد آند بورز 500» لا ناسداك. الإصلاح: «أن يدفع خبر من شركة واحدة ارتداداً كانت الأسهم الأمريكية مهيأة له إلى قفزة تقارب 7% في ناسداك يكشف إلى أي حد تتعلق رهانات الذكاء الاصطناعي بإنفيديا»، وتبقى الجملة الثانية كما هي.",
+        "المسودة تنقل سبب العودة (ضغوط ترامب، SOURCE 3)، وسبب ثقل إنفيديا، وأسباب البيع، وموقف سي إن بي سي من التقييمات. لكن «شركات الحوسبة السحابية الجديدة» تبقى بلا وصف لوظيفتها، مع أن SOURCE 3 يقدّمه. وصندوق «لماذا يهمّ» يردّ اتساع الصعود إلى «وزن إنفيديا في المؤشر»، والمصادر لا تدعم ذلك. — يُستعمل وصف SOURCE 3 لهذه الشركات: «شركات مراكز البيانات التي توفر القدرة الحاسوبية لنماذج الذكاء الاصطناعي». ويُصاغ الصندوق على أن رهانات الذكاء الاصطناعي تتعلق بإنفيديا، لا على وزنها في المؤشر.",
+        "يطوّر المتن ما يقوله العنوان بعد المقدمة مباشرة: عودة هوانغ ودافعها وقفزة إنفيديا. بعد ذلك يتعثر البناء. فقرة ميكرون جملة واحدة تقول إن الرقائق «تقدمت» الصعود، وتليها فقرة تقول إن شركات الحوسبة «قادت» الارتفاع. ثم يعيد قسم البيع حدث الأسبوع الماضي بتفصيل يتجاوز جملة أو جملتين. — تُدمج فقرتا الأسهم في فقرة واحدة فيها قائد واحد للصعود ورقم ما قبل الافتتاح معلَّم بوضوح. ويُختصر قسم الأسبوع الماضي إلى جملتين عن الأسباب وأنثروبيك.",
+        "«ثم أضاف 1559.39 نقطة إلى إغلاقه السابق» توحي بإضافة النقاط بعد الافتتاح، مع أنها مقيسة من الإغلاق السابق (SOURCE 5). و«كانت الأسهم الأمريكية مهيأة للارتفاع» تعمّم ما قالته SOURCE 1 عن «ستاندرد آند بورز 500» وحده. أما أرقام الجدول فتطابق SOURCE 4 خانةً خانة. — يُكتب: «افتتح مرتفعاً بأكثر من 6% عن إغلاق الجمعة عند 22617.73 نقطة». ويُكتب: «كان «ستاندرد آند بورز 500» مهيأً للارتفاع الاثنين، بحسب «نيويورك تايمز»».",
+        "يمكن أن يُكتب العنوان الفرعي: «سهم إنفيديا يرتفع 30% وأسهم الذكاء الاصطناعي ترتد بعد أسوأ أسبوع لناسداك منذ 2020»، ليتضح أي مؤشر هو المقصود."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 2,
+        "rounds": 2,
+        "found": 2
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "صعد ناسداك المركب 6.89% الاثنين بعد إعادة إنفيديا تعيين جنسن هوانغ رئيساً تنفيذياً",
+          "source": 5
+        },
+        {
+          "fact": "كان «ستاندرد آند بورز 500» مهيأً للارتفاع الاثنين قبل أن يدفع خبر إعادة هوانغ الأسهم إلى صعود قوي",
+          "source": 1
+        },
+        {
+          "fact": "إنفيديا من أبرز الشركات المستفيدة من الإنفاق العالمي على البنية التحتية للذكاء الاصطناعي",
+          "source": 3
+        },
+        {
+          "fact": "تصاعدت الشكوك في استدامة الطلب على رقائق الذكاء الاصطناعي وجدوى الإنفاق على مراكز البيانات، مع مخاوف من تباطؤ هذا الإنفاق بعد انتخابات التجديد النصفي",
+          "source": 3
+        }
+      ],
+      "slug": "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
+      "title": "ناسداك يقفز نحو 7% بعد إعادة جنسن هوانغ رئيساً تنفيذياً لإنفيديا",
+      "score": 9,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر والعراق يبحثان توريد 10 ملايين برميل نفط عراقي",
+      "section": "energy",
+      "importance": 7,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
   "llm": {
-    "calls": 0,
+    "calls": 70,
     "failures": 0,
-    "promptTokens": 0,
-    "completionTokens": 0,
-    "cacheReadTokens": 0,
-    "costUsd": 0,
-    "byModel": {},
-    "byRole": {}
+    "promptTokens": 1305014,
+    "completionTokens": 259886,
+    "cacheReadTokens": 231891,
+    "costUsd": 9.8286,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 70
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 164079,
+        "read": 0,
+        "out": 4241,
+        "usd": 0.7411
+      },
+      "desk": {
+        "calls": 16,
+        "in": 153024,
+        "read": 122643,
+        "out": 70995,
+        "usd": 2.1648
+      },
+      "writer": {
+        "calls": 15,
+        "in": 275941,
+        "read": 109248,
+        "out": 84584,
+        "usd": 3.001
+      },
+      "critic": {
+        "calls": 12,
+        "in": 200995,
+        "read": 0,
+        "out": 46303,
+        "usd": 1.7301
+      },
+      "checker": {
+        "calls": 6,
+        "in": 51972,
+        "read": 0,
+        "out": 40850,
+        "usd": 1.0249
+      },
+      "vision": {
+        "calls": 20,
+        "in": 227112,
+        "read": 0,
+        "out": 12913,
+        "usd": 1.1667
+      }
+    }
   },
   "log": [
-    "[13:41:48] newsroom start mode=reports limit=4 dry-run=false",
-    "[13:41:55] report iea-omr: www.iea.org/reports/oil-market-report-november-2026 not read (http-403)",
-    "[13:41:55] report iea-omr: www.iea.org/reports/oil-market-report-october-2026 not read (http-403)",
-    "[13:41:55] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[13:41:55] report iea-weo: www.iea.org/reports/world-energy-outlook-2026 not read (http-403)",
-    "[13:41:59] report un-tourism-barometer: page not read (http-403)",
-    "[13:42:04] reports: 0 new edition(s)"
+    "[16:02:08] image: dropped \"Jensen huang stanford 2026-04-30 018.jpg\" — another frame of a series a published story runs",
+    "[16:02:08] image: dropped \"Jensen huang stanford 2026-04-30 001.jpg\" — another frame of a series a published story runs",
+    "[16:02:08] commons \"Nvidia GPU chip 2026\": 1 usable of 3",
+    "[16:02:09] commons \"Nvidia GPU chip\": 5 usable of 12",
+    "[16:02:09] image: dropped \"The Moore's Law Update — for 128 years - 54181414828.jpg\" — names too little of chip",
+    "[16:02:09] image: dropped \"NVIDIA Headquarters.jpg\" — names too little of chip",
+    "[16:02:09] image: dropped \"Nvidia SLI GTX280.jpg\" — names too little of chip",
+    "[16:02:09] commons \"traders watching screens 2026\": 0 usable of 0",
+    "[16:02:09] commons \"traders watching screens\": 0 usable of 0",
+    "[16:02:09] commons \"traders watching\": 7 usable of 12",
+    "[16:02:09] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
+    "[16:02:09] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
+    "[16:02:09] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[16:02:09] image: dropped \"Eyes Watching You (136834777).jpeg\" — taken in China, which the story does not name",
+    "[16:02:09] image: dropped \"Friedel Kantaut- \"Is watching You\".jpg\" — taken in Germany, which the story does not name",
+    "[16:02:13] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=106 in=10377 read=0 out=292 attempt=1 ms=4110",
+    "[16:02:13] image: vision rejected all candidates (Both candidates are product close-ups, which the brief rules out. Neither shows Jensen Huang or AI and chip stocks rebounding. No. 1 is a macro shot of a 2013 Kepler die whose main subject is the logo, with 'TAIWAN' printed on it. No. 2 is an obsolete 2009 GeForce 6600GT AGP card shot as a dated amateur snapshot. Choosing none lets the fallback find Huang or a fitting market scene.)",
+    "[16:02:13] image: tier 4, the story's point and its subject: traders New York Stock Exchange | Jensen Huang on stage | Jensen Huang Nvidia keynote | stock traders United States | trading floor New York | data center servers (home: United States, USA, American, New York, California)",
+    "[16:02:14] pexels \"Jensen Huang on stage\": 8 usable",
+    "[16:02:14] pexels \"trading floor New York\": 8 usable",
+    "[16:02:14] pexels \"data center servers\": 8 usable",
+    "[16:02:14] pexels \"traders New York Stock Exchange\": 8 usable",
+    "[16:02:14] pexels \"Jensen Huang Nvidia keynote\": 8 usable",
+    "[16:02:14] pexels \"stock traders United States\": 8 usable",
+    "[16:02:14] commons \"traders New York Stock Exchange\": 17 usable of 24",
+    "[16:02:14] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[16:02:14] image: dropped \"New York - Docks-New York Harbor - NARA - 68146200 ed2.jpg\" — names too little of traders",
+    "[16:02:14] image: dropped \"New York - New York City - NARA - 68146147.jpg\" — dated 1928, an archival picture",
+    "[16:02:14] image: dropped \"New York - New York City - NARA - 68146131.jpg\" — dated 1924, an archival picture",
+    "[16:02:14] image: dropped \"New York - New York City - NARA - 68146159.jpg\" — names too little of traders",
+    "[16:02:14] image: dropped \"New York - New York City - NARA - 68145654.jpg\" — dated 1937, an archival picture",
+    "[16:02:14] image: dropped \"New York - Docks-New York Harbor - NARA - 68146234.jpg\" — names too little of traders",
+    "[16:02:14] image: dropped \"How to know New York City - a serviceable and trustworthy guide, havin\" — names too little of traders",
+    "[16:02:14] image: dropped \"Defense.gov News Photo 000706-N-1110A-505.jpg\" — dated 2000, an archival picture",
+    "[16:02:21] openverse \"Jensen Huang Nvidia keynote\": 0 usable of 0",
+    "[16:02:22] openverse \"traders New York Stock Exchange\": HTTP 504",
+    "[16:02:22] image: dropped \"Close-up of a hand holding a smartphone displaying a stock trading app\" — names too little of traders",
+    "[16:02:22] image: dropped \"Ornate façade of the New York Stock Exchange featuring intricate stone\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:02:22] image: dropped \"Close-up of a smartphone screen displaying a stock trading app with ca\" — names too little of traders",
+    "[16:02:22] image: dropped \"Two business professionals in suits smiling and viewing a cellphone ou\" — names too little of traders",
+    "[16:02:22] image: dropped \"Classic architecture of the New York Stock Exchange facade in NYC.\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:02:22] image: dropped \"Captured the iconic facade of the New York Stock Exchange with intrica\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:02:22] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of traders",
+    "[16:02:22] commons \"Jensen Huang on stage\": 5 usable of 10",
+    "[16:02:23] openverse \"Jensen Huang on stage\": HTTP 500",
+    "[16:02:23] image: dropped \"Energetic live performance with a singing artist in a vibrant nightclu\" — names too little of stage",
+    "[16:02:23] image: dropped \"Terracotta Warriors excavation site in Xi'an, showcasing the ancient s\" — names too little of stage",
+    "[16:02:23] image: dropped \"A couple walks in New York City carrying a Christmas tree during the w\" — names too little of stage",
+    "[16:02:23] image: dropped \"DJ in a lively indoor music festival setting with a crowd captivated b\" — names too little of stage",
+    "[16:02:23] commons \"Jensen Huang Nvidia keynote\": 5 usable of 5",
+    "[16:02:32] openverse \"stock traders United States\": 0 usable of 0",
+    "[16:02:40] openverse \"data center servers\": HTTP 504",
+    "[16:02:41] openverse \"trading floor New York\": 0 usable of 0",
+    "[16:02:47] openverse \"Jensen Huang\": 1 usable of 1",
+    "[16:02:47] image: dropped \"Nvidia CEO Jensen Huang\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Detailed shot of hands holding a modern graphics card indoors.\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Detailed view of a GeForce RTX graphics card, highlighting modern tech\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Detailed image of a GeForce RTX GPU with glowing LED lights inside a c\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Detailed close-up of a GeForce GTX graphics card showing hardware comp\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Energetic speaker delivering a talk at a corporate event\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Close-up of a RTX 2080 Super graphics card against a bright yellow bac\" — names too little of keynote",
+    "[16:02:47] image: dropped \"Close-up of NVIDIA GeForce RTX and Intel Core i7 stickers on a laptop \" — names too little of keynote",
+    "[16:02:47] image: dropped \"A close-up view of a person holding an Nvidia chip with a gray backgro\" — names too little of keynote",
+    "[16:02:48] commons \"stock traders United States\": 4 usable of 24",
+    "[16:02:48] image: dropped \"Peter Tuchman theCUBE + NYSE Wired present the East Coast AI Leaders E\" — names too little of stock, traders",
+    "[16:02:50] openverse \"traders United States\": HTTP 504",
+    "[16:02:50] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[16:02:50] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[16:02:50] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[16:02:50] commons \"trading floor New York\": 14 usable of 24",
+    "[16:03:03] openverse \"floor New York\": HTTP 504",
+    "[16:03:03] image: dropped \"Iconic neoclassical facade of the New York Stock Exchange with America\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"Interior view of the Oculus at Westfield World Trade Center, showcasin\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"Close-up view of the iconic New York Stock Exchange building with Amer\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"A breathtaking night view featuring the New York City skyline and icon\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"Interior view of the Oculus at the World Trade Center in NYC, showcasi\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"Crowds inside the modern Oculus Transportation Hub in Manhattan's Worl\" — names too little of trading, floor",
+    "[16:03:03] image: dropped \"Stunning view of the Oculus and surrounding skyscrapers in downtown Ne\" — names too little of trading, floor",
+    "[16:03:04] commons \"data center servers\": 14 usable of 24",
+    "[16:03:04] image: set aside \"Wikimedia Foundation Servers-8055 13.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:03:04] image: set aside \"Data center roof.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:03:04] image: set aside \"Data Center của CMC Telecom (2).jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:03:04] image: dropped \"Utah Data Center Panorama (cropped).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[16:03:04] image: dropped \"CAMPUS - Military Data Center (52106762896).jpg\" — a warship or weapon, and the story is not about the military",
+    "[16:03:04] image: \"Detailed image of illuminated server racks showcasing modern technolog\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[16:03:04] image: set aside \"Close-up of a modern server unit in a blue-lit data center environment\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:03:04] image: dropped \"Le torrette con i bocchettoni per il raffreddamento ad aria dei server\" — taken in Italy, which the story does not name",
+    "[16:03:04] image: dropped \"A musician passionately playing an electric guitar on stage during a l\" — taken in Lithuania, which the story does not name",
+    "[16:03:23] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1470 in=12190 read=0 out=1700 attempt=1 ms=17450",
+    "[16:03:23] image: \"Close-up of server racks in a data center highlighting moder\" names the story's topic without saying its point (Photos 3 and 4 show Jensen Huang but also Rep. Ro Khanna, an identifiable person outside the story; beside a story about a suspected Chinese spy and Trump's pre); checked now and kept in reserve while the desk looks further",
+    "[16:03:29] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=475 in=9514 read=0 out=587 attempt=1 ms=6917",
+    "[16:03:29] image: second check (claude-cli/claude-opus-5-5) WRONG_SUBJECT — refused \"Close-up of server racks in a data center highlighting moder\": A colour-graded stock close-up of an anonymous server's drive bays pictures generic data-centre hardware, not Nvidia, Je",
+    "[16:03:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=1716 in=12199 read=0 out=1936 attempt=1 ms=18508",
+    "[16:03:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=403 in=9724 read=0 out=489 attempt=1 ms=5915",
+    "[16:03:54] image: second check (claude-cli/claude-opus-5-5) WRONG_PERSON — refused \"Jensen huang and ro khanna stanford 2026-04-09 001.jpg\": Alongside Jensen Huang, the frame clearly shows US Representative Ro Khanna, an identifiable politician who is not part ",
+    "[16:03:54] image: the company's own brand (Nvidia): Nvidia sign | Nvidia booth Computex | Nvidia headquarters Santa Clara | Nvidia headquarters; its categories: Nvidia",
+    "[16:03:55] pexels \"Nvidia headquarters\": 8 usable",
+    "[16:03:55] pexels \"Nvidia sign\": 8 usable",
+    "[16:03:55] commons \"Nvidia sign 2026\": 5 usable of 6",
+    "[16:03:55] pexels \"Nvidia headquarters Santa Clara\": 8 usable",
+    "[16:03:55] pexels \"Nvidia booth Computex\": 8 usable",
+    "[16:03:55] commons \"Nvidia sign\": 11 usable of 22",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 031.jpg\" — another frame of a series a published story runs",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 001.jpg\" — another frame of a series a published story runs",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 021.jpg\" — another frame of a series a published story runs",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 004.jpg\" — another frame of a series a published story runs",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 026.jpg\" — another frame of a series a published story runs",
+    "[16:03:55] image: dropped \"Jensen huang stanford 2026-04-30 004.jpg\" — another frame of a series a published story runs",
+    "[16:04:12] openverse \"Nvidia sign\": HTTP 503",
+    "[16:04:12] openverse: 3 failures in a row; left alone for 10 minutes",
+    "[16:04:12] image: dropped \"Detailed close-up of a GeForce GTX graphics card showing hardware comp\" — names too little of sign",
+    "[16:04:12] image: dropped \"Detailed view of a GeForce RTX graphics card installed in a computer s\" — names too little of sign",
+    "[16:04:12] image: dropped \"Close-up image of an RTX 2080 GPU, highlighting modern and sleek desig\" — names too little of sign",
+    "[16:04:12] commons \"Nvidia booth Computex 2026\": 0 usable of 0",
+    "[16:04:12] commons \"Nvidia booth Computex\": 5 usable of 6",
+    "[16:04:12] image: dropped \"Detailed view of a GeForce RTX graphics card installed in a computer s\" — names too little of booth",
+    "[16:04:12] image: dropped \"Detailed close-up of a GeForce GTX graphics card showing hardware comp\" — names too little of booth",
+    "[16:04:12] image: dropped \"Detailed image of a GeForce RTX GPU with glowing LED lights inside a c\" — names too little of booth",
+    "[16:04:12] image: dropped \"Detailed view of a GeForce RTX graphics card, highlighting modern tech\" — names too little of booth",
+    "[16:04:12] image: dropped \"Detailed shot of hands holding a modern graphics card indoors.\" — names too little of booth",
+    "[16:04:13] commons \"Nvidia headquarters Santa Clara 2026\": 1 usable of 1",
+    "[16:04:13] commons \"Nvidia headquarters Santa Clara\": 9 usable of 11",
+    "[16:04:13] image: dropped \"Director Lê Nguyễn Thiên Nga and NVIDIA Founder and CEO Jensen Huang.j\" — shows le, jensen, le, jensen, not the story's people",
+    "[16:04:13] image: set aside \"NVIDIA Headquarters.jpg\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[16:04:13] image: dropped \"Stunning aerial view of the modern Apple Park in Cupertino, showcasing\" — names too little of headquarters",
+    "[16:04:13] image: dropped \"Curved glass windows reflecting the modern architectural details of a \" — names too little of headquarters",
+    "[16:04:13] image: dropped \"Aerial view of an office complex in Sacramento, California during fall\" — names too little of headquarters",
+    "[16:04:13] image: dropped \"Explore the sleek and abstract interior of a contemporary office build\" — names too little of headquarters",
+    "[16:04:13] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[16:04:13] image: dropped \"A modern building featuring a prominent VA sign, captured at sunset.\" — names too little of headquarters",
+    "[16:04:13] image: dropped \"Glass facade skyscraper with trees in downtown urban scene, perfect fo\" — names too little of headquarters",
+    "[16:04:13] commons \"Nvidia headquarters 2026\": 1 usable of 1",
+    "[16:04:14] commons \"Nvidia headquarters\": 10 usable of 12",
+    "[16:04:14] image: dropped \"Stunning aerial view of the modern Apple Park in Cupertino, showcasing\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"Contemporary business office building with curved architecture and tre\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"Aerial view of an office complex in Sacramento, California during fall\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"A modern building featuring a prominent VA sign, captured at sunset.\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"Modern architectural marvel with reflective glass panels by a water bo\" — names too little of headquarters",
+    "[16:04:14] image: dropped \"Curved glass windows reflecting the modern architectural details of a \" — names too little of headquarters",
+    "[16:04:14] image: dropped \"High-angle nighttime view of a modern urban skyscraper with rooftop ga\" — names too little of headquarters",
+    "[16:04:14] commons Category:Nvidia: 15 usable of 48",
+    "[16:04:14] image: dropped \"Chris Benson - Practical AI - NVIDIA GTC 2019 Silicon Valley.jpg\" — an event's photograph, people and banners",
+    "[16:04:14] image: dropped \"Best Choice Award of NVIDIA, Computex Taipei 20150603.jpg\" — an event's photograph, people and banners",
+    "[16:04:14] image: 25 file(s) dropped for not naming Nvidia",
+    "[16:04:20] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=232 in=11348 read=0 out=415 attempt=1 ms=5339",
+    "[16:04:28] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=531 in=9438 read=0 out=607 attempt=1 ms=7458",
+    "[16:04:28] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Nvidia Sign at Taipei, Neihu District, Taiwan Nov 09, 2024 0\": Nvidia's current logo and name are the clear, legible subject on the sign at its own Taipei office, which the rules acce",
+    "[16:04:28] published \"ناسداك يقفز نحو 7% بعد إعادة جنسن هوانغ رئيساً تنفيذياً لإنفيديا\" -> nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
+    "[16:04:28] run budget of 35 minutes spent; \"مصر والعراق يبحثان توريد 10 ملايين برميل نفط عراقي\" waits for the next run"
   ]
 }

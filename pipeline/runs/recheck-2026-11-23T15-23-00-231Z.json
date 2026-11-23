@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-23T15:23:00.231Z",
+  "durationSec": 55,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "jarir-minimum-tax-cost-130-million-riyals-2027-6b5146",
+      "title": "«جرير» السعودية تقدّر كلفة الضريبة التكميلية عليها بنحو 130 مليون ريال في 2027",
+      "kind": "news",
+      "outcome": "clean",
+      "counts": {
+        "sentences": 25,
+        "checked": 25,
+        "supported": 22,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 1,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 0,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 12660,
+    "completionTokens": 6884,
+    "cacheReadTokens": 0,
+    "costUsd": 0.1883,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 12660,
+        "read": 0,
+        "out": 6884,
+        "usd": 0.1883
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[15:23:01] second look: 1 to read now (1 published pieces not yet read; 302 read clean before publication and left out of the audit sample)",
+    "[15:23:55] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1746 in=12660 read=0 out=6884 attempt=1 ms=50696",
+    "[15:23:55] jarir-minimum-tax-cost-130-million-riyals-2027-6b5146: 25 of 25 sentences checked · 22 supported · 1 without a source · 0 confirmed error(s)"
+  ]
+}

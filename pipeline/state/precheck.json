@@ -19109,6 +19109,198 @@
           "noted": []
         }
       ]
+    },
+    "nvidia-reinstates-jensen-huang-as-ceo-0c7b1b": {
+      "at": "2026-11-23T15:33:12.930Z",
+      "title": "إنفيديا تعيد مؤسسها جنسن هوانغ رئيساً تنفيذياً بعد 11 يوماً من استقالته",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 26,
+            "checked": 26,
+            "supported": 21,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 3,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 4,
+              "field": "lede",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وقفز سهم شركة الرقائق بأكثر من 33% مع افتتاح التداول في وول ستريت.",
+              "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 30% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 5,
+              "field": "keyFacts",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "ارتفاع سهم إنفيديا عند افتتاح الاثنين: أكثر من 33%",
+              "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 30% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            },
+            {
+              "id": 9,
+              "field": "whyItMatters",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "حين يضيف خبر عودة رجل واحد أكثر من 33% إلى سعر السهم عند الافتتاح، يصبح بقاؤه على رأس إنفيديا جزءاً من تقييمها السوقي.",
+              "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 30% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%.",
+              "source": "Asharq Business",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
+    },
+    "dubai-islamic-bank-shares-jump-merger-talks-c7451f": {
+      "at": "2026-11-23T15:49:36.936Z",
+      "title": "سهم «دبي الإسلامي» يقفز 11% مع تقارير عن محادثات لدمجه مع «الإمارات الإسلامي»",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 32,
+            "checked": 32,
+            "supported": 29,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215": {
+      "at": "2026-11-23T16:04:28.392Z",
+      "title": "ناسداك يقفز نحو 7% بعد إعادة جنسن هوانغ رئيساً تنفيذياً لإنفيديا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "ok": true,
+      "repairs": 2,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 28,
+            "checked": 28,
+            "supported": 22,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 2,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 1,
+            "unchecked": 0
+          },
+          "found": [
+            {
+              "id": 9,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وعاد هوانغ إلى منصبه بعد ضغوط متزايدة من الرئيس الأمريكي دونالد ترامب، بحسب رويترز.",
+              "quote": "وجاءت عودته بعد ضغوط متزايدة من الرئيس الأمريكي دونالد ترمب، وتقارير لم يجر التحقق من صحتها بشأن مزاعم تتعلق بحياته الشخصية، من بينها ادعاء بوجود علاقة مع امرأة يُشتبه في ارتباطها بالاستخبارات الصينية.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": "The Trump-pressure claim is Al Jazeera's own reporting; Al Jazeera credits Reuters only for the futures figures, not for this."
+            },
+            {
+              "id": 16,
+              "field": "body",
+              "class": "attribution",
+              "verdict": "contradicted",
+              "status": "confirmed",
+              "sentence": "وكانت موجة البيع الأسبوع الماضي قد غذتها شكوك في استدامة الطلب على رقائق الذكاء الاصطناعي وفي جدوى الإنفاق الضخم على مراكز البيانات، إلى جانب مخاوف من تباطؤ هذا الإنفاق بعد انتخابات التجديد النصفي الأمريكية، بحسب رويترز.",
+              "quote": "وتزايدت الضغوط عقب الرحيل المفاجئ لهوانغ، إلى جانب المخاوف من احتمال تباطؤ الإنفاق المرتبط بالذكاء الاصطناعي بعد انتخابات التجديد النصفي الأمريكية.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": "These causes are Al Jazeera's own reporting; Al Jazeera attributes only the futures figures to Reuters."
+            }
+          ],
+          "noted": [
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "unverified",
+              "sentence": "وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة.",
+              "quote": "وقفز سهم إنفيديا بنسبة تجاوزت 31.5% في تداولات ما قبل افتتاح السوق، عقب إعلان الشركة إعادة هوانغ إلى منصب الرئيس التنفيذي، بعد رحيله المفاجئ الذي أثار اضطرابات واسعة في أسهم التكنولوجيا خلال الأسبوع الماضي. وصعد سهم نيبيوس (Nebius) بنسبة 31%، بينما سجلت أبلايد ديجيتال (Applied Digital) مكاسب بلغت 23%.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ],
+          "refused": [
+            "جمل طويلة جداً (1): «وكان الأسبوع الماضي قد شهد تصاعد الشكوك في استدامة الطلب على رقائق…»؛ اقسم كل جملة تتجاوز 40 كلمة إلى جملتين، فكرة واحدة في كل جملة.; وسيلة إعلام عربية مذكورة مصدراً لواقعة عامة («وعاد هوانغ إلى منصبه بعد ضغوط متزايدة من الرئيس الأمريكي دون…»)؛ الصحف العربية لا ينقل بعضها عن بعض الوقائع العامة: احذف اسم الوسيلة وانسب الواقعة إلى الجهة التي أعلنتها أو إلى الوكالة إن ذكرها المقا"
+          ],
+          "repaired": {
+            "attempt": 2,
+            "sentencesChanged": 2
+          }
+        },
+        {
+          "counts": {
+            "sentences": 29,
+            "checked": 29,
+            "supported": 25,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 13,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة.",
+              "quote": "وصعد سهم نيبيوس (Nebius) بنسبة 31%، بينما سجلت أبلايد ديجيتال (Applied Digital) مكاسب بلغت 23%.",
+              "source": "Al Jazeera Arabic",
+              "sourceN": 3,
+              "correction": ""
+            }
+          ]
+        }
+      ]
     }
   },
   "held": [
