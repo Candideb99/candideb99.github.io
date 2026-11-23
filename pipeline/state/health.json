@@ -1,16 +1,24 @@
 {
   "version": 1,
-  "photos": {},
+  "photos": {
+    "egypt-developers-federation-draft-project-accounts-09096d": {
+      "firstBadAt": "2026-11-23T19:19:00.048Z",
+      "lastCheckedAt": "2026-11-23T19:19:00.048Z",
+      "checks": 1,
+      "reason": "the file is gone from Commons",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Ministry_of_Housing_%28Egypt%29.jpg/1280px-Ministry_of_Housing_%28Egypt%29.jpg"
+    }
+  },
   "woken": {},
   "pagesCheckedAt": "2026-11-21T15:31:27.541Z",
   "last": {
-    "at": "2026-11-22T15:28:24.774Z",
+    "at": "2026-11-23T19:20:26.387Z",
     "findings": [],
     "owner": [
       "خازندار: news feeds that have served nothing new for three days"
     ],
     "photos": {
-      "pending": 0,
+      "pending": 1,
       "redo": []
     }
   },
