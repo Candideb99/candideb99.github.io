@@ -1,0 +1,105 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-23T22:56:32.918Z",
+  "durationSec": 215,
+  "read": 2,
+  "corrected": 2,
+  "report": [
+    {
+      "slug": "nvidia-reinstates-jensen-huang-as-ceo-0c7b1b",
+      "title": "إنفيديا تعيد مؤسسها جنسن هوانغ رئيساً تنفيذياً بعد 11 يوماً من استقالته",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    },
+    {
+      "slug": "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
+      "title": "ناسداك يقفز نحو 7% بعد إعادة جنسن هوانغ رئيساً تنفيذياً لإنفيديا",
+      "kind": "news",
+      "outcome": "corrected",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 9,
+        "weak": 6,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 9,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "class": "figure",
+          "sentence": "وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة.",
+          "quote": "Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.",
+          "source": "CNBC",
+          "correction": "CNBC says Nebius rose 20.28% Monday, less than Nvidia's 31.48% and behind CoreWeave and Iren; even Al Jazeera's 31% for Nebius is below its 32.2% for Nvidia."
+        }
+      ]
+    }
+  ],
+  "llm": {
+    "calls": 3,
+    "failures": 0,
+    "promptTokens": 31950,
+    "completionTokens": 26946,
+    "cacheReadTokens": 0,
+    "costUsd": 0.6667,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 3
+    },
+    "byRole": {
+      "checker": {
+        "calls": 3,
+        "in": 31950,
+        "read": 0,
+        "out": 26946,
+        "usd": 0.6667
+      }
+    },
+    "correctionsEditorCalls": 2
+  },
+  "log": [
+    "[22:56:33] second look: 2 to read now (2 published pieces not yet read; 304 read clean before publication and left out of the audit sample)",
+    "[22:56:33] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215:   source https://www.nytimes.com/2026/11/22/business/nvidia-stock-huang-ai-sp500-markets.: http-403; read from the copy saved at publication (fetched then)",
+    "[22:57:33] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2976 in=14369 read=0 out=7696 attempt=1 ms=57889",
+    "[22:57:33] nvidia-reinstates-jensen-huang-as-ceo-0c7b1b: 26 of 26 sentences checked · 20 supported · 0 without a source · 0 confirmed error(s) · 6 listed for a person",
+    "[22:58:11] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=7700 in=8935 read=0 out=12309 attempt=1 ms=95721",
+    "[22:58:12] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: 29 of 29 sentences checked · 9 supported · 2 without a source · 1 confirmed error(s) · 11 listed for a person",
+    "[22:58:12]   ✗ [figure] وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية — CNBC says Nebius rose 20.28% Monday, less than Nvidia's 31.48% and behind CoreWeave and Iren; even Al Jazeera's 31% for Nebius is below its 32.2% for Nvidia.",
+    "[22:58:12] corrections: 1 story to the corrections editor",
+    "[22:58:12] [correct] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: fetching 5 source(s)",
+    "[22:58:12] [correct]   source https://www.nytimes.com/2026/11/22/business/nvidia-stock-huang-ai-sp500-markets.: http-403; read from the copy saved at publication (fetched then)",
+    "[22:58:47] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1912 in=26503 read=0 out=3953 attempt=1 ms=33232",
+    "[22:58:47] [correct] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: corrected; fields body, table",
+    "[22:58:47]     note: ذكرت نسخة سابقة من هذا الخبر، ومن الجدول المرفق به، أن سهم نيبيوس صعد أكثر من 30% متجاوزاً مكاسب إنفيديا ومتقدماً شركات مراكز البيانات. والصحيح أن سهم نيبيوس ارتفع 20.28% بحسب «سي إن بي سي»، أي أقل من مكاسب إنفيديا وخلف كور ويف وآيرين.",
+    "[22:58:47] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-23T22-58-12-013Z.json",
+    "[22:58:47] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215:   source https://www.nytimes.com/2026/11/22/business/nvidia-stock-huang-ai-sp500-markets.: http-403; read from the copy saved at publication (fetched then)",
+    "[22:59:44] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3652 in=8646 read=0 out=6941 attempt=1 ms=55970",
+    "[22:59:44] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: the correction reads clean where it wrote; 3 other error(s) found, corrected once more",
+    "[22:59:44] [correct] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: fetching 5 source(s)",
+    "[22:59:45] [correct]   source https://www.nytimes.com/2026/11/22/business/nvidia-stock-huang-ai-sp500-markets.: http-403; read from the copy saved at publication (fetched then)",
+    "[23:00:08] [correct] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=677 in=26471 read=0 out=2808 attempt=1 ms=21811",
+    "[23:00:08] [correct] nasdaq-jumps-huang-returns-nvidia-ceo-8e6215: corrected; fields body",
+    "[23:00:08]     note: ذكرت نسخة سابقة من هذا الخبر أن أسهم كبرى شركات التكنولوجيا ارتفعت بين 4% و6%، وأن سهم أنثروبيك استقر الاثنين، وأن التقلب وقلق المستثمرين استمرا بعد ارتداد الاثنين. والصحيح أن مكاسب تلك الأسهم تراوحت بين 1.65% و6.55%، وأن سهم أنثروبيك انخفض 1.43% الاثنين، وأن «سي إن بي سي» وصفت الاضطراب وقلق المستثمرين بأنهما سِمتا الأسبوع الماضي.",
+    "[23:00:08] [correct] done: 1 corrected, 0 stand, 0 refused or failed; report pipeline/runs/corrections-2026-11-23T22-59-44-779Z.json"
+  ]
+}

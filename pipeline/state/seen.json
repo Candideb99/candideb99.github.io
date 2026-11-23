@@ -1,60 +1,6 @@
 {
   "version": 1,
   "items": {
-    "4b75fdbbf517e452": {
-      "at": "2026-11-02T22:01:40.443Z",
-      "decision": "published",
-      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
-      "title": "Oil tumbles on hopes for US-Iran talks"
-    },
-    "4472415c579d9558": {
-      "at": "2026-11-02T22:01:40.443Z",
-      "decision": "published",
-      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
-      "title": "النفط يتراجع باكثر من 7 % مع انفتاح إيران على محادثات السلام"
-    },
-    "fe2bd460e083f6be": {
-      "at": "2026-11-02T22:01:40.443Z",
-      "decision": "published",
-      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
-      "title": "Oil price falls amid hope of a breakthrough to end Iran war"
-    },
-    "04ab754da59da5c1": {
-      "at": "2026-11-02T22:01:40.443Z",
-      "decision": "published",
-      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
-      "title": "Brent crude falls nearly 8% below $105 as US-Iran diplomacy eases supply fears"
-    },
-    "a4b60f479ac366f7": {
-      "at": "2026-11-02T22:01:40.443Z",
-      "decision": "published",
-      "slug": "brent-falls-iran-leader-authorises-talks-5b7bfe",
-      "title": "Oil Prices Plunge 7% as U.S. and Iran Signal Room for Diplomacy"
-    },
-    "35a1eca860adf8ca": {
-      "at": "2026-11-02T22:17:51.851Z",
-      "decision": "published",
-      "slug": "egypt-nears-government-spending-rationalisation-plan-6770ec",
-      "title": "Egypt to cut government spending, boost strategic reserves amid regional tensions"
-    },
-    "ac77269baddb2799": {
-      "at": "2026-11-02T22:17:51.851Z",
-      "decision": "published",
-      "slug": "egypt-nears-government-spending-rationalisation-plan-6770ec",
-      "title": "مصر تقترب من الانتهاء من وضع تصور متكامل لترشيد الانفاق الحكومي"
-    },
-    "f71fcdff97b7d6fb": {
-      "at": "2026-11-02T22:30:09.546Z",
-      "decision": "published",
-      "slug": "saudi-cma-ipo-underwriters-full-commitment-20cdcb",
-      "title": "السعودية تشدد ضوابط الطروحات الأولية وتُلزم متعهدي التغطية بشراء كامل الأسهم"
-    },
-    "9fc3de514a21841d": {
-      "at": "2026-11-02T22:30:09.546Z",
-      "decision": "published",
-      "slug": "saudi-cma-ipo-underwriters-full-commitment-20cdcb",
-      "title": "هيئة السوق السعودية تضبط الاكتتابات .. وسجل الأوامر أكثر مصداقية"
-    },
     "c3d9c03e0e5122cb": {
       "at": "2026-11-03T07:12:24.510Z",
       "decision": "published",
@@ -4949,6 +4895,60 @@
       "decision": "published",
       "slug": "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
       "title": "Tech stocks rally after Nvidia board approves Jensen Huang's return as CEO"
+    },
+    "9d604c9e7ac31f30": {
+      "at": "2026-11-23T23:14:54.713Z",
+      "decision": "published",
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "Le prix du pétrole recule avec la perspective d’un surplus d’offre"
+    },
+    "eb444a9244dcfa30": {
+      "at": "2026-11-23T23:14:54.713Z",
+      "decision": "published",
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "Petróleo fecha em queda de 3% e volta aos US$ 80 com fluxo melhor em Ormuz"
+    },
+    "f4f4562e430741a6": {
+      "at": "2026-11-23T23:14:54.713Z",
+      "decision": "published",
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "El petróleo bajó y regresó a un precio mínimo en tres meses: cómo afecta a la Argentina"
+    },
+    "7c37bf8fc4a7881d": {
+      "at": "2026-11-23T23:14:54.713Z",
+      "decision": "published",
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "Oil Slides Nearly 4% as Returning Supply Outweighs Gulf Attacks"
+    },
+    "48f50df1b055d5c3": {
+      "at": "2026-11-23T23:24:00.615Z",
+      "decision": "published",
+      "slug": "fed-williams-signals-rate-hikes-over-time-5d966f",
+      "title": "مسؤول بالفيدرالي: لا يزال أمامنا عمل لكبح التضخم وإعادته إلى 2%"
+    },
+    "5b5a2db04132ebbb": {
+      "at": "2026-11-23T23:24:00.615Z",
+      "decision": "published",
+      "slug": "fed-williams-signals-rate-hikes-over-time-5d966f",
+      "title": "Fed's John Williams indicates higher interest rates likely 'over time' to address inflation"
+    },
+    "f5415b9fdb40e798": {
+      "at": "2026-11-23T23:35:55.246Z",
+      "decision": "published",
+      "slug": "morgan-stanley-upgrades-uae-equities-overweight-533d13",
+      "title": "سوق دبي يحلّق لمستويات فبراير و«مورغان ستانلي» يعزز الزخم"
+    },
+    "ca371cc3a0d50a70": {
+      "at": "2026-11-23T23:35:55.246Z",
+      "decision": "published",
+      "slug": "morgan-stanley-upgrades-uae-equities-overweight-533d13",
+      "title": "Morgan Stanley joins JPMorgan in upgrading UAE equities to 'overweight'"
+    },
+    "830e3f89dbeb3159": {
+      "at": "2026-11-23T23:35:55.246Z",
+      "decision": "published",
+      "slug": "morgan-stanley-upgrades-uae-equities-overweight-533d13",
+      "title": "مورغان ستانلي يرفع توصيته للأسهم الإماراتية إلى زيادة الوزن"
     }
   }
 }

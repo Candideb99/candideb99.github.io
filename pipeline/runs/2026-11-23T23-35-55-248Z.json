@@ -1,0 +1,529 @@
+{
+  "mode": "news",
+  "startedAt": "2026-11-23T23:00:21.496Z",
+  "durationSec": 2134,
+  "published": 3,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "النفط يهبط نحو 4% إلى أدنى مستوى في ثلاثة أشهر مع تحسن التدفقات عبر هرمز",
+      "section": "energy",
+      "importance": 7,
+      "sources": [
+        "https://algerie-eco.com/2026/11/23/le-prix-du-petrole-recule-avec-la-perspective-dun-surplus-doffre/",
+        "https://www.cnnbrasil.com.br/economia/money/mercado/petroleo-fecha-em-queda-de-3-e-volta-aos-us-80-com-fluxo-melhor-em-ormuz/",
+        "https://www.infobae.com/economia/2026/11/23/el-petroleo-baja-y-regresa-a-un-precio-minimo-en-tres-meses-como-afecta-a-la-argentina/",
+        "https://oilprice.com/Latest-Energy-News/World-News/Oil-Slides-Nearly-4-as-Returning-Supply-Outweighs-Gulf-Attacks.html"
+      ],
+      "followUp": {
+        "title": "برنت يتراجع دون 92 دولاراً رغم إعلان الحوثيين استهداف مصفاة رابغ السعودية",
+        "newSince": "وسّع الخامان خسائرهما عند الإغلاق، فأنهى برنت التداول عند 89.37 دولار للبرميل بتراجع 3.46%، وغرب تكساس عند 80.17 دولار بتراجع 3.88%، وهو أدنى مستوى له منذ أغسطس."
+      },
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والسطر الثاني ما تغيّر: أغلق برنت دون 90 دولاراً وهبط غرب تكساس إلى أدنى مستوى منذ أغسطس. والسبب المعلن زيادة الإمدادات. خاما برنت وغرب تكساس معروفان لقارئ البطاقة. ويُروى الحدث استمراراً لتراجع الجلسة السابقة دون أن يعيده خبراً جديداً.",
+              "repair": "يمكن أن يحمل العنوان الجديد المقارن: «برنت يغلق دون 90 دولاراً للمرة الأولى منذ أسبوعين مع زيادة إمدادات الشرق الأوسط»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "المصادر تقدّم ثلاثة تفسيرات والمسودة تحملها كلها. السبب: زيادة إمدادات الشرق الأوسط وعودة خط الشرارة (المصدر 2) وتقدير وكالة الطاقة للفائض (المصادر 1 و3). ردود الفعل: ليبو وفارغا وريتربوش وكورديرو و«جي بي مورغان». الخطوة التالية: اجتماع «أوبك+» في 29 نوفمبر. أما «أبيسيب» فيُذكر بلا بلد.",
+              "repair": "عرّف «أبيسيب» عند أول ذكر بأنها «شركة الاستشارات الأرجنتينية «أبيسيب»» كما في المصدر 3."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان «زيادة إمدادات الشرق الأوسط» لا يُطوَّر بعد المقدمة مباشرة. تسبقه فقرة خلفية مختلطة، وتتوزع وقائعه بين قسمي الإمدادات والفائض. وفقرة «أوبك+» تحت عنوان فرعي عن الحرب. أما الصندوق فيقدّم مفاضلة «أوبك+» استنتاجاً معقولاً، لكن شرطه الزمني مختل.",
+              "repair": "اجمع وقائع الإمدادات (الشرق الأوسط والشرارة وفارغا وهرمز وتعافي الإنتاج) في القسم الأول بعد المقدمة. أخّر خلفية أكتوبر. انقل «أوبك+» إلى قسم الفائض. وأعد صياغة الصندوق كما في القضايا."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأسعار وتواريخ العقود صحيحة، وكلها أسعار تسوية لعقد يناير، مع تجنّب أرقام «إنفوباي» غير التسوية (89.53 و80.274). لكن «حتى 3.8 ملايين برميل يومياً» في صندوق الأرقام تحوّل «podría subir a» (المصدر 3) إلى سقف. والصندوق يقدّم عودة صادرات الخليج حقيقة ثابتة.",
+              "repair": "في صندوق الأرقام: «قد يرتفع إلى 3.8 ملايين برميل يومياً». وفي «لماذا يهمّ» تُذكر عودة الصادرات بصيغة التقدير («تبدو صادرات الخليج قد عادت»)."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "يقول العنوان والسطر الثاني ما الجديد منذ الخبر السابق: برنت يغلق دون 90 دولاراً للمرة الأولى منذ أسبوعين، وغرب تكساس عند أدنى مستوى منذ أغسطس بعد نزوله دون 80 دولاراً خلال الجلسة. هجوم الحوثيين على المصفاة، وهو خبر القصة السابقة، يرد في جملة واحدة في قسم الحرب، فلا تكرار.",
+              "repair": "يمكن تحديد مصدر الزيادة في العنوان: «برنت يغلق دون 90 دولاراً للمرة الأولى منذ أسبوعين مع زيادة إمدادات الشرق الأوسط»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "تحمل المسودة التفسيرات الثلاثة التي تمدّها المصادر. السبب: زيادة إمدادات الشرق الأوسط والشرارة، وتقدير فارغا، وتقدير ريتربوش (المصدران 1 و2). المقارنة: ثلاثة أسابيع من التراجع، ومتوسط أكتوبر 107.7 دولار (المصدر 3). ما يلي: تقدير وكالة الطاقة الدولية للفائض، وتوقع جي بي مورغان، واجتماع «أوبك+» في 29 نوفمبر. والصندوق يستنتج مفاضلة «أوبك+» بين الكمية والسعر من مقدمات مسندة، والتقدير فيه بصيغة «ما يبدو».",
+              "repair": ""
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان «زيادة الإمدادات» يُطوَّر مباشرة بعد المقدمة، ثم يأتي الفائض ثم الحرب، وهذا بناء سليم. لكن جملة ترامب تحت العنوان الفرعي «الحرب تحدّ من الهبوط» تقول عكسه، وعقدها بـ«أما» يجعلها مقابلاً معلّقاً في ختام القصة.",
+              "repair": "انقل تصريح ترامب إلى فقرة كورديرو في قسم الإمدادات، واترك قسم الحرب لهجمات السفن وهجوم الحوثيين وقول فارغا لرويترز وتحذير بقائي."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأسعار كلها تسوية لعقد يناير (89.37 و80.17، والتغير 3.20 و3.24 دولار)، وأدنى سعر في الجلسة 88.60 من المصدر 1. فائض الوكالة لعام 2027 بصيغة «قد يرتفع». ولم تُستخدم أرقام «إنفوباي» غير التسوية (89.53 و80.274) ولا أرقام OilPrice الصباحية.",
+              "repair": ""
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 4,
+      "mendIssues": [
+        "بناء: تصريح ترامب يقع تحت عنوان فرعي يقول عكسه. العنوان الفرعي «الحرب تحدّ من الهبوط»، وتحته جملة «أما الرئيس الأمريكي دونالد ترامب فقال لموقع «أكسيوس» إنه ليس مستعجلاً لاتخاذ قرار بشأن إيران». المصدر 1 يورد التصريح منفصلاً («En parallèle») عن استمرار التوتر، ويقدّمه نفياً لمعلومات سابقة عن استئناف الهجمات. فهو عامل يخفّف علاوة المخاطر ولا يحدّ من الهبوط. الإصلاح: انقل الجملة إلى فقرة كورديرو في القسم الأول، فتجتمع إشارتا تراجع التهديد الإيراني: «ورأى برونو كورديرو… أن تصريحات مسؤولين إسرائيليين بأن إيران لم تعد تمثل تهديداً كبيراً عززت الانطباع بتحسن تدفق الإمدادات… وقال الرئيس الأمريكي دونالد ترامب لموقع «أكسيوس» إنه ليس مستعجلاً لاتخاذ قرار بشأن إيران، خلافاً لمعلومات سابقة عن استئناف الضربات». وتبقى فقرة بقائي وحدها في قسم الحرب.",
+        "صياغة: الفقرة الأولى بعد المقدمة تبدأ بـ«زادت إمدادات نفط الشرق الأوسط وإعادة فتح خط أنابيب الشرارة في ليبيا من الضغوط الهبوطية». الفعل يتقدّم على فاعلين متعاطفين، ويُقرأ أولاً «زادت الإمدادات» قبل أن يتبيّن أن المعنى «زادت من الضغوط». والمصدر 2 يتحدث عن زيادة الإمدادات لا عن الإمدادات نفسها. الإصلاح: «وضغطت زيادة إمدادات الشرق الأوسط وإعادة فتح خط أنابيب الشرارة في ليبيا على الأسعار في جلسة الاثنين».",
+        "عنصر العنوان «زيادة الإمدادات» يُطوَّر مباشرة بعد المقدمة، ثم يأتي الفائض ثم الحرب، وهذا بناء سليم. لكن جملة ترامب تحت العنوان الفرعي «الحرب تحدّ من الهبوط» تقول عكسه، وعقدها بـ«أما» يجعلها مقابلاً معلّقاً في ختام القصة. — انقل تصريح ترامب إلى فقرة كورديرو في قسم الإمدادات، واترك قسم الحرب لهجمات السفن وهجوم الحوثيين وقول فارغا لرويترز وتحذير بقائي.",
+        "يمكن تحديد مصدر الزيادة في العنوان: «برنت يغلق دون 90 دولاراً للمرة الأولى منذ أسبوعين مع زيادة إمدادات الشرق الأوسط»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "أغلق برنت تسليم يناير الاثنين عند 89.37 دولار للبرميل بتراجع 3.46%.",
+          "source": 2
+        },
+        {
+          "fact": "بلغ متوسط برنت 107.7 دولار للبرميل في أكتوبر بحسب أبيسيب.",
+          "source": 3
+        },
+        {
+          "fact": "تقدّر وكالة الطاقة الدولية الفائض بنحو 1.7 مليون برميل يومياً في الربع الرابع من 2026، وقد يرتفع إلى 3.8 ملايين برميل يومياً في 2027.",
+          "source": 3
+        },
+        {
+          "fact": "قال فارغا إن إنتاج النفط وصادراته من الخليج تبدو وقد عادت إلى طبيعتها، وإن المخزونات يُعاد بناؤها سريعاً.",
+          "source": 1
+        }
+      ],
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "برنت يغلق دون 90 دولاراً مع زيادة إمدادات الشرق الأوسط",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "ويليامز يرجح رفع الفائدة الأمريكية بمرور الوقت لكبح التضخم",
+      "section": "economy",
+      "importance": 7,
+      "sources": [
+        "https://asharqbusiness.com/banks/157602/%D9%85%D8%B3%D8%A4%D9%88%D9%84-%D8%A8%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D8%B1%D8%A7%D9%84%D9%8A-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85-%D9%84%D8%A7-%D9%8A%D8%B2%D8%A7%D9%84-%D9%85%D8%B1%D8%AA%D9%81%D8%B9%D8%A7-%D8%A3%D9%83%D8%AB%D8%B1-%D9%85%D9%86-%D8%A7%D9%84%D9%84%D8%A7%D8%B2%D9%85/",
+        "https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد المتحدث بلقبه، و«فيدرالي نيويورك» يدل على الولايات المتحدة. والمقدمة تذكر الاسم مع اللقب. والعنوان الفرعي يوضح أن الأسواق تسعّر ربع نقطة من نطاق 3.75%-4%.",
+              "repair": "يمكن أن يربط العنوان الفرعي التسعير بالمتحدث: «فيما تسعّر الأسواق بالكامل زيادة ربع نقطة في اجتماع 8 و9 ديسمبر»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "التقرير يحمل الدافع: الرسوم وإيران والذكاء الاصطناعي، وبيانات أكتوبر. ويحمل رد الفعل: انقسام المسؤولين ودعوة والر إلى نصف نقطة. لكنه يغفل أن رفع ديسمبر سيكون الثاني هذا العام، ويغفل عبارة «لا تستدعي إجراءات جذرية»، وتسعير يناير، وموعد مؤشر نفقات الاستهلاك الشخصي (المصدر 1). وصندوق «لماذا يهمّ» يبني استنتاجه على وصف خاطئ لضغط الذكاء الاصطناعي.",
+              "repair": "تُضاف الخلفية والخطوة التالية من المصدر 1. ويُعاد بناء الصندوق: صدمة الطاقة لا تعالجها الفائدة، فتنحصر مهمة الزيادات التدريجية في حماية توقعات التضخم والأجور. وإذا ظهرت ضغوط في الأجور أو انحرفت التوقعات، تقوى حجة الداعين إلى نصف نقطة."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "عنصر العنوان، الرفع على مراحل، يبدأ تطويره بعد المقدمة في فقرة الانقسام. لكن تسعير ديسمبر وموعد الاجتماع وكون تصريحاته آخر بيان قبل القرار مؤجلة إلى الفقرة الأخيرة تحت عنوان «توقعات ويليامز قبل اجتماع ديسمبر». وتلك الفقرة لا تتصل بتوقعاته للنمو والتضخم التي تسبقها.",
+              "repair": "تُنقل فقرة الاجتماع والتسعير إلى قسم «انقسام حول وتيرة الرفع». ويُعاد عنوان القسم الأخير إلى «توقعات النمو والتضخم»، ويُتأكد أنه يضم فقرتين."
+            },
+            "precision": {
+              "status": "clear",
+              "evidence": "الأرقام مطابقة للمصادر: 2.75%، و3.5%، والوصول إلى 2% في 2028، والنطاق 3.75%-4%، وربع نقطة، ونصف نقطة، و8 و9 ديسمبر، وأسعار الجملة الأسرع منذ 2022. والتوقعات منسوبة إلى ويليامز بصيغة التقدير.",
+              "repair": "«إجراءات تُتخذ على مراحل» يمكن أن تكون أقرب إلى الأصل: «إجراءات بمرور الوقت»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان يحدد المتحدث وما لمّح إليه، أي رفع الفائدة تدريجياً. والعنوان الفرعي يحدد النطاق الحالي البالغ 3.75%-4% وموعد اجتماع 8 و9 ديسمبر. والمقدمة تسمي ويليامز وتوضح أن الكلام عن إجراءات «بمرور الوقت» لا قرار. لا تناقض بين هذه العناصر.",
+              "repair": "يمكن أن يربط العنوان الفرعي التسعير بالمتحدث: «فيما تسعّر الأسواق بالكامل زيادة ربع نقطة مئوية من النطاق الحالي البالغ 3.75%-4% في اجتماع 8 و9 ديسمبر»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "يحمل الخبر الدافع: إيران والذكاء الاصطناعي والرسوم وبيانات أكتوبر. ويحمل الخلفية: تثبيت أكتوبر وكون رفع ديسمبر الثاني هذا العام. ويحمل رد الفعل: الانقسام ودعوة والر، وتسعير يناير. ومقدمات صندوق «لماذا يهمّ» صحيحة، واستنتاجه المشروط معقول. لكن الصندوق يبدأ بـ«يربط ويليامز… ويقرّ» فيصير تلخيصاً منسوباً يكرر فقرة السفن والمصافي.",
+              "repair": "يُكتب الصندوق بصوت الموقع دون راوٍ: صدمة الطاقة لا تعالجها الفائدة، ومهمة الزيادات التدريجية حيالها منع انتقالها إلى الأجور وتوقعات التضخم. وإن ظهرت ضغوط أجور أو ابتعدت التوقعات عن 2% تقوى حجة نصف النقطة."
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "عنصر العنوان «رفع الفائدة تدريجياً» يُطوَّر بعد المقدمة مباشرة: موعد الاجتماع، ثم الرفع الثاني وتسعير يناير، ثم إحالته إلى بيان أكتوبر وعبارة «إجراءات جذرية»، ثم الانقسام حول الوتيرة. ويلي ذلك قسمان يضم كل منهما فقرتين أو أكثر.",
+              "repair": "يمكن دمج الجملة الوحيدة «يتوقع ويليامز أن ينمو الاقتصاد…» مع الفقرة التالية في فقرة واحدة عن النمو والتضخم."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة: 2.75% و3.5% و2028 و8 و9 ديسمبر وربع نقطة ونصف نقطة. لكن «سيحدد مسار السياسة» تسقط التحفظ في بيان أكتوبر «سيساعدهم على تحديد» (المصدر 1).",
+              "repair": "«وقالوا إن تراكم مزيد من المعلومات سيساعدهم على تحديد مسار السياسة»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 8,
+      "mendIssues": [
+        "صندوق «لماذا يهمّ» يجعل ويليامز راويه ويعيد ما في المتن: «يربط ويليامز جزءاً من الضغوط الحالية بصدمة طاقة… ويقرّ بأن السياسة النقدية لا تعيد فتح الأنابيب ولا المصافي». هذا تلخيص منسوب لا استنتاج بصوت الموقع، والمتن قال المعنى نفسه في فقرة «مصادر الضغوط على الأسعار». كما أن «فتنحصر مهمة الزيادات التدريجية» قد تُفهم على أنها مهمة الزيادات كلها، وويليامز نسب الضغوط أيضاً إلى الطلب المرتبط بالذكاء الاصطناعي (المصدران 1 و2). الإصلاح: «صدمة الطاقة الناجمة عن الحرب على إيران لا تعالجها الفائدة، وما تستطيعه الزيادات التدريجية حيالها هو منع انتقالها إلى الأجور وتوقعات التضخم. فإذا ظهرت ضغوط في الأجور أو ابتعدت التوقعات عن 2%، تقوى حجة الرفع بنصف نقطة على حساب التدرج».",
+        "عربية مرتبكة: «وأن تحول دون زعزعتها توقعات التضخم الراسخة». الضمير وترتيب الإضافة يجعلان الجملة غامضة: من يزعزع ماذا؟ الإصلاح: «لكن عليها أن تمنع تحوّل هذه الصدمات إلى تضخم أوسع أو مستمر، وأن تحول دون زعزعة توقعات التضخم الراسخة» (المصدر 2).",
+        "دقة الصياغة: «وقالوا إن تراكم مزيد من المعلومات سيحدد مسار السياسة». المصدر 1 يقول إن تراكم المعلومات «سيساعدهم على تحديد المسار الأنسب»، والمصدر 2 يقول «will help decide»، فالصيغة الحالية تسقط التحفظ. الإصلاح: «وقالوا إن تراكم مزيد من المعلومات سيساعدهم على تحديد مسار السياسة».",
+        "صندوق الأرقام: البند «الرفع الذي دعا والر إلى دراسته: نصف نقطة مئوية» رقم لمسؤول آخر وموقف سابق، لا من تصريحات ويليامز ولا من القرار المنتظر نفسه. يُحذف من الصندوق ويبقى في المتن.",
+        "يحمل الخبر الدافع: إيران والذكاء الاصطناعي والرسوم وبيانات أكتوبر. ويحمل الخلفية: تثبيت أكتوبر وكون رفع ديسمبر الثاني هذا العام. ويحمل رد الفعل: الانقسام ودعوة والر، وتسعير يناير. ومقدمات صندوق «لماذا يهمّ» صحيحة، واستنتاجه المشروط معقول. لكن الصندوق يبدأ بـ«يربط ويليامز… ويقرّ» فيصير تلخيصاً منسوباً يكرر فقرة السفن والمصافي. — يُكتب الصندوق بصوت الموقع دون راوٍ: صدمة الطاقة لا تعالجها الفائدة، ومهمة الزيادات التدريجية حيالها منع انتقالها إلى الأجور وتوقعات التضخم. وإن ظهرت ضغوط أجور أو ابتعدت التوقعات عن 2% تقوى حجة نصف النقطة.",
+        "الأرقام مطابقة: 2.75% و3.5% و2028 و8 و9 ديسمبر وربع نقطة ونصف نقطة. لكن «سيحدد مسار السياسة» تسقط التحفظ في بيان أكتوبر «سيساعدهم على تحديد» (المصدر 1). — «وقالوا إن تراكم مزيد من المعلومات سيساعدهم على تحديد مسار السياسة».",
+        "يمكن أن يربط العنوان الفرعي التسعير بالمتحدث: «فيما تسعّر الأسواق بالكامل زيادة ربع نقطة مئوية من النطاق الحالي البالغ 3.75%-4% في اجتماع 8 و9 ديسمبر».",
+        "يمكن دمج الجملة الوحيدة «يتوقع ويليامز أن ينمو الاقتصاد…» مع الفقرة التالية في فقرة واحدة عن النمو والتضخم."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال ويليامز إن السياسة النقدية لا تستطيع تحريك السفن أو إعادة فتح خطوط الأنابيب والمصافي، لكن عليها منع تحوّل الصدمات إلى تضخم أوسع أو مستمر أو زعزعة توقعات التضخم الراسخة",
+          "source": 2
+        },
+        {
+          "fact": "قال ويليامز إن توقعات ارتفاع أسعار الطاقة نتيجة الحرب على إيران تنطوي على قدر كبير من عدم اليقين، وأشار إلى غياب أدلة على ضغوط الأجور واتساق توقعات التضخم مع مستهدف 2%",
+          "source": 1
+        },
+        {
+          "fact": "يختلف مسؤولو الفيدرالي حول سرعة الرفع، ويشدد آخرون بينهم ويليامز على نهج مدروس",
+          "source": 2
+        },
+        {
+          "fact": "حذّر كريستوفر والر من ضرورة دراسة نهج أشد يتضمن رفعاً بنصف نقطة مئوية",
+          "source": 1
+        }
+      ],
+      "slug": "fed-williams-signals-rate-hikes-over-time-5d966f",
+      "title": "رئيس فيدرالي نيويورك يلمّح إلى رفع الفائدة تدريجياً لكبح التضخم",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "مورغان ستانلي يرفع توصيته للأسهم الإماراتية إلى زيادة الوزن",
+      "section": "markets",
+      "importance": 6,
+      "sources": [
+        "https://www.albayan.ae/economy/business/uae-economy/1567158",
+        "https://www.thenationalnews.com/business/markets/2026/11/23/morgan-stanley-joins-jpmorgan-in-upgrading-uae-equities-to-overweight/",
+        "https://www.snabusiness.com/article/1906552-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%B3%D8%AA%D8%A7%D9%86%D9%84%D9%8A-%D9%8A%D8%B1%D9%81%D8%B9-%D8%AA%D9%88%D8%B5%D9%8A%D8%AA%D9%87-%D9%84%D9%84%D8%A3%D8%B3%D9%87%D9%85-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9-%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9-%D8%A7%D9%84%D9%88%D8%B2%D9%86"
+      ],
+      "editorialReviews": [
+        {
+          "pass": 1,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "clear",
+              "evidence": "العنوان والفقرة الأولى يقولان ما تغيّر: نقل مورغان ستانلي الأسهم الإماراتية من «وزن متساوٍ» إلى «زيادة الوزن»، وهو ثاني بنك يفعل ذلك خلال أسبوع. البلد واضح، والبنكان معروفان. والفقرة الأولى تشرح أن التوصية نسبية، مع خلل في صياغة «تعد» المذكور في المشكلات.",
+              "repair": "يمكن أن يحمل العنوان نقطة البداية: «مورغان ستانلي يرفع توصيته للأسهم الإماراتية من «وزن متساوٍ» إلى «زيادة الوزن»»."
+            },
+            "context": {
+              "status": "revise",
+              "evidence": "المصادر تقدم سبب القرار، وتقدمه المسودة: إنفاق أبوظبي وتعافي دبي والتقييمات وخفض التصعيد. وتقدم الخلفية، وتقدمها المسودة: خفض مارس وأثر الحرب وتوقعات الصندوق وفيتش. لكن دوافع جي بي مورغان المتعلقة بتحول توقعات الأرباح وعودة التدفقات الأجنبية غائبة (SOURCE 3). وصندوق لماذا يهمّ يبني على مقدمات صحيحة استنتاجاً أكبر منها، إذ يجعل خفض التصعيد «الشرط» الحامل لـ«الجزء الأكبر».",
+              "repair": "تُضاف أسباب جي بي مورغان من SOURCE 3 إلى فقرته، ويُعاد بناء الصندوق كما في المشكلة الأولى."
+            },
+            "flow": {
+              "status": "revise",
+              "evidence": "الحدث الجديد الذي يقدمه العنوان، أي رفع التوصية، يتطور مباشرة بعد الفقرة الأولى: معنى التصنيف، ثم سابقة جي بي مورغان وخفض مارس، ثم حجج البنك. وفقرة السوق مؤطرة بـ«تزامناً» و«في تعاملات الاثنين» من دون ادعاء سببية، وهذا صحيح. الخلل في عنوان القسم الأول الذي لا يطابق فقرتيه.",
+              "repair": "يُعاد تسمية القسم الأول بما تقوله فقرتاه: حجج البنك في أبوظبي ودبي والتقييمات."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "الأرقام مطابقة للمصادر: 1.3% و6306.87، و1.051 إلى 1.056 تريليون، و11% و8.56، وصافي 125 مليوناً، و0.2% مقابل −3.9%، و7.3% مقابل 7.7%. لكن «خصوصاً إذا» صارت «الشرط» في الصندوق، والتوقع صار وعداً في عبارة «بل بأداء أفضل».",
+              "repair": "تُحفظ صيغة الشرط «خصوصاً إذا» كما وردت، ويُكتب «يتوقع» بدل «تَعِد»."
+            }
+          }
+        },
+        {
+          "pass": 2,
+          "verdict": "revise",
+          "readerCheck": {
+            "scope": {
+              "status": "revise",
+              "evidence": "العنوان يحدد البنك والسوق والتغيير من «وزن متساوٍ» إلى «زيادة الوزن»، والفقرة التالية تشرح معنى التصنيف وتبين أنه توقع نسبي لا ضمان. لكن الدك لا يضيف شيئاً إلى الفقرة الأولى، ويترك خارج بطاقة الواجهة أن القرار عكسٌ لخفض مارس.",
+              "repair": "دك مقترح: «البنك يعكس خفضاً أجراه في مارس وسط مخاطر الحرب، ويستند إلى إنفاق أبوظبي وتعافي دبي وتقييمات غير مرتفعة»."
+            },
+            "context": {
+              "status": "clear",
+              "evidence": "يحمل التقرير السبب: حجج مورغان ستانلي في أبوظبي ودبي والتقييمات وخفض التصعيد (SOURCE 2 وSOURCE 3). ويحمل السابقة: خفض مارس، وقرار جي بي مورغان بأسبابه الثلاثة. ويحمل الخلفية: الحرب وهرمز والنمو وتوقعات الصندوق وفيتش. أما صندوق لماذا يهمّ فيبني على مقدمات صحيحة، هي التقييمات غير المرتفعة وبلوغ سوق دبي أعلى مستوى منذ فبراير، استنتاجاً محدوداً بأن جزءاً من التحسن بدأ يظهر في الأسعار، مع إبقاء خفض التصعيد عاملاً معززاً لا شرطاً.",
+              "repair": ""
+            },
+            "flow": {
+              "status": "clear",
+              "evidence": "يتطور ما يقدمه العنوان مباشرة بعد الفقرة الأولى، بالترتيب: المعنى، ثم السابقة، ثم الحجج تحت عنوان قسم يطابق فقرتيه. وتأتي فقرة السوق مؤطرة بـ«تزامناً» و«في تعاملات الاثنين» من دون ادعاء سببية. ملاحظة: جملة «وكان سوق أبوظبي قد ارتفع أربعة أشهر متتالية، وسوق دبي في أغسطس وسبتمبر» تبدو ملحقة بآخر فقرة أبوظبي.",
+              "repair": "يمكن نقل المقارنة الشهرية إلى جوار أعلى مستوى منذ فبراير لتفسر صعود السوق، مثل: «وكان سوق دبي قد ارتفع في أغسطس وسبتمبر، فيما صعد سوق أبوظبي أربعة أشهر متتالية»."
+            },
+            "precision": {
+              "status": "revise",
+              "evidence": "«ويضع القطاع المالي في مقدمة القطاعات» أقوى من «a preferred sector» في SOURCE 2. باقي الأرقام مطابقة: 1.3% و6306.87 و1.051 إلى 1.056 تريليون و11% و8.56 و417.25 مليون و125 مليوناً و0.12% و9772.34 و0.4% و961.9 مليار و0.2% مقابل −3.9% و7.3% مقابل 7.7%. وصيغة «خصوصاً إذا» محفوظة.",
+              "repair": "«ويعدّ القطاع المالي من القطاعات المفضلة لديه»."
+            }
+          }
+        }
+      ],
+      "mendedAfterReview": 7,
+      "mendIssues": [
+        "الدك يكرر الفقرة الأولى. الدك يقول «ثاني مؤسسة مالية دولية تفضّل الأسهم الإماراتية خلال أسبوع بعد جي بي مورغان، مستندة إلى دورة الإنفاق الرأسمالي في أبوظبي وتعافي دبي»، ثم تقول الفقرة الأولى «مستنداً إلى تسارع دورة الاستثمار في أبوظبي وتعافي النشاط في دبي، ليصبح ثاني مؤسسة مالية دولية ترفع توصيتها لهذه الأسهم خلال أسبوع بعد جي بي مورغان». الواقعة نفسها تُروى مرتين بالأسباب نفسها. الإصلاح: يحمل الدك ما يغيّره الخبر، وهو أن البنك يعكس خفضاً أجراه في مارس (SOURCE 3)، مثل «البنك يعكس خفضاً أجراه في مارس وسط مخاطر الحرب، ويستند إلى إنفاق أبوظبي وتعافي دبي وتقييمات غير مرتفعة». وتبقى عبارة «ثاني مؤسسة… بعد جي بي مورغان» في الفقرة الأولى وحدها.",
+        "بقي جزء من المشكلة 4 من المراجعة السابقة. عبارة «زيادة الطاقة الإنتاجية لقطاع الطاقة في أبوظبي» ما زالت تكرر «الطاقة» نقلاً لـenergy production capacity (SOURCE 2). الإصلاح: «وقال مورغان ستانلي إن توسع قدرة أبوظبي على إنتاج الطاقة وبرنامجها الممتد لسنوات للإنفاق الرأسمالي سيواصلان دعم النشاط الاقتصادي في الإمارات».",
+        "دقة: عبارة «ويضع القطاع المالي في مقدمة القطاعات» تجعل القطاع المالي الأول في ترتيب البنك. أما SOURCE 2 فيقول إنه «a preferred sector»، أي أحد القطاعات المفضلة. الإصلاح: «ويعدّ القطاع المالي من القطاعات المفضلة لديه، ويبرز منه بنك أبوظبي التجاري ومصرف أبوظبي الإسلامي وبنك أبوظبي الأول».",
+        "صياغة: «رفع الأسبوع الماضي تصنيفه لمؤشر «إم إس سي آي»» تستعمل «التصنيف» في سياق قد يلتبس على القارئ بالتصنيف الائتماني، ولا سيما أن فقرة فيتش تأتي بعدها. الإصلاح: «رفع الأسبوع الماضي توصيته بشأن مؤشر «إم إس سي آي» للأسهم الإماراتية من «محايد» إلى «زيادة الوزن»» (SOURCE 1 يستعمل «توصيته»).",
+        "العنوان يحدد البنك والسوق والتغيير من «وزن متساوٍ» إلى «زيادة الوزن»، والفقرة التالية تشرح معنى التصنيف وتبين أنه توقع نسبي لا ضمان. لكن الدك لا يضيف شيئاً إلى الفقرة الأولى، ويترك خارج بطاقة الواجهة أن القرار عكسٌ لخفض مارس. — دك مقترح: «البنك يعكس خفضاً أجراه في مارس وسط مخاطر الحرب، ويستند إلى إنفاق أبوظبي وتعافي دبي وتقييمات غير مرتفعة».",
+        "«ويضع القطاع المالي في مقدمة القطاعات» أقوى من «a preferred sector» في SOURCE 2. باقي الأرقام مطابقة: 1.3% و6306.87 و1.051 إلى 1.056 تريليون و11% و8.56 و417.25 مليون و125 مليوناً و0.12% و9772.34 و0.4% و961.9 مليار و0.2% مقابل −3.9% و7.3% مقابل 7.7%. وصيغة «خصوصاً إذا» محفوظة. — «ويعدّ القطاع المالي من القطاعات المفضلة لديه».",
+        "يمكن نقل المقارنة الشهرية إلى جوار أعلى مستوى منذ فبراير لتفسر صعود السوق، مثل: «وكان سوق دبي قد ارتفع في أغسطس وسبتمبر، فيما صعد سوق أبوظبي أربعة أشهر متتالية»."
+      ],
+      "precheck": {
+        "ok": true,
+        "repairs": 0,
+        "rounds": 1,
+        "found": 0
+      },
+      "outcome": "published",
+      "whyBasis": [
+        {
+          "fact": "قال مورغان ستانلي إن تحسّن الأوضاع والتقييمات غير المرتفعة يشيران إلى معادلة مخاطرة وعائد غير متكافئة، خصوصاً إذا ظهرت مؤشرات إضافية على خفض التصعيد في الشرق الأوسط",
+          "source": 2
+        },
+        {
+          "fact": "ارتفع مؤشر سوق دبي المالي الاثنين 1.3% إلى 6306.87 نقطة، أعلى مستوى له منذ فبراير 2026",
+          "source": 1
+        },
+        {
+          "fact": "اندلعت الحرب الأمريكية الإيرانية في 28 فبراير",
+          "source": 2
+        }
+      ],
+      "slug": "morgan-stanley-upgrades-uae-equities-overweight-533d13",
+      "title": "مورغان ستانلي يرفع توصيته للأسهم الإماراتية من «وزن متساوٍ» إلى «زيادة الوزن»",
+      "score": 8,
+      "image": "photo"
+    },
+    {
+      "headline": "مصر تبدأ سداد قرض الضبعة الروسي البالغ 25 مليار دولار في 2032",
+      "section": "energy",
+      "importance": 6,
+      "outcome": "deferred: run budget spent"
+    }
+  ],
+  "llm": {
+    "calls": 65,
+    "failures": 0,
+    "promptTokens": 1225967,
+    "completionTokens": 229794,
+    "cacheReadTokens": 263726,
+    "costUsd": 8.7712,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 65
+    },
+    "byRole": {
+      "editor": {
+        "calls": 1,
+        "in": 163927,
+        "read": 0,
+        "out": 4675,
+        "usd": 0.7492
+      },
+      "desk": {
+        "calls": 15,
+        "in": 134795,
+        "read": 136270,
+        "out": 70421,
+        "usd": 2.073
+      },
+      "writer": {
+        "calls": 14,
+        "in": 217479,
+        "read": 127456,
+        "out": 72302,
+        "usd": 2.5171
+      },
+      "critic": {
+        "calls": 15,
+        "in": 231650,
+        "read": 0,
+        "out": 46943,
+        "usd": 1.8653
+      },
+      "checker": {
+        "calls": 3,
+        "in": 28504,
+        "read": 0,
+        "out": 21767,
+        "usd": 0.5494
+      },
+      "vision": {
+        "calls": 17,
+        "in": 185886,
+        "read": 0,
+        "out": 13686,
+        "usd": 1.0172
+      }
+    }
+  },
+  "log": [
+    "[23:33:52] image: dropped \"Close-up of a live cryptocurrency trading chart screen displaying dyna\" — names too little of stock, exchange, ticker, screen",
+    "[23:33:52] image: 8 likeness(es) set aside for the country's own photographs",
+    "[23:33:57] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=105 in=12316 read=0 out=276 attempt=1 ms=3848",
+    "[23:33:57] image: vision rejected all candidates (None of the candidates shows the subject this pass needs: investors or traders in the Dubai Financial Market trading hall. #1 is a photographed slide listing names. #2 is an amateur panorama of a fintech startup workshop, unrelated to the stock market. #3 and #4 are Dubai Metro stations; #4's most legible element is an unrelated billboard. #5 and #6 are skylines of the financial district, which the rules exclude.)",
+    "[23:34:00] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=0 in=10354 read=0 out=151 attempt=1 ms=2533",
+    "[23:34:00] image: vision rejected all candidates (Neither candidate shows the sources' subject, the Dubai Financial Market trading hall with investors and a price board. Photo 1 is a Dubai Tram platform, which has nothing to do with stocks. Photo 2 is a film festival screening with an amateur look, text on the screen and visible audience faces, which would be misleading under a market story. Choose none and let the later searches look further.)",
+    "[23:34:00] image: tier 3, the writer's own subjects: Dubai Financial Market trading | traders watching screens | Abu Dhabi Securities Exchange",
+    "[23:34:00] commons \"Dubai Financial Market trading 2026\": 0 usable of 0",
+    "[23:34:01] commons \"Dubai Financial Market trading\": 0 usable of 1",
+    "[23:34:01] commons \"Dubai Financial\": 9 usable of 12",
+    "[23:34:01] commons \"traders watching screens 2026\": 0 usable of 0",
+    "[23:34:02] commons \"traders watching screens\": 0 usable of 0",
+    "[23:34:02] commons \"traders watching\": 7 usable of 12",
+    "[23:34:02] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 02.jpg\" — dated 1992, an archival picture",
+    "[23:34:02] image: dropped \"1984 BIG BROTHER IS WATCHING YOU 01.jpg\" — dated 1992, an archival picture",
+    "[23:34:02] commons \"Abu Dhabi Securities Exchange 2026\": 0 usable of 0",
+    "[23:34:03] commons \"Abu Dhabi Securities Exchange\": 5 usable of 12",
+    "[23:34:03] image: dropped \"ADX 2024.jpg\" — names too little of securities, exchange",
+    "[23:34:03] image: dropped \"SYM ADX 125.jpg\" — names too little of securities, exchange",
+    "[23:34:03] image: dropped \"SYM ADX 125 2024.jpg\" — names too little of securities, exchange",
+    "[23:34:03] image: dropped \"4X-ADX Micha.jpg\" — names too little of securities, exchange",
+    "[23:34:03] image: dropped \"ADX dédicace 2021.jpg\" — names too little of securities, exchange",
+    "[23:34:03] image: dropped \"\"...is watching you!\".jpg\" — taken in Germany, which the story does not name",
+    "[23:34:03] image: dropped \"Eyes Watching You (136834777).jpeg\" — taken in China, which the story does not name",
+    "[23:34:03] image: dropped \"Friedel Kantaut- \"Is watching You\".jpg\" — taken in Germany, which the story does not name",
+    "[23:34:09] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=300 in=11292 read=0 out=431 attempt=1 ms=5338",
+    "[23:34:09] image: vision rejected all candidates (None of the photos shows trading, the UAE market at work, Morgan Stanley or its people. Photo 1 is an amateur shot through glass of a metro station and traffic, and its most legible element is an app billboard. Photos 2 and 3 are skyline and business-district views, which are refused here because no city-pass note applies.)",
+    "[23:34:09] image: tier 4, the story's point and its subject: Dubai Financial Market traders screens | UAE stock market investors | Dubai stock prices screen | Dubai stock exchange traders | Abu Dhabi exchange traders | stock traders (home: United Arab Emirates, UAE, Emirati, Dubai, Abu Dhabi)",
+    "[23:34:09] pexels \"Abu Dhabi exchange traders\": 8 usable",
+    "[23:34:09] pexels \"stock traders\": 8 usable",
+    "[23:34:09] pexels \"Dubai stock exchange traders\": 8 usable",
+    "[23:34:09] pexels \"Dubai Financial Market traders screens\": 8 usable",
+    "[23:34:09] commons \"Dubai Financial Market traders screens\": 0 usable of 0",
+    "[23:34:10] pexels \"Dubai stock prices screen\": 8 usable",
+    "[23:34:10] pexels \"UAE stock market investors\": 8 usable",
+    "[23:34:10] commons \"screens Dubai Financial Market\": 0 usable of 1",
+    "[23:34:10] commons \"Dubai Financial\": 18 usable of 24",
+    "[23:34:10] image: dropped \"Dubai Metro Station.jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:34:10] image: dropped \"D-Link DFM-562I DSC06002.JPG\" — names too little of financial",
+    "[23:34:10] image: dropped \"DFM Forthing 7 REEV IAA 2025 DSC 1443.jpg\" — names too little of financial",
+    "[23:34:10] image: dropped \"D-Link DFM-562I DSC06004.JPG\" — names too little of financial",
+    "[23:34:10] image: dropped \"HB-DFM Mooney M20J (12698668073).jpg\" — names too little of financial",
+    "[23:34:14] openverse \"Dubai stock prices screen\": HTTP 503",
+    "[23:34:15] openverse \"UAE stock market investors\": 0 usable of 0",
+    "[23:34:16] openverse \"Dubai Financial Market traders screens\": 0 usable of 0",
+    "[23:34:22] openverse \"Abu Dhabi exchange traders\": 0 usable of 0",
+    "[23:34:22] openverse \"Dubai stock exchange traders\": 0 usable of 0",
+    "[23:34:28] openverse \"stock traders\": HTTP 504",
+    "[23:34:29] openverse \"screens Dubai Financial Market\": 0 usable of 0",
+    "[23:34:29] image: \"Two business professionals analyzing financial data on multiple comput\" is another frame of a shoot a story ran 14 days or more ago; it comes after the unused ones",
+    "[23:34:29] image: set aside \"A stock trader analyzes financial data on multiple computer screens in\" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[23:34:29] commons \"UAE stock market investors\": 0 usable of 1",
+    "[23:34:30] commons \"investors UAE\": 5 usable of 15",
+    "[23:34:30] image: dropped \"UAE flying taxi at Charing Cross station 2024-10-10.jpg\" — names too little of investors",
+    "[23:34:30] image: dropped \"PH, UAE seek more areas for economic cooperation 003.jpg\" — names too little of investors",
+    "[23:34:30] image: dropped \"PH, UAE seek more areas for economic cooperation 002.jpg\" — names too little of investors",
+    "[23:34:30] image: dropped \"PH, UAE seek more areas for economic cooperation 004.jpg\" — names too little of investors",
+    "[23:34:30] image: dropped \"RA-82042 Antonov AN-124-100 VolgaDnepr Stansted 3.95 (54908612503).jpg\" — names too little of investors",
+    "[23:34:35] openverse \"traders Abu Dhabi\": 0 usable of 0",
+    "[23:34:43] openverse \"investors UAE\": HTTP 504",
+    "[23:34:44] commons \"Dubai stock prices screen\": 0 usable of 1",
+    "[23:34:44] commons \"screen Dubai\": 18 usable of 24",
+    "[23:34:44] image: dropped \"Naeem Tahir Founder of Khaleej Screen Awards.jpg\" — an event's photograph, people and banners",
+    "[23:34:44] image: dropped \"Signage for the Dodge ambulance (24772358891).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:34:44] image: dropped \"Staghound Armoured Car (24748068822).jpg\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:34:45] commons \"Dubai stock exchange traders\": 0 usable of 0",
+    "[23:34:45] commons \"traders Dubai\": 8 usable of 10",
+    "[23:34:45] image: dropped \"This old building was actually a series of shops with predatory trader\" — a building's front, a branch or a skyline, which says whose or where, not what happened",
+    "[23:34:45] image: dropped \"Wayside cross above the Terek River in Georgia (4).jpg\" — names too little of traders",
+    "[23:34:45] image: dropped \"The underground chambers have been made into a wine cellar (3623431135\" — names too little of traders",
+    "[23:34:45] image: dropped \"Dong Xuan Market market in the Hanoi old quarter (30645886763).jpg\" — names too little of traders",
+    "[23:34:45] image: dropped \"There were so many lingams there that some were totally unattended to \" — names too little of traders",
+    "[23:34:45] image: dropped \"The two tourists have now reached the end of the hall (36880720286).jp\" — names too little of traders",
+    "[23:34:55] openverse \"traders Dubai\": 4 usable of 5",
+    "[23:34:55] image: dropped \"Madinat\" — names too little of stock, exchange, traders",
+    "[23:34:55] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, exchange, traders",
+    "[23:34:55] image: set aside \"A trader confidently viewing stock market charts on multiple monitors \" — another story ran it 30 days or more ago; it may run again only if nothing else is found",
+    "[23:34:55] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, exchange, traders",
+    "[23:34:55] image: dropped \"High-resolution candlestick chart showing forex trading trends and ana\" — names too little of stock, exchange, traders",
+    "[23:34:55] image: dropped \"A man analyzes cryptocurrency graphs on a touchscreen monitor in a mod\" — names too little of stock, exchange, traders",
+    "[23:34:55] commons \"Abu Dhabi exchange traders\": 0 usable of 0",
+    "[23:34:55] commons \"traders Abu Dhabi\": 0 usable of 0",
+    "[23:34:58] commons \"Abu Dhabi\": 21 usable of 24",
+    "[23:34:58] image: dropped \"Panoramic view of Abu Dhabi's futuristic skyline with modern skyscrape\" — names too little of exchange, traders",
+    "[23:34:58] image: dropped \"Free stock photo of abu dhabi, arches, blue\" — names too little of exchange, traders",
+    "[23:34:58] image: dropped \"Breathtaking view of Abu Dhabi skyline showcasing modern architecture \" — names too little of exchange, traders",
+    "[23:34:58] image: dropped \"Stunning view of the Abu Dhabi skyline reflecting in the calm Gulf wat\" — names too little of exchange, traders",
+    "[23:34:58] image: dropped \"Vibrant red and green candlestick chart showcasing crypto market trend\" — names too little of exchange, traders",
+    "[23:34:58] image: dropped \"Detailed financial market chart showcasing price trends and volume ind\" — names too little of exchange, traders",
+    "[23:34:59] commons \"stock traders\": 5 usable of 24",
+    "[23:34:59] image: dropped \"NY stock exchange traders floor LC-U9-10548-6.jpg\" — dated 1963, an archival picture",
+    "[23:34:59] image: dropped \"Toronto Stock Exchange 1956.jpg\" — dated 1956, an archival picture",
+    "[23:34:59] image: dropped \"The diseases of live stock and their most efficient remedies; (1855) (\" — dated 1855, an archival picture",
+    "[23:34:59] image: dropped \"Two businessmen reviewing financial data on a laptop indoors, analyzin\" — names too little of stock, traders",
+    "[23:34:59] image: dropped \"Frustrated man monitoring multiple trading graphs on computer screens \" — names too little of stock, traders",
+    "[23:34:59] image: dropped \"Detailed view of cryptocurrency trading charts on digital screens, sho\" — names too little of stock, traders",
+    "[23:34:59] image: dropped \"Financial candlestick chart showing market trends and data visualizati\" — names too little of stock, traders",
+    "[23:34:59] image: dropped \"A study in arches in the Sheki Caravanserai (37052045910).jpg\" — taken in Azerbaijan, which the story does not name",
+    "[23:34:59] image: dropped \"Traders on a break, NYSE (3961958594).jpg\" — taken in United States, which the story does not name",
+    "[23:34:59] image: dropped \"Deutsche-boerse-parkett-ffm006.jpg\" — taken in Germany, which the story does not name",
+    "[23:35:06] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=419 in=12041 read=0 out=583 attempt=1 ms=6054",
+    "[23:35:06] image: vision rejected all candidates (fallback pass) (No candidate fits. 1 is a night scene of a traditional dhow. 2 is a stock cliché: a hand pointing at a chart on a screen, with a platform logo in the corner. 3 is an unrelated metro platform. 4 is a street view of a metro station building with a billboard. 5 and 6 are skylines of Abu Dhabi and Dubai. None shows the UAE stock market or its traders at work.)",
+    "[23:35:11] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=219 in=12001 read=0 out=386 attempt=1 ms=5115",
+    "[23:35:11] image: vision rejected all candidates (fallback pass) (None fits. 1, 2 and 6 are chart screens as the subject: generic stock clichés, and 2 and 6 show crypto exchange branding (Binance, Bybit). 3 (Dubai tram platform) and 4 (Abu Dhabi airport road) are places the story mentions only in passing and do not picture a stock market or an investment call. 5 is river boats in Laos, the wrong subject and the wrong country.)",
+    "[23:35:11] image: the company's own brand (Morgan Stanley): Morgan Stanley sign | Morgan Stanley office sign | Morgan Stanley building | Morgan Stanley headquarters; its categories: Morgan Stanley",
+    "[23:35:12] pexels \"Morgan Stanley headquarters\": 8 usable",
+    "[23:35:12] commons \"Morgan Stanley sign 2026\": 0 usable of 0",
+    "[23:35:12] pexels \"Morgan Stanley office sign\": 8 usable",
+    "[23:35:12] pexels \"Morgan Stanley sign\": 8 usable",
+    "[23:35:12] pexels \"Morgan Stanley building\": 8 usable",
+    "[23:35:12] commons \"Morgan Stanley sign\": 10 usable of 15",
+    "[23:35:12] image: dropped \"1907 Lister Institute Group photograph Wellcome L0069610.jpg\" — dated 1907, an archival picture",
+    "[23:35:12] image: dropped \"Lister Institute; Group photograph, 1907 Wellcome L0019597.jpg\" — dated 1907, an archival picture",
+    "[23:35:12] image: dropped \"Group photographic portrait. Wellcome L0017179.jpg\" — names too little of sign",
+    "[23:35:17] openverse \"Morgan Stanley office sign\": 0 usable of 0",
+    "[23:35:28] openverse \"Morgan Stanley building\": HTTP 504",
+    "[23:35:30] openverse \"Morgan Stanley sign\": 10 usable of 14",
+    "[23:35:30] image: dropped \"A beautifully illuminated historic building at night, featuring a prom\" — names too little of sign",
+    "[23:35:30] image: dropped \"Scenic night view of illuminated bridge and cityscape in Tempe, Arizon\" — names too little of sign",
+    "[23:35:31] commons \"Morgan Stanley office sign 2026\": 0 usable of 0",
+    "[23:35:31] commons \"Morgan Stanley office sign\": 0 usable of 0",
+    "[23:35:35] openverse \"Morgan Stanley headquarters\": HTTP 504",
+    "[23:35:39] openverse \"sign Morgan Stanley\": HTTP 504",
+    "[23:35:39] image: dropped \"A beautifully illuminated historic building at night, featuring a prom\" — names too little of office, sign",
+    "[23:35:39] image: dropped \"A reflective view of Granville Street in downtown Vancouver with warm \" — names too little of office, sign",
+    "[23:35:39] commons \"Morgan Stanley building 2026\": 0 usable of 1",
+    "[23:35:40] commons \"Morgan Stanley building\": 9 usable of 24",
+    "[23:35:40] image: dropped \"High-angle view of a modern glass skyscraper in Warsaw, showcasing con\" — names too little of building",
+    "[23:35:40] image: dropped \"Scenic night view of illuminated bridge and cityscape in Tempe, Arizon\" — names too little of building",
+    "[23:35:40] image: dropped \"A view of contemporary skyscrapers in Seoul showcasing modern architec\" — names too little of building",
+    "[23:35:40] image: dropped \"Glass skyscraper with vivid autumn foliage under a bright blue sky.\" — names too little of building",
+    "[23:35:40] image: dropped \"Close-up view of a modern skyscraper with a sleek glass panel exterior\" — names too little of building",
+    "[23:35:40] image: dropped \"Low angle view of modern glass skyscraper against blue sky in New York\" — names too little of building",
+    "[23:35:40] commons \"Morgan Stanley headquarters 2026\": 0 usable of 0",
+    "[23:35:41] commons \"Morgan Stanley headquarters\": 8 usable of 18",
+    "[23:35:41] image: dropped \"Southern Pacific Building, One Market Plaza, San Francisco, California\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"Close-up of a modern office building facade in Utrecht, Netherlands.\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"High-rise glass building with 'The Nexus' sign under clear sky.\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"Upward perspective of modern glass skyscrapers with a blue sky backgro\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"Close-up of a modern glass office building facade with geometric desig\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"High-angle nighttime view of a modern urban skyscraper with rooftop ga\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"A tall building with lit windows against a dusky blue sky, conveying u\" — names too little of headquarters",
+    "[23:35:41] image: dropped \"Contemporary glass office building surrounded by lush green grass in d\" — names too little of headquarters",
+    "[23:35:42] commons Category:Morgan Stanley: 4 usable of 21",
+    "[23:35:42] image: 18 file(s) dropped for not naming Morgan Stanley",
+    "[23:35:48] llm ok role=vision provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=299 in=11888 read=0 out=486 attempt=1 ms=6006",
+    "[23:35:55] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=xhigh thinking=502 in=9483 read=0 out=594 attempt=1 ms=6287",
+    "[23:35:55] image: second check (claude-cli/claude-opus-5-5) RIGHT \"Morgan Stanley Headquarters (5903796680).jpg\": Morgan Stanley's name is the clear, legible subject over the entrance of its own headquarters in a sharp, professional f",
+    "[23:35:55] published \"مورغان ستانلي يرفع توصيته للأسهم الإماراتية من «وزن متساوٍ» إلى «زيادة الوزن»\" -> morgan-stanley-upgrades-uae-equities-overweight-533d13",
+    "[23:35:55] run budget of 35 minutes spent; \"مصر تبدأ سداد قرض الضبعة الروسي البالغ 25 مليار دولار في 2032\" waits for the next run"
+  ]
+}

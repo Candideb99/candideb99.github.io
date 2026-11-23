@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-11-23T22:59:44.915Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
+      "issue": "1. The body says «أما كبرى شركات التكنولوجيا فارتفعت أسهمها بين 4% و6%.» (Shares of the biggest tech companies rose between 4% and 6% on Monday.). Source CNBC says: \"Shares of Alphabet surged 6.34%, Meta gained 6.55%, Amazon jumped 3.47% and Microsoft increased 1.65%.\". Big Tech gains ranged from 1.65% (Microsoft) and 3.47% (Amazon) to 6.34% (Alphabet) and 6.55% (Meta), not 4% to 6%.\n2. The body says «وأضاف ضعف سهم أنثروبيك بعد إدراجه شكوكاً في تقييمات شركات التكنولوجيا، فالشركة جمعت 93.5 مليار دولار في طرح عام أولي قياسي الخميس، لكن سهمها تراجع في جلسة الجمعة، ثم استقر الاثنين في ثالث أيام تداوله بعد صعود قصير قبل الافتتاح.» (Anthropic raised $93.5 billion in a record IPO on Thursday. Its stock fell on Friday, then held steady Monday, its third trading day, after a brief premarket rise.). Source CNBC says: \"Following a brief premarket surge, Anthropic shares posted a decline of 1.43% in its third day of trading. Anthropic raised a record $93.5 billion in its IPO.\". Anthropic shares did not hold steady on Monday; they fell 1.43% in their third day of trading.\n3. The body says «وتبقى أسهم التكنولوجيا متقلبة رغم ارتداد الاثنين، بحسب «سي إن بي سي»، إذ لا يزال المستثمرون قلقين من تقييمات بعض شركات الذكاء الاصطناعي ونماذج أعمالها.» (Per CNBC, tech stocks remain volatile despite Monday's rebound, as investors are still worried about some AI companies' valuations and business models.). Source CNBC says: \"The Nasdaq slid 10% last week, with tech stocks having a rocky week as investors remained nervous about the valuation of some AI companies and business models.\". CNBC described the rocky trading and investor nervousness as features of last week, not as continuing after Monday's rebound.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر أن أسهم كبرى شركات التكنولوجيا ارتفعت بين 4% و6%، وأن سهم أنثروبيك استقر الاثنين، وأن التقلب وقلق المستثمرين استمرا بعد ارتداد الاثنين. والصحيح أن مكاسب تلك الأسهم تراوحت بين 1.65% و6.55%، وأن سهم أنثروبيك انخفض 1.43% الاثنين، وأن «سي إن بي سي» وصفت الاضطراب وقلق المستثمرين بأنهما سِمتا الأسبوع الماضي.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "changedSentences": [
+        "أما كبرى شركات التكنولوجيا فارتفعت أسهمها بين 4% و6%.",
+        "وأضاف ضعف سهم أنثروبيك بعد إدراجه شكوكاً في تقييمات شركات التكنولوجيا، فالشركة جمعت 93.5 مليار دولار في طرح عام أولي قياسي الخميس، لكن سهمها تراجع في جلسة الجمعة، ثم استقر الاثنين في ثالث أيام تداوله بعد صعود قصير قبل الافتتاح.",
+        "وتبقى أسهم التكنولوجيا متقلبة رغم ارتداد الاثنين، بحسب «سي إن بي سي»، إذ لا يزال المستثمرون قلقين من تقييمات بعض شركات الذكاء الاصطناعي ونماذج أعمالها."
+      ],
+      "newSentences": [
+        "أما كبرى شركات التكنولوجيا فتراوحت مكاسب أسهمها بين 1.65% لمايكروسوفت و6.55% لميتا.",
+        "وأضاف ضعف سهم أنثروبيك بعد إدراجه شكوكاً في تقييمات شركات التكنولوجيا، فالشركة جمعت 93.5 مليار دولار في طرح عام أولي قياسي الخميس، لكن سهمها تراجع في جلسة الجمعة، ثم انخفض 1.43% الاثنين في ثالث أيام تداوله بعد صعود قصير قبل الافتتاح.",
+        "وكانت أسهم التكنولوجيا قد مرت بأسبوع مضطرب، بحسب «سي إن بي سي»، إذ ظل المستثمرون قلقين من تقييمات بعض شركات الذكاء الاصطناعي ونماذج أعمالها."
+      ]
+    }
+  ]
+}

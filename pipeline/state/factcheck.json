@@ -14653,6 +14653,279 @@
         }
       ],
       "outcome": "clean"
+    },
+    "nvidia-reinstates-jensen-huang-as-ceo-0c7b1b": {
+      "at": "2026-11-23T22:56:33.607Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T15:33:12.914Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 26,
+        "checked": 26,
+        "supported": 20,
+        "weak": 0,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 2,
+        "conflict": 4,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "lede",
+          "sentence": "وقفز سهم شركة الرقائق بأكثر من 33% مع افتتاح التداول في وول ستريت.",
+          "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 32% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%، بحسب بلومبرغ.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "keyFacts",
+          "sentence": "ارتفاع سهم إنفيديا عند افتتاح الاثنين: أكثر من 33%",
+          "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 32% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%، بحسب بلومبرغ.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "whyItMatters",
+          "sentence": "حين يضيف خبر عودة رجل واحد أكثر من 33% إلى سعر السهم عند الافتتاح، يصبح بقاؤه على رأس إنفيديا جزءاً من تقييمها السوقي.",
+          "quote": "بعد الإعلان واصلت الأسهم مكاسبها، حيث قفزت أسهم شركة صناعة الرقائق 32% في التعاملات المبكرة، فيما ارتفعت العقود الآجلة لمؤشر \"ناسداك 100\" بنسبة 7%، بحسب بلومبرغ.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "ولقيت مغادرته اعتراضاً فورياً في أوساط وادي السيليكون، وجمعت عريضة تطالب بعودته أكثر من 180 ألف توقيع في غضون أيام، بينها توقيع إيلون ماسك، الرئيس التنفيذي لشركتي «سبيس إكس» و«تسلا».",
+          "quote": "وكان ماسك دعا أكثر من مرة إلى إعادة هوانغ منذ استقالته، ووصف غيابه عن قيادة الشركة بأنه \"ضربة هائلة\" لها، كما أبدى استعداده للتوقيع على حملة لجمع التوقيعات للمطالبة بعودته، وعرض في وقت سابق توظيفه.",
+          "source": "Asharq Business"
+        },
+        {
+          "status": "drift",
+          "class": "scope",
+          "field": "body",
+          "sentence": "وتعود إنفيديا إلى قيادة مؤسسها في فترة تقلبات يمر بها قطاع الذكاء الاصطناعي منذ انتخابات التجديد النصفي التي فاز فيها الديمقراطيون بالسيطرة على مجلسي النواب والشيوخ، وكثير منهم أكثر تشككاً في الذكاء الاصطناعي.",
+          "quote": "The decision coincides with a volatile period for the artificial intelligence (AI) sector following sweeping gains in the recent midterm elections by Democrats, many of whom are more sceptical of AI.",
+          "source": "Al Jazeera English",
+          "correction": "The source says only that Democrats made sweeping gains in the midterms; it does not say they won control of both the House and the Senate."
+        },
+        {
+          "status": "drift",
+          "class": "scope",
+          "field": "body",
+          "sentence": "وأُقرت في تلك الانتخابات مقترحات لتقييد إنشاء مراكز البيانات في جميع الاقتراعات التي طُرحت فيها إلا اقتراعاً واحداً.",
+          "quote": "The elections also saw voters overwhelmingly reject data centre development in ballot measures held across 10 states.",
+          "source": "Al Jazeera English",
+          "correction": "The source says voters overwhelmingly rejected data centre development in ballot measures held across 10 states; it does not say the measures passed in all ballots but one."
+        }
+      ],
+      "notFound": [],
+      "weak": [],
+      "outcome": "listed"
+    },
+    "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215": {
+      "at": "2026-11-23T22:56:33.602Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v73",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T16:04:28.378Z",
+      "sourcesRead": 5,
+      "sourcesAll": 5,
+      "fromCopy": 2,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 29,
+        "checked": 29,
+        "supported": 9,
+        "weak": 6,
+        "noEvidence": 1,
+        "notFound": 1,
+        "confirmed": 1,
+        "listed": 0,
+        "drift": 9,
+        "conflict": 2,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [
+        {
+          "id": 13,
+          "field": "body",
+          "sentence": "وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة.",
+          "claim": "On Monday, Nebius rose more than 30%. That exceeded Nvidia's gain and led the data-center and cloud-infrastructure companies.",
+          "verdict": "contradicted",
+          "status": "confirmed",
+          "source": 4,
+          "sourceName": "CNBC",
+          "sourceDate": "2026-11-23",
+          "quote": "Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.",
+          "correction": "CNBC says Nebius rose 20.28% Monday, less than Nvidia's 31.48% and behind CoreWeave and Iren; even Al Jazeera's 31% for Nebius is below its 32.2% for Nvidia.",
+          "class": "figure"
+        }
+      ],
+      "listed": [
+        {
+          "status": "drift",
+          "class": "hedge",
+          "field": "body",
+          "sentence": "وكان هوانغ قد أُقصي من رئاسة الشركة التي أسسها بعدما أقر بعلاقة خارج الزواج مع امرأة تفيد تقارير بأن الاستخبارات الأمريكية تعتقد أنها جاسوسة صينية، بحسب شبكة «سي إن بي سي» الأمريكية.",
+          "quote": "The company has been embattled as reports surfaced about Huang's multiple extramarital affairs — one of which was with a woman U.S. intelligence reportedly believes to be a Chinese spy. Huang resigned as CEO of the company he founded on Nov. 12.",
+          "source": "CNBC",
+          "correction": "CNBC says reports surfaced about Huang's extramarital affairs, one reportedly with a suspected Chinese spy, and that he resigned on Nov. 12; it does not say he admitted that relationship."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "أما كبرى شركات التكنولوجيا فارتفعت أسهمها بين 4% و6%.",
+          "quote": "Shares of Alphabet surged 6.34%, Meta gained 6.55%, Amazon jumped 3.47% and Microsoft increased 1.65%.",
+          "source": "CNBC",
+          "correction": "Big Tech gains ranged from 1.65% (Microsoft) to 6.55% (Meta), with Amazon up 3.47%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "body",
+          "sentence": "وأضاف ضعف سهم أنثروبيك بعد إدراجه شكوكاً في تقييمات شركات التكنولوجيا، فالشركة جمعت 93.5 مليار دولار في طرح عام أولي قياسي الخميس، لكن سهمها تراجع في جلسة الجمعة، ثم استقر الاثنين في ثالث أيام تداوله بعد صعود قصير قبل الافتتاح.",
+          "quote": "Following a brief premarket surge, Anthropic shares posted a decline of 1.43% in its third day of trading. Anthropic raised a record $93.5 billion in its IPO.",
+          "source": "CNBC",
+          "correction": "Anthropic shares did not stabilize Monday; they fell 1.43% in their third day of trading."
+        },
+        {
+          "status": "drift",
+          "class": "period",
+          "field": "body",
+          "sentence": "وتبقى أسهم التكنولوجيا متقلبة رغم ارتداد الاثنين، بحسب «سي إن بي سي»، إذ لا يزال المستثمرون قلقين من تقييمات بعض شركات الذكاء الاصطناعي ونماذج أعمالها.",
+          "quote": "The Nasdaq slid 10% last week, with tech stocks having a rocky week as investors remained nervous about the valuation of some AI companies and business models.",
+          "source": "CNBC",
+          "correction": "CNBC describes last week as rocky for tech stocks amid valuation nerves; it does not say tech stocks remain volatile after Monday's rebound."
+        },
+        {
+          "status": "conflict",
+          "field": "table",
+          "sentence": "السهم: نيبيوس · التغير: أكثر من 30%",
+          "quote": "Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.",
+          "source": "CNBC"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "السهم: كور ويف · التغير: 28%",
+          "quote": "Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.",
+          "source": "CNBC",
+          "correction": "CNBC puts CoreWeave's Monday gain at 22.32% (Al Jazeera gives 29%), not 28%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "السهم: آيرين · التغير: 28%",
+          "quote": "Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.",
+          "source": "CNBC",
+          "correction": "CNBC puts Iren's Monday gain at 23.86% (Al Jazeera gives 26%), not 28%."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "السهم: سبيس إكس · التغير: 9%",
+          "quote": "SpaceX added 4.35%, Arm Holdings surged 16.08% and AMD added 6.85%.",
+          "source": "CNBC",
+          "correction": "SpaceX rose 4.35% on Monday."
+        },
+        {
+          "status": "conflict",
+          "field": "table",
+          "sentence": "السهم: أدفانسد مايكرو ديفايسز · التغير: أكثر من 8.5%",
+          "quote": "SpaceX added 4.35%, Arm Holdings surged 16.08% and AMD added 6.85%.",
+          "source": "CNBC"
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "السهم: أمازون · التغير: نحو 5%",
+          "quote": "Shares of Alphabet surged 6.34%, Meta gained 6.55%, Amazon jumped 3.47% and Microsoft increased 1.65%.",
+          "source": "CNBC",
+          "correction": "Amazon rose 3.47% on Monday."
+        },
+        {
+          "status": "drift",
+          "class": "figure",
+          "field": "table",
+          "sentence": "السهم: مايكروسوفت · التغير: 4%",
+          "quote": "Shares of Alphabet surged 6.34%, Meta gained 6.55%, Amazon jumped 3.47% and Microsoft increased 1.65%.",
+          "source": "CNBC",
+          "correction": "Microsoft rose 1.65% on Monday."
+        }
+      ],
+      "notFound": [
+        "أما الشكوك التي غذّت البيع في استدامة الطلب على الرقائق وفي جدوى الإنفاق على مراكز البيانات فما زالت قائمة، وأي تباطؤ في هذا الإنفاق سيصيب إنفيديا مباشرة بوصفها من أبرز المستفيدين منه.",
+        "وكان رحيله المفاجئ قد أثار اضطرابات واسعة في أسهم التكنولوجيا الأسبوع الماضي، وإنفيديا من أبرز الشركات المستفيدة من الإنفاق العالمي على البنية التحتية للذكاء الاصطناعي."
+      ],
+      "weak": [
+        {
+          "sentence": "سهم إنفيديا يرتفع 30% وأسهم الذكاء الاصطناعي ترتد بعد أسوأ أسبوع لناسداك منذ 2020",
+          "quote": "Major tech stocks rebounded across the board Monday, sharply reversing Friday's steep sell-off when artificial intelligence stocks fell in the Nasdaq's worst week since 2020.Shares of Nvidia surged 31.48% after the company announced Monday morning that Jensen Huang was reinstated as CEO."
+        },
+        {
+          "sentence": "أن يحوّل خبر من شركة واحدة ارتداداً كان «ستاندرد آند بورز 500» مهيأً له إلى قفزة تقارب 7% في ناسداك يُظهر إلى أي حد تتعلق رهانات الذكاء الاصطناعي بإنفيديا.",
+          "quote": "The S&P 500 was already set to rise on Monday, bouncing back from a sharp fall last week, before the news that Nvidia’s board had reinstated Mr. Huang sent shares soaring."
+        },
+        {
+          "sentence": "وقفز سهم إنفيديا 30% بعد عودة هوانغ، معوضاً جانباً من تراجع تجاوز 40% خلال الشهر الماضي.",
+          "quote": "Nvidia's surge and Huang's reinstatement followed a more than 40% slump in the stock over the past month."
+        },
+        {
+          "sentence": "وافتتح ناسداك الجلسة مرتفعاً بأكثر من 6% عن إغلاقه الجمعة عند 22617.73 نقطة.",
+          "quote": "ناسداك المركب (^IXIC): 24177.12 points at 15:49 GMT on Monday 23 November 2026 (delayed quote), up 1559.39 or 6.89% from the previous close of 22617.73."
+        },
+        {
+          "sentence": "السهم: إنفيديا · التغير: 30%",
+          "quote": "Shares of Nvidia surged 31.48% after the company announced Monday morning that Jensen Huang was reinstated as CEO."
+        }
+      ],
+      "outcome": "corrected",
+      "note": "ذكرت نسخة سابقة من هذا الخبر، ومن الجدول المرفق به، أن سهم نيبيوس صعد أكثر من 30% متجاوزاً مكاسب إنفيديا ومتقدماً شركات مراكز البيانات. والصحيح أن سهم نيبيوس ارتفع 20.28% بحسب «سي إن بي سي»، أي أقل من مكاسب إنفيديا وخلف كور ويف وآيرين.",
+      "verified": {
+        "at": "2026-11-23T22:59:44.779Z",
+        "resolved": true,
+        "remaining": [],
+        "newFound": [
+          {
+            "class": "figure",
+            "field": "body",
+            "sentence": "أما كبرى شركات التكنولوجيا فارتفعت أسهمها بين 4% و6%.",
+            "quote": "Shares of Alphabet surged 6.34%, Meta gained 6.55%, Amazon jumped 3.47% and Microsoft increased 1.65%.",
+            "correction": "Big Tech gains ranged from 1.65% (Microsoft) and 3.47% (Amazon) to 6.34% (Alphabet) and 6.55% (Meta), not 4% to 6%."
+          },
+          {
+            "class": "figure",
+            "field": "body",
+            "sentence": "وأضاف ضعف سهم أنثروبيك بعد إدراجه شكوكاً في تقييمات شركات التكنولوجيا، فالشركة جمعت 93.5 مليار دولار في طرح عام أولي قياسي الخميس، لكن سهمها تراجع في جلسة الجمعة، ثم استقر الاثنين في ثالث أيام تداوله بعد صعود قصير قبل الافتتاح.",
+            "quote": "Following a brief premarket surge, Anthropic shares posted a decline of 1.43% in its third day of trading. Anthropic raised a record $93.5 billion in its IPO.",
+            "correction": "Anthropic shares did not hold steady on Monday; they fell 1.43% in their third day of trading."
+          },
+          {
+            "class": "period",
+            "field": "body",
+            "sentence": "وتبقى أسهم التكنولوجيا متقلبة رغم ارتداد الاثنين، بحسب «سي إن بي سي»، إذ لا يزال المستثمرون قلقين من تقييمات بعض شركات الذكاء الاصطناعي ونماذج أعمالها.",
+            "quote": "The Nasdaq slid 10% last week, with tech stocks having a rocky week as investors remained nervous about the valuation of some AI companies and business models.",
+            "correction": "CNBC described the rocky trading and investor nervousness as features of last week, not as continuing after Monday's rebound."
+          }
+        ],
+        "secondCorrection": "corrected"
+      }
     }
   }
 }

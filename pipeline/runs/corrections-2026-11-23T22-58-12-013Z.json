@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-11-23T22:58:12.148Z",
+  "dryRun": false,
+  "items": [
+    {
+      "slug": "nasdaq-jumps-huang-returns-nvidia-ceo-8e6215",
+      "issue": "The body says «وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة.» (On Monday, Nebius rose more than 30%. That exceeded Nvidia's gain and led the data-center and cloud-infrastructure companies.). Source CNBC says: \"Nebius soared 20.28%, CoreWeave gained 22.32% and Iren gained 23.86%.\". CNBC says Nebius rose 20.28% Monday, less than Nvidia's 31.48% and behind CoreWeave and Iren; even Al Jazeera's 31% for Nebius is below its 32.2% for Nvidia.",
+      "outcome": "corrected",
+      "problems": [],
+      "fields": [
+        "body",
+        "table"
+      ],
+      "note": "ذكرت نسخة سابقة من هذا الخبر، ومن الجدول المرفق به، أن سهم نيبيوس صعد أكثر من 30% متجاوزاً مكاسب إنفيديا ومتقدماً شركات مراكز البيانات. والصحيح أن سهم نيبيوس ارتفع 20.28% بحسب «سي إن بي سي»، أي أقل من مكاسب إنفيديا وخلف كور ويف وآيرين.",
+      "model": "claude-cli/claude-opus-5-5",
+      "before": {},
+      "after": {},
+      "visuals": {
+        "table": null,
+        "chart": null
+      },
+      "changedSentences": [
+        "وفي تعاملات الاثنين، صعد سهم نيبيوس أكثر من 30%، متجاوزاً مكاسب إنفيديا، في مقدمة شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة."
+      ],
+      "newSentences": [
+        "وامتد الصعود في تعاملات الاثنين إلى أسهم شركات مراكز البيانات والبنية التحتية للحوسبة السحابية، ومنها نيبيوس، التي توفر القدرة الحاسوبية اللازمة لتشغيل نماذج الذكاء الاصطناعي ومرت بأشهر متقلبة."
+      ]
+    }
+  ]
+}
