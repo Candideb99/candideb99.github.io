@@ -387,7 +387,9 @@ function placeOnFront(live) {
   const pool = full.length ? full : all;
   const featuredFor = (a) => (now - Date.parse(a.featuredAt || a.publishedAt)) / 36e5;
   const featured = all.filter((a) => a.featured && featuredFor(a) < 48).sort((x, y) => Date.parse(y.featuredAt || y.publishedAt) - Date.parse(x.featuredAt || x.publishedAt));
-  const lead = featured[0] ?? [...pool].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
+  // Of the last day when it has a full story, as the site's pickLead() (2026-11-23).
+  const fresh = pool.filter((a) => hours(a) < 24);
+  const lead = featured[0] ?? [...(fresh.length ? fresh : pool)].sort((x, y) => ((y.importance ?? 5) - hours(y) / 12 + (y.image ? 1.5 : 0)) - ((x.importance ?? 5) - hours(x) / 12 + (x.image ? 1.5 : 0)))[0];
   const imp = (a) => (a.importance ?? 5) + (a.image ? 0.5 : 0);
   const byImp = (list) => [...list].sort((x, y) => imp(y) - imp(x));
   const placed = new Set();

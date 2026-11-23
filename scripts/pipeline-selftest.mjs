@@ -671,7 +671,10 @@ check(
   const indonesia = pick("أقاليم إندونيسيا ترفع الحد الأدنى للأجور 42%", 5, ["آسيا"], "none", "جنوب شرق آسيا وأستراليا");
   const xrg = pick("الأرجنتين تقر حوافز مشروع غاز مسال تشارك فيه «إكس آر جي»", 6, ["الأمريكتان"], "arab", "الأمريكتان");
   const euBudget = pick("كوستا يقترح خفض ميزانية الاتحاد الأوروبي 204 مليارات يورو", 7, ["أوروبا"], "global");
-  const evening = quietPlaces([...published, story("ميناء سنغافورة يسجل رقماً قياسياً", ["آسيا"], 20), story("صادرات البرازيل ترتفع", ["الأمريكتان"], 10)], now);
+  const evening = quietPlaces([...published, story("ميناء سنغافورة يسجل رقماً قياسياً", ["آسيا"], 20), story("صادرات البرازيل ترتفع", ["الأمريكتان"], 10),
+    // «الاتحاد الأوروبي» names Western Europe since 2026-11-23 (regions.mjs AREA_SIGNS), so the EU's story gives way only
+    // once that part is served: three stories of it in the week.
+    story("ألمانيا تقر موازنة 2027", ["أوروبا"], 1), story("فرنسا ترفع ضريبة الشركات", ["أوروبا"], 2), story("بنك إنجلترا يثبت الفائدة", ["أوروبا"], 3)], now);
   check("when the longest-quiet place's story can break no tie, the next place's is tried",
     (() => { const r = rotationSwap({ chosen: [saudi, euBudget], stories: [saudi, euBudget, indonesia, xrg], quiet: evening, runLimit: 2, minImportance: 6 }); return r && [r.pick.headlineHint, r.drop.headlineHint]; })(),
     [xrg.headlineHint, euBudget.headlineHint]);

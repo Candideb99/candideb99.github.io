@@ -292,9 +292,23 @@ export const WORLD_AREAS = [
 const AREA_BY_KEY = new Map(WORLD_AREAS.flatMap((area) => area.nisbas.map((nisba) => [nationalityKey(nisba), area.name])));
 for (const area of WORLD_AREAS) for (const nisba of area.nisbas) if (!NATIONALITY_BY_KEY.has(nationalityKey(nisba))) throw new Error(`regions: «${nisba}» of ${area.name} is not in NATIONALITIES`);
 
-/** The parts of the world (WORLD_AREAS) a text names by its countries. */
+/**
+ * What names a part of the world without naming a country of it: its central bank, its share index, its union. The
+ * rotation's counter read «بنك إنجلترا يرفع الفائدة إلى 4%» and «نيكاي يهبط دون 60 ألف نقطة» as stories of nowhere, so
+ * neither reset its part's quiet days, while scripts/coverage.mjs, with words of its own, counted both (2026-11-23).
+ * Whole words only; never «الين», which stands inside many words.
+ */
+const AREA_SIGNS = [
+  ["أوروبا الغربية والشمالية", ["بنك إنجلترا", "بنك إنكلترا", "الإسترليني", "فوتسي", "داكس", "بوندسبنك", "كاك 40", "منطقة اليورو", "المركزي الأوروبي", "الاتحاد الأوروبي", "المفوضية الأوروبية"]],
+  ["شرق آسيا", ["نيكاي", "نيكي", "توبكس", "كوسبي"]],
+  ["جنوب آسيا", ["سنسكس", "نيفتي"]],
+].map(([name, words]) => [name, new RegExp(`(?<![${"\\u0621-\\u064A"}])(?:[وفبلك]|ال|لل)?(?:${words.join("|")})(?![${"\\u0621-\\u064A"}])`)]);
+
+/** The parts of the world (WORLD_AREAS) a text names, by its countries or by what stands for one (AREA_SIGNS). */
 export function worldAreasNamed(text) {
-  return new Set([...countriesNamed(text)].map((key) => AREA_BY_KEY.get(key)).filter(Boolean));
+  const areas = new Set([...countriesNamed(text)].map((key) => AREA_BY_KEY.get(key)).filter(Boolean));
+  for (const [name, sign] of AREA_SIGNS) if (sign.test(String(text ?? ""))) areas.add(name);
+  return areas;
 }
 
 /**

@@ -2,6 +2,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { PLACE_TAGS } from "./regions";
 import { canonicalTag, isFileTag, subjectOfTag } from "./topics";
 import { firstOfEachPhoto, photoFree } from "../../pipeline/lib/photo-key.mjs";
+import { countriesNamed } from "../../pipeline/lib/regions.mjs";
 
 export type Article = CollectionEntry<"articles">;
 
@@ -48,7 +49,11 @@ export function pickLead(articles: Article[], now = Date.now()): Article | undef
   const featuredFor = (a: Article) => (now - Date.parse(a.data.featuredAt ?? a.data.publishedAt)) / 36e5;
   const featured = all.filter((a) => a.data.featured && featuredFor(a) < 48).sort((x, y) => Date.parse(y.data.featuredAt ?? y.data.publishedAt) - Date.parse(x.data.featuredAt ?? x.data.publishedAt));
   if (featured.length) return featured[0];
-  const scored = news.map((a) => ({
+  // Of the last day when it has a developed story, as the rule above says; else of everything, which by the penalty
+  // is nearly the newest. Scored over the whole archive, a story 25 hours old kept the lead from a fresh one on the
+  // strength of its score alone (2026-11-23).
+  const today = news.filter((a) => hoursOld(a, now) < 24);
+  const scored = (today.length ? today : news).map((a) => ({
     a,
     score: (a.data.quality?.importance ?? 5) - hoursOld(a, now) / 12 + (a.data.image ? 1.5 : 0),
   }));
@@ -107,6 +112,13 @@ export function firstPictures(order: (Article | undefined)[]): Set<string> {
   return firstOfEachPhoto(order.flatMap((a) => (a ? [{ id: a.id, url: a.data.image?.url }] : [])));
 }
 
+/** The countries a headline names, with the euro area, which is no country and names an economy as one does. */
+function placesNamed(title: string): Set<string> {
+  const places = new Set<string>(countriesNamed(title));
+  if (/منطقة اليورو|الاتحاد الأوروبي/.test(title)) places.add("euro-area");
+  return places;
+}
+
 // Words a headline shares with any other and that say nothing about the event.
 const STOP_WORDS = new Set(["علي", "بعد", "قبل", "حول", "دون", "منذ", "بين", "عبر", "خلال", "وسط", "امام", "عند", "حتي", "التي", "الذي", "هذا", "هذه", "اول", "اكثر", "اقل", "مع"]);
 
@@ -135,6 +147,12 @@ function headlineWords(title: string): Set<string> {
  */
 export function sameEvent(a: Article, b: Article): boolean {
   if (Math.abs(Date.parse(a.data.publishedAt) - Date.parse(b.data.publishedAt)) > 48 * 36e5) return false;
+  // Two headlines that each name a country, and none in common, are two events, as the newsroom's own rule has it
+  // (pipeline/lib/events.mjs, 2026-10-29): Saudi Arabia's 3.8% contraction and the euro area's 0.4% growth, both «في
+  // الربع الثالث», read as one, and the front left the second out (2026-11-23).
+  const here = placesNamed(a.data.title);
+  const there = placesNamed(b.data.title);
+  if (here.size && there.size && ![...here].some((p) => there.has(p))) return false;
   const x = headlineWords(a.data.title);
   const y = headlineWords(b.data.title);
   let shared = 0;

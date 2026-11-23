@@ -859,8 +859,10 @@ async function runNews(report) {
 
   const candidates = await gatherCandidates(config.sources, state, existing);
   log(`candidates: ${candidates.length} fresh unseen items`);
-  if (candidates.length < 3) {
-    log("too few candidates; nothing to do");
+  // One item can be a story (an official institution's own release), and two outlets on one event are one: the floor
+  // of three had a run of chosen sources (`--source=`) end without asking the editor (2026-11-23).
+  if (candidates.length < 1) {
+    log("no candidates; nothing to do");
     return { report, published: 0 };
   }
 
@@ -875,14 +877,18 @@ async function runNews(report) {
   // The places with no story lately, for the editor's rotation (select.mjs, THE WEIGHTS); none on a run for chosen sections.
   const quiet = SECTIONS.length ? null : quietPlaces(existing.filter((a) => !a.draft));
   if (quiet && (quiet.desks.length || quiet.areas.length)) log(`rotation: quiet ${[...quiet.desks, ...quiet.areas].map((p) => `${p.name} (${Number.isFinite(p.days) ? `${Math.floor(p.days)}d` : "never"})`).join(", ")}`);
-  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, recent, sections, coverage24h, quiet, limit: runLimit, log });
+  const { stories, model: editorModel } = await selectStories({ candidates, recentTitles, recent, sections, coverage24h, quiet, limit: runLimit, log, only: SECTIONS });
   log(`editor (${editorModel}) selected ${stories.length} stories`);
-  let chosen = stories.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
+  // Never a rotation story here: those come beyond the limit, and rotationSwap() below runs one of them at most, as a
+  // tie-breaker and never in place of an Arab story. Taken by score with the rest, two of them (Kenya, Kazakhstan)
+  // took both places of a run from its Iraqi and Jordanian stories before that rule was ever asked (2026-11-23).
+  const ordinary = stories.filter((s) => !s.rotation);
+  let chosen = ordinary.filter((s) => s.importance >= MIN_IMPORTANCE).slice(0, runLimit);
   // `--sections=energy,markets` on a news run: the desk asked for one part of the paper. Keep only those
   // stories (a point under the threshold is allowed, as for a starved section) and skip the balancing,
   // which exists to spread a general run across sections, not to override a deliberate choice.
   if (SECTIONS.length) {
-    chosen = stories.filter((s) => SECTIONS.includes(s.section) && s.importance >= MIN_IMPORTANCE - 1).slice(0, runLimit);
+    chosen = ordinary.filter((s) => SECTIONS.includes(s.section) && s.importance >= MIN_IMPORTANCE - 1).slice(0, runLimit);
     log(`news restricted to ${SECTIONS.join(", ")}: ${chosen.length} of ${stories.length} selected stories qualify`);
   }
   // Section balance: a section with nothing in three days takes its best candidate (one point under
@@ -896,7 +902,7 @@ async function runNews(report) {
   const owed = new Set();
   const starved = SECTIONS.length ? [] : sectionIds.filter((sec) => !existing.some((a) => a.kind === "news" && a.section === sec && hoursSince(a.publishedAt) < 72) && !chosen.some((x) => x.section === sec));
   for (const sec of starved) {
-    const pick = stories.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
+    const pick = ordinary.find((x) => x.section === sec && !chosen.includes(x) && x.importance >= MIN_IMPORTANCE - 1);
     if (!pick) continue;
     if (chosen.length >= runLimit) {
       const served = chosen.filter((x) => chosen.filter((y) => y.section === x.section).length > 1 || (coverage24h[x.section] ?? 0) > 0).sort((x, y) => x.importance - y.importance)[0];
@@ -917,7 +923,7 @@ async function runNews(report) {
   const arabWorld = (regions) => (regions ?? []).some((r) => ARAB_REGIONS.includes(r));
   const arabToday = existing.filter((a) => a.kind === "news" && hoursSince(a.publishedAt) < 24 && arabWorld(a.regions)).length;
   if (!SECTIONS.length && arabToday < ARAB_DAILY && !chosen.some((s) => arabWorld(s.regions))) {
-    const pick = stories.find((s) => arabWorld(s.regions) && !chosen.includes(s) && s.importance >= MIN_IMPORTANCE - 1);
+    const pick = ordinary.find((s) => arabWorld(s.regions) && !chosen.includes(s) && s.importance >= MIN_IMPORTANCE - 1);
     if (pick) {
       const elsewhere = chosen.filter((s) => !arabWorld(s.regions)).sort((x, y) => x.importance - y.importance)[0];
       if (chosen.length < runLimit) chosen.push(pick);

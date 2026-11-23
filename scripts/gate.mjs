@@ -100,6 +100,10 @@ if (newsEvidence.status !== 0) fail("news evidence collection (scripts/news-evid
 const codexReview = spawnSync(process.execPath, [path.join("scripts", "codex-nov22-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
 if (codexReview.status !== 0) fail("the review of 22 November (scripts/codex-nov22-selftest.mjs)", codexReview.stdout + codexReview.stderr);
 console.log("[ok] the evidence archive, the last reading and the number and quote guards pass their known cases");
+// Codex's review of 2026-11-23: which stories a run takes and in which order, the front's lead, the week's review.
+const weights = spawnSync(process.execPath, [path.join("scripts", "weights-selftest.mjs")], { cwd: ROOT, encoding: "utf8" });
+if (weights.status !== 0) fail("the weighting and ranking of news (scripts/weights-selftest.mjs)", weights.stdout + weights.stderr);
+console.log("[ok] the weighting and ranking of news pass their known cases");
 console.log(`[ok] source metadata, cited primary documents and fetch failures pass offline (${seconds(t)})`);
 
 // 1c-2. The economic calendar's readers decide the institutions' own markup correctly (scripts/calendar-selftest.mjs,

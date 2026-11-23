@@ -78,6 +78,9 @@ const tieRank = (s, fallback) => TIE_RANK[s?.tie] ?? fallback;
  * whatever a quiet Indonesian story (none) offers. The newcomer's place is checked in code: a desk by the regions its
  * headline grounds, a part of the world by the countries its headline names. Returns { pick, drop, place } or null.
  */
+const NOT_ARAB = /إيران|طهران|تركي|أنقرة|إسطنبول|اسطنبول|إسرائيل|تل أبيب/;
+const ARAB_OF_DESK = /العراق|عراقي|بغداد|البصرة|كردستان|الأردن|أردني|عمّان|لبنان|لبناني|بيروت|سوريا|سوري|دمشق|اليمن|يمني|صنعاء|عدن|فلسطين|غزة/;
+
 export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance, keep = new Set() }) {
   if (!quiet || (!quiet.desks.length && !quiet.areas.length)) return null;
   const desksOf = (s) => groundedRegions(s.regions ?? [], { title: s.headlineHint ?? "" });
@@ -102,7 +105,11 @@ export function rotationSwap({ chosen, stories, quiet, runLimit, minImportance, 
   // company's, 6) behind it was never tried (the live check of 2026-11-21).
   for (const { s: pick, rank } of options) {
     const place = order[rank];
-    const incoming = place.kind === "desk" ? TIE_RANK.arab : tieRank(pick, TIE_RANK.none);
+    // A quiet Arab desk's story comes in as an Arab story, unless it is the desk's other half: «المشرق وإيران وتركيا»
+    // also holds Iran, Turkey and Israel, and a Turkish retail tax (tie none, 5) came in with the Arab weight ahead of
+    // Ukraine's grain for Egypt (2026-11-23). Such a story weighs what its own tie says.
+    const foreign = place.kind === "desk" && pick.tie !== "arab" && NOT_ARAB.test(pick.headlineHint ?? "") && !ARAB_OF_DESK.test(pick.headlineHint ?? "");
+    const incoming = place.kind === "desk" && !foreign ? TIE_RANK.arab : tieRank(pick, TIE_RANK.none);
     const yields = (s) => {
       const own = tieRank(s, TIE_RANK.global);
       return incoming > own ? s.importance <= pick.importance + 1 : incoming === own && s.importance <= pick.importance;
@@ -134,7 +141,11 @@ export function sportCap({ chosen, stories, runLimit, minImportance, today = 0, 
   const dropped = chosen.filter((s) => s.sport).sort((a, b) => b.importance - a.importance).slice(room);
   if (!dropped.length) return { chosen, dropped };
   const kept = chosen.filter((s) => !dropped.includes(s));
-  const next = stories.filter((s) => !s.sport && !s.rotation && !chosen.includes(s) && s.importance >= minImportance && (!sections.length || sections.includes(s.section)));
+  let next = stories.filter((s) => !s.sport && !s.rotation && !chosen.includes(s) && s.importance >= minImportance && (!sections.length || sections.includes(s.section)));
+  // The story that gave way was the run's Arab one (a Saudi club's sale): an Arab story takes its place first, or the
+  // region balance, which ran before the cap, is undone by it (2026-11-23).
+  const arab = (s) => s.tie === "arab" || canonicalRegions(s.regions ?? [], { cap: Infinity }).some((r) => ARAB_DESKS.includes(r));
+  if (dropped.some(arab) && !kept.some(arab)) next = [...next.filter(arab), ...next.filter((s) => !arab(s))];
   return { chosen: [...kept, ...next.slice(0, Math.max(0, runLimit - kept.length))], dropped };
 }
 
@@ -207,7 +218,8 @@ function formatCandidate(c, summaryChars = 220) {
  * from each beyond the limit, marked `rotation`, and rotationSwap() decides in code which of them runs.
  * Returns an array of { ids, section, importance, angle, headlineHint, regions, follows, rotation, tie, sport }.
  */
-export async function selectStories({ candidates, recentTitles, recent = null, sections, coverage24h = {}, quiet = null, limit, log, chatWith = chat }) {
+/** `only`: the sections a run was asked for (`--sections=`): the editor is told, so its list is of those sections. */
+export async function selectStories({ candidates, recentTitles, recent = null, sections, coverage24h = {}, quiet = null, limit, log, chatWith = chat, only = [] }) {
   // The quiet places (quietPlaces()) the editor may add a story from, beyond its limit; a `rotation` naming any other is dropped.
   const quietNames = new Set([...(quiet?.desks ?? []), ...(quiet?.areas ?? [])].map((p) => p.name));
   const quietLine = quietNames.size
@@ -241,7 +253,7 @@ STORIES ALREADY PUBLISHED RECENTLY (do not select stories that merely repeat the
 ${publishedLines.length ? publishedLines.join("\n") : "- (none)"}
 
 STORIES PUBLISHED PER SECTION IN THE LAST 24 HOURS: ${coverageLine}${quietSections.length ? ` (no story yet in: ${quietSections.join(", ")})` : ""}${quietLine ? `\n${quietLine.trim()}` : ""}
-TASK
+TASK${only.length ? `\nTHIS RUN IS FOR ${only.length > 1 ? "THESE SECTIONS" : "ONE SECTION"} ONLY: ${only.join(", ")}. Choose only stories that belong there by the filing guide in step 6, the best of them by the same bar; a story of any other section is not chosen in this run.` : ""}
 1. Group candidate items that report the same underlying story into one cluster (items from different outlets about the same event belong together). A story is ONE event: one decision, one data release, one deal, one market move. Never merge different events into a cluster because they happened the same day or touch the same theme; a US confidence survey and a British rate outlook are two stories, not one, and a roundup is not a story. If two events are related, pick the more important and mention the other only if the writer needs it as context. A story cites at most FIVE candidate items (the outlets reporting that one event); a list of more than five ids means events have been merged, and the desk cuts it to the first five. "A week of central bank decisions", "markets await…", "X and Y" framings are roundups, not events: the story is the decision, the release, the deal or the move itself.
 2. Choose up to ${limit} stories: every event that clears the bar below, and fewer only when fewer clear it. A news site is edited, not filled, but a worthy story left unwritten is a gap in the file. Score each candidate on the news values an Arabic desk edits by (قيم الخبر): التأثير (does it change money, prices, jobs or policy for our readers?), الأهمية (a central bank, a government, a market, a major company), الآنية (it happened or was decided now; a figure already reported is news again only if the change is material), القرب (the Gulf, Egypt, the Levant, the Maghreb, or the global forces that move them: oil, the dollar, the Fed, the ECB, China, the other large economies, trade, technology), الضخامة (the size of the number), الصراع والنتائج (winners, losers, what follows). A story must carry at least three of these to be selected; importance below 6 is not published. State the values it carries in "news_value".
    Development over repetition: when a candidate advances a story Khazendar already ran (a running file), prefer the development to an unrelated marginal item; when it only repeats, skip it. A development is something that HAPPENED after that story was published: a new decision, figure, deal or incident, a price that moved, a named party's response that changes something for an economy. The same event in another outlet's words or with another count, more detail of it, or a position that already stood restated (a closure, a ban, a demand, a threat) is a repeat, however fresh the item. For a story that continues a published one, copy that published headline exactly into "follows", say in the angle what happened since, and lead the headline_hint with that alone: the working headline never tells the published event again, and never joins it to the day's other news with «و» or «مع».
@@ -333,7 +345,15 @@ Order stories by importance, highest first. Use only candidate ids that exist. R
       }
       return s;
     })
-    .sort((a, b) => b.importance - a.importance);
+    // By importance; among equals the story nearer the Arab reader first (THE WEIGHTS: a story lower in that order
+    // never displaces a comparable one higher up), then the editor's own order. By importance alone, of two stories
+    // at 7 a US dividend (tie none) took the run's one place from Ukraine's grain for Egypt (direct) for standing
+    // first in the answer (2026-11-23).
+    .sort((a, b) => b.importance - a.importance || (TIE_RANK[b.tie] ?? TIE_RANK.global) - (TIE_RANK[a.tie] ?? TIE_RANK.global));
+  for (const s of stories) {
+    const values = s.newsValue.split(/[،,;؛/]+|\s+و(?=\S)/).map((v) => v.trim()).filter(Boolean).length;
+    if (s.importance >= 6 && values < 3) log?.(`editor: "${s.headlineHint}" [${s.importance}] names ${values} news value(s) where the brief asks for three`);
+  }
 
   // Never let two selected stories share a candidate item.
   const used = new Set();

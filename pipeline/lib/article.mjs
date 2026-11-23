@@ -183,11 +183,22 @@ export async function loadExistingArticles() {
 /** News stories of the last 72 hours, newest first, never a draft: the coverage a hub piece (explainer, analysis) is anchored in. */
 export const recentNews = (existing, max) => existing.filter((a) => a.kind === "news" && !a.draft && hoursSince(a.publishedAt) < 72).slice(0, max);
 
-/** The week's stories, strongest first: news and analyses of the last seven days, the top fourteen, never a draft. */
+/**
+ * The week's stories, strongest first: news and analyses of the last seven days, the top fourteen, never a draft.
+ * An analysis carries no importance of its own (the editor scores news), so it weighs what the strongest story it was
+ * written from weighs, and half a point for being the paper's own reading; read as a flat 5.5 it stood below every
+ * news story at 6, and the three weeks' reviews of the archive cited 14 news stories each and none of the two, six and
+ * seven analyses of their weeks (2026-11-23). Three analyses at most, so the review stays a review of the news.
+ */
+export const WEEK_ANALYSES = 3;
 export function weekStories(existing) {
-  const importance = (a) => (a.quality?.importance ?? 5) + (a.kind === "analysis" ? 0.5 : 0);
+  const bySlug = new Map(existing.map((a) => [a.slug, a]));
+  const cited = (a) => (a.sourceUrls ?? []).map((u) => bySlug.get(String(u).match(/^\/articles\/([^/]+)\/?$/)?.[1])).filter(Boolean);
+  const importance = (a) => (a.kind === "analysis" ? Math.max(5, ...cited(a).map((s) => s.quality?.importance ?? 5)) + 0.5 : a.quality?.importance ?? 5);
+  let analyses = 0;
   return existing
     .filter((a) => (a.kind === "news" || a.kind === "analysis") && !a.draft && hoursSince(a.publishedAt) < 24 * 7)
     .sort((x, y) => importance(y) - importance(x))
+    .filter((a) => a.kind !== "analysis" || ++analyses <= WEEK_ANALYSES)
     .slice(0, 14);
 }
