@@ -19301,6 +19301,34 @@
           ]
         }
       ]
+    },
+    "german-rebound-qatar-defence-bet-b5b759": {
+      "at": "2026-11-23T16:42:38.344Z",
+      "title": "جزء من الأموال القطرية الجديدة يتجه إلى قطاع الدفاع الذي ينعش المصانع الألمانية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": null,
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 43,
+            "checked": 43,
+            "supported": 33,
+            "weak": 3,
+            "noEvidence": 0,
+            "notFound": 7,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [
