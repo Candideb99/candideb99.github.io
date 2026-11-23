@@ -95,7 +95,9 @@ export const TOPIC_QUOTE_IDS: Record<string, string[]> = {
  * the local price of a gold coin or of jewellery gold are not quotes.
  */
 const QUOTE_NAMES = /برنت|غرب تكساس|خام تكساس|الخام الأمريكي|الخام الأميركي|\bWTI\b|الذهب|الفضة|النحاس|القمح|هنري هب|تاسي|إيجي إكس|\bEGX|مصر 30|المؤشر الرئيسي|ستاندرد آند بورز 500|S&P 500|ناسداك المركب|مؤشر ناسداك|داو جونز الصناعي|مؤشر داو|ستوكس|فوتسي|نيكاي|شنغهاي المركب|بي?تكوين|سندات الخزانة|مؤشر الدولار|سعر الصرف|سعر صرف|مقابل الدولار|للدولار/;
-const NOT_A_QUOTE = /توقع|الجنيه الذهب|عيار|احتياطيات|الاحتياطي الاستراتيجي|(?:^|\s)(?:طن|طناً|أطنان)/;
+// …nor is what a country buys, sells, holds or makes of it: India's $5.51bn of gold imports and the Chinese central
+// bank's 830,000 more ounces were kept out of the front's figures as gold's price (2026-11-23).
+const NOT_A_QUOTE = /توقع|الجنيه الذهب|عيار|احتياطيات|الاحتياطي الاستراتيجي|(?:^|\s)(?:طن|طناً|أطنان)|واردات|صادرات|مشتريات|مبيعات|حياز|إنتاج|مخزون|الطلب على/;
 export function isMarketQuote(text: string): boolean {
   return QUOTE_NAMES.test(text) && !NOT_A_QUOTE.test(text);
 }

@@ -160,9 +160,11 @@ const rows = sectionPools
   .map(({ section, pool }) => {
     const fresh = pool.filter((a) => hoursOld(a) < FRESH_HOURS);
     const week = pool.filter((a) => hoursOld(a) >= FRESH_HOURS && hoursOld(a) < LINE_HOURS);
-    const items = [...fresh, ...week].slice(0, 4);
-    const lead = items.find((a) => a.data.image && hoursOld(a) < FRESH_HOURS);
-    return { section, items: lead ? [lead, ...items.filter((a) => a.id !== lead.id)] : [], newest: fresh[0] };
+    // The lead is looked for among all the fresh stories, then the block is cut to four: cut first, a section whose
+    // only photographed story was its fifth lost its block (2026-11-23).
+    const lead = fresh.find((a) => a.data.image);
+    const items = lead ? [lead, ...[...fresh, ...week].filter((a) => a.id !== lead.id)].slice(0, 4) : [];
+    return { section, items, newest: fresh[0] };
   })
   // A block needs a photographed story of the last three days to lead it: الشركات, whose one fresh story had no
   // photograph, opened on a headline over 500px of blank paper the hour the one shape went live (2026-11-10).

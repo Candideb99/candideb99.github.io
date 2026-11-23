@@ -159,7 +159,14 @@ export function servedPageForFeed(raw, response) {
  * run after run and nothing else, which is how Sky News Arabia's business feed sat frozen for two days after its desk
  * moved to snabusiness.com on 2026-10-29, and cnbc-finance for ten (scripts/editor-precheck.mjs reads the record).
  */
-export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRead = null } = {}) {
+/** A feed's places: its newest items first (the undated last, in the feed's order), never one `skip` names. */
+export function feedShare(items, { max = 40, skip = null } = {}) {
+  const at = (item) => Date.parse(item.publishedAt ?? "") || 0;
+  return items.filter((item) => !skip?.(item)).map((item, i) => ({ item, i })).sort((x, y) => at(y.item) - at(x.item) || x.i - y.i).map(({ item }) => item).slice(0, max);
+}
+
+/** `skip(item)`: an item the newsroom has already used or decided on, which takes none of the feed's places. */
+export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRead = null, skip = null } = {}) {
   try {
     // `hourKey`: a publisher whose own cache stopped refreshing (Independent Arabia, 2026-10-22: Cloudflare served a
     // feed 65 hours old to every reader, browsers included) is asked once an hour under a new key, which its cache has
@@ -236,7 +243,10 @@ export async function fetchFeed(source, { maxAgeHours = 36, log = () => {}, onRe
     // dropped since the feed was added on 2026-09-12 (2026-11-10).
     // …and is not offered to the editor: its age is negative, so it passed as fresh, took a place of the feed's share
     // and sorted ahead of every real item (2026-11-22).
-    const items = kept.filter((item) => !ahead(item)).filter((item) => (source.undatedFresh && !item.publishedAt) || hoursSince(item.publishedAt) <= limitHours).slice(0, source.maxItems ?? 40);
+    // The feed's places go to its newest items it has not given before: taken in the feed's own order, a feed listing
+    // stories of eight hours, six hours and thirty minutes gave a limit of two the two oldest, and items the newsroom
+    // had already used held places they could not fill (2026-11-23). Undated items keep the feed's order, last.
+    const items = feedShare(kept.filter((item) => !ahead(item)).filter((item) => (source.undatedFresh && !item.publishedAt) || hoursSince(item.publishedAt) <= limitHours), { max: source.maxItems ?? 40, skip });
     log(`feed ${source.id}: ${items.length} fresh items`);
     return items;
   } catch (error) {

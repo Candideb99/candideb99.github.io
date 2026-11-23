@@ -172,12 +172,15 @@ export function sameEvent(a: Article, b: Article): boolean {
  */
 export function onTheSameTopic(article: Article, all: Article[], { exclude = new Set<string>(), n = 2, days = 14, now = Date.now() } = {}): Article[] {
   const regions = new Set(all.flatMap((a) => a.data.regions));
+  // A tag is its file, whatever spelling a story gave it (tag-aliases.json): «خط شرق-غرب» and «خط الشرق-الغرب» lead to
+  // one page, and read as written they tied no story of the one to a story of the other (2026-11-23).
+  const tagsOf = (a: Article) => [...new Set(a.data.tags.map((t) => canonicalTag(t)))];
   const counts = new Map<string, number>();
-  for (const a of all) for (const t of a.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+  for (const a of all) for (const t of tagsOf(a)) counts.set(t, (counts.get(t) ?? 0) + 1);
   const count = (t: string) => counts.get(t) ?? 0;
   const narrow = Math.max(3, Math.floor(all.length / 20));
   const broad = Math.max(3, Math.floor(all.length / 8));
-  const topics = new Set(article.data.tags.filter((t) => !regions.has(t) && !PLACE_TAGS.has(t) && !GENERIC_TAGS.has(t) && count(t) <= broad));
+  const topics = new Set(tagsOf(article).filter((t) => !regions.has(t) && !PLACE_TAGS.has(t) && !GENERIC_TAGS.has(t) && count(t) <= broad));
   if (!topics.size) return [];
   // A standing sub-topic's subject («السياسة النقدية»، «مصافي النفط») is a beat, not a running story: alone it tied
   // Lagarde's departure to Egypt's rate hold and the Houthis' strikes to China's fuel stocks, and 412 of the site's 1,539
@@ -192,7 +195,7 @@ export function onTheSameTopic(article: Article, all: Article[], { exclude = new
     })).size;
   return all
     .filter((a) => a.id !== article.id && !exclude.has(a.id) && hoursOld(a, now) < days * 24)
-    .map((a) => ({ a, shared: a.data.tags.filter((t) => topics.has(t)) }))
+    .map((a) => ({ a, shared: tagsOf(a).filter((t) => topics.has(t)) }))
     .filter(({ shared }) => shared.some((t) => count(t) <= narrow && isFileTag(t)) || subjects(shared) >= 2)
     .map(({ a, shared }) => ({ a, score: shared.length + shared.reduce((sum, t) => sum + 1 / Math.max(1, count(t)), 0) }))
     .sort((x, y) => y.score - x.score)

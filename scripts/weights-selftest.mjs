@@ -100,6 +100,49 @@ check("the week's review reads the analyses of its strongest stories, three at m
   [chosen.length, chosen.slice(0, 3).map((a) => a.slug), chosen.filter((a) => a.kind === "analysis").map((a) => a.slug), WEEK_ANALYSES, TIE_RANK.direct > TIE_RANK.none],
   [14, ["a0", "n0", "a1"], ["a0", "a1", "a2"], 3, true]);
 
+// Codex's second review of the same day: what reaches the editor, and three of the site's rules.
+{
+  const { repeatsRecent, relatedRecent } = await import("../pipeline/lib/events.mjs");
+  const { repeatsInstrument } = await import("../pipeline/lib/context.mjs");
+  const { serviceItem } = await import("../pipeline/lib/intake.mjs");
+  const { feedShare } = await import("../pipeline/lib/feeds.mjs");
+  const { coveredBy } = await import("../pipeline/lib/reports.mjs");
+  const order = "رئيس الوزراء العراقي يأمر بالتحقيق في تهريب مشتقات نفطية من جرف الصخر";
+  const sacked = "رئيس الوزراء العراقي يقيل 9 مسؤولين إثر تحقيق في تهريب النفط بجرف الصخر";
+  check("a headline that reads as a published one goes to the desk notes with that story as the one it follows; only a refresh or a report is stopped on the headline",
+    [repeatsRecent(sacked, [order]), relatedRecent(sacked, [{ kind: "news", title: order, publishedAt: new Date().toISOString() }], { follows: order }).map((a) => a.title), run.includes("if (repeated && (refresh || preset)) {"), run.includes("follows: repeated ?? story.follows")],
+    [order, [order], true, true]);
+  check("one headline from two outlets is two items", [run.includes("const titleKey = `${item.sourceNameEn ?? item.sourceId}|")], [true]);
+  check("a price table is left out; a price raised by a decision or a share's fall by its size is news",
+    ["سعر الذهب اليوم في مصر الأحد", "أسعار الدولار اليوم في البنوك المصرية", "مصر ترفع سعر البنزين اليوم 15% بعد قرار لجنة التسعير", "سهم الشركة يهوي 20% في التعاملات الصباحية بعد إلغاء الاندماج"].map(serviceItem),
+    [true, true, false, false]);
+  const at = (h) => new Date(Date.now() - h * 3600000).toISOString();
+  const listed = [{ url: "a", publishedAt: at(8) }, { url: "b", publishedAt: at(6) }, { url: "c", publishedAt: at(0.5) }, { url: "d" }];
+  check("a feed's places go to its newest items, and never to one the newsroom has used",
+    [feedShare(listed, { max: 2 }).map((i) => i.url), feedShare(listed, { max: 2, skip: (i) => i.url === "c" }).map((i) => i.url), feedShare(listed, { max: 9 }).map((i) => i.url)],
+    [["c", "b"], ["b", "a"], ["c", "b", "a", "d"]]);
+  const gold = (title, h) => ({ kind: "news", section: "markets", title, publishedAt: at(h) });
+  const held = (headlineHint, earlier) => repeatsInstrument({ headlineHint, section: "markets" }, earlier);
+  check("a second move the same way within eight hours is held, a reversal is news again",
+    [held("الذهب يرتفع 1% مع ضعف الدولار", [gold("الذهب يرتفع 4% مع تراجع الدولار", 1)]), held("الذهب يهبط 6% بعد بيانات الوظائف", [gold("الذهب يرتفع 4% مع تراجع الدولار", 1)])],
+    ["الذهب يرتفع 4% مع تراجع الدولار", null]);
+  check("the stories a run has published count for that rule", [run.includes("repeatsInstrument(story, [...existing, ...RUN_PUBLISHED])"), run.includes('RUN_PUBLISHED.push({ kind: "news", section: story.section')], [true, true]);
+  const cpi = { id: "sa-cpi", kind: "release", name: "التضخم في السعودية", publisher: "الهيئة العامة للإحصاء" };
+  const edition = { key: "2026-10", url: "https://example.com/cpi-oct" };
+  const seen = at(2);
+  const covered = (a) => coveredBy(cpi, edition, [a], { since: seen })?.slug ?? null;
+  check("a release is told by a news story of its own days; never by a forecast, an explainer or a story of the week before",
+    [covered({ slug: "told", kind: "news", title: "التضخم في السعودية يتباطأ إلى 1.7% في أكتوبر", publishedAt: at(1) }), covered({ slug: "wire", kind: "news", title: "التضخم في السعودية يتباطأ إلى 1.7%", publishedAt: at(20) }), covered({ slug: "forecast", kind: "news", title: "توقعات بتباطؤ التضخم في السعودية خلال أكتوبر", publishedAt: at(1) }), covered({ slug: "explainer", kind: "explainer", title: "لماذا يتباطأ التضخم في السعودية؟", publishedAt: at(1) }), covered({ slug: "old", kind: "news", title: "التضخم في السعودية يرتفع إلى 2%", publishedAt: at(200) }), covered({ slug: "source", kind: "news", title: "أسعار المستهلكين", sourceUrls: [edition.url], publishedAt: at(1) })],
+    ["told", "wire", null, null, null, "source"]);
+  const markets = source("src/lib/markets.ts");
+  const notQuote = (text) => /واردات|صادرات|مشتريات|مبيعات|حياز|إنتاج|مخزون|الطلب على/.test(text);
+  check("what a country imports or holds of gold is no quote of its price",
+    [markets.includes("|واردات|صادرات|مشتريات|مبيعات|حياز|إنتاج|مخزون|الطلب على/;"), notQuote("واردات الهند من الذهب في أكتوبر: 5.51 مليار دولار"), notQuote("زيادة حيازة المركزي الصيني من الذهب: 830 ألف أونصة"), notQuote("سعر الذهب: 4,012 دولاراً للأونصة")], [true, true, true, false]);
+  check("«اقرأ أيضاً» reads a tag as its file, and a section's block looks for its photographed lead before it is cut to four",
+    [site.includes("const tagsOf = (a: Article) => [...new Set(a.data.tags.map((t) => canonicalTag(t)))];"), site.includes("shared: tagsOf(a).filter"), source("src/pages/index.astro").includes("const lead = fresh.find((a) => a.data.image);")],
+    [true, true, true]);
+}
+
 if (failed) {
   console.log(`\n${failed} case(s) failed.`);
   process.exit(1);

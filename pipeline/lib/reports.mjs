@@ -439,10 +439,21 @@ export function releaseStory(report, edition) {
  * headlines alone, went on to read the same edition that afternoon and the next, and would have told it twice had its
  * PDF been readable.
  */
-export function coveredBy(report, edition, existing, { now = Date.now() } = {}) {
+// A headline that looks ahead to a figure has not told it.
+const AHEAD = /توقع|يتوقع|تتوقع|ترجيح|يرجح|ترجح|مرتقب|المرتقب|قبيل|ترقب|يترقب|تترقب|ينتظر|تنتظر/;
+
+/**
+ * `since`: when the desk first saw this edition (state/reports.json). A headline carrying the report's name tells the
+ * edition only when it is a news story, looks ahead to nothing, and ran no earlier than a day and a half before that
+ * (the wires can be ahead of the desk's daily look, a forecast of the week before cannot): a headline forecasting Saudi
+ * inflation closed October's release before it was out, and an explainer was credited with telling it (2026-11-23).
+ */
+export function coveredBy(report, edition, existing, { now = Date.now(), since = null } = {}) {
   const windowH = report.kind === "release" ? 24 * 10 : 24 * 21;
   const recent = existing.filter((a) => (now - Date.parse(a.publishedAt)) / 36e5 < windowH);
-  const told = recent.find((a) => (a.sourceUrls ?? []).includes(edition.url) || String(a.title).includes(report.name));
+  const floor = since && Number.isFinite(Date.parse(since)) ? Date.parse(since) - 36 * 36e5 : -Infinity;
+  const namesIt = (a) => (a.kind ?? "news") === "news" && String(a.title).includes(report.name) && !AHEAD.test(String(a.title)) && Date.parse(a.publishedAt) >= floor;
+  const told = recent.find((a) => (a.sourceUrls ?? []).includes(edition.url) || namesIt(a));
   if (told || report.kind === "release") return told ?? null;
   // «منظمة الأغذية والزراعة (فاو)» is named either way.
   const publishers = [String(report.publisher ?? "").replace(/\s*\([^)]*\)/g, "").trim(), ...[...String(report.publisher ?? "").matchAll(/\(([^)]+)\)/g)].map((m) => m[1].trim())].filter(Boolean);

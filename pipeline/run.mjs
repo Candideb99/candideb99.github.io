@@ -38,6 +38,7 @@ import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons
 import { JUDGE_VERSION, draftWith, judge } from "./lib/paired.mjs";
 import { checkSourcesOf, precheck, writeJsonAtomic } from "./lib/precheck.mjs";
 import { nothingNewSince, relatedRecent, repeatsRecent } from "./lib/events.mjs";
+import { serviceItem } from "./lib/intake.mjs";
 import { DESK_NAMES } from "./lib/regions.mjs";
 import { saveSnapshot } from "./lib/snapshots.mjs";
 import { pickImage } from "./lib/images.mjs";
@@ -139,7 +140,9 @@ const ARAB_DAILY = 8;
  * day («تحديث لحظى.. ثبات سعر الدولار مقابل الجنيه اليوم»، «أسعار الذهب فى مصر اليوم الأربعاء»). They are
  * tables, not news, and would fill the editor's list; the market pages carry the prices.
  */
-const SERVICE_ITEM = /(?:سعر|أسعار)\s+(?:الذهب|الدولار|اليورو|الريال|الدرهم|الجنيه|العملات|الحديد|الأسمنت|الفضة|الخضروات|الخضار|الفاكهة|الدواجن|الفراخ|اللحوم|الأسماك|الأسهم|البنزين)[^.؟]{0,70}?(?:اليوم|الآن|لحظ|مساء|صباح)|تحديث لحظ[يى]|حصاد الـ?\s?\d+ دقيقة|آخر تحديث لسعر|(?:التعاملات|تعاملات) (?:الصباحية|المسائية)/;
+// Never a headline that reports a change by its size or a decision: «مصر ترفع سعر البنزين اليوم 15% بعد قرار لجنة
+// التسعير» and «سهم … يهوي 20% في التعاملات الصباحية بعد إلغاء الاندماج» were left out as price tables (2026-11-23).
+// The filter itself is lib/intake.mjs serviceItem(), so the self-test reads it.
 /** Words too common in this paper's headlines to tell two stories apart. */
 // The same-event rule and its stopwords live in lib/events.mjs (shared with the learner since 2026-09-26).
 /** `--sections=energy,markets`: an analysis drawn only from these sections' stories (the Saturday defence reading used it until the defence section was folded, 2026-10-19). */
@@ -204,6 +207,7 @@ function blocks(entry) {
 
 async function gatherCandidates(sources, state, existing) {
   const enabled = sources.filter((s) => !s.disabled && (!ONLY_SOURCES || ONLY_SOURCES.includes(s.id)));
+  const usedUrls = new Set(existing.flatMap((a) => a.sourceUrls).map((u) => fingerprint(u)));
   const queue = [...enabled];
   const all = [];
   const heard = {};
@@ -212,7 +216,7 @@ async function gatherCandidates(sources, state, existing) {
       const source = queue.shift();
       // `triedAt` whatever the feed answers; `readAt` and its newest item only when it was read (health.mjs silentFeeds()).
       heard[source.id] = { triedAt: isoNow() };
-      const items = await fetchFeed(source, { log, onRead: ({ newestAt }) => Object.assign(heard[source.id], { readAt: isoNow(), newestAt }) });
+      const items = await fetchFeed(source, { log, skip: (item) => blocks(state.items[fingerprint(item.url)]) || usedUrls.has(fingerprint(item.url)), onRead: ({ newestAt }) => Object.assign(heard[source.id], { readAt: isoNow(), newestAt }) });
       for (const item of items) {
         all.push({
           ...item,
@@ -245,18 +249,20 @@ async function gatherCandidates(sources, state, existing) {
     await writeJsonAtomic(FEEDS_PATH, record).catch((error) => log(`feeds record not saved: ${String(error.message).slice(0, 120)}`));
   }
 
-  const usedUrls = new Set(existing.flatMap((a) => a.sourceUrls).map((u) => fingerprint(u)));
   const seenTitles = new Set();
   const candidates = [];
   let service = 0;
   for (const item of all) {
     const fp = fingerprint(item.url);
     if (blocks(state.items[fp]) || usedUrls.has(fp)) continue;
-    if (SERVICE_ITEM.test(item.title)) {
+    if (serviceItem(item.title)) {
       service += 1;
       continue;
     }
-    const titleKey = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90);
+    // One headline once an outlet: its own feeds repeat it. Two outlets under one headline (a central bank's release and
+    // a paper's report of it) are two items: kept once whoever's they were, the first feed to answer decided whether the
+    // event had its official source or its second outlet (2026-11-23).
+    const titleKey = `${item.sourceNameEn ?? item.sourceId}|${item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim().slice(0, 90)}`;
     if (seenTitles.has(titleKey)) continue;
     seenTitles.add(titleKey);
     candidates.push(item);
@@ -292,6 +298,9 @@ async function collectEvidence(story, candidates) {
  * 25 September, the Treasury's sign on 17 October).
  */
 const RUN_IMAGES = new Set();
+// …and the stories it has published, for the one-move-an-instrument rule: read from the stories loaded when the run
+// began, two moves of gold could run in one round (2026-11-23).
+const RUN_PUBLISHED = [];
 // Each published photograph with its story's date: one another story ran a month or three ago may come back (usedPhotos()).
 const usedImages = (existing) => usedPhotos(existing.map((a) => ({ url: a.imageUrl, at: Date.parse(a.publishedAt ?? "") })), Date.now(), [...RUN_IMAGES]);
 
@@ -469,7 +478,11 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // "Brent above 108" ran on the same day and the Fed's hike ran three times. When the working headline
   // shares most of its distinctive words with a story of the last four days, the story is not written.
   const repeated = repeatsRecent(story.headlineHint, recentTitles);
-  if (repeated) {
+  // …unless the desk notes can judge it (below): they read the sources whole and say what happened since the published
+  // story, or that nothing did, and then the story is not written. Headlines alone took «رئيس الوزراء العراقي يقيل 9
+  // مسؤولين إثر تحقيق في تهريب النفط بجرف الصخر» for a repeat of the order to investigate, two days before (2026-11-23).
+  // A refresh and a flagship report get no such notes, and keep the headline's verdict.
+  if (repeated && (refresh || preset)) {
     entry.outcome = `skipped: repeats a recent story («${repeated}»)`;
     report.push(entry);
     log(`skip "${story.headlineHint}": repeats "${repeated}"; items marked as seen`);
@@ -477,7 +490,7 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   }
   // One story per instrument within eight hours, unless it sets a record or reverses (lib/context.mjs; the owner's go,
   // 2026-10-19: an ordinary day's move is on the market board). The items take the short mark, as a held story's do.
-  const sameInstrument = refresh ? null : repeatsInstrument(story, existing);
+  const sameInstrument = refresh ? null : repeatsInstrument(story, [...existing, ...RUN_PUBLISHED]);
   if (sameInstrument) {
     entry.outcome = `skipped: a second move of the same instrument within eight hours («${sameInstrument}»)`;
     report.push(entry);
@@ -508,7 +521,8 @@ async function produceStory({ story, candidates, existing, recentTitles, models,
   // The published stories this one may continue go to the desk notes, the first desk to read the sources whole: it says
   // which one the event continues and what happened since (lib/editorial.mjs, the follow-up; the owner, 2026-11-15). Not
   // for a refresh, which tells its own story again, nor for a flagship report, told from its own document.
-  const published = refresh || preset ? [] : relatedRecent(story.headlineHint, existing, { follows: story.follows });
+  const published = refresh || preset ? [] : relatedRecent(story.headlineHint, existing, { follows: repeated ?? story.follows });
+  if (repeated && !refresh && !preset) log(`"${story.headlineHint}" reads as "${repeated}" again; the desk notes say whether anything happened since`);
   if (published.length) log(`already published, for the desk notes to judge: ${published.map((a) => `"${a.title}"`).join(" | ")}`);
   const notesResult = await deskNotes({ story, sources, log, lessons, published });
   const notes = notesResult?.notes ?? null;
@@ -974,6 +988,7 @@ async function runNews(report) {
         markItems(state, result.items, "published", result.slug);
         if (story.sport) for (const item of result.items) state.items[fingerprint(item.url)].sport = true;
         publishedTitles.push(result.title);
+        RUN_PUBLISHED.push({ kind: "news", section: story.section, title: result.title, publishedAt: isoNow() });
         published += 1;
         if (result.pairing && inPairSample(result.pairing.story)) await evidencePair(result.pairing);
       }
@@ -1945,7 +1960,7 @@ function runReports() {
       }
       // The same edition told already, by the news file or by an earlier run: once is enough (`coveredBy()`; a monthly
       // release's name recurs every month, so only a story of its last ten days can be this edition's).
-      const covered = coveredBy(r, edition, existing);
+      const covered = coveredBy(r, edition, existing, { since: prior?.edition === edition.key ? prior.at : null });
       if (covered) {
         mark(`covered by ${covered.slug}`);
         log(`report ${r.id}: «${edition.label}» already told in ${covered.slug}`);

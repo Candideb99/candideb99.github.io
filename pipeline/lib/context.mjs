@@ -119,6 +119,16 @@ export function instrumentsOf(story, sources = []) {
  * held as a repeat of the day's US gas price (a review of 2026-11-01).
  */
 const NEWS_AGAIN = /أعلى مستوى|أدنى مستوى|قياسي|قياسية|منذ (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر|\d)|يعكس اتجاه|يمحو|يبدد/;
+// The way a price headline says it moved; a headline with both («يتراجع بعد ارتفاعه») says neither.
+const UP = /يرتفع|ترتفع|ارتفاع|يصعد|تصعد|صعود|يقفز|تقفز|قفزة|يربح|تربح|مكاسب|يتجاوز|تتجاوز|فوق/;
+const DOWN = /يتراجع|تتراجع|تراجع|يهبط|تهبط|هبوط|ينخفض|تنخفض|انخفاض|يخسر|تخسر|خسائر|خسارة|يهوي|تهوي|دون/;
+// Read in the headline's own clause: «الذهب يرتفع 4% مع تراجع الدولار» is a rise, the dollar's fall is its cause.
+const CAUSE = /\s(?:مع|بعد|وسط|إثر|عقب|بسبب|بدعم|رغم|بفعل)\s/;
+const directionOf = (headline) => {
+  const own = String(headline ?? "").split(CAUSE)[0];
+  return UP.test(own) === DOWN.test(own) ? 0 : UP.test(own) ? 1 : -1;
+};
+
 export function repeatsInstrument(story, existing = [], { now = Date.now(), hours = 8 } = {}) {
   const headline = String(story.headlineHint ?? "");
   if (!MARKET_SECTIONS.has(story.section) || !PRICE_WORDS.test(headline) || NEWS_AGAIN.test(headline)) return null;
@@ -128,6 +138,9 @@ export function repeatsInstrument(story, existing = [], { now = Date.now(), hour
     .filter((a) => a.kind === "news" && MARKET_SECTIONS.has(a.section) && a.publishedAt && now - new Date(a.publishedAt) < hours * 3600000 && PRICE_WORDS.test(String(a.title ?? "")))
     .filter((a) => instrumentsOf({ headlineHint: a.title, section: a.section })[0]?.id === lead.id)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))[0];
+  // A reversal is news again whatever its headline calls it: gold up 4%, then «الذهب يهبط 6%» an hour later, was held as
+  // the same routine move, the rule knowing a reversal only by the word (2026-11-23).
+  if (earlier && directionOf(headline) && directionOf(String(earlier.title)) === -directionOf(headline)) return null;
   return earlier ? earlier.title : null;
 }
 
