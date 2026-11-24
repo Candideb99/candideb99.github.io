@@ -19413,6 +19413,112 @@
           "noted": []
         }
       ]
+    },
+    "us-sanctions-iran-shadow-banking-networks-71fd2d": {
+      "at": "2026-11-24T04:22:05.638Z",
+      "title": "الخزانة الأمريكية تعاقب 22 كياناً و8 أفراد في شبكات «المصرفية الموازية» الإيرانية",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v74",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 36,
+            "checked": 36,
+            "supported": 35,
+            "weak": 1,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
+    },
+    "asian-stocks-best-session-since-july-huang-ad81ee": {
+      "at": "2026-11-24T04:37:10.286Z",
+      "title": "الأسهم الآسيوية تتجه إلى أقوى جلسة منذ يوليو مع عودة هوانغ إلى قيادة إنفيديا",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v74",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 33,
+            "checked": 33,
+            "supported": 30,
+            "weak": 0,
+            "noEvidence": 1,
+            "notFound": 1,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 1,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": [
+            {
+              "id": 18,
+              "field": "body",
+              "verdict": "conflict",
+              "status": "conflict",
+              "sentence": "وامتدت المكاسب إلى جنوب شرقي آسيا، فارتفع مؤشر جاكرتا المركب والأسهم الماليزية أكثر من 1% لكل منهما، والأسهم الفلبينية أكثر من 2%، والسنغافورية قرابة 1%.",
+              "quote": "The relief extended across South-east Asia, with equities in Indonesia, Malaysia, the Philippines and Singapore all recording gains of between 1 and 2 per cent.",
+              "source": "The National",
+              "sourceN": 4,
+              "correction": ""
+            }
+          ],
+          "unsourced": {
+            "asked": 1,
+            "kept": [
+              {
+                "sentence": "وسبقت وول ستريت آسيا إلى الصعود، فسجلت الاثنين أفضل أداء لها منذ أبريل 2025، وارتفع مؤشر «إس آند بي 500» 4.7% منهياً سبع جلسات خاسرة.",
+                "reason": "sourced"
+              }
+            ],
+            "removed": []
+          }
+        }
+      ]
+    },
+    "us-blacklists-megaspeed-alibaba-unit-nvidia-chips-73b199": {
+      "at": "2026-11-24T04:58:20.134Z",
+      "title": "واشنطن تضع «ميغاسبيد» السنغافورية المرتبطة بفضيحة إنفيديا على قائمتها السوداء",
+      "writer": "claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5 → claude-cli/claude-opus-5-5",
+      "lessons": "v74",
+      "ok": true,
+      "repairs": 0,
+      "rounds": [
+        {
+          "counts": {
+            "sentences": 42,
+            "checked": 42,
+            "supported": 42,
+            "weak": 0,
+            "noEvidence": 0,
+            "notFound": 0,
+            "confirmed": 0,
+            "listed": 0,
+            "drift": 0,
+            "conflict": 0,
+            "unverified": 0,
+            "unchecked": 0
+          },
+          "found": [],
+          "noted": []
+        }
+      ]
     }
   },
   "held": [

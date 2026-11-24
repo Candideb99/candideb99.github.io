@@ -14926,6 +14926,53 @@
         ],
         "secondCorrection": "corrected"
       }
+    },
+    "brent-closes-below-90-middle-east-supply-661217": {
+      "at": "2026-11-24T04:06:44.370Z",
+      "kind": "news",
+      "writer": "claude-cli/claude-opus-5-5",
+      "lessons": "v74",
+      "checker": "63ea2c3866",
+      "publishedAt": "2026-11-23T23:14:54.686Z",
+      "sourcesRead": 4,
+      "sourcesAll": 4,
+      "model": "claude-cli/claude-opus-5-5",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": [],
+      "listed": [
+        {
+          "status": "conflict",
+          "field": "body",
+          "sentence": "وتوقعت وكالة الطاقة الدولية في تقريرها الصادر في 13 نوفمبر أن يتجاوز المعروض العالمي من النفط الطلب في الربع الأخير من 2026، للمرة الأولى منذ اندلاع الحرب أواخر فبراير.",
+          "quote": "The International Energy Agency (IEA) said in its November Oil Market Report that global oil supply has surpassed demand for the first time since the outbreak of the war in Iran, and it expects a surplus in the fourth quarter.",
+          "source": "OilPrice.com"
+        }
+      ],
+      "notFound": [],
+      "weak": [
+        {
+          "sentence": "يدخل وزراء «أوبك+» اجتماع 29 نوفمبر لتحديد إنتاج 2027 وقد نزل برنت إلى 89.37 دولار بعد متوسط 107.7 دولار في أكتوبر، وأمامهم تقدير وكالة الطاقة الدولية لفائض قد يبلغ 3.8 ملايين برميل يومياً في ذلك العام.",
+          "quote": "Los ministros de la OPEP+ celebrarán una serie de reuniones el 29 de noviembre para decidir su política de producción para 2027."
+        },
+        {
+          "sentence": "ونزل برنت خلالها إلى 88.60 دولار للبرميل في بورصة إنتركونتيننتال بلندن، قبل أن يقلص جزءاً من خسائره عند الإغلاق، وخسر خام غرب تكساس الوسيط 3.24 دولار في بورصة نايمكس.",
+          "quote": "Le baril de Brent de la mer du Nord, pour livraison en janvier, a perdu 3,46 % à 89,37 dollars, après être tombé jusqu’à 88,60 dollars."
+        }
+      ],
+      "outcome": "listed"
     }
   }
 }

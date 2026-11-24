@@ -1,0 +1,56 @@
+{
+  "mode": "recheck",
+  "startedAt": "2026-11-24T04:06:43.417Z",
+  "durationSec": 60,
+  "read": 1,
+  "corrected": 0,
+  "report": [
+    {
+      "slug": "brent-closes-below-90-middle-east-supply-661217",
+      "title": "برنت يغلق دون 90 دولاراً مع زيادة إمدادات الشرق الأوسط",
+      "kind": "news",
+      "outcome": "listed",
+      "counts": {
+        "sentences": 31,
+        "checked": 31,
+        "supported": 28,
+        "weak": 2,
+        "noEvidence": 0,
+        "notFound": 0,
+        "confirmed": 0,
+        "listed": 0,
+        "drift": 0,
+        "conflict": 1,
+        "unverified": 0,
+        "unchecked": 0
+      },
+      "confirmed": []
+    }
+  ],
+  "llm": {
+    "calls": 1,
+    "failures": 0,
+    "promptTokens": 10979,
+    "completionTokens": 7732,
+    "cacheReadTokens": 0,
+    "costUsd": 0.1986,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 1
+    },
+    "byRole": {
+      "checker": {
+        "calls": 1,
+        "in": 10979,
+        "read": 0,
+        "out": 7732,
+        "usd": 0.1986
+      }
+    },
+    "correctionsEditorCalls": 0
+  },
+  "log": [
+    "[04:06:44] second look: 1 to read now (1 published pieces not yet read; 306 read clean before publication and left out of the audit sample)",
+    "[04:07:43] llm ok role=checker provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2802 in=10979 read=0 out=7732 attempt=1 ms=57124",
+    "[04:07:43] brent-closes-below-90-middle-east-supply-661217: 31 of 31 sentences checked · 28 supported · 0 without a source · 0 confirmed error(s) · 1 listed for a person"
+  ]
+}
