@@ -1,0 +1,110 @@
+{
+  "mode": "explainer",
+  "startedAt": "2026-11-24T06:28:04.943Z",
+  "durationSec": 574,
+  "published": 1,
+  "refreshed": 0,
+  "report": [
+    {
+      "headline": "تفرض السعودية رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟",
+      "section": "explainers",
+      "outcome": "published",
+      "slug": "why-saudi-white-land-fees-do-not-raise-prices-for-buyers-a37df8",
+      "title": "السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟",
+      "score": 8,
+      "image": "none"
+    }
+  ],
+  "llm": {
+    "calls": 12,
+    "failures": 0,
+    "promptTokens": 256588,
+    "completionTokens": 68504,
+    "cacheReadTokens": 95505,
+    "costUsd": 2.1434,
+    "byModel": {
+      "claude-cli/claude-opus-5-5": 12
+    },
+    "byRole": {
+      "editor": {
+        "calls": 2,
+        "in": 11299,
+        "read": 0,
+        "out": 1133,
+        "usd": 0.0679
+      },
+      "planner": {
+        "calls": 1,
+        "in": 21845,
+        "read": 0,
+        "out": 8332,
+        "usd": 0.2759
+      },
+      "writer": {
+        "calls": 3,
+        "in": 43857,
+        "read": 54624,
+        "out": 30402,
+        "usd": 0.8383
+      },
+      "desk": {
+        "calls": 4,
+        "in": 44065,
+        "read": 40881,
+        "out": 18986,
+        "usd": 0.6082
+      },
+      "critic": {
+        "calls": 2,
+        "in": 40017,
+        "read": 0,
+        "out": 9651,
+        "usd": 0.3531
+      }
+    }
+  },
+  "log": [
+    "[06:28:04] newsroom start mode=explainer limit=4 dry-run=false",
+    "[06:28:18] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=732 in=8106 read=0 out=1124 attempt=1 ms=12432",
+    "[06:28:18] explainer question: تفرض السعودية رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟ (Tax incidence under perfectly inelastic supply (land value tax and the holding cost of idle land)); opens on \"السعودية تضيف أكثر من 21 مليون متر مربع إلى نطاق رسوم الأراضي البيضاء في الرياض\"",
+    "[06:29:40] llm ok role=planner provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3083 in=21845 read=0 out=8332 attempt=1 ms=81941",
+    "[06:29:40] explainer plan: رسم الأراضي البيضاء يلاحق الأرض المتروكة فارغة، والأرض لا تنقص إذا قلّ ربحها، فلا يملك المالك وسيلة لنقل الرسم إلى المشتري. المشتري يدفع ما تساويه الأرض عنده: م",
+    "[06:29:40]   plan step 1: حين تُفرض ضريبة على الوقود أو السجائر يدفع المستهلك جزءاً منها في السعر، فلماذا لا يفعل مالك الأرض الشيء نفسه؟ → ما الذي يمنع مالك الأرض من رفع سعرها بمقدار الرسم كما يفعل بائع سلعة عادية؟",
+    "[06:29:40]   plan step 2: إذا كان المالك يتحمل الرسم، فلا بد أن يظهر ذلك في مكان ما من السوق. → أين يظهر الرسم إذن: في سعر الأرض أم في جيب المالك؟",
+    "[06:29:40]   plan step 3: لكن الرسم لا يُفرض على كل أرض، بل على الأرض المتروكة دون تطوير، ويمكن للمالك أن يتجنبه. → إذا كانت مساحة الأرض ثابتة، فكيف يزيد الرسم المعروض منها؟",
+    "[06:29:40]   plan leaves out: فتح 81 مليون متر مربع من الأراضي غير المطورة في شمال الرياض: إجراء منفصل على العرض، وليس من آلية الرسم",
+    "[06:29:40]   plan leaves out: وقف الزيادات السنوية على إيجارات المساكن والعقارات التجارية خمس سنوات: سقف للإيجار، وموضوع آخر",
+    "[06:29:40]   plan leaves out: مهلة التسجيل في 3 ديسمبر والخرائط المحدثة على قنوات البرنامج: تفاصيل إجرائية",
+    "[06:29:40]   plan leaves out: إدخال العقارات الشاغرة في منظومة الرسوم: يمتد إلى مبانٍ قابلة للإنشاء، فلا ينطبق عليه منطق العرض الثابت نفسه",
+    "[06:29:40]   plan leaves out: تقسيم الأراضي المضافة إلى سكنية وتجارية وسكنية تجارية: لا يغيّر الآلية",
+    "[06:29:40]   plan leaves out: دعوة نوف بن سعيدان إلى حوافز تمويلية للمطورين ومنتجات سكنية تلائم القدرة الشرائية: توصية، لا شرح للآلية",
+    "[06:29:40]   plan leaves out: مراجعة النطاقات سنوياً بموجب اللائحة التنفيذية: إطار إداري",
+    "[06:31:18] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=7732 in=13052 read=18208 out=12011 attempt=1 ms=97888",
+    "[06:31:20] llm ok role=editor provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=0 in=3193 read=0 out=9 attempt=1 ms=1580",
+    "[06:31:20] data chart: none fits this piece",
+    "[06:32:03] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1637 in=21210 read=0 out=5692 attempt=1 ms=43097",
+    "[06:32:03] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[06:32:03] desk \"السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟\": rewrote body",
+    "[06:32:03] checks explainer \"السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟\": 803 words, 0 issues, 0 warnings",
+    "[06:32:54] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3352 in=19099 read=0 out=4994 attempt=1 ms=50205",
+    "[06:32:54] critic explainer: revise score=8 issues=6",
+    "[06:32:54]   · التناقض في الجواب: يقول القسم الثاني «فينخفض الثمن، وتبقى كلفة المشتري الكلية… على حالها»، ويقول الثالث إن زيادة المعروض «تميل بسعر الأرض الخام إلى الانخفاض»، ث",
+    "[06:32:54]   · المثال المحسوب (worked) لا يحسب الحجم الذي يسأل عنه العنوان. فهو يجمع رسوم خمس سنوات انتظار (50% من القيمة)، وهذا هو كلفة الاحتفاظ التي تخص القسم الثالث. أما جو",
+    "[06:32:54]   · جملة يعترض عليها المتخصص: «ويصح هذا الحكم على مجموع الأرض في منطقة واسعة، ويضعف لقطعة منفردة تنافسها قطع خارج النطاق قد يتحول إليها الطلب». تحوّل الطلب إلى أراض",
+    "[06:32:54]   · شكل ضعيف: الرسم يبيّن انزياح المعروض في القسم الثالث فقط، أما فكرة العنوان، وهي رسم على سلعة عرضها عديم المرونة، فلا يرسمها. والمطلوب منحنى عرض عمودي، أي كمية ث",
+    "[06:34:13] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=4806 in=14460 read=18208 out=9601 attempt=1 ms=79287",
+    "[06:34:44] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=689 in=7570 read=13627 out=4363 attempt=1 ms=31014",
+    "[06:34:44] desk model=claude-cli/claude-opus-5-5 applied=[lede,body] rejected=[]",
+    "[06:34:44] desk \"السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟\": rewrote lede, body",
+    "[06:35:27] llm ok role=critic provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=2933 in=20918 read=0 out=4657 attempt=1 ms=43022",
+    "[06:35:27] critic (second pass) explainer: revise score=8",
+    "[06:36:36] llm ok role=writer provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=3865 in=16345 read=18208 out=8790 attempt=1 ms=69502",
+    "[06:37:11] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=1116 in=7748 read=13627 out=4952 attempt=1 ms=34304",
+    "[06:37:38] llm ok role=desk provider=claude model=claude-cli/claude-opus-5-5 effort=default thinking=686 in=7537 read=13627 out=3979 attempt=1 ms=27466",
+    "[06:37:38] desk: body accepted on the second try",
+    "[06:37:38] desk model=claude-cli/claude-opus-5-5 applied=[body] rejected=[]",
+    "[06:37:38] desk \"السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟\": rewrote body",
+    "[06:37:38] mend refused by the checks (أرقام لا تظهر في المصادر: 5, 43. احذف كل رقم غير مذكور في ال); the reviewed draft goes on",
+    "[06:37:38] published explainer \"السعودية تفرض رسوماً على الأراضي البيضاء، فلماذا لا يرتفع سعرها على المشتري؟\" -> why-saudi-white-land-fees-do-not-raise-prices-for-buyers-a37df8"
+  ]
+}
