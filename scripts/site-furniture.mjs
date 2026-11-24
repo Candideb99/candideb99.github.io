@@ -191,7 +191,9 @@ export function filePageFaults(html) {
   const items = (html.match(/<li class="thread__item"/g) ?? []).length;
   if (!items) return out;
   if (items > 20) out.push(`a file printing ${items} stories on one page`);
-  if (items === 1 && !/<nav class="pager"/.test(html)) out.push("a file of one story");
+  // The pager may carry a modifier («pager pager--narrow»): read as no pager, Nvidia's second page of one story failed
+  // every gate on 2026-11-24 once the file reached 21.
+  if (items === 1 && !/<nav class="pager[\s"]/.test(html)) out.push("a file of one story");
   // A place is a desk, set out as a section's page (2026-11-21, the owner, of the Gulf's page: "is this the best
   // depiction for articles when clicking on regions?"): never the thread. And the thread names a day once: «20 نوفمبر»
   // had stood in the margin of row after row.

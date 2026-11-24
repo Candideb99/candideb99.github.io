@@ -57,11 +57,28 @@ export const WORKED_OPS = {
   // lesson rests on it, and its base, 100 less the fall, is a figure no story prints, so the sum could not be shown: the
   // explainer of 10 November cut its own answer («a 23.5% fall needs a 30.7% rise») to «more than 23.5%» (2026-11-10).
   recovery: { terms: [1, 1], percent: true, compute: ([fall]) => (fall > 0 && fall < 100 ? (fall / (100 - fall)) * 100 : null) },
-  // A rate applied to an amount, an elasticity to a change (2026-11-24): the European gas explainer of 23 November had
-  // no form that multiplies, so «0.1 × 8.6% = 0.86%» went into its text as a bare result, and the owner read "a
-  // calculation without explaining how it was done and why".
+  // A sensitivity applied to a change, a yearly rate over some years (2026-11-24): the European gas explainer of 23
+  // November had no form that multiplies, so «0.1 × 8.6% = 0.86%» went into its text as a bare result, and the owner read
+  // "a calculation without explaining how it was done and why". Never a percentage of an amount: that is `percent_of`.
   product: { terms: [2, 2], sign: "×", compute: ([a, b]) => a * b },
+  // A rate applied to an amount, the rate first: amount × rate ÷ 100, in the amount's unit. Codex, 2026-11-24: a product
+  // of «5%» and «200 ريال» gave «1,000 %», since the printed 5 was multiplied as it stood.
+  percent_of: { terms: [2, 2], compute: ([rate, amount]) => (amount * rate) / 100 },
 };
+
+/** A unit that is a percentage, with or without what it is of («%»، «% من قيمة الأرض سنوياً»). */
+export const isPercentUnit = (u) => /^%/.test(String(u ?? "").trim());
+/** An amount of something: money, a commodity's measure, shares, area. A percentage of one is `percent_of`'s. */
+const AMOUNT_UNIT = /(?:^|\s)(?:ال)?(?:دولار(?:ات)?|ريال(?:ات)?|درهم|دراهم|جنيه(?:ات)?|يورو|دينار|دنانير|ين|يوان|روبية|روبيات|ليرة|ليرات|فرنك|برميل|براميل|طن|أطنان|أوقية|أونصة|سهم|أسهم|متر|أمتار)(?=\s|$)/;
+
+/**
+ * The decimals a result keeps: the operation's own, and at least two significant figures. Codex, 2026-11-24: a ratio
+ * rounded to one decimal printed «2 ÷ 200 = 0». Four at most.
+ */
+function resultDecimals(raw, base) {
+  if (!raw) return base;
+  return Math.min(4, Math.max(base, 1 - Math.floor(Math.log10(Math.abs(raw)))));
+}
 
 /**
  * A value made up to illustrate is round: a whole number up to ten or a multiple of five, or a fraction below one with
@@ -102,21 +119,41 @@ export function normalizeWorked(w) {
   const hypothetical = w.hypothetical === true || terms.every((t) => t.assumed);
   if (hypothetical) for (const t of terms) delete t.assumed;
   if (terms.some((t) => (hypothetical || t.assumed) && !roundIllustration(t.value))) return null;
+  // A product with a percentage is a percentage: an elasticity times a change, a yearly rate times years. A percentage
+  // times an amount, or of a percentage, is `percent_of`, and a product that says otherwise is refused, never computed.
+  const percents = terms.map((t) => isPercentUnit(t.unit));
+  const givenUnit = unitOf(w.result?.unit ?? "");
+  if (w.op === "product" && percents.some(Boolean)) {
+    const other = terms[percents.indexOf(false)];
+    if (!other || AMOUNT_UNIT.test(other.unit) || (givenUnit && !isPercentUnit(givenUnit))) return null;
+  }
+  if (w.op === "percent_of" && (!percents[0] || AMOUNT_UNIT.test(terms[0].unit))) return null;
   // A share or a ratio of two amounts of one thing written on two scales («500 مليون دولار» of «2 مليار دولار») is
-  // computed on one: divided as written, 500 ÷ 2 × 100 gave 25,000% where the answer is 25% (2026-11-23).
-  const scaled = !op.sameUnit && terms.length === 2 ? terms.map((t) => ({ ...scaleOf(t.unit), value: t.value })) : null;
+  // computed on one: divided as written, 500 ÷ 2 × 100 gave 25,000% where the answer is 25% (2026-11-23). The working
+  // prints the figures on that one scale too (`operands`): «500 ÷ 2 × 100 = 25%» was a false line under a true result
+  // (Codex, 2026-11-24).
+  const scaled = (w.op === "ratio" || w.op === "share") ? terms.map((t) => ({ ...scaleOf(t.unit), value: t.value })) : null;
   const convert = scaled && scaled[0].base === scaled[1].base && scaled[0].factor !== scaled[1].factor;
+  const unitScale = convert ? Math.min(scaled[0].factor, scaled[1].factor) : 1;
+  const operands = convert ? scaled.map((s) => Number(((s.value * s.factor) / unitScale).toFixed(6))) : null;
   const raw = op.compute(convert ? scaled.map((s) => s.value * s.factor) : terms.map((t) => t.value));
   if (raw === null || !Number.isFinite(raw)) return null;
-  // A product keeps the decimals its factors carry between them (0.1 × 8.6 = 0.86), two at most.
-  const decimals = op.percent || w.op === "ratio" ? 1 : w.op === "product" ? Math.min(2, terms.reduce((s, t) => s + decimalsOf(t.value), 0)) : Math.min(2, Math.max(...terms.map((t) => decimalsOf(t.value))));
+  // A product keeps the decimals its factors carry between them (0.1 × 8.6 = 0.86); every result at least two
+  // significant figures (resultDecimals()).
+  const base = op.percent || w.op === "ratio" ? 1 : w.op === "product" || w.op === "percent_of" ? Math.min(2, terms.reduce((s, t) => s + decimalsOf(t.value), 0)) : Math.min(2, Math.max(...terms.map((t) => decimalsOf(t.value))));
+  const decimals = resultDecimals(raw, base);
   const title = text(w.title, 120);
   const formula = text(w.formula, 200);
-  // A percentage times a plain number (an elasticity, a share) is a percentage.
-  const productUnit = w.op === "product" && !text(w.result?.unit, 30) && terms.some((t) => t.unit === "%") ? "%" : null;
-  const result = { label: text(w.result?.label, 80), unit: op.percent ? "%" : productUnit ?? unitOf(w.result?.unit ?? (op.sameUnit ? terms[0].unit : "")), value: round(raw, decimals) };
+  const unit = op.percent
+    ? "%"
+    : w.op === "product" && percents.some(Boolean)
+      ? givenUnit || "%"
+      : w.op === "percent_of"
+        ? terms[1].unit
+        : unitOf(w.result?.unit ?? (op.sameUnit ? terms[0].unit : ""));
+  const result = { label: text(w.result?.label, 80), unit, value: round(raw, decimals) };
   if (!title || !formula || !result.label) return null;
-  return { title, formula, op: w.op, terms, result, hypothetical, section: sectionOf(w.section) };
+  return { title, formula, op: w.op, terms, ...(operands ? { operands } : {}), result, hypothetical, section: sectionOf(w.section) };
 }
 
 const SHIFTS = new Set(["demand_up", "demand_down", "supply_up", "supply_down"]);
@@ -300,9 +337,9 @@ export function lessonResults(...parts) {
 export const HYPOTHESIS = /(?<![\p{L}\p{M}])(?:و|ف)?(?:لو|لنفترض|نفترض|افترض|افترضنا|بافتراض|فلنفترض)(?![\p{L}\p{M}])/u;
 
 /**
- * A calculation worked in an explainer's text with no worked example to show it: a sentence that works through a
- * hypothesis and prints a figure that is the product or the quotient (or that × 100) of two others it prints, in a
- * piece with no `worked`. The European gas explainer of 2026-11-23 printed «ولو افترضنا للتوضيح أن هذه المرونة 0.1، فإن
+ * A calculation worked in an explainer's text that no worked example shows: a sentence that works through a hypothesis
+ * and prints a figure that is the product or the quotient (or that × 100) of two others it prints, other than the
+ * worked example's own result. The European gas explainer of 2026-11-23 printed «ولو افترضنا للتوضيح أن هذه المرونة 0.1، فإن
  * صعود السعر 8.6% لا يجلب سوى نحو 0.86%…», the critic's own suggested sum pasted by the last mend, and the owner read
  * "a calculation without explaining how it was done and why". The worked example prints the formula in words, each
  * figure, the working and the result. Only a hypothesis's sentence is read: over the archive's 620 news stories a bare
@@ -311,7 +348,12 @@ export const HYPOTHESIS = /(?<![\p{L}\p{M}])(?:و|ف)?(?:لو|لنفترض|نف�
  * Returns the sentences found, each with the relation.
  */
 export function textArithmetic(draft) {
-  if (!draft || draft.worked) return [];
+  if (!draft) return [];
+  // A piece with a worked example may say its result in words, never work a second sum: Codex (2026-11-24) found any
+  // worked example, however unrelated, silenced the check, so a last mend could still add the gas piece's bare sum.
+  const said = draft.worked ? [draft.worked.result?.value].filter(Number.isFinite) : [];
+  // The box's own figures retold, in any order («0.86 ÷ 8.6 = 0.1»), are its sum said in words, not a second one.
+  const own = draft.worked ? [...said, ...(draft.worked.terms ?? []).map((t) => t.value), ...(draft.worked.operands ?? [])].filter(Number.isFinite) : [];
   const sentences = `${draft.lede ?? ""}\n${draft.body ?? ""}`.split(/(?<=[.؟!])\s+|\n+/).filter((s) => s.trim() && !/^\s*#/.test(s) && HYPOTHESIS.test(s));
   const found = [];
   for (const sentence of sentences) {
@@ -322,7 +364,7 @@ export function textArithmetic(draft) {
     const near = (x, c) => Math.abs(x - c.v) <= Math.max(0.5 * 10 ** -c.d, 0.005 * Math.abs(c.v));
     let relation = null;
     for (const a of figures) for (const b of figures) for (const c of figures) {
-      if (relation || a === b || b === c || a === c || c.v === a.v || c.v === b.v || [a.v, b.v].some((v) => v === 0 || v === 1 || v === 100)) continue;
+      if (relation || a === b || b === c || a === c || c.v === a.v || c.v === b.v || [a.v, b.v].some((v) => v === 0 || v === 1 || v === 100) || said.some((r) => near(r, c)) || [a, b, c].every((x) => own.some((v) => near(v, x)))) continue;
       if (near(a.v * b.v, c)) relation = `${a.raw} × ${b.raw} = ${c.raw}`;
       else if (near(a.v / b.v, c)) relation = `${a.raw} ÷ ${b.raw} = ${c.raw}`;
       else if (near((a.v / b.v) * 100, c)) relation = `${a.raw} ÷ ${b.raw} × 100 = ${c.raw}`;
@@ -344,7 +386,7 @@ export function keepLessonParts(before, after) {
 
 /** The schema lines the explainer writer fills (write.mjs EXPLAINER_SCHEMA). */
 // Every label is short (at most six words): the page prints them beside their figures, and a long one is cut (text()).
-export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change" | "recovery" (recovery: the rise, in percent, that brings a level back after a fall; its one term is the fall in percent as the material prints it, and the site computes fall ÷ (100 − fall) × 100: a base effect's lesson rests on it) | "product" (two terms multiplied: a rate applied to an amount, a sensitivity applied to a change), "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit", "assumed": true ONLY on a value the material does not give and the sum needs (a sensitivity, a share), made up as a round number (0.1, 0.5, 2, 10) beside the material's real figures; the page marks it as an assumption}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share, change and recovery it is %)"}, "hypothetical": false, which is true ONLY when every number is small and round, made up to illustrate; a what-if worked on the stories' real figures stays false, "section": the number of the subheaded step whose question it answers (1, 2 or 3)}. Its result is what the headline's question asks for, or the size that answers it (how large a move a cause of this size makes), never a by-product of the mechanism worked out the other way round. Any figure you compute goes here, so the page shows its formula and working; never a computed result in the text alone,
+export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change" | "recovery" (recovery: the rise, in percent, that brings a level back after a fall; its one term is the fall in percent as the material prints it, and the site computes fall ÷ (100 − fall) × 100: a base effect's lesson rests on it) | "product" (two terms multiplied: a sensitivity applied to a change, a yearly rate over a number of years; with a % term the result is a %) | "percent_of" (a percentage of an amount: the rate first, in %, then the amount; the site computes amount × rate ÷ 100 in the amount's unit), "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit", "assumed": true ONLY on a value the material does not give and the sum needs (a sensitivity, a share), made up as a round number (0.1, 0.5, 2, 10) beside the material's real figures; the page marks it as an assumption}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share, change and recovery it is %; percent_of takes the amount's)"}, "hypothetical": false, which is true ONLY when every number is small and round, made up to illustrate; a what-if worked on the stories' real figures stays false, "section": the number of the subheaded step whose question it answers (1, 2 or 3)}. Its result is what the headline's question asks for, or the size that answers it (how large a move a cause of this size makes), never a by-product of the mechanism worked out the other way round. Any figure you compute goes here, so the page shows its formula and working; never a computed result in the text alone,
   "diagram": null or ONE figure, the graph the field itself draws for this mechanism (every label in Arabic and in the reader's words, at most six words; no number in a label unless the stories print it):
    {"type": "supply_demand", "title": "...", "price": "Arabic: the vertical axis, the price of the thing traded", "quantity": "Arabic: the horizontal axis", "supply": "Arabic name of the supply curve", "demand": "Arabic name of the demand curve", and EXACTLY ONE mechanism: "shift": "demand_up" | "demand_down" | "supply_up" | "supply_down" (with "shift2" for the other curve when both move), OR "control": {"kind": "floor" | "ceiling", "label": "Arabic: the price a rule holds above the market's (floor) or below it (ceiling), as the stories name it", "gap": "Arabic: what the gap between the quantities is (a surplus, a shortage, or what the stories call it)"}, OR "wedge": {"kind": "tax" | "subsidy", "label": "Arabic: the tax or subsidy as the stories name it", "lost": "Arabic: the trades it costs, if the default «صفقات ضائعة» does not fit"}, "caption": "one Arabic sentence: what happens and what follows"}
    or {"type": "schedule", "title": "...", "price": "Arabic axis name", "quantity": "Arabic axis name", "price_unit": "...", "quantity_unit": "...", "rows": [3-8 rows of {"price": number, "demand": number, "supply": number}, demand falling and supply rising as the price rises], "hypothetical": true only for whole numbers made up to illustrate (otherwise every number is one the stories print), "caption": "..."}: the site plots it and computes where the curves meet

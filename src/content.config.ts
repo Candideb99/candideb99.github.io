@@ -79,10 +79,12 @@ const worked = z
   .object({
     title: z.string(),
     formula: z.string(),
-    op: z.enum(["difference", "sum", "ratio", "share", "change", "recovery", "product"]),
+    op: z.enum(["difference", "sum", "ratio", "share", "change", "recovery", "product", "percent_of"]),
     // One term for a recovery (the fall it undoes, lib/lesson.mjs WORKED_OPS), two or more for the rest. A term the
     // stories do not give is `assumed`, round, and marked on the page (2026-11-24).
     terms: z.array(z.object({ label: z.string(), value: z.number(), unit: z.string().default(""), assumed: z.boolean().optional() })).min(1).max(6),
+    // A share or a ratio of one thing on two scales, its figures on one scale for the working line (2026-11-24).
+    operands: z.array(z.number()).optional(),
     result: z.object({ label: z.string(), value: z.number(), unit: z.string().default("") }),
     hypothetical: z.boolean().default(false),
     // The step a part prints in, after that step's first paragraph (2026-11-08); without one, the page's default place.

@@ -35,7 +35,7 @@ import { cleanTags } from "../pipeline/lib/tags.mjs";
 import { canonicalRegions, countriesNamed, groundedRegions, unplacedActors } from "../pipeline/lib/regions.mjs";
 import { styleIssues, bareNameInDek, structural, WRITER_ONLY, READOUT, tableReadout, figureCount, readoutRoute, unjoinedParagraphs, subjectFirstSpeech } from "../pipeline/lib/style.mjs";
 import { weeklyParagraphFault } from "../pipeline/lib/write.mjs";
-import { CURVE_SHAPES, keepLessonParts, lessonNumbers, lessonResults, normalizeDiagram, normalizeWorked, partLabels } from "../pipeline/lib/lesson.mjs";
+import { CURVE_SHAPES, keepLessonParts, lessonNumbers, lessonResults, normalizeDiagram, normalizeWorked, partLabels, textArithmetic } from "../pipeline/lib/lesson.mjs";
 import { drawFigure } from "../src/lib/figures.mjs";
 import { IDEA_HOSTS, IDEA_SOURCE_CHARS, excerpt, fieldCounts, ideaCandidates, ideaRecord, lessonKind, loadIdeas, readIdeaSources } from "../pipeline/lib/ideas.mjs";
 import { selectIdea } from "../pipeline/lib/select.mjs";
@@ -1489,7 +1489,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
       [null, null, { label: "r", unit: "مليار دولار", value: 10 }],
     );
     const { workingOf } = await import("../src/lib/worked.mjs");
-    check("a product's working prints its sign", workingOf(gasSum), "0.1 × 8.6 = 0.86");
+    check("a product's working prints its sign, and a percentage's", workingOf(gasSum), "0.1 × 8.6% = 0.86%");
     const gasStory = [{ title: "الغاز الأوروبي", text: "قفزت العقود الآجلة للغاز في أوروبا بما يصل إلى 8.6% لتبلغ 96.075 يورو." }];
     const gasDraft = (worked, line) => ({ title: "لماذا قفز سعر الغاز في أوروبا؟", subtitle: "", lede: "قفزت العقود 8.6% الاثنين.", body: `## العرض الضيق يضخّم أثر البرد\n\n${line}`, keyFacts: [], tags: [], regions: [], whyItMatters: "", chart: null, table: null, worked, diagram: null });
     const bare = "ولو افترضنا للتوضيح أن هذه المرونة 0.1، فإن صعود السعر 8.6% لا يجلب سوى نحو 0.86% من الغاز الإضافي.";
@@ -1513,6 +1513,44 @@ if (spawnSync("git", ["--version"]).status === 0) {
       "run.mjs sends the warning to the revision and the mend and refuses a mend that adds one without a desk pass; an explainer's reviser may answer with a worked example it lacked",
       [/w\.startsWith\(TEXT_SUM\)/.test(runText), /mendAddsTextSum\(checks, c\)/.test(runText), /WRITERS_FAULT = \/[^\n]*وضع في المتن حساباً/.test(runText), /draft\.worked \|\| draft\.diagram \|\| kind === "explainer"/.test(writeText)],
       [true, true, true, true],
+    );
+  }
+  // Codex's review of dece0589 (2026-11-24), five faults of the worked example, each reproduced first. (1) A product of
+  // «5%» and «200 ريال» printed «1,000 %»: a percentage of an amount is `percent_of` (amount × rate ÷ 100, in the
+  // amount's unit), and a product of a percentage with an amount, or of two percentages, is refused; a yearly rate times
+  // years stays a product, as the white-land explainer of that morning computed it. (2) A ratio rounded to one decimal
+  // printed «2 ÷ 200 = 0»: a result keeps two significant figures. (3) 500 million of 2 billion printed «500 ÷ 2 × 100
+  // = 25%»: the working prints the figures on one scale. (4) Invented «21 ريال» and «7 ريال» passed as the stories'
+  // (small whole numbers read as days): a part's figures are held as a chart's values are. (5) Any worked example,
+  // however unrelated, silenced the bare-sum warning. The old code fails each.
+  {
+    const { workingOf } = await import("../src/lib/worked.mjs");
+    const W = (op, terms, result = { label: "r" }) => normalizeWorked({ title: "t", formula: "f", op, terms, result });
+    const T = (value, unit = "", extra = {}) => ({ label: "x", value, unit, ...extra });
+    const ofAmount = W("percent_of", [T(5, "%"), T(200, "ريال")]);
+    const land = W("product", [T(10, "% من قيمة الأرض سنوياً"), T(5, "سنوات", { assumed: true })], { label: "r", unit: "% من قيمة الأرض" });
+    check(
+      "a percentage of an amount is percent_of in the amount's unit; a product refuses an amount or two percentages and keeps a rate over years",
+      [W("product", [T(5, "%"), T(200, "ريال")]), W("product", [T(50, "%"), T(20, "%")]), W("product", [T(5, "%"), T(4, "سنوات")], { label: "r", unit: "ريال" }), ofAmount?.result, ofAmount && workingOf(ofAmount), land?.result.value, land && workingOf(land), W("percent_of", [T(200, "ريال"), T(5, "%")])],
+      [null, null, null, { label: "r", unit: "ريال", value: 10 }, "200 × 5 ÷ 100 = 10", 50, "10% × 5 = 50%", null],
+    );
+    const small = W("ratio", [T(2), T(200)]);
+    const tiny = W("share", [T(3), T(7500)]);
+    check("a small result keeps two significant figures, in the code and on the page", [small?.result.value, small && workingOf(small), tiny?.result.value, tiny && workingOf(tiny)], [0.01, "2 ÷ 200 = 0.01", 0.04, "3 ÷ 7,500 × 100 = 0.04%"]);
+    const scales = W("share", [T(500, "مليون دولار"), T(2, "مليار دولار")]);
+    check("a share on two scales prints its working on one", [scales?.result.value, scales?.operands, scales && workingOf(scales)], [25, [500, 2000], "500 ÷ 2,000 × 100 = 25%"]);
+    const invented = { title: "لماذا؟", subtitle: "", lede: "ليد.", body: "فقرة.", keyFacts: [], tags: [], regions: [], whyItMatters: "", chart: null, table: null, worked: W("sum", [T(21, "ريال"), T(7, "ريال")]), diagram: null };
+    const real = { ...invented, worked: W("sum", [T(21, "ريال"), T(7, "ريال")]) };
+    programmaticChecks(invented, [{ title: "s", text: "ارتفعت الأسعار 3% في أكتوبر." }], { minWords: 0, explainer: true });
+    programmaticChecks(real, [{ title: "s", text: "دفع المشتري 21 ريالاً للسلعة الأولى و7 ريالات للثانية." }], { minWords: 0, explainer: true });
+    check("a worked example's small whole figures are held to the stories", [invented.worked, Boolean(real.worked)], [null, true]);
+    const second = "ولو افترضنا أن الطلب زاد 2% وأن المرونة 0.2، لارتفع السعر نحو 10%.";
+    const ownResult = "ولو كانت المرونة 0.2، لكفت زيادة الطلب 1.72% لرفع السعر 8.6%.";
+    const gasBox = W("product", [T(8.6, "%"), T(0.2, "", { assumed: true })]);
+    check(
+      "a second sum in the text is warned beside an unrelated worked example; the box's own result said in words is not",
+      [textArithmetic({ lede: "", body: second, worked: W("sum", [T(30, "ريال"), T(15, "ريال")]) }).length, textArithmetic({ lede: "", body: ownResult, worked: gasBox }).length],
+      [1, 0],
     );
   }
   // A part's printed words are held as a chart's labels are (the third test lesson of 2026-11-08 computed a residual,
@@ -2505,7 +2543,7 @@ if (spawnSync("git", ["--version"]).status === 0) {
   {
     const { filePageFaults } = await import("./site-furniture.mjs");
     const thread = (n, pager = false) => `<ol class="thread">${'<li class="thread__item">x</li>'.repeat(n)}</ol>${pager ? '<nav class="pager"></nav>' : ""}`;
-    check("the site check finds a file of one story and a file page of 363, and passes a page of twenty", [filePageFaults(thread(1)).length, filePageFaults(thread(363)).length, filePageFaults(thread(20, true)).length, filePageFaults(thread(1, true)).length], [1, 1, 0, 0]);
+    check("the site check finds a file of one story and a file page of 363, and passes a page of twenty", [filePageFaults(thread(1)).length, filePageFaults(thread(363)).length, filePageFaults(thread(20, true)).length, filePageFaults(thread(1, true)).length, filePageFaults(thread(1).replace(/$/, '<nav class="pager pager--narrow" aria-label="x"></nav>')).length], [1, 1, 0, 0, 0]);
     // 2026-11-21: a place's page as a thread, and a day named on two rows, fail; a day once with the hour after it passes.
     const row = (day) => `<li class="thread__item"><div class="thread__when ui">${day ? `<time datetime="x">${day}</time>` : ""}<span class="thread__time">14:04</span></div></li>`;
     const rows = (...d) => `<section class="wrap block"><ol class="thread">${d.map(row).join("")}</ol></section><nav class="pager"></nav>`;

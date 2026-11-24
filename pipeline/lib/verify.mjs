@@ -165,7 +165,10 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
     const words = lessonText(draft[key]);
     if (!figures.length && !/\d/.test(normalizeDigits(words))) continue;
     const computed = lessonResults(draft.worked, draft.diagram).join(" ");
-    const bad = grounded ? [...ungroundedNumbers(figures.join(" "), sourceTexts, { ignoreYears: false }), ...ungroundedNumbers(words, [...sourceTexts, computed])] : [];
+    // Every figure, as a chart's values: joined without their units, a whole number up to 31 passed as a day or a small
+    // count, so an invented «21 ريال» and «7 ريال» stood as the stories' (Codex, 2026-11-24). Replayed over the six
+    // published worked examples that day: none changes.
+    const bad = grounded ? [...ungroundedNumbers(figures.join(" "), sourceTexts, { ignoreYears: false, everyFigure: true }), ...ungroundedNumbers(words, [...sourceTexts, computed])] : [];
     if (bad.length || !grounded) {
       warnings.push(`${key === "worked" ? "worked example" : "diagram"} dropped: ${grounded ? `ungrounded values ${bad.join(", ")}` : "explainers carry no source data"}`);
       draft[key] = null;
@@ -229,12 +232,15 @@ export function programmaticChecks(draft, sources, { recentTitles = [], newsTitl
       if (offPlan.length) warnings.push(`خارج الخطة: الأرقام ${offPlan.join("، ")} لا تحملها أي خطوة من خطة الشرح (lessonPlan)؛ احذف الجمل التي تحملها، فما تركته الخطة يبقى خارج المقال.`);
     }
   }
-  // A sum worked in the text of a piece without a worked example (lib/lesson.mjs textArithmetic(), 2026-11-24): the
-  // reader gets a result and not how it was reached. A warning that goes, as «خارج الخطة» does, to the revision and the
+  // A sum worked in the text that no worked example shows (lib/lesson.mjs textArithmetic(), 2026-11-24): the reader
+  // gets a result and not how it was reached; beside a worked example, a second sum. A warning that goes, as «خارج الخطة» does, to the revision and the
   // mend (run.mjs `TEXT_SUM`), never a reason to lose the piece.
   if (explainer) {
     const sums = textArithmetic(draft);
-    if (sums.length) warnings.push(`${TEXT_SUM} ${sums.map((s) => `«${s.sentence.slice(0, 200)}»`).join("؛ ")}. ضع هذا الحساب في المثال المحسوب (worked): القيمة التي لا تعطيها القصص حدّاً معلَّماً assumed، بعدد مدوّر، فتطبع الصفحة الصيغة بالكلمات والأرقام والحساب والنتيجة؛ ويقول النص النتيجة مرة واحدة بالكلمات وما تعنيه للسؤال.`);
+    const fix = draft.worked
+      ? "للمقال مثال محسوب يحمل حسابه، فلا يُحسب في المتن رقم آخر: احذف هذا الحساب أو قل ما يعنيه بالكلمات بلا رقم محسوب، أو اجعله هو المثال المحسوب (worked) مكان الآخر إن كان الجواب يقوم عليه."
+      : "ضع هذا الحساب في المثال المحسوب (worked): القيمة التي لا تعطيها القصص حدّاً معلَّماً assumed، بعدد مدوّر، فتطبع الصفحة الصيغة بالكلمات والأرقام والحساب والنتيجة؛ ويقول النص النتيجة مرة واحدة بالكلمات وما تعنيه للسؤال.";
+    if (sums.length) warnings.push(`${TEXT_SUM} ${sums.map((s) => `«${s.sentence.slice(0, 200)}»`).join("؛ ")}. ${fix}`);
   }
   if (grounded) {
     // Verbatim reuse of an Arabic source is plagiarism; an analysis restating the paper's own stories gets a little more room.
