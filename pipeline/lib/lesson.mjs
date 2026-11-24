@@ -57,7 +57,19 @@ export const WORKED_OPS = {
   // lesson rests on it, and its base, 100 less the fall, is a figure no story prints, so the sum could not be shown: the
   // explainer of 10 November cut its own answer («a 23.5% fall needs a 30.7% rise») to «more than 23.5%» (2026-11-10).
   recovery: { terms: [1, 1], percent: true, compute: ([fall]) => (fall > 0 && fall < 100 ? (fall / (100 - fall)) * 100 : null) },
+  // A rate applied to an amount, an elasticity to a change (2026-11-24): the European gas explainer of 23 November had
+  // no form that multiplies, so «0.1 × 8.6% = 0.86%» went into its text as a bare result, and the owner read "a
+  // calculation without explaining how it was done and why".
+  product: { terms: [2, 2], sign: "×", compute: ([a, b]) => a * b },
 };
+
+/**
+ * A value made up to illustrate is round: a whole number up to ten or a multiple of five, or a fraction below one with
+ * one significant figure (an elasticity of 0.1, a share of 0.3). Until 2026-11-24 only whole numbers passed, so no
+ * illustration could carry an elasticity.
+ */
+const roundIllustration = (v) =>
+  Number.isInteger(v) ? Math.abs(v) <= 10 || v % 5 === 0 : Math.abs(v) < 1 && Number(v.toPrecision(1)) === v;
 
 /**
  * A worked example as the writer gave it, made sound, or null: a known operation, the right number of labelled terms
@@ -79,21 +91,30 @@ export function normalizeWorked(w) {
   // An invented money unit («وحدة نقدية») is no unit (the owner, 2026-10-23, called pieces priced in it machine writing; the
   // first Ibn Khaldun dry run of 2026-11-20 used it): the figure stands without one.
   const unitOf = (u) => (/^وحد(?:ة|ات) نقدية$/.test(text(u, 30)) ? "" : text(u, 30));
-  const terms = (Array.isArray(w.terms) ? w.terms : []).map((t) => ({ label: text(t?.label, 80), value: num(t?.value), unit: unitOf(t?.unit) })).filter((t) => t.label && t.value !== null);
+  // A term the stories do not give (an elasticity, a share) may be `assumed` beside their real figures: it is round, the
+  // page marks it, and it is the one figure not held to the stories (2026-11-24). An example of assumed terms only is
+  // a hypothetical one.
+  const terms = (Array.isArray(w.terms) ? w.terms : [])
+    .map((t) => ({ label: text(t?.label, 80), value: num(t?.value), unit: unitOf(t?.unit), ...(t?.assumed === true ? { assumed: true } : {}) }))
+    .filter((t) => t.label && t.value !== null);
   if (terms.length < op.terms[0] || terms.length > op.terms[1]) return null;
   if (op.sameUnit && new Set(terms.map((t) => t.unit)).size > 1) return null;
-  const hypothetical = w.hypothetical === true;
-  if (hypothetical && terms.some((t) => !Number.isInteger(t.value) || (Math.abs(t.value) > 10 && t.value % 5 !== 0))) return null;
+  const hypothetical = w.hypothetical === true || terms.every((t) => t.assumed);
+  if (hypothetical) for (const t of terms) delete t.assumed;
+  if (terms.some((t) => (hypothetical || t.assumed) && !roundIllustration(t.value))) return null;
   // A share or a ratio of two amounts of one thing written on two scales («500 مليون دولار» of «2 مليار دولار») is
   // computed on one: divided as written, 500 ÷ 2 × 100 gave 25,000% where the answer is 25% (2026-11-23).
   const scaled = !op.sameUnit && terms.length === 2 ? terms.map((t) => ({ ...scaleOf(t.unit), value: t.value })) : null;
   const convert = scaled && scaled[0].base === scaled[1].base && scaled[0].factor !== scaled[1].factor;
   const raw = op.compute(convert ? scaled.map((s) => s.value * s.factor) : terms.map((t) => t.value));
   if (raw === null || !Number.isFinite(raw)) return null;
-  const decimals = op.percent || w.op === "ratio" ? 1 : Math.min(2, Math.max(...terms.map((t) => decimalsOf(t.value))));
+  // A product keeps the decimals its factors carry between them (0.1 × 8.6 = 0.86), two at most.
+  const decimals = op.percent || w.op === "ratio" ? 1 : w.op === "product" ? Math.min(2, terms.reduce((s, t) => s + decimalsOf(t.value), 0)) : Math.min(2, Math.max(...terms.map((t) => decimalsOf(t.value))));
   const title = text(w.title, 120);
   const formula = text(w.formula, 200);
-  const result = { label: text(w.result?.label, 80), unit: op.percent ? "%" : unitOf(w.result?.unit ?? (op.sameUnit ? terms[0].unit : "")), value: round(raw, decimals) };
+  // A percentage times a plain number (an elasticity, a share) is a percentage.
+  const productUnit = w.op === "product" && !text(w.result?.unit, 30) && terms.some((t) => t.unit === "%") ? "%" : null;
+  const result = { label: text(w.result?.label, 80), unit: op.percent ? "%" : productUnit ?? unitOf(w.result?.unit ?? (op.sameUnit ? terms[0].unit : "")), value: round(raw, decimals) };
   if (!title || !formula || !result.label) return null;
   return { title, formula, op: w.op, terms, result, hypothetical, section: sectionOf(w.section) };
 }
@@ -236,7 +257,7 @@ export function normalizeDiagram(d) {
 /** The figures of a lesson's parts that must come from the stories: a real worked example's, and a flow's. */
 export function lessonNumbers(part) {
   if (!part) return [];
-  if (part.terms) return part.hypothetical ? [] : part.terms.map((t) => t.value);
+  if (part.terms) return part.hypothetical ? [] : part.terms.filter((t) => !t.assumed).map((t) => t.value);
   if (part.type === "flows") return [...part.inflows, ...part.outflows].map((f) => f.value);
   // A schedule of the stories' prices and quantities is held to them as a flow is; a made-up one is labelled so.
   if (part.type === "schedule") return part.hypothetical ? [] : part.rows.flatMap((r) => [r.price, r.demand, r.supply]);
@@ -271,7 +292,44 @@ export function partLabels(part) {
  * schedule's equilibrium): grounded by construction.
  */
 export function lessonResults(...parts) {
-  return parts.flatMap((p) => (p && !p.hypothetical ? [p.result?.value, p.net, p.equilibrium?.price, p.equilibrium?.quantity] : [])).filter((v) => Number.isFinite(v));
+  // A result that rests on an assumed term is an illustration's, said in the text as one («لو…»), as a hypothetical's is.
+  return parts.flatMap((p) => (p && !p.hypothetical && !(p.terms ?? []).some((t) => t.assumed) ? [p.result?.value, p.net, p.equilibrium?.price, p.equilibrium?.quantity] : [])).filter((v) => Number.isFinite(v));
+}
+
+/** An explainer's sentence that works through a hypothesis («لو…»، «بافتراض…»): the text's own illustrations. */
+export const HYPOTHESIS = /(?<![\p{L}\p{M}])(?:و|ف)?(?:لو|لنفترض|نفترض|افترض|افترضنا|بافتراض|فلنفترض)(?![\p{L}\p{M}])/u;
+
+/**
+ * A calculation worked in an explainer's text with no worked example to show it: a sentence that works through a
+ * hypothesis and prints a figure that is the product or the quotient (or that × 100) of two others it prints, in a
+ * piece with no `worked`. The European gas explainer of 2026-11-23 printed «ولو افترضنا للتوضيح أن هذه المرونة 0.1، فإن
+ * صعود السعر 8.6% لا يجلب سوى نحو 0.86%…», the critic's own suggested sum pasted by the last mend, and the owner read
+ * "a calculation without explaining how it was done and why". The worked example prints the formula in words, each
+ * figure, the working and the result. Only a hypothesis's sentence is read: over the archive's 620 news stories a bare
+ * relation among a sentence's figures matched 117 (clock times, coincidences), and among the 52 explainers a hypothesis
+ * sentence with one matched 2, this one and Berkshire's buyback illustration, both without a worked example.
+ * Returns the sentences found, each with the relation.
+ */
+export function textArithmetic(draft) {
+  if (!draft || draft.worked) return [];
+  const sentences = `${draft.lede ?? ""}\n${draft.body ?? ""}`.split(/(?<=[.؟!])\s+|\n+/).filter((s) => s.trim() && !/^\s*#/.test(s) && HYPOTHESIS.test(s));
+  const found = [];
+  for (const sentence of sentences) {
+    const figures = [...normalizeDigits(sentence).matchAll(/(?<![\d.,])\d+(?:,\d{3})*(?:\.\d+)?(?!\d)/g)]
+      .map((m) => ({ raw: m[0], v: Number(m[0].replace(/,/g, "")), d: decimalsOf(m[0].replace(/,/g, "")) }))
+      // A year is no figure of the sum; 0, 1 and 100 make trivial ones.
+      .filter((f) => Number.isFinite(f.v) && !(Number.isInteger(f.v) && f.v >= 1900 && f.v <= 2100));
+    const near = (x, c) => Math.abs(x - c.v) <= Math.max(0.5 * 10 ** -c.d, 0.005 * Math.abs(c.v));
+    let relation = null;
+    for (const a of figures) for (const b of figures) for (const c of figures) {
+      if (relation || a === b || b === c || a === c || c.v === a.v || c.v === b.v || [a.v, b.v].some((v) => v === 0 || v === 1 || v === 100)) continue;
+      if (near(a.v * b.v, c)) relation = `${a.raw} × ${b.raw} = ${c.raw}`;
+      else if (near(a.v / b.v, c)) relation = `${a.raw} ÷ ${b.raw} = ${c.raw}`;
+      else if (near((a.v / b.v) * 100, c)) relation = `${a.raw} ÷ ${b.raw} × 100 = ${c.raw}`;
+    }
+    if (relation) found.push({ sentence: sentence.trim(), relation });
+  }
+  return found;
 }
 
 /** A revision that dropped a lesson's part (the reviser answers with the keys it was asked for) keeps the one it had. */
@@ -286,7 +344,7 @@ export function keepLessonParts(before, after) {
 
 /** The schema lines the explainer writer fills (write.mjs EXPLAINER_SCHEMA). */
 // Every label is short (at most six words): the page prints them beside their figures, and a long one is cut (text()).
-export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change" | "recovery" (recovery: the rise, in percent, that brings a level back after a fall; its one term is the fall in percent as the material prints it, and the site computes fall ÷ (100 − fall) × 100: a base effect's lesson rests on it), "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit"}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share, change and recovery it is %)"}, "hypothetical": false, which is true ONLY for small round numbers made up to illustrate; a what-if worked on the stories' real figures stays false, "section": the number of the subheaded step whose question it answers (1, 2 or 3)},
+export const LESSON_SCHEMA = `"worked": null or {"title": "Arabic: what the sum answers, as a short phrase", "formula": "Arabic: the formula in words, with = and the operation, as a textbook writes it («الربح = الإيرادات − التكاليف»)", "op": "difference" | "sum" | "ratio" | "share" | "change" | "recovery" (recovery: the rise, in percent, that brings a level back after a fall; its one term is the fall in percent as the material prints it, and the site computes fall ÷ (100 − fall) × 100: a base effect's lesson rests on it) | "product" (two terms multiplied: a rate applied to an amount, a sensitivity applied to a change), "terms": [{"label": "Arabic, at most six words: what the figure is", "value": a number exactly as in the material, "unit": "Arabic unit", "assumed": true ONLY on a value the material does not give and the sum needs (a sensitivity, a share), made up as a round number (0.1, 0.5, 2, 10) beside the material's real figures; the page marks it as an assumption}], "result": {"label": "Arabic, at most six words: what the result is", "unit": "Arabic unit (for share, change and recovery it is %)"}, "hypothetical": false, which is true ONLY when every number is small and round, made up to illustrate; a what-if worked on the stories' real figures stays false, "section": the number of the subheaded step whose question it answers (1, 2 or 3)}. Its result is what the headline's question asks for, or the size that answers it (how large a move a cause of this size makes), never a by-product of the mechanism worked out the other way round. Any figure you compute goes here, so the page shows its formula and working; never a computed result in the text alone,
   "diagram": null or ONE figure, the graph the field itself draws for this mechanism (every label in Arabic and in the reader's words, at most six words; no number in a label unless the stories print it):
    {"type": "supply_demand", "title": "...", "price": "Arabic: the vertical axis, the price of the thing traded", "quantity": "Arabic: the horizontal axis", "supply": "Arabic name of the supply curve", "demand": "Arabic name of the demand curve", and EXACTLY ONE mechanism: "shift": "demand_up" | "demand_down" | "supply_up" | "supply_down" (with "shift2" for the other curve when both move), OR "control": {"kind": "floor" | "ceiling", "label": "Arabic: the price a rule holds above the market's (floor) or below it (ceiling), as the stories name it", "gap": "Arabic: what the gap between the quantities is (a surplus, a shortage, or what the stories call it)"}, OR "wedge": {"kind": "tax" | "subsidy", "label": "Arabic: the tax or subsidy as the stories name it", "lost": "Arabic: the trades it costs, if the default «صفقات ضائعة» does not fit"}, "caption": "one Arabic sentence: what happens and what follows"}
    or {"type": "schedule", "title": "...", "price": "Arabic axis name", "quantity": "Arabic axis name", "price_unit": "...", "quantity_unit": "...", "rows": [3-8 rows of {"price": number, "demand": number, "supply": number}, demand falling and supply rising as the price rises], "hypothetical": true only for whole numbers made up to illustrate (otherwise every number is one the stories print), "caption": "..."}: the site plots it and computes where the curves meet

@@ -13,12 +13,13 @@ interface Term {
   label: string;
   value: number;
   unit?: string;
+  assumed?: boolean;
 }
 interface Props {
   worked: {
     title: string;
     formula: string;
-    op: "difference" | "sum" | "ratio" | "share" | "change" | "recovery";
+    op: "difference" | "sum" | "ratio" | "share" | "change" | "recovery" | "product";
     terms: Term[];
     result: { label: string; value: number; unit?: string };
     hypothetical?: boolean;
@@ -34,6 +35,9 @@ const withUnit = (v: number, unit = "") => (unit === "%" ? `${fmt(v)}%` : unit ?
 // IPO explainer: "i think there might be a bug here when using numbers and calculations? ... should we use arabic
 // numbers and from right to left?"). A negative figure in the sum takes brackets (workingOf(), src/lib/worked.mjs).
 const working = workingOf(worked);
+// A value the stories do not give, made up to carry the sum (an elasticity, a share), is marked where it stands and
+// under the result, so the reader knows which figure is real (2026-11-24).
+const assumed = !worked.hypothetical && worked.terms.some((t) => t.assumed);
 ---
 
 <figure class="worked" aria-labelledby="worked-title">
@@ -43,7 +47,10 @@ const working = workingOf(worked);
   <dl class="worked__terms">
     {worked.terms.map((t) => (
       <div class="worked__term">
-        <dt set:html={isolateNumbers(t.label)} />
+        <dt>
+          <span set:html={isolateNumbers(t.label)} />
+          {t.assumed && !worked.hypothetical && <span class="worked__assumed">(افتراض)</span>}
+        </dt>
         <dd set:html={isolateNumbers(withUnit(t.value, t.unit))} />
       </div>
     ))}
@@ -54,6 +61,7 @@ const working = workingOf(worked);
     <strong set:html={isolateNumbers(withUnit(worked.result.value, worked.result.unit))} />
   </p>
   {worked.hypothetical && <p class="worked__note ui">أرقام تقريبية للتوضيح، لا أرقام فعلية.</p>}
+  {assumed && <p class="worked__note ui">القيمة المعلَّمة «افتراض» تقريبية للتوضيح، وباقي الأرقام من الأخبار.</p>}
 </figure>
 
 <style>
@@ -72,4 +80,5 @@ const working = workingOf(worked);
   .worked__result span { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 700; color: var(--ink); }
   .worked__result strong { font-family: var(--font-title); font-size: var(--t-feature); font-weight: 700; color: var(--green); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
   .worked__note { margin-top: 0.5rem; font-size: var(--fs-xs); color: var(--ink-3); }
+  .worked__assumed { margin-inline-start: 0.35em; font-size: var(--fs-xs); color: var(--ink-3); }
 </style>

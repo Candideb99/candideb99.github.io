@@ -31,6 +31,7 @@ export function workingOf(worked) {
     case "difference": return `${a} − ${b} = ${r}`;
     case "sum": return `${worked.terms.map((t) => operand(t.value)).join(" + ")} = ${r}`;
     case "ratio": return `${a} ÷ ${b} = ${r}`;
+    case "product": return `${a} × ${b} = ${r}`;
     case "share": return `${a} ÷ ${b} × 100 = ${r}%`;
     case "recovery": return `${a} ÷ (100 − ${a}) × 100 = ${r}%`;
     default: return `(${b} − ${a}) ÷ ${a} × 100 = ${r}%`;

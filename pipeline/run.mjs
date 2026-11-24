@@ -31,7 +31,7 @@ import { readPace } from "./lib/pace.mjs";
 import { SPORT_LIMITS, newsSectionsOf, quietPlaces, rotationSwap, sportCap, writeOrder, selectAnalysisTopic, selectExplainerTopic, selectFeatureTopic, selectIdea, selectPaper, selectStories } from "./lib/select.mjs";
 import { ANALYSIS_WORDS, FEATURE_WORDS, PAPER_WORDS, WEEKLY_WORDS, deskNotes, explainingFacts, newsFloor, paperNotes, reviseArticle, substantiveFacts, writeAnalysis, writeArticle, writeExplainer, writeFeature, writeIdea, writePaperReading, writeWeekly } from "./lib/write.mjs";
 import { NEWS_FLOOR, NEWS_MIN_EXPLAINING, NEWS_MIN_FACTS, SHORT_DAILY_CAP, SHORT_WORDS } from "./lib/editorial.mjs";
-import { critique, CUTTABLE, cutFaultySentences, cutToSources, programmaticChecks } from "./lib/verify.mjs";
+import { critique, CUTTABLE, cutFaultySentences, cutToSources, mendAddsTextSum, programmaticChecks, TEXT_SUM } from "./lib/verify.mjs";
 import { READOUT, readoutRoute, structural } from "./lib/style.mjs";
 import { copyEdit } from "./lib/copydesk.mjs";
 import { keptBlock, lessonsBlock, lessonsHash, loadLessons } from "./lib/lessons.mjs";
@@ -345,7 +345,9 @@ async function copyDeskPass(draft, { includeBody = true, kind = "news", sources 
  * drafts were rejected at this point against 30 published, most for one phrase («من قبل»، «يُعتبر») or a
  * lede a few words too long, each after the writer, the desk and the critic had already been paid for.
  */
-const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر|بلا جدول زمني/;
+// A mend that works a sum into the text (mendAddsTextSum(), 2026-11-24) is the writer's: the desk's guard would refuse
+// to drop its figures, so a desk pass would be a call spent for nothing.
+const WRITERS_FAULT = /أرقام لا تظهر في المصادر|نسبة النص العربي منخفضة|قصير جداً|ناقصة؛ العناوين الفرعية|العنوان مكرر لمقال|تكرر مقالاً منشوراً|يقارن بين ما أوردته المصادر|بلا جدول زمني|وضع في المتن حساباً/;
 
 /**
  * The last cut (lib/verify.mjs cutToSources): a revised draft still carrying a figure no source has, or a second event
@@ -1132,7 +1134,8 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
   // and its mend as problems to cut; never a reason to reject the piece.
   // An analysis that wanders (more than three subheads, a lede past 75 words: lib/style.mjs structural(), 2026-11-11)
   // goes the same way: to its revision and its mend, never a rejection.
-  const offPlan = (c) => (lesson === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة")) : kind === "analysis" ? structural(c.warnings) : []);
+  // A sum worked in the text with no worked example to show it (`TEXT_SUM`, 2026-11-24) goes the same way.
+  const offPlan = (c) => (lesson === "explainer" ? c.warnings.filter((w) => w.startsWith("خارج الخطة") || w.startsWith(TEXT_SUM)) : kind === "analysis" ? structural(c.warnings) : []);
   // The same gate as a news story: out untouched only on "publish" at 6 or more with clean checks.
   const straightOut = review.verdict === "publish" && review.score >= 6 && checks.ok && !offPlan(checks).length;
   if (!straightOut) {
@@ -1171,10 +1174,15 @@ async function finishHubPiece({ kind, section, draft: firstDraft, sources, check
         const mend = await reviseArticle({ draft, sources: checkSources, issues: mendIssues, log, wordLimits, kind: lesson, notes, settled: issues });
         // As a news story's mend: a figure the revision took out does not come back (restoredFigures()).
         const revisedDraft = draft;
+        // A mend is the last hand on the text and no critic reads it after: one that works a sum into the text where the
+        // reviewed draft had none is refused, and the reviewed draft goes on (the European gas explainer of 2026-11-23:
+        // its mend pasted the critic's suggested «0.1 … 8.6% … 0.86%» as a bare result; `mendAddsTextSum()`).
         const recheck = (d) => {
           const c = programmaticChecks(keepTitle(d), checkSources, { ...flags, recentTitles });
           const back = restoredFigures(reviewed, revisedDraft, d, mendIssues.join(" "));
-          return back.length ? { ...c, ok: false, issues: [...c.issues, `الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] } : c;
+          const sum = mendAddsTextSum(checks, c);
+          const added = [...(back.length ? [`الإصلاح الأخير أعاد رقماً حذفته المراجعة: ${back.join("، ")}`] : []), ...(sum ? [sum] : [])];
+          return added.length ? { ...c, ok: false, issues: [...c.issues, ...added] } : c;
         };
         let mended = keepTitle((await copyDeskPass(keepTitle(mend.draft), { kind: deskKind, sources: checkSources ?? [] })).draft);
         let mendedChecks = recheck(mended);

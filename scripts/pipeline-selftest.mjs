@@ -42,7 +42,7 @@ import { selectIdea } from "../pipeline/lib/select.mjs";
 import { photoFree } from "../pipeline/lib/photo-key.mjs";
 import { placeLessonParts } from "../src/lib/lesson-layout.mjs";
 import { fixNames, judgeRewrite } from "../pipeline/lib/copydesk.mjs";
-import { CUTTABLE, cutToSources, normalizeCritique, programmaticChecks } from "../pipeline/lib/verify.mjs";
+import { CUTTABLE, cutToSources, mendAddsTextSum, normalizeCritique, programmaticChecks, TEXT_SUM } from "../pipeline/lib/verify.mjs";
 import { noveltyFault } from "../pipeline/lib/images.mjs";
 import { ROUND_CLOSED, issuesToClose, silentFeeds, standingStories } from "../pipeline/lib/health.mjs";
 import { NEWSROOM_FILES, changedSince, commitSteps, gitStatus, snapshot, undoChanges } from "./desk-git.mjs";
@@ -1464,6 +1464,57 @@ if (spawnSync("git", ["--version"]).status === 0) {
     [recovery?.result.value, recovery?.result.unit, Boolean(baseEffect.worked), baseChecked.issues.some((i) => i.includes("30.7")), normalizeWorked({ title: "t", formula: "f", op: "recovery", terms: [{ label: "a", value: 120 }], result: { label: "r" } })],
     [30.7, "%", true, false, null],
   );
+  // A calculation with no working (2026-11-24, the owner on the European gas explainer of 23 November: «ولو افترضنا
+  // للتوضيح أن هذه المرونة 0.1، فإن صعود السعر 8.6% لا يجلب سوى نحو 0.86%» "gave a calculation without explaining how
+  // it was done and why"). The worked example had no product and took no value the stories lack beside their real
+  // figures, so the critic's suggested sum went into the text, where nothing showed its working. A product with one
+  // round term marked assumed now prints as a worked example; its real figure is still held to the stories; a sum worked
+  // in a hypothesis's sentence of a piece with no worked example is a warning sent to the revision and the mend, and a
+  // mend that adds one is refused. The old code has no product, no assumed term, no textArithmetic and no TEXT_SUM.
+  {
+    const gasSum = normalizeWorked({ title: "كم غازاً إضافياً يجلبه صعود السعر", formula: "نسبة التغير في الكمية = المرونة × نسبة التغير في السعر", op: "product", terms: [{ label: "مرونة العرض في الأجل القصير", value: 0.1, assumed: true }, { label: "صعود السعر", value: 8.6, unit: "%" }], result: { label: "زيادة الكمية المعروضة" } });
+    const allMade = normalizeWorked({ title: "t", formula: "f", op: "ratio", terms: [{ label: "a", value: 2, unit: "%", assumed: true }, { label: "b", value: 0.2, assumed: true }], result: { label: "r", unit: "%" } });
+    check(
+      "a product of a story's figure and a round assumed term is computed in code, marked, and only the real figure is held to the stories",
+      [gasSum?.result, gasSum?.hypothetical, gasSum?.terms.map((t) => Boolean(t.assumed)), lessonNumbers(gasSum), lessonResults(gasSum), allMade?.hypothetical, allMade?.terms.some((t) => "assumed" in t), allMade?.result.value],
+      [{ label: "زيادة الكمية المعروضة", unit: "%", value: 0.86 }, false, [true, false], [8.6], [], true, false, 10],
+    );
+    check(
+      "an assumed term that is not round, and an unround hypothetical, are refused; one significant figure below one is round",
+      [
+        normalizeWorked({ title: "t", formula: "f", op: "product", terms: [{ label: "a", value: 0.13, assumed: true }, { label: "b", value: 8.6, unit: "%" }], result: { label: "r" } }),
+        normalizeWorked({ title: "t", formula: "f", op: "sum", terms: [{ label: "a", value: 0.25 }, { label: "b", value: 2 }], result: { label: "r" }, hypothetical: true }),
+        normalizeWorked({ title: "t", formula: "f", op: "product", terms: [{ label: "a", value: 0.5 }, { label: "b", value: 20 }], result: { label: "r", unit: "مليار دولار" }, hypothetical: true })?.result,
+      ],
+      [null, null, { label: "r", unit: "مليار دولار", value: 10 }],
+    );
+    const { workingOf } = await import("../src/lib/worked.mjs");
+    check("a product's working prints its sign", workingOf(gasSum), "0.1 × 8.6 = 0.86");
+    const gasStory = [{ title: "الغاز الأوروبي", text: "قفزت العقود الآجلة للغاز في أوروبا بما يصل إلى 8.6% لتبلغ 96.075 يورو." }];
+    const gasDraft = (worked, line) => ({ title: "لماذا قفز سعر الغاز في أوروبا؟", subtitle: "", lede: "قفزت العقود 8.6% الاثنين.", body: `## العرض الضيق يضخّم أثر البرد\n\n${line}`, keyFacts: [], tags: [], regions: [], whyItMatters: "", chart: null, table: null, worked, diagram: null });
+    const bare = "ولو افترضنا للتوضيح أن هذه المرونة 0.1، فإن صعود السعر 8.6% لا يجلب سوى نحو 0.86% من الغاز الإضافي.";
+    const sumOf = (d) => programmaticChecks(d, gasStory, { minWords: 0, explainer: true }).warnings.filter((w) => w.startsWith(TEXT_SUM)).length;
+    const boxed = gasDraft(gasSum, "ولو كانت المرونة 0.1، لما جلب صعود السعر 8.6% سوى نحو 0.86% من الغاز الإضافي، كما يبيّن المثال.");
+    programmaticChecks(boxed, gasStory, { minWords: 0, explainer: true });
+    check(
+      "a sum worked in a hypothesis's sentence of an explainer with no worked example is a warning; with one, or outside a hypothesis, none",
+      [sumOf(gasDraft(null, bare)), sumOf(boxed), Boolean(boxed.worked), sumOf(gasDraft(null, "وارتفع السعر 8.6% إلى 96.075 يورو، أي نحو 0.86% فوق متوسط الأسبوع بعد 0.1% أمس."))],
+      [1, 0, true, 0],
+    );
+    const warned = { warnings: [`${TEXT_SUM} «…»`] };
+    check(
+      "a mend that adds a sum to the text is refused; one that leaves it where the draft had it, or adds none, is not",
+      [typeof mendAddsTextSum({ warnings: [] }, warned), mendAddsTextSum(warned, warned), mendAddsTextSum({ warnings: [] }, { warnings: ["خارج الخطة: …"] })],
+      ["string", null, null],
+    );
+    const runText = readFileSync(new URL("../pipeline/run.mjs", import.meta.url), "utf8");
+    const writeText = readFileSync(new URL("../pipeline/lib/write.mjs", import.meta.url), "utf8");
+    check(
+      "run.mjs sends the warning to the revision and the mend and refuses a mend that adds one without a desk pass; an explainer's reviser may answer with a worked example it lacked",
+      [/w\.startsWith\(TEXT_SUM\)/.test(runText), /mendAddsTextSum\(checks, c\)/.test(runText), /WRITERS_FAULT = \/[^\n]*وضع في المتن حساباً/.test(runText), /draft\.worked \|\| draft\.diagram \|\| kind === "explainer"/.test(writeText)],
+      [true, true, true, true],
+    );
+  }
   // A part's printed words are held as a chart's labels are (the third test lesson of 2026-11-08 computed a residual,
   // 2.1, into its figure), while what code computed, here 0.7, may be printed and said once in the text.
   const reservesText = [{ title: "احتياطي", text: "Net inflows of 23.2 billion dollars covered a current-account deficit of 22.5 billion dollars." }];
